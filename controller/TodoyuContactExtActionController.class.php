@@ -27,6 +27,13 @@ class TodoyuContactExtActionController extends TodoyuActionController {
 		return TodoyuPage::render();
 	}
 
+
+	public function switchTypeAction(array $params) {
+		$type	= $params['type'];
+
+		TodoyuContactPreferences::saveActiveTab($type);
+	}
+
 }
 
 ?>

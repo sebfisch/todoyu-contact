@@ -54,7 +54,7 @@ class TodoyuContactRenderer extends TodoyuRenderer {
 		$activeTab	= TodoyuContactPreferences::getActiveTab();
 		$htmlID		= 'contact-tabs';
 		$class		= 'tabs';
-		$jsHandler	= 'Todoyu.Ext.contact.tabJsHandler.bind(Todoyu.Ext.Contact)';
+		$jsHandler	= 'Todoyu.Ext.contact.onTabSelect.bind(Todoyu.Ext.contact)';
 
 		return TodoyuTabheadRenderer::renderTabs($htmlID, $class, $jsHandler, $tabs, $activeTab);
 	}

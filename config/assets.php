@@ -37,12 +37,19 @@ $CONFIG['EXT']['contact']['assets'] = array(
 				'file'		=> 'ext/contact/assets/js/Ext.js',
 				'position'	=> 100
 			),
+			array(
+				'file'		=> 'ext/contact/assets/js/Person.js',
+				'position'	=> 101
+			),
+			array(
+				'file'		=> 'ext/contact/assets/js/Company.js',
+				'position'	=> 101
+			)
 		),
 		'css' => array(
 			array(
 				'file'	=> 'ext/contact/assets/css/ext.css'
-			),
-
+			)
 		)
 	),
 

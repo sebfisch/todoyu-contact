@@ -28,41 +28,59 @@
 
 class TodoyuPanelWidgetQuickContact extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
 
-	protected static $contactType = '';
+	private $type;
 
 	/**
 	 * Constructor of the class
 	 *
 	 */
 	function __construct(array $config, array $params = array(), $idArea = 0, $expanded = true)	{
-		self::$contactType = TodoyuContactPreferences::getActiveTab();
-
-		if(self::$contactType == '')	{
-			self::$contactType = $CONFIG['EXT']['contact']['defaultTypeTab'];
-		}
+		$this->type	= TodoyuContactPreferences::getActiveTab();
 
 		parent::__construct(
 				'contact',														// ext key
 				'quickcontact',													// panel widget ID
-				'LLL:panelwidget-quickcontact.'.self::$contactType.'.title',	// widget title text
+				'LLL:panelwidget-quickcontact.' . $this->type . '.title',	// widget title text
 				$config,														// widget config array
 				$params,														// widget params
 				$idArea
 		);
 
+		TodoyuPage::addExtAssets('contact', 'panelwidget-quickcontact');
+
+//		self::$contactType = TodoyuContactPreferences::getActiveTab();
+
+
 		$this->addHasIconClass();
-		$this->addClass(self::$contactType);
+		$this->addClass($this->type);
 	}
 
 
 	public function renderContent() {
 		$tmpl	= 'ext/contact/view/panelwidget-quickcontact.tmpl';
-		$data	= array(
-			'labels' => array(
-				'title' => 'panelwidget-quickcontact.'.self::$contactType.'.title'
-			),
-			'type'	=> self::$contactType
-		);
+		$data	= array();
+
+
+//			'labels' => array(
+//				'title' => 'panelwidget-quickcontact.'.self::$contactType.'.title'
+//			),
+//			'type'	=> self::$contactType
+//		);
+//
+		switch($this->type) {
+			case 'person':
+				$data['title']			= 'panelwidget-quickcontact.person.title';
+				$data['buttonLabel']	= 'panelwidget-quickcontact.person.title';
+				$data['buttonAction']	= 'Todoyu.Ext.contact.Person.add()';
+				break;
+
+			case 'company':
+				$data['title']			= 'panelwidget-quickcontact.company.title';
+				$data['buttonLabel']	= 'panelwidget-quickcontact.company.title';
+				$data['buttonAction']	= 'Todoyu.Ext.contact.Company.add()';
+				break;
+		}
+
 
 		$content = render($tmpl, $data);
 
@@ -79,8 +97,6 @@ class TodoyuPanelWidgetQuickContact extends TodoyuPanelWidget implements TodoyuP
 	 */
 	function render()	{
 		$this->renderContent();
-
-		TodoyuPage::addExtAssets('contact', 'panelwidget-quickcontact');
 
 		return parent::render();
 	}

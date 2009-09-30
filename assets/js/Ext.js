@@ -31,20 +31,34 @@ Todoyu.Ext.contact = {
 	 *	Initialize
 	 */
 	init: function()	{
-		if($('contact-tabs'))	{
-			var tabs = $('contact-tabs').select('li');
-			if(tabs.length > 0)	{
-				tabs.each(function(item)	{
-					var contactType = item.id.replace(/contact-tabhead-/, '');
-
-					if(item.hasClassName('active'))	{
-						this.curContactInfoType = contactType;
-					}
-
-					item.observe('click', this.loadContactInfoType.bind(this, contactType));
-				}.bind(this));
-			}
+		
+	},
+	
+	onTabSelect: function(event, tab) {
+		//this.saveType(tab, this.)
+		
+		console.log(tab);
+	},
+	
+	saveType: function(type, onComplete) {
+		var url		= Todoyu.getUrl('contact', 'ext');
+		var options	= {
+			'parameters': {
+				'cmd': 'switchType',
+				'type': type
+			}			
 		}
+		
+		if( typeof onComplete === 'function' ) {
+			options.onComplete = onComplete;
+		}
+		
+		Todoyu.send(url, options);		
+	},
+	
+	
+	update: function(url, options) {
+		Todoyu.Ui.update('contact-main', url, options);
 	},
 
 
@@ -143,6 +157,15 @@ Todoyu.Ext.contact = {
 	 *	@param	JSON	response
 	 */
 	onSaved: function(response) {
+		var error	= response.hasTodoyuError();
+		
+		if( error ) {
+			$('contact-form-content').update(response.responseText);
+		} else {
+			alert('Saved: ' + response.responseText);
+		}
+		
+		/*
 		var JSON = response.responseJSON;
 
 		if(JSON.saved == true)	{
@@ -150,6 +173,7 @@ Todoyu.Ext.contact = {
 		} else {
 			$('contact-form-content').update(JSON.formHTML);
 		}
+		*/
 	},
 
 

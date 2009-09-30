@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
 	<attributes>
-		<attribute name="action">?ext=contact&amp;controller=formhandling</attribute>
+		<attribute name="action">?ext=contact&amp;controller=person</attribute>
 		<attribute name="name">person</attribute>
-		<attribute name="onsubmit">return Todoyu.Ext.contact.save(this);</attribute>
+		<attribute name="onsubmit">return Todoyu.Ext.contact.Person.save(this)</attribute>
 		<attribute name="class">formPerson</attribute>
 	</attributes>
 	<hiddenFields>
-		<field name="id"></field>
+		<field name="id"/>
 	</hiddenFields>
 	<fieldsets>
 		<fieldset name="main">
@@ -36,29 +36,30 @@
 
 				<field type="textinput" name="lastname">
 					<label>LLL:user.user.attr.lastname</label>
-					<required>1</required>
+					<required/>
 				</field>
 
 				<field type="textinput" name="firstname">
 					<label>LLL:user.user.attr.firstname</label>
 					<required>1</required>
-					<extraAttributes>onblur="Todoyu.Ext.contact.generatePersonShortname(this.id);"</extraAttributes>
 				</field>
 
 				<field type="textinput" name="shortname">
 					<label>LLL:user.user.attr.shortname</label>
 				</field>
 
-				<field type="textinput" name="birthday">
+				<field type="dateinput" name="birthday">
 					<label>LLL:user.user.attr.birthday</label>
-					<default>0000-00-00</default>
+					<calendar>
+						<range>[1940,2020]</range>
+					</calendar>
 				</field>
 
 				<field type="button" name="expandall">
 					<type>button</type>
 					<text>LLL:core.expandall</text>
 					<onclick>Todoyu.Form.expandAllForeignRecords(this.id);</onclick>
-					<class></class>
+					<class/>
 				</field>
 
 				<field type="databaseRelation" name="contactinfo">
@@ -68,7 +69,7 @@
 						<foreignLabelUserFunc>ContactInfoType::getLabelForDatabaseRelation</foreignLabelUserFunc>
 						<addSubformConfig>
 							<ext>contact</ext>
-							<controller>formhandling</controller>
+							<controller>person</controller>
 						</addSubformConfig>
 					</foreignRecordConf>
 				</field>

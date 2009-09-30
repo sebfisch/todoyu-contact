@@ -2,29 +2,35 @@
 
 {block name="contactlist"}
 	{foreach $contacts key contact}
-		<li class="{$contact.renderClass} overflow listItem" id="listElement-{$contact.id}">
-			<span class="personLastname"> {cleanHtml $contact.lastname}</span>
-			<span class="personFirstname"> {cleanHtml $contact.firstname}</span>
+		<li class="{$contact.renderClass} overflow listItem person" id="listElement-{$contact.id}">
+
+			<span class="personLastname">{cleanHtml $contact.lastname}</span>
+			<span class="personFirstname">{cleanHtml $contact.firstname}</span>
 
 			<span class="additionalStuff">
-				<a title="{Label contact.showvisitingcard}" onclick="Todoyu.Ext.contact.openInfoPopup('user',{$contact.id});"><span class="icon infoIcon"></span></a>
 
-			{if $contact.username && $contact.password}
-				{if checkEditLoginUserAccess()}
-					<a title="{Label $labels.editLoginUser}" class="icon editLoginUser" onclick="Todoyu.Ext.contact.editLoginUser({$contact.id})" href="javascript:void(0);"><span class="hidden">{Label $labels.editLoginUser}</span></a>
+				<a title="{Label contact.showvisitingcard}" onclick="Todoyu.Ext.contact.Person.show({$contact.id});"><span class="icon infoIcon"></span></a>
+
+				{if $contact.username && $contact.password}
+					{if checkEditLoginUserAccess()}
+						<a title="{Label $labels.editLoginUser}" class="icon editLoginUser" onclick="Todoyu.Ext.contact.Person.editUserRecord({$contact.id})" href="javascript:void(0)"><span class="hidden">{Label $labels.editLoginUser}</span></a>
+					{/if}
+				{else}
+					{if checkCreateLoginUserAccess()}
+						<a title="{Label $labels.createLoginUser}" class="icon createLoginUser" onclick="Todoyu.Ext.contact.Person.editUserRecord({$contact.id})" href="javascript:void(0)"><span class="hidden">{Label $labels.createLoginUser}</span></a>
+					{/if}
 				{/if}
-			{else}
-				{if checkCreateLoginUserAccess()}
-					<a title="{Label $labels.createLoginUser}" class="icon createLoginUser" onclick="Todoyu.Ext.contact.editLoginUser({$contact.id})" href="javascript:void(0);"><span class="hidden">{Label $labels.createLoginUser}</span></a>
+
+				{if checkDeleteAccess()}
+					<a title="{Label $labels.remove}" class="icon remove" onclick="Todoyu.Ext.contact.Person.remove({$contact.id})" href="javascript:void(0)"><span class="hidden">{Label $labels.remove}</span></a>
 				{/if}
-			{/if}
-			{if checkDeleteAccess()}
-				<a title="{Label $labels.remove}" class="icon remove" onclick="Todoyu.Ext.contact.removeEntry({$contact.id})" href="javascript:void(0);"><span class="hidden">{Label $labels.remove}</span></a>
-			{/if}
-			{if checkEditAccess()}
-				<a title="{Label $labels.edit}" class="icon edit" onclick="Todoyu.Ext.contact.loadForm({$contact.id})" href="javascript:void(0);"><span class="hidden">{Label $labels.edit}</span></a>
-			{/if}
+
+				{if checkEditAccess()}
+					<a title="{Label $labels.edit}" class="icon edit" onclick="Todoyu.Ext.contact.Person.edit({$contact.id})" href="javascript:void(0)"><span class="hidden">{Label $labels.edit}</span></a>
+				{/if}
+
 			</span>
+
 		</li>
 	{/foreach}
 {/block}

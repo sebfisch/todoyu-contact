@@ -18,6 +18,7 @@ class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 
 
 
+
 		$jsonResponse	= new stdClass();
 		//$xmlPath		= TodoyuContactManager::getContactTypeFromXml();
 
@@ -37,6 +38,7 @@ class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 			// Validate, render
 		if( $form->isValid() )	{
 			$storageData= $form->getStorageData();
+
 
 			$idContact = TodoyuContactManager::saveContact($type, $storageData);
 

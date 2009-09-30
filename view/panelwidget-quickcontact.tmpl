@@ -1,7 +1,7 @@
 <div class="contact">
 	{if checkCreateAccess()}
-		<button type="submit" class="button" onclick="Todoyu.Ext.contact.loadForm(0); return false;">
-			<span class="hasIcon iconAddContact">{Label $labels.title}</span>
+		<button type="submit" class="button" onclick="{$buttonAction}">
+			<span class="hasIcon iconAddContact">{Label $buttonLabel}</span>
 			<span class="rgt"><!-- right --></span>
 		</button>
 	{/if}
