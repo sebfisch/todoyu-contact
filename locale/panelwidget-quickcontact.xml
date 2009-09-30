@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locallang>
+	<labels lang="en">
+		<label index="company.title">Create Company</label>
+		<label index="person.title">Create Person</label>
+	</labels>
+	<labels lang="de">
+		<label index="company.title">Neue Firma</label>
+		<label index="person.title">Neue Person</label>
+	</labels>
+</locallang>

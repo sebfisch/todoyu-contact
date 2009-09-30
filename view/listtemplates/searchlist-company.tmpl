@@ -1,0 +1,19 @@
+{extends "ext/contact/view/listtemplates/searchlist-wrap.tmpl"}
+
+{block name="contactlist"}
+	{foreach $contacts key contact}
+		<li class="{$contact.renderClass} overflow listItem" id="listElement-{$contact.id}">
+			<span class="companyTitle">{cleanHtml $contact.title}</span>
+			<span class="companyShortname">{cleanHtml $contact.shortname}</span>
+
+			<span class="additionalStuff">
+			{if checkDeleteAccess()}
+				<a class="icon remove" onclick="Todoyu.Ext.contact.removeEntry({$contact.id})" href="javascript:void(0)"></a>
+			{/if}
+			{if checkEditAccess()}
+				<a class="icon edit" onclick="Todoyu.Ext.contact.loadForm({$contact.id})" href="javascript:void(0)"></a>
+			{/if}
+			</span>
+		</li>
+	{/foreach}
+{/block}

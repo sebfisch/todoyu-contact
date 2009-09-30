@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locallang>
+	<labels lang="en">
+		<label index="page.title">Contacts</label>
+		<label index="contacttypes.company">Company</label>
+		<label index="contacttypes.person">Person</label>
+		<label index="contacttypes.jobtype">Jobtype</label>
+		<label index="contacttypes.customerrole">Customerrole</label>
+
+		<label index="contact.createnew">Create new</label>
+		<label index="contact.edit">Edit Record: </label>
+
+		<label index="editRecord">Edit Record</label>
+		<label index="removeRecord">Delete Record</label>
+		<label index="createLoginUser">Create Login User</label>
+		<label index="editLoginUser">Edit Login User</label>
+
+		<label index="generateshortname">Generate shortname</label>
+
+		<label index="confirmRemoving">Do you really want to delete this record?</label>
+
+		<label index="showvisitingcard">Show visiting card popup</label>
+		<label index="firstname">Firstname</label>
+		<label index="lastname">Lastname</label>
+		<label index="shortname">Shortname</label>
+		<label index="gender">Gender</label>
+		<label index="employer">Employer</label>
+		<label index="address">Address</label>
+		<label index="birthdate">Birthdate</label>
+		<label index="email">Email</label>
+		<label index="male">Male</label>
+		<label index="female">Female</label>
+	</labels>
+	<labels lang="de">
+		<label index="page.title">Kontakte</label>
+		<label index="contacttypes.company">Firma</label>
+		<label index="contacttypes.person">Person</label>
+		<label index="contacttypes.jobtype">Mitarbeiterfunktion</label>
+		<label index="contacttypes.customerrole">Firmenrolle</label>
+
+		<label index="contact.createnew">Neu: </label>
+		<label index="contact.edit">Bearbeiten: </label>
+
+		<label index="editRecord">Bearbeiten</label>
+		<label index="removeRecord">Löschen</label>
+		<label index="createLoginUser">Benutzer erstellen</label>
+		<label index="editLoginUser">Benutzer editieren</label>
+
+		<label index="generateshortname">Kurzname generieren</label>
+
+		<label index="confirmRemoving">Wollen Sie diesen Datensatz wirklich löschen?</label>
+		<label index="showvisitingcard">Visitenkarte anzeigen</label>
+		<label index="firstname">Vorname</label>
+		<label index="lastname">Nachname</label>
+		<label index="shortname">Kurzname</label>
+		<label index="gender">Geschlecht</label>
+		<label index="employer">Arbeitgeber</label>
+		<label index="address">Addresse</label>
+		<label index="birthdate">Geburtsdatum</label>
+		<label index="email">Email</label>
+		<label index="male">Männlich</label>
+		<label index="female">Weiblich</label>
+	</labels>
+</locallang>

@@ -1,0 +1,70 @@
+<div class="visitingCardContent">
+	<table>
+		<tr class="odd">
+			<td class="label">{Label contact.firstname}:</td>
+			<td width="90%">{$firstname}</td>
+		</tr>
+		<tr class="even">
+			<td class="label">{Label contact.lastname}:</td>
+			<td>{$lastname}</td>
+		</tr>
+{if strlen($shortname) > 0}
+		<tr class="odd">
+			<td class="label">{Label contact.shortname}:</td>
+			<td>{$shortname}</td>
+		</tr>
+{/if}
+		<tr class="even"><td colspan="2"><br/></td></tr>
+{if $birthday != '0000-00-00'}
+		<tr class="odd">
+			<td class="label">{Label contact.birthdate}:</td>
+			<td>{$birthday}</td>
+		</tr>
+{/if}
+		<tr class="even">
+			<td class="label">{Label contact.gender}:</td>
+			<td>{if $gender=='m'}{Label contact.male}{else}{Label contact.female}{/if}</td>
+		</tr>
+		<tr class="even"><td colspan="2"><br/></td></tr>
+		<tr class="odd">
+			<td class="label">{Label contact.employer}:</td>
+			<td>
+				{$customer[0][title]}<br/><br/>
+{foreach $customerData[$customer[0][id]] numCustomer custAddressData}
+				{$custAddressData.street}<br/>
+				{$custAddressData.zip} {$custAddressData.city}<br/>
+				{$custAddressData.label_country}<br/>
+				{if strlen($custAddressData.postbox)>0}Postbox: {$custAddressData.postbox}{/if}<br/>
+{/foreach}
+			</td>
+		</tr>
+		<tr class="even"><td colspan="2"><br/></td></tr>
+		<tr class="odd">
+			<td class="label">{Label contact.email}:</td>
+			<td>
+{foreach $contactinfo numCi ciData}
+	{if strstr($ciData.info, '@') !== false}<a href="mailto:{$ciData.info}">{$ciData.info}</a><br/>{/if}
+{/foreach}
+			</td>
+		</tr>
+{if strlen($address[0][street])>0 || strlen($address[0][city])>0}
+		<tr class="even"><td colspan="2"><br/></td></tr>
+		<tr class="odd">
+			<td class="label">{Label contact.address}:</td>
+			<td>
+				{$address[0][street]}<br/>
+				{$address[0][zip]} {$address[0][city]}<br/>
+				{countryName $address[0][id_country]}<br/>
+				{if strlen($address[0][postbox])>0}Postbox: {$address[0][postbox]}{/if}
+			</td>
+		</tr>
+{/if}
+		<tr class="even"><td colspan="2"><br/></td></tr>
+{foreach $contactinfo numCi ciData}{if isPhoneNumber($ciData.info)}
+		<tr class="{cycle values="even,odd"}">
+			<td>{labelContactinfotype $ciData.id_contactinfotype}:</td>
+			<td>{$ciData.info}</td>
+		</tr>
+{/if}{/foreach}
+	</table>
+</div>

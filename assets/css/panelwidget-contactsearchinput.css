@@ -1,0 +1,32 @@
+#panelwidget-contactSearchInput h1 .title {
+	background: transparent url('../img/icon.png') no-repeat 8px -325px;
+}
+
+
+#panelwidget-contactSearchInput-content {
+	padding: 5px;
+}
+
+#panelwidget-searchinput label {
+	float:left;
+	padding-right:5px;
+}
+
+#panelwidget-searchinput input#searchinput {
+	width: 70%;
+	float:left;
+}
+
+#panelwidget-contactSearchInput-content a.icon {
+	margin-left:5px;
+	background: transparent url(../../../../core/assets/img/bg_button_sprite.png) no-repeat 0px -182px;
+	cursor: pointer;
+}
+
+#panelwidget-contactSearchInput-content button .showAll {
+	background-position: 6px -870px;
+}
+
+#panelwidget-contactSearchInput-content button .hideAll	{
+	background-position: 6px -840px;
+}

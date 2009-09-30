@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<attributes>
+		<attribute name="action">?ext=contact&amp;controller=formhandling</attribute>
+		<attribute name="name">contactinfo</attribute>
+	</attributes>
+	<hiddenFields>
+		<field name="id"></field>
+	</hiddenFields>
+	<fieldsets>
+		<fieldset name="main">
+			<legend>Main contactinfo data</legend>
+			<elements>
+				<field type="select" name="id_contactinfotype">
+					<label>LLL:user.contactinfo.attr.contactinfotype</label>
+					<source type="sql">
+						<fields>id,title</fields>
+						<tables>ext_user_contactinfotype</tables>
+						<where>deleted = 0</where>
+						<order>title</order>
+						<label>TodoyuContactInfoType::getLabelForFormElementSelect</label>
+						<value>id</value>
+					</source>
+					<required>1</required>
+				</field>
+				<field type="textinput" name="info">
+					<label>LLL:user.contactinfo.attr.info</label>
+					<required>1</required>
+				</field>
+				<field type="checkbox" name="preferred">
+					<label>LLL:user.contactinfo.attr.preferred</label>
+				</field>
+			</elements>
+		</fieldset>
+	</fieldsets>
+</form>

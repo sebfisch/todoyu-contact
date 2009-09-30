@@ -1,0 +1,118 @@
+.contactList li {
+	padding: 3px 5px;
+}
+
+	.contactList .headerLine span.additionalStuff {
+		padding:3px 0;
+	}
+
+	.contactList span.personLastname,
+	.contactList span.personFirstname {
+		width:230px;
+	}
+
+	.contactList span.personFirstname {
+		margin-left:0px;
+	}
+
+	.contactList span.companyTitle,
+	.contactList span.companyShortname {
+		width:290px;
+	}
+
+	.contactList span.companyShortname {
+		margin-left:0px;
+	}
+
+	.contactList ul li.listItem span.personLastname,
+	.contactList ul li.listItem span.personFirstname {
+		float:left;
+		line-height:18px;
+	}
+
+	.contactList ul li.listItem span.companyTitle,
+	.contactList ul li.listItem span.companyShortname {
+		float:left;
+		line-height:18px;
+	}
+
+	.contactList span.additionalStuff {
+		float:right;
+		margin-right:10px;
+		padding:0;
+	}
+
+	.contactList span.additionalStuff .icon {
+		margin-left:10px;
+		cursor: pointer;
+	}
+
+	.contactList a.edit {
+		background: url(../img/icon.png) no-repeat 0px 2px;
+	}
+
+	.contactList a.add {
+		background: url(../img/icon.png) no-repeat 0px -57px;
+	}
+
+	.contactList a.remove {
+		background: url(../img/icon.png) no-repeat 0px -27px;
+	}
+
+	.contactList a.editLoginUser {
+		background: url(../img/icon.png) no-repeat 0px -390px;
+	}
+
+	.contactList a.createLoginUser {
+		background: url(../img/icon.png) no-repeat 0px -360px;
+	}
+
+	.contactList #create-person a {
+		background: transparent url(../img/icon.png) no-repeat 0px -207px;
+	}
+
+	.contactList #create-company a {
+		background: transparent url(../img/icon.png) no-repeat 0px -237px;
+	}
+
+
+
+.tabs .tabkey-person .icon{
+	background: url(../img/icon.png) no-repeat 0 -85px;
+}
+
+.tabs .tabkey-company .icon{
+	background: url(../img/icon.png) no-repeat 0 -115px;
+}
+
+.tabs .tabkey-jobtype .icon{
+	background: url(../img/icon.png) no-repeat 0 -145px;
+}
+
+.tabs .tabkey-customerrole .icon{
+	background: url(../img/icon.png) no-repeat 0 -173px;
+}
+
+
+/* visiting card */
+
+div.visitingCardContent {
+	padding: 12px 0 18px 12px !important;
+}
+div.visitingCardContent table {
+	width: 380px;
+}
+div.visitingCardContent table tr td {
+	text-align: left;
+	padding-top: 2px !important;
+	padding-bottom: 2px !important;
+	padding-left: 8px !important;
+}
+div.visitingCardContent table tr.even {
+	background-color: #EAECE7;
+}
+div.visitingCardContent table tr td.label {
+	padding: 0 18px 0 0;
+	text-transform: uppercase;
+	letter-spacing: 0.3px;
+}

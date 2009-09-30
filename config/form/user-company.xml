@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<attributes>
+		<attribute name="name">customer</attribute>
+	</attributes>
+	<fieldsets>
+		<fieldset name="main">
+			<legend>Main company data</legend>
+			<elements>
+
+				<field type="textinputAC" name="id">
+					<label>LLL:user.user.attr.user-company.company</label>
+					<config>
+						<acListener>
+							<ext>contact</ext>
+							<controller>autocompletion</controller>
+							<cmd>company</cmd>
+						</acListener>
+						<acLabelFunc>TodoyuCustomerManager::getLabel</acLabelFunc>
+					</config>
+					<required>1</required>
+				</field>
+
+			</elements>
+		</fieldset>
+	</fieldsets>
+</form>

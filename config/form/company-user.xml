@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<attributes>
+		<attribute name="name">user</attribute>
+		<attribute name="class">formCompanyUser</attribute>
+	</attributes>
+	<fieldsets>
+		<fieldset name="main">
+			<legend>Main customer data</legend>
+			<elements>
+
+				<field type="textinputAC" name="id">
+					<label>LLL:user.customer.attr.customer-user.person</label>
+					<config>
+						<acListener>
+							<ext>contact</ext>
+							<controller>autocompletion</controller>
+							<cmd>user</cmd>
+						</acListener>
+						<acLabelFunc>TodoyuUserManager::getLabel</acLabelFunc>
+					</config>
+					<required>1</required>
+				</field>
+
+				<field type="select" name="id_workaddress">
+					<label>LLL:user.worklocation</label>
+					<source type="function">
+						<function>TodoyuContactManager::getEmployeeWorkaddressOptions</function>
+						<lazyInit/>
+					</source>
+				</field>
+
+				<field type="select" name="id_jobtype">
+					<label>LLL:user.jobtype</label>
+					<source type="function">
+						<function>TodoyuContactViewHelper::getJobtypeOptions</function>
+						<lazyInit/>
+					</source>
+				</field>
+
+			</elements>
+		</fieldset>
+	</fieldsets>
+</form>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<attributes>
+		<attribute name="action">?ext=contact&amp;controller=formhandling</attribute>
+		<attribute name="name">person</attribute>
+		<attribute name="onsubmit">return Todoyu.Ext.contact.save(this);</attribute>
+		<attribute name="class">formPerson</attribute>
+	</attributes>
+	<hiddenFields>
+		<field name="id"></field>
+	</hiddenFields>
+	<fieldsets>
+		<fieldset name="main">
+			<legend>Main user data</legend>
+			<elements>
+				<field type="select" name="gender">
+					<label>LLL:user.user.attr.gender</label>
+					<source type="list">
+						<option>
+							<value>m</value>
+							<label>LLL:user.user.attr.gender.m</label>
+						</option>
+						<option>
+							<value>w</value>
+							<label>LLL:user.user.attr.gender.f</label>
+						</option>
+					</source>
+				</field>
+
+				<field type="select" name="type">
+					<label>LLL:user.user.attr.type</label>
+					<source type="function">
+						<function>TodoyuContactViewHelper::getUserTypeOptions</function>
+					</source>
+				</field>
+
+				<field type="textinput" name="lastname">
+					<label>LLL:user.user.attr.lastname</label>
+					<required>1</required>
+				</field>
+
+				<field type="textinput" name="firstname">
+					<label>LLL:user.user.attr.firstname</label>
+					<required>1</required>
+					<extraAttributes>onblur="Todoyu.Ext.contact.generatePersonShortname(this.id);"</extraAttributes>
+				</field>
+
+				<field type="textinput" name="shortname">
+					<label>LLL:user.user.attr.shortname</label>
+				</field>
+
+				<field type="textinput" name="birthday">
+					<label>LLL:user.user.attr.birthday</label>
+					<default>0000-00-00</default>
+				</field>
+
+				<field type="button" name="expandall">
+					<type>button</type>
+					<text>LLL:core.expandall</text>
+					<onclick>Todoyu.Form.expandAllForeignRecords(this.id);</onclick>
+					<class></class>
+				</field>
+
+				<field type="databaseRelation" name="contactinfo">
+					<label>LLL:user.user.attr.contactinfo</label>
+					<foreignRecordConf>
+						<foreignformxml>ext/contact/config/form/contactinfo.xml</foreignformxml>
+						<foreignLabelUserFunc>ContactInfoType::getLabelForDatabaseRelation</foreignLabelUserFunc>
+						<addSubformConfig>
+							<ext>contact</ext>
+							<controller>formhandling</controller>
+						</addSubformConfig>
+					</foreignRecordConf>
+				</field>
+
+				<field type="databaseRelation" name="address">
+					<label>LLL:user.user.attr.address</label>
+					<foreignRecordConf>
+						<foreignformxml>ext/contact/config/form/address.xml</foreignformxml>
+						<foreignLabelUserFunc>TodoyuContactViewHelper::getUserAddressLabel</foreignLabelUserFunc>
+						<addSubformConfig>
+							<ext>contact</ext>
+							<controller>formhandling</controller>
+						</addSubformConfig>
+					</foreignRecordConf>
+				</field>
+
+				<field type="databaseRelation" name="customer">
+					<label>LLL:user.user.attr.customer</label>
+					<foreignRecordConf>
+						<foreignformxml>ext/contact/config/form/user-company.xml</foreignformxml>
+						<foreignLabelField>title</foreignLabelField>
+						<addSubformConfig>
+							<ext>contact</ext>
+							<controller>formhandling</controller>
+						</addSubformConfig>
+					</foreignRecordConf>
+				</field>
+			</elements>
+		</fieldset>
+		<fieldset name="buttons">
+			<legend>Actions</legend>
+			<class>buttons</class>
+			<elements>
+				<field type="button" name="save">
+					<type>submit</type>
+					<text>LLL:form.field.save</text>
+					<class>buttonSave</class>
+					<hasIcon>1</hasIcon>
+				</field>
+				<field type="button" name="cancel">
+					<text>LLL:form.field.cancel</text>
+					<type>button</type>
+					<class>buttonCancel</class>
+					<hasIcon>1</hasIcon>
+					<onclick>Todoyu.Ext.contact.closeForm()</onclick>
+				</field>
+			</elements>
+		</fieldset>
+	</fieldsets>
+</form>

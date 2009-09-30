@@ -1,0 +1,23 @@
+#panelwidget-quickcontact-content {
+	padding: 5px;
+}
+
+#panelwidget-quickcontact h1 span.title {
+	background: transparent url('../img/icon.png') no-repeat;
+}
+
+#panelwidget-quickcontact.company h1 span.title {
+	background-position: 5px -415px
+}
+
+#panelwidget-quickcontact.person h1 span.title {
+	background-position: 5px -445px;
+}
+
+#panelwidget-quickcontact.person button span.iconAddContact {
+	background-position: 8px -1050px;
+}
+
+#panelwidget-quickcontact.company button span.iconAddContact {
+	background-position: 8px -1020px;
+}

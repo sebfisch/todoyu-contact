@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<attributes>
+		<attribute name="action">?ext=contact&amp;controller=formhandling</attribute>
+		<attribute name="name">company</attribute>
+		<attribute name="onsubmit">return Todoyu.Ext.contact.save(this);</attribute>
+		<attribute name="class">formCompany</attribute>
+	</attributes>
+	<hiddenFields>
+		<field name="id"></field>
+	</hiddenFields>
+	<fieldsets>
+		<fieldset name="main">
+			<legend>Main customer data</legend>
+			<elements>
+
+				<field type="textinput" name="title">
+					<label>LLL:user.customer.attr.name</label>
+					<required>1</required>
+				</field>
+
+				<field type="textinput" name="shortname">
+					<label>LLL:user.customer.attr.shortname</label>
+				</field>
+
+				<field type="dateinput" name="date_enter">
+					<label>LLL:user.customer.attr.date_enter</label>
+					<required>1</required>
+				</field>
+
+				<field type="checkbox" name="is_ngo">
+					<label>LLL:user.customer.attr.is_ngo</label>
+				</field>
+
+				<field type="button" name="expandall">
+					<type>button</type>
+					<text>LLL:core.expandall</text>
+					<onclick>Todoyu.Form.expandAllForeignRecords(this.id);</onclick>
+				</field>
+
+				<field type="databaseRelation" name="contactinfo">
+					<label>LLL:user.customer.attr.contactinfo</label>
+					<foreignRecordConf>
+						<foreignformxml>ext/contact/config/form/contactinfo.xml</foreignformxml>
+						<foreignLabelUserFunc>ContactInfoType::getLabelForDatabaseRelation</foreignLabelUserFunc>
+						<addSubformConfig>
+							<ext>contact</ext>
+							<controller>formhandling</controller>
+						</addSubformConfig>
+					</foreignRecordConf>
+				</field>
+
+				<field type="databaseRelation" name="address">
+					<label>LLL:user.customer.attr.address</label>
+					<foreignRecordConf>
+						<foreignformxml>ext/contact/config/form/address.xml</foreignformxml>
+						<foreignLabelField>street</foreignLabelField>
+						<addSubformConfig>
+							<ext>contact</ext>
+							<controller>formhandling</controller>
+						</addSubformConfig>
+					</foreignRecordConf>
+				</field>
+
+				<field type="databaseRelation" name="user">
+					<label>LLL:user.customer.attr.user</label>
+					<foreignRecordConf>
+						<foreignformxml>ext/contact/config/form/company-user.xml</foreignformxml>
+						<foreignLabelUserFunc>TodoyuUserManager::getDatabaseRelationLabel</foreignLabelUserFunc>
+						<addSubformConfig>
+							<ext>contact</ext>
+							<controller>formhandling</controller>
+						</addSubformConfig>
+					</foreignRecordConf>
+				</field>
+
+			</elements>
+		</fieldset>
+		<fieldset name="buttons">
+			<legend>Actions</legend>
+			<class>buttons</class>
+			<elements>
+
+				<field type="button" name="save">
+					<type>submit</type>
+					<text>LLL:form.field.save</text>
+					<class>buttonSave</class>
+					<hasIcon>1</hasIcon>
+				</field>
+
+				<field type="button" name="cancel">
+					<text>LLL:form.field.cancel</text>
+					<type>button</type>
+					<class>buttonCancel</class>
+					<hasIcon>1</hasIcon>
+					<onclick>Todoyu.Ext.contact.closeForm()</onclick>
+				</field>
+
+			</elements>
+		</fieldset>
+	</fieldsets>
+</form>

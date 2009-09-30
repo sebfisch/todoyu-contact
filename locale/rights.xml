@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locallang>
+	<labels lang="en">
+		<label index="section.module">Module</label>
+		<label index="section.panelwidgets">Panel widgets</label>
+		<label index="section.actions">Actions</label>
+
+		<label index="right.module">See module</label>
+		<label index="right.PanelWidgetContactSearchInput">See contact search widget</label>
+		<label index="right.PanelWidgetQuickContact">See create contact widget</label>
+		<label index="right.seePerson">Can see persons</label>
+		<label index="right.seeCompany">Can see companies</label>
+		<label index="right.createPerson">Can create persons</label>
+		<label index="right.createCompany">Can create companies</label>
+		<label index="right.editPerson">Can edit persons</label>
+		<label index="right.editCompany">Can edit companies</label>
+		<label index="right.deletePerson">Can delete persons</label>
+		<label index="right.deleteCompany">Can delete companies</label>
+		<label index="right.createLoginUser">Can create a login user</label>
+		<label index="right.editLoginUser">Can edit a login user</label>
+
+	</labels>
+	<labels lang="de">
+		<label index="section.module">Module</label>
+		<label index="section.panelwidgets">Panel Widgets</label>
+		<label index="section.actions">Aktionen</label>
+
+		<label index="right.module">Darf Modul sehen</label>
+		<label index="right.PanelWidgetContactSearchInput">Kontaktsuche-widget (anzeigen)</label>
+		<label index="right.PanelWidgetQuickContact">"Neuer Kontakt" widget (anzeigen)</label>
+		<label index="right.seePerson">Darf Personen sehen</label>
+		<label index="right.seeCompany">Darf Firmen sehen</label>
+		<label index="right.createPerson">Darf Personen erstellen</label>
+		<label index="right.createCompany">Darf Firmen erstellen</label>
+		<label index="right.editPerson">Darf Personen editieren</label>
+		<label index="right.editCompany">Darf Firmen editieren</label>
+		<label index="right.deletePerson">Darf Personen löschen</label>
+		<label index="right.deleteCompany">Darf Firmen löschen</label>
+		<label index="right.createLoginUser">Darf einen Benutzer erstellen</label>
+		<label index="right.editLoginUser">Darf einen Benutzer editieren</label>
+	</labels>
+</locallang>
