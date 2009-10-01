@@ -1,8 +1,10 @@
 <div class="contact">
-	{if checkCreateAccess()}
-		<button type="submit" class="button" onclick="{$buttonAction}">
-			<span class="hasIcon iconAddContact">{Label $buttonLabel}</span>
-			<span class="rgt"><!-- right --></span>
-		</button>
-	{/if}
+	{foreach $ type config}
+		<div class="contactType">
+			<button type="submit" class="button" onclick="{$config.buttonAction}">
+				<span class="hasIcon iconAddContact">{Label $config.buttonLabel}</span>
+				<span class="rgt"><!-- right --></span>
+			</button>
+		</div>
+	{/foreach}
 </div>

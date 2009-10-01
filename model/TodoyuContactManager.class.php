@@ -485,7 +485,7 @@ class TodoyuContactManager {
 	 * @param	Array		$data
 	 * @return	Integer
 	 */
-	public function saveCustomer(array $data)	{
+	public function saveCompany(array $data)	{
 		$xmlPath	= 'ext/contact/config/form/company.xml';
 		$idCustomer	= intval($data['id']);
 

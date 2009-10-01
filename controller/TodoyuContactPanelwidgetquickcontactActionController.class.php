@@ -8,7 +8,7 @@ class TodoyuContactPanelwidgetQuickcontactActionController extends TodoyuActionC
 
 		return $panelWidget->render();
 	}
-		
+
 }
 
 ?>

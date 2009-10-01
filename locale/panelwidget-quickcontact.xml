@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
-		<label index="company.title">Create Company</label>
-		<label index="person.title">Create Person</label>
+		<label index="title">Add new record</label>
+		<label index="button.company">Add new company</label>
+		<label index="button.person">Add new person</label>
 	</labels>
 	<labels lang="de">
-		<label index="company.title">Neue Firma</label>
-		<label index="person.title">Neue Person</label>
+		<label index="title">Datensatz hinzufügen</label>
+		<label index="button.company">Neue Firma anlegen</label>
+		<label index="button.person">Neue Person anlegen</label>
 	</labels>
 </locallang>

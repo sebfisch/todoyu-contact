@@ -35,9 +35,22 @@ Todoyu.Ext.contact = {
 	},
 	
 	onTabSelect: function(event, tab) {
-		//this.saveType(tab, this.)
+		this.saveType(tab);
+		this.changeType(tab);
+	},
+	
+	changeType: function(type) {
+		var element = 'contact-tabhead-' + type;
 		
-		console.log(tab);
+		Todoyu.Tabs.setActive('contact-tabs', element);
+		
+		objName	= type.capitalize();
+		
+		this[objName].showList();
+	},
+	
+	getType: function() {
+		
 	},
 	
 	saveType: function(type, onComplete) {

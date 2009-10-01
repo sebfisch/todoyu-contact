@@ -115,19 +115,5 @@ Todoyu.Ext.contact.Person =  {
 		};
 		
 		Todoyu.Popup.openWindow('popupRecordInfo', 'Info', 420, 340, 810, 200, url, options);
-		/*
-		var contentUrl = Todoyu.getUrl('contact', 'contactlist');
-		contentUrl = contentUrl + '&cmd=infoPopupContent';
-
-		var requestOptions	= {
-			'parameters': {
-				'type':		type,
-				'idRecord':	idRecord
-			}
-		};
-
-		Todoyu.Popup.openWindow('popupRecordInfo', 'Info', 420, 340, 810, 200, contentUrl, requestOptions);
-		*/
-	}
-	
+	}	
 };

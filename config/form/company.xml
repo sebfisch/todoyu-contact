@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
 	<attributes>
-		<attribute name="action">?ext=contact&amp;controller=formhandling</attribute>
+		<attribute name="action">?ext=contact&amp;controller=company</attribute>
 		<attribute name="name">company</attribute>
-		<attribute name="onsubmit">return Todoyu.Ext.contact.save(this);</attribute>
+		<attribute name="onsubmit">return Todoyu.Ext.contact.Company.save(this)</attribute>
 		<attribute name="class">formCompany</attribute>
 	</attributes>
 	<hiddenFields>
