@@ -1,6 +1,6 @@
 <div class="contact">
 	{foreach $ type config}
-		<div class="contactType">
+		<div class="contactType {$type}">
 			<button type="submit" class="button" onclick="{$config.buttonAction}">
 				<span class="hasIcon iconAddContact">{Label $config.buttonLabel}</span>
 				<span class="rgt"><!-- right --></span>
