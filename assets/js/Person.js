@@ -82,11 +82,12 @@ Todoyu.Ext.contact.Person =  {
 		}
 	},
 	
-	showList: function() {
+	showList: function(sword) {
 		var url = Todoyu.getUrl('contact', 'person');
 		var options = {
 			'parameters': {
-				'cmd': 'list'
+				'cmd': 'list',
+				'sword': sword
 			}
 		};
 		

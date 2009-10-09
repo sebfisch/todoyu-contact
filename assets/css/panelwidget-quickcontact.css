@@ -6,18 +6,14 @@
 	background: transparent url('../img/icon.png') no-repeat;
 }
 
-#panelwidget-quickcontact.company h1 span.title {
+#panelwidget-quickcontact h1 span.title {
 	background-position: 5px -415px
 }
 
-#panelwidget-quickcontact.person h1 span.title {
-	background-position: 5px -445px;
-}
-
-#panelwidget-quickcontact.person button span.iconAddContact {
+#panelwidget-quickcontact .person span.iconAddContact {
 	background-position: 8px -1050px;
 }
 
-#panelwidget-quickcontact.company button span.iconAddContact {
+#panelwidget-quickcontact .company span.iconAddContact {
 	background-position: 8px -1020px;
 }

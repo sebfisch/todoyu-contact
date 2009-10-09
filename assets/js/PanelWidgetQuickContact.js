@@ -42,10 +42,12 @@ Todoyu.Ext.contact.PanelWidget.QuickContact = {
 	},
 	
 	addPerson: function() {
+		this.ext.changeType('person');
 		this.ext.Person.add();
 	},
 	
 	addCompany: function() {
+		this.ext.changeType('company');
 		this.ext.Company.add();
 	}
 

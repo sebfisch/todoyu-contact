@@ -71,11 +71,12 @@ Todoyu.Ext.contact.Company =  {
 		}
 	},
 	
-	showList: function() {
+	showList: function(sword) {
 		var url = Todoyu.getUrl('contact', 'company');
 		var options = {
 			'parameters': {
-				'cmd': 'list'
+				'cmd': 'list',
+				'sword': sword
 			}
 		};
 		
