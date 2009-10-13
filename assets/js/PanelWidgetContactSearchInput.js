@@ -135,14 +135,12 @@ Todoyu.Ext.contact.PanelWidget.ContactSearchInput = {
 	 *	Change button label to 'show all'
 	 */
 	changeButtonLabelToShowAll: function()	{
-		var button = $('searchinput-showall');
+		var iconSpan = $$('#searchinput-showall span')[0];
 
-		if(button.hasClassName('hideAll')) {
-			button.removeClassName('hideAll');
-			button.addClassName('showAll');
+		if(iconSpan.hasClassName('hideAll')) {
+			iconSpan.replaceClassName('hideAll', 'showAll');
 		} else {
-			button.removeClassName('showAll');
-			button.addClassName('hideAll');
+			iconSpan.replaceClassName('showAll', 'hideAll');
 		}
 	},
 
