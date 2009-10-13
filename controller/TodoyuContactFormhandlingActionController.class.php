@@ -68,10 +68,10 @@ class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 
 	public function addSubformAction(array $params) {
 
-		$formName	= $params['formname'];
+		$formName	= $params['form'];
 		$fieldName	= $params['field'];
 		$xmlPath	= TodoyuContactManager::getContactTypeFromXml($formName);
-		$index		= intval($params['indexOfForeignRecord']);
+		$index		= intval($params['index']);
 		$idSubform	= $index;
 
 			// Construct form object
