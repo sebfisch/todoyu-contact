@@ -114,10 +114,17 @@ class TodoyuContactRenderer extends TodoyuRenderer {
 
 
 	public static function renderCompanyList() {
-		$tmpl		= 'ext/contact/view/personlist.tmpl';
-		$data		= array(
-			'companys'	=> TodoyuCustomerManager::getAllCustomers()
-		);
+		$tmpl		= 'ext/contact/view/companylist.tmpl';
+		$data		= array();
+
+		$customers	= TodoyuCustomerManager::getAllCustomers();
+
+		foreach($customers as $index => $customer) {
+			$customers[$index]['users']		= TodoyuCustomerManager::getNumUsers($customer['id']);
+			$customers[$index]['address']	= TodoyuCustomerManager::getCustomerAddress($customer['id']);
+		}
+
+		$data['companys'] = $customers;
 
 		return render($tmpl, $data);
 	}

@@ -1,24 +1,28 @@
+{assign var=indexLetter value=''}
+
+{IndexLetters $companys "title"}
+
+
 <table class="list companylist">
   <tr class="header">
     <th scope="col" class="icon">&nbsp;</th>
-    <th scope="col" class="lastname">Lastname</th>
-    <th scope="col" class="firstname">Firstname</th>
-    <th scope="col" class="email">Email</th>
-    <th scope="col" class="company">Company</th>
+    <th scope="col" class="title">Title</th>
+    <th scope="col" class="users">Users</th>
+    <th scope="col" class="address">Address</th>
     <th scope="col" class="last actions">&nbsp;</th>
   </tr>
-{foreach $persons person}
+
+{foreach $companys company}
   <tr class="{cycle values="odd,even"}">
-  	<td class="icon"></td>
-    <td class="lastname">{$person.lastname}</td>
-    <td class="firstname">{$person.firstname}</td>
-    <td class="email">{$person.email}</td>
-    <td class="company">{$person.company}</td>
+  	<td class="icon"><a name="index_{upper $company.title[0]}"></a></td>
+    <td class="title">{$company.title}</td>
+    <td class="users">{$company.users}</td>
+    <td class="address">{$company.address}</td>
     <td class="actions">
-    	<div class="icon edit" onclick="Todoyu.Ext.user.UserEditor.edit({$user.id})"></div>
-    	<div class="icon delete" onclick="Todoyu.Ext.user.UserEditor.remove({$user.id})"></div>
-    	<div class="icon user" onclick="Todoyu.Ext.user.UserEditor.showContact({$user.id})"></div>
+    	<div class="icon edit" onclick="Todoyu.Ext.contact.Company.edit({$company.id})"></div>
+    	<div class="icon delete" onclick="Todoyu.Ext.contact.Company.remove({$company.id})"></div>
     </td>
   </tr>
 {/foreach}
+
 </table>

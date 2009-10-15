@@ -19,7 +19,7 @@ Todoyu.Ext.contact.Company =  {
 			'onComplete': this.onEdit.bind(this, idCompany)
 		};
 		
-		this.ext.update(url, options);
+		this.ext.updateContent(url, options);
 	},
 	
 	onEdit: function(idCompany, response) {

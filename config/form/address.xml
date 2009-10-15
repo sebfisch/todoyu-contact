@@ -49,7 +49,7 @@
 							<controller>autocompletion</controller>
 							<cmd>region</cmd>
 						</acListener>
-						<acLabelFunc>TodoyuDatasourcegetRegionLabel</acLabelFunc>
+						<acLabelFunc>TodoyuDatasource::getRegionLabel</acLabelFunc>
 					</config>
 				</field>
 				<field type="checkbox" name="is_preferred">
