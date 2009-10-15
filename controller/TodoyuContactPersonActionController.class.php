@@ -60,7 +60,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 			// Set form data
 		$form->setFormData($formData);
 
-		return $form->getField($fieldName)->addNewRecord($index);
+		return $form->getField($fieldName)->renderNewRecord($index);
 	}
 
 

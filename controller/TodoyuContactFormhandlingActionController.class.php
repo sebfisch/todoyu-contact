@@ -72,7 +72,7 @@ class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 		$fieldName	= $params['field'];
 		$xmlPath	= TodoyuContactManager::getContactTypeFromXml($formName);
 		$index		= intval($params['index']);
-		$idSubform	= $index;
+		$idRecord	= intval($params['record']);
 
 			// Construct form object
 		$form 	= new TodoyuForm($xmlPath);
@@ -84,12 +84,13 @@ class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 
 			// Set form data
 		$form->setFormData($formData);
+		$form->setRecordID($idRecord);
 
 
 		$field			= $form->getField($fieldName);
 		$form['name']	= $formName;
 
-		return $field->addNewRecord($index);
+		return $field->renderNewRecord($index);
 	}
 
 }

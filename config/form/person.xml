@@ -66,11 +66,14 @@
 					<label>LLL:user.user.attr.contactinfo</label>
 					<foreignRecordConf>
 						<foreignformxml>ext/contact/config/form/contactinfo.xml</foreignformxml>
-						<foreignLabelUserFunc>ContactInfoType::getLabelForDatabaseRelation</foreignLabelUserFunc>
 						<addSubformConfig>
 							<ext>contact</ext>
 							<controller>person</controller>
 						</addSubformConfig>
+						<label type="function">
+							<function>TodoyuContactViewHelper::getContactinfoLabel</function>
+							<noLabel>Neue Kontaktinformation</noLabel>
+						</label>
 					</foreignRecordConf>
 				</field>
 
@@ -78,11 +81,14 @@
 					<label>LLL:user.user.attr.address</label>
 					<foreignRecordConf>
 						<foreignformxml>ext/contact/config/form/address.xml</foreignformxml>
-						<foreignLabelUserFunc>TodoyuContactViewHelper::getUserAddressLabel</foreignLabelUserFunc>
 						<addSubformConfig>
 							<ext>contact</ext>
 							<controller>formhandling</controller>
 						</addSubformConfig>
+						<label type="function">
+							<function>TodoyuContactViewHelper::getAddressLabel</function>
+							<noLabel>Neue Adresse</noLabel>
+						</label>
 					</foreignRecordConf>
 				</field>
 
@@ -90,11 +96,14 @@
 					<label>LLL:user.user.attr.customer</label>
 					<foreignRecordConf>
 						<foreignformxml>ext/contact/config/form/user-company.xml</foreignformxml>
-						<foreignLabelField>title</foreignLabelField>
 						<addSubformConfig>
 							<ext>contact</ext>
 							<controller>formhandling</controller>
 						</addSubformConfig>
+						<label type="function">
+							<function>TodoyuContactViewHelper::getCustomerLabel</function>
+							<noLabel>Neuer Arbeitgeber</noLabel>
+						</label>
 					</foreignRecordConf>
 				</field>
 			</elements>

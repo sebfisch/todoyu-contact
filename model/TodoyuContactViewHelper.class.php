@@ -49,6 +49,76 @@ class TodoyuContactViewHelper {
 		return $types;
 	}
 
+
+
+
+
+	public static function getEmployeeLabel(TodoyuFormElement $field, array $record) {
+		$idUser	= intval($record['id']);
+		$label	= '';
+
+		if( $idUser !== 0 ) {
+			$label	= TodoyuUserManager::getLabel($idUser);
+		}
+
+		return $label;
+	}
+
+
+	public static function getAddressLabel(TodoyuFormElement $field, array $record) {
+		$idAddress	= intval($record['id']);
+		$label		= '';
+
+		if( $idAddress !== 0 ) {
+			$addressType	= TodoyuAddressManager::getAddresstypeLabel($record['id_addresstype']);
+
+			if( ! empty($addressType) ) {
+				$label .= $addressType . ': ';
+			}
+
+			if( ! empty($record['street']) ) {
+				$label .= $record['street'];
+			}
+
+			if( ! empty($record['city']) ) {
+				$label .= ', ' . $record['city'];
+			}
+		}
+
+		return $label;
+	}
+
+
+	public static function getContactinfoLabel(TodoyuFormElement $field, array $record) {
+		$idContactInfo	= intval($record['id']);
+		$label			= '';
+
+		if( $idContactInfo !== 0 ) {
+			$idContactInfoType	= intval($record['id_contactinfotype']);
+			$contactInfoType	= TodoyuContactInfoTypeManager::getContactInfoType($idContactInfoType);
+
+			$label	= $contactInfoType->getTitle() . ': ' . $record['info'];
+		}
+
+		return $label;
+	}
+
+
+	public static function getCustomerLabel(TodoyuFormElement $field, array $record) {
+		$idCustomer	= intval($record['id']);
+		$label		= '';
+
+		if( $idCustomer !== 0 ) {
+			$customer	= TodoyuCustomerManager::getCustomer($idCustomer);
+
+			$label		= $customer->getTitle();
+		}
+
+		return $label;
+	}
+
+
+
 }
 
 ?>
