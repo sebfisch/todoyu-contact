@@ -1,7 +1,26 @@
 <div id="contact-main" class="contactList overflow">
-	{$listheader}
 
-	<ul class="listContainer overflow">
+	<div id="indexLinks">
+{assign var=indexLetter value=''}{foreach $contacts key contact}
+	{if $type == 'person' && strtolower($contact.lastname[0]) >= 'a' && strtolower($contact.lastname[0]) <= 'z'}
+		{if $indexLetter != strtoupper($contact.lastname[0])}
+		<a href="#{strtolower($contact.lastname[0])}">
+			<span class="indexLetter{strtoupper($contact.lastname[0])}"><!-- --></span>
+		</a>
+		{/if}{assign var=indexLetter value=strtoupper($contact.lastname[0])}
+	{/if}
+	{if $type == 'company' && strtolower($contact.title[0]) >= 'a' && strtolower($contact.title[0]) <= 'z'}
+		{if $indexLetter != strtoupper($contact.title[0])}
+		<a href="#{strtolower($contact.title[0])}">
+			<span class="indexLetter{strtoupper($contact.title[0])}"><!-- --></span>
+		</a>
+		{/if}{assign var=indexLetter value=strtoupper($contact.title[0])}
+	{/if}
+{/foreach}
+	</div>
+
+	{$listheader}
+	<ul class="listContainer overflow">	
 		{block name="contactList"}
 			This part should be replaced by your list template
 		{/block}

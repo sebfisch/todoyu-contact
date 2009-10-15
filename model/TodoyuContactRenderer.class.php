@@ -88,6 +88,7 @@ class TodoyuContactRenderer extends TodoyuRenderer {
 		$data	= array(
 			'contacts'		=> TodoyuContactPreferences::getShowAll() ? TodoyuContactManager::getAllRecordList() : TodoyuContactManager::getRecordList(),
 			'listheader'	=> self::renderListHeader($type),
+			'type'			=> $type,
 			'labels'		=> array(
 				'remove'			=> 'LLL:contact.removeRecord',
 				'edit'				=> 'LLL:contact.editRecord',
