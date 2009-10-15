@@ -118,6 +118,42 @@ class TodoyuContactViewHelper {
 	}
 
 
+	public static function getAddressTypeOptions(TodoyuFormElement $field) {
+		$addressTypes	= TodoyuContactManager::getAddressTypes();
+		$reform		= array(
+			'index'	=> 'value',
+			'label'	=> 'label'
+		);
+		$options		= TodoyuDiv::reformArray($addressTypes, $reform);
+
+		return $options;
+	}
+
+	public static function getCountryOptions(TodoyuFormElement $field) {
+		$countryOptions		= TodoyuDatasource::getCountryOptions();
+		$favoriteCountryIDs = TodoyuAddressManager::getMostUsedCountryIDs();
+		$favoriteCountries	= array();
+
+		if( sizeof($favoriteCountryIDs) > 0 ) {
+			foreach($countryOptions as $countryOption) {
+				if( in_array($countryOption['id'], $favoriteCountryIDs) ) {
+					$favoriteCountries[] = $countryOption;
+				}
+			}
+
+			$favoriteCountries = array_reverse($favoriteCountries);
+
+			array_unshift($countryOptions, array('value' => '', 'label' => '------------------------'));
+
+			foreach($favoriteCountries as $favoriteCountry) {
+				array_unshift($countryOptions, $favoriteCountry);
+			}
+		}
+
+		return $countryOptions;
+	}
+
+
 
 }
 

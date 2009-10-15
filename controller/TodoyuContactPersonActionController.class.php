@@ -6,14 +6,12 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	public function editAction(array $params) {
 		$idPerson	= intval($params['person']);
 
-		return TodoyuContactRenderer::renderForm('person', $idPerson);
+		return TodoyuContactRenderer::renderPersonEditForm($idPerson);
 	}
 
 
 	public function listAction(array $params) {
-		$sword	= $params['sword'];
-
-		return TodoyuContactRenderer::renderContactList('person');
+		return TodoyuContactRenderer::renderPersonList();
 	}
 
 

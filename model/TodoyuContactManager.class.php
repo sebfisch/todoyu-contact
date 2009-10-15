@@ -466,7 +466,7 @@ class TodoyuContactManager {
 		$idUser	= intval($data['id']);
 
 		if( $idUser === 0 )	{
-			$idUser = TodoyuUserManager::addUser(array());
+			$idUser = TodoyuUserManager::addUser();
 		}
 
 		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idUser);
@@ -522,7 +522,7 @@ class TodoyuContactManager {
 		if( ! empty($data['customer']) ) {
 			$customerIDs	= TodoyuDiv::getColumnFromArray($data['customer'], 'id');
 
-			TodoyuUserManager::saveMMRelations($idUser, $customerIDs, 'ext_user_mm_customer_user', 'id_customer');
+			self::linkUserToCustomers($idUser, $customerIDs);
 		}
 		unset($data['customer']);
 
@@ -534,7 +534,7 @@ class TodoyuContactManager {
 				$infoIDs[] = TodoyuContactInfoManager::saveContactInfos($contactInfo);
 			}
 
-			TodoyuUserManager::saveMMRelations($idUser, $infoIDs, 'ext_user_mm_user_contactinfo', 'id_contactinfo');
+			self::linkUserToContactinfos($idUser, $infoIDs);
 		}
 		unset($data['contactinfo']);
 
@@ -546,12 +546,56 @@ class TodoyuContactManager {
 				$addressIDs[] =  TodoyuAddressManager::saveAddress($address);
 			}
 
-			TodoyuUserManager::saveMMRelations($idUser, $addressIDs, 'ext_user_mm_user_address', 'id_address');
+			self::linkUserToAddresses($idUser, $addressIDs);
 		}
 		unset($data['address']);
 
-
 		return $data;
+	}
+
+
+
+	/**
+	 * Link a user with customers
+	 *
+	 * @param	Integer		$idUser
+	 * @param	Array		$customerIDs
+	 */
+	public static function linkUserToCustomers($idUser, array $customerIDs) {
+		$idUser		= intval($idUser);
+		$customerIDs= TodoyuDiv::intvalArray($customerIDs, true, true);
+
+		TodoyuDbHelper::saveMMrelations('ext_user_mm_customer_user', 'id_user', 'id_customer', $idUser, $customerIDs, true);
+	}
+
+
+
+	/**
+	 * Link an user with contactinfos
+	 *
+	 * @param	Integer		$idUser
+	 * @param	Array		$contactinfoIDs
+	 */
+	public static function linkUserToContactinfos($idUser, array $contactinfoIDs) {
+		$idUser			= intval($idUser);
+		$contactinfoIDs	= TodoyuDiv::intvalArray($contactinfoIDs, true, true);
+
+		TodoyuDbHelper::saveMMrelations('ext_user_mm_user_contactinfo', 'id_user', 'id_contactinfo', $idUser, $contactinfoIDs, true);
+	}
+
+
+
+	/**
+	 * Link an user with addresses
+	 *
+	 * @param	Integer		$idUser
+	 * @param	Array		$addressIDs
+	 */
+	public static function linkUserToAddresses($idUser, array $addressIDs) {
+		$idUser		= intval($idUser);
+		$addressIDs	= TodoyuDiv::intvalArray($addressIDs, true, true);
+
+		TodoyuDbHelper::saveMMrelations('ext_user_mm_user_address', 'id_user', 'id_address', $idUser, $addressIDs, true);
 	}
 
 
@@ -621,6 +665,13 @@ class TodoyuContactManager {
 
 		return $data;
 	}
+
+
+	public static function getAddressTypes() {
+		return $GLOBALS['CONFIG']['EXT']['contact']['addresstypes'];
+	}
+
+
 
 }
 

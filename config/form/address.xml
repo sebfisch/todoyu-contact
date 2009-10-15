@@ -14,44 +14,32 @@
 			<elements>
 				<field type="select" name="id_addresstype">
 					<label>LLL:user.address.attr.addresstype</label>
-					<source type="list">
-						<option>
-							<value>1</value>
-							<label>LLL:user.address.attr.addresstype.1</label>
-						</option>
-						<option>
-							<value>2</value>
-							<label>LLL:user.address.attr.addresstype.2</label>
-						</option>
-						<option>
-							<value>3</value>
-							<label>LLL:user.address.attr.addresstype.3</label>
-						</option>
+					<source type="function">
+						<function>TodoyuContactViewHelper::getAddressTypeOptions</function>
 					</source>
-					<required>1</required>
+					<required />
 				</field>
 				<field type="textinput" name="street">
 					<label>LLL:user.address.attr.street</label>
-					<required>1</required>
+					<required />
 				</field>
 				<field type="textinput" name="postbox">
 					<label>LLL:user.address.attr.postbox</label>
 				</field>
 				<field type="textinput" name="zip">
 					<label>LLL:user.address.attr.zip</label>
-					<required>1</required>
+					<required />
 				</field>
 				<field type="textinput" name="city">
 					<label>LLL:user.address.attr.city</label>
-					<required>1</required>
+					<required />
 				</field>
 
 				<field type="select" name="id_country">
 					<label>LLL:user.address.attr.country</label>
 					<source type="function">
-						<function>TodoyuDatasource::getStaticCountryOptions</function>
+						<function>TodoyuContactViewHelper::getCountryOptions</function>
 					</source>
-					<selected>41</selected>
 				</field>
 				<field type="textinputAC" name="region">
 					<label>LLL:user.address.attr.region</label>

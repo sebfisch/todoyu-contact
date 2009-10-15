@@ -17,7 +17,7 @@
 
 		<label index="generateshortname">Generate shortname</label>
 
-		<label index="confirmRemoving">Do you really want to delete this record?</label>
+		<label index="person.remove.confirm">Remove this person?</label>
 
 		<label index="showvisitingcard">Show visiting card popup</label>
 		<label index="firstname">Firstname</label>

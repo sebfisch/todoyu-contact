@@ -80,7 +80,7 @@ Todoyu.Ext.contact.Company =  {
 			}
 		};
 		
-		this.ext.update(url, options);
+		this.ext.updateContent(url, options);
 	},
 		
 	

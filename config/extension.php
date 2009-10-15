@@ -27,8 +27,22 @@
 if( ! defined('TODOYU') ) die('NO ACCESS');
 
 
-	// Add page assets
-TodoyuPage::addExtAssets('contact', 'public');
+$CONFIG['EXT']['contact']['addresstypes'] = array(
+	array(
+		'index'	=> 1,
+		'label'	=> 'LLL:user.address.attr.addresstype.1'
+	),
+	array(
+		'index'	=> 2,
+		'label'	=> 'LLL:user.address.attr.addresstype.2'
+	),
+	array(
+		'index'	=> 3,
+		'label'	=> 'LLL:user.address.attr.addresstype.3'
+	)
+);
+
+$CONFIG['EXT']['contact']['numFavoriteCountries']	= 5;
 
 
 $CONFIG['EXT']['contact']['contacttypes']	= array(

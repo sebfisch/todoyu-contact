@@ -30,14 +30,31 @@ Todoyu.Ext.contact = {
 	/**
 	 *	Initialize
 	 */
-	init: function()	{
+	init: function() {
 		
 	},
 	
 	onTabSelect: function(event, tab) {
-		this.saveType(tab);
-		this.changeType(tab);
+		if( tab === 'person' ) {
+			this.Person.showList();
+		} else {
+			this.Company.showList();
+		}
+		
+		
+		//this.saveType(tab);
+		//this.changeType(tab);
 	},
+	
+	updateContent: function(url, options) {
+		Todoyu.Ui.update('contactcontent', url, options);
+	},
+	
+	setContent: function(content) {
+		$('contactcontent').update(content);
+	},
+	
+	
 	
 	changeType: function(type) {
 		var element = 'contact-tabhead-' + type;
@@ -69,11 +86,6 @@ Todoyu.Ext.contact = {
 		Todoyu.send(url, options);		
 	},
 	
-	
-	update: function(url, options) {
-		Todoyu.Ui.update('contact-main', url, options);
-	},
-
 
 
 	/**
@@ -139,7 +151,7 @@ Todoyu.Ext.contact = {
 			}
 		};
 
-		Todoyu.Ui.update('contact-main', url, options);
+		Todoyu.Ui.updateContent('contact-main', url, options);
 	},
 
 
@@ -173,7 +185,7 @@ Todoyu.Ext.contact = {
 		var error	= response.hasTodoyuError();
 		
 		if( error ) {
-			$('contact-form-content').update(response.responseText);
+			$('contact-form-content').updateContent(response.responseText);
 		} else {
 			alert('Saved: ' + response.responseText);
 		}
@@ -244,6 +256,8 @@ Todoyu.Ext.contact = {
 				'cmd': 'refresh'
 			}
 		};
+		
+		
 
 		Todoyu.Ui.update('contact-main', url, options);
 	},

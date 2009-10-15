@@ -60,13 +60,29 @@ class TodoyuContactRenderer extends TodoyuRenderer {
 	}
 
 
-
 	/**
 	 * Render contacts list
 	 *
 	 * @return	String
 	 */
 	public static function renderContactList($type)	{
+		$content	= '';
+
+		switch($type) {
+			case 'person':
+				$content = self::renderPersonList();
+				break;
+
+			case 'company':
+				$content = self::renderCompanyList();
+				break;
+		}
+
+		return $content;
+
+
+
+
 		$tmpl = TodoyuContactManager::getListTemplate();
 
 		$data	= array(
@@ -80,7 +96,53 @@ class TodoyuContactRenderer extends TodoyuRenderer {
 			)
 		);
 
+		TodoyuDebug::printInFirebug($tmpl);
+
 		return $tmpl != '' ? render($tmpl, $data):'';
+	}
+
+
+	public static function renderPersonList() {
+		$tmpl		= 'ext/contact/view/personlist.tmpl';
+		$data		= array(
+			'persons'	=> TodoyuUserManager::getAllUsers()
+		);
+
+		return render($tmpl, $data);
+	}
+
+
+	public static function renderCompanyList() {
+		$tmpl		= 'ext/contact/view/personlist.tmpl';
+		$data		= array(
+			'companys'	=> TodoyuCustomerManager::getAllCustomers()
+		);
+
+		return render($tmpl, $data);
+	}
+
+
+	public static function renderPersonEditForm($idPerson) {
+		$idPerson	= intval($idPerson);
+		$xmlPath	= 'ext/contact/config/form/person.xml';
+
+		$form	= new TodoyuForm($xmlPath);
+		$form	= TodoyuFormHook::callBuildForm($xml, $form, $idPerson);
+
+		$person	= TodoyuUserManager::getUser($idPerson);
+		$data	= $person->getTemplateData(true);
+		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $idPerson);
+
+		$form->setFormData($data);
+		$form->setRecordID($idPerson);
+
+		$tmpl	= 'ext/contact/view/form.tmpl';
+		$data	= array(
+			'formheader'	=> self::getContactFormHeader('person', $person, $idPerson),
+			'formhtml'		=> $form->render()
+		);
+
+		return render($tmpl, $data);
 	}
 
 

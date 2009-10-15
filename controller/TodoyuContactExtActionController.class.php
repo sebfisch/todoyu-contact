@@ -6,6 +6,8 @@ class TodoyuContactExtActionController extends TodoyuActionController {
 		TodoyuContactRightsManager::checkOnRecordsViewAccess();
 
 		TodoyuFrontend::setActiveTab('contact');
+					// Add page assets
+		TodoyuPage::addExtAssets('contact', 'public');
 
 		TodoyuPage::init('ext/contact/view/view.tmpl');
 		TodoyuPage::setTitle('LLL:contact.page.title');
@@ -14,12 +16,12 @@ class TodoyuContactExtActionController extends TodoyuActionController {
 
 		$panelWidgets 	= TodoyuContactRenderer::renderPanelWidgets();
 		$tabs 			= TodoyuContactRenderer::renderTabs();
-		$contactList	= TodoyuContactRenderer::renderContactList($type);
+		$list			= TodoyuContactRenderer::renderContactList($type);
 
 
 		TodoyuPage::set('panelWidgets', $panelWidgets);
 		TodoyuPage::set('tabs', $tabs);
-		TodoyuPage::set('mainContent', $contactList);
+		TodoyuPage::set('list', $list);
 
 		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.contact.init.bind(Todoyu.Ext.contact)');
 

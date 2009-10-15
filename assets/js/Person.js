@@ -19,12 +19,32 @@ Todoyu.Ext.contact.Person =  {
 			'onComplete': this.onEdit.bind(this, idPerson)
 		};
 		
-		this.ext.update(url, options);
+		this.ext.updateContent(url, options);
 	},
 	
 	onEdit: function(idPerson, response) {
 		this.observeFieldsForShortname(idPerson);
 	},
+	
+	remove: function(idPerson) {
+		if( confirm('[LLL:contact.person.remove.confirm]') )	{
+			var url = Todoyu.getUrl('contact', 'person');
+			var options = {
+				'parameters': {
+					'cmd':		'remove',
+					'person':	idPerson
+				},
+				'onComplete': this.onRemoved.bind(this, idPerson)
+			};
+
+			Todoyu.send(url, options);
+		}
+	},
+	
+	onRemoved: function(idPerson, response) {
+		this.showList();
+	},	
+
 	
 	observeFieldsForShortname: function(idPerson) {
 		$('person-' + idPerson + '-field-lastname').observe('keyup', this.generateShortName.bindAsEventListener(this, idPerson));
@@ -40,24 +60,7 @@ Todoyu.Ext.contact.Person =  {
 		}
 	},	
 	
-	remove: function(idPerson) {
-		if( confirm('[LLL:contact.confirmRemoving]') )	{
-			var url = Todoyu.getUrl('contact', 'person');
-			var options = {
-				'parameters': {
-					'cmd':		'remove',
-					'person':	idPerson
-				},
-				'onComplete': this.onRemoved.bind(this)
-			};
 
-			Todoyu.send(url, options);
-		}
-	},
-	
-	onRemoved: function(response) {
-		this.showList();
-	},
 	
 	save: function(form) {
 		$(form).request ({
@@ -74,10 +77,10 @@ Todoyu.Ext.contact.Person =  {
 		var error	= response.hasTodoyuError();
 		
 		if( error ) {
+			Todoyu.notifyError('Saving person failed');
 			$('contact-form-content').update(response.responseText);
 		} else {
-				// Notify (implement)
-			alert('Person saved: ' + response.responseText);
+			Todoyu.notifySuccess('Person saved');
 			this.showList();
 		}
 	},
@@ -91,7 +94,7 @@ Todoyu.Ext.contact.Person =  {
 			}
 		};
 		
-		this.ext.update(url, options);
+		this.ext.updateContent(url, options);
 	},
 	
 	editUserRecord: function(idUser) {

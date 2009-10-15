@@ -1,0 +1,24 @@
+<table class="list companylist">
+  <tr class="header">
+    <th scope="col" class="icon">&nbsp;</th>
+    <th scope="col" class="lastname">Lastname</th>
+    <th scope="col" class="firstname">Firstname</th>
+    <th scope="col" class="email">Email</th>
+    <th scope="col" class="company">Company</th>
+    <th scope="col" class="last actions">&nbsp;</th>
+  </tr>
+{foreach $persons person}
+  <tr class="{cycle values="odd,even"}">
+  	<td class="icon"></td>
+    <td class="lastname">{$person.lastname}</td>
+    <td class="firstname">{$person.firstname}</td>
+    <td class="email">{$person.email}</td>
+    <td class="company">{$person.company}</td>
+    <td class="actions">
+    	<div class="icon edit" onclick="Todoyu.Ext.user.UserEditor.edit({$user.id})"></div>
+    	<div class="icon delete" onclick="Todoyu.Ext.user.UserEditor.remove({$user.id})"></div>
+    	<div class="icon user" onclick="Todoyu.Ext.user.UserEditor.showContact({$user.id})"></div>
+    </td>
+  </tr>
+{/foreach}
+</table>
