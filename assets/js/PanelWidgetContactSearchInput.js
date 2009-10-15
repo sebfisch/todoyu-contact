@@ -142,6 +142,9 @@ Todoyu.Ext.contact.PanelWidget.ContactSearchInput = {
 		} else {
 			iconSpan.replaceClassName('showAll', 'hideAll');
 		}
+		
+		var showallCheckbox	= $$('#searchinput-showall input')[0];
+		showallCheckbox.checked	= ! showallCheckbox.checked;
 	},
 
 

@@ -75,8 +75,6 @@
 		background: transparent url(../img/icon.png) no-repeat 0px -237px;
 	}
 
-
-
 .tabs .tabkey-person .icon{
 	background: url(../img/icon.png) no-repeat 0 -85px;
 }
@@ -93,8 +91,9 @@
 	background: url(../img/icon.png) no-repeat 0 -173px;
 }
 
-
-/* visiting card */
+/* ---------------------
+	visiting card
+   -------------------- */
 
 div.visitingCardContent {
 	padding: 12px 0 18px 12px !important;

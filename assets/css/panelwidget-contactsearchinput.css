@@ -2,7 +2,6 @@
 	background: transparent url('../img/icon.png') no-repeat 8px -325px;
 }
 
-
 #panelwidget-contactSearchInput-content {
 	padding: 5px;
 }
@@ -29,4 +28,8 @@
 
 #panelwidget-contactSearchInput-content button .hideAll	{
 	background-position: 6px -840px;
+}
+
+#searchinput-showall span input[type=checkbox] {
+	margin:6px 0 0 0;
 }

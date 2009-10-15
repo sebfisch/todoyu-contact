@@ -5,7 +5,12 @@
 			<label for="searchinput">{Label $labels.quicksearchlabel}</label>
 			<input type="text" name="contactQuicksearch" id="searchinput" value="{$quicksearchValueText}" />
 			<a class="icon" onclick="Todoyu.Ext.contact.PanelWidget.ContactSearchInput.searchRequest('searchcontacts');" title="{Label $labels.quicksearchlabel}"><span class="hidden">&gt;</span></a>
-			<br /><button type="submit" id="searchinput-showall" class="button {if $showAll == true}hideAll{else}showAll{/if}" onclick="Todoyu.Ext.contact.PanelWidget.ContactSearchInput.showAll(); return false;"><span class="hasIcon {if $showAll == true}hideAll{else}showAll{/if}">{Label $labels.quickSearchShowAllText}</span><span class="rgt"><!-- right --></span></button>
+			<br />
+			<button type="submit" id="searchinput-showall" class="button {if $showAll == true}hideAll{else}showAll{/if}" onclick="Todoyu.Ext.contact.PanelWidget.ContactSearchInput.showAll(); return false;">
+				<span class="hasIcon {if $showAll == true}hideAll{else}showAll{/if}">{Label $labels.quickSearchShowAllText}</span>
+				<span><input type="checkbox" {if $showAll == true}checked="checked"{/if} /></span>
+				<span class="rgt"><!-- right --></span>
+			</button>
 		</fieldset>
 	</form>
 </div>
