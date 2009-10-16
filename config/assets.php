@@ -53,16 +53,16 @@ $CONFIG['EXT']['contact']['assets'] = array(
 		)
 	),
 
-	'panelwidget-contactsearchinput' => array(
+	'panelwidget-contactsearch' => array(
 		'js' => array(
 			array(
-				'file'		=> 'ext/contact/assets/js/PanelWidgetContactSearchInput.js',
+				'file'		=> 'ext/contact/assets/js/PanelWidgetContactSearch.js',
 				'position'	=> 101
 			)
 		),
 		'css' => array(
 			array(
-				'file'	=> 'ext/contact/assets/css/panelwidget-contactsearchinput.css'
+				'file'	=> 'ext/contact/assets/css/panelwidget-contactsearch.css'
 			)
 		)
 	),

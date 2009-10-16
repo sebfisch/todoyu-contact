@@ -11,7 +11,9 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 
 
 	public function listAction(array $params) {
-		return TodoyuContactRenderer::renderPersonList();
+		$sword	= trim($params['sword']);
+
+		return TodoyuContactRenderer::renderPersonList($sword);
 	}
 
 

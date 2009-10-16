@@ -13,7 +13,9 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	public function listAction(array $params) {
 		TodoyuContactPreferences::saveActiveTab('company');
 
-		return TodoyuContactRenderer::renderCompanyList();
+		$sword	= trim($params['sword']);
+
+		return TodoyuContactRenderer::renderCompanyList($sword);
 	}
 
 

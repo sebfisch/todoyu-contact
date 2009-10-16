@@ -89,11 +89,16 @@ class TodoyuContactManager {
 	 * @param	String $sword
 	 * @return	Array
 	 */
-	public function ListPersons($sword)	{
-		$userResult = TodoyuUserManager::searchUsers( array('firstname', 'lastname'), $sword );
-
-		return self::getAssociatedContacttypeRecordsList($userResult, 'TodoyuUser');
-	}
+//	public function ListPersons($sword)	{
+//		$searchFields	= array(
+//			'firstname',
+//			'lastname'
+//		);
+//
+//		$users = TodoyuUserManager::searchUsers($sword, $searchFields);
+//
+//		return self::getAssociatedContacttypeRecordsList($userResult, 'TodoyuUser');
+//	}
 
 
 
@@ -104,7 +109,7 @@ class TodoyuContactManager {
 	 * @return	Array
 	 */
 	public function ListCompanies($sword)	{
-		$companyResult = TodoyuCustomerManager::searchCustomers(array('title', 'shortname'), $sword);
+		$companyResult = TodoyuCustomerManager::searchCustomers($sword);
 
 		return self::getAssociatedContacttypeRecordsList($companyResult, 'TodoyuCustomer');
 	}

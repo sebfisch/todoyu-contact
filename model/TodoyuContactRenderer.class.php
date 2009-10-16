@@ -103,21 +103,21 @@ class TodoyuContactRenderer extends TodoyuRenderer {
 	}
 
 
-	public static function renderPersonList() {
+	public static function renderPersonList($sword) {
 		$tmpl		= 'ext/contact/view/personlist.tmpl';
 		$data		= array(
-			'persons'	=> TodoyuUserManager::getAllUsers()
+			'persons'	=> TodoyuUserManager::searchUsers($sword)
 		);
 
 		return render($tmpl, $data);
 	}
 
 
-	public static function renderCompanyList() {
+	public static function renderCompanyList($sword = '') {
 		$tmpl		= 'ext/contact/view/companylist.tmpl';
 		$data		= array();
 
-		$customers	= TodoyuCustomerManager::getAllCustomers();
+		$customers	= TodoyuCustomerManager::searchCustomers($sword);
 
 		foreach($customers as $index => $customer) {
 			$customers[$index]['users']		= TodoyuCustomerManager::getNumUsers($customer['id']);
