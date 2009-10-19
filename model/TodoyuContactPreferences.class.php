@@ -178,7 +178,7 @@ class TodoyuContactPreferences {
 		$contactType = self::getActiveTab();
 		$showAllArray = self::getShowAllArray();
 
-		$showAllArray = TodoyuDiv::unsetArrayEntrieByValue($contactType, $showAllArray);
+		$showAllArray = TodoyuArray::unsetEntrieByValue($contactType, $showAllArray);
 
 		$value	= serialize($showAllArray);
 

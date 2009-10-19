@@ -525,7 +525,7 @@ class TodoyuContactManager {
 
 			// Save customer records
 		if( ! empty($data['customer']) ) {
-			$customerIDs	= TodoyuDiv::getColumnFromArray($data['customer'], 'id');
+			$customerIDs	= TodoyuArray::getColumn($data['customer'], 'id');
 
 			self::linkUserToCustomers($idUser, $customerIDs);
 		}
@@ -568,7 +568,7 @@ class TodoyuContactManager {
 	 */
 	public static function linkUserToCustomers($idUser, array $customerIDs) {
 		$idUser		= intval($idUser);
-		$customerIDs= TodoyuDiv::intvalArray($customerIDs, true, true);
+		$customerIDs= TodoyuArray::intval($customerIDs, true, true);
 
 		TodoyuDbHelper::saveMMrelations('ext_user_mm_customer_user', 'id_user', 'id_customer', $idUser, $customerIDs, true);
 	}
@@ -583,7 +583,7 @@ class TodoyuContactManager {
 	 */
 	public static function linkUserToContactinfos($idUser, array $contactinfoIDs) {
 		$idUser			= intval($idUser);
-		$contactinfoIDs	= TodoyuDiv::intvalArray($contactinfoIDs, true, true);
+		$contactinfoIDs	= TodoyuArray::intval($contactinfoIDs, true, true);
 
 		TodoyuDbHelper::saveMMrelations('ext_user_mm_user_contactinfo', 'id_user', 'id_contactinfo', $idUser, $contactinfoIDs, true);
 	}
@@ -598,7 +598,7 @@ class TodoyuContactManager {
 	 */
 	public static function linkUserToAddresses($idUser, array $addressIDs) {
 		$idUser		= intval($idUser);
-		$addressIDs	= TodoyuDiv::intvalArray($addressIDs, true, true);
+		$addressIDs	= TodoyuArray::intval($addressIDs, true, true);
 
 		TodoyuDbHelper::saveMMrelations('ext_user_mm_user_address', 'id_user', 'id_address', $idUser, $addressIDs, true);
 	}

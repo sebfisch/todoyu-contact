@@ -44,7 +44,7 @@ class TodoyuContactViewHelper {
 			'label'	=> 'label'
 		);
 
-		$types	= TodoyuDiv::reformArray($types, $reform, true);
+		$types	= TodoyuArray::reform($types, $reform, true);
 
 		return $types;
 	}
@@ -124,7 +124,7 @@ class TodoyuContactViewHelper {
 			'index'	=> 'value',
 			'label'	=> 'label'
 		);
-		$options		= TodoyuDiv::reformArray($addressTypes, $reform);
+		$options		= TodoyuArray::reform($addressTypes, $reform);
 
 		return $options;
 	}
