@@ -103,7 +103,7 @@ class TodoyuContactRenderer extends TodoyuRenderer {
 	}
 
 
-	public static function renderPersonList($sword) {
+	public static function renderPersonList($sword = '') {
 		$tmpl		= 'ext/contact/view/personlist.tmpl';
 		$data		= array(
 			'persons'	=> TodoyuUserManager::searchUsers($sword)
