@@ -37,53 +37,6 @@ class TodoyuContactManager {
 
 
 	/**
-	 * Get list of records
-	 *
-	 * @return	Array
-	 */
-	public static function getAllRecordList()	{
-		return self::callContactTypeListFunction('*');
-	}
-
-
-
-	/**
-	 * Get record list suiting to given search word
-	 *
-	 * @return	Array
-	 */
-	public static function getRecordList()	{
-		$searchWord = TodoyuRequest::getParam('sword');
-
-		if(! $searchWord)	{
-			return false;
-		} else {
-			return self::callContactTypeListFunction($searchWord);
-		}
-	}
-
-
-
-	/**
-	 * Evoke registered user_func to render list of records of current edited contact type
-	 *
-	 * @param	String	$searchWord
-	 * @return	Mixed	Array (/ false if no records found)
-	 */
-	protected static function callContactTypeListFunction($searchWord)	{
-		$contactType	= TodoyuContactPreferences::getActiveTab();
-		$funcRef		= self::getListFuncRef($contactType);
-
-		if( TodoyuDiv::isFunctionReference($funcRef) ) {
-			return TodoyuDiv::callUserFunction($funcRef, $searchWord);
-		} else {
-			return false;
-		}
-	}
-
-
-
-	/**
 	 * List persons
 	 *
 	 * @param	String $sword
@@ -222,19 +175,6 @@ class TodoyuContactManager {
 
 
 	/**
-	 * Get func_ref (listing renderer) of current contact type
-	 *
-	 * @return unknown
-	 */
-	protected static function getListFuncRef()	{
-		$contactType = TodoyuContactPreferences::getActiveTab();
-
-		return $GLOBALS['CONFIG']['EXT']['contact']['contacttypes'][$contactType]['listFunc'];
-	}
-
-
-
-	/**
 	 * Get contact type from XML
 	 *
 	 * @param	String	$contactType
@@ -260,33 +200,6 @@ class TodoyuContactManager {
 	 */
 	public static function getContactTypeObjClass($type) {
 		return $GLOBALS['CONFIG']['EXT']['contact']['contacttypes'][$type]['objClass'];
-	}
-
-
-
-	/**
-	 * Get contact type (person / firm / firmrole) specific save funtion
-	 *
-	 * @return	String		function reference (class::method)
-	 *
-	 */
-	public static function getContactTypeSaveFunc($contactType) {
-//		$contactType = TodoyuContactPreferences::getActiveTab();
-
-		return $GLOBALS['CONFIG']['EXT']['contact']['contacttypes'][$contactType]['saveFunc'];
-	}
-
-
-
-	/**
-	 * Get function reference of method to delete records of current contact type
-	 *
-	 * @return	String	function reference
-	 */
-	public static function getContactTypeDeleteFunc() {
-		$contactType = TodoyuContactPreferences::getActiveTab();
-
-		return $GLOBALS['CONFIG']['EXT']['contact']['contacttypes'][$contactType]['deleteFunc'];
 	}
 
 
@@ -395,54 +308,6 @@ class TodoyuContactManager {
 		return $options;
 	}
 
-
-
-	/**
-	 * Save (jobtype-selection of foreign records (employees) of) company form
-	 *
-	 * @param	Array	$formData
-	 * @param	Integer	$companyID
-	 * @return	Array	form data
-	 */
-//	public static function saveCompanyFormData($formData, $idCompany) {
-//		$idCompany	= intval($idCompany);
-//
-//		$resourceFields = array('id_workaddress', 'id_jobtype');
-//
-//		if( is_array($formData['user']) ) {
-//
-//			foreach($formData['user'] as $index => $userData) {
-//				if ( array_key_exists('ext_resources_efficiency', $formData['user'][$index]) ) {
-//					$idUser	= $userData['id'];
-//
-//					TodoyuUserManager::saveUser($idUser, $userData);
-//
-//						// Unset resources fields of company's form object
-//					foreach( $resourceFields as $resourceFieldName )	{
-//						unset($formData['user'][$index][$resourceFieldName]);
-//					}
-//				}
-//			}
-//		}
-//
-//
-//		return $formData;
-//	}
-
-
-
-	/**
-	 * Save contact (person or company)
-	 *
-	 * @param	String		$type
-	 * @param	Array		$data
-	 * @return	Integer		idContact
-	 */
-	public static function saveContact($type, array $data) {
-		$saveFunc 	= self::getContactTypeSaveFunc($type);
-
-		return TodoyuDiv::callUserFunction($saveFunc, $data);
-	}
 
 
 

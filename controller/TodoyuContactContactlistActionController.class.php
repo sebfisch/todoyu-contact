@@ -10,7 +10,6 @@ class TodoyuContactContactlistActionController extends TodoyuActionController {
 
 
 	public function refreshAction(array $params) {
-//		$contacts	= TodoyuContactManager::getRecordList();
 		$type		= TodoyuContactPreferences::getActiveTab();
 
 		return TodoyuContactRenderer::renderContactList($type);

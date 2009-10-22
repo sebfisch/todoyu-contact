@@ -136,47 +136,27 @@ class TodoyuContactRenderer extends TodoyuRenderer {
 		return render($tmpl, $data);
 	}
 
+	public static function renderCompanyEditForm($idCompany) {
+		$idCompany	= intval($idCompany);
+		$xmlPath	= 'ext/contact/config/form/company.xml';
 
-
-	/**
-	 * Render contact creation / edit form
-	 *
-	 * @param	Integer	$editID
-	 * @return	String
-	 */
-	public static function renderForm($type, $idRecord)	{
-		$idRecord	= intval($idRecord);
-		$xmlPath	= TodoyuContactManager::getContactTypeFromXml($type);
-
-			// Construct form object
 		$form	= new TodoyuForm($xmlPath);
-		$form	= TodoyuFormHook::callBuildForm($xml, $form, $idRecord);
+		$form	= TodoyuFormHook::callBuildForm($xml, $form, $idPerson);
 
-			// Get data
-		$record	= TodoyuContactManager::getContactTypeObj($type, $idRecord);
+		$company= TodoyuCustomerManager::getCustomer($idCompany);
+		$data	= $company->getTemplateData(true);
+		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $idCompany);
 
-		$formData	= $record->getTemplateData(true);
+		$form->setFormData($data);
+		$form->setRecordID($idCompany);
 
-			// Call data loading hooks (modifying $formData array)
-		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData, $idRecord);
-
-//		TodoyuDebug::printInFirebug($formData['user'], 'formData[user]');
-
-//		TodoyuDebug::printHtml($formData);
-
-			// Render
-//		TodoyuDebug::printInFirebug('setformData1');
-		$form->setFormData($formData);
-		$form->setRecordID($idRecord);
-
-//		TodoyuDebug::printInFirebug('setformData2');
-
-		$data = array(
-			'formheader'	=> self::getContactFormHeader($type, $record, $idRecord),
+		$tmpl	= 'ext/contact/view/form.tmpl';
+		$data	= array(
+			'formheader'	=> $person->getLabel(),
 			'formhtml'		=> $form->render()
 		);
 
-		return render('ext/contact/view/form.tmpl', $data);
+		return render($tmpl, $data);
 	}
 
 

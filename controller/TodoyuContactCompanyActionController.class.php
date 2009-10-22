@@ -6,7 +6,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	public function editAction(array $params) {
 		$idCompany	= intval($params['company']);
 
-		return TodoyuContactRenderer::renderForm('company', $idCompany);
+		return TodoyuContactRenderer::renderCompanyEditForm($idCompany);
 	}
 
 

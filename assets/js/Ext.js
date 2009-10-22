@@ -31,61 +31,61 @@ Todoyu.Ext.contact = {
 	 *	Initialize
 	 */
 	init: function() {
-		
+
 	},
-	
+
 	onTabSelect: function(event, tab) {
 		if( tab === 'person' ) {
 			this.Person.showList();
 		} else {
 			this.Company.showList();
 		}
-		
-		
+
+
 		//this.saveType(tab);
 		//this.changeType(tab);
 	},
-	
+
 	updateContent: function(url, options) {
 		Todoyu.Ui.update('contactcontent', url, options);
 	},
-	
+
 	setContent: function(content) {
 		$('contactcontent').update(content);
 	},
-	
-	
-	
+
+
+
 	changeType: function(type) {
 		var element = 'contact-tabhead-' + type;
-		
+
 		Todoyu.Tabs.setActive('contact-tabs', element);
-		
+
 		objName	= type.capitalize();
-		
+
 		this[objName].showList();
 	},
-	
+
 	getType: function() {
-		
+
 	},
-	
+
 	saveType: function(type, onComplete) {
 		var url		= Todoyu.getUrl('contact', 'ext');
 		var options	= {
 			'parameters': {
 				'cmd': 'switchType',
 				'type': type
-			}			
+			}
 		}
-		
+
 		if( typeof onComplete === 'function' ) {
 			options.onComplete = onComplete;
 		}
-		
-		Todoyu.send(url, options);		
+
+		Todoyu.send(url, options);
 	},
-	
+
 
 
 	/**
@@ -138,25 +138,6 @@ Todoyu.Ext.contact = {
 
 
 	/**
-	 *	Load form
-	 *
-	 *	@param	Integer	idRecord
-	 */
-	loadForm: function(idRecord)	{
-		var url = Todoyu.getUrl('contact', 'formhandling');
-		var options = {
-			'parameters': {
-				'editID': idRecord,
-				'cmd': 'showForm'
-			}
-		};
-
-		Todoyu.Ui.updateContent('contact-main', url, options);
-	},
-
-
-
-	/**
 	 *	Save contact
 	 *
 	 *	@param	Object	form
@@ -183,13 +164,13 @@ Todoyu.Ext.contact = {
 	 */
 	onSaved: function(response) {
 		var error	= response.hasTodoyuError();
-		
+
 		if( error ) {
 			$('contact-form-content').updateContent(response.responseText);
 		} else {
 			alert('Saved: ' + response.responseText);
 		}
-		
+
 		/*
 		var JSON = response.responseJSON;
 
@@ -199,39 +180,6 @@ Todoyu.Ext.contact = {
 			$('contact-form-content').update(JSON.formHTML);
 		}
 		*/
-	},
-
-
-
-	/**
-	 *	Remove entry
-	 *
-	 *	@param	Integer	idEntry
-	 */
-	removeEntry: function(idEntry)	       {
-		if(confirm('[LLL:contact.confirmRemoving]'))	{
-			var url = Todoyu.getUrl('contact', 'formhandling');
-			var options = {
-				'parameters': {
-					'cmd':		'removeEntry',
-					'removeID':	idEntry
-				},
-				'onComplete': this.onEntryRemoved.bind(this)
-			};
-
-			Todoyu.send(url, options);
-		}
-	},
-
-
-
-	/**
-	 *	'onEntryRemoved' event handler
-	 *
-	 *	@param	unknown	response
-	 */
-	onEntryRemoved: function(response) {
-		this.refreshList();
 	},
 
 
@@ -256,8 +204,8 @@ Todoyu.Ext.contact = {
 				'cmd': 'refresh'
 			}
 		};
-		
-		
+
+
 
 		Todoyu.Ui.update('contact-main', url, options);
 	},
