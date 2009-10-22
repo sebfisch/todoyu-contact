@@ -235,20 +235,6 @@ class TodoyuContactManager {
 
 
 	/**
-	 * Get list template to current contact type
-	 *
-	 * @return unknown
-	 */
-	public static function getListTemplate()	{
-		$contactType	= TodoyuContactPreferences::getActiveTab();
-		$tmpl			=  $GLOBALS['CONFIG']['EXT']['contact']['contacttypes'][$contactType]['tmpl'];
-
-		return $tmpl;
-	}
-
-
-
-	/**
 	 * Get contact type from XML
 	 *
 	 * @param	String	$contactType

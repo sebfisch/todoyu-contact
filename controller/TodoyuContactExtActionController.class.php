@@ -3,13 +3,14 @@
 class TodoyuContactExtActionController extends TodoyuActionController {
 
 	public function defaultAction(array $params) {
-		TodoyuContactRightsManager::checkOnRecordsViewAccess();
+//		TodoyuContactRightsManager::checkOnRecordsViewAccess();
 
+			// set active tab
 		TodoyuFrontend::setActiveTab('contact');
-					// Add page assets
+			// Add page assets
 		TodoyuPage::addExtAssets('contact', 'public');
 
-		TodoyuPage::init('ext/contact/view/view.tmpl');
+		TodoyuPage::init('ext/contact/view/ext.tmpl');
 		TodoyuPage::setTitle('LLL:contact.page.title');
 
 		$type	= TodoyuContactPreferences::getActiveTab();
@@ -27,13 +28,6 @@ class TodoyuContactExtActionController extends TodoyuActionController {
 
 			// Display output
 		return TodoyuPage::render();
-	}
-
-
-	public function switchTypeAction(array $params) {
-		$type	= $params['type'];
-
-		TodoyuContactPreferences::saveActiveTab($type);
 	}
 
 }

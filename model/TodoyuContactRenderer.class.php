@@ -31,6 +31,10 @@ if( ! defined('TODOYU') ) die('NO ACCESS');
 class TodoyuContactRenderer extends TodoyuRenderer {
 
 
+	public static function renderContactView(array $params) {
+
+	}
+
 
 	/**
 	 * Render the tab menu
@@ -79,27 +83,6 @@ class TodoyuContactRenderer extends TodoyuRenderer {
 		}
 
 		return $content;
-
-
-
-
-		$tmpl = TodoyuContactManager::getListTemplate();
-
-		$data	= array(
-			'contacts'		=> TodoyuContactPreferences::getShowAll() ? TodoyuContactManager::getAllRecordList() : TodoyuContactManager::getRecordList(),
-			'listheader'	=> self::renderListHeader($type),
-			'type'			=> $type,
-			'labels'		=> array(
-				'remove'			=> 'LLL:contact.removeRecord',
-				'edit'				=> 'LLL:contact.editRecord',
-				'createLoginUser'	=> 'LLL:contact.createLoginUser',
-				'editLoginUser'		=> 'LLL:contact.editLoginUser'
-			)
-		);
-
-		TodoyuDebug::printInFirebug($tmpl);
-
-		return $tmpl != '' ? render($tmpl, $data):'';
 	}
 
 
@@ -146,7 +129,7 @@ class TodoyuContactRenderer extends TodoyuRenderer {
 
 		$tmpl	= 'ext/contact/view/form.tmpl';
 		$data	= array(
-			'formheader'	=> self::getContactFormHeader('person', $person, $idPerson),
+			'formheader'	=> $person->getLabel(),
 			'formhtml'		=> $form->render()
 		);
 
@@ -235,24 +218,6 @@ class TodoyuContactRenderer extends TodoyuRenderer {
 		return TodoyuPanelWidgetRenderer::renderPanelWidgets('contact', $params);
 	}
 
-
-
-	/**
-	 * Render list header
-	 *
-	 * @return	String
-	 */
-	protected static function renderListHeader($type)	{
-		$data			= array(
-			'labels' => array(
-				'createNew'	=> 'LLL:contact.contact.createnew',
-			),
-			'contactType'		=> $type,
-			'contactTypeLabel'	=> TodoyuContactManager::getContactTypeLabel($type)
-		);
-
-		return render('ext/contact/view/listtemplates/searchlist-listheader.tmpl', $data);
-	}
 
 
 

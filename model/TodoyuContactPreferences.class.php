@@ -103,6 +103,7 @@ class TodoyuContactPreferences {
 
 		if( $tab === false ) {
 			$tab = $GLOBALS['CONFIG']['EXT']['contact']['defaultTypeTab'];
+			self::saveActiveTab($tab);
 		}
 
 		return $tab;
