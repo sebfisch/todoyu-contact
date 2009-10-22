@@ -152,7 +152,7 @@ class TodoyuContactRenderer extends TodoyuRenderer {
 
 		$tmpl	= 'ext/contact/view/form.tmpl';
 		$data	= array(
-			'formheader'	=> $person->getLabel(),
+			'formheader'	=> $company->getLabel(),
 			'formhtml'		=> $form->render()
 		);
 

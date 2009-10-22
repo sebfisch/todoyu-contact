@@ -155,6 +155,32 @@ class TodoyuContactViewHelper {
 
 
 
+	/**
+	 * Get employee's working location options (address(es) of employer firm)
+	 *
+	 * @param	TodoyuForm	$formObject
+	 * @return	Array
+	 */
+	public static function getWorkaddressOptions(TodoyuFormElement $field) {
+		$idCustomer	= intval($idCompany = $field->getForm()->getVar('parent'));
+		$options	= array();
+
+		if( $idCustomer !== 0 ) {
+			$addresses	= TodoyuCustomerManager::getCustomerAddressRecords($idCustomer);
+
+			foreach($addresses as $address) {
+				$options[] = array(
+					'value'	=> $address['id'],
+					'label'	=> $address['street'] . ', ' . $address['city']
+				);
+			}
+		}
+
+		return $options;
+	}
+
+
+
 }
 
 ?>

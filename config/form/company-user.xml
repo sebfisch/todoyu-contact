@@ -19,13 +19,13 @@
 						</acListener>
 						<acLabelFunc>TodoyuUserManager::getLabel</acLabelFunc>
 					</config>
-					<required>1</required>
+					<required />
 				</field>
 
 				<field type="select" name="id_workaddress">
 					<label>LLL:user.worklocation</label>
 					<source type="function">
-						<function>TodoyuContactManager::getEmployeeWorkaddressOptions</function>
+						<function>TodoyuContactViewHelper::getWorkaddressOptions</function>
 						<lazyInit/>
 					</source>
 				</field>

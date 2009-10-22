@@ -264,19 +264,6 @@ class TodoyuContactManager {
 //
 
 
-	/**
-	 * Get employee's working location options (address(es) of employer firm)
-	 *
-	 * @param	TodoyuForm	$formObject
-	 * @return	Array
-	 */
-	public static function getEmployeeWorkaddressOptions(TodoyuFormElement $field) {
-		$companyID	= TodoyuRequest::getParam('editID', true);
-		$formData	= $field->getForm()->getFormData();
-		$workCities	= TodoyuAddressManager::getCompanyAddresses( $companyID, 'ext_user_address.city' );
-
-		return self::buildOptionsArray($workCities, 'id_address', 'city', $formData['id_workaddress'], null);
-	}
 
 
 
