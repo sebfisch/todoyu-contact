@@ -336,6 +336,10 @@ class TodoyuContactManager {
 			$idCustomer = TodoyuCustomerManager::addCustomer();
 		}
 
+			// Save own external fields
+		$data	= self::saveCustomerForeignRecords($data, $idCustomer);
+
+			// Call save data hook
 		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idCustomer);
 
 		TodoyuCustomerManager::updateCustomer($idCustomer, $data);
@@ -489,7 +493,13 @@ class TodoyuContactManager {
 			// Save users
 		if( ! empty($data['user']) ) {
 			foreach($data['user'] as $user) {
-				$idLink = TodoyuCustomerManager::addUserToCustomer($idCustomer, $user['id'], $user['id_workadress'], $user['id_jobtype']);
+					// Prepare data form mm-table
+				$user['id_user']	= $user['id'];
+				$user['id_customer']= $idCustomer;
+				unset($user['id']);
+
+					// Remove existing link and save new data
+				$idLink = TodoyuDbHelper::saveExtendedMMrelation('ext_user_mm_customer_user', 'id_customer', 'id_user', $idCustomer, $user['id_user'], $user);
 			}
 		}
 		unset($data['user']);
