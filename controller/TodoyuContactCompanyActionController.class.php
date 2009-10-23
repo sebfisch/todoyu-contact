@@ -47,22 +47,32 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 
 	public function addSubformAction(array $params) {
+		$formName	= $params['form'];
 		$fieldName	= $params['field'];
-		$index		= intval($params['indexOfForeignRecord']);
+
+		$index		= intval($params['index']);
+		$idRecord	= intval($params['record']);
 		$xmlPath	= 'ext/contact/config/form/company.xml';
 
-			// Construct form object
-		$form 	= new TodoyuForm($xmlPath);
-		$form	= TodoyuFormHook::callBuildForm($xmlPath, $form, $index);
+		return TodoyuFormManager::renderSubformRecord($xmlPath, $fieldName, $formName, $index, $idRecord);
 
-			// Load (/preset) form data
-		$formData	= array();
-		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData, $index);
-
-			// Set form data
-		$form->setFormData($formData);
-
-		return $form->getField($fieldName)->renderNewRecord($index);
+//
+//		$fieldName	= $params['field'];
+//		$index		= intval($params['indexOfForeignRecord']);
+//		$xmlPath	= 'ext/contact/config/form/company.xml';
+//
+//			// Construct form object
+//		$form 	= new TodoyuForm($xmlPath);
+//		$form	= TodoyuFormHook::callBuildForm($xmlPath, $form, $index);
+//
+//			// Load (/preset) form data
+//		$formData	= array();
+//		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData, $index);
+//
+//			// Set form data
+//		$form->setFormData($formData);
+//
+//		return $form->getField($fieldName)->renderNewRecord($index);
 	}
 
 

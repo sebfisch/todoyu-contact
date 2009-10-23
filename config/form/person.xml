@@ -13,6 +13,7 @@
 		<fieldset name="main">
 			<legend>Main user data</legend>
 			<elements>
+				
 				<field type="select" name="gender">
 					<label>LLL:user.user.attr.gender</label>
 					<source type="list">
@@ -98,7 +99,7 @@
 						<foreignformxml>ext/contact/config/form/user-company.xml</foreignformxml>
 						<addSubformConfig>
 							<ext>contact</ext>
-							<controller>formhandling</controller>
+							<controller>person</controller>
 						</addSubformConfig>
 						<label type="function">
 							<function>TodoyuContactViewHelper::getCustomerLabel</function>
@@ -106,18 +107,22 @@
 						</label>
 					</foreignRecordConf>
 				</field>
+				
 			</elements>
 		</fieldset>
+		
 		<fieldset name="buttons">
 			<legend>Actions</legend>
 			<class>buttons</class>
 			<elements>
+				
 				<field type="button" name="save">
 					<type>submit</type>
 					<text>LLL:form.field.save</text>
 					<class>buttonSave</class>
 					<hasIcon>1</hasIcon>
 				</field>
+				
 				<field type="button" name="cancel">
 					<text>LLL:form.field.cancel</text>
 					<type>button</type>
@@ -125,7 +130,9 @@
 					<hasIcon>1</hasIcon>
 					<onclick>Todoyu.Ext.contact.closeForm()</onclick>
 				</field>
+				
 			</elements>
 		</fieldset>
+		
 	</fieldsets>
 </form>

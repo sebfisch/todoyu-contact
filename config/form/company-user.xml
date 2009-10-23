@@ -19,7 +19,7 @@
 						</acListener>
 						<acLabelFunc>TodoyuUserManager::getLabel</acLabelFunc>
 					</config>
-					<required />
+					<required>1</required>
 				</field>
 
 				<field type="select" name="id_workaddress">

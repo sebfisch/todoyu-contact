@@ -18,7 +18,23 @@
 						</acListener>
 						<acLabelFunc>TodoyuCustomerManager::getLabel</acLabelFunc>
 					</config>
-					<required>1</required>
+					<required />
+				</field>
+				
+				<field type="select" name="id_workaddress">
+					<label>LLL:user.worklocation</label>
+					<source type="function">
+						<function>TodoyuContactViewHelper::getWorkaddressOptions</function>
+						<lazyInit/>
+					</source>
+				</field>
+
+				<field type="select" name="id_jobtype">
+					<label>LLL:user.jobtype</label>
+					<source type="function">
+						<function>TodoyuContactViewHelper::getJobtypeOptions</function>
+						<lazyInit/>
+					</source>
 				</field>
 
 			</elements>

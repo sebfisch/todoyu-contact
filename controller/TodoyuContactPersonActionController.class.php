@@ -11,6 +11,8 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 
 
 	public function listAction(array $params) {
+		TodoyuContactPreferences::saveActiveTab('person');
+
 		$sword	= trim($params['sword']);
 
 		return TodoyuContactRenderer::renderPersonList($sword);
