@@ -15,9 +15,9 @@
 {foreach $companys company}
   <tr class="{cycle values="odd,even"}">
   	<td class="icon"><a name="index_{upper $company.title[0]}"></a></td>
-    <td class="title">{$company.title}</td>
+    <td class="title">{htmlencode $company.title}</td>
     <td class="users">{$company.users}</td>
-    <td class="address">{$company.address}</td>
+    <td class="address">{htmlencode $company.address}</td>
     <td class="actions">
     	<div class="icon edit" onclick="Todoyu.Ext.contact.Company.edit({$company.id})"></div>
     	<div class="icon delete" onclick="Todoyu.Ext.contact.Company.remove({$company.id})"></div>
