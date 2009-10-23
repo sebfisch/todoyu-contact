@@ -312,6 +312,7 @@ class TodoyuContactManager {
 			$idUser = TodoyuUserManager::addUser();
 		}
 
+		$data	= self::saveUserForeignRecords($data, $idUser);
 		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idUser);
 
 		TodoyuUserManager::updateUser($idUser, $data);
@@ -365,11 +366,19 @@ class TodoyuContactManager {
 	public static function saveUserForeignRecords(array $data, $idUser)	{
 		$idUser		= intval($idUser);
 
+				// Remove existing records
+		self::removeAllCustomers($idUser);
+
 			// Save customer records
 		if( ! empty($data['customer']) ) {
-			$customerIDs	= TodoyuArray::getColumn($data['customer'], 'id');
+			foreach($data['customer'] as $customer) {
+				$customer['id_customer']= $customer['id'];
+				$customer['id_user']	= $idUser;
+				unset($customer['id']);
 
-			self::linkUserToCustomers($idUser, $customerIDs);
+					// Remove existing link and save new data
+				$idLink = TodoyuDbHelper::saveExtendedMMrelation('ext_user_mm_customer_user', 'id_customer', 'id_user', $customer['id_customer'], $idUser, $customer);
+			}
 		}
 		unset($data['customer']);
 
@@ -398,6 +407,19 @@ class TodoyuContactManager {
 		unset($data['address']);
 
 		return $data;
+	}
+
+
+
+	/**
+	 * Remove all linked customers of an user
+	 *
+	 * @param	Integer		$idUser
+	 */
+	public static function removeAllCustomers($idUser) {
+		$idUser	= intval($idUser);
+
+		TodoyuDbHelper::removeMMrelations('ext_user_mm_customer_user', 'id_user', $idUser);
 	}
 
 

@@ -76,7 +76,7 @@ $CONFIG['EXT']['contact']['defaultTypeTab'] = 'person';
 //TodoyuFormHook::registerSaveData('ext/contact/config/form/company.xml',	'TodoyuContactManager::saveCompanyFormData');
 
 	// Save person
-TodoyuFormHook::registerSaveData('ext/contact/config/form/person.xml',	'TodoyuContactManager::saveUserForeignRecords');
+//TodoyuFormHook::registerSaveData('ext/contact/config/form/person.xml',	'TodoyuContactManager::saveUserForeignRecords');
 
 	// Save customer
 //TodoyuFormHook::registerSaveData('ext/contact/config/form/company.xml', 'TodoyuContactManager::saveCustomerForeignRecords');

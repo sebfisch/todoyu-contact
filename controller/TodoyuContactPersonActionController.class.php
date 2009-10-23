@@ -45,28 +45,6 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	}
 
 
-
-	public function addSubformActionOLD(array $params) {
-		$fieldName	= $params['field'];
-		$index		= intval($params['indexOfForeignRecord']);
-		$xmlPath	= 'ext/contact/config/form/person.xml';
-
-			// Construct form object
-		$form 	= new TodoyuForm($xmlPath);
-		$form	= TodoyuFormHook::callBuildForm($xmlPath, $form, $index);
-
-			// Load (/preset) form data
-		$formData	= array();
-		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData, $index);
-
-			// Set form data
-		$form->setFormData($formData);
-
-		return $form->getField($fieldName)->renderNewRecord($index);
-	}
-
-
-
 	public function addSubformAction(array $params) {
 		$formName	= $params['form'];
 		$fieldName	= $params['field'];
