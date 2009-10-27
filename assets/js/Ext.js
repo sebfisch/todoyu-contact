@@ -188,7 +188,10 @@ Todoyu.Ext.contact = {
 	 * Close form
 	 */
 	closeForm: function()	{
-		$($('contact-main').firstChild).remove();
+		if ($('contact-main') {
+			$($('contact-main').firstChild).remove();
+		}
+		
 		this.refreshList();
 	},
 
