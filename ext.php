@@ -26,8 +26,6 @@
  * @subpackage	Admin
  */
 
-
-
 if( ! defined('TODOYU') ) die('NO ACCESS');
 
 
@@ -36,21 +34,19 @@ if( ! defined('TODOYU') ) die('NO ACCESS');
 define('EXTID_CONTACT', 106);
 define('PATH_EXT_CONTACT', PATH_EXT . '/contact');
 
+	// Register module locales
+TodoyuLocale::register('contact', PATH_EXT_CONTACT . '/locale/ext.xml');
+TodoyuLocale::register('panelwidget-contactsearchinput', PATH_EXT_CONTACT . '/locale/panelwidget-contactsearchinput.xml');
+TodoyuLocale::register('panelwidget-quickcontact', PATH_EXT_CONTACT . '/locale/panelwidget-quickcontact.xml');
+
 	// Request configurations
 require_once( PATH_EXT_CONTACT . '/config/extension.php' );
 require_once( PATH_EXT_CONTACT . '/config/panelwidgets.php' );
 require_once( PATH_EXT_CONTACT . '/config/admin.php');
 require_once( PATH_EXT_CONTACT . '/dwoo/plugins.php');
 
-	// Register localization files
-TodoyuLocale::register('contact', PATH_EXT_CONTACT . '/locale/ext.xml');
-TodoyuLocale::register('panelwidget-contactsearchinput', PATH_EXT_CONTACT . '/locale/panelwidget-contactsearchinput.xml');
-TodoyuLocale::register('panelwidget-quickcontact', PATH_EXT_CONTACT . '/locale/panelwidget-quickcontact.xml');
-
-
+	// Add menu entries
 if( TodoyuAuth::isLoggedIn() && TodoyuContactRightsManager::checkModuleAccess() ) {
-
-		// Add menu entry
 	TodoyuFrontend::addMenuEntry('contact', 'LLL:contact.page.title', '?ext=contact', 100);
 }
 
