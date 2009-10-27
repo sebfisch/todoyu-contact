@@ -170,16 +170,6 @@ Todoyu.Ext.contact = {
 		} else {
 			alert('Saved: ' + response.responseText);
 		}
-
-		/*
-		var JSON = response.responseJSON;
-
-		if(JSON.saved == true)	{
-			this.closeForm();
-		} else {
-			$('contact-form-content').update(JSON.formHTML);
-		}
-		*/
 	},
 
 
@@ -187,8 +177,8 @@ Todoyu.Ext.contact = {
 	/**
 	 * Close form
 	 */
-	closeForm: function()	{
-		if ($('contact-main') {
+	closeForm: function() {
+		if( $('contact-main') ) {
 			$($('contact-main').firstChild).remove();
 		}
 		
