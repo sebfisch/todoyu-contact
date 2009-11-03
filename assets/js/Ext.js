@@ -181,7 +181,7 @@ Todoyu.Ext.contact = {
 		if( $('contact-main') ) {
 			$($('contact-main').firstChild).remove();
 		}
-		
+
 		this.refreshList();
 	},
 
@@ -265,7 +265,7 @@ Todoyu.Ext.contact = {
 			}
 		};
 
-		Todoyu.Popup.openWindow('popupRecordInfo', 'Info', 420, 340, 810, 200, contentUrl, requestOptions);
+		Todoyu.Popup.openWindow('popupRecordInfo', 'Info', 420, 340, contentUrl, requestOptions);
 	}
 
 };

@@ -28,19 +28,14 @@ if( ! defined('TODOYU') ) die('NO ACCESS');
  * @subpackage	contact
  */
 
-class TodoyuContactRenderer extends TodoyuRenderer {
-
-
-	public static function renderContactView(array $params) {
-
-	}
+class TodoyuContactRenderer {
 
 
 	/**
 	 * Render the tab menu
 	 *
 	 */
-	public static function renderTabs()	{
+	public static function renderTabs($activeTab)	{
 		$typesConfig= TodoyuContactManager::getTypesConfig();
 		$tabs 		= array();
 
@@ -55,7 +50,6 @@ class TodoyuContactRenderer extends TodoyuRenderer {
 			);
 		}
 
-		$activeTab	= TodoyuContactPreferences::getActiveTab();
 		$htmlID		= 'contact-tabs';
 		$class		= 'tabs';
 		$jsHandler	= 'Todoyu.Ext.contact.onTabSelect.bind(Todoyu.Ext.contact)';
@@ -79,6 +73,24 @@ class TodoyuContactRenderer extends TodoyuRenderer {
 
 			case 'company':
 				$content = self::renderCompanyList();
+				break;
+		}
+
+		return $content;
+	}
+
+
+	public static function renderContactEdit($type, $idRecord = 0) {
+		$content	= '';
+		$idRecord	= intval($idRecord);
+
+		switch($type) {
+			case 'person':
+				$content = self::renderPersonEditForm($idRecord);
+				break;
+
+			case 'company':
+				$content = self::renderCompanyEditForm($idRecord);
 				break;
 		}
 

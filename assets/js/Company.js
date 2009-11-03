@@ -2,13 +2,13 @@
  * @author ferni
  */
 Todoyu.Ext.contact.Company =  {
-	
+
 	ext: Todoyu.Ext.contact,
-	
+
 	add: function() {
 		this.edit(0);
 	},
-	
+
 	edit: function(idCompany) {
 		var url = Todoyu.getUrl('contact', 'company');
 		var options = {
@@ -18,15 +18,15 @@ Todoyu.Ext.contact.Company =  {
 			},
 			'onComplete': this.onEdit.bind(this, idCompany)
 		};
-		
+
 		this.ext.updateContent(url, options);
 	},
-	
+
 	onEdit: function(idCompany, response) {
-		
+
 	},
 
-		
+
 	remove: function(idCompany) {
 		if( confirm('[LLL:contact.confirmRemoving]') )	{
 			var url = Todoyu.getUrl('contact', 'company');
@@ -41,11 +41,11 @@ Todoyu.Ext.contact.Company =  {
 			Todoyu.send(url, options);
 		}
 	},
-	
+
 	onRemoved: function(response) {
 		this.showList();
 	},
-	
+
 	save: function(form) {
 		$(form).request ({
 				'parameters': {
@@ -56,10 +56,10 @@ Todoyu.Ext.contact.Company =  {
 
 		return false;
 	},
-	
+
 	onSaved: function(response) {
 		var error	= response.hasTodoyuError();
-		
+
 		if( error ) {
 			Todoyu.notify('error', 'Form invalid', 2);
 			Todoyu.notify('info', 'Ich bin eine Info', 20);
@@ -70,7 +70,7 @@ Todoyu.Ext.contact.Company =  {
 			this.showList();
 		}
 	},
-	
+
 	showList: function(sword) {
 		var url = Todoyu.getUrl('contact', 'company');
 		var options = {
@@ -79,20 +79,20 @@ Todoyu.Ext.contact.Company =  {
 				'sword': sword
 			}
 		};
-		
+
 		this.ext.updateContent(url, options);
 	},
-		
-	
+
+
 	show: function(idCompany) {
 		var url		= Todoyu.getUrl('contact', 'company')
 		var options	= {
 			'parameters': {
 				'cmd': 'detail',
-				'company': idCompany				
-			}			
+				'company': idCompany
+			}
 		};
-		
-		Todoyu.Popup.openWindow('popupRecordInfo', 'Info', 420, 340, 810, 200, url, options);
-	}	
+
+		Todoyu.Popup.openWindow('popupRecordInfo', 'Info', 420, 340, url, options);
+	}
 };
