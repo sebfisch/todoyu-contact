@@ -31,9 +31,11 @@ if( ! defined('TODOYU') ) die('NO ACCESS');
 class TodoyuContactRenderer {
 
 
+
 	/**
 	 * Render the tab menu
-	 *
+	 * 
+	 * @return	String
 	 */
 	public static function renderTabs($activeTab)	{
 		$typesConfig= TodoyuContactManager::getTypesConfig();
@@ -58,10 +60,12 @@ class TodoyuContactRenderer {
 	}
 
 
+
 	/**
 	 * Render contacts list
 	 *
-	 * @return	String
+	 *	@param	String	$type
+	 *	@return	String
 	 */
 	public static function renderContactList($type)	{
 		$content	= '';
@@ -80,6 +84,14 @@ class TodoyuContactRenderer {
 	}
 
 
+
+
+	/**
+	 *	Render person list
+	 *
+	 *	@param	String	$sword
+	 *	@return	String
+	 */
 	public static function renderContactEdit($type, $idRecord = 0) {
 		$content	= '';
 		$idRecord	= intval($idRecord);
@@ -98,6 +110,13 @@ class TodoyuContactRenderer {
 	}
 
 
+
+	/**
+	 *	Render person list
+	 *
+	 *	@param	String	$sword
+	 *	@return	String
+	 */
 	public static function renderPersonList($sword = '') {
 		$tmpl		= 'ext/contact/view/personlist.tmpl';
 		$data		= array(
@@ -108,6 +127,13 @@ class TodoyuContactRenderer {
 	}
 
 
+
+	/**
+	 *	Render company list
+	 *
+	 *	@param	String	$sword
+	 *	@return	String
+	 */
 	public static function renderCompanyList($sword = '') {
 		$tmpl		= 'ext/contact/view/companylist.tmpl';
 		$data		= array();
@@ -125,12 +151,19 @@ class TodoyuContactRenderer {
 	}
 
 
+
+	/**
+	 *	Render person edit form
+	 *
+	 *	@param	Integer	$idPerson
+	 *	@return	String
+	 */
 	public static function renderPersonEditForm($idPerson) {
 		$idPerson	= intval($idPerson);
 		$xmlPath	= 'ext/contact/config/form/person.xml';
 
 		$form	= new TodoyuForm($xmlPath);
-		$form	= TodoyuFormHook::callBuildForm($xml, $form, $idPerson);
+		$form	= TodoyuFormHook::callBuildForm($xmlPath, $form, $idPerson);
 
 		$person	= TodoyuUserManager::getUser($idPerson);
 		$data	= $person->getTemplateData(true);
@@ -148,12 +181,20 @@ class TodoyuContactRenderer {
 		return render($tmpl, $data);
 	}
 
+	
+
+	/**
+	 *	Render company edit form
+	 *
+	 *	@param	Integer	$idCompany
+	 *	@return	String
+	 */
 	public static function renderCompanyEditForm($idCompany) {
 		$idCompany	= intval($idCompany);
 		$xmlPath	= 'ext/contact/config/form/company.xml';
 
 		$form	= new TodoyuForm($xmlPath);
-		$form	= TodoyuFormHook::callBuildForm($xml, $form, $idPerson);
+		$form	= TodoyuFormHook::callBuildForm($xmlPath, $form, $idPerson);
 
 		$company= TodoyuCustomerManager::getCustomer($idCompany);
 		$data	= $company->getTemplateData(true);
