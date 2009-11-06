@@ -32,13 +32,13 @@ class TodoyuContactPreferences {
 
 
 	/**
-	 * Save a preference for contact
+	 *	Save a preference for contact
 	 *
-	 * @param	String		$preference
-	 * @param	String		$value
-	 * @param	Integer		$idItem
-	 * @param	Boolean		$unique
-	 * @param	Integer		$idUser
+	 *	@param	String		$preference
+	 *	@param	String		$value
+	 *	@param	Integer		$idItem
+	 *	@param	Boolean		$unique
+	 *	@param	Integer		$idUser
 	 */
 	public static function savePref($preference, $value, $idItem = 0, $unique = false, $idArea = 0, $idUser = 0) {
 		TodoyuPreferenceManager::savePreference(EXTID_CONTACT, $preference, $value, $idItem, $unique, $idArea, $idUser);
@@ -47,12 +47,12 @@ class TodoyuContactPreferences {
 
 
 	/**
-	 * Get a contact preference
+	 *	Get a contact preference
 	 *
-	 * @param	String		$preference
-	 * @param	Integer		$idItem
-	 * @param	Integer		$idUser
-	 * @return	String
+	 *	@param	String		$preference
+	 *	@param	Integer		$idItem
+	 *	@param	Integer		$idUser
+	 *	@return	String
 	 */
 	public static function getPref($preference, $idItem = 0, $idArea = 0, $unserialize = false, $idUser = 0) {
 		$idItem	= intval($idItem);
@@ -64,13 +64,13 @@ class TodoyuContactPreferences {
 
 
 	/**
-	 * Get contact preferences
+	 *	Get contact preferences
 	 *
-	 * @param	String		$preference
-	 * @param	Integer		$idItem
-	 * @param	Integer		$idArea
-	 * @param	Integer		$idUser
-	 * @return	Array
+	 *	@param	String		$preference
+	 *	@param	Integer		$idItem
+	 *	@param	Integer		$idArea
+	 *	@param	Integer		$idUser
+	 *	@return	Array
 	 */
 	public static function getPrefs($preference, $idItem = 0, $idArea = 0, $idUser = 0) {
 		return TodoyuPreferenceManager::getPreferences(EXTID_CONTACT, $preference, $idItem, $idArea, $idUser);
@@ -79,13 +79,13 @@ class TodoyuContactPreferences {
 
 
 	/**
-	 * Delete contact preference
+	 *	Delete contact preference
 	 *
-	 * @param	String		$preference
-	 * @param	String		$value
-	 * @param	Integer		$idItem
-	 * @param	Integer		$idArea
-	 * @param	Integer		$idUser
+	 *	@param	String		$preference
+	 *	@param	String		$value
+	 *	@param	Integer		$idItem
+	 *	@param	Integer		$idArea
+	 *	@param	Integer		$idUser
 	 */
 	public static function deletePref($preference, $value = null, $idItem = 0, $idArea = 0, $idUser = 0) {
 		TodoyuPreferenceManager::deletePreference(EXTID_CONTACT, $preference, $value, $idItem, $idArea, $idUser);
@@ -94,9 +94,9 @@ class TodoyuContactPreferences {
 
 
 	/**
-	 * Get active tab in contact area
+	 *	Get active tab in contact area
 	 *
-	 * @return	String
+	 *	@return	String
 	 */
 	public static function getActiveTab() {
 		$tab	= self::getPref('tab');
@@ -112,9 +112,9 @@ class TodoyuContactPreferences {
 
 
 	/**
-	 * Save active tab in contact area
+	 *	Save active tab in contact area
 	 *
-	 * @param	String	$tab
+	 *	@param	String	$tab
 	 */
 	public static function saveActiveTab($tab) {
 		self::savePref('tab', $tab, 0, true);
@@ -125,9 +125,9 @@ class TodoyuContactPreferences {
 
 
 	/**
-	 * Saves ID of currently edited record
+	 *	Saves ID of currently edited record
 	 *
-	 * @param	Integer		$idRecord		record id
+	 *	@param	Integer		$idRecord		record id
 	 */
 	public static function saveEditId($idRecord)	{
 		$idRecord	= intval($idRecord);
@@ -140,8 +140,8 @@ class TodoyuContactPreferences {
 
 
 	/**
-	 * saves the showAll flag for the current contact type.
-	 * removes it from the array if it already exists.
+	 *	Saves the showAll flag for the current contact type.
+	 *	Removes it from the array if it already exists.
 	 *
 	 */
 	public static function saveShowAll()	{
@@ -160,9 +160,9 @@ class TodoyuContactPreferences {
 
 
 	/**
-	 * Checks if the current Contact type is in the preference array.
+	 *	Checks if the current Contact type is in the preference array.
 	 *
-	 * @return	Boolean
+	 *	@return	Boolean
 	 */
 	public static function getShowAll()	{
 		$showAllArray = self::getShowAllArray();
@@ -172,14 +172,13 @@ class TodoyuContactPreferences {
 
 
 	/**
-	 * removes current contact type from the presets
-	 *
+	 *	Removes current contact type from the presets
 	 */
 	public static function removeShowAll()	{
 		$contactType = self::getActiveTab();
 		$showAllArray = self::getShowAllArray();
 
-		$showAllArray = TodoyuArray::unsetEntrieByValue($contactType, $showAllArray);
+		$showAllArray = TodoyuArray::unsetEntryByValue($contactType, $showAllArray);
 
 		$value	= serialize($showAllArray);
 
@@ -189,10 +188,10 @@ class TodoyuContactPreferences {
 
 
 	/**
-	 * returns an array of contact types which have the show all flag set.
-	 * If there is no array in the database it returns an empty array
+	 *	Returns an array of contact types which have the show all flag set.
+	 *	If there is no array in the database it returns an empty array
 	 *
-	 * @return	Array
+	 *	@return	Array
 	 */
 	protected static function getShowAllArray()	{
 		$showAllArray	= self::getPref('showAll', 0, 0, true);
