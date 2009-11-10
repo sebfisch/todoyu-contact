@@ -21,7 +21,7 @@
 
 /**
  * Manager class Todoyufor the contact module
-
+ * 
  */
 class TodoyuContactManager {
 

@@ -1,8 +1,36 @@
 <?php
+/***************************************************************
+*  Copyright notice
+*
+*  (c) 2009 snowflake productions gmbh
+*  All rights reserved
+*
+*  This script is part of the todoyu project.
+*  The todoyu project is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License, version 2,
+*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by
+*  the Free Software Foundation;
+*
+*  This script is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+*  GNU General Public License for more details.
+*
+*  This copyright notice MUST APPEAR in all copies of the script!
+***************************************************************/
 
-
+/**
+ * Action controller for company
+ * 
+ */
 class TodoyuContactCompanyActionController extends TodoyuActionController {
 
+	/**
+	 * Edit company
+	 * 
+	 * @param	Array		$params
+	 * @return	String
+	 */
 	public function editAction(array $params) {
 		$idCompany	= intval($params['company']);
 
@@ -10,6 +38,13 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	}
 
 
+	
+	/**
+	 * List companies
+	 * 
+	 * @param	Array		$params
+	 * @return	String
+	 */
 	public function listAction(array $params) {
 		TodoyuContactPreferences::saveActiveTab('company');
 
@@ -19,6 +54,13 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	}
 
 
+	
+	/**
+	 * Save company record
+	 * 
+	 * @param	Array		$params
+	 * @return	String		Form html or company ID
+	 */
 	public function saveAction(array $params) {
 		$xmlPath	= 'ext/contact/config/form/company.xml';
 		$data		= $params['company'];
@@ -46,6 +88,11 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 
 
+	/**
+	 * Add a subform record to company form
+	 * @param	Array		$params
+	 * @return	String
+	 */
 	public function addSubformAction(array $params) {
 		$formName	= $params['form'];
 		$fieldName	= $params['field'];
@@ -55,34 +102,28 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 		$xmlPath	= 'ext/contact/config/form/company.xml';
 
 		return TodoyuFormManager::renderSubformRecord($xmlPath, $fieldName, $formName, $index, $idRecord);
-
-//
-//		$fieldName	= $params['field'];
-//		$index		= intval($params['indexOfForeignRecord']);
-//		$xmlPath	= 'ext/contact/config/form/company.xml';
-//
-//			// Construct form object
-//		$form 	= new TodoyuForm($xmlPath);
-//		$form	= TodoyuFormHook::callBuildForm($xmlPath, $form, $index);
-//
-//			// Load (/preset) form data
-//		$formData	= array();
-//		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData, $index);
-//
-//			// Set form data
-//		$form->setFormData($formData);
-//
-//		return $form->getField($fieldName)->renderNewRecord($index);
 	}
 
 
+	
+	/**
+	 * Remove company record	 * 
+	 * @param	Array		$params
+	 * @return	void
+	 */
 	public function removeAction(array $params) {
 		$idCompany	= intval($params['company']);
-
-		TodoyuUserManager::deleteUser($idCompany);
+		
+		TodoyuCustomerManager::deleteCustomer($idCompany);
 	}
 
 
+	
+	/**
+	 * Show company details
+	 * @param	Array		$params
+	 * @return	String
+	 */
 	public function detailAction(array $params) {
 		$idCompany	= intval($params['company']);
 		$type		= 'company';

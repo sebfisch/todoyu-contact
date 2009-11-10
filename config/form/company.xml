@@ -102,7 +102,7 @@
 					<type>button</type>
 					<class>buttonCancel</class>
 					<hasIcon>1</hasIcon>
-					<onclick>Todoyu.Ext.contact.closeForm()</onclick>
+					<onclick>Todoyu.Ext.contact.Company.closeForm()</onclick>
 				</field>
 
 			</elements>

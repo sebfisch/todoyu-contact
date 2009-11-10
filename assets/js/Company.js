@@ -87,6 +87,10 @@ Todoyu.Ext.contact.Company =  {
 			this.showList();
 		}
 	},
+	
+	closeForm: function() {
+		this.showList();
+	},
 
 	showList: function(sword) {
 		var url = Todoyu.getUrl('contact', 'company');

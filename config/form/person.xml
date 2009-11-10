@@ -13,6 +13,13 @@
 		<fieldset name="main">
 			<legend>Main user data</legend>
 			<elements>
+
+				<field type="select" name="type">
+					<label>LLL:user.user.attr.type</label>
+					<source type="function">
+						<function>TodoyuContactViewHelper::getUserTypeOptions</function>
+					</source>
+				</field>
 				
 				<field type="select" name="gender">
 					<label>LLL:user.user.attr.gender</label>
@@ -25,13 +32,6 @@
 							<value>w</value>
 							<label>LLL:user.user.attr.gender.f</label>
 						</option>
-					</source>
-				</field>
-
-				<field type="select" name="type">
-					<label>LLL:user.user.attr.type</label>
-					<source type="function">
-						<function>TodoyuContactViewHelper::getUserTypeOptions</function>
 					</source>
 				</field>
 
@@ -128,7 +128,7 @@
 					<type>button</type>
 					<class>buttonCancel</class>
 					<hasIcon>1</hasIcon>
-					<onclick>Todoyu.Ext.contact.closeForm()</onclick>
+					<onclick>Todoyu.Ext.contact.Person.closeForm()</onclick>
 				</field>
 				
 			</elements>

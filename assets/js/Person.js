@@ -162,6 +162,11 @@ Todoyu.Ext.contact.Person =  {
 			this.showList();
 		}
 	},
+	
+	
+	closeForm: function() {
+		this.showList();
+	},
 
 	
 	
