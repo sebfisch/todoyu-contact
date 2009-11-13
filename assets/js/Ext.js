@@ -57,9 +57,7 @@ Todoyu.Ext.contact = {
 
 
 	changeType: function(type) {
-		var element = 'contact-tabhead-' + type;
-
-		Todoyu.Tabs.setActive('contact-tabs', element);
+		Todoyu.Tabs.setActive('contact-tabhead-' + type);
 
 		objName	= type.capitalize();
 
