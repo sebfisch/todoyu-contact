@@ -31,6 +31,9 @@
 		<label index="email">Email</label>
 		<label index="male">Male</label>
 		<label index="female">Female</label>
+		
+		<label index="submenuentry.person">Contact > Persons</label>
+		<label index="submenuentry.company">Contact > Firms</label>
 	</labels>
 	<labels lang="de">
 		<label index="page.title">Kontakte</label>
@@ -61,5 +64,8 @@
 		<label index="email">Email</label>
 		<label index="male">Männlich</label>
 		<label index="female">Weiblich</label>
+		
+		<label index="submenuentry.person">Kontakte > Personen</label>
+		<label index="submenuentry.company">Kontakte > Firmen</label>
 	</labels>
 </locallang>

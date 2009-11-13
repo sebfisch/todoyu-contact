@@ -48,6 +48,8 @@ require_once( PATH_EXT_CONTACT . '/dwoo/plugins.php');
 	// Add menu entries
 if( TodoyuAuth::isLoggedIn() && TodoyuContactRightsManager::checkModuleAccess() ) {
 	TodoyuFrontend::addMenuEntry('contact', 'LLL:contact.page.title', '?ext=contact', 100);
+	TodoyuFrontend::addSubmenuEntry('contact', 'contact', 'LLL:contact.submenuentry.person', '?ext=contact&type=person', 105);
+	TodoyuFrontend::addSubmenuEntry('contact', 'contact', 'LLL:contact.submenuentry.company', '?ext=contact&type=company', 110);
 }
 
 ?>
