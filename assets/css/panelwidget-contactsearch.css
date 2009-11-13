@@ -23,7 +23,6 @@
 	cursor: pointer;
 }
 
-
 #panelwidget-contactSearch-content a.searchIcon {
 	background-position: 2px -448px;
 }
@@ -31,8 +30,6 @@
 #panelwidget-contactSearch-content a.clearIcon {
 	background-position: 2px -328px;
 }
-
-
 
 #panelwidget-contactSearch-content button .showAll {
 	background-position: 6px -870px;
