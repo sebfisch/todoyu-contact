@@ -43,7 +43,7 @@ Todoyu.Ext.contact.Person =  {
 		var options = {
 			'parameters': {
 				'person': idPerson,
-				'cmd': 'edit'
+				'action': 'edit'
 			},
 			'onComplete': this.onEdit.bind(this, idPerson)
 		};
@@ -75,7 +75,7 @@ Todoyu.Ext.contact.Person =  {
 			var url = Todoyu.getUrl('contact', 'person');
 			var options = {
 				'parameters': {
-					'cmd':		'remove',
+					'action':		'remove',
 					'person':	idPerson
 				},
 				'onComplete': this.onRemoved.bind(this, idPerson)
@@ -136,7 +136,7 @@ Todoyu.Ext.contact.Person =  {
 	save: function(form) {
 		$(form).request ({
 				'parameters': {
-					'cmd': 'save'
+					'action': 'save'
 				},
 				'onComplete': this.onSaved.bind(this)
 			});
@@ -179,7 +179,7 @@ Todoyu.Ext.contact.Person =  {
 		var url = Todoyu.getUrl('contact', 'person');
 		var options = {
 			'parameters': {
-				'cmd': 'list',
+				'action': 'list',
 				'sword': sword
 			}
 		};
@@ -198,7 +198,7 @@ Todoyu.Ext.contact.Person =  {
 		var params	= {
 			'ext': 'admin',
 			'mod': 'user',
-			'cmd': 'edit',
+			'action': 'edit',
 			'user': idUser
 		}
 
@@ -216,7 +216,7 @@ Todoyu.Ext.contact.Person =  {
 		var url		= Todoyu.getUrl('contact', 'person')
 		var options	= {
 			'parameters': {
-				'cmd': 'detail',
+				'action': 'detail',
 				'person': idPerson
 			}
 		};

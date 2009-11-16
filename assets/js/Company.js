@@ -31,7 +31,7 @@ Todoyu.Ext.contact.Company =  {
 		var options = {
 			'parameters': {
 				'company': idCompany,
-				'cmd': 'edit'
+				'action': 'edit'
 			},
 			'onComplete': this.onEdit.bind(this, idCompany)
 		};
@@ -49,7 +49,7 @@ Todoyu.Ext.contact.Company =  {
 			var url = Todoyu.getUrl('contact', 'company');
 			var options = {
 				'parameters': {
-					'cmd':		'remove',
+					'action':		'remove',
 					'company':	idCompany
 				},
 				'onComplete': this.onRemoved.bind(this)
@@ -66,7 +66,7 @@ Todoyu.Ext.contact.Company =  {
 	save: function(form) {
 		$(form).request ({
 				'parameters': {
-					'cmd': 'save'
+					'action': 'save'
 				},
 				'onComplete': this.onSaved.bind(this)
 			});
@@ -96,7 +96,7 @@ Todoyu.Ext.contact.Company =  {
 		var url = Todoyu.getUrl('contact', 'company');
 		var options = {
 			'parameters': {
-				'cmd': 'list',
+				'action': 'list',
 				'sword': sword
 			}
 		};
@@ -109,7 +109,7 @@ Todoyu.Ext.contact.Company =  {
 		var url		= Todoyu.getUrl('contact', 'company')
 		var options	= {
 			'parameters': {
-				'cmd': 'detail',
+				'action': 'detail',
 				'company': idCompany
 			}
 		};

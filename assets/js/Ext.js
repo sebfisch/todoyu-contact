@@ -72,7 +72,7 @@ Todoyu.Ext.contact = {
 		var url		= Todoyu.getUrl('contact', 'ext');
 		var options	= {
 			'parameters': {
-				'cmd': 'switchType',
+				'action': 'switchType',
 				'type': type
 			}
 		}
@@ -144,7 +144,7 @@ Todoyu.Ext.contact = {
 	save: function(form)	{
 		$(form).request ({
 				'parameters': {
-					'cmd': 'save',
+					'action': 'save',
 					'form': form.name
 				},
 				'onComplete': this.onSaved.bind(this)
@@ -192,7 +192,7 @@ Todoyu.Ext.contact = {
 		var url = Todoyu.getUrl('contact', 'contactlist');
 		var options = {
 			'parameters': {
-				'cmd': 'refresh'
+				'action': 'refresh'
 			}
 		};
 
@@ -238,7 +238,7 @@ Todoyu.Ext.contact = {
 		var url = {ext: 'admin'};
 
 		url.mod = 'user';
-		url.cmd = 'edit';
+		url.action = 'edit';
 		url.user = idUser;
 
 		location.href = '?' + Object.toQueryString(url);
@@ -254,7 +254,7 @@ Todoyu.Ext.contact = {
 	openInfoPopup: function(type, idRecord) {
 
 		var contentUrl = Todoyu.getUrl('contact', 'contactlist');
-		contentUrl = contentUrl + '&cmd=infoPopupContent';
+		contentUrl = contentUrl + '&action=infoPopupContent';
 
 		var requestOptions	= {
 			'parameters': {

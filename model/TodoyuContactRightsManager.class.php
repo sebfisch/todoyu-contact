@@ -105,25 +105,25 @@ class TodoyuContactRightsManager {
 	 * @param	String	$command
 	 * @return	Boolean
 	 */
-	public static function checkOnFormHandlingAccess($command)	{
-		switch($command)	{
-				// Show form
-			case 'showForm':
-				if(TodoyuRequest::getParam('editID'))	{
-					if( ! self::checkOnRecordCreateAccess() ) return false;
-				} else {
-					if( ! self::checkOnRecordEditAccess() ) return false;
-				}
-				break;
-
-				// Remove entry
-			case 'removeEntry':
-					if( ! self::checkOnRecordDeleteAccess() ) return false;
-				break;
-		}
-
-		return true;
-	}
+//	public static function checkOnFormHandlingAccess($action)	{
+//		switch($action)	{
+//				// Show form
+//			case 'showForm':
+//				if(TodoyuRequest::getParam('editID'))	{
+//					if( ! self::checkOnRecordCreateAccess() ) return false;
+//				} else {
+//					if( ! self::checkOnRecordEditAccess() ) return false;
+//				}
+//				break;
+//
+//				// Remove entry
+//			case 'removeEntry':
+//					if( ! self::checkOnRecordDeleteAccess() ) return false;
+//				break;
+//		}
+//
+//		return true;
+//	}
 
 
 

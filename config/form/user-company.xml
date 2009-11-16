@@ -14,7 +14,7 @@
 						<acListener>
 							<ext>contact</ext>
 							<controller>autocompletion</controller>
-							<cmd>company</cmd>
+							<action>company</action>
 						</acListener>
 						<acLabelFunc>TodoyuCustomerManager::getLabel</acLabelFunc>
 					</config>

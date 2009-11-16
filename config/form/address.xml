@@ -53,7 +53,7 @@
 						<acListener>
 							<ext>contact</ext>
 							<controller>autocompletion</controller>
-							<cmd>region</cmd>
+							<action>region</action>
 						</acListener>
 						<acLabelFunc>TodoyuDatasource::getRegionLabel</acLabelFunc>
 					</config>

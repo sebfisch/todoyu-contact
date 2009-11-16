@@ -31,7 +31,7 @@ Todoyu.Ext.contact.PanelWidget.QuickContact = {
 
 		var options = {
 			'parameters': {
-				'cmd': 'refresh',
+				'action': 'refresh',
 				'type': type
 			}
 		};
