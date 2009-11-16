@@ -16,7 +16,7 @@
 
 				<field type="textinput" name="title">
 					<label>LLL:user.customer.attr.name</label>
-					<required>1</required>
+					<required />
 				</field>
 
 				<field type="textinput" name="shortname">
@@ -25,7 +25,6 @@
 
 				<field type="dateinput" name="date_enter">
 					<label>LLL:user.customer.attr.date_enter</label>
-					<required>1</required>
 				</field>
 
 				<field type="checkbox" name="is_ngo">
