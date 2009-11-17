@@ -19,8 +19,8 @@
     <td class="users">{$company.users}</td>
     <td class="address">{htmlencode $company.address}</td>
     <td class="actions">
-    	<div class="icon edit" onclick="Todoyu.Ext.contact.Company.edit({$company.id})"></div>
-    	<div class="icon delete" onclick="Todoyu.Ext.contact.Company.remove({$company.id})"></div>
+    	<div title="{Label LLL:contact.company.tooltip.edit true}" class="icon edit" onclick="Todoyu.Ext.contact.Company.edit({$company.id})"></div>
+    	<div title="{Label LLL:contact.company.tooltip.delete true}" class="icon delete" onclick="Todoyu.Ext.contact.Company.remove({$company.id})"></div>
     </td>
   </tr>
 {/foreach}

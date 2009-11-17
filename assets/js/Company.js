@@ -22,10 +22,19 @@ Todoyu.Ext.contact.Company =  {
 
 	ext: Todoyu.Ext.contact,
 
+
+
 	add: function() {
 		this.edit(0);
 	},
 
+
+
+	/**
+	 *	Edit given company
+	 *
+	 *	@param	Integer	idCompany
+	 */
 	edit: function(idCompany) {
 		var url = Todoyu.getUrl('contact', 'company');
 		var options = {
@@ -39,11 +48,19 @@ Todoyu.Ext.contact.Company =  {
 		this.ext.updateContent(url, options);
 	},
 
+
+
 	onEdit: function(idCompany, response) {
 
 	},
 
 
+
+	/**
+	 *	Confirm if really wanted and remove (delete) given company if
+	 *
+	 *	@param	Integer	idCompany
+	 */
 	remove: function(idCompany) {
 		if( confirm('[LLL:contact.confirmRemoving]') )	{
 			var url = Todoyu.getUrl('contact', 'company');
@@ -59,9 +76,18 @@ Todoyu.Ext.contact.Company =  {
 		}
 	},
 
+
+
+	/**
+	 *	Handle event after company deletion being performed
+	 *
+	 *	@param	Response	response
+	 */
 	onRemoved: function(response) {
 		this.showList();
 	},
+
+
 
 	save: function(form) {
 		$(form).request ({
@@ -73,6 +99,8 @@ Todoyu.Ext.contact.Company =  {
 
 		return false;
 	},
+
+
 
 	onSaved: function(response) {
 		var error	= response.hasTodoyuError();
@@ -87,10 +115,14 @@ Todoyu.Ext.contact.Company =  {
 			this.showList();
 		}
 	},
-	
+
+
+
 	closeForm: function() {
 		this.showList();
 	},
+
+
 
 	showList: function(sword) {
 		var url = Todoyu.getUrl('contact', 'company');
@@ -103,6 +135,7 @@ Todoyu.Ext.contact.Company =  {
 
 		this.ext.updateContent(url, options);
 	},
+
 
 
 	show: function(idCompany) {

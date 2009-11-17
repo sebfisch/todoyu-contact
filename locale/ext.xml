@@ -34,6 +34,12 @@
 		
 		<label index="submenuentry.person">Persons</label>
 		<label index="submenuentry.company">Firms</label>
+				
+		<label index="person.tooltip.edit">Edit person</label>
+		<label index="person.tooltip.delete">Delete person</label>
+		<label index="person.tooltip.showuser">Show user</label>
+		<label index="company.tooltip.edit">Edit company</label>
+		<label index="company.tooltip.delete">Delete company</label>
 	</labels>
 	<labels lang="de">
 		<label index="page.title">Kontakte</label>
