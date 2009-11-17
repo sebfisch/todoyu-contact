@@ -29,7 +29,14 @@ if( ! defined('TODOYU') ) die('NO ACCESS');
 
 
 $CONFIG['EXT']['contact']['assets'] = array(
-	'default' => array(),
+	'default' => array(
+		'css'	=> array(
+			array(
+				'file'		=> 'ext/contact/assets/css/metamenu.css',
+				'position'	=> 100
+			)
+		)
+	),
 
 	'public' => array(
 		'js' => array(
@@ -48,7 +55,8 @@ $CONFIG['EXT']['contact']['assets'] = array(
 		),
 		'css' => array(
 			array(
-				'file'	=> 'ext/contact/assets/css/ext.css'
+				'file'		=> 'ext/contact/assets/css/ext.css',
+				'position'	=> 100
 			)
 		)
 	),
