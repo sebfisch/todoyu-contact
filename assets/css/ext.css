@@ -44,10 +44,31 @@
 
 
 /* -------------------------
+	Tabs 
+   -------------------------*/
+
+.tabs .tabkey-person .icon{
+	background: url(../img/icons.png) no-repeat 0 -85px;
+}
+
+.tabs .tabkey-company .icon{
+	background: url(../img/icons.png) no-repeat 0 -115px;
+}
+
+.tabs .tabkey-jobtype .icon{
+	background: url(../img/icons.png) no-repeat 0 -145px;
+}
+
+.tabs .tabkey-customerrole .icon{
+	background: url(../img/icons.png) no-repeat 0 -173px;
+}
+
+
+
+/* -------------------------
 	Company list 
    -------------------------*/
 
-	/* Column widths */
 .companylist th.icon {
 	width:15px;
 }
@@ -173,22 +194,6 @@
 	.contactList #create-company a {
 		background: transparent url(../img/icons.png) no-repeat 0px -237px;
 	}
-
-.tabs .tabkey-person .icon{
-	background: url(../img/icons.png) no-repeat 0 -85px;
-}
-
-.tabs .tabkey-company .icon{
-	background: url(../img/icons.png) no-repeat 0 -115px;
-}
-
-.tabs .tabkey-jobtype .icon{
-	background: url(../img/icons.png) no-repeat 0 -145px;
-}
-
-.tabs .tabkey-customerrole .icon{
-	background: url(../img/icons.png) no-repeat 0 -173px;
-}
 
 
 
