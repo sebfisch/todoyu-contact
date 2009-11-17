@@ -101,7 +101,7 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 	 * Get current selected type (tab)
 	 */
 	getType: function() {
-		return Todoyu.Tabs.getActive('contact-tabs');
+		return Todoyu.Tabs.getActive('contact-tabs').id.replace('contact-tabhead-','');
 	},
 	
 	
