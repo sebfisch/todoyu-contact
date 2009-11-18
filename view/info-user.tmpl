@@ -34,7 +34,7 @@
 				{$custAddressData.street}<br/>
 				{$custAddressData.zip} {$custAddressData.city}<br/>
 				{$custAddressData.label_country}<br/>
-				{if strlen($custAddressData.postbox)>0}Postbox: {$custAddressData.postbox}{/if}<br/>
+				{if strlen($custAddressData.postbox)>0}{Label contact.postbox}: {$custAddressData.postbox}{/if}<br/>
 {/foreach}
 			</td>
 		</tr>

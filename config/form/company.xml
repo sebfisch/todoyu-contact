@@ -47,7 +47,7 @@
 						</addSubformConfig>
 						<label type="function">
 							<function>TodoyuContactViewHelper::getContactinfoLabel</function>
-							<noLabel>Neue Kontaktinformation</noLabel>
+							<noLabel>LLL:contact.noLabel.newContactInfo</noLabel>
 						</label>
 					</foreignRecordConf>
 				</field>
@@ -62,7 +62,7 @@
 						</addSubformConfig>
 						<label type="function">
 							<function>TodoyuContactViewHelper::getAddressLabel</function>
-							<noLabel>Neue Adresse</noLabel>
+							<noLabel>LLL:contact.noLabel.newAddress</noLabel>
 						</label>
 					</foreignRecordConf>
 				</field>
@@ -77,7 +77,7 @@
 						</addSubformConfig>
 						<label type="function">
 							<function>TodoyuContactViewHelper::getEmployeeLabel</function>
-							<noLabel>Neuer Angestellter</noLabel>
+							<noLabel>LLL:contact.noLabel.newEmployee</noLabel>
 						</label>
 					</foreignRecordConf>
 				</field>

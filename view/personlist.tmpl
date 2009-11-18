@@ -3,10 +3,10 @@
 <table class="list personlist">
   <tr class="header">
     <th scope="col" class="icon">&nbsp;</th>
-    <th scope="col" class="lastname">Lastname</th>
-    <th scope="col" class="firstname">Firstname</th>
-    <th scope="col" class="email">Email</th>
-    <th scope="col" class="company">Company</th>
+    <th scope="col" class="lastname">{Label contact.lastname}</th>
+    <th scope="col" class="firstname">{Label contact.firstname}</th>
+    <th scope="col" class="email">{Label contact.email}</th>
+    <th scope="col" class="company">{Label contact.company}</th>
     <th scope="col" class="last actions">&nbsp;</th>
   </tr>
 {foreach $persons person}
@@ -17,9 +17,9 @@
     <td class="email">{$person.email}</td>
     <td class="company">{$person.company}</td>
     <td class="actions">
-    	<div title="{Label LLL:contact.person.tooltip.edit true}" class="icon edit" onclick="Todoyu.Ext.contact.Person.edit({$person.id})"></div>
-    	<div title="{Label LLL:contact.person.tooltip.delete true}" class="icon delete" onclick="Todoyu.Ext.contact.Person.remove({$person.id})"></div>
-    	<div title="{Label LLL:contact.person.tooltip.showuser true}" class="icon user" onclick="Todoyu.Ext.contact.Person.showUser({$person.id})"></div>
+    	<div title="{Label contact.person.tooltip.edit}" class="icon edit" onclick="Todoyu.Ext.contact.Person.edit({$person.id})"></div>
+    	<div title="{Label contact.person.tooltip.delete}" class="icon delete" onclick="Todoyu.Ext.contact.Person.remove({$person.id})"></div>
+    	<div title="{Label contact.person.tooltip.showuser}" class="icon user" onclick="Todoyu.Ext.contact.Person.showUser({$person.id})"></div>
     </td>
   </tr>
 {/foreach}
