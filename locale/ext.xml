@@ -39,37 +39,5 @@
 		<label index="noLabel.newAddress">New address</label>
 		<label index="noLabel.newEmployee">New employee</label>
 	</labels>
-	<labels lang="de">
-		<label index="page.title">Kontakte</label>
-		<label index="contacttypes.company">Firma</label>
-		<label index="contacttypes.person">Person</label>
-		<label index="contacttypes.jobtype">Mitarbeiterfunktion</label>
-		<label index="contacttypes.customerrole">Firmenrolle</label>
-		<label index="contact.createnew">Neu: </label>
-		<label index="contact.edit">Bearbeiten: </label>
-		<label index="editRecord">Bearbeiten</label>
-		<label index="removeRecord">Löschen</label>
-		<label index="createLoginUser">Benutzer erstellen</label>
-		<label index="editLoginUser">Benutzer editieren</label>
-		<label index="generateshortname">Kurzname generieren</label>
-		<label index="confirmRemoving">Wollen Sie diesen Datensatz wirklich löschen?</label>
-		<label index="showvisitingcard">Visitenkarte anzeigen</label>
-		<label index="firstname">Vorname</label>
-		<label index="lastname">Nachname</label>
-		<label index="company">Firma</label>
-		<label index="shortname">Kurzname</label>
-		<label index="gender">Geschlecht</label>
-		<label index="employer">Arbeitgeber</label>
-		<label index="address">Addresse</label>
-		<label index="postpox">Postfach</label>
-		<label index="birthdate">Geburtsdatum</label>
-		<label index="email">Email</label>
-		<label index="male">Männlich</label>
-		<label index="female">Weiblich</label>
-		<label index="submenuentry.person">Personen</label>
-		<label index="submenuentry.company">Firmen</label>
-		<label index="noLabel.newContactInfo">Neue Kontaktinformation</label>
-		<label index="noLabel.newAddress">Neue Adresse</label>
-		<label index="noLabel.newEmployee">Neuer Angestellter</label>
-	</labels>
+	<labels lang="de"></labels>
 </locallang>

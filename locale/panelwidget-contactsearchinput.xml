@@ -6,10 +6,5 @@
 		<label index="showAll.label">Show All</label>
 		<label index="clearSword">Clear input</label>
 	</labels>
-	<labels lang="de">
-		<label index="title">Suche</label>
-		<label index="search.label">Suche</label>
-		<label index="showAll.label">Alle anzeigen</label>
-		<label index="clearSword">Eingabe Löschen</label>
-	</labels>
+	<labels lang="de"></labels>
 </locallang>
