@@ -13,7 +13,7 @@
 			<legend>Main customerrole data</legend>
 			<elements>
 				<field type="textinput" name="title">
-					<label>LLL:user.customerrole.title</label>
+					<label>LLL:core.title</label>
 					<required>1</required>
 				</field>
 			</elements>
