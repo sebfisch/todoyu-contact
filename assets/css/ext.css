@@ -1,5 +1,5 @@
 /* -------------------------
-	Personlist 
+	Personlist
    -------------------------*/
 
 	/* Column widths */
@@ -9,14 +9,14 @@
 .personlist th.firstname,
 .personlist th.lastname,
 .personlist th.email {
-	width:120px;
+	width:111px;
 }
 .personlist th.company {
 	width:145px;
 }
 
 .personlist th.actions {
-	width:70px;
+	width:80px;
 }
 
 	/* Column configs */
@@ -44,7 +44,7 @@
 
 
 /* -------------------------
-	Tabs 
+	Tabs
    -------------------------*/
 
 .tabs .tabkey-person .icon{
@@ -66,7 +66,7 @@
 
 
 /* -------------------------
-	Company list 
+	Company list
    -------------------------*/
 
 .companylist th.icon {
@@ -115,7 +115,7 @@
 
 
 /* -------------------------
-	Contact list 
+	Contact list
    -------------------------*/
 
 .contactList li {
@@ -206,7 +206,7 @@
 }
 
 #contact-main div#indexLinks a {
-	padding: 0 4px 0 4px;	
+	padding: 0 4px 0 4px;
 }
 
 #contact-main div#indexLinks a span {
