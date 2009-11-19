@@ -2,7 +2,6 @@
 <locallang>
 	<labels lang="en">
 		<label index="title">Search</label>
-		<label index="search.label">Search</label>
 		<label index="showAll.label">Show All</label>
 		<label index="clearSword">Clear input</label>
 	</labels>
