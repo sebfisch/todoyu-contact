@@ -19,7 +19,7 @@ class TodoyuContactViewHelper {
 	public static function getJobtypeOptions(TodoyuFormElement $field) {
 		$jobtypeOptions	= TodoyuJobtypeManager::getJobtypeOptions();
 		$prefix		= array(
-			'label'	=> Label('core.pleaseChoose'),
+			'label'	=> 'LLL:form.select.pleaseChoose',
 			'value'	=> 0
 		);
 
@@ -89,6 +89,7 @@ class TodoyuContactViewHelper {
 	}
 
 
+
 	public static function getContactinfoLabel(TodoyuFormElement $field, array $record) {
 		$idContactInfo	= intval($record['id']);
 		$label			= '';
@@ -102,6 +103,7 @@ class TodoyuContactViewHelper {
 
 		return $label;
 	}
+
 
 
 	public static function getCustomerLabel(TodoyuFormElement $field, array $record) {
@@ -118,6 +120,7 @@ class TodoyuContactViewHelper {
 	}
 
 
+
 	public static function getAddressTypeOptions(TodoyuFormElement $field) {
 		$addressTypes	= TodoyuContactManager::getAddressTypes();
 		$reform		= array(
@@ -128,6 +131,8 @@ class TodoyuContactViewHelper {
 
 		return $options;
 	}
+
+
 
 	public static function getCountryOptions(TodoyuFormElement $field) {
 		$countryOptions		= TodoyuDatasource::getCountryOptions();
@@ -178,8 +183,6 @@ class TodoyuContactViewHelper {
 
 		return $options;
 	}
-
-
 
 }
 
