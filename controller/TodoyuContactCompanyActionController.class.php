@@ -21,13 +21,13 @@
 
 /**
  * Action controller for company
- * 
+ *
  */
 class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 	/**
 	 * Edit company
-	 * 
+	 *
 	 * @param	Array		$params
 	 * @return	String
 	 */
@@ -38,10 +38,10 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	}
 
 
-	
+
 	/**
 	 * List companies
-	 * 
+	 *
 	 * @param	Array		$params
 	 * @return	String
 	 */
@@ -54,10 +54,10 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	}
 
 
-	
+
 	/**
 	 * Save company record
-	 * 
+	 *
 	 * @param	Array		$params
 	 * @return	String		Form html or company ID
 	 */
@@ -66,8 +66,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 		$data		= $params['company'];
 		$idCompany	= intval($data['id']);
 
-		$form 		= new TodoyuForm($xmlPath);
-		$form		= TodoyuFormHook::callBuildForm($xmlPath, $form, $idCompany);
+		$form 		= TodoyuFormManager::getForm($xmlPath, $idCompany);
 
 			// Set form data
 		$form->setFormData($data);
@@ -105,20 +104,20 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	}
 
 
-	
+
 	/**
-	 * Remove company record	 * 
+	 * Remove company record	 *
 	 * @param	Array		$params
 	 * @return	void
 	 */
 	public function removeAction(array $params) {
 		$idCompany	= intval($params['company']);
-		
+
 		TodoyuCustomerManager::deleteCustomer($idCompany);
 	}
 
 
-	
+
 	/**
 	 * Show company details
 	 * @param	Array		$params

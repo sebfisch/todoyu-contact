@@ -24,13 +24,9 @@ class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 
 			// Load form data
 		$activeTab	= TodoyuContactPreferences::getActiveTab();
-//		$data 	= $params[$activeTab];
-//		$idRecord	= 0;
-//		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData, $idRecord);
 
 			// Construct form object
-		$form 		= new TodoyuForm($xmlPath);
-		$form		= TodoyuFormHook::callBuildForm($xmlPath, $form, $idRecord);
+		$form 		= TodoyuFormManager::getForm($xmlPath, $idRecord);
 
 			// Set form data
 		$form->setFormData($data);
@@ -75,8 +71,7 @@ class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 		$idRecord	= intval($params['record']);
 
 			// Construct form object
-		$form 	= new TodoyuForm($xmlPath);
-		$form	= TodoyuFormHook::callBuildForm($xmlPath, $form, $index);
+		$form 	= TodoyuFormManager::getForm($xmlPath, $index);
 
 			// Load (/preset) form data
 		$formData	= array();

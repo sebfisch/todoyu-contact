@@ -24,8 +24,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 		$data		= $params['person'];
 		$idPerson	= intval($data['id']);
 
-		$form 		= new TodoyuForm($xmlPath);
-		$form		= TodoyuFormHook::callBuildForm($xmlPath, $form, $idPerson);
+		$form 		= TodoyuFormManager::getForm($xmlPath. $idPerson);
 
 			// Set form data
 		$form->setFormData($data);
@@ -54,29 +53,6 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 		$xmlPath	= 'ext/contact/config/form/person.xml'; // TodoyuContactManager::getContactTypeFromXml($formName);
 
 		return TodoyuFormManager::renderSubformRecord($xmlPath, $fieldName, $formName, $index, $idRecord);
-
-
-//
-//
-//			// Construct form object
-//		$form 	= new TodoyuForm($xmlPath);
-//		$form	= TodoyuFormHook::callBuildForm($xmlPath, $form, $index);
-//
-//			// Load (/preset) form data
-//		$formData	= array();
-//		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData, $index);
-//
-//			// Set form data
-//		$form->setFormData($formData);
-//		$form->setRecordID($idRecord);
-//
-//		TodoyuDebug::printInFirebug($idRecord);
-//
-//
-//		$field			= $form->getField($fieldName);
-//		$form['name']	= $formName;
-//
-//		return $field->renderNewRecord($index);
 	}
 
 

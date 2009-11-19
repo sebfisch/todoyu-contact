@@ -34,7 +34,7 @@ class TodoyuContactRenderer {
 
 	/**
 	 * Render the tab menu
-	 * 
+	 *
 	 * @return	String
 	 */
 	public static function renderTabs($activeTab)	{
@@ -162,8 +162,7 @@ class TodoyuContactRenderer {
 		$idPerson	= intval($idPerson);
 		$xmlPath	= 'ext/contact/config/form/person.xml';
 
-		$form	= new TodoyuForm($xmlPath);
-		$form	= TodoyuFormHook::callBuildForm($xmlPath, $form, $idPerson);
+		$form	= TodoyuFormManager::getForm($xmlPath, $idPerson);
 
 		$person	= TodoyuUserManager::getUser($idPerson);
 		$data	= $person->getTemplateData(true);
@@ -181,7 +180,7 @@ class TodoyuContactRenderer {
 		return render($tmpl, $data);
 	}
 
-	
+
 
 	/**
 	 *	Render company edit form
@@ -193,8 +192,7 @@ class TodoyuContactRenderer {
 		$idCompany	= intval($idCompany);
 		$xmlPath	= 'ext/contact/config/form/company.xml';
 
-		$form	= new TodoyuForm($xmlPath);
-		$form	= TodoyuFormHook::callBuildForm($xmlPath, $form, $idPerson);
+		$form	= TodoyuFormManager::getForm($xmlPath, $idCompany);
 
 		$company= TodoyuCustomerManager::getCustomer($idCompany);
 		$data	= $company->getTemplateData(true);
