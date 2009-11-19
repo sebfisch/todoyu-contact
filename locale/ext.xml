@@ -28,8 +28,8 @@
 		<label index="email">Email</label>
 		<label index="male">Male</label>
 		<label index="female">Female</label>
-		<label index="submenuentry.person">Persons</label>
-		<label index="submenuentry.company">Firms</label>		
+		<label index="subMenuEntry.person">Persons</label>
+		<label index="subMenuEntry.company">Firms</label>		
 		<label index="person.tooltip.edit">Edit person</label>
 		<label index="person.tooltip.delete">Delete person</label>
 		<label index="person.tooltip.showuser">Show user</label>
