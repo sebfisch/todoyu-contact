@@ -7,7 +7,7 @@
 *
 *  This script is part of the todoyu project.
 *  The todoyu project is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License, version 2, 
+*  it under the terms of the GNU General Public License, version 2,
 *  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by
 *  the Free Software Foundation;
 *
@@ -28,8 +28,8 @@ $CONFIG['EXT']['contact']['info'] = array(
 	'title'				=> 'Contact',
 	'description' 		=> 'Contacts maintenance',
 	'author' 			=> array(
-		'name'		=> '',
-		'email'		=> '',
+		'name'		=> 'Todoyu Core Team',
+		'email'		=> 'team@todoyu.com',
 		'company'	=> 'Snowflake Productions, Zürich'
 	),
 	'dependencies' 		=> '',
@@ -40,12 +40,7 @@ $CONFIG['EXT']['contact']['info'] = array(
 		'depends' => array(
 			'user'			=> '0.1.0',
 		),
-		'conflicts' => array(
-
-		),
-		'suggests' => array(
-
-		),
+		'conflicts' => array()
 	)
 );
 
