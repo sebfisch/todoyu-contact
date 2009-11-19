@@ -4,7 +4,6 @@
 		<label index="section.module">Module</label>
 		<label index="section.panelwidgets">Panel widgets</label>
 		<label index="section.actions">Actions</label>
-
 		<label index="right.module">See module</label>
 		<label index="right.PanelWidgetContactSearchInput">See contact search widget</label>
 		<label index="right.PanelWidgetQuickContact">See create contact widget</label>
@@ -18,7 +17,6 @@
 		<label index="right.deleteCompany">Can delete companies</label>
 		<label index="right.createLoginUser">Can create a login user</label>
 		<label index="right.editLoginUser">Can edit a login user</label>
-
 	</labels>
 	<labels lang="de"></labels>
 </locallang>
