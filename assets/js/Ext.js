@@ -72,8 +72,8 @@ Todoyu.Ext.contact = {
 		var url		= Todoyu.getUrl('contact', 'ext');
 		var options	= {
 			'parameters': {
-				'action': 'switchType',
-				'type': type
+				'action':	'switchType',
+				'type':		type
 			}
 		}
 
