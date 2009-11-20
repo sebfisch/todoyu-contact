@@ -37,12 +37,18 @@ class TodoyuContactRenderer {
 	 *
 	 * @return	String
 	 */
-	public static function renderTabs($activeTab)	{
+	public static function renderTabs($activeTab, $onlyActive = false)	{
 		$typesConfig= TodoyuContactManager::getTypesConfig();
 		$tabs 		= array();
 
+		if( $onlyActive ) {
+			$typesConfig = array(
+				$activeTab => $typesConfig[$activeTab]
+			);
+		}
+
 		foreach($typesConfig as $type => $typeConfig)	{
-			$tabs[] = array(
+			$tabs[$type] = array(
 				'id'		=> $type,
 				'htmlId'	=> 'contact-tabhead-' . $type,
 				'label'		=> Label($typeConfig['label']),

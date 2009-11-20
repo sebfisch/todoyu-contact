@@ -36,7 +36,10 @@ class TodoyuContactExtActionController extends TodoyuActionController {
 		$type	= $params['type'];
 		if( empty($type) ) {
 			$type	= TodoyuContactPreferences::getActiveTab();
+		} else {
+			TodoyuContactPreferences::saveActiveTab($type);
 		}
+
 			// Get record id from param
 		$idRecord		= intval($params['id']);
 

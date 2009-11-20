@@ -19,24 +19,55 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+/**
+ * Action controller for persons
+ *
+ * @package		Todoyu
+ * @subpackage	Contact
+ */
 class TodoyuContactPersonActionController extends TodoyuActionController {
 
+	/**
+	 * Edit person, show form
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
 	public function editAction(array $params) {
 		$idPerson	= intval($params['person']);
 
-		return TodoyuContactRenderer::renderPersonEditForm($idPerson);
+		$content	= TodoyuContactRenderer::renderTabs('person', true);
+		$content	.=TodoyuContactRenderer::renderPersonEditForm($idPerson);
+
+		return $content;
 	}
 
 
+	/**
+	 * Show person list
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
 	public function listAction(array $params) {
 		TodoyuContactPreferences::saveActiveTab('person');
 
 		$sword	= trim($params['sword']);
 
-		return TodoyuContactRenderer::renderPersonList($sword);
+		$content	= TodoyuContactRenderer::renderTabs('person');
+		$content 	.=TodoyuContactRenderer::renderPersonList($sword);
+
+		return $content;
 	}
 
 
+
+	/**
+	 * Save person
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
 	public function saveAction(array $params) {
 		$xmlPath	= 'ext/contact/config/form/person.xml';
 		$data		= $params['person'];
@@ -62,21 +93,31 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	}
 
 
+
+	/**
+	 * Add a subform to the person form
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
 	public function addSubformAction(array $params) {
 		$formName	= $params['form'];
 		$fieldName	= $params['field'];
 
 		$index		= intval($params['index']);
 		$idRecord	= intval($params['record']);
-		$xmlPath	= 'ext/contact/config/form/person.xml'; // TodoyuContactManager::getContactTypeFromXml($formName);
+		$xmlPath	= 'ext/contact/config/form/person.xml';
 
 		return TodoyuFormManager::renderSubformRecord($xmlPath, $fieldName, $formName, $index, $idRecord);
 	}
 
 
 
-
-
+	/**
+	 * Remove person
+	 *
+	 * @param	Array		$params
+	 */
 	public function removeAction(array $params) {
 		$idPerson	= intval($params['person']);
 
@@ -84,13 +125,19 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	}
 
 
+
+	/**
+	 * Show person info
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
 	public function detailAction(array $params) {
 		$idPerson	= intval($params['person']);
 		$type		= 'user';
 
 		return TodoyuContactRenderer::renderInfoPopupContent($type, $idPerson);
 	}
-
 
 }
 

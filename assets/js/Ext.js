@@ -24,8 +24,6 @@ Todoyu.Ext.contact = {
 
 	Headlet: {},
 
-	curContactInfoType: 'person',
-
 
 	/**
 	 *	Initialize
@@ -35,26 +33,12 @@ Todoyu.Ext.contact = {
 	},
 
 	onTabSelect: function(event, tab) {
-		if( tab === 'person' ) {
-			this.Person.showList();
-		} else {
-			this.Company.showList();
-		}
-
-
-		//this.saveType(tab);
-		//this.changeType(tab);
+		this[tab.capitalize()].showList();
 	},
 
 	updateContent: function(url, options) {
-		Todoyu.Ui.update('contactcontent', url, options);
+		Todoyu.Ui.updateContent(url, options);
 	},
-
-	setContent: function(content) {
-		$('contactcontent').update(content);
-	},
-
-
 
 	changeType: function(type) {
 		Todoyu.Tabs.setActive('contact-tabhead-' + type);
@@ -84,54 +68,6 @@ Todoyu.Ext.contact = {
 		Todoyu.send(url, options);
 	},
 
-
-
-	/**
-	 *	Load contact info type
-	 *
-	 *	@param	String	contactInfoType
-	 */
-	loadContactInfoType: function(contactInfoType)	{
-		var url = Todoyu.getUrl('contact', 'setcontactinfotype');
-		var options = {
-			'parameters': {
-				'contactInfoType': contactInfoType
-			},
-			'onComplete': function(response)	{
-				this.changeContactInfoType('', contactInfoType);
-				this.refreshList();
-				this.PanelWidget.ContactSearchInput.refresh();
-				this.PanelWidget.QuickContact.refresh();
-			}.bind(this)
-		}
-
-
-
-		Todoyu.send(url, options);
-	},
-
-
-
-	/**
-	 *	Change contact info type
-	 *
-	 *	@param	unknown	event
-	 *	@param	unknown	newContactInfoType
-	 */
-	changeContactInfoType: function(event, newContactInfoType)	{
-		oldTabID = 'contact-tabhead-'+this.curContactInfoType;
-		newTabID = 'contact-tabhead-'+newContactInfoType;
-
-		if($(oldTabID))	{
-			if($(oldTabID).hasClassName('active'))	{
-				$(oldTabID).removeClassName('active');
-			}
-		}
-
-		$(newTabID).addClassName('active');
-
-		this.curContactInfoType = newContactInfoType;
-	},
 
 
 

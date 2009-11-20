@@ -34,7 +34,10 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	public function editAction(array $params) {
 		$idCompany	= intval($params['company']);
 
-		return TodoyuContactRenderer::renderCompanyEditForm($idCompany);
+		$content	= TodoyuContactRenderer::renderTabs('company', true);
+		$content	.=TodoyuContactRenderer::renderCompanyEditForm($idCompany);
+
+		return $content;
 	}
 
 
@@ -50,7 +53,10 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 		$sword	= trim($params['sword']);
 
-		return TodoyuContactRenderer::renderCompanyList($sword);
+		$content	= TodoyuContactRenderer::renderTabs('company');
+		$content	.=TodoyuContactRenderer::renderCompanyList($sword);
+
+		return $content;
 	}
 
 
