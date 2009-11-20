@@ -16,11 +16,7 @@
 		<label index="generateshortname">Generate shortname</label>
 		<label index="person.remove.confirm">Remove this person?</label>
 		<label index="showvisitingcard">Show visiting card popup</label>
-		<label index="firstname">Firstname</label>
-		<label index="lastname">Lastname</label>
 		<label index="company">Company</label>
-		<label index="shortname">Shortname</label>
-		<label index="gender">Gender</label>
 		<label index="employer">Employer</label>
 		<label index="address">Address</label>
 		<label index="postpox">Postbox</label>
@@ -29,7 +25,7 @@
 		<label index="male">Male</label>
 		<label index="female">Female</label>
 		<label index="subMenuEntry.person">Persons</label>
-		<label index="subMenuEntry.company">Firms</label>		
+		<label index="subMenuEntry.company">Firms</label>
 		<label index="person.tooltip.edit">Edit person</label>
 		<label index="person.tooltip.delete">Delete person</label>
 		<label index="person.tooltip.showuser">Show user</label>

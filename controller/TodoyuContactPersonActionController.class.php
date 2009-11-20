@@ -24,7 +24,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 		$data		= $params['person'];
 		$idPerson	= intval($data['id']);
 
-		$form 		= TodoyuFormManager::getForm($xmlPath. $idPerson);
+		$form 		= TodoyuFormManager::getForm($xmlPath, $idPerson);
 
 			// Set form data
 		$form->setFormData($data);

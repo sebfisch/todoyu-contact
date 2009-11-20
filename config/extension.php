@@ -49,7 +49,6 @@ $CONFIG['EXT']['contact']['contacttypes']	= array(
 	'person' => array(
 		'label'		=> 'LLL:contact.contacttypes.person',
 		'formXml'	=> 'ext/contact/config/form/person.xml',
-		'tmpl'		=> 'ext/contact/view/listtemplates/searchlist-person.tmpl',
 		'objClass'	=> 'TodoyuUser',
 		'listFunc'	=> 'TodoyuContactManager::ListPersons',
 		'saveFunc'	=> 'TodoyuContactManager::savePerson',
@@ -58,7 +57,6 @@ $CONFIG['EXT']['contact']['contacttypes']	= array(
 	'company' => array(
 		'label'		=> 'LLL:contact.contacttypes.company',
 		'formXml'	=> 'ext/contact/config/form/company.xml',
-		'tmpl'		=> 'ext/contact/view/listtemplates/searchlist-company.tmpl',
 		'objClass'	=> 'TodoyuCustomer',
 		'listFunc'	=> 'TodoyuContactManager::ListCompanies',
 		'saveFunc'	=> 'TodoyuContactManager::saveCustomer',
@@ -68,21 +66,7 @@ $CONFIG['EXT']['contact']['contacttypes']	= array(
 
 $CONFIG['EXT']['contact']['defaultTypeTab'] = 'person';
 
-
-	// Add jobtype selector to company employees' fieldset(s)
-//TodoyuFormHook::registerBuildForm('ext/contact/config/form/company-user.xml',		'TodoyuContactManager::modifyUserFormfields');
-
-	// Hook-in to save jobtype when saving foreign records (resources attributes of employee (user) records)
-//TodoyuFormHook::registerSaveData('ext/contact/config/form/company.xml',	'TodoyuContactManager::saveCompanyFormData');
-
-	// Save person
-//TodoyuFormHook::registerSaveData('ext/contact/config/form/person.xml',	'TodoyuContactManager::saveUserForeignRecords');
-
-	// Save customer
-//TodoyuFormHook::registerSaveData('ext/contact/config/form/company.xml', 'TodoyuContactManager::saveCustomerForeignRecords');
-
 	// Load person foreign records data
 TodoyuFormHook::registerLoadData('ext/contact/config/form/person.xml', 'TodoyuContactManager::getUserForeignRecordData');
-
 
 ?>

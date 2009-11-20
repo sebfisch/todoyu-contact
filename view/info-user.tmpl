@@ -1,16 +1,16 @@
 <div class="visitingCardContent">
 	<table>
 		<tr class="odd">
-			<td class="label">{Label contact.firstname}:</td>
+			<td class="label">{Label user.user.attr.firstname}:</td>
 			<td width="90%">{$firstname}</td>
 		</tr>
 		<tr class="even">
-			<td class="label">{Label contact.lastname}:</td>
+			<td class="label">{Label user.user.attr.lastname}:</td>
 			<td>{$lastname}</td>
 		</tr>
 {if strlen($shortname) > 0}
 		<tr class="odd">
-			<td class="label">{Label contact.shortname}:</td>
+			<td class="label">{Label user.customer.attr.shortname}:</td>
 			<td>{$shortname}</td>
 		</tr>
 {/if}
@@ -22,7 +22,7 @@
 		</tr>
 {/if}
 		<tr class="even">
-			<td class="label">{Label contact.gender}:</td>
+			<td class="label">{Label user.user.attr.gender}:</td>
 			<td>{if $gender=='m'}{Label contact.male}{else}{Label contact.female}{/if}</td>
 		</tr>
 		<tr class="even"><td colspan="2"><br/></td></tr>
