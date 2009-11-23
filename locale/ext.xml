@@ -34,6 +34,7 @@
 		<label index="noLabel.newContactInfo">New contact info</label>
 		<label index="noLabel.newAddress">New address</label>
 		<label index="noLabel.newEmployee">New employee</label>
+<!--  ......................................... added after 20091122 -->
 	</labels>
 	<labels lang="de"></labels>
 </locallang>

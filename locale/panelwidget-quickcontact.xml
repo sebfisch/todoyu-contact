@@ -4,6 +4,7 @@
 		<label index="title">Add new record</label>
 		<label index="button.company">Add new company</label>
 		<label index="button.person">Add new person</label>
+<!--  ......................................... added after 20091122 -->
 	</labels>
 	<labels lang="de"></labels>
 </locallang>

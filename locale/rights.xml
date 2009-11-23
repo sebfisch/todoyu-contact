@@ -17,6 +17,7 @@
 		<label index="right.deleteCompany">Can delete companies</label>
 		<label index="right.createLoginUser">Can create a login user</label>
 		<label index="right.editLoginUser">Can edit a login user</label>
+<!--  ......................................... added after 20091122 -->
 	</labels>
 	<labels lang="de"></labels>
 </locallang>

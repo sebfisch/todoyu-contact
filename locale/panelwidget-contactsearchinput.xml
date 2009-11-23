@@ -4,6 +4,7 @@
 		<label index="title">Search</label>
 		<label index="showAll.label">Show All</label>
 		<label index="clearSword">Clear input</label>
+<!--  ......................................... added after 20091122 -->
 	</labels>
 	<labels lang="de"></labels>
 </locallang>
