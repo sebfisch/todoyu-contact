@@ -28,12 +28,24 @@
 class TodoyuContactPersonActionController extends TodoyuActionController {
 
 	/**
+	 * Initialisation for action controller
+	 *
+	 */
+	public function init() {
+		restrict('contact', 'person:use');
+	}
+
+
+
+	/**
 	 * Edit person, show form
 	 *
 	 * @param	Array		$params
 	 * @return	String
 	 */
 	public function editAction(array $params) {
+		restrict('contact', 'person:edit');
+
 		$idPerson	= intval($params['person']);
 
 		$content	= TodoyuContactRenderer::renderTabs('person', true);
@@ -43,6 +55,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	}
 
 
+
 	/**
 	 * Show person list
 	 *
@@ -50,6 +63,8 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function listAction(array $params) {
+		restrict('contact', 'person:use');
+
 		TodoyuContactPreferences::saveActiveTab('person');
 
 		$sword	= trim($params['sword']);
@@ -69,6 +84,8 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function saveAction(array $params) {
+		restrict('contact', 'person:edit');
+
 		$xmlPath	= 'ext/contact/config/form/person.xml';
 		$data		= $params['person'];
 		$idPerson	= intval($data['id']);
@@ -101,6 +118,8 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function addSubformAction(array $params) {
+		restrict('contact', 'person:edit');
+
 		$formName	= $params['form'];
 		$fieldName	= $params['field'];
 
@@ -119,6 +138,8 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @param	Array		$params
 	 */
 	public function removeAction(array $params) {
+		restrict('contact', 'person:delete');
+
 		$idPerson	= intval($params['person']);
 
 		TodoyuUserManager::deleteUser($idPerson);
@@ -133,6 +154,8 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function detailAction(array $params) {
+		restrict('contact', 'person:use');
+
 		$idPerson	= intval($params['person']);
 		$type		= 'user';
 

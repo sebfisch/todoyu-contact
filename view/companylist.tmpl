@@ -18,8 +18,8 @@
     <td class="users">{$company.users}</td>
     <td class="address">{htmlencode $company.address}</td>
     <td class="actions">
-    	<div title="{Label contact.company.tooltip.edit}" class="icon edit" onclick="Todoyu.Ext.contact.Company.edit({$company.id})"></div>
-    	<div title="{Label contact.company.tooltip.delete}" class="icon delete" onclick="Todoyu.Ext.contact.Company.remove({$company.id})"></div>
+    	{restrict 'contact' 'company:edit'}<div title="{Label contact.company.tooltip.edit}" class="icon edit" onclick="Todoyu.Ext.contact.Company.edit({$company.id})"></div>{/restrict}
+    	{restrict 'contact' 'company:delete'}<div title="{Label contact.company.tooltip.delete}" class="icon delete" onclick="Todoyu.Ext.contact.Company.remove({$company.id})"></div>{/restrict}
     </td>
   </tr>
 {/foreach}

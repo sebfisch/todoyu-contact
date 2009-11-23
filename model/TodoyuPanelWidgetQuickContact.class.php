@@ -77,10 +77,16 @@ class TodoyuPanelWidgetQuickContact extends TodoyuPanelWidget implements TodoyuP
 	 *
 	 * @return	String
 	 */
-	function render()	{
+	public function render()	{
 		$this->renderContent();
 
 		return parent::render();
+	}
+
+
+
+	public static function isAllowed() {
+		return allowed('contact', 'panelwidget:quickContact');
 	}
 
 }

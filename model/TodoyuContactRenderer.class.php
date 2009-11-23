@@ -30,8 +30,6 @@ if( ! defined('TODOYU') ) die('NO ACCESS');
 
 class TodoyuContactRenderer {
 
-
-
 	/**
 	 * Render the tab menu
 	 *
@@ -48,14 +46,17 @@ class TodoyuContactRenderer {
 		}
 
 		foreach($typesConfig as $type => $typeConfig)	{
-			$tabs[$type] = array(
-				'id'		=> $type,
-				'htmlId'	=> 'contact-tabhead-' . $type,
-				'label'		=> Label($typeConfig['label']),
-				'hasIcon'	=> 1,
-				'class'		=> $type,
-				'classKey'	=> $type
-			);
+				// Check if type is allowed
+			if( allowed('contact', $type . ':use') ) {
+				$tabs[$type] = array(
+					'id'		=> $type,
+					'htmlId'	=> 'contact-tabhead-' . $type,
+					'label'		=> Label($typeConfig['label']),
+					'hasIcon'	=> 1,
+					'class'		=> $type,
+					'classKey'	=> $type
+				);
+			}
 		}
 
 		$htmlID		= 'contact-tabs';
@@ -124,6 +125,7 @@ class TodoyuContactRenderer {
 	 *	@return	String
 	 */
 	public static function renderPersonList($sword = '') {
+		restrict('contact', 'person:use');
 		$tmpl		= 'ext/contact/view/personlist.tmpl';
 		$data		= array(
 			'persons'	=> TodoyuUserManager::searchUsers($sword)
@@ -141,6 +143,7 @@ class TodoyuContactRenderer {
 	 *	@return	String
 	 */
 	public static function renderCompanyList($sword = '') {
+		restrict('contact', 'company:use');
 		$tmpl		= 'ext/contact/view/companylist.tmpl';
 		$data		= array();
 
@@ -165,6 +168,7 @@ class TodoyuContactRenderer {
 	 *	@return	String
 	 */
 	public static function renderPersonEditForm($idPerson) {
+		restrict('contact', 'person:edit');
 		$idPerson	= intval($idPerson);
 		$xmlPath	= 'ext/contact/config/form/person.xml';
 
@@ -195,6 +199,7 @@ class TodoyuContactRenderer {
 	 *	@return	String
 	 */
 	public static function renderCompanyEditForm($idCompany) {
+		restrict('contact', 'company:edit');
 		$idCompany	= intval($idCompany);
 		$xmlPath	= 'ext/contact/config/form/company.xml';
 

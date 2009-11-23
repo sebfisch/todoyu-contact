@@ -1,19 +1,15 @@
-#panelwidget-quickcontact-content {
+#panelwidget-quickcontact .content {
 	padding: 5px;
 }
 
 #panelwidget-quickcontact h1 span.title {
-	background: transparent url('../img/icon.png') no-repeat;
+	background:url(../img/icons.png) no-repeat 5px -265px;
 }
 
-#panelwidget-quickcontact h1 span.title {
-	background-position: 5px -415px
+#panelwidget-quickcontact button.addPerson .icon {
+	background:url(../img/icons.png) no-repeat 2px -449px;
 }
 
-#panelwidget-quickcontact .person span.iconAddContact {
-	background-position: 8px -1050px;
-}
-
-#panelwidget-quickcontact .company span.iconAddContact {
-	background-position: 8px -1020px;
+#panelwidget-quickcontact button.addCompany .icon {
+	background:url(../img/icons.png) no-repeat 2px -419px;
 }

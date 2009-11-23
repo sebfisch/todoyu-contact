@@ -48,6 +48,10 @@
 				<field type="textinput" name="shortname">
 					<label>LLL:user.user.attr.shortname</label>
 				</field>
+				
+				<field type="textinput" name="email">
+					<label>LLL:user.user.attr.email</label>
+				</field>
 
 				<field type="dateinput" name="birthday">
 					<label>LLL:user.user.attr.birthday</label>

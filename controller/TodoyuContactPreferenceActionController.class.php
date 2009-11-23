@@ -22,6 +22,16 @@
 class TodoyuContactPreferenceActionController extends TodoyuActionController {
 
 	/**
+	 * Controller init
+	 *
+	 */
+	public function init() {
+		restrict('contact', 'use');
+	}
+
+
+
+	/**
 	 *	General panelWidget action, saves collapse status
 	 *
 	 *	@param	Array	$params
@@ -33,3 +43,5 @@ class TodoyuContactPreferenceActionController extends TodoyuActionController {
 		TodoyuPanelWidgetManager::saveCollapsedStatus(EXTID_CONTACT, $idWidget, $value);
 	}
 }
+
+?>

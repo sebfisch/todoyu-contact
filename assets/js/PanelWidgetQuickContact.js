@@ -19,33 +19,14 @@
 ***************************************************************/
 
 Todoyu.Ext.contact.PanelWidget.QuickContact = {
-	
+
 	ext: Todoyu.Ext.contact,
 
-
-	/**
-	 *	Resfresh quick contact panel widget
-	 */
-	refresh: function(type)	{
-		var url = Todoyu.getUrl('contact', 'panelwidgetquickcontact');
-
-		var options = {
-			'parameters': {
-				'action': 'refresh',
-				'type': type
-			}
-		};
-
-		if($('panelwidget-quickcontact'))	{
-			Todoyu.Ui.replace('panelwidget-quickcontact', url, options);
-		}
-	},
-	
 	addPerson: function() {
 		this.ext.changeType('person');
 		this.ext.Person.add();
 	},
-	
+
 	addCompany: function() {
 		this.ext.changeType('company');
 		this.ext.Company.add();

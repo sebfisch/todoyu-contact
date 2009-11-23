@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
-		<label index="section.module">Module</label>
-		<label index="section.panelwidgets">Panel widgets</label>
+		<label index="section.general">General</label>
+		
 		<label index="section.actions">Actions</label>
-		<label index="right.module">See module</label>
-		<label index="right.PanelWidgetContactSearchInput">See contact search widget</label>
-		<label index="right.PanelWidgetQuickContact">See create contact widget</label>
+		<label index="right.use">Use contact module</label>
+		
 		<label index="right.seePerson">Can see persons</label>
 		<label index="right.seeCompany">Can see companies</label>
 		<label index="right.createPerson">Can create persons</label>
@@ -18,6 +17,19 @@
 		<label index="right.createLoginUser">Can create a login user</label>
 		<label index="right.editLoginUser">Can edit a login user</label>
 <!--  ......................................... added after 20091122 -->
+		<label index="section.panelwidgets">Panel widgets</label>
+		<label index="right.panelwidget:contactSearch">Use contact search PanelWidget</label>
+		<label index="right.panelwidget:quickContact">Use QuickContact PanelWidget</label>
+		<label index="section.person">Person</label>
+		<label index="right.person:use">Use person repository</label>
+		<label index="right.person:edit">Edit a person record</label>
+		<label index="right.person:create">Create a new person record</label>
+		<label index="right.person:delete">Delete a person record</label>
+		<label index="section.company">Company</label>
+		<label index="right.company:use">Use company repository</label>
+		<label index="right.company:edit">Edit a company record</label>
+		<label index="right.company:create">Create a new company record</label>
+		<label index="right.company:delete">Delete a company record</label>
 	</labels>
 	<labels lang="de"></labels>
 </locallang>

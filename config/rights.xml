@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rights labels="ext/contact/locale/rights.xml">
-	<section key="module">
-		<allow right="module" comment="can see the module"/>
+	<section key="general">
+		<allow right="use" />
 	</section>
 	<section key="panelwidgets">
-		<allow right="PanelWidgetContactSearchInput" comment="can see contact search input" />
-		<allow right="PanelWidgetQuickContact" comment="can see create contact" />
+		<allow right="panelwidget:contactSearch" />
+		<allow right="panelwidget:quickContact" />
 	</section>
-	<section key="actions">
-		<allow right="seePerson" comment="can see persons" />
-		<allow right="seeCompany" comment="can see companies" />
-		<allow right="editPerson" comment="can edit persons" />
-		<allow right="editCompany" comment="can edit" />
-		<allow right="createCompany" comment="can create" />
-		<allow right="createPerson" comment="can create" />
-		<allow right="deletePerson" comment="can delete" />
-		<allow right="deleteCompany" comment="can delete" />
-		<allow right="createLoginUser" comment="can create" />
-		<allow right="editLoginUser" comment="can create" />
+	<section key="person">
+		<allow right="person:use" />
+		<allow right="person:edit" />
+		<allow right="person:create" />
+		<allow right="person:delete" />
+	</section>
+	<section key="company">
+		<allow right="company:use" />
+		<allow right="company:edit" />
+		<allow right="company:create" />
+		<allow right="company:delete" />
 	</section>
 </rights>
