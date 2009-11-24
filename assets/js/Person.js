@@ -42,8 +42,8 @@ Todoyu.Ext.contact.Person =  {
 		var url = Todoyu.getUrl('contact', 'person');
 		var options = {
 			'parameters': {
-				'person': idPerson,
-				'action': 'edit'
+				'person':	idPerson,
+				'action':	'edit'
 			},
 			'onComplete': this.onEdit.bind(this, idPerson)
 		};
@@ -75,7 +75,7 @@ Todoyu.Ext.contact.Person =  {
 			var url = Todoyu.getUrl('contact', 'person');
 			var options = {
 				'parameters': {
-					'action':		'remove',
+					'action':	'remove',
 					'person':	idPerson
 				},
 				'onComplete': this.onRemoved.bind(this, idPerson)
@@ -136,7 +136,7 @@ Todoyu.Ext.contact.Person =  {
 	save: function(form) {
 		$(form).request ({
 				'parameters': {
-					'action': 'save'
+					'action':	'save'
 				},
 				'onComplete': this.onSaved.bind(this)
 			});
@@ -179,8 +179,8 @@ Todoyu.Ext.contact.Person =  {
 		var url = Todoyu.getUrl('contact', 'person');
 		var options = {
 			'parameters': {
-				'action': 'list',
-				'sword': sword
+				'action':	'list',
+				'sword':	sword
 			}
 		};
 
@@ -196,10 +196,10 @@ Todoyu.Ext.contact.Person =  {
 	 */
 	editUserRecord: function(idUser) {
 		var params	= {
-			'ext': 'admin',
-			'mod': 'user',
-			'action': 'edit',
-			'user': idUser
+			'ext':		'admin',
+			'mod':		'user',
+			'action':	'edit',
+			'user':		idUser
 		}
 
 		location.href = '?' + Object.toQueryString(params);
@@ -216,8 +216,8 @@ Todoyu.Ext.contact.Person =  {
 		var url		= Todoyu.getUrl('contact', 'person')
 		var options	= {
 			'parameters': {
-				'action': 'detail',
-				'person': idPerson
+				'action':	'detail',
+				'person':	idPerson
 			}
 		};
 
