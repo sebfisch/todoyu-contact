@@ -145,7 +145,7 @@ class TodoyuContactPreferences {
 	 *
 	 */
 	public static function saveShowAll()	{
-		if(self::getShowAll())	{
+		if( self::getShowAll() )	{
 			self::removeShowAll();
 		} else {
 			$showAllArray = self::getShowAllArray();
