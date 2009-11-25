@@ -12,7 +12,7 @@
 			<legend>Main contactinfo data</legend>
 			<elements>
 				<field type="select" name="id_contactinfotype">
-					<label>LLL:user.contactinfo.attr.contactinfotype</label>
+					<label>user.contactinfo.attr.contactinfotype</label>
 					<source type="sql">
 						<fields>id,title</fields>
 						<tables>ext_user_contactinfotype</tables>
@@ -24,11 +24,11 @@
 					<required>1</required>
 				</field>
 				<field type="textinput" name="info">
-					<label>LLL:user.contactinfo.attr.info</label>
+					<label>user.contactinfo.attr.info</label>
 					<required>1</required>
 				</field>
 				<field type="checkbox" name="preferred">
-					<label>LLL:user.contactinfo.attr.preferred</label>
+					<label>user.contactinfo.attr.preferred</label>
 				</field>
 			</elements>
 		</fieldset>

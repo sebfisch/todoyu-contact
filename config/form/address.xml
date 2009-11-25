@@ -14,7 +14,7 @@
 			<elements>
 
 				<field type="select" name="id_addresstype">
-					<label>LLL:user.address.attr.addresstype</label>
+					<label>user.address.attr.addresstype</label>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getAddressTypeOptions</function>
 					</source>
@@ -22,33 +22,33 @@
 				</field>
 
 				<field type="textinput" name="street">
-					<label>LLL:user.address.attr.street</label>
+					<label>user.address.attr.street</label>
 					<required />
 				</field>
 
 				<field type="textinput" name="postbox">
-					<label>LLL:user.address.attr.postbox</label>
+					<label>user.address.attr.postbox</label>
 				</field>
 
 				<field type="textinput" name="zip">
-					<label>LLL:user.address.attr.zip</label>
+					<label>user.address.attr.zip</label>
 					<required />
 				</field>
 
 				<field type="textinput" name="city">
-					<label>LLL:user.address.attr.city</label>
+					<label>user.address.attr.city</label>
 					<required />
 				</field>
 
 				<field type="select" name="id_country">
-					<label>LLL:user.address.attr.country</label>
+					<label>user.address.attr.country</label>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getCountryOptions</function>
 					</source>
 				</field>
 
 				<field type="textinputAC" name="region">
-					<label>LLL:user.address.attr.region</label>
+					<label>user.address.attr.region</label>
 					<config>
 						<acListener>
 							<ext>contact</ext>
@@ -60,11 +60,11 @@
 				</field>
 
 				<field type="checkbox" name="is_preferred">
-					<label>LLL:user.address.attr.is_preferred</label>
+					<label>user.address.attr.is_preferred</label>
 				</field>
 
 				<field type="textarea" name="comment">
-					<label>LLL:user.address.attr.comment</label>
+					<label>user.address.attr.comment</label>
 				</field>
 
 			</elements>

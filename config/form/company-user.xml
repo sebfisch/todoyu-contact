@@ -10,7 +10,7 @@
 			<elements>
 
 				<field type="textinputAC" name="id">
-					<label>LLL:user.customer.attr.customer-user.person</label>
+					<label>user.customer.attr.customer-user.person</label>
 					<config>
 						<acListener>
 							<ext>contact</ext>
@@ -23,7 +23,7 @@
 				</field>
 
 				<field type="select" name="id_workaddress">
-					<label>LLL:user.worklocation</label>
+					<label>user.worklocation</label>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getWorkaddressOptions</function>
 						<lazyInit/>
@@ -31,7 +31,7 @@
 				</field>
 
 				<field type="select" name="id_jobtype">
-					<label>LLL:user.jobtype</label>
+					<label>user.jobtype</label>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getJobtypeOptions</function>
 						<lazyInit/>

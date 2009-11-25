@@ -3,7 +3,7 @@
 	<attributes>
 		<attribute name="action">?ext=contact&amp;controller=person</attribute>
 		<attribute name="name">person</attribute>
-		<attribute name="onsubmit">return Todoyu.Ext.contact.Person.save(this)</attribute>
+		<attribute name="onsubmit">return false</attribute>
 		<attribute name="class">formPerson</attribute>
 	</attributes>
 	<hiddenFields>
@@ -15,46 +15,46 @@
 			<elements>
 
 				<field type="select" name="type">
-					<label>LLL:user.user.attr.type</label>
+					<label>user.user.attr.type</label>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getUserTypeOptions</function>
 					</source>
 				</field>
-				
+
 				<field type="select" name="gender">
-					<label>LLL:user.user.attr.gender</label>
+					<label>user.user.attr.gender</label>
 					<source type="list">
 						<option>
 							<value>m</value>
-							<label>LLL:user.user.attr.gender.m</label>
+							<label>user.user.attr.gender.m</label>
 						</option>
 						<option>
 							<value>w</value>
-							<label>LLL:user.user.attr.gender.f</label>
+							<label>user.user.attr.gender.f</label>
 						</option>
 					</source>
 				</field>
 
 				<field type="textinput" name="lastname">
-					<label>LLL:user.user.attr.lastname</label>
+					<label>user.user.attr.lastname</label>
 					<required/>
 				</field>
 
 				<field type="textinput" name="firstname">
-					<label>LLL:user.user.attr.firstname</label>
+					<label>user.user.attr.firstname</label>
 					<required>1</required>
 				</field>
 
 				<field type="textinput" name="shortname">
-					<label>LLL:user.user.attr.shortname</label>
+					<label>user.user.attr.shortname</label>
 				</field>
-				
+
 				<field type="textinput" name="email">
-					<label>LLL:user.user.attr.email</label>
+					<label>user.user.attr.email</label>
 				</field>
 
 				<field type="dateinput" name="birthday">
-					<label>LLL:user.user.attr.birthday</label>
+					<label>user.user.attr.birthday</label>
 					<calendar>
 						<range>[1940,2020]</range>
 					</calendar>
@@ -68,7 +68,7 @@
 				</field>
 
 				<field type="databaseRelation" name="contactinfo">
-					<label>LLL:user.user.attr.contactinfo</label>
+					<label>user.user.attr.contactinfo</label>
 					<foreignRecordConf>
 						<foreignformxml>ext/contact/config/form/contactinfo.xml</foreignformxml>
 						<addSubformConfig>
@@ -83,7 +83,7 @@
 				</field>
 
 				<field type="databaseRelation" name="address">
-					<label>LLL:user.user.attr.address</label>
+					<label>user.user.attr.address</label>
 					<foreignRecordConf>
 						<foreignformxml>ext/contact/config/form/address.xml</foreignformxml>
 						<addSubformConfig>
@@ -98,7 +98,7 @@
 				</field>
 
 				<field type="databaseRelation" name="customer">
-					<label>LLL:user.user.attr.customer</label>
+					<label>user.user.attr.customer</label>
 					<foreignRecordConf>
 						<foreignformxml>ext/contact/config/form/user-company.xml</foreignformxml>
 						<addSubformConfig>
@@ -111,32 +111,22 @@
 						</label>
 					</foreignRecordConf>
 				</field>
-				
+
 			</elements>
 		</fieldset>
-		
+
 		<fieldset name="buttons">
 			<legend>Actions</legend>
 			<class>buttons</class>
 			<elements>
-				
-				<field type="button" name="save">
-					<type>submit</type>
-					<text>LLL:form.field.save</text>
-					<class>buttonSave</class>
-					<hasIcon>1</hasIcon>
+				<field type="saveButton" name="save">
+					<onclick>Todoyu.Ext.contact.Person.save(this.form)</onclick>
 				</field>
-				
-				<field type="button" name="cancel">
-					<text>LLL:form.field.cancel</text>
-					<type>button</type>
-					<class>buttonCancel</class>
-					<hasIcon>1</hasIcon>
+				<field type="cancelButton" name="cancel">
 					<onclick>Todoyu.Ext.contact.Person.closeForm()</onclick>
 				</field>
-				
 			</elements>
 		</fieldset>
-		
+
 	</fieldsets>
 </form>
