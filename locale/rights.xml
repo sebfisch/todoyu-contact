@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
-		<label index="section.general">General</label>
-		
+		<label index="section.module">Module</label>
+		<label index="section.panelwidgets">Panel Widgets</label>
 		<label index="section.actions">Actions</label>
-		<label index="right.use">Use contact module</label>
-		
-		<label index="right.seePerson">Can see persons</label>
-		<label index="right.seeCompany">Can see companies</label>
-		<label index="right.createPerson">Can create persons</label>
-		<label index="right.createCompany">Can create companies</label>
-		<label index="right.editPerson">Can edit persons</label>
-		<label index="right.editCompany">Can edit companies</label>
-		<label index="right.deletePerson">Can delete persons</label>
-		<label index="right.deleteCompany">Can delete companies</label>
-		<label index="right.createLoginUser">Can create a login user</label>
-		<label index="right.editLoginUser">Can edit a login user</label>
-<!--  ......................................... added after 20091122 -->
+		<label index="right.module">Allowed to see Module</label>
+		<label index="right.PanelWidgetContactSearchInput">Allowed to see contact search widget</label>
+		<label index="right.PanelWidgetQuickContact">Allowed to see create contact widget</label>
+		<label index="right.seePerson">Allowed to see persons</label>
+		<label index="right.seeCompany">Allowed to see companies</label>
+		<label index="right.createPerson">Allowed to create persons</label>
+		<label index="right.createCompany">Allowed to create companies</label>
+		<label index="right.editPerson">Allowed to edit persons</label>
+		<label index="right.editCompany">Allowed to edit companies</label>
+		<label index="right.deletePerson">Allowed to delete persons</label>
+		<label index="right.deleteCompany">Allowed to delete companies</label>
+		<label index="right.createLoginUser">Allowed to create a login user</label>
+		<label index="right.editLoginUser">Allowed to edit a login user</label>
 		<label index="section.panelwidgets">Panel widgets</label>
 		<label index="right.panelwidget:contactSearch">Use contact search PanelWidget</label>
 		<label index="right.panelwidget:quickContact">Use QuickContact PanelWidget</label>
@@ -31,5 +31,36 @@
 		<label index="right.company:create">Create a new company record</label>
 		<label index="right.company:delete">Delete a company record</label>
 	</labels>
-	<labels lang="de"></labels>
+	<labels lang="de">
+		<label index="section.module">Modul</label>
+		<label index="section.panelwidgets">Steuerelement</label>
+		<label index="section.actions">Aktionen</label>
+		<label index="right.module">Sieht Module</label>
+		<label index="right.PanelWidgetContactSearchInput">Sieht Kontakt-Such-Element</label>
+		<label index="right.PanelWidgetQuickContact">Sieht Kontakt-Erfassen-Element</label>
+		<label index="right.seePerson">Sieht Personen</label>
+		<label index="right.seeCompany">Sieht Firmen</label>
+		<label index="right.createPerson">Kann Personen erfassen</label>
+		<label index="right.createCompany">Kann Firmen erfassen</label>
+		<label index="right.editPerson">Kann Personen bearbeiten</label>
+		<label index="right.editCompany">Kann Firmen erfassen</label>
+		<label index="right.deletePerson">Kann Personen löschen</label>
+		<label index="right.deleteCompany">Kann Firmen erfassen</label>
+		<label index="right.createLoginUser">Kann Benutzer erfassen</label>
+		<label index="right.editLoginUser">Kann Benutzer bearbeiten</label>
+		<label index="section.panelwidgets">Steuerelemente</label>
+		<label index="right.panelwidget:contactSearch">Kontaktsuche Element Verwenden</label>
+		<label index="right.panelwidget:quickContact">Schnellkontakt Element Verwenden</label>
+		<label index="section.person">Person</label>
+		<label index="right.person:use">Benutze Personen-Verzeichnis</label>
+		<label index="right.person:edit">Personen-Datensätze Editieren</label>
+		<label index="right.person:create">Personen-Datensätze Anlegen</label>
+		<label index="right.person:delete">Personen-Datensätze Löschen</label>
+		<label index="section.company">Firma</label>
+		<label index="right.company:use">Firmen-Verzeichnis Verwenden</label>
+		<label index="right.company:edit">Firmen-Datensätze Editieren</label>
+		<label index="right.company:create">Firmen-Datensätze Anlegen</label>
+		<label index="right.company:delete">Firmen-Datensätze Löschen</label>
+	</labels>
+	
 </locallang>

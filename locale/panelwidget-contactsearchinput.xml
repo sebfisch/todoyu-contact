@@ -4,7 +4,10 @@
 		<label index="title">Search</label>
 		<label index="showAll.label">Show All</label>
 		<label index="clearSword">Clear input</label>
-<!--  ......................................... added after 20091122 -->
 	</labels>
-	<labels lang="de"></labels>
+	<labels lang="de">
+		<label index="title">Suche</label>
+		<label index="showAll.label">Alle anzeigen</label>
+		<label index="clearSword">Eingaben löschen</label>
+	</labels>
 </locallang>

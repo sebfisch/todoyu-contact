@@ -4,7 +4,10 @@
 		<label index="title">Add new record</label>
 		<label index="button.company">Add new company</label>
 		<label index="button.person">Add new person</label>
-<!--  ......................................... added after 20091122 -->
 	</labels>
-	<labels lang="de"></labels>
+	<labels lang="de">
+		<label index="title">Neuen Datensatz erfassen</label>
+		<label index="button.company">Neue Firma erfassen</label>
+		<label index="button.person">Neue Person erfassen</label>
+	</labels>
 </locallang>
