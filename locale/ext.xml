@@ -39,7 +39,7 @@
 		<label index="ext.title">Kontakt</label>
 		<label index="page.title">Kontakte</label>
 		<label index="contacttypes.company">Firmen</label>
-		<label index="contacttypes.person">Person</label>
+		<label index="contacttypes.person">Personen</label>
 		<label index="contacttypes.jobtype">Berufstätigkeit</label>
 		<label index="contacttypes.customerrole">Kunden-Rolle</label>
 		<label index="contact.createnew">Hinzufügen</label>
@@ -69,5 +69,5 @@
 		<label index="noLabel.newContactInfo">Neue Kontakt-Information</label>
 		<label index="noLabel.newAddress">Neue Adresse</label>
 		<label index="noLabel.newEmployee">Neuer Mitarbeiter</label>
-	</labels>	
+	</labels>
 </locallang>
