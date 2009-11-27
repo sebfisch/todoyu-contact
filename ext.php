@@ -26,7 +26,7 @@
  * @subpackage	Admin
  */
 
-if( ! defined('TODOYU') ) die('NO ACCESS');
+
 
 
 

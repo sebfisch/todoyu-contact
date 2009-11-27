@@ -23,7 +23,7 @@
  * Configure panel widgets to be shown in Contact area
  */
 
-if( ! defined('TODOYU') ) die('NO ACCESS');
+
 
 
 	// add default panel widgets

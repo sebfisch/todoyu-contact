@@ -19,7 +19,7 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-if( ! defined('TODOYU') ) die('NO ACCESS');
+
 
 /**
  * Render class Todoyufor the contact module
