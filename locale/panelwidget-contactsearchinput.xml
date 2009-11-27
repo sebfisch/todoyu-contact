@@ -8,6 +8,6 @@
 	<labels lang="de">
 		<label index="title">Suche</label>
 		<label index="showAll.label">Alle anzeigen</label>
-		<label index="clearSword">Eingaben löschen</label>
+		<label index="clearSword">Eingabe löschen</label>
 	</labels>
 </locallang>

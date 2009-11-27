@@ -41,7 +41,7 @@
 		<label index="contacttypes.company">Firmen</label>
 		<label index="contacttypes.person">Person</label>
 		<label index="contacttypes.jobtype">Berufstätigkeit</label>
-		<label index="contacttypes.customerrole">Kunden Rolle</label>
+		<label index="contacttypes.customerrole">Kunden-Rolle</label>
 		<label index="contact.createnew">Hinzufügen</label>
 		<label index="contact.edit">Datensatz bearbeiten: </label>
 		<label index="editRecord">Datensatz bearbeiten</label>
@@ -66,7 +66,7 @@
 		<label index="person.tooltip.showuser">Zeige Benutzer</label>
 		<label index="company.tooltip.edit">Firma bearbeiten</label>
 		<label index="company.tooltip.delete">Firma löschen</label>
-		<label index="noLabel.newContactInfo">Neue Kontakt Information</label>
+		<label index="noLabel.newContactInfo">Neue Kontakt-Information</label>
 		<label index="noLabel.newAddress">Neue Adresse</label>
 		<label index="noLabel.newEmployee">Neuer Mitarbeiter</label>
 	</labels>	
