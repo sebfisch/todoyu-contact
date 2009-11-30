@@ -60,11 +60,8 @@
 					</calendar>
 				</field>
 
-				<field type="button" name="expandall">
-					<type>button</type>
-					<text>LLL:core.expandall</text>
-					<onclick>Todoyu.Form.expandAllForeignRecords(this.id);</onclick>
-					<class/>
+				<field type="expandAllButton" name="expandall">
+					<fields>contactinfo,address,customer</fields>
 				</field>
 
 				<field type="databaseRelation" name="contactinfo">

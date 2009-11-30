@@ -18,7 +18,7 @@
     <td class="company">{$person.company}</td>
     <td class="actions">
     	{restrict 'contact' 'person:edit'}<div title="{Label contact.person.tooltip.edit}" class="icon edit" onclick="Todoyu.Ext.contact.Person.edit({$person.id})"></div>{/restrict}
-    	{restrict 'contact' 'person:delete'}<div title="{Label contact.person.tooltip.delete}" class="icon delete" onclick="Todoyu.Ext.contact.Person.remove({$person.id})"></div>{/restrict}
+    	{restrict 'contact' 'person:delete'}<div title="{Label core.deleteRecord}" class="icon delete" onclick="Todoyu.Ext.contact.Person.remove({$person.id})"></div>{/restrict}
     	<div title="{Label contact.person.tooltip.showuser}" class="icon user" onclick="Todoyu.Ext.contact.Person.editUserRecord({$person.id})"></div>
     </td>
   </tr>

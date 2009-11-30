@@ -62,7 +62,7 @@
 		<label index="subMenuEntry.person">Personen</label>
 		<label index="subMenuEntry.company">Firmen</label>
 		<label index="person.tooltip.edit">Person bearbeiten</label>
-		<label index="person.tooltip.delete">Person löschen</label>
+		<label index="person.tooltip.delete">Eintrag löschen</label>
 		<label index="person.tooltip.showuser">Zeige Benutzer</label>
 		<label index="company.tooltip.edit">Firma bearbeiten</label>
 		<label index="company.tooltip.delete">Firma löschen</label>

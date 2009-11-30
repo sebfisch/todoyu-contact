@@ -31,10 +31,8 @@
 					<label>user.customer.attr.is_ngo</label>
 				</field>
 
-				<field type="button" name="expandall">
-					<type>button</type>
-					<text>LLL:core.expandall</text>
-					<onclick>Todoyu.Form.expandAllForeignRecords(this.id);</onclick>
+				<field type="expandAllButton" name="expandAll">
+					<fields>contactinfo,address,user</fields>
 				</field>
 
 				<field type="databaseRelation" name="contactinfo">
