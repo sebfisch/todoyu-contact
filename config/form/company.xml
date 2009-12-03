@@ -82,6 +82,7 @@
 
 			</elements>
 		</fieldset>
+
 		<fieldset name="buttons">
 			<legend>Actions</legend>
 			<class>buttons</class>
@@ -94,5 +95,6 @@
 				</field>
 			</elements>
 		</fieldset>
+
 	</fieldsets>
 </form>
