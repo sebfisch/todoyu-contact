@@ -42,7 +42,7 @@
 
 				<field type="textinput" name="firstname">
 					<label>user.user.attr.firstname</label>
-					<required>1</required>
+					<required />
 				</field>
 
 				<field type="textinput" name="shortname">
@@ -58,6 +58,7 @@
 					<calendar>
 						<range>[1940,2020]</range>
 					</calendar>
+					<storeAsDate />
 				</field>
 
 				<field type="expandAllButton" name="expandall">
