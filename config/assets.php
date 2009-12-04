@@ -32,7 +32,7 @@ $CONFIG['EXT']['contact']['assets'] = array(
 	'default' => array(
 		'css'	=> array(
 			array(
-				'file'		=> 'ext/contact/assets/css/metamenu.css',
+				'file'		=> 'ext/contact/assets/css/global.css',
 				'position'	=> 100
 			)
 		)

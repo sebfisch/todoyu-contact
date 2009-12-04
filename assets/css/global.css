@@ -1,0 +1,16 @@
+/* --------------------------
+	Submenu
+   -------------------------- */
+
+#navi-main-list-contact li.itemContact a {
+	background-image:url(../img/icons.png) !important;
+	background-repeat:no-repeat;
+}
+
+#navi-main-list-contact li.itemContact a.linkcontactperson {
+	background-position:6px -84px;
+}
+
+#navi-main-list-contact li.itemContact a.linkcontactcompany {
+	background-position:6px -114px;
+}
