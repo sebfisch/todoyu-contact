@@ -1,0 +1,82 @@
+<div class="visitingCardContent">
+	<table>
+		<tr class="odd">
+			<td class="label">{Label user.customer.attr.name}:</td>
+			<td width="90%" colspan="3">{$title}</td>
+		</tr>
+		{if strlen($shortname) > 0}
+			<tr class="odd">
+				<td class="label">{Label user.customer.attr.shortname}:</td>
+				<td colspan="3">{$shortname}</td>
+			</tr>
+		{/if}
+		<tr class="even"><td colspan="4"><br/></td></tr>
+		{if $date_enter != 0}
+			<tr class="odd">
+				<td class="label">{Label user.customer.attr.date_enter}:</td>
+				<td colspan="3">{dateFormat $date_enter "date" }</td>
+			</tr>
+		{/if}
+		<tr class="even"><td colspan="4"><br/></td></tr>
+		
+		{foreach $contactinfo key contactinfoData contactinfoIterator}
+			<tr class="odd">
+				{if $.foreach.contactinfoIterator.first}
+					<td class="label">{Label user.customer.attr.contactinfo}</td>
+				{else}
+					<td class="label"></td>
+				{/if} 
+				<td>
+					{labelContactinfotype $contactinfoData.id_contactinfotype}</td>
+				<td colspan="2">
+				 	{$contactinfoData.info} 
+				</td>
+			</tr>
+		{/foreach}
+		
+		<tr class="even"><td colspan="4"><br/></td></tr>
+		
+		{foreach $address key addressData addressIterator}
+			<tr class="odd">
+				{if $.foreach.addressIterator.first}
+					<td class="label">{Label user.customer.attr.address}</td>
+				{else}
+					<td class="label"></td>
+				{/if} 
+				<td colspan="3">
+					{$addressData.street}<br />
+					{if $addressData.postbox}{$addressData.postbox}<br />{/if}
+					{$addressData.zip} {$addressData.city}<br />
+					{if $addressData.region}{$addressData.region}{/if}
+					{if $addressData.id_country} {countryName $addressData.id_country}<br />{/if}
+					<br />
+					{if $addressData.comment}
+						<p>
+							{$addressData.comment}
+						</p>
+					{/if}
+				<td>
+			</tr>
+		{/foreach}
+		
+		<tr class="even"><td colspan="4"><br/></td></tr>
+		
+		{foreach $user key userData employeeIterator}
+			<tr class="odd">
+				{if $.foreach.employeeIterator.first}
+					<td class="label">{Label user.customer.attr.user}</td>
+				{else}
+					<td class="label"></td>
+				{/if} 
+				<td>
+					{$userData.lastname}</td>
+				<td>
+				 	{$userData.firstname} 
+				</td>
+				<td>
+					{$userData.email}
+				</td>
+			</tr>
+		{/foreach}
+	</table>
+</div>

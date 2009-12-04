@@ -29,8 +29,10 @@
 		<label index="person.tooltip.edit">Edit Person</label>
 		<label index="person.tooltip.delete">Delete Person</label>
 		<label index="person.tooltip.edituser">Edit User</label>
+		<label index="person.tooltip.showInfo">Show Person Information</label>
 		<label index="company.tooltip.edit">Edit Company</label>
 		<label index="company.tooltip.delete">Delete Company</label>
+		<label index="company.tooltip.showInfo">Show Company Information</label>
 		<label index="noLabel.newContactInfo">New Contact Info</label>
 		<label index="noLabel.newAddress">New Address</label>
 		<label index="noLabel.newEmployee">New Employee</label>

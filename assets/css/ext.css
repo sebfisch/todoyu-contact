@@ -1,3 +1,7 @@
+table.list tr.odd td{
+	background-color: #f3f3f3;
+}
+
 /* -------------------------
 	Personlist
    -------------------------*/
@@ -16,7 +20,7 @@
 }
 
 .personlist th.actions {
-	width:80px;
+	width:100px;
 }
 
 	/* Column configs */
@@ -40,8 +44,6 @@
 .personlist td.actions div.user {
 	background-position:0 -330px;
 }
-
-
 
 /* -------------------------
 	Tabs
@@ -86,7 +88,7 @@
 }
 
 .companylist th.actions {
-	width:50px;
+	width:80px;
 }
 
 	/* Column configs */
@@ -112,6 +114,11 @@
 	background-position:0 -510px;
 }
 
+
+.companylist td.actions div.info,
+.personlist td.actions div.info {
+	background: url(../img/icons.png) no-repeat 0 -539px;
+}
 
 
 /* -------------------------

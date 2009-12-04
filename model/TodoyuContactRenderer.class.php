@@ -279,7 +279,7 @@ class TodoyuContactRenderer {
 
 				// Render company summary
 			case 'company':
-//				$content	= self::renderCompanyInfo($idRecord);
+				$content	= self::renderCompanyInfo($idRecord);
 				break;
 		}
 
@@ -310,6 +310,16 @@ class TodoyuContactRenderer {
 		$data['email']	= $user->getEmail();
 
 		return render('ext/contact/view/info-user.tmpl', $data);
+	}
+	
+	
+	public function renderCompanyInfo($idCompany)	{
+		$idCompany = intval($idCompany);
+		
+		$company	= TodoyuCustomerManager::getCustomer($idCompany);
+		$data		= $company->getTemplateData(true);
+
+		return render('ext/contact/view/info-company.tmpl', $data);
 	}
 
 
