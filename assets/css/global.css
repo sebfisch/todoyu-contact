@@ -2,15 +2,15 @@
 	Submenu
    -------------------------- */
 
-#navi-main-list-contact li.itemContact a {
+#navi-main-list-contact li.item a {
 	background-image:url(../img/icons.png) !important;
 	background-repeat:no-repeat;
 }
 
-#navi-main-list-contact li.itemContact a.linkcontactperson {
+#navi-main-list-contact li.itemContactPerson a {
 	background-position:6px -84px;
 }
 
-#navi-main-list-contact li.itemContact a.linkcontactcompany {
+#navi-main-list-contact li.itemContactCompany a {
 	background-position:6px -114px;
 }
