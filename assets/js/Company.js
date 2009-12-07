@@ -20,7 +20,10 @@
 
 Todoyu.Ext.contact.Company =  {
 
-	ext: Todoyu.Ext.contact,
+	/**
+	 *	Ext shortcut
+	 */
+	ext:	Todoyu.Ext.contact,
 
 
 

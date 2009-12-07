@@ -23,33 +23,37 @@
  */
 Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 
-	ext: Todoyu.Ext.contact,
+	/**
+	 *	Ext shortcut
+	 */
+	ext:	Todoyu.Ext.contact,
 
 	/**
 	 * Widget ID
 	 */
-	id: 'contactSearch',
+	id:		'contactSearch',
 
 	/**
 	 * Element references
 	 */
-	input: null,
-	form: null,
-	clearButton: null,
+	input:			null,
+	form:			null,
+	clearButton:	null,
 
 	/**
 	 * Delay time before sending search request
 	 */
-	delayTime: 0.5,
+	delayTime:	0.5,
 
 	/**
 	 * Timeout ID
 	 */
-	timeout: null,
+	timeout:	null,
+
 
 
 	/**
-	 *	Init
+	 *	Init the widget: install observers, initialize clear input button
 	 */
 	init: function() {
 		this.input		= $('panelwidget-' + this.id + '-sword');

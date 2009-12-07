@@ -20,13 +20,26 @@
 
 Todoyu.Ext.contact.PanelWidget.QuickContact = {
 
-	ext: Todoyu.Ext.contact,
+	/**
+	 *	Ext shortcut
+	 */
+	ext:	Todoyu.Ext.contact,
 
+
+
+	/**
+	 * Evoke adding new person
+	 */
 	addPerson: function() {
 		this.ext.changeType('person');
 		this.ext.Person.add();
 	},
 
+
+
+	/**
+	 * Evoke adding new company
+	 */
 	addCompany: function() {
 		this.ext.changeType('company');
 		this.ext.Company.add();

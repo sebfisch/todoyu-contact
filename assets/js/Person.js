@@ -20,7 +20,12 @@
 
 Todoyu.Ext.contact.Person =  {
 
-	ext: Todoyu.Ext.contact,
+	/**
+	 *	Ext shortcut
+	 */
+	ext:	Todoyu.Ext.contact,
+
+
 
 	
 	
