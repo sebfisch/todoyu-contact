@@ -24,29 +24,29 @@
 Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 
 	ext: Todoyu.Ext.contact,
-	
+
 	/**
 	 * Widget ID
 	 */
 	id: 'contactSearch',
-	
+
 	/**
 	 * Element references
 	 */
 	input: null,
 	form: null,
 	clearButton: null,
-	
+
 	/**
 	 * Delay time before sending search request
 	 */
 	delayTime: 0.5,
-	
+
 	/**
 	 * Timeout ID
 	 */
 	timeout: null,
-	
+
 
 	/**
 	 *	Init
@@ -59,9 +59,9 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 		this.installObservers();
 		this.toggleClearButton();
 	},
-		
-		
-		
+
+
+
 	/**
 	 * Install observers on input field and form
 	 */
@@ -69,12 +69,13 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 		this.input.observe('keyup', this.onKeyup.bindAsEventListener(this));
 		this.form.observe('submit', this.onFormSubmit.bindAsEventListener(this))
 	},
-	
-	
-	
+
+
+
 	/**
-	 * Key up handler (on text entered)
-	 * @param	Event	event
+	 * KeyUp handler (on text entered)
+	 * 
+	 *	@param	Event	event
 	 */
 	onKeyup: function(event) {
 		this.toggleClearButton();
@@ -83,29 +84,30 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 		
 		this.timeout = this.search.bind(this).delay(this.delayTime);		
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Form submit handler (prevent normal submit)
-	 * @param	Event	event
+	 * 
+	 *	@param	Event	event
 	 */
 	onFormSubmit: function(event) {
 		event.stop();
 		this.search();
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Get current selected type (tab)
 	 */
 	getType: function() {
 		return Todoyu.Tabs.getActive('contact-tabs').id.replace('contact-tabhead-','');
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Execute search request
 	 */
@@ -116,18 +118,18 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 		
 		this.ext[type].showList(this.getValue());
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Get current search value
 	 */
 	getValue: function() {
 		return $F(this.input);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Toggle clear button. Only visible if search text entered
 	 */
@@ -138,9 +140,9 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 			this.clearButton.show();
 		}
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Clear current timeout if set
 	 */
@@ -150,9 +152,9 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 			this.timeout = null;
 		}
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Clear input field
 	 */
