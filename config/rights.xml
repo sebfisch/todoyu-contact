@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rights labels="ext/contact/locale/rights.xml">
-	<section key="general">
-		<allow right="use" />
+<rights>
+	
+	<section name="general">
+		<right name="use" />
 	</section>
-	<section key="panelwidgets">
-		<allow right="panelwidget:contactSearch" />
-		<allow right="panelwidget:quickContact" />
+	
+	<section name="panelwidgets">
+		<right name="panelwidget:contactSearch" />
+		<right name="panelwidget:quickContact" />
 	</section>
-	<section key="person">
-		<allow right="person:use" />
-		<allow right="person:edit" />
-		<allow right="person:create" />
-		<allow right="person:delete" />
+	
+	<section name="person">
+		<right name="person:use" />
+		<right name="person:edit" />
+		<right name="person:create" />
+		<right name="person:delete" />
 	</section>
-	<section key="company">
-		<allow right="company:use" />
-		<allow right="company:edit" />
-		<allow right="company:create" />
-		<allow right="company:delete" />
+	
+	<section name="company">
+		<right name="company:use" />
+		<right name="company:edit" />
+		<right name="company:create" />
+		<right name="company:delete" />
 	</section>
+	
 </rights>
