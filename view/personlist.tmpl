@@ -9,7 +9,27 @@
     <th scope="col" class="company">{Label contact.company}</th>
     <th scope="col" class="last actions">&nbsp;</th>
   </tr>
-	{foreach $persons person}
+{paging data=$persons item="person" update="contact/person/list" size="5" name="persons" offset=$offset total=$total}
+
+	{if $.foreach.persons.first}
+	<tr>
+	 <td colspan="6">
+	 	<div class="paging">
+	 		<div class="view">{$.foreach.persons.total}/{$.foreach.persons.paging.rows}</div>
+	 		<div class="pages">
+	 			{for i 0 $.foreach.persons.paging.pages-1}
+	 			<div class="page" onclick="{str_replace('#OFFSET#', $i*5, $.foreach.persons.paging.link)}">{$i+1}</div>
+	 			{/for}
+	 		</div>
+	 		<div class="nav">
+		 		<div class="back">&lt;</div>
+		 		<div class="next">&gt;</div>
+	 		</div>
+	 	</div>
+	 </td>
+	</tr>
+	{/if}
+
   <tr class="{cycle values="odd,even"}">
   	<td class="icon"><a name="index_{upper $person.lastname[0]}"></a></td>
     <td class="lastname">{$person.lastname}</td>
@@ -23,5 +43,5 @@
     	<div title="{Label contact.person.tooltip.edituser}" class="icon user" onclick="Todoyu.Ext.contact.Person.editUserRecord({$person.id})"></div>
     </td>
   </tr>
-	{/foreach}
+{/paging}
 </table>

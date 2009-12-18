@@ -124,11 +124,17 @@ class TodoyuContactRenderer {
 	 *	@param	String	$sword
 	 *	@return	String
 	 */
-	public static function renderPersonList($sword = '') {
+	public static function renderPersonList($sword = '', $size = 5, $offset = 0) {
 		restrict('contact', 'person:use');
+
+		$size	= intval($size);
+		$offset	= intval($offset);
+
 		$tmpl		= 'ext/contact/view/personlist.tmpl';
 		$data		= array(
-			'persons'	=> TodoyuUserManager::searchUsers($sword)
+			'persons'	=> TodoyuUserManager::searchUsers($sword, null, $size, $offset),
+			'offset'	=> $offset,
+			'total'		=> Todoyu::db()->getTotalFoundRows()
 		);
 
 		return render($tmpl, $data);
@@ -311,11 +317,11 @@ class TodoyuContactRenderer {
 
 		return render('ext/contact/view/info-user.tmpl', $data);
 	}
-	
-	
+
+
 	public function renderCompanyInfo($idCompany)	{
 		$idCompany = intval($idCompany);
-		
+
 		$company	= TodoyuCustomerManager::getCustomer($idCompany);
 		$data		= $company->getTemplateData(true);
 

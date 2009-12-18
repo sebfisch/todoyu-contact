@@ -68,9 +68,10 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 		TodoyuContactPreferences::saveActiveTab('person');
 
 		$sword	= trim($params['sword']);
+		$offset	= intval($params['offset']);
 
 		$content	= TodoyuContactRenderer::renderTabs('person');
-		$content 	.=TodoyuContactRenderer::renderPersonList($sword);
+		$content 	.=TodoyuContactRenderer::renderPersonList($sword, 5, $offset);
 
 		return $content;
 	}

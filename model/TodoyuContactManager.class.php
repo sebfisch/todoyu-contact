@@ -36,22 +36,13 @@ class TodoyuContactManager {
 
 
 
-	/**
-	 * List persons
-	 *
-	 * @param	String $sword
-	 * @return	Array
-	 */
-//	public function ListPersons($sword)	{
-//		$searchFields	= array(
-//			'firstname',
-//			'lastname'
-//		);
-//
-//		$users = TodoyuUserManager::searchUsers($sword, $searchFields);
-//
-//		return self::getAssociatedContacttypeRecordsList($userResult, 'TodoyuUser');
-//	}
+	public static function getListPersons($limit) {
+		return TodoyuUserManager::searchUsers('', null, $limit);
+	}
+
+
+
+
 
 
 
