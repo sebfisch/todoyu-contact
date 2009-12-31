@@ -22,7 +22,7 @@
 /**
  * Panel widget to create a new contact
  *
- * @package todoyu
+ * @package Todoyu
  * @subpackage contact
  */
 

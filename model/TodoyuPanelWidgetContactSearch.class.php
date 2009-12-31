@@ -20,9 +20,9 @@
 ***************************************************************/
 
 /**
- * class Todoyufor the contact search input panelwidget
+ * class for the contact search input panelwidget
  *
- * @package todoyu
+ * @package Todoyu
  * @subpackage contact
  */
 

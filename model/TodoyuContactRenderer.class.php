@@ -22,9 +22,9 @@
 
 
 /**
- * Render class Todoyufor the contact module
+ * Render class for the contact module
  *
- * @package		todoyu
+ * @package		Todoyu
  * @subpackage	contact
  */
 
