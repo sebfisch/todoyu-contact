@@ -10,7 +10,7 @@
 		</tr>
 		{if strlen($shortname) > 0}
 			<tr class="odd">
-				<td class="label">{Label user.customer.attr.shortname}:</td>
+				<td class="label">{Label user.company.attr.shortname}:</td>
 				<td>{$shortname}</td>
 			</tr>
 		{/if}
@@ -29,13 +29,13 @@
 		<tr class="odd">
 			<td class="label">{Label contact.employer}:</td>
 			<td>
-				{$customer[0][title]}<br/><br/>
-				{foreach $customerData[$customer[0][id]] numCustomer custAddressData}
-					{$custAddressData.street}<br/>
-					{$custAddressData.zip} {$custAddressData.city}<br/>
-					{$custAddressData.label_country}<br/>
-					{if strlen($custAddressData.postbox)>0}
-						{Label contact.postbox}: {$custAddressData.postbox}
+				{$company[0][title]}<br/><br/>
+				{foreach $companyData[$company[0][id]] companyAddress}
+					{$companyAddress.street}<br/>
+					{$companyAddress.zip} {$custAddressData.city}<br/>
+					{$companyAddress.label_country}<br/>
+					{if strlen($companyAddress.postbox)>0}
+						{Label contact.postbox}: {$companyAddress.postbox}
 					{/if}
 					<br/>
 				{/foreach}

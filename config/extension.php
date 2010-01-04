@@ -57,10 +57,10 @@ $CONFIG['EXT']['contact']['contacttypes']	= array(
 	'company' => array(
 		'label'		=> 'LLL:contact.contacttypes.company',
 		'formXml'	=> 'ext/contact/config/form/company.xml',
-		'objClass'	=> 'TodoyuCustomer',
+		'objClass'	=> 'TodoyuCompany',
 		'listFunc'	=> 'TodoyuContactManager::ListCompanies',
-		'saveFunc'	=> 'TodoyuContactManager::saveCustomer',
-		'deleteFunc'=> 'TodoyuCustomerManager::deleteCustomer'
+		'saveFunc'	=> 'TodoyuContactManager::saveCompany',
+		'deleteFunc'=> 'TodoyuCompanyManager::deleteCompany'
 	)
 );
 

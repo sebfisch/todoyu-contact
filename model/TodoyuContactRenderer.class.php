@@ -153,14 +153,14 @@ class TodoyuContactRenderer {
 		$tmpl		= 'ext/contact/view/companylist.tmpl';
 		$data		= array();
 
-		$customers	= TodoyuCustomerManager::searchCustomers($sword);
+		$companies	= TodoyuCompanyManager::searchCompany($sword);
 
-		foreach($customers as $index => $customer) {
-			$customers[$index]['users']		= TodoyuCustomerManager::getNumUsers($customer['id']);
-			$customers[$index]['address']	= TodoyuCustomerManager::getCustomerAddress($customer['id']);
+		foreach($companies as $index => $company) {
+			$companies[$index]['users']		= TodoyuCompanyManager::getNumUsers($company['id']);
+			$companies[$index]['address']	= TodoyuCompanyManager::getCompanyAddress($company['id']);
 		}
 
-		$data['companys'] = $customers;
+		$data['companys'] = $companies;
 
 		return render($tmpl, $data);
 	}
@@ -211,7 +211,7 @@ class TodoyuContactRenderer {
 
 		$form	= TodoyuFormManager::getForm($xmlPath, $idCompany);
 
-		$company= TodoyuCustomerManager::getCustomer($idCompany);
+		$company= TodoyuCompanyManager::getCompany($idCompany);
 		$data	= $company->getTemplateData(true);
 		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $idCompany);
 
@@ -303,29 +303,33 @@ class TodoyuContactRenderer {
 		$idUser	= intval($idUser);
 
 		$user	= TodoyuUserManager::getUser($idUser);
+
+		$tmpl	= 'ext/contact/view/info-user.tmpl';
 		$data	= $user->getTemplateData(true);
 
-		$customerIDs = $user->getCustomerIDs();
-		foreach($customerIDs as $idCustomer) {
-			$customer		= TodoyuCustomerManager::getCustomer($idCustomer);
-			$customerData	= $customer->getTemplateData(true);
+		$companyIDs = $user->getCompanyIDs();
+		foreach($companyIDs as $idCompany) {
+			$company		= TodoyuCompanyManager::getCompany($idCompany);
+			$companyData	= $company->getTemplateData(true);
 
-			$data['customerData'][$idCustomer] = $customerData['address'];
+			$data['companyData'][$idCompany] = $companyData['address'];
 		}
 
 		$data['email']	= $user->getEmail();
 
-		return render('ext/contact/view/info-user.tmpl', $data);
+		return render($tmpl, $data);
 	}
 
 
 	public function renderCompanyInfo($idCompany)	{
 		$idCompany = intval($idCompany);
 
-		$company	= TodoyuCustomerManager::getCustomer($idCompany);
+		$company	= TodoyuCompanyManager::getCompany($idCompany);
+
+		$tmpl		= 'ext/contact/view/info-company.tmpl';
 		$data		= $company->getTemplateData(true);
 
-		return render('ext/contact/view/info-company.tmpl', $data);
+		return render($tmpl, $data);
 	}
 
 

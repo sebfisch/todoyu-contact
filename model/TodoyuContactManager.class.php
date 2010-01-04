@@ -44,127 +44,6 @@ class TodoyuContactManager {
 
 
 
-
-
-	/**
-	 * List companies
-	 *
-	 * @param	String	$sword
-	 * @return	Array
-	 */
-	public function ListCompanies($sword)	{
-		$companyResult = TodoyuCustomerManager::searchCustomers($sword);
-
-		return self::getAssociatedContacttypeRecordsList($companyResult, 'TodoyuCustomer');
-	}
-
-
-
-	/**
-	 * Get array of associated contact type records (e.g customers or persons)
-	 *
-	 * @param	DB-Reference	$searchResult
-	 * @param	String			$contacttypeClass
-	 * @return	Mixed			Array / false if no records found
-	 */
-	private static function getAssociatedContacttypeRecordsList($searchResult, $contacttypeClass = 'TodoyuCustomer') {
-		$resArray	= array();
-		$index		= 0;
-
-		if( $searchResult === false )	{
-				// No entry found
-			$resArray	= false;
-		} else {
-				// Iterate associated records (persons/ companies..)
-			while($assRecord = Todoyu::db()->fetchAssoc($searchResult))	{
-				$typeObj = new $contacttypeClass($assRecord['id']);
-
-				$resArray[$index]					= $typeObj->getTemplateData();
-				$resArray[$index]['renderClass']	= ($index % 2) ? 'odd' : 'even';
-
-				$index++;
-			}
-		}
-
-		return $resArray;
-	}
-
-
-
-	/**
-	 * List job types
-	 *
-	 * @param 	String $sword
-	 * @return	Array
-	 */
-	public function ListJobtypes()	{
-
-		return self::getContactTypeEntriesArray('ext_user_jobtype');
-	}
-
-
-
-
-	/**
-	 * List customer roles
-	 *
-	 * @param	String $sword
-	 * @return	Array
-	 */
-	public function ListCustomerroles()	{
-
-		return self::getContactTypeEntriesArray('ext_user_customerrole');
-	}
-
-
-
-	/**
-	 * Get array ('id' and 'label') of records to one of the various contact type records
-	 *
-	 * @param	String	$table
-	 * @return	Array
-	 */
-	private static function getContactTypeEntriesArray($table = 'ext_user_customerrole') {
-		$result	= Todoyu::db()->doSelect('id, title', $table, 'deleted = 0', '', 'title');
-
-		$array	= array();
-		while($row = Todoyu::db()->fetchAssoc($result))	{
-			$array[] = array(
-				'id'	=> $row['id'],
-				'label'	=> $row['title'],
-			);
-		}
-
-		return $array;
-	}
-
-
-
-	/**
-	 * Prepare base obj for list data
-	 *
-	 * @param	Resource		$result
-	 * @param	String			$table
-	 * @return	Array
-	 */
-	protected function prepareBaseObjListData($result, $table)	{
-		$baseObjArray	= array();
-		$index			= 0;
-
-		while($baseObjRecord = Todoyu::db()->fetchAssoc($result))	{
-			$baseObj = new TodoyuBaseObject($baseObjRecord['id'], $table);
-
-			$baseObjArray[$index] = $baseObj->getTemplateData();
-			$baseObjArray[$index]['renderClass'] = ($index%2) ? 'odd':'even';
-
-			$index++;
-		}
-
-		return $baseObjArray;
-	}
-
-
-
 	/**
 	 * Get contact type from XML
 	 *
@@ -315,29 +194,29 @@ class TodoyuContactManager {
 
 
 	/**
-	 * Saves customer
+	 * Saves company
 	 *
 	 * @param	Array		$data
 	 * @return	Integer
 	 */
 	public function saveCompany(array $data)	{
 		$xmlPath	= 'ext/contact/config/form/company.xml';
-		$idCustomer	= intval($data['id']);
+		$idCompany	= intval($data['id']);
 
-		if( $idCustomer === 0 ) {
-			$idCustomer = TodoyuCustomerManager::addCustomer();
+		if( $idCompany === 0 ) {
+			$idCompany = TodoyuCompanyManager::addCompany();
 		}
 
 			// Save own external fields
-		$data	= self::saveCustomerForeignRecords($data, $idCustomer);
+		$data	= self::saveCompanyForeignRecords($data, $idCompany);
 
 			// Call save data hook
-		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idCustomer);
+		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idCompany);
 
-		TodoyuCustomerManager::updateCustomer($idCustomer, $data);
-		TodoyuCustomerManager::removeFromCache($idCustomer);
+		TodoyuCompanyManager::updateCompany($idCompany, $data);
+		TodoyuCompanyManager::removeFromCache($idCompany);
 
-		return $idCustomer;
+		return $idCompany;
 	}
 
 
@@ -346,7 +225,7 @@ class TodoyuContactManager {
 	 * Hanldes the foreign records of a user
 	 *
 	 * Extract:
-	 * 	- customer
+	 * 	- company
 	 *  - contactinfos
 	 *  - address
 	 *
@@ -358,20 +237,20 @@ class TodoyuContactManager {
 		$idUser		= intval($idUser);
 
 				// Remove existing records
-		self::removeAllCustomers($idUser);
+		self::removeAllCompanies($idUser);
 
-			// Save customer records
-		if( ! empty($data['customer']) ) {
-			foreach($data['customer'] as $customer) {
-				$customer['id_customer']= $customer['id'];
-				$customer['id_user']	= $idUser;
-				unset($customer['id']);
+			// Save company records
+		if( ! empty($data['company']) ) {
+			foreach($data['company'] as $company) {
+				$company['id_company']	= $company['id'];
+				$company['id_user']		= $idUser;
+				unset($company['id']);
 
 					// Remove existing link and save new data
-				$idLink = TodoyuDbHelper::saveExtendedMMrelation('ext_user_mm_customer_user', 'id_customer', 'id_user', $customer['id_customer'], $idUser, $customer);
+				$idLink = TodoyuDbHelper::saveExtendedMMrelation('ext_user_mm_company_user', 'id_company', 'id_user', $company['id_company'], $idUser, $company);
 			}
 		}
-		unset($data['customer']);
+		unset($data['company']);
 
 
 			// Save contactinfo records
@@ -403,29 +282,29 @@ class TodoyuContactManager {
 
 
 	/**
-	 * Remove all linked customers of an user
+	 * Remove all linked companies of an user
 	 *
 	 * @param	Integer		$idUser
 	 */
-	public static function removeAllCustomers($idUser) {
+	public static function removeAllCompanies($idUser) {
 		$idUser	= intval($idUser);
 
-		TodoyuDbHelper::removeMMrelations('ext_user_mm_customer_user', 'id_user', $idUser);
+		TodoyuDbHelper::removeMMrelations('ext_user_mm_company_user', 'id_user', $idUser);
 	}
 
 
 
 	/**
-	 * Link a user with customers
+	 * Link a user with companies
 	 *
 	 * @param	Integer		$idUser
-	 * @param	Array		$customerIDs
+	 * @param	Array		$companyIDs
 	 */
-	public static function linkUserToCustomers($idUser, array $customerIDs) {
+	public static function linkUserToCompanies($idUser, array $companyIDs) {
 		$idUser		= intval($idUser);
-		$customerIDs= TodoyuArray::intval($customerIDs, true, true);
+		$companyIDs	= TodoyuArray::intval($companyIDs, true, true);
 
-		TodoyuDbHelper::saveMMrelations('ext_user_mm_customer_user', 'id_user', 'id_customer', $idUser, $customerIDs, true);
+		TodoyuDbHelper::saveMMrelations('ext_user_mm_company_user', 'id_user', 'id_company', $idUser, $companyIDs, true);
 	}
 
 
@@ -461,23 +340,23 @@ class TodoyuContactManager {
 
 
 	/**
-	 * Save customer foreign records form hook
+	 * Save company foreign records form hook
 	 * Extract:
 	 * - contactinfo
 	 * - address
 	 * - user
 	 *
-	 * @param	Array		$data			Customer form data
-	 * @param	Integer		$idCustomer		Customer ID
+	 * @param	Array		$data			Company form data
+	 * @param	Integer		$idCompany		Company ID
 	 * @return	Array
 	 */
-	public static function saveCustomerForeignRecords(array $data, $idCustomer) {
-		$idCustomer = intval($idCustomer);
+	public static function saveCompanyForeignRecords(array $data, $idCompany) {
+		$idCompany = intval($idCompany);
 
 			// Remove existing records
-		TodoyuCustomerManager::removeAllContactinfo($idCustomer);
-		TodoyuCustomerManager::removeAllAddresses($idCustomer);
-		TodoyuCustomerManager::removeAllUsers($idCustomer);
+		TodoyuCompanyManager::removeAllContactinfo($idCompany);
+		TodoyuCompanyManager::removeAllAddresses($idCompany);
+		TodoyuCompanyManager::removeAllUsers($idCompany);
 
 			// Save contactinfo records
 		if( ! empty($data['contactinfo']) ) {
@@ -486,7 +365,7 @@ class TodoyuContactManager {
 				$infoIDs[] = TodoyuContactInfoManager::saveContactInfos($contactInfo);
 			}
 
-			TodoyuDbHelper::saveMMrelations('ext_user_mm_customer_contactinfo', 'id_customer', 'id_contactinfo', $idCustomer, $infoIDs);
+			TodoyuDbHelper::saveMMrelations('ext_user_mm_company_contactinfo', 'id_company', 'id_contactinfo', $idCompany, $infoIDs);
 		}
 		unset($data['contactinfo']);
 
@@ -498,7 +377,7 @@ class TodoyuContactManager {
 				$addressIDs[] =  TodoyuAddressManager::saveAddress($address);
 			}
 
-			TodoyuDbHelper::saveMMrelations('ext_user_mm_customer_address', 'id_customer', 'id_address', $idCustomer, $addressIDs);
+			TodoyuDbHelper::saveMMrelations('ext_user_mm_company_address', 'id_company', 'id_address', $idCompany, $addressIDs);
 		}
 		unset($data['address']);
 
@@ -508,11 +387,11 @@ class TodoyuContactManager {
 			foreach($data['user'] as $user) {
 					// Prepare data form mm-table
 				$user['id_user']	= $user['id'];
-				$user['id_customer']= $idCustomer;
+				$user['id_company']= $idCompany;
 				unset($user['id']);
 
 					// Remove existing link and save new data
-				$idLink = TodoyuDbHelper::saveExtendedMMrelation('ext_user_mm_customer_user', 'id_customer', 'id_user', $idCustomer, $user['id_user'], $user);
+				$idLink = TodoyuDbHelper::saveExtendedMMrelation('ext_user_mm_company_user', 'id_company', 'id_user', $idCompany, $user['id_user'], $user);
 			}
 		}
 		unset($data['user']);
@@ -522,10 +401,19 @@ class TodoyuContactManager {
 	}
 
 
+
+	/**
+	 * Form hook to load users foreign record data
+	 * Load: company, contactinfo, address
+	 *
+	 * @param	Array		$data
+	 * @param	Integer		$idUser
+	 * @return	Array
+	 */
 	public static function getUserForeignRecordData(array $data, $idUser) {
 		$idUser	= intval($idUser);
 
-		$data['customer']	= TodoyuUserManager::getUserCompanyRecords($idUser);
+		$data['company']	= TodoyuUserManager::getUserCompanyRecords($idUser);
 		$data['contactinfo']= TodoyuUserManager::getUserContactinfoRecords($idUser);
 		$data['address']	= TodoyuUserManager::getUserAddressRecords($idUser);
 
@@ -533,11 +421,15 @@ class TodoyuContactManager {
 	}
 
 
+
+	/**
+	 * Get address types
+	 *
+	 * @return	Array
+	 */
 	public static function getAddressTypes() {
-		return $GLOBALS['CONFIG']['EXT']['contact']['addresstypes'];
+		return TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['contact']['addresstypes']);
 	}
-
-
 
 }
 

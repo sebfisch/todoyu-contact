@@ -29,13 +29,4 @@ TodoyuExtManager::addRecordConfig('contact', 'jobtype', array(
 	'table'		=> 'ext_user_jobtype'
 ));
 
-TodoyuExtManager::addRecordConfig('contact', 'customerrole', array(
-	'label'		=> 'LLL:contact.contacttypes.customerrole',
-	'list'		=> 'TodoyuCustomerRoleManager::getRecords',
-	'form'		=> 'ext/contact/config/form/admin/jobtype.xml',
-	'object'	=> 'TodoyuCustomerRole',
-	'delete'	=> 'TodoyuCustomerRoleManager::deleteCustomerRole',
-	'save'		=> 'TodoyuCustomerRoleManager::saveCustomerRole',
-	'table'		=> 'ext_user_customerrole'
-));
 ?>

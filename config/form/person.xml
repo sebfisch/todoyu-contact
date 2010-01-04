@@ -13,14 +13,14 @@
 		<fieldset name="main">
 			<legend>Main user data</legend>
 			<elements>
-
+<!--
 				<field type="select" name="type">
 					<label>user.user.attr.type</label>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getUserTypeOptions</function>
 					</source>
 				</field>
-
+-->
 				<field type="select" name="gender">
 					<label>user.user.attr.gender</label>
 					<source type="list">
@@ -104,7 +104,7 @@
 							<controller>person</controller>
 						</addSubformConfig>
 						<label type="function">
-							<function>TodoyuContactViewHelper::getCustomerLabel</function>
+							<function>TodoyuContactViewHelper::getCompanyLabel</function>
 							<noLabel>Neuer Arbeitgeber</noLabel>
 						</label>
 					</foreignRecordConf>

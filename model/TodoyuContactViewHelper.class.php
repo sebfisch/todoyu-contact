@@ -37,17 +37,17 @@ class TodoyuContactViewHelper {
 	 * @param	TodoyuFormElement		$field
 	 * @return	Array
 	 */
-	public static function getUserTypeOptions(TodoyuFormElement $field) {
-		$types	= TodoyuUserManager::getUserTypes();
-		$reform	= array(
-			'key'	=> 'value',
-			'label'	=> 'label'
-		);
-
-		$types	= TodoyuArray::reform($types, $reform, true);
-
-		return $types;
-	}
+//	public static function getUserTypeOptions(TodoyuFormElement $field) {
+//		$types	= TodoyuUserManager::getUserTypes();
+//		$reform	= array(
+//			'key'	=> 'value',
+//			'label'	=> 'label'
+//		);
+//
+//		$types	= TodoyuArray::reform($types, $reform, true);
+//
+//		return $types;
+//	}
 
 
 
@@ -106,14 +106,21 @@ class TodoyuContactViewHelper {
 
 
 
-	public static function getCustomerLabel(TodoyuFormElement $field, array $record) {
-		$idCustomer	= intval($record['id']);
+	/**
+	 * Get label of a company
+	 *
+	 * @param	TodoyuFormElement	$field
+	 * @param	Array		$record
+	 * @return	String
+	 */
+	public static function getCompanyLabel(TodoyuFormElement $field, array $record) {
+		$idCompany	= intval($record['id']);
 		$label		= '';
 
-		if( $idCustomer !== 0 ) {
-			$customer	= TodoyuCustomerManager::getCustomer($idCustomer);
+		if( $idCompany !== 0 ) {
+			$company	= TodoyuCompanyManager::getCompany($idCompany);
 
-			$label		= $customer->getTitle();
+			$label		= $company->getTitle();
 		}
 
 		return $label;
@@ -167,11 +174,11 @@ class TodoyuContactViewHelper {
 	 * @return	Array
 	 */
 	public static function getWorkaddressOptions(TodoyuFormElement $field) {
-		$idCustomer	= intval($idCompany = $field->getForm()->getVar('parent'));
+		$idCompany	= intval($idCompany = $field->getForm()->getVar('parent'));
 		$options	= array();
 
-		if( $idCustomer !== 0 ) {
-			$addresses	= TodoyuCustomerManager::getCustomerAddressRecords($idCustomer);
+		if( $idCompany !== 0 ) {
+			$addresses	= TodoyuCompanyManager::getCompanyAddressRecords($idCompany);
 
 			foreach($addresses as $address) {
 				$options[] = array(

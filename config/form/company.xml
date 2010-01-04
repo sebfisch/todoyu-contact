@@ -15,20 +15,24 @@
 			<elements>
 
 				<field type="textinput" name="title">
-					<label>user.customer.attr.name</label>
+					<label>user.company.attr.name</label>
 					<required />
 				</field>
 
 				<field type="textinput" name="shortname">
-					<label>user.customer.attr.shortname</label>
+					<label>user.company.attr.shortname</label>
 				</field>
 
 				<field type="dateinput" name="date_enter">
-					<label>user.customer.attr.date_enter</label>
+					<label>user.company.attr.date_enter</label>
 				</field>
 
 				<field type="checkbox" name="is_ngo">
-					<label>user.customer.attr.is_ngo</label>
+					<label>user.company.attr.is_ngo</label>
+				</field>
+
+				<field type="checkbox" name="is_internal">
+					<label>user.company.attr.is_internal</label>
 				</field>
 
 				<field type="expandAllButton" name="expandAll">
@@ -36,7 +40,7 @@
 				</field>
 
 				<field type="databaseRelation" name="contactinfo">
-					<label>user.customer.attr.contactinfo</label>
+					<label>user.company.attr.contactinfo</label>
 					<foreignRecordConf>
 						<foreignformxml>ext/contact/config/form/contactinfo.xml</foreignformxml>
 						<addSubformConfig>
@@ -51,7 +55,7 @@
 				</field>
 
 				<field type="databaseRelation" name="address">
-					<label>user.customer.attr.address</label>
+					<label>user.company.attr.address</label>
 					<foreignRecordConf>
 						<foreignformxml>ext/contact/config/form/address.xml</foreignformxml>
 						<addSubformConfig>
@@ -66,7 +70,7 @@
 				</field>
 
 				<field type="databaseRelation" name="user">
-					<label>user.customer.attr.user</label>
+					<label>user.company.attr.user</label>
 					<foreignRecordConf>
 						<foreignformxml>ext/contact/config/form/company-user.xml</foreignformxml>
 						<addSubformConfig>

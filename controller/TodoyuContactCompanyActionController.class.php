@@ -139,7 +139,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 		$idCompany	= intval($params['company']);
 
-		TodoyuCustomerManager::deleteCustomer($idCompany);
+		TodoyuCompanyManager::deleteCompany($idCompany);
 	}
 
 

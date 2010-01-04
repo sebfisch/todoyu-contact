@@ -6,11 +6,11 @@
 	</attributes>
 	<fieldsets>
 		<fieldset name="main">
-			<legend>Main customer data</legend>
+			<legend>Main company data</legend>
 			<elements>
 
 				<field type="textinputAC" name="id">
-					<label>user.customer.attr.customer-user.person</label>
+					<label>user.company.attr.customer-user.person</label>
 					<config>
 						<acListener>
 							<ext>contact</ext>

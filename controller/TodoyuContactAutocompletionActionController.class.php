@@ -34,7 +34,7 @@ class TodoyuContactAutocompletionActionController extends TodoyuActionController
 		$sword	= trim($params['sword']);
 		$config	= array();
 
-		$results= TodoyuUserFilterDataSource::autocompleteCustomers($sword, $config);
+		$results= TodoyuUserFilterDataSource::autocompleteCompanies($sword, $config);
 
 		return TodoyuRenderer::renderAutocompleteList($results);
 	}
