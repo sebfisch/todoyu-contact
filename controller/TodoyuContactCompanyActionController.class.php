@@ -55,7 +55,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 
 	/**
-	 * List companies
+	 * Show company list view with tabs
 	 *
 	 * @param	Array		$params
 	 * @return	String
@@ -63,14 +63,28 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	public function listAction(array $params) {
 		restrict('contact', 'company:use');
 
-		TodoyuContactPreferences::saveActiveTab('company');
-
 		$sword	= trim($params['sword']);
 
 		$content	= TodoyuContactRenderer::renderTabs('company');
-		$content	.=TodoyuContactRenderer::renderCompanyList($sword);
+		$content	.= TodoyuListingRenderer::render('contact', 'company', 0, $sword);
 
 		return $content;
+	}
+
+
+
+	/**
+	 * Get company paged listing
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
+	public function listingAction(array $params) {
+		restrict('contact', 'company:use');
+
+		$offset	= intval($params['offset']);
+
+		return TodoyuListingRenderer::render('contact', 'company', $offset);
 	}
 
 

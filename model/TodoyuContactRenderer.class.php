@@ -127,17 +127,7 @@ class TodoyuContactRenderer {
 	public static function renderPersonList($sword = '', $size = 5, $offset = 0) {
 		restrict('contact', 'person:use');
 
-		$size	= intval($size);
-		$offset	= intval($offset);
-
-		$tmpl		= 'ext/contact/view/personlist.tmpl';
-		$data		= array(
-			'persons'	=> TodoyuUserManager::searchUsers($sword, null, $size, $offset),
-			'offset'	=> $offset,
-			'total'		=> Todoyu::db()->getTotalFoundRows()
-		);
-
-		return render($tmpl, $data);
+		return TodoyuListingRenderer::render('contact', 'person');
 	}
 
 
@@ -150,6 +140,9 @@ class TodoyuContactRenderer {
 	 */
 	public static function renderCompanyList($sword = '') {
 		restrict('contact', 'company:use');
+
+		return TodoyuListingRenderer::render('contact', 'company');
+
 		$tmpl		= 'ext/contact/view/companylist.tmpl';
 		$data		= array();
 
@@ -276,7 +269,7 @@ class TodoyuContactRenderer {
 	 * @param	Integer	$idRecord
 	 * @return	String
 	 */
-	public function renderInfoPopupContent($type, $idRecord) {
+	public static function renderInfoPopupContent($type, $idRecord) {
 		switch($type) {
 				// Render user visiting card
 			case 'user':
@@ -299,7 +292,7 @@ class TodoyuContactRenderer {
 	 *
 	 * @param	Integer	$idRecord
 	 */
-	public function renderUserInfo($idUser) {
+	public static function renderUserInfo($idUser) {
 		$idUser	= intval($idUser);
 
 		$user	= TodoyuUserManager::getUser($idUser);
@@ -321,13 +314,48 @@ class TodoyuContactRenderer {
 	}
 
 
-	public function renderCompanyInfo($idCompany)	{
+	public static function renderCompanyInfo($idCompany)	{
 		$idCompany = intval($idCompany);
 
 		$company	= TodoyuCompanyManager::getCompany($idCompany);
 
 		$tmpl		= 'ext/contact/view/info-company.tmpl';
 		$data		= $company->getTemplateData(true);
+
+		return render($tmpl, $data);
+	}
+
+
+
+
+	/**
+	 * Render action buttons for person records
+	 *
+	 * @param	Integer		$idPerson
+	 * @return	String
+	 */
+	public static function renderPersonActions($idPerson) {
+		$tmpl	= 'ext/contact/view/person-actions.tmpl';
+		$data	= array(
+			'id'	=> intval($idPerson)
+		);
+
+		return render($tmpl, $data);
+	}
+
+
+
+	/**
+	 * Render action buttons for company record
+	 *
+	 * @param	Integer		$idCompany
+	 * @return	String
+	 */
+	public static function renderCompanyActions($idCompany) {
+		$tmpl	= 'ext/contact/view/company-actions.tmpl';
+		$data	= array(
+			'id'	=> intval($idCompany)
+		);
 
 		return render($tmpl, $data);
 	}

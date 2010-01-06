@@ -431,6 +431,70 @@ class TodoyuContactManager {
 		return TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['contact']['addresstypes']);
 	}
 
+
+
+	/**
+	 * Get listing data for persons
+	 * Keys: [total,rows]
+	 *
+	 * @param	Integer		$size
+	 * @param	Integer		$offset
+	 * @return	Array
+	 */
+	public static function getPersonListingData($size, $offset = 0, $searchWord = '') {
+		$data	= array();
+		$persons= TodoyuUserManager::searchUsers($searchWord, null, $size, $offset);
+
+		$data	= array(
+			'rows'	=> array(),
+			'total'	=> Todoyu::db()->getTotalFoundRows()
+		);
+
+		foreach($persons as $person) {
+			$data['rows'][] = array(
+				'icon'		=> '',
+				'lastname'	=> $person['lastname'],
+				'firstname'	=> $person['firstname'],
+				'email'		=> $person['email'],
+				'company'	=> TodoyuUserManager::getUsersMainCompany($person['id'])->getTitle(),
+				'actions'	=> TodoyuContactRenderer::renderPersonActions($person['id'])
+			);
+		}
+
+		return $data;
+	}
+
+
+
+	/**
+	 * Get listing data for companies
+	 *
+	 * @param	Integer		$size
+	 * @param	Integer		$offset
+	 * @param	Integer		$searchWord
+	 * @return	Array
+	 */
+	public static function getCompanyListingData($size, $offset = 0, $searchWord = '') {
+		$companies	= TodoyuCompanyManager::searchCompany($searchWord, null, $size, $offset);
+
+		$data	= array(
+			'rows'	=> array(),
+			'total'	=> Todoyu::db()->getTotalFoundRows()
+		);
+
+		foreach($companies as $index => $company) {
+			$data['rows'][] = array(
+				'icon'		=> '',
+				'title'		=> $company['title'],
+				'users'		=> TodoyuCompanyManager::getNumUsers($company['id']),
+				'address'	=> TodoyuCompanyManager::getCompanyAddress($company['id']),
+				'actions'	=> TodoyuContactRenderer::renderCompanyActions($company['id'])
+			);
+		}
+
+		return $data;
+	}
+
 }
 
 ?>

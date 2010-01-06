@@ -69,4 +69,42 @@ $CONFIG['EXT']['contact']['defaultTypeTab'] = 'person';
 	// Load person foreign records data
 TodoyuFormHook::registerLoadData('ext/contact/config/form/person.xml', 'TodoyuContactManager::getUserForeignRecordData');
 
+
+
+/**
+ * Configure listings
+ */
+
+$CONFIG['EXT']['contact']['listing']['person'] = array(
+	'name'		=> 'person',
+	'update'	=> 'contact/person/listing',
+	'dataFunc'	=> 'TodoyuContactManager::getPersonListingData',
+	'size'		=> 4,
+	'columns'	=> array(
+		'icon'		=> '',
+		'lastname'	=> 'LLL:user.user.attr.lastname',
+		'firstname'	=> 'LLL:user.user.attr.firstname',
+		'email'		=> 'LLL:contact.email',
+		'company'	=> 'LLL:contact.company',
+		'actions'	=> ''
+	)
+);
+
+$CONFIG['EXT']['contact']['listing']['company'] = array(
+	'name'		=> 'company',
+	'update'	=> 'contact/company/listing',
+	'dataFunc'	=> 'TodoyuContactManager::getCompanyListingData',
+	'size'		=> 4,
+	'columns'	=> array(
+		'icon'		=> '',
+		'title'		=> 'LLL:user.company.attr.title',
+		'users'		=> 'LLL:user.users',
+		'address'	=> 'LLL:user.company.attr.address',
+		'actions'	=> ''
+	)
+);
+
+
+
+
 ?>

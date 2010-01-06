@@ -65,15 +65,28 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	public function listAction(array $params) {
 		restrict('contact', 'person:use');
 
-		TodoyuContactPreferences::saveActiveTab('person');
-
 		$sword	= trim($params['sword']);
-		$offset	= intval($params['offset']);
 
 		$content	= TodoyuContactRenderer::renderTabs('person');
-		$content 	.=TodoyuContactRenderer::renderPersonList($sword, 5, $offset);
+		$content	.= TodoyuListingRenderer::render('contact', 'person', 0, $sword);
 
 		return $content;
+	}
+
+
+
+	/**
+	 * Get person paged listing
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
+	public function listingAction(array $params) {
+		restrict('contact', 'person:use');
+
+		$offset	= intval($params['offset']);
+
+		return TodoyuListingRenderer::render('contact', 'person', $offset);
 	}
 
 

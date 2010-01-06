@@ -7,41 +7,41 @@ table.list tr.odd td{
    -------------------------*/
 
 	/* Column widths */
-.personlist th.icon {
+.personListing th.icon {
 	width:15px;
 }
-.personlist th.firstname,
-.personlist th.lastname,
-.personlist th.email {
+.personListing th.firstname,
+.personListing th.lastname,
+.personListing th.email {
 	width:111px;
 }
-.personlist th.company {
+.personListing th.company {
 	width:145px;
 }
 
-.personlist th.actions {
+.personListing th.actions {
 	width:100px;
 }
 
 	/* Column configs */
-.personlist td.icon {
+.personListing td.icon {
 	background:url(../img/icons.png) no-repeat 6px -85px;
 }
-.personlist td.actions div.icon {
+.personListing td.actions div.icon {
 	cursor:pointer;
 	margin-right:5px;
 }
-.personlist td.actions div {
+.personListing td.actions div {
 	background-image:url(../../../user/assets/img/icons.png);
 	background-repeat:no-repeat;
 }
-.personlist td.actions div.edit {
+.personListing td.actions div.edit {
 	background-position:0 -270px;
 }
-.personlist td.actions div.delete {
+.personListing td.actions div.delete {
 	background-position:0 -300px;
 }
-.personlist td.actions div.user {
+.personListing td.actions div.user {
 	background-position:0 -330px;
 }
 
@@ -71,52 +71,52 @@ table.list tr.odd td{
 	Company list
    -------------------------*/
 
-.companylist th.icon {
+.companyListing th.icon {
 	width:15px;
 }
 
-.companylist th.title {
+.companyListing th.title {
 	width:220px;
 }
 
-.companylist th.users {
+.companyListing th.users {
 	width:65px;
 }
 
-.companylist th.address {
+.companyListing th.address {
 	width:250px;
 }
 
-.companylist th.actions {
+.companyListing th.actions {
 	width:80px;
 }
 
 	/* Column configs */
-.companylist td.icon {
+.companyListing td.icon {
 	background:url(../img/icons.png) no-repeat 6px -115px;
 }
 
-.companylist td.actions div.icon {
+.companyListing td.actions div.icon {
 	cursor:pointer;
 	margin-right:5px;
 }
 
-.companylist td.actions div {
+.companyListing td.actions div {
 	background-image:url(../img/icons.png);
 	background-repeat:no-repeat;
 }
 
-.companylist td.actions div.edit {
+.companyListing td.actions div.edit {
 	background-position:0 -480px;
 }
 
-.companylist td.actions div.delete {
+.companyListing td.actions div.delete {
 	background-position:0 -510px;
 }
 
 
-.companylist td.actions div.info,
-.personlist td.actions div.info {
+.companyListing td.actions div.info,
+.personListing td.actions div.info {
 	background: url(../img/icons.png) no-repeat 0 -539px;
 }
 
