@@ -95,8 +95,8 @@
 					</foreignRecordConf>
 				</field>
 
-				<field type="databaseRelation" name="customer">
-					<label>user.user.attr.customer</label>
+				<field type="databaseRelation" name="company">
+					<label>user.user.attr.company</label>
 					<foreignRecordConf>
 						<foreignformxml>ext/contact/config/form/user-company.xml</foreignformxml>
 						<addSubformConfig>
