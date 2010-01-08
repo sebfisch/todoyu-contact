@@ -227,5 +227,62 @@ Todoyu.Ext.contact.Person =  {
 		};
 
 		Todoyu.Popup.openWindow('popupRecordInfo', 'Info', 420, 340, url, options);
+	},
+	
+	
+	
+	/**
+	 * save person from wizard
+	 * 
+	 * @param	Object	form
+	 * @param	String	target
+	 * @return	void
+	 */
+	saveWizard: function(form, target)	{
+		$(form).request ({
+			'parameters': {
+				'action':	'save'
+			},
+			'onComplete': this.onSavedWizard.bind( this, target)
+		});
+		
+		return false;
+	},
+	
+	
+	
+	/**
+	 * after save handling from wizard
+	 * 
+	 * @param	String	target
+	 * @param	Object	response
+	 */
+	onSavedWizard: function(target, response)	{
+		var error	= response.hasTodoyuError();
+
+		if( error ) {
+			Todoyu.notifyError('Saving person failed');
+			
+			Todoyu.Popup.getContentElement('popup-'+target).update(response.responseText);
+		} else {
+			Todoyu.notifySuccess('Person saved');
+			
+			var label		= response.getTodoyuHeader('recordLabel');
+			var idRecord	= response.getTodoyuHeader('idRecord');
+			
+			$(target).value = idRecord;
+			$(target + '-fulltext').value = label;
+			
+			Todoyu.Popup.close('popup-'+target);
+		}
+	},
+	
+	
+	
+	/**
+	 * cancel handling for wizard
+	 */
+	cancelWizard: function()	{
+		Todoyu.Popup.getLastPopup().close();
 	}
 };

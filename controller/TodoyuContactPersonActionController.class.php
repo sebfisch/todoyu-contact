@@ -114,7 +114,10 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 			$storageData= $form->getStorageData();
 
 			$idPerson	= TodoyuContactManager::savePerson($storageData);
-
+			
+			TodoyuHeader::sendTodoyuHeader('idRecord', $idPerson);
+			TodoyuHeader::sendTodoyuHeader('recordLabel', $storageData['lastname'].' '.$storageData['firstname']);
+			
 			return $idPerson;
 		} else {
 			TodoyuHeader::sendTodoyuErrorHeader();
@@ -174,6 +177,25 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 		$type		= 'user';
 
 		return TodoyuContactRenderer::renderInfoPopupContent($type, $idPerson);
+	}
+	
+	
+	
+	/**
+	 * Content for the person-wizard popup
+	 * 
+	 * @todo Move restriction to displayCondition in form
+	 * 
+	 * @param	Array	$params
+	 * @return	String
+	 */
+	public function addNewContactWizardAction(array $params)	{
+		restrict('contact', 'person:edit');
+		
+		$content = TodoyuPage::getExtJSinline('contact');
+		$content.= TodoyuContactRenderer::renderPersonEditFormWizard(0, $params['idField']);
+		
+		return $content;
 	}
 
 }
