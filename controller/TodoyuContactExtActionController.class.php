@@ -22,7 +22,7 @@
 class TodoyuContactExtActionController extends TodoyuActionController {
 
 	public function defaultAction(array $params) {
-		restrict('contact', 'use');
+		restrict('contact', 'general:use');
 
 			// set active tab
 		TodoyuFrontend::setActiveTab('contact');

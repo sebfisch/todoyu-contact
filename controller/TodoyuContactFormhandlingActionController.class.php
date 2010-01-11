@@ -22,7 +22,7 @@
 class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 
 	public function addSubformAction(array $params) {
-		restrict('contact', 'use');
+		restrict('contact', 'general:use');
 
 		$formName	= $params['form'];
 		$fieldName	= $params['field'];

@@ -81,7 +81,7 @@ class TodoyuPanelWidgetContactSearch extends TodoyuPanelWidget implements Todoyu
 
 
 	public static function isAllowed() {
-		return allowed('contact', 'panelwidget:contactSearch');
+		return allowed('contact', 'panelwidgets:contactSearch');
 	}
 
 }

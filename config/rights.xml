@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rights>
-	
+
 	<section name="general">
 		<right name="use" />
 	</section>
-	
-	<section name="panelwidgets">
-		<right name="panelwidget:contactSearch" />
-		<right name="panelwidget:quickContact" />
+
+	<section name="panelwidgets" require="general:use">
+		<right name="contactSearch" />
+		<right name="quickContact" />
 	</section>
-	
-	<section name="person">
-		<right name="person:use" />
-		<right name="person:edit" />
-		<right name="person:create" />
-		<right name="person:delete" />
+
+	<section name="person" require="general:use">
+		<right name="use" />
+		<right name="edit" />
+		<right name="create" />
+		<right name="delete" />
 	</section>
-	
-	<section name="company">
-		<right name="company:use" />
-		<right name="company:edit" />
-		<right name="company:create" />
-		<right name="company:delete" />
+
+	<section name="company" require="general:use">
+		<right name="use" />
+		<right name="edit" />
+		<right name="create" />
+		<right name="delete" />
 	</section>
-	
+
 </rights>

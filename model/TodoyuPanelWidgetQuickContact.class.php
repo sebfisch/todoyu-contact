@@ -86,7 +86,7 @@ class TodoyuPanelWidgetQuickContact extends TodoyuPanelWidget implements TodoyuP
 
 
 	public static function isAllowed() {
-		return allowed('contact', 'panelwidget:quickContact');
+		return allowed('contact', 'panelwidgets:quickContact');
 	}
 
 }
