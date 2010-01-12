@@ -31,7 +31,7 @@ Todoyu.Ext.contact.PanelWidget.QuickContact = {
 	 * Evoke adding new person
 	 */
 	addPerson: function() {
-		this.ext.changeType('person');
+		//this.ext.changeType('person');
 		this.ext.Person.add();
 	},
 
@@ -41,7 +41,7 @@ Todoyu.Ext.contact.PanelWidget.QuickContact = {
 	 * Evoke adding new company
 	 */
 	addCompany: function() {
-		this.ext.changeType('company');
+		//this.ext.changeType('company');
 		this.ext.Company.add();
 	}
 
