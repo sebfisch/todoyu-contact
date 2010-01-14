@@ -79,7 +79,7 @@ $CONFIG['EXT']['contact']['listing']['person'] = array(
 	'name'		=> 'person',
 	'update'	=> 'contact/person/listing',
 	'dataFunc'	=> 'TodoyuContactManager::getPersonListingData',
-	'size'		=> 4,
+	'size'		=> 20,
 	'columns'	=> array(
 		'icon'		=> '',
 		'lastname'	=> 'LLL:user.user.attr.lastname',
@@ -94,7 +94,7 @@ $CONFIG['EXT']['contact']['listing']['company'] = array(
 	'name'		=> 'company',
 	'update'	=> 'contact/company/listing',
 	'dataFunc'	=> 'TodoyuContactManager::getCompanyListingData',
-	'size'		=> 4,
+	'size'		=> 20,
 	'columns'	=> array(
 		'icon'		=> '',
 		'title'		=> 'LLL:user.company.attr.title',
@@ -103,8 +103,6 @@ $CONFIG['EXT']['contact']['listing']['company'] = array(
 		'actions'	=> ''
 	)
 );
-
-
 
 
 ?>

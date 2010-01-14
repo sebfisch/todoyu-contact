@@ -16,11 +16,11 @@
 							<controller>autocompletion</controller>
 							<action>company</action>
 						</acListener>
-						<acLabelFunc>TodoyuCustomerManager::getLabel</acLabelFunc>
+						<acLabelFunc>TodoyuCompanyManager::getLabel</acLabelFunc>
 					</config>
 					<required />
 				</field>
-				
+
 				<field type="select" name="id_workaddress">
 					<label>user.worklocation</label>
 					<source type="function">
