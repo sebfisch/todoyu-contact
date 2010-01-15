@@ -45,6 +45,9 @@ $CONFIG['EXT']['contact']['addresstypes'] = array(
 $CONFIG['EXT']['contact']['numFavoriteCountries']	= 5;
 
 
+/**
+ * @todo	Which of this keys are still in use?
+ */
 $CONFIG['EXT']['contact']['contacttypes']	= array(
 	'person' => array(
 		'label'		=> 'LLL:contact.contacttypes.person',
@@ -72,9 +75,8 @@ TodoyuFormHook::registerLoadData('ext/contact/config/form/person.xml', 'TodoyuCo
 
 
 /**
- * Configure listings
+ * Configure listings for persons
  */
-
 $CONFIG['EXT']['contact']['listing']['person'] = array(
 	'name'		=> 'person',
 	'update'	=> 'contact/person/listing',
@@ -90,6 +92,9 @@ $CONFIG['EXT']['contact']['listing']['person'] = array(
 	)
 );
 
+/**
+ * Configure listing for companies
+ */
 $CONFIG['EXT']['contact']['listing']['company'] = array(
 	'name'		=> 'company',
 	'update'	=> 'contact/company/listing',
