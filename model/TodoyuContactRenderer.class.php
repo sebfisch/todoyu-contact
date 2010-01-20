@@ -273,11 +273,11 @@ class TodoyuContactRenderer {
 
 		if( $idRecord === 0 )	{
 				// Creating new contact record
-			$header	= TodoyuLocale::getLabel('contact.contact.createnew') . ' ' . TodoyuLocale::getLabel(TodoyuContactManager::getContactTypeLabel($type));
+			$header	= TodoyuLanguage::getLabel('contact.contact.createnew') . ' ' . TodoyuLanguage::getLabel(TodoyuContactManager::getContactTypeLabel($type));
 		} else {
 				// Editing existing contact record
 			if( method_exists($record, 'getLabel') )	{
-				$header = TodoyuLocale::getLabel('contact.contact.edit') . ' ' . TodoyuContactManager::getContactTypeObj($type, $idRecord)->getLabel();
+				$header = TodoyuLanguage::getLabel('contact.contact.edit') . ' ' . TodoyuContactManager::getContactTypeObj($type, $idRecord)->getLabel();
 			}
 		}
 
