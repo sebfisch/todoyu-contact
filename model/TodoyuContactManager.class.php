@@ -109,7 +109,7 @@ class TodoyuContactManager {
 	 */
 	public static function getCountryLabel($form, $option)	{
 
-		return $option[ 'name_' . TodoyuLanguage::getLocale() ];
+		return $option[ 'name_' . TodoyuLanguage::getLanguage() ];
 	}
 
 
