@@ -142,26 +142,30 @@ class TodoyuContactViewHelper {
 
 
 	public static function getCountryOptions(TodoyuFormElement $field) {
-		$countryOptions		= TodoyuDatasource::getCountryOptions();
-		$favoriteCountryIDs = TodoyuAddressManager::getMostUsedCountryIDs();
-		$favoriteCountries	= array();
-
+		$countryOptions				= TodoyuDatasource::getCountryOptions();
+		$favoriteCountryIDs 		= TodoyuAddressManager::getMostUsedCountryIDs();
+		$favoriteCountries			= array();
+		$favoriteCountrySortOrder	= array_flip($favoriteCountryIDs);
+		
 		if( sizeof($favoriteCountryIDs) > 0 ) {
 			foreach($countryOptions as $countryOption) {
 				if( in_array($countryOption['id'], $favoriteCountryIDs) ) {
-					$favoriteCountries[] = $countryOption;
+					$sortOrderKey						= $favoriteCountrySortOrder[$countryOption['id']];
+					$favoriteCountries[$sortOrderKey]	= $countryOption;
 				}
 			}
-
-			$favoriteCountries = array_reverse($favoriteCountries);
-
-			array_unshift($countryOptions, array('value' => '', 'label' => '------------------------'));
+			
+			krsort($favoriteCountries);
+			
+			array_unshift($countryOptions, array('value' => 'disabled', 'label' => '------------------------', 'disabled' => true));
 
 			foreach($favoriteCountries as $favoriteCountry) {
 				array_unshift($countryOptions, $favoriteCountry);
 			}
 		}
-
+		
+		array_unshift($countryOptions, array('value' => 0, 'label'	=> 'LLL:form.select.pleaseChoose'));
+		
 		return $countryOptions;
 	}
 
