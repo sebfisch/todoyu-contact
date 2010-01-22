@@ -130,6 +130,36 @@ Todoyu.Ext.contact.Person =  {
 			$('person-' + idPerson + '-field-shortname').value = firstname.substr(0,2).toUpperCase() + lastname.substr(0,2).toUpperCase();
 		}
 	},
+	
+	
+	
+	/**
+	 * updates the working location selector with options of choosen company
+	 * 
+	 * @param	Object	inputField
+	 * @param	Object	selectedListElement
+	 * @param	String	baseID
+	 * @param	Mixed	selectedValue
+	 * @param	Object	list
+	 * @param	Object	parent
+	 */
+	updateCompanyAddressRecords: function(inputField, selectedListElement, baseID, selectedValue, list, parent)	{
+		var idInputFieldArr		= inputField.id.split('-').without('fulltext')
+		var referencedFieldName = parent.acRefs[baseID].options.referencedFieldName
+		var idTarget = idInputFieldArr.join('-').replace(idInputFieldArr.last(), referencedFieldName);
+		
+		if($(idTarget))	{
+			var url = Todoyu.getUrl('contact', 'company');
+			var options = {
+					'parameters': {
+						'action':		'getCompanyAddressOptions',
+						'idCompany':	selectedValue
+				}
+			};
+			
+			Todoyu.Ui.update(idTarget, url, options);
+		}
+	},
 
 
 

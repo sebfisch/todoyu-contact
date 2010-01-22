@@ -171,7 +171,27 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 		return TodoyuContactRenderer::renderInfoPopupContent($type, $idCompany);
 	}
-
+	
+	
+	
+	/**
+	 * Returns the Options for the Working Location selector
+	 * 
+	 * @param	Array	$params
+	 * @return	String
+	 */
+	public function getCompanyAddressOptionsAction(array $params)	{
+		$tmpl		= 'core/view/form/FormElement_Select_Options.tmpl';
+		
+		$idCompany	= intval($params['idCompany']);
+		
+		$data		= array(
+					'options' => TodoyuContactViewHelper::getWorkaddressOptions($idCompany)
+		);
+		
+		return render($tmpl, $data);
+	}
+	
 }
 
 ?>

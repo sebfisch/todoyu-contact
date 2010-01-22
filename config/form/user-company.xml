@@ -17,6 +17,10 @@
 							<action>company</action>
 						</acListener>
 						<acLabelFunc>TodoyuCompanyManager::getLabel</acLabelFunc>
+						<options>
+							<onElementSelectedCustom>Todoyu.Ext.contact.Person.updateCompanyAddressRecords</onElementSelectedCustom>
+							<referencedFieldName>id-workaddress</referencedFieldName>
+						</options>
 					</config>
 					<required />
 				</field>
@@ -24,7 +28,7 @@
 				<field type="select" name="id_workaddress">
 					<label>user.worklocation</label>
 					<source type="function">
-						<function>TodoyuContactViewHelper::getWorkaddressOptions</function>
+						<function>TodoyuContactViewHelper::getWorkaddressOptionsUser</function>
 						<lazyInit/>
 					</source>
 				</field>

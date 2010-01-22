@@ -34,7 +34,7 @@
 				<field type="select" name="id_workaddress">
 					<label>user.worklocation</label>
 					<source type="function">
-						<function>TodoyuContactViewHelper::getWorkaddressOptions</function>
+						<function>TodoyuContactViewHelper::getWorkaddressOptionsCompany</function>
 						<lazyInit/>
 					</source>
 				</field>

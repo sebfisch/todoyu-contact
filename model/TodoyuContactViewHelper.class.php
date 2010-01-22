@@ -169,25 +169,59 @@ class TodoyuContactViewHelper {
 		return $countryOptions;
 	}
 
-
-
+	
+	
 	/**
-	 * Get employee's working location options (address(es) of employer firm)
-	 *
-	 * @param	TodoyuForm	$formObject
+	 * Wrapper Method to get Address records (company-user form)
+	 * 
+	 * @param	TodoyuFormElement	$field
 	 * @return	Array
 	 */
-	public static function getWorkaddressOptions(TodoyuFormElement $field) {
-		$idCompany	= intval($idCompany = $field->getForm()->getVar('parent'));
-		$options	= array();
+	public static function getWorkaddressOptionsCompany(TodoyuFormElement $field)	{
+		$idCompany = intval($field->getForm()->getVar('parent'));
+		return self::getWorkaddressOptions($idCompany);
+	}
+	
+	
+	
+	/**
+	 * Wrapper Method to get Address records (user-company form)
+	 * 
+	 * @param	TodoyuFormElement	$field
+	 * @return	Array
+	 */
+	public static function getWorkaddressOptionsUser(TodoyuFormElement $field)	{
+		$idCompany = intval($field->getForm()->getField('id')->getValue());
+		return self::getWorkaddressOptions($idCompany);
+	}
+	
+	
+
+	/**
+	 * Gets address(es) of employer firm
+	 *
+	 * @param	Integer	$idCompany
+	 * @return	Array
+	 */
+	public static function getWorkaddressOptions($idCompany) {
+		$idCompany	= intval($idCompany);
+		$options	= array(array('value' => 0, 'label' => 'LLL:form.select.pleaseChoose'));
 
 		if( $idCompany !== 0 ) {
 			$addresses	= TodoyuCompanyManager::getCompanyAddressRecords($idCompany);
-
-			foreach($addresses as $address) {
-				$options[] = array(
-					'value'	=> $address['id'],
-					'label'	=> $address['street'] . ', ' . $address['city']
+			
+			if(count($addresses) > 0)	{
+				foreach($addresses as $address) {
+					$options[] = array(
+						'value'	=> $address['id'],
+						'label'	=> $address['street'] . ', ' . $address['city']
+					);
+				}
+			} else {
+				$options[]	= array(
+					'value'		=> 'disabled',
+					'label'		=> 'LLL:contact.company.noAddress',
+					'disabled'	=> true
 				);
 			}
 		}
