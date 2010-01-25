@@ -174,9 +174,8 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 		restrict('contact', 'person:use');
 
 		$idPerson	= intval($params['person']);
-		$type		= 'user';
 
-		return TodoyuContactRenderer::renderInfoPopupContent($type, $idPerson);
+		return TodoyuContactRenderer::renderUserInfo($idPerson);;
 	}
 
 

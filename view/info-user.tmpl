@@ -45,6 +45,9 @@
 		<tr class="odd">
 			<td class="label">{Label contact.email}:</td>
 			<td>
+			{if $email !== ''}
+				<a href="mailto:{$email}">{$email}</a><br/>
+			{/if}
 			{foreach $contactinfo numCi ciData}
 				{if strstr($ciData.info, '@') !== false}
 					<a href="mailto:{$ciData.info}">{$ciData.info}</a><br/>

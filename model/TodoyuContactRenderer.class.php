@@ -188,21 +188,21 @@ class TodoyuContactRenderer {
 
 		return render($tmpl, $data);
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Renders the the person form for popup
-	 * 
+	 *
 	 * (other save and cancel handling
-	 * 
+	 *
 	 * @param	Integer	$idPerson
 	 * @param	String	$idTarget		HTML Id of the input field
 	 * @return	String
 	 */
 	public static function renderPersonEditFormWizard($idPerson, $idTarget)	{
 		restrict('contact', 'person:edit');
-		
+
 		$idPerson	= intval($idPerson);
 		$xmlPath	= 'ext/contact/config/form/person.xml';
 
@@ -214,10 +214,10 @@ class TodoyuContactRenderer {
 
 		$form->setFormData($data);
 		$form->setRecordID($idPerson);
-		
+
 		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Ext.contact.Person.cancelWizard();');
 		$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Ext.contact.Person.saveWizard(this.form, \''.$idTarget.'\');');
-		
+
 		$tmpl	= 'ext/contact/view/form.tmpl';
 		$data	= array(
 			'formheader'	=> $person->getLabel(),
@@ -227,7 +227,7 @@ class TodoyuContactRenderer {
 		return render($tmpl, $data);
 	}
 
-	
+
 
 	/**
 	 *	Render company edit form
