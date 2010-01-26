@@ -10,6 +10,7 @@ class TodoyuContactViewHelper {
 	}
 
 
+
 	/**
 	 * Get availabe jobtypes (to render selector)
 	 *
@@ -17,15 +18,25 @@ class TodoyuContactViewHelper {
 	 * @return	Array
 	 */
 	public static function getJobtypeOptions(TodoyuFormElement $field) {
-		$jobtypeOptions	= TodoyuJobtypeManager::getJobtypeOptions();
+		$options	= TodoyuJobtypeManager::getJobtypeOptions();
+
+		if ( count($options) == 0 ) {
+			$options[]	= array(
+				'value'		=> 'disabled',
+				'label'		=> 'LLL:contact.error.noJobtypes',
+				'disabled'	=> true,
+				'classname'	=> 'error'
+			);
+		}
+
+			// Add selection instruction
 		$prefix		= array(
 			'label'	=> 'LLL:form.select.pleaseChoose',
 			'value'	=> 0
 		);
+		array_unshift($options, $prefix);
 
-		array_unshift($jobtypeOptions, $prefix);
-
-		return $jobtypeOptions;
+		return $options;
 	}
 
 
@@ -53,6 +64,13 @@ class TodoyuContactViewHelper {
 
 
 
+	/**
+	 * Get label of employee (user) item
+	 *
+	 * @param	TodoyuFormElement	$field
+	 * @param	Array				$record
+	 * @return	String
+	 */
 	public static function getEmployeeLabel(TodoyuFormElement $field, array $record) {
 		$idUser	= intval($record['id']);
 		$label	= '';
@@ -65,6 +83,14 @@ class TodoyuContactViewHelper {
 	}
 
 
+
+	/**
+	 * Get label of address (concatenated info summary)
+	 *
+	 * @param	TodoyuFormElement	$field
+	 * @param	Array				$record
+	 * @return	String
+	 */
 	public static function getAddressLabel(TodoyuFormElement $field, array $record) {
 		$idAddress	= intval($record['id']);
 		$label		= '';
@@ -81,7 +107,7 @@ class TodoyuContactViewHelper {
 			}
 
 			if( ! empty($record['city']) ) {
-				$label .= ', ' . $record['city'];
+				$label .= ( $label !== '' ? ', ' : '' ) . $record['city'];
 			}
 		}
 
@@ -90,6 +116,13 @@ class TodoyuContactViewHelper {
 
 
 
+	/**
+	 * Get label of contact info record ('title')
+	 *
+	 * @param	TodoyuFormElement	$field
+	 * @param	Array				$record
+	 * @return	String
+	 */
 	public static function getContactinfoLabel(TodoyuFormElement $field, array $record) {
 		$idContactInfo	= intval($record['id']);
 		$label			= '';
@@ -141,12 +174,18 @@ class TodoyuContactViewHelper {
 
 
 
+	/**
+	 * Get options for country selector
+	 *
+	 * @param	TodoyuFormElement $field
+	 * @return	Array
+	 */
 	public static function getCountryOptions(TodoyuFormElement $field) {
 		$countryOptions				= TodoyuDatasource::getCountryOptions();
 		$favoriteCountryIDs 		= TodoyuAddressManager::getMostUsedCountryIDs();
 		$favoriteCountries			= array();
 		$favoriteCountrySortOrder	= array_flip($favoriteCountryIDs);
-		
+
 		if( sizeof($favoriteCountryIDs) > 0 ) {
 			foreach($countryOptions as $countryOption) {
 				if( in_array($countryOption['id'], $favoriteCountryIDs) ) {
@@ -154,26 +193,35 @@ class TodoyuContactViewHelper {
 					$favoriteCountries[$sortOrderKey]	= $countryOption;
 				}
 			}
-			
+
 			krsort($favoriteCountries);
-			
-			array_unshift($countryOptions, array('value' => 'disabled', 'label' => '------------------------', 'disabled' => true));
+
+			array_unshift($countryOptions, array(
+				'value' => 'disabled',
+				'label' => '------------------------',
+				'disabled' => true)
+			);
 
 			foreach($favoriteCountries as $favoriteCountry) {
 				array_unshift($countryOptions, $favoriteCountry);
 			}
 		}
-		
-		array_unshift($countryOptions, array('value' => 0, 'label'	=> 'LLL:form.select.pleaseChoose'));
-		
+
+		array_unshift($countryOptions, array(
+				'value' 	=> 0,
+				'label'		=> 'LLL:form.select.pleaseChoose',
+				'disabled'	=> true
+			)
+		);
+
 		return $countryOptions;
 	}
 
-	
-	
+
+
 	/**
 	 * Wrapper Method to get Address records (company-user form)
-	 * 
+	 *
 	 * @param	TodoyuFormElement	$field
 	 * @return	Array
 	 */
@@ -181,12 +229,12 @@ class TodoyuContactViewHelper {
 		$idCompany = intval($field->getForm()->getVar('parent'));
 		return self::getWorkaddressOptions($idCompany);
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Wrapper Method to get Address records (user-company form)
-	 * 
+	 *
 	 * @param	TodoyuFormElement	$field
 	 * @return	Array
 	 */
@@ -194,8 +242,8 @@ class TodoyuContactViewHelper {
 		$idCompany = intval($field->getForm()->getField('id')->getValue());
 		return self::getWorkaddressOptions($idCompany);
 	}
-	
-	
+
+
 
 	/**
 	 * Gets address(es) of employer firm
@@ -209,7 +257,7 @@ class TodoyuContactViewHelper {
 
 		if( $idCompany !== 0 ) {
 			$addresses	= TodoyuCompanyManager::getCompanyAddressRecords($idCompany);
-			
+
 			if(count($addresses) > 0)	{
 				foreach($addresses as $address) {
 					$options[] = array(
@@ -221,7 +269,8 @@ class TodoyuContactViewHelper {
 				$options[]	= array(
 					'value'		=> 'disabled',
 					'label'		=> 'LLL:contact.company.noAddress',
-					'disabled'	=> true
+					'disabled'	=> true,
+					'classname'	=> 'error'
 				);
 			}
 		}

@@ -37,6 +37,7 @@
 		<label index="noLabel.newContactInfo">New Contact Info</label>
 		<label index="noLabel.newAddress">New Address</label>
 		<label index="noLabel.newEmployee">New Employee</label>
+		<label index="error.noJobtypes">No jobtypes given (done in extension administration)</label>
 	</labels>
 	<labels lang="de">
 		<label index="ext.title">Kontakt</label>
@@ -73,5 +74,6 @@
 		<label index="noLabel.newContactInfo">Neue Kontakt-Information</label>
 		<label index="noLabel.newAddress">Neue Adresse</label>
 		<label index="noLabel.newEmployee">Neuer Mitarbeiter</label>
+		<label index="error.noJobtypes">Keine Berufstätigkeiten vorhanden (In Extension Administration anzulegen)</label>
 	</labels>
 </locallang>

@@ -25,8 +25,6 @@
 
 
 
-
-
 $CONFIG['EXT']['contact']['addresstypes'] = array(
 	array(
 		'index'	=> 1,
@@ -43,6 +41,7 @@ $CONFIG['EXT']['contact']['addresstypes'] = array(
 );
 
 $CONFIG['EXT']['contact']['numFavoriteCountries']	= 5;
+
 
 
 /**
@@ -92,6 +91,8 @@ $CONFIG['EXT']['contact']['listing']['person'] = array(
 	)
 );
 
+
+
 /**
  * Configure listing for companies
  */
@@ -108,6 +109,5 @@ $CONFIG['EXT']['contact']['listing']['company'] = array(
 		'actions'	=> ''
 	)
 );
-
 
 ?>

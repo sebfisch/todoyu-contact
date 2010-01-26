@@ -23,12 +23,8 @@
  * Configure panel widgets to be shown in Contact area
  */
 
-
-
-
-	// add default panel widgets
+	// Add default panel widgets
 TodoyuPanelWidgetManager::addDefaultPanelWidget('contact', 'TodoyuPanelWidgetContactSearch', 10);
 TodoyuPanelWidgetManager::addDefaultPanelWidget('contact', 'TodoyuPanelWidgetQuickContact', 20);
-
 
 ?>
