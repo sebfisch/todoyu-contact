@@ -104,7 +104,7 @@ $CONFIG['EXT']['contact']['listing']['company'] = array(
 	'columns'	=> array(
 		'icon'		=> '',
 		'title'		=> 'LLL:user.company.attr.title',
-		'users'		=> 'LLL:user.users',
+		'users'		=> 'LLL:contact.comapny.employees',
 		'address'	=> 'LLL:user.company.attr.address',
 		'actions'	=> ''
 	)
