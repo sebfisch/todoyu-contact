@@ -236,17 +236,11 @@ div.visitingCardContent table {
 
 div.visitingCardContent table tr td {
 	text-align: left;
-	padding-top: 2px !important;
-	padding-bottom: 2px !important;
-	padding-left: 8px !important;
-}
-
-div.visitingCardContent table tr.even {
-	background-color: #EAECE7;
+	padding: 2px 5px 2px 8px;
 }
 
 div.visitingCardContent table tr td.label {
-	padding: 0 18px 0 0;
+	padding-right:18px;
 	text-transform: uppercase;
 	letter-spacing: 0.3px;
 }
