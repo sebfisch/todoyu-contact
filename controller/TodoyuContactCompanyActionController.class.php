@@ -186,7 +186,8 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 		$idCompany	= intval($params['idCompany']);
 		
 		$data		= array(
-					'options' => TodoyuContactViewHelper::getWorkaddressOptions($idCompany)
+				'options'	=> TodoyuContactViewHelper::getWorkaddressOptions($idCompany),
+				'value'		=> array()
 		);
 		
 		return render($tmpl, $data);
