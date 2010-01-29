@@ -74,7 +74,7 @@
 		<tr class="even"><td colspan="2"><br/></td></tr>
 		{foreach $contactinfo numCi ciData}
 			<tr class="{cycle values="even,odd"}">
-				<td>{labelContactinfotype $ciData.id_contactinfotype}:</td>
+				<td class="label">{labelContactinfotype $ciData.id_contactinfotype}:</td>
 				<td>{$ciData.info}</td>
 			</tr>
 		{/foreach}
