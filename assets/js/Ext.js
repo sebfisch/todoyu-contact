@@ -32,20 +32,43 @@ Todoyu.Ext.contact = {
 
 	},
 
+
+
+	/**
+	 * Handler to be called on selecting tabs of contact
+	 * 
+	 * @param	Object		event
+	 * @param	String		tab
+	 */
 	onTabSelect: function(event, tab) {
 		this[tab.capitalize()].showList();
 	},
 
+
+
+	/**
+	 * Update contact page content with response of AJAX request with given URL + options
+	 * 
+	 * @param	String		url
+	 * @param	Array		options 
+	 */
 	updateContent: function(url, options) {
 		Todoyu.Ui.updateContent(url, options);
 	},
 
+
+
+	/**
+	 * Switch display of contacts type to given type
+	 * 
+	 * @param	String		type
+	 */
 	changeType: function(type) {
 		Todoyu.Tabs.setActive('contact-tabhead-' + type);
 
 		objName	= type.capitalize();
 
 		this[objName].showList();
-	}
+	},
 
 };

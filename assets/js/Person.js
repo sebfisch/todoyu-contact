@@ -27,8 +27,6 @@ Todoyu.Ext.contact.Person =  {
 
 
 
-	
-	
 	/**
 	 *	Add person (create and edit new person record) 
 	 */
@@ -36,8 +34,8 @@ Todoyu.Ext.contact.Person =  {
 		this.edit(0);
 	},
 
-	
-	
+
+
 	/**
 	 *	Edit (person)
 	 *
@@ -56,8 +54,8 @@ Todoyu.Ext.contact.Person =  {
 		this.ext.updateContent(url, options);
 	},
 
-	
-	
+
+
 	/**
 	 *	On edit (person) handler
 	 *
@@ -68,8 +66,8 @@ Todoyu.Ext.contact.Person =  {
 		this.observeFieldsForShortname(idPerson);
 	},
 
-	
-	
+
+
 	/**
 	 *	Remove person
 	 *
@@ -90,8 +88,8 @@ Todoyu.Ext.contact.Person =  {
 		}
 	},
 
-	
-	
+
+
 	/**
 	 *	On removed handler
 	 *
@@ -103,7 +101,7 @@ Todoyu.Ext.contact.Person =  {
 	},
 
 
-	
+
 	/**
 	 *	Observe fields for short name
 	 *
@@ -114,8 +112,8 @@ Todoyu.Ext.contact.Person =  {
 		$('person-' + idPerson + '-field-firstname').observe('keyup', this.generateShortName.bindAsEventListener(this, idPerson));
 	},
 
-	
-	
+
+
 	/**
 	 *	Generate short name
 	 *
@@ -130,9 +128,9 @@ Todoyu.Ext.contact.Person =  {
 			$('person-' + idPerson + '-field-shortname').value = firstname.substr(0,2).toUpperCase() + lastname.substr(0,2).toUpperCase();
 		}
 	},
-	
-	
-	
+
+
+
 	/**
 	 * updates the working location selector with options of choosen company
 	 * 
@@ -179,8 +177,8 @@ Todoyu.Ext.contact.Person =  {
 		return false;
 	},
 
-	
-	
+
+
 	/**
 	 *	On saved handle
 	 *
@@ -203,8 +201,8 @@ Todoyu.Ext.contact.Person =  {
 		this.showList();
 	},
 
-	
-	
+
+
 	/**
 	 *	Show list
 	 *
@@ -222,8 +220,8 @@ Todoyu.Ext.contact.Person =  {
 		this.ext.updateContent(url, options);
 	},
 
-	
-	
+
+
 	/**
 	 *	Edit user record
 	 *
@@ -258,9 +256,9 @@ Todoyu.Ext.contact.Person =  {
 
 		Todoyu.Popup.openWindow('popupRecordInfo', 'Info', 420, 340, url, options);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * save person from wizard
 	 * 
@@ -278,9 +276,9 @@ Todoyu.Ext.contact.Person =  {
 		
 		return false;
 	},
-	
-	
-	
+
+
+
 	/**
 	 * after save handling from wizard
 	 * 
@@ -292,23 +290,23 @@ Todoyu.Ext.contact.Person =  {
 
 		if( error ) {
 			Todoyu.notifyError('Saving person failed');
-			
+
 			Todoyu.Popup.getContentElement('popup-'+target).update(response.responseText);
 		} else {
 			Todoyu.notifySuccess('Person saved');
-			
+
 			var label		= response.getTodoyuHeader('recordLabel');
 			var idRecord	= response.getTodoyuHeader('idRecord');
-			
+
 			$(target).value = idRecord;
 			$(target + '-fulltext').value = label;
-			
+
 			Todoyu.Popup.close('popup-'+target);
 		}
 	},
-	
-	
-	
+
+
+
 	/**
 	 * cancel handling for wizard
 	 */

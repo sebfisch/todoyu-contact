@@ -56,6 +56,9 @@
 							<action>region</action>
 						</acListener>
 						<acLabelFunc>TodoyuDatasource::getRegionLabel</acLabelFunc>
+						<options>
+							<onCompleteCustom>Todoyu.Ext.contact.Autocomplete.onRegionAutocomplete</onCompleteCustom>
+						</options>
 					</config>
 				</field>
 

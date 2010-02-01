@@ -26,8 +26,6 @@
 
 
 
-
-
 $CONFIG['EXT']['contact']['assets'] = array(
 	'default' => array(
 		'css'	=> array(
@@ -45,12 +43,16 @@ $CONFIG['EXT']['contact']['assets'] = array(
 				'position'	=> 100
 			),
 			array(
-				'file'		=> 'ext/contact/assets/js/Person.js',
+				'file'		=> 'ext/contact/assets/js/Autocomplete.js',
 				'position'	=> 101
 			),
 			array(
+				'file'		=> 'ext/contact/assets/js/Person.js',
+				'position'	=> 105
+			),
+			array(
 				'file'		=> 'ext/contact/assets/js/Company.js',
-				'position'	=> 101
+				'position'	=> 106
 			)
 		),
 		'css' => array(

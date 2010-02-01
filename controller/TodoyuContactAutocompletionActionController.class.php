@@ -21,6 +21,11 @@
 
 class TodoyuContactAutocompletionActionController extends TodoyuActionController {
 
+	/**
+	 * Get user autocompleter suggestions
+	 *
+	 * @param	Array	$params
+	 */
 	public function userAction(array $params) {
 		$sword	= trim($params['sword']);
 		$config	= array();
@@ -30,6 +35,13 @@ class TodoyuContactAutocompletionActionController extends TodoyuActionController
 		return TodoyuRenderer::renderAutocompleteList($results);
 	}
 
+
+
+	/**
+	 * Get company autocompleter suggestions
+	 *
+	 * @param	Array	$params
+	 */
 	public function companyAction(array $params) {
 		$sword	= trim($params['sword']);
 		$config	= array();
@@ -40,6 +52,12 @@ class TodoyuContactAutocompletionActionController extends TodoyuActionController
 	}
 
 
+
+	/**
+	 * Get region autocompleter suggestions
+	 *
+	 * @param	Array	$params
+	 */
 	public function regionAction(array $params) {
 		$sword	= trim($params['sword']);
 		$config	= array();
