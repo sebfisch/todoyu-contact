@@ -33,20 +33,21 @@ class TodoyuContactRenderer {
 	/**
 	 * Render the tab menu
 	 *
+	 * @param	String		$activeTab			e.g 'person' / 'company'
+	 * @param	Boolean		$onlyActive
 	 * @return	String
 	 */
 	public static function renderTabs($activeTab, $onlyActive = false)	{
 		$typesConfig= TodoyuContactManager::getTypesConfig();
 		$tabs 		= array();
 
+			// Render only the currenty active tab?
 		if( $onlyActive ) {
-			$typesConfig = array(
-				$activeTab => $typesConfig[$activeTab]
-			);
+			$typesConfig = array($activeTab => $typesConfig[$activeTab]);
 		}
 
+			// Add configured allowed types to tabs config
 		foreach($typesConfig as $type => $typeConfig)	{
-				// Check if type is allowed
 			if( allowed('contact', $type . ':use') ) {
 				$tabs[$type] = array(
 					'id'		=> $type,
@@ -71,8 +72,8 @@ class TodoyuContactRenderer {
 	/**
 	 * Render contacts list
 	 *
-	 *	@param	String	$type
-	 *	@return	String
+	 * @param	String	$type
+	 * @return	String
 	 */
 	public static function renderContactList($type)	{
 		$content	= '';
@@ -92,12 +93,12 @@ class TodoyuContactRenderer {
 
 
 
-
 	/**
-	 *	Render person list
+	 * Render edit form for given contact record of given type
 	 *
-	 *	@param	String	$sword
-	 *	@return	String
+	 * @param	String	$type
+	 * @param	Integer	$idRecord
+	 * @return	String
 	 */
 	public static function renderContactEdit($type, $idRecord = 0) {
 		$content	= '';
@@ -119,10 +120,12 @@ class TodoyuContactRenderer {
 
 
 	/**
-	 *	Render person list
+	 * Render person list
 	 *
-	 *	@param	String	$sword
-	 *	@return	String
+	 * @param	String	$sword
+	 * @param	Integer	$size
+	 * @param	Integer	$offset
+	 * @return	String
 	 */
 	public static function renderPersonList($sword = '', $size = 5, $offset = 0) {
 		restrict('contact', 'person:use');
@@ -133,18 +136,18 @@ class TodoyuContactRenderer {
 
 
 	/**
-	 *	Render company list
+	 * Render company list
 	 *
-	 *	@param	String	$sword
-	 *	@return	String
+	 * @param	String	$sword
+	 * @return	String
 	 */
 	public static function renderCompanyList($sword = '') {
 		restrict('contact', 'company:use');
 
 		return TodoyuListingRenderer::render('contact', 'company');
 
-		$tmpl		= 'ext/contact/view/companylist.tmpl';
-		$data		= array();
+		$tmpl	= 'ext/contact/view/companylist.tmpl';
+		$data	= array();
 
 		$companies	= TodoyuCompanyManager::searchCompany($sword);
 
@@ -161,10 +164,10 @@ class TodoyuContactRenderer {
 
 
 	/**
-	 *	Render person edit form
+	 * Render person edit form
 	 *
-	 *	@param	Integer	$idPerson
-	 *	@return	String
+	 * @param	Integer	$idPerson
+	 * @return	String
 	 */
 	public static function renderPersonEditForm($idPerson) {
 		restrict('contact', 'person:edit');
@@ -192,9 +195,7 @@ class TodoyuContactRenderer {
 
 
 	/**
-	 * Renders the the person form for popup
-	 *
-	 * (other save and cancel handling
+	 * Render person edit form for popup (different save and cancel handling than conventional)
 	 *
 	 * @param	Integer	$idPerson
 	 * @param	String	$idTarget		HTML Id of the input field
@@ -230,10 +231,10 @@ class TodoyuContactRenderer {
 
 
 	/**
-	 *	Render company edit form
+	 * Render company edit form
 	 *
-	 *	@param	Integer	$idCompany
-	 *	@return	String
+	 * @param	Integer	$idCompany
+	 * @return	String
 	 */
 	public static function renderCompanyEditForm($idCompany) {
 		restrict('contact', 'company:edit');
@@ -263,13 +264,13 @@ class TodoyuContactRenderer {
 	/**
 	 * Render contact creation/ editing form header label
 	 *
-	 * @param	Object	$editRecord
-	 * @param	Integer	$editID
+	 * @param	String				$type
+	 * @param	TodoyuBaseObject	$record
+	 * @param	Integer				$idRecord
 	 * @return	String
 	 */
 	public static function getContactFormHeader($type, TodoyuBaseObject $record,  $idRecord = 0) {
 		$idRecord	= intval($idRecord);
-
 
 		if( $idRecord === 0 )	{
 				// Creating new contact record
@@ -299,12 +300,11 @@ class TodoyuContactRenderer {
 
 
 
-
 	/**
 	 * Render content of record info popup (e.g. user visiting card or company summary)
 	 *
-	 * @param	String	$type
-	 * @param	Integer	$idRecord
+	 * @param	String		$type
+	 * @param	Integer		$idRecord
 	 * @return	String
 	 */
 	public static function renderInfoPopupContent($type, $idRecord) {
@@ -328,7 +328,8 @@ class TodoyuContactRenderer {
 	/**
 	 * Render user info (shown in info popup)
 	 *
-	 * @param	Integer	$idRecord
+	 * @param	Integer	$idUser
+	 * @return	String
 	 */
 	public static function renderUserInfo($idUser) {
 		$idUser	= intval($idUser);
@@ -352,6 +353,13 @@ class TodoyuContactRenderer {
 	}
 
 
+
+	/**
+	 * Render company summary
+	 *
+	 * @param	Integer	$idCompany
+	 * @return	String
+	 */
 	public static function renderCompanyInfo($idCompany)	{
 		$idCompany = intval($idCompany);
 
@@ -362,7 +370,6 @@ class TodoyuContactRenderer {
 
 		return render($tmpl, $data);
 	}
-
 
 
 
@@ -397,7 +404,6 @@ class TodoyuContactRenderer {
 
 		return render($tmpl, $data);
 	}
-
 
 }
 
