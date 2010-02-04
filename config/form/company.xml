@@ -26,17 +26,9 @@
 				<field type="dateinput" name="date_enter">
 					<label>user.company.attr.date_enter</label>
 				</field>
-
-				<field type="checkbox" name="is_ngo">
-					<label>user.company.attr.is_ngo</label>
-				</field>
-
+				
 				<field type="checkbox" name="is_internal">
 					<label>user.company.attr.is_internal</label>
-				</field>
-
-				<field type="expandAllButton" name="expandAll">
-					<fields>contactinfo,address,user</fields>
 				</field>
 
 				<field type="databaseRelation" name="contactinfo">
