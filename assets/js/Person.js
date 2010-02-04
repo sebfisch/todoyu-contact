@@ -45,8 +45,8 @@ Todoyu.Ext.contact.Person =  {
 		var url = Todoyu.getUrl('contact', 'person');
 		var options = {
 			'parameters': {
-				'person':	idPerson,
-				'action':	'edit'
+				'action':	'edit',
+				'person':	idPerson				
 			},
 			'onComplete': this.onEdit.bind(this, idPerson)
 		};

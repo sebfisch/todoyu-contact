@@ -48,10 +48,10 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 
 		$idPerson	= intval($params['person']);
 
-		$content	= TodoyuContactRenderer::renderTabs('person', true);
-		$content	.=TodoyuContactRenderer::renderPersonEditForm($idPerson);
+		$tabs	= TodoyuContactRenderer::renderTabs('person', true);
+		$content= TodoyuContactRenderer::renderPersonEditForm($idPerson);
 
-		return $content;
+		return TodoyuRenderer::renderContent($content, $tabs);
 	}
 
 
@@ -67,10 +67,10 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 
 		$sword	= trim($params['sword']);
 
-		$content	= TodoyuContactRenderer::renderTabs('person');
-		$content	.= TodoyuListingRenderer::render('contact', 'person', 0, $sword);
+		$tabs	= TodoyuContactRenderer::renderTabs('person');
+		$content= TodoyuListingRenderer::render('contact', 'person', 0, $sword);
 
-		return $content;
+		return TodoyuRenderer::renderContent($content, $tabs);
 	}
 
 

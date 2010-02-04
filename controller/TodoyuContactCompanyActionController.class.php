@@ -46,10 +46,10 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 		$idCompany	= intval($params['company']);
 
-		$content	= TodoyuContactRenderer::renderTabs('company', true);
-		$content	.=TodoyuContactRenderer::renderCompanyEditForm($idCompany);
+		$tabs	= TodoyuContactRenderer::renderTabs('company', true);
+		$content= TodoyuContactRenderer::renderCompanyEditForm($idCompany);
 
-		return $content;
+		return TodoyuRenderer::renderContent($content, $tabs);
 	}
 
 
@@ -65,10 +65,10 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 		$sword	= trim($params['sword']);
 
-		$content	= TodoyuContactRenderer::renderTabs('company');
-		$content	.= TodoyuListingRenderer::render('contact', 'company', 0, $sword);
+		$tabs	= TodoyuContactRenderer::renderTabs('company');
+		$content= TodoyuListingRenderer::render('contact', 'company', 0, $sword);
 
-		return $content;
+		return TodoyuRenderer::renderContent($content, $tabs);
 	}
 
 
@@ -171,28 +171,28 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 		return TodoyuContactRenderer::renderInfoPopupContent($type, $idCompany);
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Returns the Options for the Working Location selector
-	 * 
+	 *
 	 * @param	Array	$params
 	 * @return	String
 	 */
 	public function getCompanyAddressOptionsAction(array $params)	{
 		$tmpl		= 'core/view/form/FormElement_Select_Options.tmpl';
-		
+
 		$idCompany	= intval($params['idCompany']);
-		
+
 		$data		= array(
 				'options'	=> TodoyuContactViewHelper::getWorkaddressOptions($idCompany),
 				'value'		=> array()
 		);
-		
+
 		return render($tmpl, $data);
 	}
-	
+
 }
 
 ?>

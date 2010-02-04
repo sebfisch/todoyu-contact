@@ -20,13 +20,24 @@
 ***************************************************************/
 
 TodoyuExtManager::addRecordConfig('contact', 'jobtype', array(
-	'label'		=> 'LLL:contact.contacttypes.jobtype',
+	'label'		=> 'LLL:contact.record.jobtype',
 	'list'		=> 'TodoyuJobtypeManager::getRecords',
 	'form'		=> 'ext/contact/config/form/admin/jobtype.xml',
 	'object'	=> 'TodoyuJobType',
 	'delete'	=> 'TodoyuJobtypeManager::deleteJobtype',
 	'save'		=> 'TodoyuJobtypeManager::saveJobType',
 	'table'		=> 'ext_user_jobtype'
+));
+
+// add holidaysets to record area of the sysadmin
+TodoyuExtManager::addRecordConfig('contact', 'contactinfotype', array(
+	'label'		=> 'LLL:contact.record.contactinfotype',
+	'list'		=> 'TodoyuContactInfoTypeManager::getRecords',
+	'form'		=> 'ext/contact/config/form/admin/contactinfotype.xml',
+	'object'	=> 'TodoyuContactInfoType',
+	'delete'	=> 'TodoyuContactInfoTypeManager::deleteContactTypeInfo',
+	'save'		=> 'TodoyuContactInfoTypeManager::saveContactInfoType',
+	'table'		=> 'ext_user_contactinfotype'
 ));
 
 ?>

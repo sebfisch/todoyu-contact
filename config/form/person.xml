@@ -61,10 +61,6 @@
 					<storeAsDate />
 				</field>
 
-				<field type="expandAllButton" name="expandall">
-					<fields>contactinfo,address,customer</fields>
-				</field>
-
 				<field type="databaseRelation" name="contactinfo">
 					<label>user.user.attr.contactinfo</label>
 					<foreignRecordConf>

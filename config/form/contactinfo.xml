@@ -13,19 +13,14 @@
 			<elements>
 				<field type="select" name="id_contactinfotype">
 					<label>user.contactinfo.attr.contactinfotype</label>
-					<source type="sql">
-						<fields>id,title</fields>
-						<tables>ext_user_contactinfotype</tables>
-						<where>deleted = 0</where>
-						<order>title</order>
-						<label>TodoyuContactInfoType::getLabelForFormElementSelect</label>
-						<value>id</value>
+					<source type="function">
+						<function>TodoyuContactViewHelper::getContactInfoTypeOptions</function>
 					</source>
-					<required>1</required>
+					<required />
 				</field>
 				<field type="textinput" name="info">
 					<label>user.contactinfo.attr.info</label>
-					<required>1</required>
+					<required />
 				</field>
 				<field type="checkbox" name="preferred">
 					<label>user.contactinfo.attr.preferred</label>

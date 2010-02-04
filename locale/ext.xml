@@ -5,8 +5,9 @@
 		<label index="page.title">Contacts</label>
 		<label index="contacttypes.company">Company</label>
 		<label index="contacttypes.person">Person</label>
-		<label index="contacttypes.jobtype">Jobtype</label>
-		<label index="contacttypes.customerrole">Customer Role</label>
+		<label index="record.jobtype">Jobtype</label>
+		<label index="record.contactinfotype">Contactinfotype</label>
+		<label index="record.contactinfotype.key">Key</label>
 		<label index="contact.createnew">Create new</label>
 		<label index="contact.edit">Edit Record: </label>
 		<label index="editRecord">Edit Record</label>
@@ -48,8 +49,9 @@
 		<label index="page.title">Kontakte</label>
 		<label index="contacttypes.company">Firmen</label>
 		<label index="contacttypes.person">Personen</label>
-		<label index="contacttypes.jobtype">Berufstätigkeit</label>
-		<label index="contacttypes.customerrole">Kunden-Rolle</label>
+		<label index="record.jobtype">Berufstätigkeit</label>
+		<label index="record.contactinfotype">Kontaktinfo-Typ</label>
+		<label index="record.contactinfotype.key">Key</label>
 		<label index="contact.createnew">Hinzufügen</label>
 		<label index="contact.edit">Datensatz bearbeiten: </label>
 		<label index="editRecord">Datensatz bearbeiten</label>

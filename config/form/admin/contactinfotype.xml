@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<hiddenFields>
+		<field name="id"></field>
+	</hiddenFields>
+	<fieldsets>
+
+		<fieldset name="main">
+			<legend>Main contactinfotype data</legend>
+			<elements>
+
+				<field type="textinput" name="title">
+					<label>core.title</label>
+					<required />
+				</field>
+
+				<field type="textinput" name="key">
+					<label>contact.record.contactinfotype.key</label>
+					<required />
+				</field>
+
+			</elements>
+		</fieldset>
+
+	</fieldsets>
+</form>

@@ -278,6 +278,17 @@ class TodoyuContactViewHelper {
 		return $options;
 	}
 
+
+	public static function getContactInfoTypeOptions(TodoyuFormElement $field) {
+		$types	= TodoyuContactInfoTypeManager::getContactInfoTypes(true);
+		$reform	= array(
+			'id'	=> 'value',
+			'label'	=> 'label'
+		);
+
+		return TodoyuArray::reform($types, $reform);
+	}
+
 }
 
 ?>
