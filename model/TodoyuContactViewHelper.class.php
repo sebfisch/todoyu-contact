@@ -21,6 +21,13 @@
 
 class TodoyuContactViewHelper {
 
+	/**
+	 * Get user address label
+	 *
+	 * @param	TodoyuFormElement	$formElement
+	 * @param	Array				$valueArray
+	 * @return	String
+	 */
 	public static function getUserAddressLabel(TodoyuFormElement $formElement, array $valueArray) {
 		$idAddressType	= intval($valueArray['id_addresstype']);
 		$addressType	= TodoyuAddressTypeManager::getAddressType($idAddressType);
@@ -290,11 +297,18 @@ class TodoyuContactViewHelper {
 	}
 
 
+
+	/**
+	 * Get selector options config array for info types
+	 *
+	 * @param	TodoyuFormElement	$field
+	 * @return	Array
+	 */
 	public static function getContactInfoTypeOptions(TodoyuFormElement $field) {
 		$types	= TodoyuContactInfoTypeManager::getContactInfoTypes(true);
 		$reform	= array(
 			'id'	=> 'value',
-			'label'	=> 'label'
+			'title'	=> 'label'
 		);
 
 		return TodoyuArray::reform($types, $reform);
