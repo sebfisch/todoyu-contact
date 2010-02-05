@@ -1,4 +1,23 @@
 <?php
+/***************************************************************
+*  Copyright notice
+*
+*  (c) 2009 snowflake productions gmbh
+*  All rights reserved
+*
+*  This script is part of the todoyu project.
+*  The todoyu project is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License, version 2,
+*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by
+*  the Free Software Foundation;
+*
+*  This script is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+*  GNU General Public License for more details.
+*
+*  This copyright notice MUST APPEAR in all copies of the script!
+***************************************************************/
 
 class TodoyuContactViewHelper {
 
@@ -28,13 +47,6 @@ class TodoyuContactViewHelper {
 				'classname'	=> 'error'
 			);
 		}
-
-			// Add selection instruction
-		$prefix		= array(
-			'label'	=> 'LLL:form.select.pleaseChoose',
-			'value'	=> 0
-		);
-		array_unshift($options, $prefix);
 
 		return $options;
 	}
@@ -161,6 +173,12 @@ class TodoyuContactViewHelper {
 
 
 
+	/**
+	 * Get options config array for address type selector
+	 *
+	 * @param	TodoyuFormElement $field
+	 * @return	Array
+	 */
 	public static function getAddressTypeOptions(TodoyuFormElement $field) {
 		$addressTypes	= TodoyuContactManager::getAddressTypes();
 		$reform		= array(
@@ -207,13 +225,6 @@ class TodoyuContactViewHelper {
 			}
 		}
 
-		array_unshift($countryOptions, array(
-				'value' 	=> 0,
-				'label'		=> 'LLL:form.select.pleaseChoose',
-				'disabled'	=> true
-			)
-		);
-
 		return $countryOptions;
 	}
 
@@ -253,7 +264,7 @@ class TodoyuContactViewHelper {
 	 */
 	public static function getWorkaddressOptions($idCompany) {
 		$idCompany	= intval($idCompany);
-		$options	= array(array('value' => 0, 'label' => 'LLL:form.select.pleaseChoose'));
+		$options	= array();
 
 		if( $idCompany !== 0 ) {
 			$addresses	= TodoyuCompanyManager::getCompanyAddressRecords($idCompany);
