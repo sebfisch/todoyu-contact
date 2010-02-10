@@ -36,11 +36,15 @@ class TodoyuContactManager {
 
 
 
+	/**
+	 * Get list of all persons within given amount limit (unconditional search)
+	 *
+	 * @param	Integer		$limit
+	 * @return	Array
+	 */
 	public static function getListPersons($limit) {
 		return TodoyuUserManager::searchUsers('', null, $limit);
 	}
-
-
 
 
 
@@ -66,7 +70,8 @@ class TodoyuContactManager {
 	/**
 	 * Get contact type object class
 	 *
-	 * @return unknown
+	 * @param	String	$type
+	 * @return	String
 	 */
 	public static function getContactTypeObjClass($type) {
 		return $GLOBALS['CONFIG']['EXT']['contact']['contacttypes'][$type]['objClass'];
@@ -77,6 +82,7 @@ class TodoyuContactManager {
 	/**
 	 * Get label of contact type
 	 *
+	 * @param	String	$type
 	 * @return	String
 	 */
 	public static function getContactTypeLabel($type)	{
@@ -88,7 +94,8 @@ class TodoyuContactManager {
 	/**
 	 * Get contact type object
 	 *
-	 * @param	Intger	$objID
+	 * @param	String				$type
+	 * @param	Intger				$idRecord
 	 * @return	TodoyuBaseObject
 	 */
 	public static function getContactTypeObj($type, $idRecord)	{
@@ -103,8 +110,8 @@ class TodoyuContactManager {
 	/**
 	 * Get country label
 	 *
-	 * @param	TodoyuForm	$form
-	 * @param	Array	$option
+	 * @param	TodoyuForm		$form
+	 * @param	Array			$option
 	 * @return	String
 	 */
 	public static function getCountryLabel($form, $option)	{
@@ -132,12 +139,6 @@ class TodoyuContactManager {
 //		return $form;
 //	}
 //
-
-
-
-
-
-
 
 
 
