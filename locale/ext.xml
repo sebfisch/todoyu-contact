@@ -43,6 +43,10 @@
 		<label index="ac.region.notFoundInfo">No region containing the given text found. Did you select the correct country?</label>
 		<label index="ac.user.notFoundInfo">No person with a name containing the given text was found.</label>
 		<label index="ac.company.notFoundInfo">No company named containing the given text found.</label>
+		<label index="contactinfotype.attr.category">Infotype Category</label>
+		<label index="contactinfotype.category.1">Email Address</label>
+		<label index="contactinfotype.category.2">Phone number (or fax, mobile)</label>
+		<label index="contactinfotype.category.3">Other</label>
 	</labels>
 	<labels lang="de">
 		<label index="ext.title">Kontakt</label>
@@ -85,5 +89,9 @@
 		<label index="ac.region.notFoundInfo">Es wurde keine Region gefunden die den angegebenen Text beinhaltet. Richtiges Land angewählt?</label>
 		<label index="ac.user.notFoundInfo">Es wurde keine Person mit den eingegebenen Zeichen im Namen gefunden.</label>
 		<label index="ac.company.notFoundInfo">Es wurde keine Firma mit einem Namen der die eingegebenen Zeichen beinhaltet gefunden.</label>
+		<label index="contactinfotype.attr.category">Infotyp-Kategorie</label>
+		<label index="contactinfotype.category.1">Email-Addresse</label>
+		<label index="contactinfotype.category.2">Telefonnummer (oder Fax, Mobil)</label>
+		<label index="contactinfotype.category.3">Anderes</label>
 	</labels>
 </locallang>

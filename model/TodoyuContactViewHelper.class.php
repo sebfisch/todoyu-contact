@@ -181,18 +181,37 @@ class TodoyuContactViewHelper {
 
 
 	/**
+	 * Get options config array for contact infotype category selector
+	 *
+	 * @param	TodoyuFormElement $field
+	 * @return	Array
+	 */
+	public static function getContactInfoTypeCategoryOptions(TodoyuFormElement $field) {
+		$categoriesConf	= TodoyuContactManager::getContactinfotypeCategories();
+		$reform		= array(
+			'index'	=> 'value',
+			'label'	=> 'label'
+		);
+		$options		= TodoyuArray::reform($categoriesConf, $reform);
+
+		return $options;
+	}
+
+
+
+	/**
 	 * Get options config array for address type selector
 	 *
 	 * @param	TodoyuFormElement $field
 	 * @return	Array
 	 */
 	public static function getAddressTypeOptions(TodoyuFormElement $field) {
-		$addressTypes	= TodoyuContactManager::getAddressTypes();
+		$addressTypesConf	= TodoyuContactManager::getAddressTypes();
 		$reform		= array(
 			'index'	=> 'value',
 			'label'	=> 'label'
 		);
-		$options		= TodoyuArray::reform($addressTypes, $reform);
+		$options		= TodoyuArray::reform($addressTypesConf, $reform);
 
 		return $options;
 	}

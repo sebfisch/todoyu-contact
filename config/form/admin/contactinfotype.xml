@@ -9,6 +9,14 @@
 			<legend>Main contactinfotype data</legend>
 			<elements>
 
+				<field type="select" name="category">
+					<label>contact.contactinfotype.attr.category</label>
+					<source type="function">
+						<function>TodoyuContactViewHelper::getContactInfoTypeCategoryOptions</function>
+					</source>
+					<required />
+				</field>
+				
 				<field type="textinput" name="title">
 					<label>core.title</label>
 					<required />

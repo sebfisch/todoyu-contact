@@ -24,16 +24,39 @@
  */
 
 
+	// Categories of dynamic contactinfo types
+$CONFIG['EXT']['contact']['contactinfotypecategories'] = array(
+		// Email
+	array(
+		'index'	=> 1,
+		'label'	=> 'LLL:contact.contactinfotype.category.1'
+	),
+		// Phone
+	array(
+		'index'	=> 2,
+		'label'	=> 'LLL:contact.contactinfotype.category.2'
+	),
+		// Other
+	array(
+		'index'	=> 3,
+		'label'	=> 'LLL:contact.contactinfotype.category.3'
+	),
+);
 
+
+	// Types of addresses
 $CONFIG['EXT']['contact']['addresstypes'] = array(
+		// Home address
 	array(
 		'index'	=> 1,
 		'label'	=> 'LLL:user.address.attr.addresstype.1'
 	),
+		// Business address
 	array(
 		'index'	=> 2,
 		'label'	=> 'LLL:user.address.attr.addresstype.2'
 	),
+		// Billing address
 	array(
 		'index'	=> 3,
 		'label'	=> 'LLL:user.address.attr.addresstype.3'

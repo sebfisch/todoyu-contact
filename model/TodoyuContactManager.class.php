@@ -434,6 +434,17 @@ class TodoyuContactManager {
 
 
 	/**
+	 * Get categories of contactinfo types
+	 *
+	 * @return	Array
+	 */
+	public static function getContactinfotypeCategories() {
+		return TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['contact']['contactinfotypecategories']);
+	}
+
+
+
+	/**
 	 * Get listing data for persons
 	 * Keys: [total,rows]
 	 *
