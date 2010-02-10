@@ -31,6 +31,8 @@
 		<label index="person.tooltip.delete">Delete Person</label>
 		<label index="person.tooltip.edituser">Edit User</label>
 		<label index="person.tooltip.showInfo">Show Person Information</label>
+		<label index="person.saved">Person saved</label>
+		<label index="person.saved.error">Saving Person Failed</label>
 		<label index="company.tooltip.edit">Edit Company</label>
 		<label index="company.tooltip.delete">Delete Company</label>
 		<label index="company.tooltip.showInfo">Show Company Information</label>
@@ -78,6 +80,8 @@
 		<label index="person.tooltip.edit">Person bearbeiten</label>
 		<label index="person.tooltip.delete">Eintrag löschen</label>
 		<label index="person.tooltip.edituser">Benutzer bearbeiten</label>
+		<label index="person.saved">Person gespeichert</label>
+		<label index="person.saved.error">Person konnte nicht gespeichert werden</label>
 		<label index="company.tooltip.edit">Firma bearbeiten</label>
 		<label index="company.tooltip.delete">Firma löschen</label>
 		<label index="company.noAddress">Für die gewählte Firma wurde keine Adresse gefunden</label>

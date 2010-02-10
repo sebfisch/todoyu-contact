@@ -188,10 +188,10 @@ Todoyu.Ext.contact.Person =  {
 		var error	= response.hasTodoyuError();
 
 		if( error ) {
-			Todoyu.notifyError('Saving person failed');
+			Todoyu.notifyError('[LLL:contact.person.saved.error]');
 			$('contact-form-content').update(response.responseText);
 		} else {
-			Todoyu.notifySuccess('Person saved');
+			Todoyu.notifySuccess('[LLL:contact.person.saved]');
 			this.showList();
 		}
 	},
