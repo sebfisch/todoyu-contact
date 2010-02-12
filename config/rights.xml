@@ -15,6 +15,7 @@
 		<right name="edit" />
 		<right name="create" />
 		<right name="delete" />
+		<right name="search" />
 	</section>
 
 	<section name="company" require="general:use">
@@ -22,6 +23,7 @@
 		<right name="edit" />
 		<right name="create" />
 		<right name="delete" />
+		<right name="search" />
 	</section>
 
 </rights>
