@@ -26,10 +26,6 @@
  * @subpackage	Admin
  */
 
-
-
-
-
 	// Declare ext ID, path
 define('EXTID_CONTACT', 106);
 define('PATH_EXT_CONTACT', PATH_EXT . '/contact');
@@ -44,5 +40,9 @@ require_once( PATH_EXT_CONTACT . '/config/extension.php' );
 require_once( PATH_EXT_CONTACT . '/config/panelwidgets.php' );
 require_once( PATH_EXT_CONTACT . '/config/admin.php');
 require_once( PATH_EXT_CONTACT . '/dwoo/plugins.php');
+
+	// Add quick create types
+TodoyuCreateManager::addEngine('company', 'contact.create.company.label', 50);
+TodoyuCreateManager::addEngine('person', 'contact.create.person.label', 50);
 
 ?>
