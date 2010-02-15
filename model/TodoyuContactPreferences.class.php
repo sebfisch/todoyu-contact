@@ -102,8 +102,7 @@ class TodoyuContactPreferences {
 		$tab	= self::getPref('tab');
 
 		if( $tab === false ) {
-			$tab = $GLOBALS['CONFIG']['EXT']['contact']['defaultTypeTab'];
-			self::saveActiveTab($tab);
+			$tab = trim($GLOBALS['CONFIG']['EXT']['contact']['defaultTypeTab']);
 		}
 
 		return $tab;
@@ -122,80 +121,26 @@ class TodoyuContactPreferences {
 
 
 
-
-
 	/**
-	 * Saves ID of currently edited record
+	 * Get person language
 	 *
-	 * @param	Integer		$idRecord		record id
+	 * @return	String
 	 */
-	public static function saveEditId($idRecord)	{
-		$idRecord	= intval($idRecord);
-
-		self::savePref('last_edit_id', $idRecord, 0, true);
-	}
-
-
-
-
-
-	/**
-	 * Saves the showAll flag for the current contact type.
-	 * Removes it from the array if it already exists.
-	 */
-	public static function saveShowAll()	{
-		if( self::getShowAll() )	{
-			self::removeShowAll();
-		} else {
-			$showAllArray = self::getShowAllArray();
-			array_push($showAllArray, self::getActiveTab());
-		}
-
-		$value	= serialize($showAllArray);
-
-		self::savePref('showAll', $value, 0, true);
+	public static function getLanguage() {
+		return self::getPref('language');
 	}
 
 
 
 	/**
-	 * Checks if the current Contact type is in the preference array.
+	 * Save user language
 	 *
-	 * @return	Boolean
+	 * @param	String		$language
 	 */
-	public static function getShowAll()	{
-		$showAllArray = self::getShowAllArray();
-		return  $showAllArray ? in_array(self::getActiveTab(), $showAllArray) : false;
-	}
+	public static function saveLanguage($language) {
+		$language	= trim(strtolower($language));
 
-
-
-	/**
-	 * Removes current contact type from the presets
-	 */
-	public static function removeShowAll()	{
-		$contactType = self::getActiveTab();
-		$showAllArray = self::getShowAllArray();
-
-		$showAllArray = TodoyuArray::unsetEntryByValue($contactType, $showAllArray);
-
-		$value	= serialize($showAllArray);
-
-		self::savePref('showAll', $value, 0, true);
-	}
-
-
-
-	/**
-	 * Returns an array of contact types which have the show all flag set.
-	 * If there is no array in the database it returns an empty array
-	 *
-	 * @return	Array
-	 */
-	protected static function getShowAllArray()	{
-		$showAllArray	= self::getPref('showAll', 0, 0, true);
-
-		return $showAllArray ? $showAllArray : array();
+		self::savePref('language', $language, 0, true);
 	}
 
 }

@@ -147,7 +147,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 	 * @return $lang
 	 */
 	public function getLanguage() {
-		$lang	= TodoyuUserPreferences::getLanguage();
+		$lang	= TodoyuContactPreferences::getLanguage();
 
 			// If no preference found, try to detect the browser language
 		if( $lang === false ) {
