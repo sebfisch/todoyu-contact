@@ -44,7 +44,7 @@ class TodoyuPersonFilterDataSource {
 			'shortname'
 		);
 
-		$users = TodoyuPersonManager::searchUsers($search, $fieldsToSearchIn);
+		$users = TodoyuPersonManager::searchPersons($search, $fieldsToSearchIn);
 
 		foreach($users as $user) {
 			$data[$user['id']] = TodoyuPersonManager::getLabel($user['id']);

@@ -74,10 +74,10 @@ $CONFIG['EXT']['contact']['contacttypes']	= array(
 	'person' => array(
 		'label'		=> 'LLL:contact.contacttypes.person',
 		'formXml'	=> 'ext/contact/config/form/person.xml',
-		'objClass'	=> 'TodoyuUser',
+		'objClass'	=> 'TodoyuPerson',
 		'listFunc'	=> 'TodoyuContactManager::ListPersons',
 		'saveFunc'	=> 'TodoyuContactManager::savePerson',
-		'deleteFunc'=> 'TodoyuPersonManager::deleteUser'
+		'deleteFunc'=> 'TodoyuPersonManager::deletePerson'
 	),
 	'company' => array(
 		'label'		=> 'LLL:contact.contacttypes.company',

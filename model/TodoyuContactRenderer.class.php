@@ -176,7 +176,7 @@ class TodoyuContactRenderer {
 
 		$form	= TodoyuFormManager::getForm($xmlPath, $idPerson);
 
-		$person	= TodoyuPersonManager::getUser($idPerson);
+		$person	= TodoyuPersonManager::getPerson($idPerson);
 		$data	= $person->getTemplateData(true);
 		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $idPerson);
 
@@ -209,7 +209,7 @@ class TodoyuContactRenderer {
 
 		$form	= TodoyuFormManager::getForm($xmlPath, $idPerson);
 
-		$person	= TodoyuPersonManager::getUser($idPerson);
+		$person	= TodoyuPersonManager::getPerson($idPerson);
 		$data	= $person->getTemplateData(true);
 		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $idPerson);
 
@@ -331,15 +331,14 @@ class TodoyuContactRenderer {
 	 * @param	Integer	$idUser
 	 * @return	String
 	 */
-	public static function renderUserInfo($idUser) {
-		$idUser	= intval($idUser);
-
-		$user	= TodoyuPersonManager::getUser($idUser);
+	public static function renderUserInfo($idPerson) {
+		$idPerson	= intval($idPerson);
+		$person		= TodoyuPersonManager::getPerson($idPerson);
 
 		$tmpl	= 'ext/contact/view/info-user.tmpl';
-		$data	= $user->getTemplateData(true);
+		$data	= $person->getTemplateData(true);
 
-		$companyIDs = $user->getCompanyIDs();
+		$companyIDs = $person->getCompanyIDs();
 		foreach($companyIDs as $idCompany) {
 			$company		= TodoyuCompanyManager::getCompany($idCompany);
 			$companyData	= $company->getTemplateData(true);
@@ -347,7 +346,7 @@ class TodoyuContactRenderer {
 			$data['companyData'][$idCompany] = $companyData['address'];
 		}
 
-		$data['email']	= $user->getEmail();
+		$data['email']	= $person->getEmail();
 
 		return render($tmpl, $data);
 	}

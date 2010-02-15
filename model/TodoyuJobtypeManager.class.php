@@ -120,7 +120,7 @@ class TodoyuJobtypeManager {
 	 * @return	Array
 	 */
 	public static function getInternalUsersWithJobtype() {
-		$internalUsers	= TodoyuPersonManager::getInternalUsers(true, true);
+		$internalUsers	= TodoyuPersonManager::getInternalPersons(true, true);
 		$jobTypes		= TodoyuDiv::useFieldAsIndex(self::getJobtypes(), 'id');
 
 		foreach($internalUsers as $index => $user) {

@@ -89,7 +89,7 @@ class TodoyuContactInfoManager {
 		unset($data['id']);
 
 		$data['date_create']	= NOW;
-		$data['id_user_create']	= userid();
+		$data['id_user_create']	= personid();
 
 		return Todoyu::db()->addRecord(self::TABLE, $data);
 	}
@@ -115,7 +115,7 @@ class TodoyuContactInfoManager {
 	protected static function createNewContactInfoRecord()	{
 		$insertArray = array(
 			'date_create'		=> NOW,
-			'id_user_create'	=> userid(),
+			'id_user_create'	=> personid(),
 			'deleted'			=> 0
 		);
 

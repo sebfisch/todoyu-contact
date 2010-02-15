@@ -78,16 +78,12 @@ class TodoyuPerson extends TodoyuBaseObject {
 
 
 	/**
-	 * Get IDs of the groups the user is a member of
+	 * Get IDs of the roles the person is a member of
 	 *
 	 * @return	Array
 	 */
 	public function getGroupIDs() {
-		if( ! array_key_exists('groups', $this->cache) ) {
-			$this->cache['groups'] = TodoyuPersonManager::getGroups();
-		}
-
-		return TodoyuArray::getColumn($this->cache['groups'], 'id');
+		return TodoyuPersonManager::getRoleIDs($this->id);
 	}
 
 
@@ -204,7 +200,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 	 * @return	Array
 	 */
 	public function getUsergroupIDs() {
-		return TodoyuPersonManager::getUsergroupIDs($this->getID());
+		return TodoyuPersonManager::getRoleIDs($this->getID());
 	}
 
 
@@ -217,7 +213,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 		$this->data['company']		= TodoyuPersonManager::getUserCompanyRecords($this->id);
 		$this->data['contactinfo']	= TodoyuPersonManager::getUserContactinfoRecords($this->id);
 		$this->data['address']		= TodoyuPersonManager::getUserAddressRecords($this->id);
-		$this->data['usergroup']	= TodoyuPersonManager::getUsergroups($this->id);
+		$this->data['usergroup']	= TodoyuPersonManager::getRoles($this->id);
 	}
 
 

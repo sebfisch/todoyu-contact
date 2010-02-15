@@ -43,7 +43,7 @@ class TodoyuContactManager {
 	 * @return	Array
 	 */
 	public static function getListPersons($limit) {
-		return TodoyuPersonManager::searchUsers('', null, $limit);
+		return TodoyuPersonManager::searchPersons('', null, $limit);
 	}
 
 
@@ -183,10 +183,10 @@ class TodoyuContactManager {
 			$idUser = TodoyuPersonManager::addUser();
 		}
 
-		$data	= self::saveUserForeignRecords($data, $idUser);
+		$data	= self::savePersonForeignRecords($data, $idUser);
 		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idUser);
 
-		TodoyuPersonManager::updateUser($idUser, $data);
+		TodoyuPersonManager::updatePerson($idUser, $data);
 		TodoyuPersonManager::removeFromCache($idUser);
 
 		return $idUser;
@@ -234,7 +234,7 @@ class TodoyuContactManager {
 	 * @param	Integer	$userID
 	 * @return	Array
 	 */
-	public static function saveUserForeignRecords(array $data, $idUser)	{
+	public static function savePersonForeignRecords(array $data, $idUser)	{
 		$idUser		= intval($idUser);
 
 				// Remove existing records
@@ -455,7 +455,7 @@ class TodoyuContactManager {
 	 */
 	public static function getPersonListingData($size, $offset = 0, $searchWord = '') {
 		$data	= array();
-		$persons= TodoyuPersonManager::searchUsers($searchWord, null, $size, $offset);
+		$persons= TodoyuPersonManager::searchPersons($searchWord, null, $size, $offset);
 
 		$data	= array(
 			'rows'	=> array(),
