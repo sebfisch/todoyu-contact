@@ -159,7 +159,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 
 		$idPerson	= intval($params['person']);
 
-		TodoyuUserManager::deleteUser($idPerson);
+		TodoyuPersonManager::deleteUser($idPerson);
 	}
 
 

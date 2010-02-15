@@ -77,7 +77,7 @@ $CONFIG['EXT']['contact']['contacttypes']	= array(
 		'objClass'	=> 'TodoyuUser',
 		'listFunc'	=> 'TodoyuContactManager::ListPersons',
 		'saveFunc'	=> 'TodoyuContactManager::savePerson',
-		'deleteFunc'=> 'TodoyuUserManager::deleteUser'
+		'deleteFunc'=> 'TodoyuPersonManager::deleteUser'
 	),
 	'company' => array(
 		'label'		=> 'LLL:contact.contacttypes.company',

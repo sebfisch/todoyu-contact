@@ -68,7 +68,7 @@ class TodoyuContactViewHelper {
 	 * @return	Array
 	 */
 //	public static function getUserTypeOptions(TodoyuFormElement $field) {
-//		$types	= TodoyuUserManager::getUserTypes();
+//		$types	= TodoyuPersonManager::getUserTypes();
 //		$reform	= array(
 //			'key'	=> 'value',
 //			'label'	=> 'label'
@@ -95,7 +95,7 @@ class TodoyuContactViewHelper {
 		$label	= '';
 
 		if( $idUser !== 0 ) {
-			$label	= TodoyuUserManager::getLabel($idUser);
+			$label	= TodoyuPersonManager::getLabel($idUser);
 		}
 
 		return $label;

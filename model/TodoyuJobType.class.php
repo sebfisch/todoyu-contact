@@ -20,28 +20,22 @@
 ***************************************************************/
 
 /**
- * Various contact extension info data
+ * JobType
+ *
  */
 
+class TodoyuJobType extends TodoyuBaseObject {
 
-$CONFIG['EXT']['contact']['info'] = array(
-	'title'			=> 'Contact',
-	'description' 	=> 'Contacts maintenance',
-	'author' 		=> array(
-		'name'		=> 'Todoyu Core Team',
-		'email'		=> 'team@todoyu.com',
-		'company'	=> 'Snowflake Productions, Zürich'
-	),
-	'dependencies' 	=> '',
-	'conflicts'		=> '',
-	'state' 		=> 'beta',
-	'version' 		=> '0.1.0',
-	'constraints' 	=> array(
-		'depends' 	=> array(),
-		'conflicts' => array(),
-		'system'	=> true
-	)
-);
 
+	/**
+	 * Constructor
+	 *
+	 * @param Integer	$JobTypeID
+	 */
+	function __construct($idJobType)	{
+		parent::__construct($idJobType, 'ext_contact_jobtype');
+	}
+
+}
 
 ?>
