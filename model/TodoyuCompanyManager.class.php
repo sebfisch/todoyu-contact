@@ -145,7 +145,7 @@ class TodoyuCompanyManager {
 	public static function addUserToCompany($idCompany, $idUser, $idWorkadress = 0, $idJobtype = 0) {
 		$data	= array(
 			'id_company'	=> intval($idCompany) ,
-			'id_user'		=> intval($idUser),
+			'id_person'		=> intval($idUser),
 			'id_workaddress'=> intval($idWorkadress),
 			'id_jobtype'	=> intval($idJobtype)
 		);
@@ -166,7 +166,7 @@ class TodoyuCompanyManager {
 		$idUser		= intval($idUser);
 
 		$where		= '	id_company	= ' . $idCompany . ' AND
-						id_user		= ' . $idUser;
+						id_person		= ' . $idUser;
 
 		Todoyu::db()->deleteRecord('ext_contact_mm_company_person', $where);
 	}
@@ -283,7 +283,7 @@ class TodoyuCompanyManager {
 					u.*';
 		$tables	= '	ext_contact_person u,
 					ext_contact_mm_company_person mm';
-		$where	= '	mm.id_user		= u.id AND
+		$where	= '	mm.id_person		= u.id AND
 					mm.id_company	= ' . $idCompany;
 
 		return Todoyu::db()->getArray($fields, $tables, $where);
@@ -341,7 +341,7 @@ class TodoyuCompanyManager {
 	public static function getNumUsers($idCompany) {
 		$idCompany	= intval($idCompany);
 
-		$field	= 'id_user';
+		$field	= 'id_person';
 		$table	= 'ext_contact_mm_company_person';
 		$where	= 'id_company = ' . $idCompany;
 

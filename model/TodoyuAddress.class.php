@@ -28,21 +28,12 @@
 class TodoyuAddress extends TodoyuBaseObject {
 
 	/**
-	 * recordtable
-	 *
-	 * @var string
-	 */
-	private $table = 'ext_contact_address';
-
-
-
-	/**
 	 * constructor of the class
 	 *
 	 * @param	Integer	$addressID
 	 */
 	function __construct($idAddress) {
-		parent::__construct($idAddress, $this->table);
+		parent::__construct($idAddress, 'ext_contact_address');
 	}
 
 
@@ -55,8 +46,8 @@ class TodoyuAddress extends TodoyuBaseObject {
 		$address = '';
 
 		$address .= $this->get('street') . chr(10);
-		if( $this->get('postbox') )	{
-			$address .= $this->get('postbox') . chr(10);
+		if( $this->postbox )	{
+			$address .= $this->postbox . chr(10);
 		}
 
 		$address .= TodoyuDatasource::getCountryShort($this->get('id_country')).' - '.$this->get('zip') . ' ' . $this->get('city');

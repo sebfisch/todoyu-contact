@@ -38,13 +38,13 @@ class TodoyuAddressManager {
 	/**
 	 * Return the requested Address object
 	 *
-	 * @param	Integer $addressID
+	 * @param	Integer		$idAddress
 	 * @return	TodoyuAddress
 	 */
-	public static function getAddress($addressID)	{
-		$addressID	= intval($addressID);
+	public static function getAddress($idAddress)	{
+		$idAddress	= intval($idAddress);
 
-		return TodoyuCache::getRecord('TodoyuAddress', $addressID);
+		return TodoyuCache::getRecord('TodoyuAddress', $idAddress);
 	}
 
 
@@ -73,7 +73,7 @@ class TodoyuAddressManager {
 	public static function addAddress(array $data = array()) {
 		unset($data['id']);
 
-		$data['id_user_create']	= personid();
+		$data['id_person_create']	= personid();
 		$data['date_create']	= NOW;
 
 		return Todoyu::db()->addRecord(self::TABLE, $data);

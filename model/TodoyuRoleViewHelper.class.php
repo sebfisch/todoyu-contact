@@ -29,7 +29,7 @@ class TodoyuRoleViewHelper {
 	 */
 	public static function getUsergroupOptions(TodoyuFormElement $field) {
 		$options= array();
-		$groups	= TodoyuRoleManager::getAllUsergroups();
+		$groups	= TodoyuRoleManager::getAllRoles();
 
 		foreach($groups as $group) {
 			$options[] = array(

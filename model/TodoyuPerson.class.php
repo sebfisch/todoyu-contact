@@ -34,7 +34,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 	 * @param	Integer		$idUser
 	 */
 	public function __construct($idPerson) {
-		parent::__construct($idUser, 'ext_contact_person');
+		parent::__construct($idPerson, 'ext_contact_person');
 	}
 
 
@@ -52,7 +52,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 		 $label	= $this->getFullName($lastnameFirst);
 
 		if ( $showTitle === true) {
-			$role	= TodoyuUserroleManager::getUserrole($idRole);
+			$role	= TodoyuRoleManager::getRole($idRole);
 
 			$label	.= ', ' . $role->getTitle();
 		}
@@ -82,7 +82,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 	 *
 	 * @return	Array
 	 */
-	public function getGroupIDs() {
+	public function getRoleIDs() {
 		return TodoyuPersonManager::getRoleIDs($this->id);
 	}
 
@@ -172,7 +172,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 	public function getCompanyIDs() {
 		$field	= 'id_company';
 		$table	= 'ext_contact_mm_company_person';
-		$where	= 'id_user = ' . $this->getID();
+		$where	= 'id_person = ' . $this->getID();
 
 		return Todoyu::db()->getColumn($field, $table, $where);
 	}
@@ -210,9 +210,9 @@ class TodoyuPerson extends TodoyuBaseObject {
 	 *
 	 */
 	public function loadForeignData()	{
-		$this->data['company']		= TodoyuPersonManager::getUserCompanyRecords($this->id);
-		$this->data['contactinfo']	= TodoyuPersonManager::getUserContactinfoRecords($this->id);
-		$this->data['address']		= TodoyuPersonManager::getUserAddressRecords($this->id);
+		$this->data['company']		= TodoyuPersonManager::getPersonCompanyRecords($this->id);
+		$this->data['contactinfo']	= TodoyuPersonManager::getPersonContactinfoRecords($this->id);
+		$this->data['address']		= TodoyuPersonManager::getPersonAddressRecords($this->id);
 		$this->data['usergroup']	= TodoyuPersonManager::getRoles($this->id);
 	}
 

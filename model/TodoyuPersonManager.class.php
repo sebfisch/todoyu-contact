@@ -20,7 +20,7 @@
 ***************************************************************/
 
 /**
- * Manage users
+ * Manage persons
  *
  * @package		Todoyu
  * @subpackage	Contact
@@ -36,7 +36,7 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Get a user object. This functions uses the cache to
+	 * Get a person object. This functions uses the cache to
 	 * prevent double object initialisation
 	 *
 	 * @param	Integer		$idPerson
@@ -61,7 +61,7 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Get all active users
+	 * Get all active persons
 	 *
 	 * @param	Array		$fields			By default, all fields are selected. You can provide a field list instead
 	 * @param	Bool		$showInactive	Also show inactive persons
@@ -127,7 +127,7 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Get user data by username
+	 * Get person data by username
 	 *
 	 * @param	String		$username
 	 * @return	Array
@@ -146,7 +146,7 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Add a new user to database
+	 * Add a new person
 	 *
 	 * @param	Array		$data
 	 * @return	Integer
@@ -155,7 +155,7 @@ class TodoyuPersonManager {
 		unset($data['id']);
 
 		$data['date_create']	= NOW;
-		$data['id_user_create']	= TodoyuAuth::getPersonID();
+		$data['id_person_create']	= TodoyuAuth::getPersonID();
 
 		return Todoyu::db()->addRecord(self::TABLE, $data);
 	}
@@ -163,9 +163,9 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Delete a user in the database (set deleted flag to 1)
+	 * Delete a person in the database (set deleted flag to 1)
 	 *
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 */
 	public static function deletePerson($idPerson) {
 		$idPerson	= intval($idPerson);
@@ -180,7 +180,7 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Update a user in the database
+	 * Update a person
 	 *
 	 * @param	Integer		$idPerson
 	 * @param	Array		$data
@@ -203,7 +203,7 @@ class TodoyuPersonManager {
 		$idPerson	= intval($idPerson);
 		$xmlPath	= 'ext/user/config/form/user.xml';
 
-			// Create user in database if not existing
+			// Create person in database if not existing
 		if( $idPerson === 0 ) {
 			$idPerson = self::addPerson();
 		}
@@ -219,7 +219,7 @@ class TodoyuPersonManager {
 			// Call internal save function
 		$data	= self::savePersonForeignRecords($data, $idPerson);
 			// Call hooked save functions
-		$data 	= TodoyuFormHook::callSaveData($xmlPath, $data, $idUser);
+		$data 	= TodoyuFormHook::callSaveData($xmlPath, $data, $idPerson);
 
 		self::updatePerson($idPerson, $data);
 
@@ -229,7 +229,7 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Update current users password
+	 * Update current persons password
 	 *
 	 * @param	String		$password
 	 * @param	Bool		$alreadyHashed		Is password already a md5 hash?
@@ -240,28 +240,28 @@ class TodoyuPersonManager {
 			$password = md5($password);
 		}
 
-		$idUser	= personid();
-		$data	= array(
+		$idPerson	= personid();
+		$data		= array(
 			'password'	=> $password
 		);
 
-		return self::updatePerson($idUser, $data);
+		return self::updatePerson($idPerson, $data);
 	}
 
 
 
 	/**
-	 * Get usergroups of an user
+	 * Get role IDs of a person
 	 *
-	 * @param 	Integer		$idUser
+	 * @param 	Integer		$idPerson
 	 * @return	Array
 	 */
 	public static function getRoleIDs($idPerson) {
 		$idPerson	= personid($idPerson);
 
-		$field	= 'id_group';
+		$field	= 'id_role';
 		$table	= 'ext_contact_mm_person_role';
-		$where	= 'id_user = ' . $idPerson;
+		$where	= 'id_person = ' . $idPerson;
 
 		return Todoyu::db()->getColumn($field, $table, $where);
 	}
@@ -269,10 +269,9 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Get usergroups of given user
+	 * Get roles of a person
 	 *
-	 * @todo	check if needed (getUsergroups vs. getGroups)
-	 * @param	Integer	$idUser
+	 * @param	Integer	$idPerson
 	 * @return	Array
 	 */
 	public static function getRoles($idPerson) {
@@ -281,8 +280,8 @@ class TodoyuPersonManager {
 		$fields	= '	r.*';
 		$table	= '	ext_contact_mm_person_role mm,
 					system_role r';
-		$where	= '	id_user		= ' . $idPerson . ' AND
-					mm.id_group	= r.id';
+		$where	= '	id_person		= ' . $idPerson . ' AND
+					mm.id_role	= r.id';
 
 		return Todoyu::db()->getArray($fields, $table, $where);
 	}
@@ -290,14 +289,14 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Check whether the given user belongs to any of the given usergroups
+	 * Check whether the given person belongs to any of the given roles
 	 *
-	 * @param	Integer	$idUser
-	 * @param	Array	$groupIDs
+	 * @param	Array		$roles
+	 * @param	Integer		$idPerson
 	 * @return	Boolean
 	 */
-	public static function hasAnyRole(array $roles, $idUser = 0) {
-		$personRoles	= TodoyuPersonManager::getRoleIDs($idUser);
+	public static function hasAnyRole(array $roles, $idPerson = 0) {
+		$personRoles	= TodoyuPersonManager::getRoleIDs($idPerson);
 
 		return sizeof(array_intersect($roles, $personRoles)) > 0;
 	}
@@ -305,7 +304,7 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Get IDs of internal users (staff)
+	 * Get IDs of internal persons (staff)
 	 *
 	 * @return	Array
 	 */
@@ -318,10 +317,10 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Get internal users (staff)
+	 * Get internal persons (staff)
 	 *
-	 * @param	Boolean	$getJobType
-	 * @param	Boolean	$getWorkAddress
+	 * @param	Boolean		$getJobType
+	 * @param	Boolean		$getWorkAddress
 	 * @return	Array
 	 */
 	public static function getInternalPersons($getJobType = false, $getWorkAddress = false) {
@@ -332,7 +331,7 @@ class TodoyuPersonManager {
 		$table	= 	self::TABLE . ' u,
 					ext_contact_company c,
 					ext_contact_mm_company_person mm';
-		$where	= '	u.id			= mm.id_user AND
+		$where	= '	u.id			= mm.id_person AND
 					mm.id_company	= c.id AND
 					c.is_internal	= 1 AND
 					u.deleted		= 0	AND
@@ -348,10 +347,11 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Get contact infos of given user
+	 * Get contact infos of given person
 	 *
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 * @param	String		$type
+	 * @param	Bool		$onlyPreferred
 	 * @return	Array
 	 */
 	public static function getContactInfos($idPerson, $type = null, $onlyPreferred = false) {
@@ -363,7 +363,7 @@ class TodoyuPersonManager {
 		$tables	= '	ext_contact_contactinfo ci,
 					ext_contact_contactinfotype cit,
 					ext_contact_mm_person_contactinfo mm';
-		$where	= '	mm.id_user			= ' . $idUser . ' AND
+		$where	= '	mm.id_person			= ' . $idPerson . ' AND
 					mm.id_contactinfo	= ci.id AND
 					ci.id_contactinfotype = cit.id';
 		$order	= '	ci.id_contactinfotype ASC,
@@ -383,7 +383,7 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Get preferred phone number of given user
+	 * Get preferred phone number of given person
 	 *
 	 * @param	Integer		$idPerson
 	 * @return	String
@@ -396,7 +396,7 @@ class TodoyuPersonManager {
 		$tables	= '	ext_contact_contactinfo ci,
 					ext_contact_contactinfotype cit,
 					ext_contact_mm_person_contactinfo mm';
-		$where	= '	mm.id_user			= ' . $idPerson . ' AND
+		$where	= '	mm.id_person			= ' . $idPerson . ' AND
 					mm.id_contactinfo	= ci.id AND
 					cit.category	= 2 AND
 					ci.id_contactinfotype = cit.id AND
@@ -421,7 +421,7 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Search for user
+	 * Search for person
 	 *
 	 * @param	Array	$searchFieldsArray
 	 * @param	String	$search
@@ -483,7 +483,7 @@ class TodoyuPersonManager {
 		$label	= '';
 
 		if ( $idPerson !== 0 ) {
-			$label	= self::getUser($idPerson)->getLabel($showEmail, $lastnameFirst);
+			$label	= self::getPerson($idPerson)->getLabel($showEmail, $lastnameFirst);
 		}
 
 		return  $label;
@@ -492,22 +492,22 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * When user form is saved, extract usergroups from data and save them
+	 * When person form is saved, extract roles from data and save them
 	 *
 	 * @param	Array		$data
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 * @return	Array
 	 */
 	public static function savePersonForeignRecords(array $data, $idPerson) {
 		$idPerson	= intval($idPerson);
 
-			// Save usergroup records
-		if( ! empty($data['usergroup']) ) {
-			$usergroupIDs	= array_unique(TodoyuArray::getColumn($data['usergroup'], 'id'));
+			// Save role records
+		if( ! empty($data['role']) ) {
+			$roleIDs	= array_unique(TodoyuArray::getColumn($data['role'], 'id'));
 
-			self::addRoles($idPerson, $usergroupIDs);
+			self::addRoles($idPerson, $roleIDs);
 		}
-		unset($data['usergroup']);
+		unset($data['role']);
 
 		return $data;
 	}
@@ -521,7 +521,7 @@ class TodoyuPersonManager {
 	 * @param	Integer		$idRole
 	 */
 	public static function addRole($idPerson, $idRole) {
-		TodoyuRoleManager::addUserToGroup($idRole, $idPerson);
+		TodoyuRoleManager::addPerson($idRole, $idPerson);
 	}
 
 
@@ -533,18 +533,18 @@ class TodoyuPersonManager {
 	 * @param	Array		$roleIDs
 	 */
 	public static function addRoles($idPerson, array $roleIDs) {
-		TodoyuRoleManager::addUserToGroups($idPerson, $roleIDs);
+		TodoyuRoleManager::addPersonToRoles($idPerson, $roleIDs);
 	}
 
 
 
 	/**
-	 * Remove user object from cache
+	 * Remove person object from cache
 	 *
 	 * @param	Integer		$idPerson
 	 */
 	public static function removeFromCache($idPerson)	{
-		$idUser		= intval($idUser);
+		$idPerson		= intval($idPerson);
 
 		TodoyuCache::removeRecord('TodoyuPerson', $idPerson);
 		TodoyuCache::removeRecordQuery(self::TABLE, $idPerson);
@@ -553,26 +553,21 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Get IDs of working addresses of given user(s)
+	 * Get IDs of working addresses of given person(s)
 	 *
-	 * @param	Array	$userIDs
+	 * @param	Array	$personIDs
 	 * @return	Array
 	 */
-	public static function getWorkaddressIDsOfUsers(array $userIDs) {
-		$userIDs	= TodoyuArray::intval($userIDs, true, true);
+	public static function getWorkaddressIDsOfPersons(array $personIDs) {
+		$personIDs	= TodoyuArray::intval($personIDs, true, true);
 		$addressIDs	= array();
 
-		if (count($userIDs) > 0) {
-			$fields	= 'id_user,id_workaddress';
+		if( sizeof($personIDs) > 0) {
+			$field	= 'id_workaddress';
 			$table	= 'ext_contact_mm_company_person';
-			$where	= 'id_user IN (' . implode(',', $userIDs) . ') ';
-			$res	= Todoyu::db()->getArray($fields, $table, $where);
+			$where	= 'id_person IN (' . implode(',', $personIDs) . ') ';
 
-			foreach($res as $entry) {
-				$addressIDs[]	= $entry['id_workaddress'];
-			}
-
-			$addressIDs	= array_unique($addressIDs);
+			$addressIDs	= Todoyu::db()->getColumn($field, $table, $where);
 		}
 
 		return $addressIDs;
@@ -581,8 +576,8 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Get users which celebrate birthday in the given range
-	 * Gets the user records with some extra keys:
+	 * Get persons which celebrate birthday in the given range
+	 * Gets the person records with some extra keys:
 	 * - date: date of the birthday in this view (this year)
 	 * - age: new age on this birthday
 	 *
@@ -590,7 +585,7 @@ class TodoyuPersonManager {
 	 * @param	Integer		$dateEnd
 	 * @return	Array
 	 */
-	public static function getBirthdayUsers($dateStart, $dateEnd) {
+	public static function getBirthdayPersons($dateStart, $dateEnd) {
 		$dateStart	= intval($dateStart);
 		$dateEnd	= intval($dateEnd);
 
@@ -643,71 +638,46 @@ class TodoyuPersonManager {
 					(' . $rangeWhere . ')';
 		$order	= 'birthday';
 
-		$birthdayUsers	= Todoyu::db()->getArray($fields, $table, $where, '', $order);
+		$birthdayPersons = Todoyu::db()->getArray($fields, $table, $where, '', $order);
 
 			// Enrich data with date and age
-		foreach($birthdayUsers as $index => $birthdayUser) {
-			$dateParts	= explode('-', $birthdayUser['birthday']);
+		foreach($birthdayPersons as $index => $birthdayPerson) {
+			$dateParts	= explode('-', $birthdayPerson['birthday']);
 			$birthday	= mktime(0, 0, 0, $dateParts[1], $dateParts[2], date('Y', $dateStart));
 
-				// If a users birthday is in the new year, use $dateEnd for year information
+				// If a persons birthday is in the new year, use $dateEnd for year information
 			if( $birthday < $dateStart ) {
 				$birthday = mktime(0, 0, 0, $dateParts[1], $dateParts[2], date('Y', $dateEnd));
 			}
 
 				// Set date of the birthday this year
-			$birthdayUsers[$index]['date'] 	= $birthday;
+			$birthdayPersons[$index]['date'] 	= $birthday;
 				// Set age on this birthday
-			$birthdayUsers[$index]['age']	= floor(date('Y', $dateStart)-intval($birthdayUser['birthyear']));
+			$birthdayPersons[$index]['age']	= floor(date('Y', $dateStart)-intval($birthdayPerson['birthyear']));
 		}
 
-		return $birthdayUsers;
+		return $birthdayPersons;
 	}
 
 
 
 	/**
-	 * Have user IDs listed comma-separated
+	 * Get color IDs to given person id's (persons are enumeratedly given colors by their position in the list)
 	 *
-	 * @param	Array	$jobTypes
-	 * @param	Array	$prefs
-	 * @param	Mixed	$prefs		Boolean / Array
-	 */
-	public static function listUserIDsToJobtypes(array $jobTypes, array $prefs) {
-		foreach($jobTypes as $idJobtype => $jobtypeData) {
-			$jobTypes[$idJobtype]['user_ids'] = implode(',', $jobTypes[$idJobtype]['user_ids'] );
-
-				// Set job types selected as stored in user prefs
-			if (is_array($prefs['selectedJobtypeIDs']) && in_array($idJobtype, $prefs['selectedJobtypeIDs']) ) {
-				$jobTypes[ $idJobtype ]['selected'] = 1;
-			} else {
-				$jobTypes[ $idJobtype ]['selected'] = 0;
-			}
-		}
-
-		return $jobTypes;
-	}
-
-
-
-	/**
-	 * Get color IDs to given user id's (users are enumeratedly given colors by their position in the list)
-	 *
-	 * @param	Array	$selectedUserIDs
+	 * @param	Array	$personIDs
 	 * @return	Array
 	 */
-	public static function getSelectedUsersColor(array $userIDs) {
-		$userIDs	= TodoyuArray::intval($userIDs, true, true);
-		$cacheKey	= 'usercolors:' . md5(serialize($userIDs));
+	public static function getSelectedPersonColor(array $personIDs) {
+		$personIDs	= TodoyuArray::intval($personIDs, true, true);
+		$cacheKey	= 'personcolors:' . md5(serialize($personIDs));
 
 		if( ! TodoyuCache::isIn($cacheKey) ) {
-			$colors 		= array();
-			$internalUserIDs= TodoyuPersonManager::getInternalPersonIDs();
-			$numColors		= sizeof(TodoyuArray::assure($GLOBALS['CONFIG']['COLORS']));
+			$colors 			= array();
+			$numColors			= sizeof(TodoyuArray::assure($GLOBALS['CONFIG']['COLORS']));
 
-				// Enumerate users by system specific color to resp. list position
-			foreach($userIDs as $idUser) {
-				$colors[$idUser]	= TodoyuColors::getColorArray($idUser%$numColors);
+				// Enumerate persons by system specific color to resp. list position
+			foreach($personIDs as $idPerson) {
+				$colors[$idPerson]	= TodoyuColors::getColorArray($idPerson%$numColors);
 			}
 
 			TodoyuCache::set($cacheKey, $colors);
@@ -719,20 +689,20 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Get company records for an user
+	 * Get company records for a person
 	 *
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 * @return	Array
 	 */
-	public static function getUserCompanyRecords($idUser) {
-		$idUser	= intval($idUser);
+	public static function getPersonCompanyRecords($idPerson) {
+		$idPerson	= intval($idPerson);
 
 		$fields	= '	mm.*,
 					c.*';
 		$tables	= '	ext_contact_company c,
 					ext_contact_mm_company_person mm';
 		$where	= '	mm.id_company	= c.id AND
-					mm.id_user		= ' . $idUser;
+					mm.id_person		= ' . $idPerson;
 
 		return Todoyu::db()->getArray($fields, $tables, $where);
 	}
@@ -740,17 +710,17 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Get main company (first linked) of the user
+	 * Get main company (first linked) of the person
 	 *
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 * @return	TodoyuCompany
 	 */
-	public static function getUsersMainCompany($idUser) {
-		$idUser	= intval($idUser);
+	public static function getPersonsMainCompany($idPerson) {
+		$idPerson = intval($idPerson);
 
 		$field	= 'id_company';
 		$table	= 'ext_contact_mm_company_person';
-		$where	= 'id_user = ' . $idUser;
+		$where	= 'id_person = ' . $idPerson;
 
 		$idCompany	= Todoyu::db()->getFieldValue($field, $table, $where);
 
@@ -760,20 +730,20 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Get contact records for an user
+	 * Get contact records for a person
 	 *
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 * @param	Boolean		$getOnlyPreferred
 	 * @return	Array
 	 */
-	public static function getUserContactinfoRecords($idUser) {
-		$idUser	= intval($idUser);
+	public static function getPersonContactinfoRecords($idPerson) {
+		$idPerson	= intval($idPerson);
 
 		$fields	= '	c.*';
 		$tables	= '	ext_contact_contactinfo c,
 					ext_contact_mm_person_contactinfo mm';
 		$where	= ' mm.id_contactinfo	= c.id AND
-					mm.id_user			= ' . $idUser;
+					mm.id_person			= ' . $idPerson;
 
 		return Todoyu::db()->getArray($fields, $tables, $where);
 	}
@@ -781,32 +751,21 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Get address records for an user
+	 * Get address records for a person
 	 *
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 * @return	Array
 	 */
-	public static function getUserAddressRecords($idUser) {
-		$idUser	= intval($idUser);
+	public static function getPersonAddressRecords($idPerson) {
+		$idPerson	= intval($idPerson);
 
 		$fields	= '	a.*';
 		$tables	= '	ext_contact_address a,
 					ext_contact_mm_person_address mm';
 		$where	= ' mm.id_address	= a.id AND
-					mm.id_user		= ' . $idUser;
+					mm.id_person		= ' . $idPerson;
 
 		return Todoyu::db()->getArray($fields, $tables, $where);
-	}
-
-
-
-	/**
-	 * Get usertypes
-	 *
-	 * @return	Array
-	 */
-	public static function getUserTypes() {
-		return $GLOBALS['CONFIG']['EXT']['user']['usertype'];
 	}
 
 }
