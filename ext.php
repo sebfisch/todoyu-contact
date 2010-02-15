@@ -42,7 +42,7 @@ require_once( PATH_EXT_CONTACT . '/config/admin.php');
 require_once( PATH_EXT_CONTACT . '/dwoo/plugins.php');
 
 	// Add quick create types
-TodoyuCreateManager::addEngine('company', 'contact.create.company.label', 50);
-TodoyuCreateManager::addEngine('person', 'contact.create.person.label', 50);
+TodoyuQuickCreateManager::addEngine('company', 'contact.create.company.label', 50);
+TodoyuQuickCreateManager::addEngine('person', 'contact.create.person.label', 50);
 
 ?>

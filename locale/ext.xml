@@ -4,8 +4,8 @@
 		<label index="ext.title">Contact</label>
 		<label index="page.title">Contacts</label>
 		<label index="contacttypes.company">Company</label>
-		<label index="contacttypes.person">Person</label>
-		<label index="create.company.label">Company</label>
+		<label index="contacttypes.person">New Person</label>
+		<label index="create.company.label">New Company</label>
 		<label index="create.person.label">Person</label>				
 		<label index="record.jobtype">Jobtype</label>
 		<label index="record.contactinfotype">Contactinfotype</label>
@@ -57,8 +57,8 @@
 		<label index="page.title">Kontakte</label>
 		<label index="contacttypes.company">Firmen</label>
 		<label index="contacttypes.person">Personen</label>
-		<label index="create.company.label">Firma</label>
-		<label index="create.person.label">Person</label>
+		<label index="create.company.label">Neue Firma</label>
+		<label index="create.person.label">Neue Person</label>
 		<label index="record.jobtype">Berufstätigkeit</label>
 		<label index="record.contactinfotype">Kontaktinfo-Typ</label>
 		<label index="record.contactinfotype.key">Key</label>
