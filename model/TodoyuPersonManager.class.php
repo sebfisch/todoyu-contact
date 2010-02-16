@@ -209,7 +209,7 @@ class TodoyuPersonManager {
 
 			// Update/set password?
 		if( strlen($data['password']) > 0 ) {
-			$data['password'] = md5($data['password_first']);
+			$data['password'] = md5($data['password']);
 		} else {
 			unset($data['password']);
 		}
@@ -499,24 +499,7 @@ class TodoyuPersonManager {
 	public static function savePersonForeignRecords(array $data, $idPerson) {
 		$idPerson	= intval($idPerson);
 
-			// Remove existing company linkings
-		self::removeCompanyLinks($idPerson);
-
-			// Save company records
-		if( ! empty($data['company']) ) {
-			foreach($data['company'] as $company) {
-				$company['id_company']	= $company['id'];
-				$company['id_person']	= $idPerson;
-				unset($company['id']);
-
-					// Remove existing link and save new data
-				$idLink = TodoyuDbHelper::saveExtendedMMrelation('ext_contact_mm_company_person', 'id_company', 'id_person', $company['id_company'], $idPerson, $company);
-			}
-		}
-		unset($data['company']);
-
-
-			// Save contactinfo records
+			// Contactinfo
 		if( ! empty($data['contactinfo']) ) {
 			$infoIDs	= array();
 			foreach($data['contactinfo'] as $contactInfo) {
@@ -526,6 +509,7 @@ class TodoyuPersonManager {
 			self::linkContactinfos($idPerson, $infoIDs);
 		}
 		unset($data['contactinfo']);
+
 
 
 			// Save address records
@@ -540,39 +524,44 @@ class TodoyuPersonManager {
 		unset($data['address']);
 
 
-			// Save role records
-		if( ! empty($data['role']) ) {
+
+
+			// Remove existing company linkings
+		if( isset($data['company']) ) {
+			self::removeCompanyLinks($idPerson);
+		}
+
+			// Save company records
+		if( is_array($data['company']) ) {
+			foreach($data['company'] as $company) {
+				$company['id_company']	= $company['id'];
+				$company['id_person']	= $idPerson;
+				unset($company['id']);
+
+					// Remove existing link and save new data
+				$idLink = TodoyuDbHelper::saveExtendedMMrelation('ext_contact_mm_company_person', 'id_company', 'id_person', $company['id_company'], $idPerson, $company);
+			}
+		}
+		unset($data['company']);
+
+
+
+			// Remove all saved roles
+		if( isset($data['role']) ) {
+			TodoyuRoleManager::removeRoles($idPerson);
+		}
+
+			// Save roles
+		if( is_array($data['role']) ) {
 			$roleIDs	= array_unique(TodoyuArray::getColumn($data['role'], 'id'));
 
-			self::addRoles($idPerson, $roleIDs);
+			TodoyuDebug::printInFirebug($roleIDs);
+
+			TodoyuRoleManager::addPersonToRoles($idPerson, $roleIDs);
 		}
 		unset($data['role']);
 
 		return $data;
-	}
-
-
-
-	/**
-	 * Add a role for a person
-	 *
-	 * @param	Integer		$idPerson
-	 * @param	Integer		$idRole
-	 */
-	public static function addRole($idPerson, $idRole) {
-		TodoyuRoleManager::addPerson($idRole, $idPerson);
-	}
-
-
-
-	/**
-	 * Add multiple roles for a person
-	 *
-	 * @param	Integer		$idPerson
-	 * @param	Array		$roleIDs
-	 */
-	public static function addRoles($idPerson, array $roleIDs) {
-		TodoyuRoleManager::addPersonToRoles($idPerson, $roleIDs);
 	}
 
 
@@ -811,17 +800,6 @@ class TodoyuPersonManager {
 					mm.id_person			= ' . $idPerson;
 
 		return Todoyu::db()->getArray($fields, $tables, $where);
-	}
-
-
-
-	/**
-	 * Remove all linked contactinfos of a person
-	 *
-	 * @param	Integer		$idPerson
-	 */
-	public static function removeAllContactinfos($idPerson) {
-		TodoyuDbHelper::removeMMrelations('ext_contact_mm_person_contactinfo', 'id_person', $idPerson);
 	}
 
 

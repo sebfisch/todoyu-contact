@@ -64,6 +64,17 @@ Todoyu.Ext.contact.Person =  {
 	 */
 	onEdit: function(idPerson, response) {
 		this.observeFieldsForShortname(idPerson);
+		
+		this.showLoginFields(idPerson);
+		
+		$('person-' + idPerson + '-field-active').observe('change', this.showLoginFields.bind(this, idPerson));
+	},
+	
+	
+	showLoginFields: function(idPerson, event) {
+		var field	= $('person-' + idPerson + '-field-active');
+				
+		$('person-' + idPerson + '-fieldset-loginfields')[field.checked?'show':'hide']();
 	},
 
 

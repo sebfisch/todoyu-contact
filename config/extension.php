@@ -70,6 +70,7 @@ $CONFIG['EXT']['contact']['numFavoriteCountries']	= 5;
 /**
  * @todo	Which of this keys are still in use?
  */
+/*
 $CONFIG['EXT']['contact']['contacttypes']	= array(
 	'person' => array(
 		'label'		=> 'LLL:contact.contacttypes.person',
@@ -88,6 +89,20 @@ $CONFIG['EXT']['contact']['contacttypes']	= array(
 		'deleteFunc'=> 'TodoyuCompanyManager::deleteCompany'
 	)
 );
+*/
+
+$CONFIG['EXT']['contact']['tabs'] = array(
+	array(
+		'id'	=> 'person',
+		'label'	=> 'LLL:contact.person'
+	),
+	array(
+		'id'	=> 'company',
+		'label'	=> 'LLL:contact.company'
+	)
+);
+
+
 
 $CONFIG['EXT']['contact']['defaultTypeTab'] = 'person';
 

@@ -213,7 +213,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 		$this->data['company']		= TodoyuPersonManager::getPersonCompanyRecords($this->id);
 		$this->data['contactinfo']	= TodoyuPersonManager::getContactinfoRecords($this->id);
 		$this->data['address']		= TodoyuPersonManager::getAddressRecords($this->id);
-		$this->data['usergroup']	= TodoyuPersonManager::getRoles($this->id);
+		$this->data['role']			= TodoyuPersonManager::getRoles($this->id);
 	}
 
 

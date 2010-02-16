@@ -38,33 +38,22 @@ class TodoyuContactRenderer {
 	 * @return	String
 	 */
 	public static function renderTabs($activeTab, $onlyActive = false)	{
-		$typesConfig= TodoyuContactManager::getTypesConfig();
-		$tabs 		= array();
+		$tabs		= TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['contact']['tabs']);
 
 			// Render only the currenty active tab?
 		if( $onlyActive ) {
-			$typesConfig = array($activeTab => $typesConfig[$activeTab]);
-		}
-
-			// Add configured allowed types to tabs config
-		foreach($typesConfig as $type => $typeConfig)	{
-			if( allowed('contact', $type . ':use') ) {
-				$tabs[$type] = array(
-					'id'		=> $type,
-					'htmlId'	=> 'contact-tabhead-' . $type,
-					'label'		=> Label($typeConfig['label']),
-					'hasIcon'	=> 1,
-					'class'		=> $type,
-					'classKey'	=> $type
-				);
+			foreach($tabs as $tab) {
+				if( $tab['id'] == $activeTab ) {
+					$tabs = array($tab);
+					break;
+				}
 			}
 		}
 
-		$htmlID		= 'contact-tabs';
-		$class		= 'tabs';
+		$name		= 'contact';
 		$jsHandler	= 'Todoyu.Ext.contact.onTabSelect.bind(Todoyu.Ext.contact)';
 
-		return TodoyuTabheadRenderer::renderTabs($htmlID, $class, $jsHandler, $tabs, $activeTab);
+		return TodoyuTabheadRenderer::renderTabs($name, $tabs, $jsHandler, $activeTab);
 	}
 
 
@@ -185,8 +174,8 @@ class TodoyuContactRenderer {
 
 		$tmpl	= 'ext/contact/view/form.tmpl';
 		$data	= array(
-			'formheader'	=> $person->getLabel(),
-			'formhtml'		=> $form->render()
+			'header'	=> $person->getLabel(),
+			'formhtml'	=> $form->render()
 		);
 
 		return render($tmpl, $data);

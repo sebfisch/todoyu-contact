@@ -12,6 +12,7 @@
 		<label index="person.create">Create a new person record</label>
 		<label index="person.delete">Delete a person record</label>
 		<label index="person.search">Search for persons</label>
+		<label index="person.enableLogin">Create login account for persons</label>
 		<label index="company">Company</label>
 		<label index="company.use">Use company repository</label>
 		<label index="company.edit">Edit a company record</label>
@@ -31,6 +32,7 @@
 		<label index="person.create">Personen-Datensätze Anlegen</label>
 		<label index="person.delete">Personen-Datensätze Löschen</label>
 		<label index="person.search">Nach Personen Suchen</label>
+		<label index="person.enableLogin">Erstelle Login für Personen</label>
 		<label index="company">Firma</label>
 		<label index="company.use">Firmen-Verzeichnis Verwenden</label>
 		<label index="company.edit">Firmen-Datensätze Editieren</label>

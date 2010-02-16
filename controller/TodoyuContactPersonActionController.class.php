@@ -113,7 +113,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 		if( $form->isValid() )	{
 			$storageData= $form->getStorageData();
 
-			$idPerson	= TodoyuContactManager::savePerson($storageData);
+			$idPerson	= TodoyuPersonManager::savePerson($storageData);
 
 			TodoyuHeader::sendTodoyuHeader('idRecord', $idPerson);
 			TodoyuHeader::sendTodoyuHeader('recordLabel', $storageData['lastname'].' '.$storageData['firstname']);

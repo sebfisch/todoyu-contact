@@ -49,14 +49,15 @@
 	Tabs
    -------------------------*/
 
-.tabs .tabkey-person .icon {
+#contact-tabs .tabkey-person .icon {
 	background: url(../img/icons.png) no-repeat 0 6px;
 }
 
-.tabs .tabkey-company .icon {
+#contact-tabs .tabkey-company .icon {
 	background: url(../img/icons.png) no-repeat 0 -146px;
 }
 
+/*
 .tabs .tabkey-jobtype .icon {
 	background: url(../img/icons.png) no-repeat 0 -145px;
 }
@@ -64,7 +65,7 @@
 .tabs .tabkey-customerrole .icon {
 	background: url(../img/icons.png) no-repeat 0 -173px;
 }
-
+*/
 
 
 /* -------------------------
@@ -124,7 +125,8 @@ form.formPerson fieldset.account {
 	border-left:20px solid #CCC;
 }
 
-form.formPerson fieldset.account > div.fElement {
+form.formPerson fieldset.account > div.fElement,
+form.formPerson fieldset.account fieldset.loginfields {
 	width:640px;
 }
 
@@ -180,4 +182,10 @@ div.visitingCardContent table tr td.label {
 	padding-right:18px;
 	text-transform: uppercase;
 	letter-spacing: 0.3px;
+}
+
+
+
+#search-tab-contact span.icon {
+	background:url(../img/icons.png) no-repeat 0 6px;
 }

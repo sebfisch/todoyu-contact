@@ -3,6 +3,9 @@
 	<labels lang="en">
 		<label index="ext.title">Contact</label>
 		<label index="page.title">Contacts</label>
+		<label index="person">Person</label>
+		<label index="company">Company</label>
+		
 		<label index="person.attr.gender">Gender</label>
 		<label index="person.attr.gender.m">Mr</label>
 		<label index="person.attr.gender.f">Ms</label>
@@ -21,8 +24,7 @@
 	
 		
 		
-		<label index="contacttypes.company">Company</label>
-		<label index="contacttypes.person">New Person</label>
+		
 		<label index="create.company.label">New Company</label>
 		<label index="create.person.label">Person</label>				
 		<label index="record.jobtype">Jobtype</label>

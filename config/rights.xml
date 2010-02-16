@@ -16,6 +16,7 @@
 		<right name="create" />
 		<right name="delete" />
 		<right name="search" />
+		<right name="enableLogin" />
 	</section>
 
 	<section name="company" require="general:use">
