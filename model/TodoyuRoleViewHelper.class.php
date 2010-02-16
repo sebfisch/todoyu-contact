@@ -19,26 +19,29 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+/**
+ * Role view helper
+ *
+ * @package		Todoyu
+ * @subpackage	Core
+ */
 class TodoyuRoleViewHelper {
 
 	/**
-	 * Get options array for usergroup selector
+	 * Get options array for role selector
 	 *
 	 * @param	TodoyuFormElement	$field
 	 * @return	Array
 	 */
-	public static function getUsergroupOptions(TodoyuFormElement $field) {
+	public static function getRoleOptions(TodoyuFormElement $field) {
 		$options= array();
-		$groups	= TodoyuRoleManager::getAllRoles();
+		$roles	= TodoyuRoleManager::getAllRoles();
+		$reform	= array(
+			'id'	=> 'value',
+			'title'	=> 'label'
+		);
 
-		foreach($groups as $group) {
-			$options[] = array(
-				'value'	=> $group['id'],
-				'label'	=> $group['title']
-			);
-		}
-
-		return $options;
+		return TodoyuArray::reform($roles, $reform);
 	}
 
 }

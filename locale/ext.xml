@@ -3,6 +3,24 @@
 	<labels lang="en">
 		<label index="ext.title">Contact</label>
 		<label index="page.title">Contacts</label>
+		<label index="person.attr.gender">Gender</label>
+		<label index="person.attr.gender.m">Mr</label>
+		<label index="person.attr.gender.f">Ms</label>
+		<label index="person.attr.firstname">Firstname</label>
+		<label index="person.attr.lastname">Lastname</label>
+		<label index="person.attr.shortname">Shortname</label>
+		<label index="person.attr.birthday">Birthday</label>
+		<label index="person.attr.contactinfo">Contact Informations</label>
+		<label index="person.attr.address">Address</label>	
+		<label index="person.attr.company">Employer</label>				
+		<label index="person.attr.active">Enable login</label>
+		<label index="person.attr.username">Username</label>
+		<label index="person.attr.password">Password</label>
+		<label index="person.attr.email">Email</label>
+		<label index="person.attr.is_admin">Is Admin</label>		
+	
+		
+		
 		<label index="contacttypes.company">Company</label>
 		<label index="contacttypes.person">New Person</label>
 		<label index="create.company.label">New Company</label>

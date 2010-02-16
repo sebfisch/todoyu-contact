@@ -2,7 +2,6 @@
 <form>
 	<attributes>
 		<attribute name="name">user</attribute>
-		<attribute name="class">formCompanyUser</attribute>
 	</attributes>
 	<fieldsets>
 		<fieldset name="main">

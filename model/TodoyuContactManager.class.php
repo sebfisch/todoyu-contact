@@ -237,106 +237,25 @@ class TodoyuContactManager {
 	public static function savePersonForeignRecords(array $data, $idUser)	{
 		$idUser		= intval($idUser);
 
-				// Remove existing records
-		self::removeAllCompanies($idUser);
-
-			// Save company records
-		if( ! empty($data['company']) ) {
-			foreach($data['company'] as $company) {
-				$company['id_company']	= $company['id'];
-				$company['id_person']		= $idUser;
-				unset($company['id']);
-
-					// Remove existing link and save new data
-				$idLink = TodoyuDbHelper::saveExtendedMMrelation('ext_contact_mm_company_person', 'id_company', 'id_person', $company['id_company'], $idUser, $company);
-			}
-		}
-		unset($data['company']);
 
 
-			// Save contactinfo records
-		if( ! empty($data['contactinfo']) ) {
-			$infoIDs	= array();
-			foreach($data['contactinfo'] as $contactInfo) {
-				$infoIDs[] = TodoyuContactInfoManager::saveContactInfos($contactInfo);
-			}
-
-			self::linkUserToContactinfos($idUser, $infoIDs);
-		}
-		unset($data['contactinfo']);
 
 
-			// Save address records
-		if( ! empty($data['address']) ) {
-			$addressIDs	= array();
-			foreach($data['address'] as $address) {
-				$addressIDs[] =  TodoyuAddressManager::saveAddress($address);
-			}
 
-			self::linkUserToAddresses($idUser, $addressIDs);
-		}
-		unset($data['address']);
 
 		return $data;
 	}
 
 
 
-	/**
-	 * Remove all linked companies of an user
-	 *
-	 * @param	Integer		$idUser
-	 */
-	public static function removeAllCompanies($idUser) {
-		$idUser	= intval($idUser);
-
-		TodoyuDbHelper::removeMMrelations('ext_contact_mm_company_person', 'id_person', $idUser);
-	}
 
 
 
-	/**
-	 * Link a user with companies
-	 *
-	 * @param	Integer		$idUser
-	 * @param	Array		$companyIDs
-	 */
-	public static function linkUserToCompanies($idUser, array $companyIDs) {
-		$idUser		= intval($idUser);
-		$companyIDs	= TodoyuArray::intval($companyIDs, true, true);
-
-		TodoyuDbHelper::saveMMrelations('ext_contact_mm_company_person', 'id_person', 'id_company', $idUser, $companyIDs, true);
-	}
 
 
 
-	/**
-	 * Link an user with contactinfos
-	 *
-	 * @param	Integer		$idUser
-	 * @param	Array		$contactinfoIDs
-	 */
-	public static function linkUserToContactinfos($idUser, array $contactinfoIDs) {
-		$idUser			= intval($idUser);
-		$contactinfoIDs	= TodoyuArray::intval($contactinfoIDs, true, true);
-
-		TodoyuDbHelper::saveMMrelations('ext_contact_mm_person_contactinfo', 'id_person', 'id_contactinfo', $idUser, $contactinfoIDs, true);
-	}
 
 
-
-	/**
-	 * Link an user with addresses
-	 *
-	 * @param	Integer		$idUser
-	 * @param	Array		$addressIDs
-	 */
-	public static function linkUserToAddresses($idUser, array $addressIDs) {
-		$idUser		= intval($idUser);
-		$addressIDs	= TodoyuArray::intval($addressIDs, true, true);
-
-		TodoyuDbHelper::saveMMrelations('ext_contact_mm_person_address', 'id_person', 'id_address', $idUser, $addressIDs, true);
-	}
 
 
 
@@ -415,8 +334,8 @@ class TodoyuContactManager {
 		$idUser	= intval($idUser);
 
 		$data['company']	= TodoyuPersonManager::getPersonCompanyRecords($idUser);
-		$data['contactinfo']= TodoyuPersonManager::getPersonContactinfoRecords($idUser);
-		$data['address']	= TodoyuPersonManager::getPersonAddressRecords($idUser);
+		$data['contactinfo']= TodoyuPersonManager::getContactinfoRecords($idUser);
+		$data['address']	= TodoyuPersonManager::getAddressRecords($idUser);
 
 		return $data;
 	}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<attributes>
+		<attribute name="name">role</attribute>
+	</attributes>
+	<fieldsets>
+		<fieldset name="main">
+			<legend>Main usergroup data</legend>
+			<elements>
+				<field type="select" name="id">
+					<label>core.role</label>
+					<source type="function">
+						<function>TodoyuRoleViewHelper::getRoleOptions</function>
+					</source>
+				</field>
+			</elements>
+		</fieldset>
+	</fieldsets>
+</form>

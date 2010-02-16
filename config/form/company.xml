@@ -3,8 +3,6 @@
 	<attributes>
 		<attribute name="action">?ext=contact&amp;controller=company</attribute>
 		<attribute name="name">company</attribute>
-		<attribute name="onsubmit">return false</attribute>
-		<attribute name="class">formCompany</attribute>
 	</attributes>
 	<hiddenFields>
 		<field name="id"></field>
@@ -26,54 +24,54 @@
 				<field type="dateinput" name="date_enter">
 					<label>user.company.attr.date_enter</label>
 				</field>
-				
+
 				<field type="checkbox" name="is_internal">
 					<label>user.company.attr.is_internal</label>
 				</field>
 
 				<field type="databaseRelation" name="contactinfo">
 					<label>user.company.attr.contactinfo</label>
-					<foreignRecordConf>
-						<foreignformxml>ext/contact/config/form/contactinfo.xml</foreignformxml>
-						<addSubformConfig>
+					<record>
+						<form>ext/contact/config/form/contactinfo.xml</form>
+						<url>
 							<ext>contact</ext>
 							<controller>formhandling</controller>
-						</addSubformConfig>
+						</url>
 						<label type="function">
 							<function>TodoyuContactViewHelper::getContactinfoLabel</function>
 							<noLabel>LLL:contact.noLabel.newContactInfo</noLabel>
 						</label>
-					</foreignRecordConf>
+					</record>
 				</field>
 
 				<field type="databaseRelation" name="address">
 					<label>user.company.attr.address</label>
-					<foreignRecordConf>
-						<foreignformxml>ext/contact/config/form/address.xml</foreignformxml>
-						<addSubformConfig>
+					<record>
+						<form>ext/contact/config/form/address.xml</form>
+						<url>
 							<ext>contact</ext>
 							<controller>formhandling</controller>
-						</addSubformConfig>
+						</url>
 						<label type="function">
 							<function>TodoyuContactViewHelper::getAddressLabel</function>
 							<noLabel>LLL:contact.noLabel.newAddress</noLabel>
 						</label>
-					</foreignRecordConf>
+					</record>
 				</field>
 
 				<field type="databaseRelation" name="user">
 					<label>user.company.attr.user</label>
-					<foreignRecordConf>
-						<foreignformxml>ext/contact/config/form/company-user.xml</foreignformxml>
-						<addSubformConfig>
+					<record>
+						<form>ext/contact/config/form/company-user.xml</form>
+						<url>
 							<ext>contact</ext>
 							<controller>company</controller>
-						</addSubformConfig>
+						</url>
 						<label type="function">
 							<function>TodoyuContactViewHelper::getEmployeeLabel</function>
 							<noLabel>LLL:contact.noLabel.newEmployee</noLabel>
 						</label>
-					</foreignRecordConf>
+					</record>
 				</field>
 
 			</elements>

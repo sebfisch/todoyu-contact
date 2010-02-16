@@ -137,12 +137,13 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	public function addSubformAction(array $params) {
 		restrict('contact', 'person:edit');
 
+		$xmlPath	= 'ext/contact/config/form/person.xml';
+
 		$formName	= $params['form'];
 		$fieldName	= $params['field'];
 
 		$index		= intval($params['index']);
 		$idRecord	= intval($params['record']);
-		$xmlPath	= 'ext/contact/config/form/person.xml';
 
 		return TodoyuFormManager::renderSubformRecord($xmlPath, $fieldName, $formName, $index, $idRecord);
 	}

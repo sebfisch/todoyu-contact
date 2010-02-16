@@ -9,55 +9,59 @@
 .personListing th.firstname,
 .personListing th.lastname,
 .personListing th.email {
-	width:111px;
+	width:121px;
 }
 .personListing th.company {
 	width:145px;
 }
 
 .personListing th.actions {
-	width:100px;
+	width:70px;
 }
 
 	/* Column configs */
 .personListing td.icon {
-	background:url(../img/icons.png) no-repeat 6px -85px;
+	background:url(../img/icons.png) no-repeat 6px 6px;
+}
+.personListing td.icon.user {
+	background:url(../img/icons.png) no-repeat 6px -116px;
 }
 .personListing td.actions div.icon {
 	cursor:pointer;
 	margin-right:5px;
 }
 .personListing td.actions div {
-	background-image:url(../../../user/assets/img/icons.png);
+	background-image:url(../img/icons.png);
 	background-repeat:no-repeat;
 }
+.personListing td.actions div.info {
+	background-position:0 3px;
+}
 .personListing td.actions div.edit {
-	background-position:0 -270px;
+	background-position:0 -27px;
 }
 .personListing td.actions div.delete {
-	background-position:0 -300px;
+	background-position:0 -57px;
 }
-.personListing td.actions div.user {
-	background-position:0 -330px;
-}
+
 
 /* -------------------------
 	Tabs
    -------------------------*/
 
-.tabs .tabkey-person .icon{
-	background: url(../img/icons.png) no-repeat 0 -85px;
+.tabs .tabkey-person .icon {
+	background: url(../img/icons.png) no-repeat 0 6px;
 }
 
-.tabs .tabkey-company .icon{
-	background: url(../img/icons.png) no-repeat 0 -115px;
+.tabs .tabkey-company .icon {
+	background: url(../img/icons.png) no-repeat 0 -146px;
 }
 
-.tabs .tabkey-jobtype .icon{
+.tabs .tabkey-jobtype .icon {
 	background: url(../img/icons.png) no-repeat 0 -145px;
 }
 
-.tabs .tabkey-customerrole .icon{
+.tabs .tabkey-customerrole .icon {
 	background: url(../img/icons.png) no-repeat 0 -173px;
 }
 
@@ -89,7 +93,7 @@
 
 	/* Column configs */
 .companyListing td.icon {
-	background:url(../img/icons.png) no-repeat 6px -115px;
+	background:url(../img/icons.png) no-repeat 6px -146px;
 }
 
 .companyListing td.actions div.icon {
@@ -99,104 +103,37 @@
 
 .companyListing td.actions div {
 	background-image:url(../img/icons.png);
-	background-repeat:no-repeat;
 }
-
+.companyListing td.actions div.info {
+	background-position:0 -150px;
+}
 .companyListing td.actions div.edit {
-	background-position:0 -480px;
+	background-position:0 -180px;
 }
-
 .companyListing td.actions div.delete {
-	background-position:0 -510px;
+	background-position:0 -210px;
 }
 
 
-.companyListing td.actions div.info,
-.personListing td.actions div.info {
-	background: url(../img/icons.png) no-repeat 0 -539px;
+
+/* ---------------------
+ 	Person edit
+   --------------------- */
+form.formPerson fieldset.account {
+	margin:20px 0;
+	border-left:20px solid #CCC;
+}
+
+form.formPerson fieldset.account > div.fElement {
+	width:640px;
 }
 
 
-/* -------------------------
-	Contact list
-   -------------------------*/
 
-.contactList li {
-	padding: 3px 5px;
-}
 
-	.contactList .headerLine span.additionalStuff {
-		padding:3px 0;
-	}
 
-	.contactList span.personLastname,
-	.contactList span.personFirstname {
-		width:230px;
-	}
 
-	.contactList span.personFirstname {
-		margin-left:0px;
-	}
 
-	.contactList span.companyTitle,
-	.contactList span.companyShortname {
-		width:290px;
-	}
-
-	.contactList span.companyShortname {
-		margin-left:0px;
-	}
-
-	.contactList ul li.listItem span.personLastname,
-	.contactList ul li.listItem span.personFirstname {
-		float:left;
-		line-height:18px;
-	}
-
-	.contactList ul li.listItem span.companyTitle,
-	.contactList ul li.listItem span.companyShortname {
-		float:left;
-		line-height:18px;
-	}
-
-	.contactList span.additionalStuff {
-		float:right;
-		margin-right:10px;
-		padding:0;
-	}
-
-	.contactList span.additionalStuff .icon {
-		margin-left:10px;
-		cursor: pointer;
-	}
-
-	.contactList a.edit {
-		background: url(../img/icons.png) no-repeat 0px 2px;
-	}
-
-	.contactList a.add {
-		background: url(../img/icons.png) no-repeat 0px -57px;
-	}
-
-	.contactList a.remove {
-		background: url(../img/icons.png) no-repeat 0px -27px;
-	}
-
-	.contactList a.editLoginUser {
-		background: url(../img/icons.png) no-repeat 0px -390px;
-	}
-
-	.contactList a.createLoginUser {
-		background: url(../img/icons.png) no-repeat 0px -360px;
-	}
-
-	.contactList #create-person a {
-		background: transparent url(../img/icons.png) no-repeat 0px -207px;
-	}
-
-	.contactList #create-company a {
-		background: transparent url(../img/icons.png) no-repeat 0px -237px;
-	}
 
 
 

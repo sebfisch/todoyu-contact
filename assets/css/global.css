@@ -8,11 +8,11 @@
 }
 
 #navi-main-list-contact li.itemContactPerson a {
-	background-position:6px -84px;
+	background-position:6px 6px;
 }
 
 #navi-main-list-contact li.itemContactCompany a {
-	background-position:6px -114px;
+	background-position:6px -146px;
 }
 
 span.wizardIcon.createNewUser	{
@@ -26,9 +26,9 @@ span.wizardIcon.createNewUser	{
    -------------------------- */
 
 .createmode-company {
-	background: url(../img/icons.png) no-repeat 4px -117px;
+	background: url(../img/icons.png) no-repeat 4px -90px;
 }
 
 .createmode-person {
-	background: url(../img/icons.png) no-repeat 4px -207px;
+	background: url(../img/icons.png) no-repeat 4px -240px;
 }

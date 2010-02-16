@@ -3,7 +3,6 @@
 	<attributes>
 		<attribute name="action">?ext=contact&amp;controller=formhandling</attribute>
 		<attribute name="name">address</attribute>
-		<attribute name="class">formAddress</attribute>
 	</attributes>
 	<hiddenFields>
 		<field name="id"></field>
