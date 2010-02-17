@@ -22,7 +22,7 @@
 						</options>
 					</config>
 					<wizard>
-						<htmlClass>createNewUser</htmlClass>
+						<htmlClass>createNewPerson</htmlClass>
 						<ext>contact</ext>
 						<controller>person</controller>
 						<action>addNewContactWizard</action>

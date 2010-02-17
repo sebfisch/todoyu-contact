@@ -563,23 +563,17 @@ class TodoyuPersonManager {
 		}
 
 
-			// Remove all saved roles
+			// Roles
 		if( isset($data['role']) ) {
 			$roleIDs	= TodoyuArray::getColumn($data['role'], 'id');
 
-			TodoyuDebug::printInFirebug($roleIDs);
-
 				// Remove all role links which are no longer active
 			self::removeRemovedRoles($idPerson, $roleIDs);
-
-			TodoyuDebug::printLastQueryInFirebug();
 
 					// Save roles
 			if( sizeof($roleIDs) > 0 ) {
 				TodoyuRoleManager::addPersonToRoles($idPerson, $roleIDs);
 			}
-
-			TodoyuDebug::printLastQueryInFirebug();
 
 			unset($data['role']);
 		}
