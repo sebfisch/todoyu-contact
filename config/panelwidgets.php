@@ -25,6 +25,5 @@
 
 	// Add default panel widgets
 TodoyuPanelWidgetManager::addDefaultPanelWidget('contact', 'TodoyuPanelWidgetContactSearch', 10);
-TodoyuPanelWidgetManager::addDefaultPanelWidget('contact', 'TodoyuPanelWidgetQuickContact', 20);
 
 ?>

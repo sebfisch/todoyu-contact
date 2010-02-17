@@ -61,10 +61,10 @@ Todoyu.Headlet.QuickCreate.Company = {
 		} else {
 			var idCompany	= response.getTodoyuHeader('idCompany');
 			Todoyu.Hook.exec('onCompanySaved', idCompany);
+//			Todoyu.Ext.contact.Company.showList();
 
 			Todoyu.Headlet.QuickCreate.closePopup();
 			Todoyu.notifySuccess('[LLL:contact.company.save.success]');
-//			Todoyu.Ext.contact.Company.showList();
 		}
 	},
 

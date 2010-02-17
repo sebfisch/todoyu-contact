@@ -33,11 +33,16 @@ class TodoyuCompanyManager {
 
 	/**
 	 * Get form object for company quick creation
+	 *
+	 * @param	Integer		$idCompany
+	 * @return	TodoyuForm
 	 */
-	public static function getCompanyQuickCreateForm() {
-		// Construct form object
+	public static function getQuickCreateForm($idCompany = 0) {
+		$idCompany	= intval($idCompany);
+
+			// Construct form object
 		$xmlPath	= 'ext/contact/config/form/company.xml';
-		$form		= TodoyuFormManager::getForm($xmlPath);
+		$form		= TodoyuFormManager::getForm($xmlPath, $idCompany);
 
 			// Adjust form to needs of quick creation wizard
 		$form->setAttribute('action', '?ext=contact&amp;controller=quickcreatecompany');

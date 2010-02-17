@@ -33,7 +33,6 @@ define('PATH_EXT_CONTACT', PATH_EXT . '/contact');
 	// Register module locales
 TodoyuLanguage::register('contact', PATH_EXT_CONTACT . '/locale/ext.xml');
 TodoyuLanguage::register('panelwidget-contactsearchinput', PATH_EXT_CONTACT . '/locale/panelwidget-contactsearchinput.xml');
-TodoyuLanguage::register('panelwidget-quickcontact', PATH_EXT_CONTACT . '/locale/panelwidget-quickcontact.xml');
 
 	// Request configurations
 require_once( PATH_EXT_CONTACT . '/config/extension.php' );

@@ -32,17 +32,15 @@ Todoyu.Headlet.QuickCreate.Person = {
 	/**
 	 *	Save person
 	 *
-	 *	@param	unknown	form
+	 *	@param	unknown		form
 	 */
-	save: function(form){
-		tinyMCE.triggerSave();
-
-		$(form).request({
-			'parameters': {
-				'action':	'save'
-			},
-			onComplete: this.onSaved.bind(this)
-		});
+	save: function(form) {
+		$(form).request ({
+				'parameters': {
+					'action':	'save'
+				},
+				'onComplete': this.onSaved.bind(this)
+			});
 
 		return false;
 	},
@@ -50,22 +48,26 @@ Todoyu.Headlet.QuickCreate.Person = {
 
 
 	/**
-	 *	onSaved person custom event handler
+	 *	On saved handle
 	 *
-	 *	@param	Ajax.Response		response
+	 *	@paran	Object		response
 	 */
-	onSaved: function(response){
-		var idPerson	= response.getTodoyuHeader('idPerson');
-		var error		= response.hasTodoyuError();
+	onSaved: function(response) {
+		var error	= response.hasTodoyuError();
 
 		if( error ) {
+				// Saving person failed
+			Todoyu.notifyError('[LLL:contact.person.saved.error]');
 			Todoyu.Headlet.QuickCreate.updateFormDiv(response.responseText);
-			Todoyu.notifyError('[LLL:contact.person.save.error]');
 		} else {
-//			Todoyu.Hook.exec('onPersonSaved', idPerson);
-			
-			Todoyu.Popup.close('quickcreate');		
-			Todoyu.notifySuccess('[LLL:contact.person.save.success]');
+				// Saving succeeded
+			var idPerson	= response.getTodoyuHeader('idPerson');
+			Todoyu.Hook.exec('onPersonSaved', idPerson);
+//			this.showList();
+
+			Todoyu.Popup.close('quickcreate');
+			Todoyu.notifySuccess('[LLL:contact.person.saved]');
+
 		}
 	}
 

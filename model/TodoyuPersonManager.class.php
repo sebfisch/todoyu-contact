@@ -35,6 +35,30 @@ class TodoyuPersonManager {
 	const TABLE = 'ext_contact_person';
 
 
+
+	/**
+	 * Get form object for person quick creation
+	 *
+	 * @param	Integer		$idPerson
+	 */
+	public static function getQuickCreateForm($idPerson = 0) {
+		$idPerson	= intval($idPerson);
+
+			// Construct form object
+		$xmlPath	= 'ext/contact/config/form/person.xml';
+		$form		= TodoyuFormManager::getForm($xmlPath, $idPerson);
+
+			// Adjust form to needs of quick creation wizard
+		$form->setAttribute('action', '?ext=contact&amp;controller=quickcreateperson');
+		$form->setAttribute('onsubmit', 'return false');
+		$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Headlet.QuickCreate.Person.save(this.form)');
+		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Popup.close(\'quickcreate\')');
+
+		return $form;
+	}
+
+
+
 	/**
 	 * Get a person object. This functions uses the cache to
 	 * prevent double object initialisation

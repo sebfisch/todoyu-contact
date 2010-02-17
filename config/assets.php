@@ -87,21 +87,8 @@ $CONFIG['EXT']['contact']['assets'] = array(
 				'file'	=> 'ext/contact/assets/css/panelwidget-contactsearch.css'
 			)
 		)
-	),
+	)
 
-	'panelwidget-quickcontact' => array(
-		'js' => array(
-			array(
-				'file'		=> 'ext/contact/assets/js/PanelWidgetQuickContact.js',
-				'position'	=> 102
-			)
-		),
-		'css' => array(
-			array(
-				'file'	=> 'ext/contact/assets/css/panelwidget-quickcontact.css'
-			)
-		)
-	),
 );
 
 ?>
