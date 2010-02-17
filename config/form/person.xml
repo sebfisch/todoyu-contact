@@ -11,7 +11,7 @@
 	<fieldsets>
 		
 		<fieldset name="main">
-			<legend>Main user data</legend>
+			<legend>Main person data</legend>
 			<elements>
 
 				<field type="select" name="gender">
@@ -58,7 +58,7 @@
 			<elements>
 
 				<field type="databaseRelation" name="contactinfo">
-					<label>contact.person.attr.contactinfo</label>
+					<label>contact.contactinfo</label>
 					<record>
 						<form>ext/contact/config/form/contactinfo.xml</form>
 						<url>
@@ -67,22 +67,22 @@
 						</url>
 						<label type="function">
 							<function>TodoyuContactViewHelper::getContactinfoLabel</function>
-							<noLabel>Neue Kontaktinformation</noLabel>
+							<noLabel>contact.contactinfo.new</noLabel>
 						</label>
 					</record>
 				</field>
 
 				<field type="databaseRelation" name="address">
-					<label>contact.person.attr.address</label>
+					<label>contact.address</label>
 					<record>
 						<form>ext/contact/config/form/address.xml</form>
 						<url>
 							<ext>contact</ext>
-							<controller>formhandling</controller>
+							<controller>person</controller>
 						</url>
 						<label type="function">
 							<function>TodoyuContactViewHelper::getAddressLabel</function>
-							<noLabel>Neue Adresse</noLabel>
+							<noLabel>contact.address.new</noLabel>
 						</label>
 					</record>
 				</field>
@@ -90,14 +90,14 @@
 				<field type="databaseRelation" name="company">
 					<label>contact.person.attr.company</label>
 					<record>
-						<form>ext/contact/config/form/user-company.xml</form>
+						<form>ext/contact/config/form/person-company.xml</form>
 						<url>
 							<ext>contact</ext>
 							<controller>person</controller>
 						</url>
 						<label type="function">
 							<function>TodoyuContactViewHelper::getCompanyLabel</function>
-							<noLabel>Neuer Arbeitgeber</noLabel>
+							<noLabel>contact.person.attr.company.new</noLabel>
 						</label>
 					</record>
 				</field>
@@ -109,7 +109,6 @@
 		<fieldset name="account">
 			<legend>Login account</legend>
 			<restrict>
-				<allow ext="contact" right="person:enableLogin" />
 				<allow ext="contact" right="person:enableLogin" />
 			</restrict>
 			<elements>
@@ -168,7 +167,7 @@
 								</url>
 								<label type="field">
 									<field>title</field>
-									<noLabel>user.attr.usergroup.noLabel</noLabel>
+									<noLabel>contact.person.attr.role.new</noLabel>
 								</label>
 							</record>
 						</field>

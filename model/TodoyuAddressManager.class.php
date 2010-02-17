@@ -89,6 +89,15 @@ class TodoyuAddressManager {
 	}
 
 
+	public static function deleteAddress($idAddress) {
+		$update	= array(
+			'deleted'	=> 1
+		);
+
+		TodoyuRecordManager::updateRecord(self::TABLE, $idAddress, $update);
+	}
+
+
 	/**
 	 * Remove record from cache
 	 *
@@ -157,6 +166,11 @@ class TodoyuAddressManager {
 		$limit	= intval($GLOBALS['CONFIG']['EXT']['contact']['numFavoriteCountries']);
 
 		return Todoyu::db()->getColumn($field, $table, $where, $group, $order, $limit);
+	}
+
+
+	public static function deleteLinkedAddresses($mmTable, $idRecord, array $currentAddressIDs,  $fieldRecord, $fieldInfo = 'id_address') {
+		return TodoyuDbHelper::deleteOtherMmRecords($mmTable, 'ext_contact_address', $idRecord, $currentAddressIDs, $fieldRecord, $fieldInfo);
 	}
 
 }

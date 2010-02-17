@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
-	<attributes>
-		<attribute name="action">?ext=contact&amp;controller=formhandling</attribute>
-		<attribute name="name">contactinfo</attribute>
-	</attributes>
 	<hiddenFields>
 		<field name="id"></field>
 	</hiddenFields>
@@ -11,20 +7,24 @@
 		<fieldset name="main">
 			<legend>Main contactinfo data</legend>
 			<elements>
+				
 				<field type="select" name="id_contactinfotype">
-					<label>user.contactinfo.attr.contactinfotype</label>
+					<label>contact.contactinfo.attr.type</label>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getContactInfoTypeOptions</function>
 					</source>
 					<required />
 				</field>
+				
 				<field type="textinput" name="info">
 					<label>user.contactinfo.attr.info</label>
 					<required />
 				</field>
+				
 				<field type="checkbox" name="preferred">
-					<label>user.contactinfo.attr.preferred</label>
+					<label>form.is_preferred</label>
 				</field>
+				
 			</elements>
 		</fieldset>
 	</fieldsets>

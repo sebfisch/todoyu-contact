@@ -32,15 +32,15 @@ class TodoyuContactInfoManager {
 
 
 	/**
-	 * Returns the ContactInfo Object
+	 * Get contactinfo object
 	 *
-	 * @param	Integer	$contactInfoID
+	 * @param	Integer		$idContactInfo
 	 * @return	TodoyuContactInfo
 	 */
-	public static function getContactInfo($contactInfoID)	{
-		$contactInfoID	= intval($contactInfoID);
+	public static function getContactinfo($idContactInfo)	{
+		$idContactInfo	= intval($idContactInfo);
 
-		return TodoyuCache::getRecord('TodoyuContactInfo', $contactInfoID);
+		return TodoyuRecordManager::getRecord('TodoyuContactInfo', $idContactInfo);
 	}
 
 
@@ -51,12 +51,12 @@ class TodoyuContactInfoManager {
 	 * @param	Integer	$idContactinfotype
 	 * @return	String
 	 */
-	public function getContactInfoTypeName($idContactinfotype) {
-		$idContactinfotype = intval($idContactinfotype);
+	public function getContactInfoTypeName($idContactInfoType) {
+		$idContactInfoType = intval($idContactInfoType);
 
-		$title = Todoyu::db()->getFieldValue('title', 'ext_contact_contactinfotype', 'id = ' . $idContactinfotype);
+		$label = Todoyu::db()->getFieldValue('title', 'ext_contact_contactinfotype', 'id = ' . $idContactinfotype);
 
-		return Label($title);
+		return TodoyuDiv::getLabel($label);
 	}
 
 
@@ -129,12 +129,30 @@ class TodoyuContactInfoManager {
 	 *
 	 * @param	Integer		$idContactInfo
 	 */
-	protected static function removeFromCache($idContactInfo)	{
+	public static function removeFromCache($idContactInfo)	{
 		$idContactInfo	= intval($idContactInfo);
 
 		TodoyuCache::removeRecord('ContactInfo', $idContactInfo);
 		TodoyuCache::removeRecordQuery(self::TABLE, $idContactInfo);
 	}
+
+
+
+	/**
+	 * Delete contact informations which are linked over an mm-table.
+	 * Deletes all except the given IDs
+	 *
+	 * @param	String		$mmTable					MM table
+	 * @param	Integer		$idRecord					Record ID which is linked to a contact info
+	 * @param	Array		$currentContactInfoIDs		Contactinfo IDs which should stay linked with the record
+	 * @param	String		$fieldRecord				Fieldname for the record ID
+	 * @param	String		$fieldInfo					Fieldname for the contactinfo ID
+	 * @return	Integer		Number of deleted records
+	 */
+	public static function deleteLinkedContactInfos($mmTable, $idRecord, array $currentContactInfoIDs,  $fieldRecord, $fieldInfo = 'id_contactinfo') {
+		return TodoyuDbHelper::deleteOtherMmRecords($mmTable, 'ext_contact_contactinfo', $idRecord, $currentContactInfoIDs, $fieldRecord, $fieldInfo);
+	}
+
 }
 
 ?>

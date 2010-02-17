@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
-	<attributes>
-		<attribute name="name">customer</attribute>
-	</attributes>
 	<fieldsets>
 		<fieldset name="main">
 			<legend>Main company data</legend>
 			<elements>
 
 				<field type="textinputAC" name="id">
-					<label>user.user.attr.user-company.company</label>
+					<label>contact.company</label>
 					<config>
 						<acListener>
 							<ext>contact</ext>
@@ -27,7 +24,7 @@
 				</field>
 
 				<field type="select" name="id_workaddress">
-					<label>user.worklocation</label>
+					<label>contact.workaddress</label>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getWorkaddressOptionsUser</function>
 						<lazyInit/>
@@ -35,7 +32,7 @@
 				</field>
 
 				<field type="select" name="id_jobtype">
-					<label>user.jobtype</label>
+					<label>contact.jobtype</label>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getJobtypeOptions</function>
 						<lazyInit/>

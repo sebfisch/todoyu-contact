@@ -35,6 +35,8 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 		restrict('contact', 'company:use');
 	}
 
+
+
 	/**
 	 * Edit company
 	 *
@@ -111,7 +113,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 		if( $form->isValid() )	{
 			$storageData= $form->getStorageData();
 
-			$idCompany	= TodoyuContactManager::saveCompany($storageData);
+			$idCompany	= TodoyuCompanyManager::saveCompany($storageData);
 
 			return $idCompany;
 		} else {
@@ -144,7 +146,8 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 
 	/**
-	 * Remove company record	 *
+	 * Remove company record
+	 *
 	 * @param	Array		$params
 	 * @return	void
 	 */

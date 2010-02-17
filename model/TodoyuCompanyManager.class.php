@@ -80,13 +80,21 @@ class TodoyuCompanyManager {
 	 * @return	Integer		Company ID
 	 */
 	public static function saveCompany(array $data) {
+		$xmlPath	= 'ext/contact/config/form/company.xml';
 		$idCompany	= intval($data['id']);
 
 		if( $idCompany === 0 ) {
 			$idCompany	= self::addCompany();
 		}
 
+			// Save own external fields
+		$data	= self::saveCompanyForeignRecords($data, $idCompany);
+
+			// Update company data with basic field data
 		self::updateCompany($idCompany, $data);
+
+			// Remove company record from cache
+		self::removeFromCache($idCompany);
 
 		return $idCompany;
 	}
@@ -134,15 +142,175 @@ class TodoyuCompanyManager {
 
 
 	/**
+	 * Save company foreign records form hook
+	 * Extract:
+	 * - contactinfo
+	 * - address
+	 * - person
+	 *
+	 * @param	Array		$data			Company form data
+	 * @param	Integer		$idCompany		Company ID
+	 * @return	Array
+	 */
+	public static function saveCompanyForeignRecords(array $data, $idCompany) {
+		$idCompany = intval($idCompany);
+
+			// Contactinfo
+		if( isset($data['contactinfo']) ) {
+			$contactInfoIDs	= TodoyuArray::getColumn($data['contactinfo'], 'id');
+
+				// Delete all contactinfos which are no longer linked
+			self::deleteRemovedContactInfos($idCompany, $contactInfoIDs);
+
+				// If contactinfos submitted
+			if( sizeof($data['contactinfo']) > 0 ) {
+				$infoIDs	= array();
+				foreach($data['contactinfo'] as $contactInfo) {
+					$infoIDs[] = TodoyuContactInfoManager::saveContactInfos($contactInfo);
+				}
+
+				self::linkContactInfos($idCompany, $infoIDs);
+			}
+
+			unset($data['contactinfo']);
+		}
+
+
+			// Address
+		if( isset($data['address']) ) {
+			$addressIDs	= TodoyuArray::getColumn($data['address'], 'id');
+
+				// Delete all addresses which are no longer linked
+			self::deleteRemovedAddresses($idCompany, $addressIDs);
+
+				// If addresses submitted
+			if( is_array($data['address']) ) {
+				$addressIDs	= array();
+				foreach($data['address'] as $address) {
+					$addressIDs[] =  TodoyuAddressManager::saveAddress($address);
+				}
+
+				self::linkAddresses($idCompany, $addressIDs);
+			}
+
+			unset($data['address']);
+		}
+
+
+			// Person
+		if( isset($data['person']) ) {
+			$personIDs	= TodoyuArray::getColumn($data['person'], 'id');
+
+				// Remove all person links which are no longer active
+			self::removeRemovedPersons($idCompany, $personIDs);
+
+			if( sizeof($data['person']) > 0 ) {
+				foreach($data['person'] as $index => $person) {
+						// Prepare data form mm-table
+					$data['person'][$index]['id_person']	= $person['id'];
+					$data['person'][$index]['id_company']	= $idCompany;
+					unset($data['person'][$index]['id']);
+				}
+
+				self::savePersonLinks($idCompany, $data['person']);
+			}
+
+			unset($data['person']);
+		}
+
+		return $data;
+	}
+
+
+
+	/**
+	 * Delete all contactinfos except the given ones
+	 *
+	 * @param	Integer		$idCompany
+	 * @param	Array		$currentContactInfoIDs
+	 * @return	Integer		Deleted records
+	 */
+	public static function deleteRemovedContactInfos($idCompany, array $currentContactInfoIDs) {
+		return TodoyuContactInfoManager::deleteLinkedContactInfos('ext_contact_mm_company_contactinfo', $idCompany, $currentContactInfoIDs, 'id_company');
+	}
+
+
+
+	/**
+	 * Link contactinfos to company
+	 *
+	 * @param	Integer		$idCompany
+	 * @param	Array		$contactInfoIDs
+	 * @return
+	 */
+	public static function linkContactInfos($idCompany, array $contactInfoIDs) {
+		TodoyuDbHelper::addMMLinks('ext_contact_mm_company_contactinfo', 'id_company', 'id_contactinfo', $idCompany, $contactInfoIDs);
+	}
+
+
+
+	/**
+	 * Delete all company addresses which are no longer active
+	 *
+	 * @param	String		$idCompany
+	 * @param	Array		$currentAddressIDs	Active addresses which will not be deleted
+	 * @return	Integer
+	 */
+	public static function deleteRemovedAddresses($idCompany, array $currentAddressIDs) {
+		return TodoyuAddressManager::deleteLinkedAddresses('ext_contact_mm_company_address', $idCompany, $currentAddressIDs, 'id_company');
+	}
+
+
+
+	/**
+	 * Link addresses to company
+	 *
+	 * @param	Integer		$idCompany
+	 * @param	Array		$addressIDs
+	 * @return	Integer
+	 */
+	public static function linkAddresses($idCompany, array $addressIDs) {
+		return TodoyuDbHelper::addMMLinks('ext_contact_mm_company_address', 'id_company', 'id_address', $idCompany, $addressIDs);
+	}
+
+
+
+	/**
+	 * Save linked person and linking data
+	 *
+	 * @param	Integer		$idCompany
+	 * @param	Array		$linkData
+	 */
+	public static function savePersonLinks($idCompany, array $linkData) {
+		TodoyuDbHelper::saveExtendedMMLinks('ext_contact_mm_company_person', 'id_company', 'id_person', $idCompany, $linkData);
+	}
+
+
+
+	/**
+	 * Remove person links which are no longer active
+	 * Person stays untouched, only the link with the extra data will be removed
+	 *
+	 * @param	Integer		$idCompany
+	 * @param	Array		$personIDs
+	 */
+	public static function removeRemovedPersons($idCompany, array $personIDs) {
+		TodoyuDbHelper::deleteOtherMmLinks('ext_contact_mm_company_person', 'id_company', 'id_person', $idCompany, $personIDs);
+	}
+
+
+
+	/**
 	 * Add a user to a company (linked)
 	 * Additional data are the workaddress and the jobtype
+	 * @deprecated
 	 *
 	 * @param	Integer		$idCompany
 	 * @param	Integer		$idUser
 	 * @param	Integer		$idWorkadress
 	 * @param	Integer		$idJobtype
 	 */
-	public static function addUserToCompany($idCompany, $idUser, $idWorkadress = 0, $idJobtype = 0) {
+	public static function addPerson($idCompany, $idPerson, $idWorkadress = 0, $idJobtype = 0) {
 		$data	= array(
 			'id_company'	=> intval($idCompany) ,
 			'id_person'		=> intval($idUser),
@@ -161,14 +329,11 @@ class TodoyuCompanyManager {
 	 * @param	Integer		$idCompany
 	 * @param	Integer		$idUser
 	 */
-	public static function removeUserFromCompany($idCompany, $idUser) {
+	public static function removePerson($idCompany, $idPerson) {
 		$idCompany	= intval($idCompany);
-		$idUser		= intval($idUser);
+		$idPerson	= intval($idPerson);
 
-		$where		= '	id_company	= ' . $idCompany . ' AND
-						id_person		= ' . $idUser;
-
-		Todoyu::db()->deleteRecord('ext_contact_mm_company_person', $where);
+		TodoyuDbHelper::removeMMrelation('ext_contact_mm_company_person', 'id_company', 'id_person', $idCompany, $idPerson);
 	}
 
 
@@ -192,10 +357,15 @@ class TodoyuCompanyManager {
 	 * @todo	Keep the contact information, or delete? Dead records at the moment. See also next functions for same problem
 	 * @param	Integer		$idCompany
 	 */
-	public static function removeAllContactinfo($idCompany) {
+	public static function removeContactinfoLinks($idCompany) {
 		$idCompany	= intval($idCompany);
 
 		TodoyuDbHelper::removeMMrelations('ext_contact_mm_company_contactinfo', 'id_company', $idCompany);
+	}
+
+
+	public static function deleteContactinfos($idCompany) {
+		TodoyuContactInfoManager::deleteLinkedContactInfos('ext_contact_mm_company_contactinfo', $idCompany, 'id_company');
 	}
 
 
@@ -205,7 +375,7 @@ class TodoyuCompanyManager {
 	 *
 	 * @param	Integer		$idCompany
 	 */
-	public static function removeAllAddresses($idCompany) {
+	public static function removeAddressesLinks($idCompany) {
 		$idCompany	= intval($idCompany);
 
 		TodoyuDbHelper::removeMMrelations('ext_contact_mm_company_address', 'id_company', $idCompany);
@@ -276,15 +446,16 @@ class TodoyuCompanyManager {
 	 * @param	Integer		$idCompany
 	 * @return	Array
 	 */
-	public static function getCompanyUserRecords($idCompany) {
+	public static function getCompanyPersonRecords($idCompany) {
 		$idCompany	= intval($idCompany);
 
 		$fields	= '	mm.*,
-					u.*';
-		$tables	= '	ext_contact_person u,
+					p.*';
+		$tables	= '	ext_contact_person p,
 					ext_contact_mm_company_person mm';
-		$where	= '	mm.id_person		= u.id AND
-					mm.id_company	= ' . $idCompany;
+		$where	= '	mm.id_person	= p.id AND
+					mm.id_company	= ' . $idCompany . ' AND
+					p.deleted		= 0';
 
 		return Todoyu::db()->getArray($fields, $tables, $where);
 	}
@@ -304,7 +475,8 @@ class TodoyuCompanyManager {
 		$tables	= '	ext_contact_contactinfo c,
 					ext_contact_mm_company_contactinfo mm';
 		$where	= ' mm.id_contactinfo	= c.id AND
-					mm.id_company		= ' . $idCompany;
+					mm.id_company		= ' . $idCompany . ' AND
+					c.deleted			= 0';
 
 		return Todoyu::db()->getArray($fields, $tables, $where);
 	}
@@ -324,7 +496,8 @@ class TodoyuCompanyManager {
 		$tables	= '	ext_contact_address a,
 					ext_contact_mm_company_address mm';
 		$where	= ' mm.id_address	= a.id AND
-					mm.id_company	= ' . $idCompany;
+					mm.id_company	= ' . $idCompany . ' AND
+					a.deleted		= 0';
 		$order	= ' a.is_preferred DESC';
 
 		return Todoyu::db()->getArray($fields, $tables, $where, '', $order);

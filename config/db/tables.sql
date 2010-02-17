@@ -92,7 +92,7 @@ CREATE TABLE `ext_contact_contactinfotype` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date_create` int(11) NOT NULL,
   `date_update` int(11) NOT NULL,
-  `id_person_create` int(11) NOT NULL,
+  `id_person_create` smallint(5) unsigned NOT NULL,
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `category` smallint(5) unsigned NOT NULL,
   `key` varchar(20) NOT NULL,
@@ -144,7 +144,7 @@ CREATE TABLE `ext_contact_mm_company_contactinfo` (
 CREATE TABLE `ext_contact_mm_company_person` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_company` int(10) unsigned NOT NULL DEFAULT '0',
-  `id_person` int(10) unsigned NOT NULL,
+  `id_person` smallint(5) unsigned NOT NULL,
   `id_workaddress` smallint(6) NOT NULL,
   `id_jobtype` smallint(6) NOT NULL,
   PRIMARY KEY (`id`)
@@ -157,7 +157,7 @@ CREATE TABLE `ext_contact_mm_company_person` (
 
 CREATE TABLE `ext_contact_mm_person_address` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_person` int(10) unsigned NOT NULL DEFAULT '0',
+  `id_person` smallint(5) unsigned NOT NULL DEFAULT '0',
   `id_address` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -169,7 +169,7 @@ CREATE TABLE `ext_contact_mm_person_address` (
 
 CREATE TABLE `ext_contact_mm_person_contactinfo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_person` int(10) unsigned NOT NULL DEFAULT '0',
+  `id_person` smallint(5) unsigned NOT NULL DEFAULT '0',
   `id_contactinfo` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -181,7 +181,7 @@ CREATE TABLE `ext_contact_mm_person_contactinfo` (
 
 CREATE TABLE `ext_contact_mm_person_role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_person` int(10) unsigned NOT NULL DEFAULT '0',
-  `id_role` int(10) unsigned NOT NULL DEFAULT '0',
+  `id_person` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `id_role` smallint(5) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;

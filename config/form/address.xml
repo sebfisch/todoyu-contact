@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
-	<attributes>
-		<attribute name="action">?ext=contact&amp;controller=formhandling</attribute>
-		<attribute name="name">address</attribute>
-	</attributes>
 	<hiddenFields>
 		<field name="id"></field>
 	</hiddenFields>
@@ -13,7 +9,7 @@
 			<elements>
 
 				<field type="select" name="id_addresstype">
-					<label>user.address.attr.addresstype</label>
+					<label>contact.address.attr.addresstype</label>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getAddressTypeOptions</function>
 					</source>
@@ -21,33 +17,33 @@
 				</field>
 
 				<field type="textinput" name="street">
-					<label>user.address.attr.street</label>
+					<label>contact.address.attr.street</label>
 					<required />
 				</field>
 
 				<field type="textinput" name="postbox">
-					<label>user.address.attr.postbox</label>
+					<label>contact.address.attr.postbox</label>
 				</field>
 
 				<field type="textinput" name="zip">
-					<label>user.address.attr.zip</label>
+					<label>contact.address.attr.zip</label>
 					<required />
 				</field>
 
 				<field type="textinput" name="city">
-					<label>user.address.attr.city</label>
+					<label>contact.address.attr.city</label>
 					<required />
 				</field>
 
 				<field type="select" name="id_country">
-					<label>user.address.attr.country</label>
+					<label>contact.address.attr.country</label>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getCountryOptions</function>
 					</source>
 				</field>
 
 				<field type="textinputAC" name="region">
-					<label>user.address.attr.region</label>
+					<label>contact.address.attr.region</label>
 					<config>
 						<acListener>
 							<ext>contact</ext>
@@ -62,11 +58,11 @@
 				</field>
 
 				<field type="checkbox" name="is_preferred">
-					<label>user.address.attr.is_preferred</label>
+					<label>form.is_preferred</label>
 				</field>
 
 				<field type="textarea" name="comment">
-					<label>user.address.attr.comment</label>
+					<label>contact.address.attr.comment</label>
 				</field>
 
 			</elements>

@@ -9,67 +9,67 @@
 	</hiddenFields>
 	<fieldsets>
 		<fieldset name="main">
-			<legend>Main customer data</legend>
+			<legend>Main company data</legend>
 			<elements>
 
 				<field type="textinput" name="title">
-					<label>user.company.attr.title</label>
+					<label>contact.company.attr.title</label>
 					<required />
 				</field>
 
 				<field type="textinput" name="shortname">
-					<label>user.company.attr.shortname</label>
+					<label>contact.company.attr.shortname</label>
 				</field>
 
 				<field type="dateinput" name="date_enter">
-					<label>user.company.attr.date_enter</label>
+					<label>contact.company.attr.date_enter</label>
 				</field>
 
 				<field type="checkbox" name="is_internal">
-					<label>user.company.attr.is_internal</label>
+					<label>contact.company.attr.is_internal</label>
 				</field>
 
 				<field type="databaseRelation" name="contactinfo">
-					<label>user.company.attr.contactinfo</label>
+					<label>contact.contactinfo</label>
 					<record>
 						<form>ext/contact/config/form/contactinfo.xml</form>
 						<url>
 							<ext>contact</ext>
-							<controller>formhandling</controller>
+							<controller>company</controller>
 						</url>
 						<label type="function">
 							<function>TodoyuContactViewHelper::getContactinfoLabel</function>
-							<noLabel>LLL:contact.noLabel.newContactInfo</noLabel>
+							<noLabel>contact.contactinfo.new</noLabel>
 						</label>
 					</record>
 				</field>
 
 				<field type="databaseRelation" name="address">
-					<label>user.company.attr.address</label>
+					<label>contact.address</label>
 					<record>
 						<form>ext/contact/config/form/address.xml</form>
 						<url>
 							<ext>contact</ext>
-							<controller>formhandling</controller>
+							<controller>company</controller>
 						</url>
 						<label type="function">
 							<function>TodoyuContactViewHelper::getAddressLabel</function>
-							<noLabel>LLL:contact.noLabel.newAddress</noLabel>
+							<noLabel>contact.address.new</noLabel>
 						</label>
 					</record>
 				</field>
 
-				<field type="databaseRelation" name="user">
-					<label>user.company.attr.user</label>
+				<field type="databaseRelation" name="person">
+					<label>contact.company.attr.person</label>
 					<record>
-						<form>ext/contact/config/form/company-user.xml</form>
+						<form>ext/contact/config/form/company-person.xml</form>
 						<url>
 							<ext>contact</ext>
 							<controller>company</controller>
 						</url>
 						<label type="function">
 							<function>TodoyuContactViewHelper::getEmployeeLabel</function>
-							<noLabel>LLL:contact.noLabel.newEmployee</noLabel>
+							<noLabel>contact.company.attr.person.new</noLabel>
 						</label>
 					</record>
 				</field>

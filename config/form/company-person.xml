@@ -5,11 +5,11 @@
 	</attributes>
 	<fieldsets>
 		<fieldset name="main">
-			<legend>Main company data</legend>
+			<legend>Company Person Data</legend>
 			<elements>
 
 				<field type="textinputAC" name="id">
-					<label>user.company.attr.customer-user.person</label>
+					<label>contact.person</label>
 					<config>
 						<acListener>
 							<ext>contact</ext>
@@ -26,15 +26,15 @@
 						<ext>contact</ext>
 						<controller>person</controller>
 						<action>addNewContactWizard</action>
-						<title>LLL:contact.contact.createnew</title>
+						<title>contact.person.create</title>
 						<width>700</width>
 						<displayCondition></displayCondition>
 					</wizard>
-					<required>1</required>
+					<required />
 				</field>
 
 				<field type="select" name="id_workaddress">
-					<label>user.worklocation</label>
+					<label>contact.workaddress</label>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getWorkaddressOptionsCompany</function>
 						<lazyInit/>
@@ -42,7 +42,7 @@
 				</field>
 
 				<field type="select" name="id_jobtype">
-					<label>user.jobtype</label>
+					<label>contact.jobtype</label>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getJobtypeOptions</function>
 						<lazyInit/>
