@@ -21,14 +21,14 @@ span.wizardIcon.createNewUser	{
 
 
 
-/* --------------------------
-	Creation headlet
-   -------------------------- */
+/* -----------------------------------
+	Create mode options in headlet
+   ----------------------------------- */
 
 .createmode-company {
-	background: url(../img/icons.png) no-repeat 4px -90px;
+	background: url(../img/icons.png) no-repeat 11px -90px;
 }
 
 .createmode-person {
-	background: url(../img/icons.png) no-repeat 4px -240px;
+	background: url(../img/icons.png) no-repeat 11px -240px;
 }

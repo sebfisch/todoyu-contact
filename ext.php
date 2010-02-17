@@ -44,5 +44,8 @@ require_once( PATH_EXT_CONTACT . '/dwoo/plugins.php');
 	// Add quick create types
 TodoyuQuickCreateManager::addEngine('contact', 'company', 'contact.create.company.label', 50);
 TodoyuQuickCreateManager::addEngine('contact', 'person', 'contact.create.person.label', 50);
+	// Add area related primary engines
+TodoyuQuickCreateManager::addAreaEngine(EXTID_CONTACT, 'contact', 'company', 'contact.create.company.label', 10);
+TodoyuQuickCreateManager::addAreaEngine(EXTID_CONTACT, 'contact', 'person', 'contact.create.person.label', 20);
 
 ?>
