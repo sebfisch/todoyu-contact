@@ -150,6 +150,6 @@ Todoyu.Ext.contact.Company =  {
 			}
 		};
 
-		Todoyu.Popup.openWindow('popupRecordInfo', 'Info', 420, 340, url, options);
+		Todoyu.Popup.openWindow('popupRecordInfo', 'Info', 420, url, options);
 	}
 };
