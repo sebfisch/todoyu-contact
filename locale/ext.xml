@@ -5,10 +5,9 @@
 		<label index="page.title">Contacts</label>
 		<label index="person">Person</label>
 		<label index="company">Company</label>
-		
-		<label index="workaddress">Working Address</label>				
-		<label index="jobtype">Job Type</label>	
-		
+		<label index="workaddress">Working Address</label>
+		<label index="jobtype">Job Type</label>
+
 		<label index="person.create">Add New Person</label>
 		<label index="person.attr.gender">Gender</label>
 		<label index="person.attr.gender.m">Mr</label>
@@ -16,26 +15,29 @@
 		<label index="person.attr.firstname">Firstname</label>
 		<label index="person.attr.lastname">Lastname</label>
 		<label index="person.attr.shortname">Shortname</label>
-		<label index="person.attr.birthday">Birthday</label>		
-		<label index="person.attr.company">Employer</label>				
-		<label index="person.attr.company.new">New Employer</label>				
-					
+		<label index="person.attr.birthday">Birthday</label>
+		<label index="person.attr.company">Employer</label>	
+		<label index="person.attr.company.new">New Employer</label>	
+
 		<label index="person.attr.active">Enable login</label>
 		<label index="person.attr.username">Username</label>
 		<label index="person.attr.password">Password</label>
 		<label index="person.attr.email">Email</label>
 		<label index="person.attr.is_admin">Is Admin</label>
 		<label index="person.attr.role.new">New role</label>
-				
+
 		<label index="company.attr.title">Name</label>
 		<label index="company.attr.shortname">Shortname</label>
 		<label index="company.attr.date_enter">Date of Entry</label>
-		<label index="company.attr.is_internal">Is Internal</label>		
+		<label index="company.attr.is_internal">Is Internal</label>
 		<label index="company.attr.person">Employee</label>
 		<label index="company.attr.person.new">New Employee</label>
 
 		<label index="company.attr.contactinfo">Contact Info</label>
-		
+
+		<label index="company.save.failed">Saving company failed</label>
+		<label index="company.save.success">Company saved</label>
+
 		<label index="contactinfo">Contact Informations</label>
 		<label index="contactinfo.new">New Contactinfo</label>
 		<label index="contactinfo.attr.type">Contactinfo Type</label>
@@ -56,9 +58,9 @@
 		<label index="contactinfo.category.email">Email Address</label>
 		<label index="contactinfo.category.phone">Phone number (or fax, mobile)</label>
 		<label index="contactinfo.category.other">Other</label>
-		
-		<label index="address">Address</label>	
-		<label index="address.new">New Address</label>	
+
+		<label index="address">Address</label>
+		<label index="address.new">New Address</label>
 		<label index="address.attr.addresstype">Address Type</label>
 		<label index="address.attr.addresstype.1">Home Address</label>
 		<label index="address.attr.addresstype.2">Business Address</label>
@@ -70,14 +72,9 @@
 		<label index="address.attr.zip">Zip</label>
 		<label index="address.attr.country">Country</label>
 		<label index="address.attr.comment">Comment</label>
-		
-		
-		
-		
-		
-		
+
 		<label index="create.company.label">New Company</label>
-		<label index="create.person.label">Person</label>				
+		<label index="create.person.label">Person</label>
 		<label index="record.jobtype">Jobtype</label>
 		<label index="record.contactinfotype">Contactinfotype</label>
 		<label index="record.contactinfotype.key">Key</label>
@@ -118,11 +115,16 @@
 		<label index="ac.region.notFoundInfo">No region containing the given text found. Did you select the correct country?</label>
 		<label index="ac.user.notFoundInfo">No person with a name containing the given text was found.</label>
 		<label index="ac.company.notFoundInfo">No company named containing the given text found.</label>
-		
+
 	</labels>
 	<labels lang="de">
 		<label index="ext.title">Kontakt</label>
 		<label index="page.title">Kontakte</label>
+		<label index="person">Person</label>
+		<label index="company">Firma</label>
+		<label index="workaddress">Arbeitsadresse</label>
+		<label index="jobtype">Beschäftigungsart</label>
+
 		<label index="contacttypes.company">Firmen</label>
 		<label index="contacttypes.person">Personen</label>
 		<label index="create.company.label">Neue Firma</label>
@@ -169,5 +171,8 @@
 		<label index="contactinfotype.category.1">Email-Addresse</label>
 		<label index="contactinfotype.category.2">Telefonnummer (oder Fax, Mobil)</label>
 		<label index="contactinfotype.category.3">Anderes</label>
+
+		<label index="company.save.failed">Speichern der Firma fehlgeschlagen</label>
+		<label index="company.save.success">Firma gespeichert</label>
 	</labels>
 </locallang>

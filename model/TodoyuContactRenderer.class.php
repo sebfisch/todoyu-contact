@@ -57,6 +57,23 @@ class TodoyuContactRenderer {
 	}
 
 
+	/**
+	 * Render company quick creation form
+	 *
+	 * @return	String
+	 */
+	public static function renderCompanyQuickCreateForm() {
+		$form	= TodoyuCompanyManager::getCompanyQuickCreateForm();
+
+			// Preset (empty) form data
+		$formData	= $form->getFormData();
+		$formData	= TodoyuFormHook::callLoadData('ext/contact/config/form/company.xml', $formData, 0);
+		$form->setFormData($formData);
+
+		return $form->render();
+	}
+
+
 
 	/**
 	 * Render contacts list

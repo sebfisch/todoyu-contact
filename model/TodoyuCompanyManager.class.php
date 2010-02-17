@@ -29,6 +29,27 @@ class TodoyuCompanyManager {
 
 	const TABLE = 'ext_contact_company';
 
+
+
+	/**
+	 * Get form object for company quick creation
+	 */
+	public static function getCompanyQuickCreateForm() {
+		// Construct form object
+		$xmlPath	= 'ext/contact/config/form/company.xml';
+		$form		= TodoyuFormManager::getForm($xmlPath);
+
+			// Adjust form to needs of quick creation wizard
+		$form->setAttribute('action', '?ext=contact&amp;controller=quickcreatecompany');
+		$form->setAttribute('onsubmit', 'return false');
+		$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Headlet.QuickCreate.Company.save(this.form)');
+		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Popup.close(\'quickcreate\')');
+
+		return $form;
+	}
+
+
+
 	/**
 	 * Get a company object
 	 *
