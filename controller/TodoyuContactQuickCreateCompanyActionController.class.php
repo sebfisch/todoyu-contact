@@ -54,7 +54,7 @@ class TodoyuContactQuickCreateCompanyActionController extends TodoyuActionContro
 			$storageData= $form->getStorageData();
 			$idCompany	= TodoyuCompanyManager::saveCompany($storageData);
 
-			return $idCompany;
+			TodoyuHeader::sendTodoyuHeader('idCompany', $idCompany);
 		} else {
 			TodoyuHeader::sendTodoyuErrorHeader();
 
