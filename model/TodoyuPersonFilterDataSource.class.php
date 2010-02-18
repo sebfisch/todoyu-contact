@@ -35,7 +35,7 @@ class TodoyuPersonFilterDataSource {
 	 * @return	Array
 	 * @todo	Unused param $conf
 	 */
-	public static function autocompleteUsers($search, array $conf = array())	{
+	public static function autocompletePersons($search, array $conf = array())	{
 		$data = array();
 
 		$fieldsToSearchIn = array(

@@ -109,12 +109,11 @@ Todoyu.Ext.contact.Company =  {
 		var error	= response.hasTodoyuError();
 
 		if( error ) {
-			Todoyu.notify('error', 'Form invalid', 2);
-			Todoyu.notify('info', 'Ich bin eine Info', 20);
+			Todoyu.notifyError('[LLL:contact.company.save.error]');
 			$('contact-form-content').update(response.responseText);
 		} else {
 				// Notify (implement)
-			Todoyu.notify('success', 'Company saved', 3);
+			Todoyu.notifySuccess('[LLL:contact.company.save.ok]');
 			this.showList();
 		}
 	},

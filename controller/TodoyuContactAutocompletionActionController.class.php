@@ -26,7 +26,7 @@ class TodoyuContactAutocompletionActionController extends TodoyuActionController
 	 *
 	 * @param	Array	$params
 	 */
-	public function userAction(array $params) {
+	public function personAction(array $params) {
 		$sword	= trim($params['sword']);
 		$config	= array();
 

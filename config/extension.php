@@ -29,17 +29,17 @@ $CONFIG['EXT']['contact']['contactinfotypecategories'] = array(
 		// Email
 	array(
 		'index'	=> 1,
-		'label'	=> 'LLL:contact.contactinfotype.category.1'
+		'label'	=> 'LLL:contact.record.contactinfotype.email'
 	),
 		// Phone
 	array(
 		'index'	=> 2,
-		'label'	=> 'LLL:contact.contactinfotype.category.2'
+		'label'	=> 'LLL:contact.record.contactinfotype.phone'
 	),
 		// Other
 	array(
 		'index'	=> 3,
-		'label'	=> 'LLL:contact.contactinfotype.category.3'
+		'label'	=> 'LLL:contact.record.contactinfotype.other'
 	),
 );
 
