@@ -28,6 +28,10 @@ $CONFIG['EXT']['contact']['assets'] = array(
 		// Default assets: loaded all over the installation always
 	'default' => array(
 		'js'	=> array(
+			array(
+				'file'		=> 'ext/contact/assets/js/Ext.js',
+				'position'	=> 100
+			),
 				// Add creation engines to quick create headlet
 			array(
 				'file'		=> 'ext/contact/assets/js/HeadletQuickCreateCompany.js',
@@ -36,11 +40,19 @@ $CONFIG['EXT']['contact']['assets'] = array(
 			array(
 				'file'		=> 'ext/contact/assets/js/HeadletQuickCreatePerson.js',
 				'position'	=> 110
+			),
+			array(
+				'file' 		=> 'ext/contact/assets/js/QuickInfoPerson.js',
+				'position' 	=> 200
 			)
 		),
 		'css'	=> array(
 			array(
 				'file'		=> 'ext/contact/assets/css/global.css',
+				'position'	=> 100
+			),
+			array(
+				'file' 		=> 'ext/contact/assets/css/quickinfo.css',
 				'position'	=> 100
 			)
 		)
@@ -49,10 +61,6 @@ $CONFIG['EXT']['contact']['assets'] = array(
 		// Public assets: basic assets for this extension
 	'public' => array(
 		'js' => array(
-			array(
-				'file'		=> 'ext/contact/assets/js/Ext.js',
-				'position'	=> 100
-			),
 			array(
 				'file'		=> 'ext/contact/assets/js/Autocomplete.js',
 				'position'	=> 101

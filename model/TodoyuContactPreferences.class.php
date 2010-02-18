@@ -27,10 +27,6 @@
  */
 class TodoyuContactPreferences {
 
-	static $contactType = '';
-
-
-
 	/**
 	 * Save a preference for contact
 	 *
