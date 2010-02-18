@@ -22,6 +22,40 @@
 class TodoyuContactViewHelper {
 
 	/**
+	 * Get options array with all users being employees of internal company
+	 *
+	 * @return	Array
+	 */
+	public static function getInternalPersonOptions(TodoyuFormElement $field) {
+		$options	= array();
+		$persons	= TodoyuPersonManager::getInternalPersons();
+
+		if( sizeof($persons) > 0 ) {
+				// List internal users
+			foreach($persons as $person) {
+				$options[] = array(
+					'value'	=> $person['id'],
+					'label'	=> TodoyuPersonManager::getLabel($person['id'])
+				);
+			}
+		} else {
+				// No internal persons / firm defined? inform about that
+			$options[] = array(
+				'value'		=> 0,
+				'label'		=> Label('user.form.error.nointernalusers'),
+				'disabled'	=> true,
+				'classname'	=> 'error'
+			);
+		}
+
+		return $options;
+	}
+
+
+
+
+
+	/**
 	 * Get user address label
 	 *
 	 * @param	TodoyuFormElement	$formElement
