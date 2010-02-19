@@ -22,6 +22,35 @@
 class TodoyuContactViewHelper {
 
 	/**
+	 * Get label for a person in a form
+	 *
+	 * @param	TodoyuFormElement	$field
+	 * @param	Array				$data
+	 * @return	String
+	 */
+	public static function getPersonLabel(TodoyuFormElement $field, array $data) {
+		$idPerson	= intval($data['id']);
+
+		return TodoyuPersonManager::getLabel($idPerson);
+	}
+
+
+	public static function getPersonOptions(TodoyuFormElement $field) {
+		$options	= array();
+		$persons	= TodoyuPersonManager::getAllActivePersons();
+
+		foreach($persons as $person) {
+			$options[] = array(
+				'value'	=> $person['id'],
+				'label'	=> TodoyuPersonManager::getLabel($person['id'])
+			);
+		}
+
+		return $options;
+	}
+
+
+	/**
 	 * Get options array with all users being employees of internal company
 	 *
 	 * @return	Array

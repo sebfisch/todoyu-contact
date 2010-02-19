@@ -501,8 +501,6 @@ class TodoyuPersonManager {
 	 * @return	String
 	 */
 	public static function getLabel($idPerson, $showEmail = false, $lastnameFirst = true)	{
-		TodoyuDebug::printInFirebug($idPerson);
-
 		$idPerson	= intval($idPerson);
 		$label	= '';
 
