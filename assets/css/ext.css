@@ -9,14 +9,14 @@
 .personListing th.firstname,
 .personListing th.lastname,
 .personListing th.email {
-	width:121px;
+	width:118px;
 }
 .personListing th.company {
 	width:145px;
 }
 
 .personListing th.actions {
-	width:70px;
+	width:80px;
 }
 
 	/* Column configs */
