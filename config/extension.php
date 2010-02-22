@@ -155,4 +155,8 @@ $CONFIG['EXT']['contact']['panelWidgetStaffSelector'] = array(
 	'maxListSize'	=> 15 // Max size of person selector
 );
 
+
+	// Implement user quickInfo class to various person labels
+TodoyuHookManager::registerHook('project', 'taskdataattributes', 'TodoyuPersonHooks::extendTaskDataAttributes', 10);
+
 ?>
