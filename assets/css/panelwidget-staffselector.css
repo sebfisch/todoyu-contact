@@ -1,0 +1,25 @@
+/* ------------------------------------------------------------
+	User selector
+   ------------------------------------------------------------ */
+
+#panelwidget-staffselector h1 .title {
+	background:url(../img/icons.png) no-repeat 5px 6px;
+}
+
+#panelwidget-staffselector div.fLabel {
+	border-bottom:1px solid #CCC;
+}
+
+#panelwidget-staffselector option {
+	padding-left:10px;
+}
+
+#panelwidget-staffselector-jobtype {
+	width:232px;
+	margin:0px 2px 8px 0;
+}
+
+#panelwidget-staffselector-jobtypetoggle,
+#panelwidget-staffselector-content label {
+	vertical-align:top;
+}

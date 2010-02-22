@@ -1,0 +1,28 @@
+{* --------------- Workfunction dropdown --------------- *}
+<div class="fLabel odd">
+	<label>{Label panelwidget-staffselector.byFunction}</label>
+</div>
+
+{select options=$jobTypeOptions value=$selectedJobTypes id="panelwidget-$id-jobtype" name="jobtype" multiple=$jobTypeMultiple}
+<label class="toggleSelect collapse {if !$jobTypeMultiple}expand{/if}" id="panelwidget-{$id}-jobtypetoggle-label" title="{Label panelwidget-staffselector.toggle.multiselect.title}" for="panelwidget-{$id}-jobtypetoggle"></label>
+<input class="toggleSelect" id="panelwidget-{$id}-jobtypetoggle" class="checkbox" type="checkbox" {if $jobTypeMultiple}checked="checked"{/if} />
+
+{* --------------- Staff users selector --------------- *}
+<div class="fLabel odd">
+	<label>{Label panelwidget-staffselector.title}:</label>
+</div>
+
+{select options=$personOptions value=$selectedPersons id="panelwidget-$id-persons" multiple=true}
+
+
+{*
+<select class="indexLetters" size="{$userListSize}" id="panelwidget-{$id}-list" name="users" multiple="multiple">
+	{foreach $users index user users}
+		<option value="{$user.id}" {if in_array($user.id, $selectedUsers)}selected="selected"{/if} class="{if $colorizeOptions}enumColOptionLeftIcon{$user.id%$numColors}{/if}{if $indexLetter != strtoupper($user.lastname[0])} indexLetter{strtoupper($user.lastname[0])}{/if} {cycle values="odd,even"} {if in_array($user.id, $selectedUsers)}selected{/if} {if isCurrentUser}currentUser{/if}">
+			{assign var=indexLetter value=strtoupper($user.lastname[0])}
+			{$user.lastname} {$user.firstname} ({Label $user.jobtype true})
+			{assign var=prevIndexLetter value=$indexLettter}
+		</option>
+	{/foreach}
+</select>
+*}

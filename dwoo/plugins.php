@@ -90,22 +90,6 @@ function Dwoo_Plugin_personLabel(Dwoo $dwoo, $idPrefix = '', $idRecord = 0, $idP
 
 
 
-
-/**
- * Returns the label of the addresstype with given id
- *
- * @param	Dwoo_Compiler	$compiler
- * @param	Integer			$idAddresstype
- * @return	String
- */
-function Dwoo_Plugin_addressType_compile(Dwoo_Compiler $compiler, $idAddresstype)	{
-	return 'TodoyuAddressManager::getAddresstypeLabel(' . $idAddresstype . ')';
-}
-
-
-
-
-
 /**
  * Get name of contact info type
  *

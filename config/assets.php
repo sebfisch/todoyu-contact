@@ -95,7 +95,23 @@ $CONFIG['EXT']['contact']['assets'] = array(
 				'file'	=> 'ext/contact/assets/css/panelwidget-contactsearch.css'
 			)
 		)
-	)
+	),
+
+			// Staff selector
+	'panelwidget-staffselector' => array(
+		'js' => array(
+			array(
+				'file'		=> 'ext/contact/assets/js/PanelWidgetStaffSelector.js',
+				'position'	=> 110
+			)
+		),
+		'css' => array(
+			array(
+				'file'		=> 'ext/contact/assets/css/panelwidget-staffselector.css',
+				'position'	=> 110
+			)
+		)
+	),
 
 );
 

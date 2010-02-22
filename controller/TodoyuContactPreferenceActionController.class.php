@@ -30,6 +30,13 @@ class TodoyuContactPreferenceActionController extends TodoyuActionController {
 	}
 
 
+	public function panelwidgetstaffselectorAction(array $params) {
+		$prefs	= json_decode($params['value'], true);
+
+		TodoyuContactPreferences::saveStaffSelectorPrefs($prefs);
+	}
+
+
 
 	/**
 	 * General panelWidget action, saves collapse status

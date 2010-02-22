@@ -139,5 +139,23 @@ class TodoyuContactPreferences {
 		self::savePref('language', $language, 0, true);
 	}
 
+
+	public static function saveStaffSelectorPrefs(array $prefs) {
+		$prefs	= json_encode($prefs);
+
+		self::savePref('panelwidget-staffselector', $prefs, 0, true, AREA);
+	}
+
+
+	public static function getStaffSelectorPrefs() {
+		$prefs	= TodoyuContactPreferences::getPref('staffSelector');
+
+		if( $prefs === false ) {
+			return array();
+		} else {
+			return json_decode($prefs, true);
+		}
+	}
+
 }
 ?>

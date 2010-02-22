@@ -115,19 +115,20 @@ class TodoyuJobtypeManager {
 
 
 	/**
-	 * Get internal users with jobtype
+	 * Get internal persons with jobtype
 	 *
 	 * @return	Array
 	 */
-	public static function getInternalUsersWithJobtype() {
-		$internalUsers	= TodoyuPersonManager::getInternalPersons(true, true);
-		$jobTypes		= TodoyuDiv::useFieldAsIndex(self::getJobtypes(), 'id');
+	public static function getInternalPersonsWithJobtype() {
+		$persons	= TodoyuPersonManager::getInternalPersons(true, false);
+		$jobTypes	= self::getAllJobtypes();
+		$jobTypes	= TodoyuDiv::useFieldAsIndex($jobTypes, 'id');
 
-		foreach($internalUsers as $index => $user) {
-			$internalUsers[$index]['jobtype']	= $user['id_jobtype'] != 0 ? $jobTypes[$user['id_jobtype']]['title'] : $internalUsers[$index]['jobtype']	= 'LLL:user.noJobDefined';
+		foreach($persons as $index => $person) {
+			$persons[$index]['jobtype']	= $person['id_jobtype'] != 0 ? TodoyuDiv::getLabel($jobTypes[$person['id_jobtype']]['title']) : TodoyuLanguage::getLabel('user.noJobDefined');
 		}
 
-		return $internalUsers;
+		return $persons;
 	}
 
 
