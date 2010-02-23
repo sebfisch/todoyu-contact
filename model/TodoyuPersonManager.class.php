@@ -702,11 +702,13 @@ class TodoyuPersonManager {
 			}
 		}
 
-		$fields	= '	*,
-					YEAR(birthday) as birthyear';
+		$fields	= '	*, YEAR(birthday) as birthyear';
+
 		$table	= self::TABLE;
-		$where	= '	birthday < \'' . $mysqlDateStart . '\' AND
-					(' . $rangeWhere . ')';
+
+		$where	= '	birthday < \'' . $mysqlDateStart . '\'
+					AND deleted = 0
+					AND (' . $rangeWhere . ')';
 		$order	= 'birthday';
 
 		$birthdayPersons = Todoyu::db()->getArray($fields, $table, $where, '', $order);
