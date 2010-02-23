@@ -23,7 +23,7 @@
 .personListing td.icon {
 	background:url(../img/icons.png) no-repeat 6px 6px;
 }
-.personListing td.icon.user {
+.personListing td.icon.person {
 	background:url(../img/icons.png) no-repeat 6px -116px;
 }
 .personListing td.actions div.icon {

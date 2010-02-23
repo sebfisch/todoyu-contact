@@ -32,28 +32,28 @@
 
 
 /**
- * Check if given ID belongs to the current user
+ * Check if given ID belongs to the current person
  *
  * @package		Todoyu
  * @subpackage	Template
  *
  * @param	Dwoo_Compiler 	$dwoo
- * @param	Integer			$idUser
+ * @param	Integer			$idPerson
  * @return	Boolean
  */
 function Dwoo_Plugin_isPersonID_compile(Dwoo_Compiler $dwoo, $idPerson) {
-	return 'personid() === intval(' . $idUser . ')';
+	return 'personid() === intval(' . $idPerson . ')';
 }
 
 
 
 /**
- * Get the username to given user ID
+ * Get the name to given person ID
  *
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param 	Dwoo_Compiler 		$compiler
+ * @param 	Dwoo_Compiler 	$compiler
  * @param	Integer			$idPerson
  * @return	String
  */
@@ -65,11 +65,11 @@ function Dwoo_Plugin_name_compile(Dwoo_Compiler $compiler, $idPerson) {
 
 
 /**
- * Returns a wrapped label tag of a user, evoking user-info tooltip on rollOver
+ * Returns a wrapped label tag of a person, evoking person-info tooltip on rollOver
  *
  * @param	Dwoo 			$dwoo
  * @param	Integer			$idPrefx	descriptive string: 'ext'_'recordtype'
- * @param	Integer			$idRecord	record containing the user ID, e.g. task, comment, etc.
+ * @param	Integer			$idRecord	record containing the person ID, e.g. task, comment, etc.
  * @param	Integer			$idPerson
  * @param	String			$tag
  * @param	String			$class
@@ -78,7 +78,7 @@ function Dwoo_Plugin_name_compile(Dwoo_Compiler $compiler, $idPerson) {
 function Dwoo_Plugin_personLabel(Dwoo $dwoo, $idPrefix = '', $idRecord = 0, $idPerson = 0, $tag = 'span', $class = '')	{
 	$htmlID		= $idPrefix . '-' . $idRecord . '-' . $idPerson;
 
-	$openingTag	= '<' . $tag . ' id="' . $htmlID . '" class="quickInfoUser ' . $class . '">';
+	$openingTag	= '<' . $tag . ' id="' . $htmlID . '" class="quickInfoPerson ' . $class . '">';
 	$closingTag	= '</' . $tag . '>';
 
 	$label	= TodoyuPersonManager::getLabel($idPerson);
