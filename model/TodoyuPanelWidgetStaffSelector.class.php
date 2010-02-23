@@ -211,6 +211,9 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 	}
 
 
+
+
+
 	public static function getPrefs() {
 		return TodoyuContactPreferences::getStaffSelectorPrefs();
 	}
@@ -229,6 +232,8 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 	}
 
 
+
+	
 	public static function getSelectedJobTypes() {
 		$jobtypes = TodoyuContactPreferences::getPref('staffSelector-jobtypes');
 
