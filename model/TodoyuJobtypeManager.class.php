@@ -226,28 +226,28 @@ class TodoyuJobtypeManager {
 
 
 
-	/**
-	 * Sum amount of users by job function, add jobtitles, assign users into job groups
-	 *
-	 * @param	Array	$staffUsers
-	 */
-	public static function summUpJobGroups(array &$staffUsers, array $prefs = array()) {
-		$jobTypes	= array();
-
-		foreach($staffUsers as $idUser => $userData) {
-				// Sum amount of users by job function, add jobtitles, assign users into job groups
-			$jobTypes[ $userData['id_jobtype'] ]['amount_users']++;
-			$jobTypes[ $userData['id_jobtype'] ]['title']		= $userData['jobtype'];
-			$jobTypes[ $userData['id_jobtype'] ]['user_ids'][]	= $userData['id'];
-
-				// Set users selected as stored in user prefs
-			if ( is_array( $prefs['selectedUserIDs'] ) && in_array($idUser, $prefs['selectedUserIDs']) ) {
-				$staffUsers[$idUser]['selected'] = 1;
-			}
-		}
-
-		return $jobTypes;
-	}
+//	/**
+//	 * Sum amount of users by job function, add jobtitles, assign users into job groups
+//	 *
+//	 * @param	Array	$staffUsers
+//	 */
+//	public static function summUpJobGroups(array &$staffUsers, array $prefs = array()) {
+//		$jobTypes	= array();
+//
+//		foreach($staffUsers as $idUser => $userData) {
+//				// Sum amount of users by job function, add jobtitles, assign users into job groups
+//			$jobTypes[ $userData['id_jobtype'] ]['amount_users']++;
+//			$jobTypes[ $userData['id_jobtype'] ]['title']		= $userData['jobtype'];
+//			$jobTypes[ $userData['id_jobtype'] ]['user_ids'][]	= $userData['id'];
+//
+//				// Set users selected as stored in user prefs
+//			if ( is_array( $prefs['selectedUserIDs'] ) && in_array($idUser, $prefs['selectedUserIDs']) ) {
+//				$staffUsers[$idUser]['selected'] = 1;
+//			}
+//		}
+//
+//		return $jobTypes;
+//	}
 }
 
 ?>
