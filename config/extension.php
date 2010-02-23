@@ -150,7 +150,6 @@ $CONFIG['EXT']['contact']['listing']['company'] = array(
 
 
 
-
 $CONFIG['EXT']['contact']['panelWidgetStaffSelector'] = array(
 	'maxListSize'	=> 15 // Max size of person selector
 );
