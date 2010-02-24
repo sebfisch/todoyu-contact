@@ -38,7 +38,7 @@ TodoyuLanguage::register('panelwidget-staffselector', PATH_EXT_CONTACT . '/local
 	// Request configurations
 require_once( PATH_EXT_CONTACT . '/config/extension.php' );
 require_once( PATH_EXT_CONTACT . '/config/panelwidgets.php' );
-require_once( PATH_EXT_CONTACT . '/config/admin.php');
+//require_once( PATH_EXT_CONTACT . '/config/admin.php');
 require_once( PATH_EXT_CONTACT . '/dwoo/plugins.php');
 
 ?>
