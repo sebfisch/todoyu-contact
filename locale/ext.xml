@@ -41,8 +41,6 @@
 		<label index="company.save.ok">Company saved</label>
 		<label index="company.save.error">Saving company failed</label>
 
-
-
 		<label index="contactinfo">Contact Informations</label>
 		<label index="contactinfo.new">New Contactinfo</label>
 		<label index="contactinfo.attr.type">Contactinfo Type</label>
@@ -58,8 +56,6 @@
 		<label index="contactinfo.type.fax_exchange">Exchange Fax</label>
 		<label index="contactinfo.type.website">Website</label>
 		<label index="contactinfo.type.skype">Skype</label>
-
-
 
 		<label index="address">Address</label>
 		<label index="address.new">New Address</label>
@@ -82,8 +78,6 @@
 		<label index="record.contactinfotype.email">Email Address</label>
 		<label index="record.contactinfotype.phone">Phone number (or fax, mobile)</label>
 		<label index="record.contactinfotype.other">Other</label>
-
-
 
 		<label index="contact.createnew">Create new</label>
 		<label index="contact.edit">Edit Record: </label>
@@ -123,6 +117,10 @@
 		<label index="ac.user.notFoundInfo">No person with a name containing the given text was found.</label>
 		<label index="ac.company.notFoundInfo">No company named containing the given text found.</label>
 
+		<label index="person.search.label">Persons</label>
+		<label index="company.search.label">Companies</label>
+		<label index="person.search.mode.label">Find Persons</label>
+		<label index="company.search.mode.label">Find Companies</label>
 	</labels>
 	<labels lang="de">
 		<label index="ext.title">Kontakt</label>
@@ -184,5 +182,10 @@
 
 		<label index="company.save.failed">Speichern der Firma fehlgeschlagen</label>
 		<label index="company.save.success">Firma gespeichert</label>
+		
+		<label index="person.search.label">Personen</label>
+		<label index="company.search.label">Firmen</label>
+		<label index="person.search.mode.label">Personen finden</label>
+		<label index="company.search.mode.label">Firmen finden</label>
 	</labels>
 </locallang>

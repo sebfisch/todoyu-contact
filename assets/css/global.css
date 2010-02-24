@@ -48,3 +48,16 @@ span.wizardIcon.createNewPerson	{
 	padding:0 0 0 22px;
 	background:url(../img/icons.png) no-repeat 0 -91px;
 }
+
+
+
+/* -----------------
+	Search
+   ----------------- */
+   
+.searchmode-company {
+	background:url(../img/icons.png) no-repeat 3px -148px !important;
+}
+.searchmode-person {
+	background:url(../img/icons.png) no-repeat 3px 3px !important;
+}
