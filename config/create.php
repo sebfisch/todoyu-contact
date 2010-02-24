@@ -19,26 +19,14 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-/**
- * Extension main file for contact extension
- *
- * @package		Todoyu
- * @subpackage	Admin
- */
+if ( allowed('contact', 'general:use') ) {
+		// Add quick create types
+	TodoyuQuickCreateManager::addEngine('contact', 'person', 'contact.create.person.label', 50);
+	TodoyuQuickCreateManager::addEngine('contact', 'company', 'contact.create.company.label', 60);
 
-	// Declare ext ID, path
-define('EXTID_CONTACT', 106);
-define('PATH_EXT_CONTACT', PATH_EXT . '/contact');
-
-	// Register module locales
-TodoyuLanguage::register('contact', PATH_EXT_CONTACT . '/locale/ext.xml');
-TodoyuLanguage::register('panelwidget-contactsearchinput', PATH_EXT_CONTACT . '/locale/panelwidget-contactsearchinput.xml');
-TodoyuLanguage::register('panelwidget-staffselector', PATH_EXT_CONTACT . '/locale/panelwidget-staffselector.xml');
-
-	// Request configurations
-require_once( PATH_EXT_CONTACT . '/config/extension.php' );
-require_once( PATH_EXT_CONTACT . '/config/panelwidgets.php' );
-require_once( PATH_EXT_CONTACT . '/config/admin.php');
-require_once( PATH_EXT_CONTACT . '/dwoo/plugins.php');
+		// Add area related primary engines
+	TodoyuQuickCreateManager::addAreaEngine(EXTID_CONTACT, 'contact', 'person', 'contact.create.person.label', 10);
+	TodoyuQuickCreateManager::addAreaEngine(EXTID_CONTACT, 'contact', 'company', 'contact.create.company.label', 20);
+}
 
 ?>
