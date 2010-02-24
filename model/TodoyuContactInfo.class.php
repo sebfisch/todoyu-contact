@@ -20,10 +20,10 @@
 ***************************************************************/
 
 /**
- * ContactInfo class
+ * Contact Information
  *
- * @package Todoyu
- * @subpackage user
+ * @package		Todoyu
+ * @subpackage	Contact
  */
 
 class TodoyuContactInfo extends TodoyuBaseObject {
@@ -40,7 +40,7 @@ class TodoyuContactInfo extends TodoyuBaseObject {
 	/**
 	 * constructor of the class
 	 *
-	 * @param	Integer	$contactInfoID
+	 * @param	Integer		$idContactInfo
 	 */
 	function __construct($idContactInfo) {
 		parent::__construct($idContactInfo, $this->table);

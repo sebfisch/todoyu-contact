@@ -49,17 +49,17 @@ $CONFIG['EXT']['contact']['addresstypes'] = array(
 		// Home address
 	array(
 		'index'	=> 1,
-		'label'	=> 'LLL:user.address.attr.addresstype.1'
+		'label'	=> 'LLL:contact.address.attr.addresstype.1'
 	),
 		// Business address
 	array(
 		'index'	=> 2,
-		'label'	=> 'LLL:user.address.attr.addresstype.2'
+		'label'	=> 'LLL:contact.address.attr.addresstype.2'
 	),
 		// Billing address
 	array(
 		'index'	=> 3,
-		'label'	=> 'LLL:user.address.attr.addresstype.3'
+		'label'	=> 'LLL:contact.address.attr.addresstype.3'
 	)
 );
 
@@ -107,7 +107,7 @@ $CONFIG['EXT']['contact']['tabs'] = array(
 $CONFIG['EXT']['contact']['defaultTypeTab'] = 'person';
 
 	// Load person foreign records data
-TodoyuFormHook::registerLoadData('ext/contact/config/form/person.xml', 'TodoyuContactManager::getUserForeignRecordData');
+TodoyuFormHook::registerLoadData('ext/contact/config/form/person.xml', 'TodoyuContactManager::getPersonForeignRecordData');
 
 
 
@@ -121,8 +121,8 @@ $CONFIG['EXT']['contact']['listing']['person'] = array(
 	'size'		=> $GLOBALS['CONFIG']['LIST']['size'],
 	'columns'	=> array(
 		'icon'		=> '',
-		'lastname'	=> 'LLL:user.user.attr.lastname',
-		'firstname'	=> 'LLL:user.user.attr.firstname',
+		'lastname'	=> 'LLL:contact.person.attr.lastname',
+		'firstname'	=> 'LLL:contact.person.attr.firstname',
 		'email'		=> 'LLL:contact.email',
 		'company'	=> 'LLL:contact.company',
 		'actions'	=> ''
@@ -141,9 +141,9 @@ $CONFIG['EXT']['contact']['listing']['company'] = array(
 	'size'		=> $GLOBALS['CONFIG']['LIST']['size'],
 	'columns'	=> array(
 		'icon'		=> '',
-		'title'		=> 'LLL:user.company.attr.title',
-		'users'		=> 'LLL:contact.comapny.employees',
-		'address'	=> 'LLL:user.company.attr.address',
+		'title'		=> 'LLL:contact.company.attr.title',
+		'persons'	=> 'LLL:contact.comapny.employees',
+		'address'	=> 'LLL:contact.company.attr.address',
 		'actions'	=> ''
 	)
 );
@@ -155,7 +155,7 @@ $CONFIG['EXT']['contact']['panelWidgetStaffSelector'] = array(
 );
 
 
-	// Implement user quickInfo class to various person labels
+	// Implement person quickInfo class to various person labels
 TodoyuHookManager::registerHook('project', 'taskdataattributes', 'TodoyuPersonHooks::extendTaskDataAttributes', 10);
 
 ?>

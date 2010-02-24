@@ -177,7 +177,7 @@ class TodoyuContactRenderer {
 		$companies	= TodoyuCompanyManager::searchCompany($sword);
 
 		foreach($companies as $index => $company) {
-			$companies[$index]['users']		= TodoyuCompanyManager::getNumUsers($company['id']);
+			$companies[$index]['persons']	= TodoyuCompanyManager::getNumPersons($company['id']);
 			$companies[$index]['address']	= TodoyuCompanyManager::getCompanyAddress($company['id']);
 		}
 
@@ -326,7 +326,7 @@ class TodoyuContactRenderer {
 
 
 	/**
-	 * Render content of record info popup (e.g. user visiting card or company summary)
+	 * Render content of record info popup (e.g. person visiting card or company summary)
 	 *
 	 * @param	String		$type
 	 * @param	Integer		$idRecord
@@ -334,9 +334,9 @@ class TodoyuContactRenderer {
 	 */
 	public static function renderInfoPopupContent($type, $idRecord) {
 		switch($type) {
-				// Render user visiting card
-			case 'user':
-				$content	= self::renderUserInfo($idRecord);
+				// Render person visiting card
+			case 'person':
+				$content	= self::renderPersonInfo($idRecord);
 				break;
 
 				// Render company summary
@@ -351,16 +351,16 @@ class TodoyuContactRenderer {
 
 
 	/**
-	 * Render user info (shown in info popup)
+	 * Render person info (shown in info popup)
 	 *
-	 * @param	Integer	$idUser
+	 * @param	Integer		$idPerson
 	 * @return	String
 	 */
-	public static function renderUserInfo($idPerson) {
+	public static function renderPersonInfo($idPerson) {
 		$idPerson	= intval($idPerson);
 		$person		= TodoyuPersonManager::getPerson($idPerson);
 
-		$tmpl	= 'ext/contact/view/info-user.tmpl';
+		$tmpl	= 'ext/contact/view/info-person.tmpl';
 		$data	= $person->getTemplateData(true);
 
 		$companyIDs = $person->getCompanyIDs();

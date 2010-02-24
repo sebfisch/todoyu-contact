@@ -23,7 +23,7 @@
  * Contactinfotype manager
  *
  * @package		Todoyu
- * @subpackage	User
+ * @subpackage	Contact
  */
 class TodoyuContactInfoTypeManager {
 

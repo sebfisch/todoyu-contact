@@ -20,15 +20,15 @@
 ***************************************************************/
 
 /**
- * User filter data source
+ * Person filter data source
  *
  * @package		Todoyu
- * @subpackage	User
+ * @subpackage	Contact
  */
 class TodoyuPersonFilterDataSource {
 
 	/**
-	 * Get users autocompletion data
+	 * Get persons autocompletion data
 	 *
 	 * @param	String	$search
 	 * @param	Array	$conf
@@ -44,10 +44,10 @@ class TodoyuPersonFilterDataSource {
 			'shortname'
 		);
 
-		$users = TodoyuPersonManager::searchPersons($search, $fieldsToSearchIn);
+		$persons = TodoyuPersonManager::searchPersons($search, $fieldsToSearchIn);
 
-		foreach($users as $user) {
-			$data[$user['id']] = TodoyuPersonManager::getLabel($user['id']);
+		foreach($persons as $person) {
+			$data[$person['id']] = TodoyuPersonManager::getLabel($person['id']);
 		}
 
 		return $data;
@@ -56,7 +56,7 @@ class TodoyuPersonFilterDataSource {
 
 
 	/**
-	 * Get user filter definition label
+	 * Get person filter definition label
 	 *
 	 * @param	Array	$definitions
 	 * @return	Array

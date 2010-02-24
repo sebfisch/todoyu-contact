@@ -34,10 +34,10 @@ class TodoyuContactPreferences {
 	 * @param	String		$value
 	 * @param	Integer		$idItem
 	 * @param	Boolean		$unique
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 */
-	public static function savePref($preference, $value, $idItem = 0, $unique = false, $idArea = 0, $idUser = 0) {
-		TodoyuPreferenceManager::savePreference(EXTID_CONTACT, $preference, $value, $idItem, $unique, $idArea, $idUser);
+	public static function savePref($preference, $value, $idItem = 0, $unique = false, $idArea = 0, $idPerson = 0) {
+		TodoyuPreferenceManager::savePreference(EXTID_CONTACT, $preference, $value, $idItem, $unique, $idArea, $idPerson);
 	}
 
 
@@ -47,14 +47,11 @@ class TodoyuContactPreferences {
 	 *
 	 * @param	String		$preference
 	 * @param	Integer		$idItem
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 * @return	String
 	 */
-	public static function getPref($preference, $idItem = 0, $idArea = 0, $unserialize = false, $idUser = 0) {
-		$idItem	= intval($idItem);
-		$idUser	= intval($idUser);
-
-		return TodoyuPreferenceManager::getPreference(EXTID_CONTACT, $preference, $idItem, $idArea, $unserialize, $idUser);
+	public static function getPref($preference, $idItem = 0, $idArea = 0, $unserialize = false, $idPerson = 0) {
+		return TodoyuPreferenceManager::getPreference(EXTID_CONTACT, $preference, $idItem, $idArea, $unserialize, $idPerson);
 	}
 
 
@@ -65,11 +62,11 @@ class TodoyuContactPreferences {
 	 * @param	String		$preference
 	 * @param	Integer		$idItem
 	 * @param	Integer		$idArea
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 * @return	Array
 	 */
-	public static function getPrefs($preference, $idItem = 0, $idArea = 0, $idUser = 0) {
-		return TodoyuPreferenceManager::getPreferences(EXTID_CONTACT, $preference, $idItem, $idArea, $idUser);
+	public static function getPrefs($preference, $idItem = 0, $idArea = 0, $idPerson = 0) {
+		return TodoyuPreferenceManager::getPreferences(EXTID_CONTACT, $preference, $idItem, $idArea, $idPerson);
 	}
 
 
@@ -81,10 +78,10 @@ class TodoyuContactPreferences {
 	 * @param	String		$value
 	 * @param	Integer		$idItem
 	 * @param	Integer		$idArea
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 */
-	public static function deletePref($preference, $value = null, $idItem = 0, $idArea = 0, $idUser = 0) {
-		TodoyuPreferenceManager::deletePreference(EXTID_CONTACT, $preference, $value, $idItem, $idArea, $idUser);
+	public static function deletePref($preference, $value = null, $idItem = 0, $idArea = 0, $idPerson = 0) {
+		TodoyuPreferenceManager::deletePreference(EXTID_CONTACT, $preference, $value, $idItem, $idArea, $idPerson);
 	}
 
 
@@ -129,7 +126,7 @@ class TodoyuContactPreferences {
 
 
 	/**
-	 * Save user language
+	 * Save persons language
 	 *
 	 * @param	String		$language
 	 */

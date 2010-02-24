@@ -35,14 +35,14 @@ Todoyu.Ext.contact.Autocomplete = {
 
 
 	/**
-	 * Handler when user field is autocompleted
+	 * Handler when person field is autocompleted
 	 *
 	 * @param	Ajax.Response			response
 	 * @param	Todoyu.Autocompleter	autocompleter
 	 */
-	onUserAutocomplete: function(response, autocompleter) {
+	onPersonAutocomplete: function(response, autocompleter) {
 		if( response.getTodoyuHeader('acElements') == 0 ) {
-			Todoyu.notifyInfo('[LLL:contact.ac.user.notFoundInfo]');
+			Todoyu.notifyInfo('[LLL:contact.ac.person.notFoundInfo]');
 		}
 	},
 
@@ -56,7 +56,7 @@ Todoyu.Ext.contact.Autocomplete = {
 	 */
 	onCompanyAutocomplete: function(response, autocompleter) {
 		if( response.getTodoyuHeader('acElements') == 0 ) {
-			Todoyu.notifyInfo('[LLL:user.ac.company.notFoundInfo]');
+			Todoyu.notifyInfo('[LLL:contact.ac.company.notFoundInfo]');
 		}
 	}
 

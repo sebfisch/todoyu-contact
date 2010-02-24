@@ -42,18 +42,18 @@ class TodoyuPersonFilter extends TodoyuFilterBase {
 	 * @param	Array	$activeFilters		Active filters for request
 	 */
 	public function __construct(array $activeFilters = array()) {
-		parent::__construct('USER', self::TABLE, $activeFilters);
+		parent::__construct('PERSON', self::TABLE, $activeFilters);
 	}
 
 
 
 	/**
-	 * Get user IDs which match to the given filters
+	 * Get person IDs which match to the given filters
 	 *
 	 * @param	Integer		$limit		Limit of results
 	 * @return	Array
 	 */
-	public function getUserIDs($limit = 100) {
+	public function getPersonIDs($limit = 100) {
 		$order	= self::TABLE . '.lastname, ' . self::TABLE . '.firstname';
 		$limit	= intval($limit);
 
@@ -63,7 +63,7 @@ class TodoyuPersonFilter extends TodoyuFilterBase {
 
 
 	/**
-	 * Fulltext filter for all textual user data
+	 * Fulltext filter for all textual person data
 	 *
 	 * @param	String	 	$value
 	 * @param	Boolean		$negate
@@ -158,7 +158,7 @@ class TodoyuPersonFilter extends TodoyuFilterBase {
 
 
 	/**
-	 * Get filter config to search after users name attributes and its company name
+	 * Get filter config to search for persons name attributes and its company name
 	 *
 	 * @param	String		$value
 	 * @param	Bool		$negate

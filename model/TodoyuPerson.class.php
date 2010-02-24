@@ -20,7 +20,7 @@
 ***************************************************************/
 
 /**
- * User object
+ * person object
  *
  * @package		Todoyu
  * @subpackage	Contact
@@ -29,9 +29,9 @@
 class TodoyuPerson extends TodoyuBaseObject {
 
 	/**
-	 * Initialize user.
+	 * Initialize person
 	 *
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 */
 	public function __construct($idPerson) {
 		parent::__construct($idPerson, 'ext_contact_person');
@@ -40,7 +40,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 
 
 	/**
-	 * Get the name label of the user
+	 * Get the name label of the person
 	 *
 	 * @param	Boolean		$showEmail
 	 * @param	Boolean		$lastnameFirst
@@ -67,7 +67,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 
 
 	/**
-	 * Check if user is an admin
+	 * Check if person is an admin
 	 *
 	 * @return	Boolean
 	 */
@@ -89,7 +89,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 
 
 	/**
-	 * Get fullname of the user
+	 * Get fullname of the person
 	 *
 	 * @param	Boolean		$lastnameFirst
 	 * @return	String
@@ -116,7 +116,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 
 
 	/**
-	 * Get current user's shortname
+	 * Get current person's shortname
 	 *
 	 * @return	String
 	 */
@@ -138,7 +138,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 
 
 	/**
-	 * Get user language
+	 * Get person language
 	 *
 	 * @return $lang
 	 */
@@ -165,7 +165,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 
 
 	/**
-	 * Get all company IDs of a user (a user can work for multiple companies)
+	 * Get all company IDs of a person (a person can work for multiple companies)
 	 *
 	 * @return	Array
 	 */
@@ -195,18 +195,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 
 
 	/**
-	 * Get usergroup IDs
-	 *
-	 * @return	Array
-	 */
-	public function getUsergroupIDs() {
-		return TodoyuPersonManager::getRoleIDs($this->getID());
-	}
-
-
-
-	/**
-	 * Load all foreing record of a user
+	 * Load all foreing record of a person
 	 *
 	 */
 	public function loadForeignData()	{
@@ -219,7 +208,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 
 
 	/**
-	 * Get user template data
+	 * Get person template data
 	 *
 	 * @param	Bool		$loadForeignRecords
 	 * @return	Array

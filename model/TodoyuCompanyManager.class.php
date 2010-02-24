@@ -20,15 +20,14 @@
 ***************************************************************/
 
 /**
- * Company manager
+ * Company Manager
  *
  * @package		Todoyu
- * @subpackage	User
+ * @subpackage	Contact
  */
 class TodoyuCompanyManager {
 
 	const TABLE = 'ext_contact_company';
-
 
 
 	/**
@@ -157,7 +156,7 @@ class TodoyuCompanyManager {
 	/**
 	 * Delete a company in the database (set deleted flag to 1)
 	 *
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 */
 	public static function deleteCompany($idCompany) {
 		$idCompany	= intval($idCompany);
@@ -327,19 +326,19 @@ class TodoyuCompanyManager {
 
 
 	/**
-	 * Add a user to a company (linked)
+	 * Add a person to a company (linked)
 	 * Additional data are the workaddress and the jobtype
 	 * @deprecated
 	 *
 	 * @param	Integer		$idCompany
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 * @param	Integer		$idWorkadress
 	 * @param	Integer		$idJobtype
 	 */
 	public static function addPerson($idCompany, $idPerson, $idWorkadress = 0, $idJobtype = 0) {
 		$data	= array(
 			'id_company'	=> intval($idCompany) ,
-			'id_person'		=> intval($idUser),
+			'id_person'		=> intval($idPerson),
 			'id_workaddress'=> intval($idWorkadress),
 			'id_jobtype'	=> intval($idJobtype)
 		);
@@ -350,10 +349,10 @@ class TodoyuCompanyManager {
 
 
 	/**
-	 * Remove user from company
+	 * Remove person from company
 	 *
 	 * @param	Integer		$idCompany
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 */
 	public static function removePerson($idCompany, $idPerson) {
 		$idCompany	= intval($idCompany);
@@ -365,11 +364,11 @@ class TodoyuCompanyManager {
 
 
 	/**
-	 * Delete all users of a company (only the link will be removed, not the user)
+	 * Delete all persons of a company (only the link will be removed, not the persons)
 	 *
 	 * @param	Integer		$idCompany
 	 */
-	public static function removeAllUsers($idCompany) {
+	public static function removeAllPersons($idCompany) {
 		$idCompany	= intval($idCompany);
 
 		TodoyuDbHelper::removeMMrelations('ext_contact_mm_company_person', 'id_company', $idCompany);
@@ -467,7 +466,7 @@ class TodoyuCompanyManager {
 
 
 	/**
-	 * Get user records of a company
+	 * Get person records of a company
 	 *
 	 * @param	Integer		$idCompany
 	 * @return	Array
@@ -532,21 +531,21 @@ class TodoyuCompanyManager {
 
 
 	/**
-	 * Get the number of users on a company
+	 * Get the number of persons on a company
 	 *
 	 * @param	Integer		$idCompany
 	 * @return	Integer
 	 */
-	public static function getNumUsers($idCompany) {
+	public static function getNumPersons($idCompany) {
 		$idCompany	= intval($idCompany);
 
 		$field	= 'id_person';
 		$table	= 'ext_contact_mm_company_person';
 		$where	= 'id_company = ' . $idCompany;
 
-		$users	= Todoyu::db()->getArray($field, $table, $where);
+		$persons= Todoyu::db()->getArray($field, $table, $where);
 
-		return sizeof($users);
+		return sizeof($persons);
 	}
 
 

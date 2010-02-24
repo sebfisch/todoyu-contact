@@ -39,14 +39,14 @@ class TodoyuPersonHooks {
 		$taskData	= TodoyuTaskManager::getTaskData($idTask);
 
 			// user_assigned
-		$htmlID	= 'task_userassigned-' . $idTask . '-' . $taskData['id_person_assigned'];
+		$htmlID	= 'task_personassigned-' . $idTask . '-' . $taskData['id_person_assigned'];
 
 		$data['person_assigned']['id'] 		 = $htmlID;
 		$data['person_assigned']['wrap'][1]	.= '<script type="text/javascript">Todoyu.Ext.contact.QuickInfoPerson.install(\'' .  $htmlID . '\');</script>';
 		$data['person_assigned']['className'] .= ' quickInfoPerson';
 
-			// user_owner
-		$htmlID	= 'task_userowner-' . $idTask . '-' . $taskData['id_person_owner'];
+			// person owner
+		$htmlID	= 'task_personowner-' . $idTask . '-' . $taskData['id_person_owner'];
 
 		$data['person_owner']['id']			= $htmlID;
 		$data['person_owner']['wrap'][1]	.= '<script type="text/javascript">Todoyu.Ext.contact.QuickInfoPerson.install(\'' .  $htmlID . '\');</script>';

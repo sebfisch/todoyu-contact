@@ -123,7 +123,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 
 
 	/**
-	 * If widget has changed, inform all listeners which users are selected
+	 * If widget has changed, inform all listeners which persons are selected
 	 */
 	onUpdate: function() {
 		this.savePrefs();
@@ -146,7 +146,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 
 
 	/**
-	 * Select all/no user
+	 * Select all/no persons
 	 *
 	 *	@param	Bool		select
 	 */
@@ -160,9 +160,9 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 
 
 	/**
-	 * Select (one or multiple) given users
+	 * Select (one or multiple) given persons
 	 *
-	 *	@param	Array		userIDs
+	 *	@param	Array		personIDs
 	 */
 	selectPersons: function(personIDs) {
 		this.list.select('option').each(function(option){

@@ -79,12 +79,29 @@
 		<label index="record.contactinfotype.phone">Phone number (or fax, mobile)</label>
 		<label index="record.contactinfotype.other">Other</label>
 
+		<label index="quickinfo.preferredphone.notfound">No preferred phone set</label>
+
+
+
+
+
+		<label index="form.error.newPersonHasPassword">Enter a password for a new person</label>
+		<label index="form.error.password_second">Password wasn't correct</label>
+		<label index="form.error.minLengthIfNotEmpty">Password needs at least %s signs</label>
+		<label index="form.error.numbers">Password Needs Numbers</label>
+		<label index="form.error.upper">Password Needs Uppercase</label>
+		<label index="form.error.lower">Password needs Lowercase</label>
+		<label index="form.error.special">Password Needs Special Signs</label>
+		<label index="form.error.nointernalpersons">There are no internal persons stored.</label>
+		<label index="form.error.usernameUnique">Username has to be unique</label>
+
+
 		<label index="contact.createnew">Create new</label>
 		<label index="contact.edit">Edit Record: </label>
 		<label index="editRecord">Edit Record</label>
 		<label index="removeRecord">Delete Record</label>
-		<label index="createLoginUser">Create Login User</label>
-		<label index="editLoginUser">Edit Login User</label>
+		<label index="createLogin">Create Login</label>
+		<label index="editLogin">Edit Login</label>
 		<label index="generateshortname">Generate Shortname</label>
 		<label index="person.remove.confirm">Remove this person?</label>
 		<label index="showvisitingcard">Show visiting card popup</label>
@@ -100,7 +117,7 @@
 		<label index="subMenuEntry.company">Companies</label>
 		<label index="person.tooltip.edit">Edit Person</label>
 		<label index="person.tooltip.delete">Delete Person</label>
-		<label index="person.tooltip.edituser">Edit User</label>
+		<label index="person.tooltip.editperson">Edit Person</label>
 		<label index="person.tooltip.showInfo">Show Person Information</label>
 		<label index="person.saved">Person saved</label>
 		<label index="person.saved.error">Saving Person Failed</label>
@@ -114,7 +131,7 @@
 		<label index="error.noJobtypes">No jobtypes given (done in extension administration)</label>
 		<label index="comapny.employees">Employees</label>
 		<label index="ac.region.notFoundInfo">No region containing the given text found. Did you select the correct country?</label>
-		<label index="ac.user.notFoundInfo">No person with a name containing the given text was found.</label>
+		<label index="ac.person.notFoundInfo">No person with a name containing the given text was found.</label>
 		<label index="ac.company.notFoundInfo">No company named containing the given text found.</label>
 
 		<label index="person.search.label">Persons</label>
@@ -144,8 +161,8 @@
 		<label index="contact.edit">Datensatz bearbeiten: </label>
 		<label index="editRecord">Datensatz bearbeiten</label>
 		<label index="removeRecord">Datensatz löschen</label>
-		<label index="createLoginUser">Benutzer erfassen</label>
-		<label index="editLoginUser">Benutzer bearbeiten</label>
+		<label index="createLogin">Login erfassen</label>
+		<label index="editLogin">Login bearbeiten</label>
 		<label index="generateshortname">Kurzname generieren</label>
 		<label index="person.remove.confirm">Diese Person entfernen?</label>
 		<label index="showvisitingcard">Visitenkarte anzeigen</label>
@@ -161,7 +178,7 @@
 		<label index="subMenuEntry.company">Firmen</label>
 		<label index="person.tooltip.edit">Person bearbeiten</label>
 		<label index="person.tooltip.delete">Eintrag löschen</label>
-		<label index="person.tooltip.edituser">Benutzer bearbeiten</label>
+		<label index="person.tooltip.editperson">Person bearbeiten</label>
 		<label index="person.saved">Person gespeichert</label>
 		<label index="person.saved.error">Person konnte nicht gespeichert werden</label>
 		<label index="company.tooltip.edit">Firma bearbeiten</label>
@@ -173,7 +190,7 @@
 		<label index="error.noJobtypes">Keine Berufstätigkeiten vorhanden (In Extension Administration anzulegen)</label>
 		<label index="comapny.employees">Mitarbeiter</label>
 		<label index="ac.region.notFoundInfo">Es wurde keine Region gefunden die den angegebenen Text beinhaltet. Richtiges Land angewählt?</label>
-		<label index="ac.user.notFoundInfo">Es wurde keine Person mit den eingegebenen Zeichen im Namen gefunden.</label>
+		<label index="ac.person.notFoundInfo">Es wurde keine Person mit den eingegebenen Zeichen im Namen gefunden.</label>
 		<label index="ac.company.notFoundInfo">Es wurde keine Firma mit einem Namen der die eingegebenen Zeichen beinhaltet gefunden.</label>
 		<label index="contactinfotype.attr.category">Infotyp-Kategorie</label>
 		<label index="contactinfotype.category.1">Email-Addresse</label>

@@ -28,7 +28,7 @@ Todoyu.Ext.contact.Person =  {
 
 
 	/**
-	 *	Add person (create and edit new person record) 
+	 *	Add person (create and edit new person record)
 	 */
 	add: function() {
 		this.edit(0);
@@ -46,7 +46,7 @@ Todoyu.Ext.contact.Person =  {
 		var options = {
 			'parameters': {
 				'action':	'edit',
-				'person':	idPerson				
+				'person':	idPerson
 			},
 			'onComplete': this.onEdit.bind(this, idPerson)
 		};
@@ -64,16 +64,16 @@ Todoyu.Ext.contact.Person =  {
 	 */
 	onEdit: function(idPerson, response) {
 		this.observeFieldsForShortname(idPerson);
-		
+
 		this.showLoginFields(idPerson);
-		
+
 		$('person-' + idPerson + '-field-active').observe('change', this.showLoginFields.bind(this, idPerson));
 	},
-	
-	
+
+
 	showLoginFields: function(idPerson, event) {
 		var field	= $('person-' + idPerson + '-field-active');
-				
+
 		$('person-' + idPerson + '-fieldset-loginfields')[field.checked?'show':'hide']();
 	},
 
@@ -144,7 +144,7 @@ Todoyu.Ext.contact.Person =  {
 
 	/**
 	 * updates the working location selector with options of choosen company
-	 * 
+	 *
 	 * @param	Object	inputField
 	 * @param	Object	selectedListElement
 	 * @param	String	baseID
@@ -156,7 +156,7 @@ Todoyu.Ext.contact.Person =  {
 		var idInputFieldArr		= inputField.id.split('-').without('fulltext')
 		var referencedFieldName = parent.acRefs[baseID].options.referencedFieldName
 		var idTarget = idInputFieldArr.join('-').replace(idInputFieldArr.last(), referencedFieldName);
-		
+
 		if($(idTarget))	{
 			var url = Todoyu.getUrl('contact', 'company');
 			var options = {
@@ -165,7 +165,7 @@ Todoyu.Ext.contact.Person =  {
 						'idCompany':	selectedValue
 				}
 			};
-			
+
 			Todoyu.Ui.update(idTarget, url, options);
 		}
 	},
@@ -206,8 +206,8 @@ Todoyu.Ext.contact.Person =  {
 			this.showList();
 		}
 	},
-	
-	
+
+
 	closeForm: function() {
 		this.showList();
 	},
@@ -234,24 +234,6 @@ Todoyu.Ext.contact.Person =  {
 
 
 	/**
-	 *	Edit user record
-	 *
-	 *	@paran	Integer	idUser
-	 */
-	editUserRecord: function(idUser) {
-		var params	= {
-			'ext':		'admin',
-			'mod':		'user',
-			'action':	'edit',
-			'user':		idUser
-		}
-
-		location.href = '?' + Object.toQueryString(params);
-	},
-
-
-	
-	/**
 	 *	Show person
 	 *
 	 *	@paran	Integer	idPerson
@@ -272,7 +254,7 @@ Todoyu.Ext.contact.Person =  {
 
 	/**
 	 * save person from wizard
-	 * 
+	 *
 	 * @param	Object	form
 	 * @param	String	target
 	 * @return	void
@@ -284,7 +266,7 @@ Todoyu.Ext.contact.Person =  {
 			},
 			'onComplete': this.onSavedWizard.bind( this, target)
 		});
-		
+
 		return false;
 	},
 
@@ -292,7 +274,7 @@ Todoyu.Ext.contact.Person =  {
 
 	/**
 	 * after save handling from wizard
-	 * 
+	 *
 	 * @param	String	target
 	 * @param	Object	response
 	 */

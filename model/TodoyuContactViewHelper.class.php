@@ -51,7 +51,7 @@ class TodoyuContactViewHelper {
 
 
 	/**
-	 * Get options array with all users being employees of internal company
+	 * Get options array with all persons being employees of internal company
 	 *
 	 * @return	Array
 	 */
@@ -60,7 +60,7 @@ class TodoyuContactViewHelper {
 		$persons	= TodoyuPersonManager::getInternalPersons();
 
 		if( sizeof($persons) > 0 ) {
-				// List internal users
+				// List internal persons
 			foreach($persons as $person) {
 				$options[] = array(
 					'value'	=> $person['id'],
@@ -71,7 +71,7 @@ class TodoyuContactViewHelper {
 				// No internal persons / firm defined? inform about that
 			$options[] = array(
 				'value'		=> 0,
-				'label'		=> Label('user.form.error.nointernalusers'),
+				'label'		=> Label('contact.form.error.nointernalpersons'),
 				'disabled'	=> true,
 				'classname'	=> 'error'
 			);
@@ -85,13 +85,13 @@ class TodoyuContactViewHelper {
 
 
 	/**
-	 * Get user address label
+	 * Get persons address label
 	 *
 	 * @param	TodoyuFormElement	$formElement
 	 * @param	Array				$valueArray
 	 * @return	String
 	 */
-	public static function getUserAddressLabel(TodoyuFormElement $formElement, array $valueArray) {
+	public static function getPersonAddressLabel(TodoyuFormElement $formElement, array $valueArray) {
 		$idAddressType	= intval($valueArray['id_addresstype']);
 		$addressType	= TodoyuAddressTypeManager::getAddressType($idAddressType);
 
@@ -124,41 +124,18 @@ class TodoyuContactViewHelper {
 
 
 	/**
-	 * Get user type options
-	 * Default are internal and external, but this list can be extended by configuration
-	 *
-	 * @param	TodoyuFormElement		$field
-	 * @return	Array
-	 */
-//	public static function getUserTypeOptions(TodoyuFormElement $field) {
-//		//$types	= TodoyuPersonManager::getUserTypes();
-//		$reform	= array(
-//			'key'	=> 'value',
-//			'label'	=> 'label'
-//		);
-//
-//		$types	= TodoyuArray::reform($types, $reform, true);
-//
-//		return $types;
-//	}
-
-
-
-
-
-	/**
-	 * Get label of employee (user) item
+	 * Get label of employee (person) item
 	 *
 	 * @param	TodoyuFormElement	$field
 	 * @param	Array				$record
 	 * @return	String
 	 */
 	public static function getEmployeeLabel(TodoyuFormElement $field, array $record) {
-		$idUser	= intval($record['id']);
-		$label	= '';
+		$idPerson	= intval($record['id']);
+		$label		= '';
 
-		if( $idUser !== 0 ) {
-			$label	= TodoyuPersonManager::getLabel($idUser);
+		if( $idPerson !== 0 ) {
+			$label	= TodoyuPersonManager::getLabel($idPerson);
 		}
 
 		return $label;
@@ -320,26 +297,28 @@ class TodoyuContactViewHelper {
 
 
 	/**
-	 * Wrapper Method to get Address records (company-user form)
+	 * Wrapper Method to get Address records (company-person form)
 	 *
 	 * @param	TodoyuFormElement	$field
 	 * @return	Array
 	 */
 	public static function getWorkaddressOptionsCompany(TodoyuFormElement $field)	{
 		$idCompany = intval($field->getForm()->getVar('parent'));
+
 		return self::getWorkaddressOptions($idCompany);
 	}
 
 
 
 	/**
-	 * Wrapper Method to get Address records (user-company form)
+	 * Wrapper Method to get Address records (person-company form)
 	 *
 	 * @param	TodoyuFormElement	$field
 	 * @return	Array
 	 */
-	public static function getWorkaddressOptionsUser(TodoyuFormElement $field)	{
+	public static function getWorkaddressOptionsPerson(TodoyuFormElement $field)	{
 		$idCompany = intval($field->getForm()->getField('id')->getValue());
+
 		return self::getWorkaddressOptions($idCompany);
 	}
 

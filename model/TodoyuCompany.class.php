@@ -23,9 +23,8 @@
  * Company
  *
  * @package		Todoyu
- * @subpackage	User
+ * @subpackage	Contact
  */
-
 class TodoyuCompany extends TodoyuBaseObject {
 
 	/**

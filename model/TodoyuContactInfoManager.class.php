@@ -22,8 +22,8 @@
 /**
  * Manager class Todoyu for contact infos
  *
- * @package Todoyu
- * @subpackage user
+ * @package		Todoyu
+ * @subpackage	Contact
  */
 class TodoyuContactInfoManager {
 

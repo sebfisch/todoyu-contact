@@ -22,8 +22,8 @@
 /**
  * Object class Todoyufor contactinfo types
  *
- * @package Todoyu
- * @subpackage user
+ * @package		Todoyu
+ * @subpackage	Contact
  */
 class TodoyuContactInfoType extends TodoyuBaseObject {
 
@@ -44,7 +44,6 @@ class TodoyuContactInfoType extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getTitle() {
-//		return TodoyuDiv::getLabel($this->get('title'));
 		return Label($this->get('title'));
 	}
 

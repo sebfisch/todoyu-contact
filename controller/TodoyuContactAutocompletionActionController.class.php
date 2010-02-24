@@ -22,7 +22,7 @@
 class TodoyuContactAutocompletionActionController extends TodoyuActionController {
 
 	/**
-	 * Get user autocompleter suggestions
+	 * Get person autocompleter suggestions
 	 *
 	 * @param	Array	$params
 	 */
@@ -30,7 +30,7 @@ class TodoyuContactAutocompletionActionController extends TodoyuActionController
 		$sword	= trim($params['sword']);
 		$config	= array();
 
-		$results= TodoyuPersonFilterDataSource::autocompleteUsers($sword, $config);
+		$results= TodoyuPersonFilterDataSource::autocompletePersons($sword, $config);
 
 		return TodoyuRenderer::renderAutocompleteList($results);
 	}

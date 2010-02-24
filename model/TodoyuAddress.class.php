@@ -20,10 +20,10 @@
 ***************************************************************/
 
 /**
- * class for address records
+ * Address Record
  *
- * @package Todoyu
- * @subpackage user
+ * @package		Todoyu
+ * @subpackage	Contact
  */
 class TodoyuAddress extends TodoyuBaseObject {
 

@@ -176,7 +176,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 
 		$idPerson	= intval($params['person']);
 
-		return TodoyuContactRenderer::renderUserInfo($idPerson);;
+		return TodoyuContactRenderer::renderPersonInfo($idPerson);;
 	}
 
 

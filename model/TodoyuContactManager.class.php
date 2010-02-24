@@ -122,27 +122,6 @@ class TodoyuContactManager {
 
 
 	/**
-	 * Modify company persons' form to contain jobtype selector field (hooked)
-	 *
-	 * @param	TodoyuForm	$form
-	 * @param	Integer	$userIndex
-	 * @return	TodoyuForm
-	 */
-//	public static function modifyUserFormfields(TodoyuForm $form, $userIndex) {
-//		$userIndex		= intval( $userIndex );
-//		$contactType	= TodoyuContactPreferences::getActiveTab();
-//
-//		if ($contactType == 'company') {
-//			$form->addElementsFromXML( 'ext/contact/config/form/user-jobtypeaddress.xml' );
-//		}
-//
-//		return $form;
-//	}
-//
-
-
-
-	/**
 	 * Render options array (value, label, selected-state of all options)
 	 *
 	 * @param	Array	$res
@@ -164,32 +143,6 @@ class TodoyuContactManager {
 		}
 
 		return $options;
-	}
-
-
-
-
-	/**
-	 * Save Person (User from contact)
-	 *
-	 * @param	Array		$data
-	 * @return	Integer
-	 */
-	public static function savePerson(array $data)	{
-		$xmlPath= self::getContactTypeFromXml('person');
-		$idUser	= intval($data['id']);
-
-		if( $idUser === 0 )	{
-			$idUser = TodoyuPersonManager::addUser();
-		}
-
-		$data	= self::savePersonForeignRecords($data, $idUser);
-		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idUser);
-
-		TodoyuPersonManager::updatePerson($idUser, $data);
-		TodoyuPersonManager::removeFromCache($idUser);
-
-		return $idUser;
 	}
 
 
@@ -222,41 +175,6 @@ class TodoyuContactManager {
 
 
 
-	/**
-	 * Hanldes the foreign records of a user
-	 *
-	 * Extract:
-	 * 	- company
-	 *  - contactinfos
-	 *  - address
-	 *
-	 * @param	Array	$userData
-	 * @param	Integer	$userID
-	 * @return	Array
-	 */
-	public static function savePersonForeignRecords(array $data, $idUser)	{
-		$idUser		= intval($idUser);
-
-
-
-
-
-
-
-		return $data;
-	}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -264,19 +182,19 @@ class TodoyuContactManager {
 
 
 	/**
-	 * Form hook to load users foreign record data
+	 * Form hook to load persons foreign record data
 	 * Load: company, contactinfo, address
 	 *
 	 * @param	Array		$data
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 * @return	Array
 	 */
-	public static function getUserForeignRecordData(array $data, $idUser) {
-		$idUser	= intval($idUser);
+	public static function getPersonForeignRecordData(array $data, $idPerson) {
+		$idPerson	= intval($idPerson);
 
-		$data['company']	= TodoyuPersonManager::getPersonCompanyRecords($idUser);
-		$data['contactinfo']= TodoyuPersonManager::getContactinfoRecords($idUser);
-		$data['address']	= TodoyuPersonManager::getAddressRecords($idUser);
+		$data['company']	= TodoyuPersonManager::getPersonCompanyRecords($idPerson);
+		$data['contactinfo']= TodoyuPersonManager::getContactinfoRecords($idPerson);
+		$data['address']	= TodoyuPersonManager::getAddressRecords($idPerson);
 
 		return $data;
 	}
@@ -325,7 +243,7 @@ class TodoyuContactManager {
 		foreach($persons as $person) {
 			$data['rows'][] = array(
 				'icon'		=> '',
-				'iconClass'	=> $person['username'] !== '' ? 'user' : '',
+				'iconClass'	=> intval($person['active']) === 1 ? 'login' : '',
 				'lastname'	=> $person['lastname'],
 				'firstname'	=> $person['firstname'],
 				'email'		=> $person['email'],
@@ -359,7 +277,7 @@ class TodoyuContactManager {
 			$data['rows'][] = array(
 				'icon'		=> '',
 				'title'		=> $company['title'],
-				'users'		=> TodoyuCompanyManager::getNumUsers($company['id']),
+				'persons'	=> TodoyuCompanyManager::getNumPersons($company['id']),
 				'address'	=> TodoyuCompanyManager::getCompanyAddress($company['id']),
 				'actions'	=> TodoyuContactRenderer::renderCompanyActions($company['id'])
 			);

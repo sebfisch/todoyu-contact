@@ -20,10 +20,10 @@
 ***************************************************************/
 
 /**
- * Manager class Todoyufor address records
+ * Address Manager
  *
  * @package		Todoyu
- * @subpackage	User
+ * @subpackage	Contact
  */
 class TodoyuAddressManager {
 
@@ -147,7 +147,7 @@ class TodoyuAddressManager {
 	public static function getAddresstypeLabel($idAddresstype) {
 		$idAddresstype	= intval($idAddresstype);
 
-		return TodoyuLanguage::getLabel('LLL:user.address.attr.addresstype.' . $idAddresstype);
+		return TodoyuLanguage::getLabel('LLL:contact.address.attr.addresstype.' . $idAddresstype);
 	}
 
 

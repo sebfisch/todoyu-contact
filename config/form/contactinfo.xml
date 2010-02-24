@@ -7,7 +7,7 @@
 		<fieldset name="main">
 			<legend>Main contactinfo data</legend>
 			<elements>
-				
+
 				<field type="select" name="id_contactinfotype">
 					<label>contact.contactinfo.attr.type</label>
 					<source type="function">
@@ -15,16 +15,16 @@
 					</source>
 					<required />
 				</field>
-				
+
 				<field type="textinput" name="info">
-					<label>user.contactinfo.attr.info</label>
+					<label>contact.contactinfo.attr.info</label>
 					<required />
 				</field>
-				
+
 				<field type="checkbox" name="preferred">
 					<label>form.is_preferred</label>
 				</field>
-				
+
 			</elements>
 		</fieldset>
 	</fieldsets>

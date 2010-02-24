@@ -28,7 +28,7 @@
 class TodoyuContactQuickinfoActionController extends TodoyuActionController {
 
 	/**
-	 * Get a user (person) quickinfo
+	 * Get a person quickinfo
 	 *
 	 * @param	Array		$params
 	 * @return	String
@@ -39,7 +39,7 @@ class TodoyuContactQuickinfoActionController extends TodoyuActionController {
 		$data	= TodoyuPersonManager::getPersonArray($idPerson);
 
 		$phone	= TodoyuPersonManager::getPreferredPhone($idPerson);
-		$phone	= ( $phone === false ) ? Label('user.quickinfo.user.preferredphone.notfound') : $phone['info'];
+		$phone	= ( $phone === false ) ? Label('contact.quickinfo.preferredphone.notfound') : $phone['info'];
 
 		$quickInfo	= new TodoyuQuickinfo();
 

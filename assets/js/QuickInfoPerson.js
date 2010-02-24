@@ -30,28 +30,28 @@ Todoyu.Ext.contact.QuickInfoPerson = {
 	 * Init person quickinfo
 	 */
 	init: function() {
-		
+
 	},
-	
-	
+
+
 	/**
 	 * Install quickinfo for person
-	 * 
+	 *
 	 * @param	Element	element
 	 */
-	install: function(element) {	
+	install: function(element) {
 		var idPerson = $(element).id.split('-').last();
-		
+
 		$(element).observe('mouseover', this.onMouseOver.bindAsEventListener(this, idPerson));
 		$(element).observe('mouseout', this.onMouseOut.bindAsEventListener(this, idPerson));
 	},
-	
-	
+
+
 	/**
-	 * Evoked upon mouseOver event upon user element. Shows quick-info.
-	 * 
+	 * Evoked upon mouseOver event upon person element. Shows quick-info.
+	 *
 	 * @param	Object	event		the DOM-event
-	 * @param	Integer	idUser
+	 * @param	Integer	idPerson
 	 */
 	onMouseOver: function(event, idPerson) {
 		Todoyu.QuickInfo.show('contact', 'person', idPerson, event.pointerX(), event.pointerY())
@@ -59,10 +59,10 @@ Todoyu.Ext.contact.QuickInfoPerson = {
 
 
 	/**
-	 * Evoked upon mouseOut event upon user element. Show quick info.
-	 * 
+	 * Evoked upon mouseOut event upon person element. Show quick info.
+	 *
 	 * @param	Object	event			the DOM-event
-	 * @param	Integer	idUser
+	 * @param	Integer	idPrson
 	 */
 	onMouseOut: function(event, idPerson) {
 		Todoyu.QuickInfo.hide();

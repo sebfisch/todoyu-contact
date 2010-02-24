@@ -19,6 +19,12 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+/**
+ * Manager for jobtypes
+ *
+ * @package		Todoyu
+ * @subpackage	Contact
+ */
 class TodoyuJobtypeManager {
 
 	/**
@@ -125,7 +131,7 @@ class TodoyuJobtypeManager {
 		$jobTypes	= TodoyuDiv::useFieldAsIndex($jobTypes, 'id');
 
 		foreach($persons as $index => $person) {
-			$persons[$index]['jobtype']	= $person['id_jobtype'] != 0 ? TodoyuDiv::getLabel($jobTypes[$person['id_jobtype']]['title']) : TodoyuLanguage::getLabel('user.noJobDefined');
+			$persons[$index]['jobtype']	= $person['id_jobtype'] != 0 ? TodoyuDiv::getLabel($jobTypes[$person['id_jobtype']]['title']) : TodoyuLanguage::getLabel('contact.noJobDefined');
 		}
 
 		return $persons;
@@ -223,31 +229,6 @@ class TodoyuJobtypeManager {
 
 		return Todoyu::db()->deleteRecord(self::TABLE, $idJobtype);
 	}
-
-
-
-//	/**
-//	 * Sum amount of users by job function, add jobtitles, assign users into job groups
-//	 *
-//	 * @param	Array	$staffUsers
-//	 */
-//	public static function summUpJobGroups(array &$staffUsers, array $prefs = array()) {
-//		$jobTypes	= array();
-//
-//		foreach($staffUsers as $idUser => $userData) {
-//				// Sum amount of users by job function, add jobtitles, assign users into job groups
-//			$jobTypes[ $userData['id_jobtype'] ]['amount_users']++;
-//			$jobTypes[ $userData['id_jobtype'] ]['title']		= $userData['jobtype'];
-//			$jobTypes[ $userData['id_jobtype'] ]['user_ids'][]	= $userData['id'];
-//
-//				// Set users selected as stored in user prefs
-//			if ( is_array( $prefs['selectedUserIDs'] ) && in_array($idUser, $prefs['selectedUserIDs']) ) {
-//				$staffUsers[$idUser]['selected'] = 1;
-//			}
-//		}
-//
-//		return $jobTypes;
-//	}
 }
 
 ?>
