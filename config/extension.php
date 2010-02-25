@@ -23,7 +23,6 @@
  * General configuration of the contact extension
  */
 
-
 	// Categories of dynamic contactinfo types
 $CONFIG['EXT']['contact']['contactinfotypecategories'] = array(
 		// Email
