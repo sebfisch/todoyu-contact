@@ -1,7 +1,7 @@
 <div title="{Label contact.person.tooltip.showInfo}" class="icon info" onclick="Todoyu.Ext.contact.Person.show({$id})"></div>
-{restrict 'contact' 'person:edit'}
+{restrict 'contact' 'contact:modify'}
 	<div title="{Label contact.person.tooltip.edit}" class="icon edit" onclick="Todoyu.Ext.contact.Person.edit({$id})"></div>
 {/restrict}
-{restrict 'contact' 'person:delete'}
+{restrict 'contact' 'contact:modify'}
 	<div title="{Label core.deleteRecord}" class="icon delete" onclick="Todoyu.Ext.contact.Person.remove({$id})"></div>
 {/restrict}

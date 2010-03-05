@@ -93,9 +93,17 @@ class TodoyuContactPreferences {
 	 */
 	public static function getActiveTab() {
 		$tab	= self::getPref('tab');
-
+		
 		if( $tab === false ) {
-			$tab = trim($GLOBALS['CONFIG']['EXT']['contact']['defaultTypeTab']);
+			$tabs = TodoyuTabManager::getTabs($GLOBALS['CONFIG']['EXT']['contact']['tabs']);
+			
+			foreach($tabs as $tabArr)	{
+				if(allowed('contact', $tabArr['id'].':see')) $tab = $tabArr['id'];
+			}
+			
+			if($tab === false)	{
+				$tab = $GLOBALS['CONFIG']['EXT']['contact']['defaultTypeTab'];
+			}
 		}
 
 		return $tab;

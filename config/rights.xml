@@ -3,28 +3,19 @@
 
 	<section name="general">
 		<right name="use" />
+		<right name="area" />
 	</section>
 
 	<section name="panelwidgets" require="general:use">
 		<right name="contactSearch" />
-		<right name="quickContact" />
 	</section>
 
+	<section name="contact" require="general:use">
+		<right name="see" />
+		<right name="modify" />
+	</section>
+	
 	<section name="person" require="general:use">
-		<right name="use" />
-		<right name="edit" />
-		<right name="create" />
-		<right name="delete" />
-		<right name="search" />
 		<right name="enableLogin" />
 	</section>
-
-	<section name="company" require="general:use">
-		<right name="use" />
-		<right name="edit" />
-		<right name="create" />
-		<right name="delete" />
-		<right name="search" />
-	</section>
-
 </rights>

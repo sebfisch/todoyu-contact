@@ -38,7 +38,7 @@ class TodoyuContactRenderer {
 	 * @return	String
 	 */
 	public static function renderTabs($activeTab, $onlyActive = false)	{
-		$tabs		= TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['contact']['tabs']);
+		$tabs		= TodoyuArray::assure(TodoyuTabManager::getTabs($GLOBALS['CONFIG']['EXT']['contact']['tabs']));
 
 			// Render only the currenty active tab?
 		if( $onlyActive ) {
@@ -153,7 +153,7 @@ class TodoyuContactRenderer {
 	 * @return	String
 	 */
 	public static function renderPersonList($sword = '', $size = 5, $offset = 0) {
-		restrict('contact', 'person:use');
+		restrict('contact', 'contact:see');
 
 		return TodoyuListingRenderer::render('contact', 'person');
 	}
@@ -167,7 +167,7 @@ class TodoyuContactRenderer {
 	 * @return	String
 	 */
 	public static function renderCompanyList($sword = '') {
-		restrict('contact', 'company:use');
+		restrict('contact', 'contact:see');
 
 		return TodoyuListingRenderer::render('contact', 'company');
 
@@ -195,7 +195,7 @@ class TodoyuContactRenderer {
 	 * @return	String
 	 */
 	public static function renderPersonEditForm($idPerson) {
-		restrict('contact', 'person:edit');
+		restrict('contact', 'contact:modify');
 		$idPerson	= intval($idPerson);
 		$xmlPath	= 'ext/contact/config/form/person.xml';
 
@@ -227,7 +227,7 @@ class TodoyuContactRenderer {
 	 * @return	String
 	 */
 	public static function renderPersonEditFormWizard($idPerson, $idTarget)	{
-		restrict('contact', 'person:edit');
+		restrict('contact', 'contact:modify');
 
 		$idPerson	= intval($idPerson);
 		$xmlPath	= 'ext/contact/config/form/person.xml';
@@ -262,7 +262,7 @@ class TodoyuContactRenderer {
 	 * @return	String
 	 */
 	public static function renderCompanyEditForm($idCompany) {
-		restrict('contact', 'company:edit');
+		restrict('contact', 'contact:modify');
 		$idCompany	= intval($idCompany);
 		$xmlPath	= 'ext/contact/config/form/company.xml';
 

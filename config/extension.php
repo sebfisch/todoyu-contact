@@ -92,16 +92,16 @@ $CONFIG['EXT']['contact']['contacttypes']	= array(
 
 $CONFIG['EXT']['contact']['tabs'] = array(
 	array(
-		'id'	=> 'person',
-		'label'	=> 'LLL:contact.person'
+		'id'		=> 'person',
+		'label'		=> 'LLL:contact.person',
+		'require'	=> 'contact.contact:see'
 	),
 	array(
-		'id'	=> 'company',
-		'label'	=> 'LLL:contact.company'
+		'id'		=> 'company',
+		'label'		=> 'LLL:contact.company',
+		'require'	=> 'contact.contact:see'
 	)
 );
-
-
 
 $CONFIG['EXT']['contact']['defaultTypeTab'] = 'person';
 
