@@ -78,6 +78,34 @@ class TodoyuPerson extends TodoyuBaseObject {
 
 
 	/**
+	 * Check if a person works in a internal company
+	 *
+	 * @return	Bool
+	 */
+	public function isInternal() {
+		if( ! isset($this->cache['isInternal']) ) {
+			$companies	= $this->getCompanies();
+			$internals	= TodoyuArray::getColumn($companies, 'is_internal');
+			$this->cache['isInternal'] = array_sum($internals) > 0;
+		}
+
+		return $this->cache['isInternal'];
+	}
+
+
+
+	/**
+	 * Check if person is external (not in an internal company)
+	 *
+	 * @return	Bool
+	 */
+	public function isExternal() {
+		return $this->isInternal() === false;
+	}
+
+
+
+	/**
 	 * Get IDs of the roles the person is a member of
 	 *
 	 * @return	Array
@@ -172,9 +200,27 @@ class TodoyuPerson extends TodoyuBaseObject {
 	public function getCompanyIDs() {
 		$field	= 'id_company';
 		$table	= 'ext_contact_mm_company_person';
-		$where	= 'id_person = ' . $this->getID();
+		$where	= 'id_person = ' . $this->id;
 
 		return Todoyu::db()->getColumn($field, $table, $where);
+	}
+
+
+
+	/**
+	 * Get all companies of the person
+	 *
+	 * @return	Array
+	 */
+	public function getCompanies() {
+		$fields	= '	*';
+		$table	= '	ext_contact_mm_company_person mm,
+					ext_contact_company c';
+		$where	= '	mm.id_person	= ' . $this->id . ' AND
+					mm.id_company	= c.id AND
+					c.deleted		= 0';
+
+		return Todoyu::db()->getArray($fields, $table, $where);
 	}
 
 
