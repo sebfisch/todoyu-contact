@@ -133,34 +133,6 @@ form.formPerson fieldset.account fieldset.loginfields {
 
 
 
-
-
-
-
-
-
-/* ---------------------
- 	Alphabetical index
-   --------------------- */
-
-#contact-main div#indexLinks {
-	margin:8px 0 12px 0;
-}
-
-#contact-main div#indexLinks a {
-	padding: 0 4px 0 4px;
-}
-
-#contact-main div#indexLinks a span {
-	padding: 0 8px 0 8px;
-}
-
-#contact-main div#indexLinks a:hover{
-	background-color:#d3dabb;
-}
-
-
-
 /* ---------------------
 	Visiting card
    -------------------- */
@@ -180,7 +152,7 @@ div.visitingCardContent table tr td {
 
 div.visitingCardContent table tr td.label {
 	padding-right:18px;
-	text-transform: uppercase;
+	
 	letter-spacing: 0.3px;
 }
 
