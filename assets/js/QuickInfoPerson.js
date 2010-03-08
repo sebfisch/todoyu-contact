@@ -54,7 +54,7 @@ Todoyu.Ext.contact.QuickInfoPerson = {
 	 * @param	Integer	idPerson
 	 */
 	onMouseOver: function(event, idPerson) {
-		Todoyu.QuickInfo.show('contact', 'person', idPerson, event.pointerX(), event.pointerY())
+		Todoyu.QuickInfo.show('contact', 'person', idPerson, event.pointerX(), event.pointerY());
 	},
 
 

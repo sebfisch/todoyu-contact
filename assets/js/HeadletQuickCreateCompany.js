@@ -66,6 +66,6 @@ Todoyu.Headlet.QuickCreate.Company = {
 			Todoyu.Headlet.QuickCreate.closePopup();
 			Todoyu.notifySuccess('[LLL:contact.company.save.success]');
 		}
-	},
+	}
 
 };
