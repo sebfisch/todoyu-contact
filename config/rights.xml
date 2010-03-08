@@ -6,10 +6,6 @@
 		<right name="area" />
 	</section>
 
-	<section name="panelwidgets" require="general:use">
-		<right name="contactSearch" />
-	</section>
-
 	<section name="contact" require="general:use">
 		<right name="see" />
 		<right name="modify" />

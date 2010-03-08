@@ -2,27 +2,22 @@
 <locallang>
 	<labels lang="en">
 		<label index="general">General settings</label>
-		<label index="general.use">Allowed to use/see Module Functionalities</label>
-		<label index="general.area">Allowed to see Module</label>
-		<label index="panelwidgets">Panel Widgets</label>
-		<label index="panelwidgets.contactSearch">Allowed to see contact search widget</label>
-		<label index="panelwidgets.quickContact">Allowed to see create contact widget</label>
+		<label index="general.use">Use Module Functionalities</label>
+		<label index="general.area">Use contacts area</label>
 		<label index="contact">Contacts</label>
 		<label index="contact.see">Use contact repository</label>
-		<label index="contact.modify">Edit contact record</label>
+		<label index="contact.modify">Edit and delete contact records</label>
 		<label index="person">Person</label>
 		<label index="person.enableLogin">Create login account for persons</label>
 	</labels>
 	<labels lang="de">
 		<label index="general">Allgemeine Einstellungen</label>
 		<label index="general.use">Kontakt-Funktionalitäten benutzen</label>
-		<label index="general.area">Kontakt Bereich sehen</label>
+		<label index="general.area">Kontakt Bereich benutzen</label>
 		<label index="panelwidgets">Steuerelemente</label>
-		<label index="panelwidgets.contactSearch">Sieht Kontakt-Such-Element</label>
-		<label index="panelwidgets.quickContact">Sieht Kontakt-Erfassen-Element</label>
 		<label index="contact">Kontakte</label>
-		<label index="contact.see">Benutze Kontakte-Verzeichnis</label>
-		<label index="contact.modify">Kontakt-Datensätze Editieren</label>
+		<label index="contact.see">Kontakte sehen</label>
+		<label index="contact.modify">Kontakte Editieren und Löschen</label>
 		<label index="person">Personen</label>
 		<label index="person.enableLogin">Logins für Personen erstellen</label>
 	</labels>

@@ -80,8 +80,16 @@ class TodoyuPanelWidgetContactSearch extends TodoyuPanelWidget implements Todoyu
 	}
 
 
+
+	/**
+	 * Check whether using the contact search widget is allowed to current user
+	 * -Currently this is allowed to any person having the right to use the contacts area and see contacts
+	 *
+	 * @return	Boolean
+	 */
 	public static function isAllowed() {
-		return allowed('contact', 'panelwidgets:contactSearch');
+		return true;
+//		return allowed('contact', 'panelwidgets:contactSearch');
 	}
 
 }
