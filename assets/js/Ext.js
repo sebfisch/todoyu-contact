@@ -69,6 +69,6 @@ Todoyu.Ext.contact = {
 		objName	= type.capitalize();
 
 		this[objName].showList();
-	},
+	}
 
 };
