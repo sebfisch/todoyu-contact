@@ -233,11 +233,16 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 
 
 
-	
+
 	public static function getSelectedJobTypes() {
 		$jobtypes = TodoyuContactPreferences::getPref('staffSelector-jobtypes');
 
 		return TodoyuArray::intExplode(',', $jobtypes);
+	}
+
+
+	public static function isAllowed() {
+		return allowed('contact', 'panelwidgets:staffSelector');
 	}
 
 

@@ -9,4 +9,8 @@
 		<right name="editAndDelete" />
 		<right name="enableLogin" require="person:editAndDelete" />
 	</section>
+	
+	<section name="panelwidgets" require="general:use">
+		<right name="staffSelector" />
+	</section>
 </rights>
