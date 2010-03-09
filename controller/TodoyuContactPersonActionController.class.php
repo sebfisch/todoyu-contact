@@ -32,7 +32,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 *
 	 */
 	public function init() {
-		restrict('contact', 'contact:see');
+		restrict('contact', 'general:area');
 	}
 
 
@@ -44,7 +44,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function editAction(array $params) {
-		restrict('contact', 'contact:modify');
+		restrict('contact', 'person:editAndDelete');
 
 		$idPerson	= intval($params['person']);
 
@@ -63,7 +63,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function listAction(array $params) {
-		restrict('contact', 'contact:see');
+		restrict('contact', 'general:area');
 
 		$sword	= trim($params['sword']);
 
@@ -82,7 +82,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function listingAction(array $params) {
-		restrict('contact', 'contact:see');
+		restrict('contact', 'general:area');
 
 		$offset	= intval($params['offset']);
 
@@ -98,7 +98,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function saveAction(array $params) {
-		restrict('contact', 'contact:modify');
+		restrict('contact', 'person:editAndDelete');
 
 		$xmlPath	= 'ext/contact/config/form/person.xml';
 		$data		= $params['person'];
@@ -135,7 +135,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function addSubformAction(array $params) {
-		restrict('contact', 'contact:modify');
+		restrict('contact', 'person:editAndDelete');
 
 		$xmlPath	= 'ext/contact/config/form/person.xml';
 
@@ -156,7 +156,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @param	Array		$params
 	 */
 	public function removeAction(array $params) {
-		restrict('contact', 'contact:modify');
+		restrict('contact', 'person:editAndDelete');
 
 		$idPerson	= intval($params['person']);
 
@@ -172,7 +172,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function detailAction(array $params) {
-		restrict('contact', 'contact:see');
+		restrict('contact', 'general:area');
 
 		$idPerson	= intval($params['person']);
 
@@ -190,7 +190,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function addNewContactWizardAction(array $params)	{
-		restrict('contact', 'contact:modify');
+		restrict('contact', 'person:editAndDelete');
 
 		$content = TodoyuPage::getExtJSinline('contact');
 		$content.= TodoyuContactRenderer::renderPersonEditFormWizard(0, $params['idField']);

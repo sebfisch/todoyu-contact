@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rights>
-
 	<section name="general">
 		<right name="use" />
-		<right name="area" />
-	</section>
-
-	<section name="contact" require="general:use">
-		<right name="see" />
-		<right name="modify" />
+		<right name="area" require="general:use" />
 	</section>
 	
-	<section name="person" require="general:use">
-		<right name="enableLogin" />
+	<section name="person" require="general:area">
+		<right name="editAndDelete" />
+		<right name="enableLogin" require="person:editAndDelete" />
 	</section>
 </rights>

@@ -40,7 +40,7 @@ class TodoyuContactQuickCreateCompanyActionController extends TodoyuActionContro
 	 * @return	String		Form html or company ID
 	 */
 	public function saveAction(array $params) {
-		restrict('contact', 'contact:modify');
+		restrict('contact', 'person:editAndDelete');
 
 			// Get form object, call save hooks, set data
 		$form	= TodoyuCompanyManager::getCompanyQuickCreateForm();

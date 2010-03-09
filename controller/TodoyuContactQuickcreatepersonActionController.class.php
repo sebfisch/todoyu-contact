@@ -40,7 +40,7 @@ class TodoyuContactQuickCreatePersonActionController extends TodoyuActionControl
 	 * @return	String
 	 */
 	public function saveAction(array $params) {
-		restrict('contact', 'contact:modify');
+		restrict('contact', 'person:editAndDelete');
 
 		$data		= $params['person'];
 		$idPerson	= intval($data['id']);

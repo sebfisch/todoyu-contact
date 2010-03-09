@@ -4,21 +4,16 @@
 		<label index="general">General settings</label>
 		<label index="general.use">Use Module Functionalities</label>
 		<label index="general.area">Use contacts area</label>
-		<label index="contact">Contacts</label>
-		<label index="contact.see">Use contact repository</label>
-		<label index="contact.modify">Edit and delete contact records</label>
 		<label index="person">Person</label>
+		<label index="person.editAndDelete">Edit and delete persons</label>
 		<label index="person.enableLogin">Create login account for persons</label>
 	</labels>
 	<labels lang="de">
 		<label index="general">Allgemeine Einstellungen</label>
 		<label index="general.use">Kontakt-Funktionalitäten benutzen</label>
 		<label index="general.area">Kontakt Bereich benutzen</label>
-		<label index="panelwidgets">Steuerelemente</label>
-		<label index="contact">Kontakte</label>
-		<label index="contact.see">Kontakte sehen</label>
-		<label index="contact.modify">Kontakte Editieren und Löschen</label>
 		<label index="person">Personen</label>
+		<label index="person.editAndDelete">Personen bearbeiten und löschen</label>
 		<label index="person.enableLogin">Logins für Personen erstellen</label>
 	</labels>
 </locallang>

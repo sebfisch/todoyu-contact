@@ -21,8 +21,8 @@
 
 	// Add search engine types
 if ( allowed('contact', 'general:use') ) {
-	if(allowed('contact', 'contact:see')) TodoyuSearchManager::addEngine('person', 'TodoyuPersonSearch::getResults', 'TodoyuPersonSearch::getSuggestions', 'contact.person.search.label', 'contact.person.search.mode.label', 100);
-	if(allowed('contact', 'contact:see')) TodoyuSearchManager::addEngine('company', 'TodoyuCompanySearch::getResults', 'TodoyuCompanySearch::getSuggestions', 'contact.company.search.label', 'contact.company.search.mode.label', 110);
+	if(allowed('contact', 'contact:area')) TodoyuSearchManager::addEngine('person', 'TodoyuPersonSearch::getResults', 'TodoyuPersonSearch::getSuggestions', 'contact.person.search.label', 'contact.person.search.mode.label', 100);
+	if(allowed('contact', 'contact:area')) TodoyuSearchManager::addEngine('company', 'TodoyuCompanySearch::getResults', 'TodoyuCompanySearch::getSuggestions', 'contact.company.search.label', 'contact.company.search.mode.label', 110);
 }
 
 ?>

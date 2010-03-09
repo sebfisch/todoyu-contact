@@ -94,12 +94,12 @@ $CONFIG['EXT']['contact']['tabs'] = array(
 	array(
 		'id'		=> 'person',
 		'label'		=> 'LLL:contact.person',
-		'require'	=> 'contact.contact:see'
+		'require'	=> 'contact.general:area'
 	),
 	array(
 		'id'		=> 'company',
 		'label'		=> 'LLL:contact.company',
-		'require'	=> 'contact.contact:see'
+		'require'	=> 'contact.general:area'
 	)
 );
 

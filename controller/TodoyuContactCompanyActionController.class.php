@@ -32,7 +32,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 *
 	 */
 	public function init() {
-		restrict('contact', 'contact:see');
+		restrict('contact', 'general:use');
 	}
 
 
@@ -44,7 +44,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function editAction(array $params) {
-		restrict('contact', 'contact:modify');
+		restrict('contact', 'person:editAndDelete');
 
 		$idCompany	= intval($params['company']);
 
@@ -63,7 +63,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function listAction(array $params) {
-		restrict('contact', 'contact:see');
+		restrict('contact', 'general:area');
 
 		$sword	= trim($params['sword']);
 
@@ -82,7 +82,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function listingAction(array $params) {
-		restrict('contact', 'contact:see');
+		restrict('contact', 'general:area');
 
 		$offset	= intval($params['offset']);
 
@@ -98,7 +98,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @return	String		Form html or company ID
 	 */
 	public function saveAction(array $params) {
-		restrict('contact', 'contact:see');
+		restrict('contact', 'person:editAndDelete');
 
 		$xmlPath	= 'ext/contact/config/form/company.xml';
 		$data		= $params['company'];
@@ -131,7 +131,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function addSubformAction(array $params) {
-		restrict('contact', 'contact:modify');
+		restrict('contact', 'person:editAndDelete');
 
 		$formName	= $params['form'];
 		$fieldName	= $params['field'];
@@ -152,7 +152,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @return	void
 	 */
 	public function removeAction(array $params) {
-		restrict('contact', 'contact:modify');
+		restrict('contact', 'person:editAndDelete');
 
 		$idCompany	= intval($params['company']);
 
@@ -167,7 +167,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function detailAction(array $params) {
-		restrict('contact', 'contact:see');
+		restrict('contact', 'general:area');
 
 		$idCompany	= intval($params['company']);
 		$type		= 'company';

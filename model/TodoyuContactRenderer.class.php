@@ -153,7 +153,7 @@ class TodoyuContactRenderer {
 	 * @return	String
 	 */
 	public static function renderPersonList($sword = '', $size = 5, $offset = 0) {
-		restrict('contact', 'contact:see');
+		restrict('contact', 'general:area');
 
 		return TodoyuListingRenderer::render('contact', 'person');
 	}
@@ -167,7 +167,7 @@ class TodoyuContactRenderer {
 	 * @return	String
 	 */
 	public static function renderCompanyList($sword = '') {
-		restrict('contact', 'contact:see');
+		restrict('contact', 'general:area');
 
 		return TodoyuListingRenderer::render('contact', 'company');
 
@@ -195,7 +195,7 @@ class TodoyuContactRenderer {
 	 * @return	String
 	 */
 	public static function renderPersonEditForm($idPerson) {
-		restrict('contact', 'contact:modify');
+		restrict('contact', 'person:editAndDelete');
 		$idPerson	= intval($idPerson);
 		$xmlPath	= 'ext/contact/config/form/person.xml';
 
@@ -227,7 +227,7 @@ class TodoyuContactRenderer {
 	 * @return	String
 	 */
 	public static function renderPersonEditFormWizard($idPerson, $idTarget)	{
-		restrict('contact', 'contact:modify');
+		restrict('contact', 'person:editAndDelete');
 
 		$idPerson	= intval($idPerson);
 		$xmlPath	= 'ext/contact/config/form/person.xml';
@@ -262,7 +262,7 @@ class TodoyuContactRenderer {
 	 * @return	String
 	 */
 	public static function renderCompanyEditForm($idCompany) {
-		restrict('contact', 'contact:modify');
+		restrict('contact', 'person:editAndDelete');
 		$idCompany	= intval($idCompany);
 		$xmlPath	= 'ext/contact/config/form/company.xml';
 
