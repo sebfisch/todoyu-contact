@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
-		<label index="general">General settings</label>
+		<label index="general">General Settings</label>
 		<label index="general.use">Use Module Functionalities</label>
-		<label index="general.area">Use contacts area</label>
+		<label index="general.area">Use Contacts Area</label>
 		<label index="person">Person</label>
-		<label index="person.editAndDelete">Edit and delete persons</label>
-		<label index="person.enableLogin">Create login account for persons</label>
+		<label index="person.editAndDelete">Edit and Delete Persons</label>
+		<label index="person.enableLogin">Create Login Account for Persons</label>
 		<label index="panelwidgets">Panelwidgets</label>
 		<label index="panelwidgets.staffSelector">Staff Selector</label>
 	</labels>

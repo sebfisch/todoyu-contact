@@ -26,11 +26,11 @@
 
 $CONFIG['EXT']['contact']['info'] = array(
 	'title'			=> 'Contact',
-	'description' 	=> 'Contacts maintenance',
+	'description' 	=> 'Maintain Your Contacts',
 	'author' 		=> array(
-		'name'		=> 'Todoyu Core Team',
+		'name'		=> 'todoyu Core Developer Team',
 		'email'		=> 'team@todoyu.com',
-		'company'	=> 'Snowflake Productions, Zürich'
+		'company'	=> 'snowflake productions GmbH, Zurich'
 	),
 	'state' 		=> 'beta',
 	'version' 		=> '0.2.0',

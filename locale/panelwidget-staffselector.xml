@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
-		<label index="toggle.multiselect.title">Toggle singe/ multi selection mode</label>
+		<label index="toggle.multiselect.title">Toggle Singe/ Multi Selection Mode</label>
 		<label index="title">Staff</label>
 		<label index="selectAllStaff">Select all Staff</label>
 		<label index="byFunction">By Jobtype:</label>
