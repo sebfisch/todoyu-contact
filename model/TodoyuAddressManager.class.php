@@ -44,7 +44,7 @@ class TodoyuAddressManager {
 	public static function getAddress($idAddress)	{
 		$idAddress	= intval($idAddress);
 
-		return TodoyuCache::getRecord('TodoyuAddress', $idAddress);
+		return TodoyuRecordManager::getRecord('TodoyuAddress', $idAddress);
 	}
 
 
@@ -106,8 +106,8 @@ class TodoyuAddressManager {
 	protected static function removeFromCache($idAddress)	{
 		$idAddress	= intval($idAddress);
 
-		TodoyuCache::removeRecord('TodoyuAddress', $idAddress);
-		TodoyuCache::removeRecordQuery(self::TABLE, $idAddress);
+		TodoyuRecordManager::removeRecordCache('TodoyuAddress', $idAddress);
+		TodoyuRecordManager::removeRecordQueryCache(self::TABLE, $idAddress);
 	}
 
 

@@ -21,7 +21,7 @@
 
 if ( allowed('contact', 'general:use') ) {
 		// Add quick create types
-	TodoyuQuickCreateManager::addEngine('contact', 'person', 'contact.create.person.label', 50, EXTID_CONTACT);
+	TodoyuQuickCreateManager::addEngine('contact', 'person', 'contact.create.person.label', 50, array('contact'));
 	TodoyuQuickCreateManager::addEngine('contact', 'company', 'contact.create.company.label', 60);
 
 }

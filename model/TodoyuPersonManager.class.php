@@ -67,7 +67,7 @@ class TodoyuPersonManager {
 	 * @return	TodoyuPerson
 	 */
 	public static function getPerson($idPerson) {
-		return TodoyuCache::getRecord('TodoyuPerson', $idPerson);
+		return TodoyuRecordManager::getRecord('TodoyuPerson', $idPerson);
 	}
 
 
@@ -617,8 +617,8 @@ class TodoyuPersonManager {
 	public static function removeFromCache($idPerson)	{
 		$idPerson		= intval($idPerson);
 
-		TodoyuCache::removeRecord('TodoyuPerson', $idPerson);
-		TodoyuCache::removeRecordQuery(self::TABLE, $idPerson);
+		TodoyuRecordManager::removeRecordCache('TodoyuPerson', $idPerson);
+		TodoyuRecordManager::removeRecordQueryCache(self::TABLE, $idPerson);
 	}
 
 

@@ -53,9 +53,9 @@ class TodoyuContactInfoManager {
 	 */
 	public function getContactInfoTypeName($idContactInfoType) {
 		$idContactInfoType = intval($idContactInfoType);
-		
+
 		$label = Todoyu::db()->getFieldValue('title', 'ext_contact_contactinfotype', 'id = ' . $idContactInfoType);
-		
+
 		return TodoyuDiv::getLabel($label);
 	}
 
@@ -132,8 +132,8 @@ class TodoyuContactInfoManager {
 	public static function removeFromCache($idContactInfo)	{
 		$idContactInfo	= intval($idContactInfo);
 
-		TodoyuCache::removeRecord('ContactInfo', $idContactInfo);
-		TodoyuCache::removeRecordQuery(self::TABLE, $idContactInfo);
+		TodoyuRecordManager::removeRecordCache('TodoyuContactInfo', $idContactInfo);
+		TodoyuRecordManager::removeRecordQueryCache(self::TABLE, $idContactInfo);
 	}
 
 

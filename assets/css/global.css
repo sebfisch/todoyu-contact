@@ -25,12 +25,12 @@ span.wizardIcon.createNewPerson	{
 	Create mode options in headlet
    ----------------------------------- */
 
-.createmode-company {
-	background: url(../img/icons.png) no-repeat 11px -240px;
+#headlet-quickcreate-menu li.itemCompany {
+	background: url(../img/icons.png) no-repeat 11px -238px;
 }
 
-.createmode-person {
-	background: url(../img/icons.png) no-repeat 11px -90px;
+#headlet-quickcreate-menu li.itemPerson {
+	background: url(../img/icons.png) no-repeat 11px -88px;
 }
 
 

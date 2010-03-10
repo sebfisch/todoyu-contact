@@ -39,7 +39,7 @@ class TodoyuContactInfoTypeManager {
 	public static function getContactInfoType($idContactInfoType) {
 		$idContactInfoType	= intval($idContactInfoType);
 
-		return TodoyuCache::getRecord('TodoyuContactInfoType', $idContactInfoType);
+		return TodoyuRecordManager::getRecord('TodoyuContactInfoType', $idContactInfoType);
 	}
 
 

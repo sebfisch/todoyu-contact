@@ -459,8 +459,8 @@ class TodoyuCompanyManager {
 	public static function removeFromCache($idCompany)	{
 		$idCompany	= intval($idCompany);
 
-		TodoyuCache::removeRecord('TodoyuCompany', $idCompany);
-		TodoyuCache::removeRecordQuery(self::TABLE, $idCompany);
+		TodoyuRecordManager::removeRecordCache('TodoyuCompany', $idCompany);
+		TodoyuRecordManager::removeRecordQueryCache(self::TABLE, $idCompany);
 	}
 
 
