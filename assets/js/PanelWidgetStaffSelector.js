@@ -42,7 +42,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	/**
 	 * Jobtype togglebox element
 	 */
-	jobTypeToggle: 	null,
+	jobTypeToggle:	null,
 
 	/**
 	 * Jobtype to persons linking object
@@ -54,7 +54,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	/**
 	 * Initialize widget. Link elements and set jobtype mapping
 	 *
-	 *	@param	Object		jobType2Persons
+	 * @param	Object		jobType2Persons
 	 */
 	init: function(jobType2Persons) {
 		this.list			= $('panelwidget-staffselector-persons');
@@ -68,7 +68,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 
 
 	/**
-	 *	Install observers
+	 * Install observers
 	 */
 	installObservers: function() {
 		this.list.observe('change', this.onSelectionChange.bindAsEventListener(this));
@@ -79,9 +79,9 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 
 
 	/**
-	 *	Handler of person selection changes
+	 * Handler of person selection changes
 	 *
-	 *	@param	Event		event
+	 * @param	Event		event
 	 */
 	onSelectionChange: function(event) {
 		this.selectAllJobTypes(false);
@@ -92,7 +92,8 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 
 	/**
 	 * Handler of jobtype selection changes
-	 *	@param	Event		event
+	 * 
+	 * @param	Event		event
 	 */
 	onJobTypeSelected: function(event) {
 		this.selectPersonsByJobType();
@@ -103,7 +104,8 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 
 	/**
 	 * Handler of jobtype toggler changes
-	 *	@param	Event		event
+	 * 
+	 * @param	Event		event
 	 */
 	onJobTypeToggleChange: function(event) {
 		var toggler	= event.findElement('input');
@@ -122,8 +124,9 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	},
 
 
+
 	/**
-	 * If widget has changed, inform all listeners which persons are selected
+	 * If widget has changed inform all listeners which persons are selected
 	 */
 	onUpdate: function() {
 		this.savePrefs();
@@ -134,7 +137,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	/**
 	 * Select all/no jobTypes
 	 *
-	 *	@param	Bool		select
+	 * @param	Boolean		select
 	 */
 	selectAllJobTypes: function(select) {
 		var selected = select === true;
@@ -148,7 +151,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	/**
 	 * Select all/no persons
 	 *
-	 *	@param	Bool		select
+	 * @param	Boolean		select
 	 */
 	selectAllPersons: function(select) {
 		var selected = select === true;
@@ -162,7 +165,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	/**
 	 * Select (one or multiple) given persons
 	 *
-	 *	@param	Array		personIDs
+	 * @param	Array		personIDs
 	 */
 	selectPersons: function(personIDs) {
 		this.list.select('option').each(function(option){
@@ -173,6 +176,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	},
 
 
+
 	/**
 	 *	Select persons having selected job type assigned
 	 */
@@ -181,12 +185,13 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 
 		var jobTypes	= this.getSelectedJobTypes();
 
-		if( jobTypes.first() == -1 ) {
+		if( jobTypes.first() == 0 ) {
+				// Select all employees
 			this.selectAllPersons(true);
 		} else {
+				// Select all employees with selected jobtypes
 			jobTypes.each(function(jobType){
 				var personIDs = this.getJobTypePersons(jobType);
-					// select persons
 				this.selectPersons(personIDs);
 			}.bind(this));
 		}
@@ -197,7 +202,8 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	/**
 	 * Get all perosons which have the requested job type
 	 *
-	 *	@param	Integer		jobType
+	 * @param	Integer		jobType
+	 * @return	
 	 */
 	getJobTypePersons: function(jobType) {
 		return this.jobType2Persons[jobType];
@@ -208,7 +214,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	/**
 	 * Get IDs of currently selected persons
 	 *
-	 *	@return	Array
+	 * @return	Array
 	 */
 	getSelectedPersons: function() {
 		return $F(this.list);
@@ -219,7 +225,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	/**
 	 * Get selected jobtypes
 	 *
-	 * return	Array
+	 * @return	Array
 	 */
 	getSelectedJobTypes: function() {
 		var jobTypes	= $F(this.jobType);
@@ -230,9 +236,9 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 
 
 	/**
-	 *	Get number of select persons
+	 * Get number of select persons
 	 *
-	 *	@return	Integer
+	 * @return	Integer
 	 */
 	getNumberOfSelectedPersons: function() {
 		return this.getSelectedPersons().size();
@@ -241,9 +247,9 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 
 
 	/**
-	 *	Check if any person is currently selected
+	 * Check if any person is currently selected
 	 *
-	 *	@return	Boolean
+	 * @return	Boolean
 	 */
 	isAnyPersonSelected: function() {
 		return this.getSelectedPersons().size() > 0;
@@ -253,6 +259,8 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 
 	/**
 	 * Check if jobtype is in multiselect mode
+	 * 
+	 * @return	Boolean
 	 */
 	isMultiJobTypes: function() {
 		return this.jobType.multiple;
@@ -273,6 +281,13 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 		Todoyu.Pref.save('contact', 'panelwidgetstaffselector', pref, 0, this.onPrefsSaved.bind(this));
 	},
 
+
+
+	/**
+	 * Handler being called after saving of prefs
+	 * 
+	 * @param	Object	response
+	 */
 	onPrefsSaved: function(response) {
 		Todoyu.PanelWidget.fire('staffselector', this.getSelectedPersons());
 	}

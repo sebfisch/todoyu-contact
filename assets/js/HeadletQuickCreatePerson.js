@@ -30,9 +30,9 @@ Todoyu.Headlet.QuickCreate.Person = {
 
 
 	/**
-	 *	Save person
+	 * Save person
 	 *
-	 *	@param	unknown		form
+	 * @param	String		form
 	 */
 	save: function(form) {
 		$(form).request ({
@@ -48,9 +48,9 @@ Todoyu.Headlet.QuickCreate.Person = {
 
 
 	/**
-	 *	On saved handle
+	 * Handler being evoked upon onComplete of person saving. Check for and notify error / success, update display
 	 *
-	 *	@paran	Object		response
+	 * @paran	Object		response
 	 */
 	onSaved: function(response) {
 		var error	= response.hasTodoyuError();

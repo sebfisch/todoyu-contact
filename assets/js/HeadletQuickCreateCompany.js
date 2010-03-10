@@ -36,10 +36,10 @@ Todoyu.Headlet.QuickCreate.Company = {
 	 */
 	save: function(form) {
 		$(form).request ({
-				'parameters': {
-					'action':	'save'
+				'parameters':	{
+						'action':	'save'
 				},
-				'onComplete': this.onSaved.bind(this)
+				'onComplete':	this.onSaved.bind(this)
 			});
 
 		return false;
@@ -48,9 +48,9 @@ Todoyu.Headlet.QuickCreate.Company = {
 
 
 	/**
-	 *	onSaved company custom event handler
+	 * Handler evoked upon onComplete of saving: check for and notify success / error, update display
 	 *
-	 *	@param	Ajax.Response		response
+	 * @param	Ajax.Response		response
 	 */
 	onSaved: function(response) {
 		var error	= response.hasTodoyuError();

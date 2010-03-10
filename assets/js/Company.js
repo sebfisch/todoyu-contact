@@ -21,7 +21,7 @@
 Todoyu.Ext.contact.Company =  {
 
 	/**
-	 *	Ext shortcut
+	 * Ext shortcut
 	 */
 	ext:	Todoyu.Ext.contact,
 
@@ -34,9 +34,9 @@ Todoyu.Ext.contact.Company =  {
 
 
 	/**
-	 *	Edit given company
+	 * Edit given company
 	 *
-	 *	@param	Integer	idCompany
+	 * @param	Integer	idCompany
 	 */
 	edit: function(idCompany) {
 		var url = Todoyu.getUrl('contact', 'company');
@@ -60,9 +60,9 @@ Todoyu.Ext.contact.Company =  {
 
 
 	/**
-	 *	Confirm if really wanted and remove (delete) given company if
+	 * Confirm if really wanted and remove (delete) given company if
 	 *
-	 *	@param	Integer	idCompany
+	 * @param	Integer	idCompany
 	 */
 	remove: function(idCompany) {
 		if( confirm('[LLL:contact.confirmRemoving]') )	{
@@ -82,9 +82,9 @@ Todoyu.Ext.contact.Company =  {
 
 
 	/**
-	 *	Handle event after company deletion being performed
+	 * Handle event after company deletion being performed
 	 *
-	 *	@param	Response	response
+	 * @param	Response	response
 	 */
 	onRemoved: function(response) {
 		this.showList();
@@ -92,6 +92,11 @@ Todoyu.Ext.contact.Company =  {
 
 
 
+	/**
+	 * Save company record
+	 * 
+	 * @param	String		form
+	 */
 	save: function(form) {
 		$(form).request ({
 				'parameters': {
@@ -105,6 +110,11 @@ Todoyu.Ext.contact.Company =  {
 
 
 
+	/**
+	 * Handler being evoked OnComplete of save company request: check for and notify success / error, update display
+	 * 
+	 * @param	Object	response
+	 */
 	onSaved: function(response) {
 		var error	= response.hasTodoyuError();
 
@@ -120,12 +130,20 @@ Todoyu.Ext.contact.Company =  {
 
 
 
+	/**
+	 * Close company form, update list view
+	 */
 	closeForm: function() {
 		this.showList();
 	},
 
 
 
+	/**
+	 * Update company list
+	 * 
+	 * @param	String		sword		(search word)
+	 */
 	showList: function(sword) {
 		var url = Todoyu.getUrl('contact', 'company');
 		var options = {
@@ -140,6 +158,11 @@ Todoyu.Ext.contact.Company =  {
 
 
 
+	/**
+	 * Show detail view (popup) of given company
+	 * 
+	 * @param	Integer		idCompany
+	 */
 	show: function(idCompany) {
 		var url		= Todoyu.getUrl('contact', 'company')
 		var options	= {
@@ -151,4 +174,5 @@ Todoyu.Ext.contact.Company =  {
 
 		Todoyu.Popup.openWindow('popupRecordInfo', 'Info', 420, url, options);
 	}
+
 };

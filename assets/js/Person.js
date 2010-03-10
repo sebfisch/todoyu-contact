@@ -21,14 +21,14 @@
 Todoyu.Ext.contact.Person =  {
 
 	/**
-	 *	Ext shortcut
+	 * Ext shortcut
 	 */
 	ext:	Todoyu.Ext.contact,
 
 
 
 	/**
-	 *	Add person (create and edit new person record)
+	 * Add person (create and edit new person record)
 	 */
 	add: function() {
 		this.edit(0);
@@ -37,9 +37,9 @@ Todoyu.Ext.contact.Person =  {
 
 
 	/**
-	 *	Edit (person)
+	 * Edit (person)
 	 *
-	 *	@paran	Integer		idPerson
+	 * @paran	Integer		idPerson
 	 */
 	edit: function(idPerson) {
 		var url = Todoyu.getUrl('contact', 'person');
@@ -57,10 +57,10 @@ Todoyu.Ext.contact.Person =  {
 
 
 	/**
-	 *	On edit (person) handler
+	 * On edit (person) handler
 	 *
-	 *	@paran	Integer		idPerson
-	 *	@paran	Unknown		response
+	 * @paran	Integer		idPerson
+	 * @paran	Unknown		response
 	 */
 	onEdit: function(idPerson, response) {
 		this.observeFieldsForShortname(idPerson);
@@ -71,18 +71,25 @@ Todoyu.Ext.contact.Person =  {
 	},
 
 
+
+	/**
+	 * Toggle display of login related fields of given person
+	 * 
+	 * @param	Integer		idPerson
+	 * @param	Event		event
+	 */
 	showLoginFields: function(idPerson, event) {
 		var field	= $('person-' + idPerson + '-field-active');
 
-		$('person-' + idPerson + '-fieldset-loginfields')[field.checked?'show':'hide']();
+		$('person-' + idPerson + '-fieldset-loginfields')[field.checked ? 'show' : 'hide']();
 	},
 
 
 
 	/**
-	 *	Remove person
+	 * Delete given person record
 	 *
-	 *	@paran	Integer		idPerson
+	 * @paran	Integer		idPerson
 	 */
 	remove: function(idPerson) {
 		if( confirm('[LLL:contact.person.remove.confirm]') )	{
@@ -102,10 +109,10 @@ Todoyu.Ext.contact.Person =  {
 
 
 	/**
-	 *	On removed handler
+	 * Handler being evoked after onComplete of person deletion: update listing display
 	 *
-	 *	@paran	Integer		idPerson
-	 *	@paran	Unknown		response
+	 * @paran	Integer		idPerson
+	 * @paran	Unknown		response
 	 */
 	onRemoved: function(idPerson, response) {
 		this.showList();
@@ -114,9 +121,9 @@ Todoyu.Ext.contact.Person =  {
 
 
 	/**
-	 *	Observe fields for short name
+	 * Start observation of modification of first- / lastname input fields (evoke auto-generation of shortname than)
 	 *
-	 *	@paran	Integer		idPerson
+	 * @paran	Integer		idPerson
 	 */
 	observeFieldsForShortname: function(idPerson) {
 		$('person-' + idPerson + '-field-lastname').observe('keyup', this.generateShortName.bindAsEventListener(this, idPerson));
@@ -126,10 +133,10 @@ Todoyu.Ext.contact.Person =  {
 
 
 	/**
-	 *	Generate short name
+	 * Generate person shortname from it's first- + lastname
 	 *
-	 *	@paran	unknown	event
-	 *	@paran	Integer	idPerson
+	 * @paran	Event		event
+	 * @paran	Integer		idPerson
 	 */
 	generateShortName: function(event, idPerson) {
 		var lastname	= $F('person-' + idPerson + '-field-lastname');
@@ -143,7 +150,7 @@ Todoyu.Ext.contact.Person =  {
 
 
 	/**
-	 * updates the working location selector with options of choosen company
+	 * Updates working location selector with options of choosen company
 	 *
 	 * @param	Object	inputField
 	 * @param	Object	selectedListElement
@@ -173,9 +180,10 @@ Todoyu.Ext.contact.Person =  {
 
 
 	/**
-	 *	Save form
+	 * Save person form
 	 *
-	 *	@paran	String	form
+	 * @paran	String		form
+	 * @return	Boolean
 	 */
 	save: function(form) {
 		$(form).request ({
@@ -191,9 +199,9 @@ Todoyu.Ext.contact.Person =  {
 
 
 	/**
-	 *	On saved handle
+	 * Handler evoked upon onComplete of person saving: check for and notify success / error, update display 
 	 *
-	 *	@paran	Array	response
+	 * @paran	Array	response
 	 */
 	onSaved: function(response) {
 		var error	= response.hasTodoyuError();
@@ -215,9 +223,9 @@ Todoyu.Ext.contact.Person =  {
 
 
 	/**
-	 *	Show list
+	 * Show (filtered) persons list
 	 *
-	 *	@paran	String	sword
+	 * @paran	String		sword		(search word)	
 	 */
 	showList: function(sword) {
 		var url = Todoyu.getUrl('contact', 'person');
@@ -234,9 +242,9 @@ Todoyu.Ext.contact.Person =  {
 
 
 	/**
-	 *	Show person
+	 * Show info popup to given person data
 	 *
-	 *	@paran	Integer	idPerson
+	 * @paran	Integer		idPerson
 	 */
 	show: function(idPerson) {
 		var url		= Todoyu.getUrl('contact', 'person')
@@ -253,11 +261,11 @@ Todoyu.Ext.contact.Person =  {
 
 
 	/**
-	 * save person from wizard
+	 * Save person record from wizard
 	 *
-	 * @param	Object	form
-	 * @param	String	target
-	 * @return	void
+	 * @param	Object		form
+	 * @param	String		target
+	 * @return	Boolean
 	 */
 	saveWizard: function(form, target)	{
 		$(form).request ({
@@ -273,7 +281,7 @@ Todoyu.Ext.contact.Person =  {
 
 
 	/**
-	 * after save handling from wizard
+	 * Handler evoked upon onComplete of saving from wizard. Check and notify success / error, update display
 	 *
 	 * @param	String	target
 	 * @param	Object	response
@@ -301,7 +309,7 @@ Todoyu.Ext.contact.Person =  {
 
 
 	/**
-	 * cancel handling for wizard
+	 * Cancel handling for wizard: close popup
 	 */
 	cancelWizard: function()	{
 		Todoyu.Popup.getLastPopup().close();

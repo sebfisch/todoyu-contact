@@ -24,7 +24,7 @@
 Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 
 	/**
-	 *	Ext shortcut
+	 * Ext shortcut
 	 */
 	ext:	Todoyu.Ext.contact,
 
@@ -53,13 +53,13 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 
 
 	/**
-	 *	Init the widget: install observers, initialize clear input button
+	 * Init the widget: install observers, initialize UI
 	 */
 	init: function() {
 		this.input		= $('panelwidget-' + this.id + '-sword');
 		this.form		= $('panelwidget-' + this.id + '-form');
 		this.clearButton= $('panelwidget-' + this.id + '-clear');
-		
+
 		this.installObservers();
 		this.toggleClearButton();
 	},
@@ -79,7 +79,7 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 	/**
 	 * KeyUp handler (on text entered)
 	 * 
-	 *	@param	Event	event
+	 * @param	Event	event
 	 */
 	onKeyup: function(event) {
 		this.toggleClearButton();
@@ -93,8 +93,8 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 
 	/**
 	 * Form submit handler (prevent normal submit)
-	 * 
-	 *	@param	Event	event
+	 *
+	 * @param	Event	event
 	 */
 	onFormSubmit: function(event) {
 		event.stop();
@@ -104,7 +104,9 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 
 
 	/**
-	 * Get current selected type (tab)
+	 * Get current selected contact type (tab)
+	 *
+	 * @return	String		e.g. 'person' / 'company'
 	 */
 	getType: function() {
 		return Todoyu.Tabs.getActive('contact-tabs').id.replace('contact-tab-','');
@@ -117,9 +119,9 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 	 */
 	search: function() {
 		this.toggleClearButton();
-		
+
 		var type	= this.getType().capitalize();
-		
+
 		this.ext[type].showList(this.getValue());
 	},
 

@@ -26,7 +26,7 @@ Todoyu.Ext.contact = {
 
 
 	/**
-	 *	Initialize
+	 * Initialize
 	 */
 	init: function() {
 

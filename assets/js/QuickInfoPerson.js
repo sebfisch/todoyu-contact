@@ -34,6 +34,7 @@ Todoyu.Ext.contact.QuickInfoPerson = {
 	},
 
 
+
 	/**
 	 * Install quickinfo for person
 	 *
@@ -47,8 +48,9 @@ Todoyu.Ext.contact.QuickInfoPerson = {
 	},
 
 
+
 	/**
-	 * Evoked upon mouseOver event upon person element. Shows quick-info.
+	 * Evoked upon mouseOver event upon person element. Shows quick-info tooltip.
 	 *
 	 * @param	Object	event		the DOM-event
 	 * @param	Integer	idPerson
@@ -58,8 +60,9 @@ Todoyu.Ext.contact.QuickInfoPerson = {
 	},
 
 
+
 	/**
-	 * Evoked upon mouseOut event upon person element. Show quick info.
+	 * Evoked upon mouseOut event upon person element. Hides quick-info tooltip.
 	 *
 	 * @param	Object	event			the DOM-event
 	 * @param	Integer	idPrson
