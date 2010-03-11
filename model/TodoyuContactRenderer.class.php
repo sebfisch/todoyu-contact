@@ -38,7 +38,7 @@ class TodoyuContactRenderer {
 	 * @return	String
 	 */
 	public static function renderTabs($activeTab, $onlyActive = false)	{
-		$tabs		= TodoyuArray::assure(TodoyuTabManager::getTabs($GLOBALS['CONFIG']['EXT']['contact']['tabs']));
+		$tabs	= TodoyuArray::assure(TodoyuTabManager::getTabs($GLOBALS['CONFIG']['EXT']['contact']['tabs']));
 
 			// Render only the currenty active tab?
 		if( $onlyActive ) {
