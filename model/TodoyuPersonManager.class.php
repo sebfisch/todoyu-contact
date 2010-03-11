@@ -544,6 +544,7 @@ class TodoyuPersonManager {
 		}
 
 
+
 			// Address
 		if( isset($data['address']) ) {
 			$addressIDs	= TodoyuArray::getColumn($data['address'], 'id');
@@ -563,6 +564,7 @@ class TodoyuPersonManager {
 
 			unset($data['address']);
 		}
+
 
 
 			// Person
@@ -585,6 +587,7 @@ class TodoyuPersonManager {
 
 			unset($data['company']);
 		}
+
 
 
 			// Roles
@@ -713,7 +716,23 @@ class TodoyuPersonManager {
 
 		$birthdayPersons = Todoyu::db()->getArray($fields, $table, $where, '', $order);
 
-			// Enrich data with date and age
+			// Enrich data with date and age of persons
+		$birthdayPersons	= self::addBirthdayPersonsDateAndAge($birthdayPersons, $dateStart, $dateEnd);
+
+		return $birthdayPersons;
+	}
+
+
+
+	/**
+	 * Enrich data array of persons and birthdays with resp. age and date
+	 *
+	 * @param	Array		$birthdayPersons
+	 * @param	Integer		$dateStart
+	 * @param	Integer		$dateEnd
+	 * @return	Array
+	 */
+	private static function addBirthdayPersonsDateAndAge(array $birthdayPersons, $dateStart, $dateEnd) {
 		foreach($birthdayPersons as $index => $birthdayPerson) {
 			$dateParts	= explode('-', $birthdayPerson['birthday']);
 			$birthday	= mktime(0, 0, 0, $dateParts[1], $dateParts[2], date('Y', $dateStart));
@@ -726,7 +745,7 @@ class TodoyuPersonManager {
 				// Set date of the birthday this year
 			$birthdayPersons[$index]['date'] 	= $birthday;
 				// Set age on this birthday
-			$birthdayPersons[$index]['age']	= floor(date('Y', $dateStart)-intval($birthdayPerson['birthyear']));
+			$birthdayPersons[$index]['age']	= floor(date('Y', $dateStart) - intval($birthdayPerson['birthyear']));
 		}
 
 		return $birthdayPersons;
