@@ -7,7 +7,7 @@
 		<label index="persons">Persons</label>
 		<label index="company">Company</label>
 		<label index="companys">Companies</label>
-		<label index="workaddress">Address Place of Work</label>
+		<label index="workaddress">Place Of Work</label>
 		<label index="jobtype">Job Type</label>
 
 		<label index="create.person.label">New Person</label>
@@ -33,7 +33,7 @@
 
 		<label index="company.attr.title">Name</label>
 		<label index="company.attr.shortname">Shortname</label>
-		<label index="company.attr.date_enter">Date of Entry</label>
+		<label index="company.attr.date_enter">Date Of Entry</label>
 		<label index="company.attr.is_internal">Is Internal</label>
 		<label index="company.attr.person">Employee</label>
 		<label index="company.attr.person.new">New Employee</label>
@@ -76,35 +76,32 @@
 		<label index="record.contactinfotype.attr.category">Category</label>
 		<label index="record.contactinfotype.attr.key">Key</label>
 		<label index="record.contactinfotype.email">Email Address</label>
-		<label index="record.contactinfotype.phone">Phone Number (or Fax, Mobile)</label>
+		<label index="record.contactinfotype.phone">Phone Number (Or Fax, Mobile)</label>
 		<label index="record.contactinfotype.other">Other</label>
 
-		<label index="quickinfo.preferredphone.notfound">No Preferred Phone set</label>
+		<label index="quickinfo.preferredphone.notfound">No Preferred Phone Set</label>
 
 
-
-
-
-		<label index="form.error.newPersonHasPassword">Enter a password for a new person</label>
-		<label index="form.error.password_second">Password wasn't correct</label>
-		<label index="form.error.minLengthIfNotEmpty">Password needs at least %s signs</label>
+		<label index="form.error.newPersonHasPassword">Enter A Password For A New Person</label>
+		<label index="form.error.password_second">Passwords Do Not Match</label>
+		<label index="form.error.minLengthIfNotEmpty">Password Needs At Least %s Signs</label>
 		<label index="form.error.numbers">Password Needs Numbers</label>
 		<label index="form.error.upper">Password Needs Uppercase</label>
 		<label index="form.error.lower">Password needs Lowercase</label>
 		<label index="form.error.special">Password Needs Special Signs</label>
-		<label index="form.error.nointernalpersons">There are no internal persons stored.</label>
-		<label index="form.error.usernameUnique">Username has to be unique</label>
+		<label index="form.error.nointernalpersons">There Are No Persons Marked As "Internal"</label>
+		<label index="form.error.usernameUnique">Username Has To Be Unique</label>
 
 
-		<label index="contact.createnew">Create new</label>
+		<label index="contact.createnew">Create New</label>
 		<label index="contact.edit">Edit Record: </label>
 		<label index="editRecord">Edit Record</label>
 		<label index="removeRecord">Delete Record</label>
 		<label index="createLogin">Create Login</label>
 		<label index="editLogin">Edit Login</label>
 		<label index="generateshortname">Generate Shortname</label>
-		<label index="person.remove.confirm">Remove this person?</label>
-		<label index="showvisitingcard">Show visiting card popup</label>
+		<label index="person.remove.confirm">Are you sure you want to delete this record?</label>
+		<label index="showvisitingcard">Show Visiting Card Popup</label>
 		<label index="company">Company</label>
 		<label index="employer">Employer</label>
 		<label index="address">Address</label>
@@ -124,11 +121,11 @@
 		<label index="company.tooltip.edit">Edit Company</label>
 		<label index="company.tooltip.delete">Delete Company</label>
 		<label index="company.tooltip.showInfo">Show Company Information</label>
-		<label index="company.noAddress">No Address found for this Company</label>
+		<label index="company.noAddress">No Address Found For This Company</label>
 		<label index="noLabel.newContactInfo">New Contact Info</label>
 		<label index="noLabel.newAddress">New Address</label>
 		<label index="noLabel.newEmployee">New Employee</label>
-		<label index="error.noJobtypes">No jobtypes given (done in extension administration)</label>
+		<label index="error.noJobtypes">No Job Types Given. You have To Do This In The Admin Section</label>
 		<label index="comapny.employees">Employees</label>
 		<label index="ac.region.notFoundInfo">No region containing the given text found. Did you select the correct country?</label>
 		<label index="ac.person.notFoundInfo">No person with a name containing the given text was found.</label>

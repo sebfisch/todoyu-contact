@@ -20,8 +20,8 @@
 }
 
 	/* Column configs */
-.personListing td.icon {
-	background:url(../img/icons.png) no-repeat 6px 6px;
+.personListing span.icon {
+	background:url(../img/icons.png) no-repeat 6px 0px;
 }
 .personListing td.icon.person {
 	background:url(../img/icons.png) no-repeat 6px -116px;
