@@ -34,11 +34,11 @@ $CONFIG['EXT']['contact']['assets'] = array(
 			),
 				// Add creation engines to quick create headlet
 			array(
-				'file'		=> 'ext/contact/assets/js/HeadletQuickCreateCompany.js',
+				'file'		=> 'ext/contact/assets/js/QuickCreateCompany.js',
 				'position'	=> 100
 			),
 			array(
-				'file'		=> 'ext/contact/assets/js/HeadletQuickCreatePerson.js',
+				'file'		=> 'ext/contact/assets/js/QuickCreatePerson.js',
 				'position'	=> 110
 			),
 			array(

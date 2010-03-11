@@ -18,7 +18,7 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-Todoyu.Headlet.QuickCreate.Person = {
+Todoyu.Ext.contact.QuickCreatePerson = {
 
 	/**
 	 * Evoked upon opening of person quick create wizard popup
@@ -53,12 +53,10 @@ Todoyu.Headlet.QuickCreate.Person = {
 	 * @paran	Object		response
 	 */
 	onSaved: function(response) {
-		var error	= response.hasTodoyuError();
-
-		if( error ) {
+		if( response.hasTodoyuError() ) {
 				// Saving person failed
 			Todoyu.notifyError('[LLL:contact.person.saved.error]');
-			Todoyu.Headlet.QuickCreate.updateFormDiv(response.responseText);
+			Todoyu.Headlet.QuickCreate.updatePopupContent(response.responseText);
 		} else {
 				// Saving succeeded
 			var idPerson	= response.getTodoyuHeader('idPerson');
