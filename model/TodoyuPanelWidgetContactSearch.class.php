@@ -82,7 +82,7 @@ class TodoyuPanelWidgetContactSearch extends TodoyuPanelWidget implements Todoyu
 
 
 	/**
-	 * Check whether using the contact search widget is allowed to current user
+	 * Check whether using the contact search widget is allowed to current logged in person
 	 * -Currently this is allowed to any person having the right to use the contacts area and see contacts
 	 *
 	 * @return	Boolean

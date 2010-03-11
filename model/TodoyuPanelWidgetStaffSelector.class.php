@@ -83,23 +83,30 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 			'listSize'			=> $this->getListSize(sizeof($persons)),
 			'numColors'			=> sizeof($GLOBALS['CONFIG']['COLORS']),
 			'colorizeOptions'	=> $this->config['colorizePersonOptions'],
+
 				// Selector options
 			'jobTypeOptions'	=> $this->getJobtypeOptions(),
-			'personOptions'		=> $this->getPersonOptions(),
+			'personOptions'		=> $this->getStaffPersonOptions(),
+
 				// Prefs
 			'selectedJobTypes'	=> TodoyuArray::intExplode(',', $prefs['jobtypes']),
 			'selectedPersons'	=> TodoyuArray::intExplode(',', $prefs['persons']),
 		);
 
 		$content	= render($tmpl, $data);
-
 		$this->setContent($content);
 
 		return $content;
 	}
 
 
-	public function getPersonOptions() {
+
+	/**
+	 * Get options config array of persons assigned to internal company (staff members)
+	 *
+	 * @return	Array
+	 */
+	public function getStaffPersonOptions() {
 		$persons	= TodoyuJobtypeManager::getInternalPersonsWithJobtype();
 		$options	= array();
 
@@ -126,7 +133,6 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 
 		return parent::render();
 	}
-
 
 
 
@@ -211,9 +217,11 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 	}
 
 
-
-
-
+	/**
+	 * Get preferences of staff selector
+	 *
+	 * @return	Array
+	 */
 	public static function getPrefs() {
 		return TodoyuContactPreferences::getStaffSelectorPrefs();
 	}
@@ -221,7 +229,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 
 
 	/**
-	 * Get selected staff person's IDs
+	 * Get selected staff members person's IDs
 	 *
 	 * @return	Array
 	 */
@@ -233,7 +241,11 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 
 
 
-
+	/**
+	 * Get selected job types IDs
+	 *
+	 * @return	Array
+	 */
 	public static function getSelectedJobTypes() {
 		$jobtypes = TodoyuContactPreferences::getPref('staffSelector-jobtypes');
 
@@ -241,11 +253,15 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 	}
 
 
+
+	/**
+	 * Check access rights to staff selector widget
+	 *
+	 * @return	Boolean
+	 */
 	public static function isAllowed() {
 		return allowed('contact', 'panelwidgets:staffSelector');
 	}
 
-
 }
-
 ?>

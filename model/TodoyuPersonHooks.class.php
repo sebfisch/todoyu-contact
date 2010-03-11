@@ -38,7 +38,7 @@ class TodoyuPersonHooks {
 		$idTask		= intval($idTask);
 		$taskData	= TodoyuTaskManager::getTaskData($idTask);
 
-			// user_assigned
+			// person_assigned
 		$htmlID	= 'task_personassigned-' . $idTask . '-' . $taskData['id_person_assigned'];
 
 		$data['person_assigned']['id'] 		 = $htmlID;

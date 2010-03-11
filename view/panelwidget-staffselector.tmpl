@@ -7,7 +7,7 @@
 <label class="toggleSelect collapse {if !$jobTypeMultiple}expand{/if}" id="panelwidget-{$id}-jobtypetoggle-label" title="{Label panelwidget-staffselector.toggle.multiselect.title}" for="panelwidget-{$id}-jobtypetoggle"></label>
 <input class="toggleSelect" id="panelwidget-{$id}-jobtypetoggle" class="checkbox" type="checkbox" {if $jobTypeMultiple}checked="checked"{/if} />
 
-{* --------------- Staff users selector --------------- *}
+{* --------------- Staff persons selector --------------- *}
 <div class="fLabel odd">
 	<label>{Label panelwidget-staffselector.title}:</label>
 </div>
@@ -15,16 +15,4 @@
 <span class="overflowHidden scrollbarHide displayBlock">
 	{select options=$personOptions value=$selectedPersons id="panelwidget-$id-persons" multiple=true size=$listSize}
 </span>
-
-{*
-<select class="indexLetters" size="{$listSize}" id="panelwidget-{$id}-list" name="users" multiple="multiple">
-	{foreach $users index user users}
-		<option value="{$person.id}" {if in_array($user.id, $selectedUsers)}selected="selected"{/if} class="{if $colorizeOptions}enumColOptionLeftIcon{$person.id%$numColors}{/if}{if $indexLetter != strtoupper($user.lastname[0])} indexLetter{strtoupper($user.lastname[0])}{/if} {cycle values="odd,even"} {if in_array($user.id, $selectedUsers)}selected{/if} {if isCurrentUser}currentUser{/if}">
-			{assign var=indexLetter value=strtoupper($user.lastname[0])}
-			{$person.lastname}, {$person.firstname} ({Label $user.jobtype true})
-			{assign var=prevIndexLetter value=$indexLettter}
-		</option>
-	{/foreach}
-</select>
-*}
 
