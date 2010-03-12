@@ -236,20 +236,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 	public static function getSelectedPersons() {
 		$prefs = json_decode(TodoyuContactPreferences::getPref('panelwidget-staffselector', 0, AREA, false));
 		
-		return $prefs->persons;
-	}
-
-
-
-	/**
-	 * Get selected job types IDs
-	 *
-	 * @return	Array
-	 */
-	public static function getSelectedJobTypes() {
-		$jobtypes = TodoyuContactPreferences::getPref('panelwidget-staffselector');
-
-		return TodoyuArray::intExplode(',', $jobtypes);
+		return is_array($prefs->persons) ? $prefs->persons : array();
 	}
 
 
