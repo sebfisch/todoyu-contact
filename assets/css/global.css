@@ -54,10 +54,11 @@ span.wizardIcon.createNewPerson	{
 /* -----------------
 	Search
    ----------------- */
-
-#headlet-quicksearch-modes .searchmode-company a {
+#headlet-quicksearch-content form.searchmodeCompany a.mode,
+#headlet-quicksearch-content li.searchmodeCompany a {
 	background:url(../img/icons.png) no-repeat 3px -148px !important;
 }
-#headlet-quicksearch-modes .searchmode-person a {
+#headlet-quicksearch-content form.searchmodePerson a.mode,
+#headlet-quicksearch-content li.searchmodePerson a {
 	background:url(../img/icons.png) no-repeat 3px 3px !important;
 }
