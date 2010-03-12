@@ -25,12 +25,12 @@ span.wizardIcon.createNewPerson	{
 	Create mode options in headlet
    ----------------------------------- */
 
-#headlet-quickcreate-content a.itemContactCompany {
-	background: url(../img/icons.png) no-repeat 7px -238px;
+#headlet-quickcreate-content li.itemContactCompany a {
+	background: url(../img/icons.png) no-repeat 5px -238px;
 }
 
-#headlet-quickcreate-content a.itemContactPerson {
-	background: url(../img/icons.png) no-repeat 6px -88px;
+#headlet-quickcreate-content li.itemContactPerson a {
+	background: url(../img/icons.png) no-repeat 5px -88px;
 }
 
 
@@ -55,9 +55,9 @@ span.wizardIcon.createNewPerson	{
 	Search
    ----------------- */
 
-.searchmode-company {
+#headlet-quicksearch-modes .searchmode-company a {
 	background:url(../img/icons.png) no-repeat 3px -148px !important;
 }
-.searchmode-person {
+#headlet-quicksearch-modes .searchmode-person a {
 	background:url(../img/icons.png) no-repeat 3px 3px !important;
 }
