@@ -86,23 +86,13 @@ class TodoyuContactInfoManager {
 
 
 	public static function addContactinfo(array $data = array()) {
-		unset($data['id']);
-
-		$data['date_create']	= NOW;
-		$data['id_person_create']	= personid();
-
-		return Todoyu::db()->addRecord(self::TABLE, $data);
+		return TodoyuRecordManager::addRecord(self::TABLE, $data);
 	}
 
 
 
 	public static function updateContactinfo($idContactinfo, array $data) {
-		$idContactinfo	= intval($idContactinfo);
-		unset($data['id']);
-
-		$data['date_update']	= NOW;
-
-		return Todoyu::db()->updateRecord(self::TABLE, $idContactinfo, $data);
+		return TodoyuRecordManager::updateRecord(self::TABLE, $idContactinfo, $data);
 	}
 
 

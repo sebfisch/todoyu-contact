@@ -197,9 +197,7 @@ class TodoyuJobtypeManager {
 	 * @return	Integer
 	 */
 	public static function addJobtype(array $data = array()) {
-		unset($data['id']);
-
-		return Todoyu::db()->addRecord(self::TABLE, $data);
+		return TodoyuRecordManager::addRecord(self::TABLE, $data);
 	}
 
 
@@ -211,10 +209,7 @@ class TodoyuJobtypeManager {
 	 * @return	Bool
 	 */
 	public static function updateJobtype($idJobtype, array $data) {
-		$idJobtype	= intval($idJobtype);
-		unset($data['id']);
-
-		return Todoyu::db()->updateRecord(self::TABLE, $idJobtype, $data);
+		return TodoyuRecordManager::updateRecord(self::TABLE, $idJobtype, $data);
 	}
 
 

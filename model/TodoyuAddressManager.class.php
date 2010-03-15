@@ -71,21 +71,11 @@ class TodoyuAddressManager {
 	}
 
 	public static function addAddress(array $data = array()) {
-		unset($data['id']);
-
-		$data['id_person_create']	= personid();
-		$data['date_create']	= NOW;
-
-		return Todoyu::db()->addRecord(self::TABLE, $data);
+		return TodoyuRecordManager::addRecord(self::TABLE, $data);
 	}
 
 	public static function updateAddress($idAddress, array $data) {
-		$idAddress	= intval($idAddress);
-		unset($data['id']);
-
-		$data['date_update']	= NOW;
-
-		return Todoyu::db()->updateRecord(self::TABLE, $idAddress, $data);
+		return TodoyuRecordManager::updateRecord(self::TABLE, $idAddress, $data);
 	}
 
 
@@ -94,7 +84,7 @@ class TodoyuAddressManager {
 			'deleted'	=> 1
 		);
 
-		TodoyuRecordManager::updateRecord(self::TABLE, $idAddress, $update);
+		self::updateAddress($idAddress, $update);
 	}
 
 
