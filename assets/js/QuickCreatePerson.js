@@ -65,11 +65,13 @@ Todoyu.Ext.contact.QuickCreatePerson = {
 				// Saving succeeded
 			var idPerson	= response.getTodoyuHeader('idPerson');
 			Todoyu.Hook.exec('onPersonSaved', idPerson);
-//			this.showList();
 
 			Todoyu.Popup.close('quickcreate');
 			Todoyu.notifySuccess('[LLL:contact.person.saved]');
-
+			
+			if ( Todoyu.getArea() == 'contact' ) {
+				this.showList();
+			}
 		}
 	}
 
