@@ -33,6 +33,7 @@ Todoyu.Ext.contact.QuickCreateCompany = {
 	 * Save company
 	 *
 	 * @param	form
+	 * @return	Boolean		false
 	 */
 	save: function(form) {
 		$(form).request ({
@@ -59,10 +60,13 @@ Todoyu.Ext.contact.QuickCreateCompany = {
 		} else {
 			var idCompany	= response.getTodoyuHeader('idCompany');
 			Todoyu.Hook.exec('onCompanySaved', idCompany);
-//			Todoyu.Ext.contact.Company.showList();
 
 			Todoyu.Headlet.QuickCreate.closePopup();
 			Todoyu.notifySuccess('[LLL:contact.company.saved.ok]');
+			
+			if ( Todoyu.getArea() == 'contact' ) {
+				Todoyu.Ext.contact.Company.showList();
+			}
 		}
 	}
 
