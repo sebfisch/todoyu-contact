@@ -151,7 +151,6 @@
 									<field>username</field>
 								</requiredIfNotEmpty>								
 							</validate>
-							<required />
 						</field>
 		
 						<field type="checkbox" name="is_admin">
