@@ -82,15 +82,15 @@
 		<label index="quickinfo.preferredphone.notfound">No Preferred Phone Set</label>
 
 
-		<label index="form.error.newPersonHasPassword">Enter A Password For A New Person</label>
-		<label index="form.error.password_second">Passwords Do Not Match</label>
-		<label index="form.error.minLengthIfNotEmpty">Password Needs At Least %s Signs</label>
-		<label index="form.error.numbers">Password Needs Numbers</label>
-		<label index="form.error.upper">Password Needs Uppercase</label>
-		<label index="form.error.lower">Password needs Lowercase</label>
-		<label index="form.error.special">Password Needs Special Signs</label>
-		<label index="form.error.nointernalpersons">There Are No Persons Marked As "Internal"</label>
-		<label index="form.error.usernameUnique">Username Has To Be Unique</label>
+		<label index="password.newPersonHasPassword">Enter A Password For A New Person</label>
+		<label index="password.password_second">Passwords Do Not Match</label>
+		<label index="password.minLengthIfNotEmpty">Password Needs At Least %s Letters</label>
+		<label index="password.numbers">Password Needs Numbers</label>
+		<label index="password.upper">Password Needs Uppercase</label>
+		<label index="password.lower">Password needs Lowercase</label>
+		<label index="password.special">Password Needs Special Signs</label>
+		<label index="password.nointernalpersons">There Are No Persons Marked As "Internal"</label>
+		<label index="password.usernameUnique">Username Has To Be Unique</label>
 
 
 		<label index="contact.createnew">Create New</label>

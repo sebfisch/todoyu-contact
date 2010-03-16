@@ -19,12 +19,16 @@
 ***************************************************************/
 
 Todoyu.Ext.contact.QuickCreatePerson = {
+	
+	ext: Todoyu.Ext.contact,
+	
+	person: Todoyu.Ext.contact.Person,
 
 	/**
 	 * Evoked upon opening of person quick create wizard popup
 	 */
 	onPopupOpened: function() {
-
+		this.person.onEdit(0);
 	},
 
 

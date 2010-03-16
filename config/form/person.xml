@@ -26,6 +26,7 @@
 							<label>contact.person.attr.gender.f</label>
 						</option>
 					</source>
+					<noPleaseSelect />
 				</field>
 
 				<field type="textinput" name="lastname">
