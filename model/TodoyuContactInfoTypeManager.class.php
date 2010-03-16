@@ -27,7 +27,11 @@
  */
 class TodoyuContactInfoTypeManager {
 
+	/**
+	 * Default table for database requests
+	 */
 	const TABLE = 'ext_contact_contactinfotype';
+
 
 
 	/**

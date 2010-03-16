@@ -29,7 +29,6 @@ class TodoyuAddressManager {
 
 	/**
 	 * Ext DB table
-	 *
 	 */
 	const TABLE = 'ext_contact_address';
 

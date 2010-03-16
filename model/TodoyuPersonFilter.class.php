@@ -29,8 +29,7 @@
 class TodoyuPersonFilter extends TodoyuFilterBase {
 
 	/**
-	 * Default table
-	 *
+	 * Default table for database requests
 	 */
 	const TABLE = 'ext_contact_person';
 
