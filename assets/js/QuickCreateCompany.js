@@ -55,14 +55,14 @@ Todoyu.Ext.contact.QuickCreateCompany = {
 	onSaved: function(response) {
 		if( response.hasTodoyuError() ) {
 			Todoyu.Headlet.QuickCreate.updatePopupContent(response.responseText);
-			Todoyu.notifyError('[LLL:contact.company.save.error]');
+			Todoyu.notifyError('[LLL:contact.company.saved.error]');
 		} else {
 			var idCompany	= response.getTodoyuHeader('idCompany');
 			Todoyu.Hook.exec('onCompanySaved', idCompany);
 //			Todoyu.Ext.contact.Company.showList();
 
 			Todoyu.Headlet.QuickCreate.closePopup();
-			Todoyu.notifySuccess('[LLL:contact.company.save.success]');
+			Todoyu.notifySuccess('[LLL:contact.company.saved.ok]');
 		}
 	}
 

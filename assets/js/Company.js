@@ -94,7 +94,7 @@ Todoyu.Ext.contact.Company =  {
 
 	/**
 	 * Save company record
-	 * 
+	 *
 	 * @param	String		form
 	 */
 	save: function(form) {
@@ -112,18 +112,18 @@ Todoyu.Ext.contact.Company =  {
 
 	/**
 	 * Handler being evoked OnComplete of save company request: check for and notify success / error, update display
-	 * 
+	 *
 	 * @param	Object	response
 	 */
 	onSaved: function(response) {
 		var error	= response.hasTodoyuError();
 
 		if( error ) {
-			Todoyu.notifyError('[LLL:contact.company.save.error]');
+			Todoyu.notifyError('[LLL:contact.company.saved.error]');
 			$('contact-form-content').update(response.responseText);
 		} else {
 				// Notify (implement)
-			Todoyu.notifySuccess('[LLL:contact.company.save.ok]');
+			Todoyu.notifySuccess('[LLL:contact.company.saved.ok]');
 			this.showList();
 		}
 	},
@@ -141,7 +141,7 @@ Todoyu.Ext.contact.Company =  {
 
 	/**
 	 * Update company list
-	 * 
+	 *
 	 * @param	String		sword		(search word)
 	 */
 	showList: function(sword) {
@@ -160,7 +160,7 @@ Todoyu.Ext.contact.Company =  {
 
 	/**
 	 * Show detail view (popup) of given company
-	 * 
+	 *
 	 * @param	Integer		idCompany
 	 */
 	show: function(idCompany) {

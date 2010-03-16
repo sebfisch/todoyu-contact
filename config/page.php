@@ -25,8 +25,8 @@ if( allowed('contact', 'general:area') ) {
 
 		// Add sub entries: person, company
 	if( allowed('contact', 'general:area') ) {
-		TodoyuFrontend::addSubmenuEntry('contact', 'contactPerson',		'LLL:contact.subMenuEntry.person',	'?ext=contact&type=person', 105);
-		TodoyuFrontend::addSubmenuEntry('contact', 'contactCompany',	'LLL:contact.subMenuEntry.company',	'?ext=contact&type=company', 110);
+		TodoyuFrontend::addSubmenuEntry('contact', 'contactPerson',		'LLL:contact.persons',	'?ext=contact&type=person', 105);
+		TodoyuFrontend::addSubmenuEntry('contact', 'contactCompany',	'LLL:contact.companys',	'?ext=contact&type=company', 110);
 	}
 }
 

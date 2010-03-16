@@ -74,7 +74,7 @@ Todoyu.Ext.contact.Person =  {
 
 	/**
 	 * Toggle display of login related fields of given person
-	 * 
+	 *
 	 * @param	Integer		idPerson
 	 * @param	Event		event
 	 */
@@ -92,7 +92,7 @@ Todoyu.Ext.contact.Person =  {
 	 * @paran	Integer		idPerson
 	 */
 	remove: function(idPerson) {
-		if( confirm('[LLL:contact.person.remove.confirm]') )	{
+		if( confirm('[LLL:contact.person.delete.confirm]') )	{
 			var url = Todoyu.getUrl('contact', 'person');
 			var options = {
 				'parameters': {
@@ -199,7 +199,7 @@ Todoyu.Ext.contact.Person =  {
 
 
 	/**
-	 * Handler evoked upon onComplete of person saving: check for and notify success / error, update display 
+	 * Handler evoked upon onComplete of person saving: check for and notify success / error, update display
 	 *
 	 * @paran	Array	response
 	 */
@@ -225,7 +225,7 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Show (filtered) persons list
 	 *
-	 * @paran	String		sword		(search word)	
+	 * @paran	String		sword		(search word)
 	 */
 	showList: function(sword) {
 		var url = Todoyu.getUrl('contact', 'person');

@@ -36,16 +36,18 @@ class TodoyuContactQuickinfoActionController extends TodoyuActionController {
 	public function personAction(array $params) {
 		$idPerson	= intval($params['key']);
 
-		$data	= TodoyuPersonManager::getPersonArray($idPerson);
-
-		$phone	= TodoyuPersonManager::getPreferredPhone($idPerson);
-		$phone	= ( $phone === false ) ? Label('contact.quickinfo.preferredphone.notfound') : $phone['info'];
-
 		$quickInfo	= new TodoyuQuickinfo();
+
+		$data	= TodoyuPersonManager::getPersonArray($idPerson);
+		$phone	= TodoyuPersonManager::getPreferredPhone($idPerson);
 
 		$quickInfo->addInfo('name', TodoyuPersonManager::getLabel($idPerson) );
 		$quickInfo->addInfo('email', 	$data['email'] );
-		$quickInfo->addInfo('phone', 	$phone );
+
+		if( $phone !== false ) {
+			$quickInfo->addInfo('phone', $phone['info']);
+		}
+
 		$quickInfo->addInfo('birthday', $data['birthday'] );
 
 		$quickInfo->printInfoJSON();

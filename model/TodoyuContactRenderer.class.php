@@ -287,32 +287,6 @@ class TodoyuContactRenderer {
 
 
 	/**
-	 * Render contact creation/ editing form header label
-	 *
-	 * @param	String				$type
-	 * @param	TodoyuBaseObject	$record
-	 * @param	Integer				$idRecord
-	 * @return	String
-	 */
-	public static function getContactFormHeader($type, TodoyuBaseObject $record,  $idRecord = 0) {
-		$idRecord	= intval($idRecord);
-
-		if( $idRecord === 0 )	{
-				// Creating new contact record
-			$header	= TodoyuLanguage::getLabel('contact.contact.createnew') . ' ' . TodoyuLanguage::getLabel(TodoyuContactManager::getContactTypeLabel($type));
-		} else {
-				// Editing existing contact record
-			if( method_exists($record, 'getLabel') )	{
-				$header = TodoyuLanguage::getLabel('contact.contact.edit') . ' ' . TodoyuContactManager::getContactTypeObj($type, $idRecord)->getLabel();
-			}
-		}
-
-		return $header;
-	}
-
-
-
-	/**
 	 * Render panel widgets
 	 *
 	 * @return	String

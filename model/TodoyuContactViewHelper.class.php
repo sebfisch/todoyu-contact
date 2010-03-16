@@ -112,7 +112,7 @@ class TodoyuContactViewHelper {
 		if ( count($options) == 0 ) {
 			$options[]	= array(
 				'value'		=> 'disabled',
-				'label'		=> 'LLL:contact.error.noJobtypes',
+				'label'		=> 'LLL:contact.company.attr.person.jobtype.noJobtypes',
 				'disabled'	=> true,
 				'classname'	=> 'error'
 			);
