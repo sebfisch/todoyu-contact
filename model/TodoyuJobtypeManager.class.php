@@ -127,7 +127,7 @@ class TodoyuJobtypeManager {
 	public static function getInternalPersonsWithJobtype() {
 		$persons	= TodoyuPersonManager::getInternalPersons(true, false);
 		$jobTypes	= self::getAllJobtypes();
-		$jobTypes	= TodoyuDiv::useFieldAsIndex($jobTypes, 'id');
+		$jobTypes	= TodoyuArray::useFieldAsIndex($jobTypes, 'id');
 
 		foreach($persons as $index => $person) {
 			$persons[$index]['jobtype']	= $person['id_jobtype'] != 0 ? TodoyuDiv::getLabel($jobTypes[$person['id_jobtype']]['title']) : TodoyuLanguage::getLabel('contact.noJobDefined');

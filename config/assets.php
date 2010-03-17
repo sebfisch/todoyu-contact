@@ -38,6 +38,18 @@ $CONFIG['EXT']['contact']['assets'] = array(
 				'position'	=> 100
 			),
 			array(
+				'file'		=> 'ext/contact/assets/js/Autocomplete.js',
+				'position'	=> 101
+			),
+			array(
+				'file'		=> 'ext/contact/assets/js/Person.js',
+				'position'	=> 105
+			),
+			array(
+				'file'		=> 'ext/contact/assets/js/Company.js',
+				'position'	=> 106
+			),
+			array(
 				'file'		=> 'ext/contact/assets/js/QuickCreatePerson.js',
 				'position'	=> 110
 			),
@@ -60,20 +72,7 @@ $CONFIG['EXT']['contact']['assets'] = array(
 
 		// Public assets: basic assets for this extension
 	'public' => array(
-		'js' => array(
-			array(
-				'file'		=> 'ext/contact/assets/js/Autocomplete.js',
-				'position'	=> 101
-			),
-			array(
-				'file'		=> 'ext/contact/assets/js/Person.js',
-				'position'	=> 105
-			),
-			array(
-				'file'		=> 'ext/contact/assets/js/Company.js',
-				'position'	=> 106
-			)
-		),
+		'js' => array( ),
 		'css' => array(
 			array(
 				'file'		=> 'ext/contact/assets/css/ext.css',

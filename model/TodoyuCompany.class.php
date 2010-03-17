@@ -78,7 +78,7 @@ class TodoyuCompany extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getShortLabel() {
-		return empty($this->data['shortname']) ? TodoyuDiv::cropText($this->getTitle(), 6, '', false) : $this->getShortname();
+		return empty($this->data['shortname']) ? TodoyuString::crop($this->getTitle(), 6, '', false) : $this->getShortname();
 	}
 
 
