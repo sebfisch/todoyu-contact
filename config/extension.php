@@ -104,8 +104,8 @@ $CONFIG['EXT']['contact']['listing']['person'] = array(
 	),
 	'truncate'	=> array(
 		'lastname'	=> 20,
-		'firstname'	=> 16,
-		'email'		=> 20,
+		'firstname'	=> 14,
+		'email'		=> 16,
 		'company'	=> 24
 	)
 );

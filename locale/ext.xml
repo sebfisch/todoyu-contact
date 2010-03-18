@@ -21,6 +21,7 @@
 		<label index="person.attr.gender">Gender</label>
 		<label index="person.attr.gender.m">Mr</label>
 		<label index="person.attr.gender.f">Ms</label>
+		<label index="person.attr.birthdate">Birthdate</label>
 		<label index="person.attr.firstname">Firstname</label>
 		<label index="person.attr.lastname">Lastname</label>
 		<label index="person.attr.shortname">Shortname</label>
@@ -120,6 +121,7 @@
 		<label index="person.attr.gender">Geschlecht</label>
 		<label index="person.attr.gender.m">Herr</label>
 		<label index="person.attr.gender.f">Frau</label>
+		<label index="person.attr.birthdate">Geburtsdatum</label>
 		<label index="person.attr.firstname">Vorname</label>
 		<label index="person.attr.lastname">Nachname</label>
 		<label index="person.attr.shortname">Kurzname</label>
