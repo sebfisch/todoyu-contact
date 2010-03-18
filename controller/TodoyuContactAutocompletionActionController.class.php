@@ -59,10 +59,18 @@ class TodoyuContactAutocompletionActionController extends TodoyuActionController
 	 * @param	Array	$params
 	 */
 	public function regionAction(array $params) {
-		$sword	= trim($params['sword']);
-		$config	= array();
+		$sword		= trim($params['sword']);
+		$elemParts	= explode('-', $params['acelementid']);
+		$index		= intval($elemParts[2]);
+		$fieldName	= $elemParts[1];
+		$formName	= $params['formName'];
+		$idCountry	= intval($params[$formName][$fieldName][$index]['id_country']);
 
-		$results= TodoyuDatasource::autocompleteRegions($sword, $config);
+		if( $idCountry === 0 ) {
+			$results	= array();
+		} else {
+			$results	= TodoyuDatasource::autocompleteRegions($sword, $idCountry);
+		}
 
 		return TodoyuRenderer::renderAutocompleteList($results);
 	}

@@ -107,6 +107,9 @@ CREATE TABLE `ext_contact_contactinfotype` (
 
 CREATE TABLE `ext_contact_jobtype` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date_create` int(11) NOT NULL,
+  `date_update` int(11) NOT NULL,
+  `id_person_create` smallint(5) unsigned NOT NULL,
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `title` varchar(48) NOT NULL,
   PRIMARY KEY (`id`)
