@@ -26,8 +26,6 @@ class TodoyuContactExtActionController extends TodoyuActionController {
 
 			// set active tab
 		TodoyuFrontend::setActiveTab('contact');
-			// Add page assets
-		TodoyuPage::addExtAssets('contact', 'public');
 
 		TodoyuPage::init('ext/contact/view/ext.tmpl');
 		TodoyuPage::setTitle('LLL:contact.page.title');

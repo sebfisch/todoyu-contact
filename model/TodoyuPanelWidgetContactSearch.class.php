@@ -42,7 +42,6 @@ class TodoyuPanelWidgetContactSearch extends TodoyuPanelWidget implements Todoyu
 				$idArea
 		);
 
-		TodoyuPage::addExtAssets('contact', 'panelwidget-contactsearch');
 		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.contact.PanelWidget.ContactSearch.init.bind(Todoyu.Ext.contact.PanelWidget.ContactSearch)', 100);
 
 		$this->addHasIconClass();

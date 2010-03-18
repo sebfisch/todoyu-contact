@@ -46,12 +46,8 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 			$idArea									// area ID
 		);
 
-				// have public ext. and widget specific assets added
-		TodoyuPage::addExtAssets('contact', 'public');
-		TodoyuPage::addExtAssets('contact', 'panelwidget-staffselector');
-
 			// Add classes
-		parent::addHasIconClass();
+		$this->addHasIconClass();
 
 			// Get jobtype <> person mapping
 		$jobTypes2PersonsJSON	= $this->getJobTypes2PersonsJSON();
@@ -235,7 +231,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 	 */
 	public static function getSelectedPersons() {
 		$prefs = json_decode(TodoyuContactPreferences::getPref('panelwidget-staffselector', 0, AREA, false));
-		
+
 		return is_array($prefs->persons) ? $prefs->persons : array();
 	}
 
