@@ -65,31 +65,7 @@ $CONFIG['EXT']['contact']['addresstypes'] = array(
 $CONFIG['EXT']['contact']['numFavoriteCountries']	= 5;
 
 
-
-/**
- * @todo	Which of this keys are still in use?
- */
-/*
-$CONFIG['EXT']['contact']['contacttypes']	= array(
-	'person' => array(
-		'label'		=> 'LLL:contact.contacttypes.person',
-		'formXml'	=> 'ext/contact/config/form/person.xml',
-		'objClass'	=> 'TodoyuPerson',
-		'listFunc'	=> 'TodoyuContactManager::ListPersons',
-		'saveFunc'	=> 'TodoyuContactManager::savePerson',
-		'deleteFunc'=> 'TodoyuPersonManager::deletePerson'
-	),
-	'company' => array(
-		'label'		=> 'LLL:contact.contacttypes.company',
-		'formXml'	=> 'ext/contact/config/form/company.xml',
-		'objClass'	=> 'TodoyuCompany',
-		'listFunc'	=> 'TodoyuContactManager::ListCompanies',
-		'saveFunc'	=> 'TodoyuContactManager::saveCompany',
-		'deleteFunc'=> 'TodoyuCompanyManager::deleteCompany'
-	)
-);
-*/
-
+	// Sub tabs
 $CONFIG['EXT']['contact']['tabs'] = array(
 	array(
 		'id'		=> 'person',
@@ -124,7 +100,13 @@ $CONFIG['EXT']['contact']['listing']['person'] = array(
 		'firstname'	=> 'LLL:contact.person.attr.firstname',
 		'email'		=> 'LLL:contact.email',
 		'company'	=> 'LLL:contact.company',
-		'actions'	=> ''
+		'actions'	=> '',
+	),
+	'truncate'	=> array(
+		'lastname'	=> 20,
+		'firstname'	=> 16,
+		'email'		=> 20,
+		'company'	=> 24
 	)
 );
 
