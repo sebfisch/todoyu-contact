@@ -19,11 +19,13 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-if ( allowed('contact', 'general:use') ) {
-		// Add quick create types
+	// Add quick create types
+if ( allowed('contact', 'person.add') ) {
 	TodoyuQuickCreateManager::addEngine('contact', 'person', 'contact.create.person.label', 50, array('contact'));
-	TodoyuQuickCreateManager::addEngine('contact', 'company', 'contact.create.company.label', 60);
+}
 
+if ( allowed('contact', 'company.add') ) {
+	TodoyuQuickCreateManager::addEngine('contact', 'company', 'contact.create.company.label', 60);
 }
 
 ?>

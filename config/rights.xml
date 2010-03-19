@@ -5,9 +5,15 @@
 		<right name="area" require="general:use" />
 	</section>
 	
-	<section name="person" require="general:area">
-		<right name="editAndDelete" />
+	<section name="person">
+		<right name="add" />
+		<right name="editAndDelete" require="general:area" />
 		<right name="enableLogin" require="person:editAndDelete" />
+	</section>
+	
+	<section name="company">
+		<right name="add" />
+		<right name="editAndDelete" require="general:area" />
 	</section>
 	
 	<section name="panelwidgets" require="general:use">
