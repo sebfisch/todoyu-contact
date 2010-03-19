@@ -135,6 +135,16 @@ form.formPerson fieldset.account fieldset.loginfields {
 	width:640px;
 }
 
+form.formPerson div.fieldnamePassword div.fField span.textAfterField  {
+	display:inline-block;
+	width:99%;
+	padding:2px;
+	border:1px solid #CCC;
+	background-color:#EFEFEF;
+	font-size:10px;
+	color:#666;
+}
+
 
 
 
