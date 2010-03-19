@@ -55,7 +55,7 @@ class TodoyuContactExtActionController extends TodoyuActionController {
 		TodoyuPage::set('tabs', $tabs);
 		TodoyuPage::set('content', $content);
 
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.contact.init.bind(Todoyu.Ext.contact)', 100);
+//		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.contact.init.bind(Todoyu.Ext.contact)', 100);
 
 			// Display output
 		return TodoyuPage::render();
