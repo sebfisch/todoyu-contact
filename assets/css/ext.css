@@ -26,7 +26,7 @@ h1.extIconContact .title {
 
 	/* Column configs */
 .personListing span.icon {
-	background:url(../img/icons.png) no-repeat 6px 0px;
+	background:url(../img/icons.png) no-repeat 2px 1px;
 }
 .personListing td.icon.person {
 	background:url(../img/icons.png) no-repeat 6px -116px;
@@ -40,7 +40,7 @@ h1.extIconContact .title {
 	background-repeat:no-repeat;
 }
 .personListing td.actions div.info {
-	background-position:0 3px;
+	background-position:0 -355px;
 }
 .personListing td.actions div.edit {
 	background-position:0 -27px;
@@ -167,7 +167,7 @@ div.visitingCardContent table tr td {
 
 div.visitingCardContent table tr td.label {
 	padding-right:18px;
-	
+
 	letter-spacing: 0.3px;
 }
 
