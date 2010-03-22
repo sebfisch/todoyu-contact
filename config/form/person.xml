@@ -139,6 +139,7 @@
 									<allowEmpty />
 								</goodPassword>
 							</validate>
+							<textAfterField>LLL:contact.person.attr.password.hasPassword</textAfterField>
 						</field>
 						
 						<field type="textinput" name="email">

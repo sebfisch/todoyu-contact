@@ -31,6 +31,7 @@
 		<label index="person.attr.active">Enable Login</label>
 		<label index="person.attr.username">Username</label>
 		<label index="person.attr.password">Password</label>
+		<label index="person.attr.password.hasPassword">Only fill out to change to current password</label>
 		<label index="person.attr.email">Email</label>
 		<label index="person.attr.is_admin">Is Admin</label>
 		<label index="person.attr.role.new">New Role</label>
@@ -131,6 +132,7 @@
 		<label index="person.attr.active">Zugang aktivieren</label>
 		<label index="person.attr.username">Benutzername</label>
 		<label index="person.attr.password">Passwort</label>
+		<label index="person.attr.password.hasPassword">Nur ausfüllen um das aktuelle Passwort zu ändern</label>
 		<label index="person.attr.email">Email</label>
 		<label index="person.attr.is_admin">Hat Administratorrechte</label>
 		<label index="person.attr.role.new">Neue Rolle</label>

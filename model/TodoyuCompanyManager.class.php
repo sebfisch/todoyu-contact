@@ -575,6 +575,38 @@ class TodoyuCompanyManager {
 		return $label;
 	}
 
+
+
+	/**
+	 * Check if a company has projects
+	 *
+	 * @param	Integer		$idCompany
+	 * @return	Bool
+	 */
+	public static function hasProjects($idCompany) {
+		$idCompany	= intval($idCompany);
+
+		return sizeof(self::getProjectIDs($idCompany)) > 0;
+	}
+
+
+
+	/**
+	 * Get project IDs of the company
+	 *
+	 * @param	Integer		$idCompany
+	 * @return	Array
+	 */
+	public static function getProjectIDs($idCompany) {
+		$idCompany	= intval($idCompany);
+
+		$field	= 'id';
+		$table	= 'ext_project_project';
+		$where	= '	id_company	= ' . $idCompany . ' AND
+					deleted		= 0';
+
+		return Todoyu::db()->getColumn($field, $table, $where);
+	}
 }
 
 ?>

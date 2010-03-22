@@ -158,7 +158,12 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 		$idCompany	= intval($params['company']);
 
-		TodoyuCompanyManager::deleteCompany($idCompany);
+		if( TodoyuCompanyManager::hasProjects($idCompany) ) {
+			TodoyuHeader::sendTodoyuErrorHeader();
+			TodoyuHeader::sendTodoyuHeader('errorMessage', 'Diese Firma hat Projekte');
+		} else {
+			TodoyuCompanyManager::deleteCompany($idCompany);
+		}
 	}
 
 
