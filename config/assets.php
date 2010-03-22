@@ -21,7 +21,6 @@
 
 /**
  * Assets registration of contact extension
- *
  */
 
 $CONFIG['EXT']['contact']['assets'] = array(

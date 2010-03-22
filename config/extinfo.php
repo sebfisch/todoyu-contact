@@ -23,7 +23,6 @@
  * Various contact extension info data
  */
 
-
 $CONFIG['EXT']['contact']['info'] = array(
 	'title'			=> 'Contact',
 	'description' 	=> 'Maintain Your Contacts',
@@ -42,6 +41,5 @@ $CONFIG['EXT']['contact']['info'] = array(
 		'system'	=> true
 	)
 );
-
 
 ?>

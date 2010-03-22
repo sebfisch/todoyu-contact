@@ -42,7 +42,6 @@ $CONFIG['EXT']['contact']['contactinfotypecategories'] = array(
 	),
 );
 
-
 	// Types of addresses
 $CONFIG['EXT']['contact']['addresstypes'] = array(
 		// Home address
@@ -63,6 +62,7 @@ $CONFIG['EXT']['contact']['addresstypes'] = array(
 );
 
 $CONFIG['EXT']['contact']['numFavoriteCountries']	= 5;
+
 
 
 	// Sub tabs
@@ -134,6 +134,7 @@ $CONFIG['EXT']['contact']['listing']['company'] = array(
 $CONFIG['EXT']['contact']['panelWidgetStaffSelector'] = array(
 	'maxListSize'	=> 15 // Max size of person selector
 );
+
 
 
 	// Implement person quickInfo class to various person labels
