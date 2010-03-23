@@ -9,7 +9,7 @@
 		<field name="id"/>
 	</hiddenFields>
 	<fieldsets>
-		
+
 		<fieldset name="main">
 			<legend>Main person data</legend>
 			<elements>
@@ -50,10 +50,10 @@
 					</calendar>
 					<storeAsDate />
 				</field>
-				
+
 			</elements>
 		</fieldset>
-		
+
 		<fieldset name="relations">
 			<legend>Person relations</legend>
 			<elements>
@@ -92,7 +92,7 @@
 
 				<field type="databaseRelation" name="company">
 					<label>contact.person.attr.company</label>
-					<addLabel>contact.person.attr.company.new</addLabel>
+					<addLabel>contact.company.new</addLabel>
 					<record>
 						<form>ext/contact/config/form/person-company.xml</form>
 						<url>
@@ -108,22 +108,22 @@
 
 			</elements>
 		</fieldset>
-		
-		
+
+
 		<fieldset name="account">
 			<legend>Login account</legend>
 			<restrict>
 				<allow ext="contact" right="person:enableLogin" />
 			</restrict>
 			<elements>
-				
+
 				<field type="checkbox" name="active">
 					<label>contact.person.attr.active</label>
 				</field>
-				
+
 				<fieldset name="loginfields">
 					<elements>
-				
+
 						<field type="textinput" name="username">
 							<label>contact.person.attr.username</label>
 							<validate>
@@ -133,7 +133,7 @@
 								</unique>
 							</validate>
 						</field>
-		
+
 						<field type="textinput" name="password">
 							<label>contact.person.attr.password</label>
 							<type>password</type>
@@ -144,7 +144,7 @@
 							</validate>
 							<textAfterField>LLL:contact.person.attr.password.hasPassword</textAfterField>
 						</field>
-						
+
 						<field type="textinput" name="email">
 							<label>contact.person.attr.email</label>
 							<validate>
@@ -153,16 +153,17 @@
 								</email>
 								<requiredIfNotEmpty>
 									<field>username</field>
-								</requiredIfNotEmpty>								
+								</requiredIfNotEmpty>
 							</validate>
 						</field>
-		
+
 						<field type="checkbox" name="is_admin">
 							<label>contact.person.attr.is_admin</label>
 						</field>
-		
+
 						<field type="databaseRelation" name="role">
 							<label>core.roles</label>
+							<addLabel>core.role.new</addLabel>
 							<record>
 								<form>ext/contact/config/form/person-role.xml</form>
 								<url>
@@ -177,7 +178,7 @@
 						</field>
 					</elements>
 				</fieldset>
-				
+
 			</elements>
 		</fieldset>
 

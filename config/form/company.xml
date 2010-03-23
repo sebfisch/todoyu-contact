@@ -31,6 +31,7 @@
 
 				<field type="databaseRelation" name="contactinfo">
 					<label>contact.contactinfo</label>
+					<addLabel>contact.contactinfo.new</addLabel>
 					<record>
 						<form>ext/contact/config/form/contactinfo.xml</form>
 						<url>
@@ -46,6 +47,7 @@
 
 				<field type="databaseRelation" name="address">
 					<label>contact.address</label>
+					<addLabel>contact.address.new</addLabel>
 					<record>
 						<form>ext/contact/config/form/address.xml</form>
 						<url>
@@ -61,6 +63,7 @@
 
 				<field type="databaseRelation" name="person">
 					<label>contact.company.attr.person</label>
+					<addLabel>contact.person.new</addLabel>
 					<record>
 						<form>ext/contact/config/form/company-person.xml</form>
 						<url>

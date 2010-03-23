@@ -75,7 +75,7 @@ function Dwoo_Plugin_name_compile(Dwoo_Compiler $compiler, $idPerson) {
  * @param	String			$class
  * @return	String
  */
-function Dwoo_Plugin_personLabel(Dwoo $dwoo, $idPrefix = '', $idRecord = 0, $idPerson = 0, $tag = 'span', $class = '')	{
+function Dwoo_Plugin_personLabel(Dwoo $dwoo, $idPerson = 0, $idPrefix = '', $idRecord = 0, $tag = 'span', $class = '')	{
 	$htmlID		= $idPrefix . '-' . $idRecord . '-' . $idPerson;
 
 	$openingTag	= '<' . $tag . ' id="' . $htmlID . '" class="quickInfoPerson ' . $class . '">';

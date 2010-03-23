@@ -9,6 +9,8 @@
 		<label index="companys">Companies</label>
 		<label index="workaddress">Place Of Work</label>
 		<label index="jobtype">Job Type</label>
+		<label index="person.new">New Person</label>
+		<label index="company.new">New Company</label>
 		<label index="create.person.label">New Person</label>
 		<label index="create.company.label">New Company</label>
 		<label index="person.create">Add New Person</label>
@@ -111,6 +113,8 @@
 		<label index="companys">Firmen</label>
 		<label index="workaddress">Arbeitsadresse</label>
 		<label index="jobtype">Beschäftigungsart</label>
+		<label index="person.new">Neue Person</label>
+		<label index="company.new">Neue Firma</label>
 		<label index="create.person.label">Neue Person</label>
 		<label index="create.company.label">Neue Firma</label>
 		<label index="person.create">Neue Person hinzufügen</label>
