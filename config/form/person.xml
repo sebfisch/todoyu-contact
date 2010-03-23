@@ -14,16 +14,16 @@
 			<legend>Main person data</legend>
 			<elements>
 
-				<field type="select" name="gender">
-					<label>contact.person.attr.gender</label>
+				<field type="select" name="salutation">
+					<label>contact.person.attr.salutation</label>
 					<source type="list">
 						<option>
 							<value>m</value>
-							<label>contact.person.attr.gender.m</label>
+							<label>contact.person.attr.salutation.m</label>
 						</option>
 						<option>
 							<value>w</value>
-							<label>contact.person.attr.gender.f</label>
+							<label>contact.person.attr.salutation.f</label>
 						</option>
 					</source>
 					<noPleaseSelect />
@@ -60,6 +60,7 @@
 
 				<field type="databaseRelation" name="contactinfo">
 					<label>contact.contactinfo</label>
+					<addLabel>contact.contactinfo.new</addLabel>
 					<record>
 						<form>ext/contact/config/form/contactinfo.xml</form>
 						<url>
@@ -75,6 +76,7 @@
 
 				<field type="databaseRelation" name="address">
 					<label>contact.address</label>
+					<addLabel>contact.address.new</addLabel>
 					<record>
 						<form>ext/contact/config/form/address.xml</form>
 						<url>
@@ -90,6 +92,7 @@
 
 				<field type="databaseRelation" name="company">
 					<label>contact.person.attr.company</label>
+					<addLabel>contact.person.attr.company.new</addLabel>
 					<record>
 						<form>ext/contact/config/form/person-company.xml</form>
 						<url>

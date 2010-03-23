@@ -16,7 +16,7 @@ CREATE TABLE `ext_contact_person` (
   `firstname` varchar(64) NOT NULL,
   `lastname` varchar(64) NOT NULL,
   `shortname` varchar(11) NOT NULL,
-  `gender` varchar(2) NOT NULL,
+  `salutation` varchar(1) NOT NULL,
   `title` varchar(64) NOT NULL,
   `birthday` date NOT NULL,
   PRIMARY KEY (`id`)

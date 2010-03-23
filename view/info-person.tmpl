@@ -1,12 +1,16 @@
 <div class="visitingCardContent">
 	<table class="listsimple">
+		<tr class="even">
+			<td class="label">{Label contact.person.attr.salutation}:</td>
+			<td>{Label "contact.person.attr.salutation.$salutation"}</td>
+		</tr>
 		<tr class="odd">
 			<td class="label">{Label contact.person.attr.firstname}:</td>
 			<td width="90%">{htmlencode wordwrap($firstname 30 cut=true)}</td>
 		</tr>
 		<tr class="even">
 			<td class="label">{Label contact.person.attr.lastname}:</td>
-			<td>{htmlencode wordwrap($firstname 30 cut=true)}</td>
+			<td>{htmlencode wordwrap($lastname 30 cut=true)}</td>
 		</tr>
 		{if strlen($shortname) > 0}
 			<tr class="odd">
@@ -18,14 +22,12 @@
 		{if $birthday != '0000-00-00'}
 			<tr class="odd">
 				<td class="label">{Label contact.person.attr.birthdate}:</td>
-				<td>{$birthday}</td>
+				<td>{dateFormat strtotime($birthday) D2M2Y4}</td>
 			</tr>
 		{/if}
 		<tr class="even">
-			<td class="label">{Label contact.person.attr.gender}:</td>
-			<td>{if $gender=='m'}{Label contact.male}{else}{Label contact.female}{/if}</td>
+			<td colspan="2"><br/></td>
 		</tr>
-		<tr class="even"><td colspan="2"><br/></td></tr>
 		<tr class="odd">
 			<td class="label">{Label contact.person.attr.company}:</td>
 			<td>
