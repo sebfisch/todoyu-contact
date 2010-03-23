@@ -87,7 +87,9 @@ Todoyu.Ext.contact.Company =  {
 	 * @param	Response	response
 	 */
 	onRemoved: function(response) {
-		this.showList();
+		if( ! response.hasTodoyuError() ) {
+			this.showList();
+		}
 	},
 
 

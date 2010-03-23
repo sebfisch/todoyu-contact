@@ -160,7 +160,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 		if( TodoyuCompanyManager::hasProjects($idCompany) ) {
 			TodoyuHeader::sendTodoyuErrorHeader();
-			TodoyuHeader::sendTodoyuHeader('errorMessage', 'Diese Firma hat Projekte');
+			TodoyuNotification::notifyError('LLL:contact.company.delete.hasProjects');
 		} else {
 			TodoyuCompanyManager::deleteCompany($idCompany);
 		}
