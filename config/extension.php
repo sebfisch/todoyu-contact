@@ -24,7 +24,7 @@
  */
 
 	// Categories of dynamic contactinfo types
-$CONFIG['EXT']['contact']['contactinfotypecategories'] = array(
+Todoyu::$CONFIG['EXT']['contact']['contactinfotypecategories'] = array(
 		// Email
 	array(
 		'index'	=> 1,
@@ -43,7 +43,7 @@ $CONFIG['EXT']['contact']['contactinfotypecategories'] = array(
 );
 
 	// Types of addresses
-$CONFIG['EXT']['contact']['addresstypes'] = array(
+Todoyu::$CONFIG['EXT']['contact']['addresstypes'] = array(
 		// Home address
 	array(
 		'index'	=> 1,
@@ -61,12 +61,12 @@ $CONFIG['EXT']['contact']['addresstypes'] = array(
 	)
 );
 
-$CONFIG['EXT']['contact']['numFavoriteCountries']	= 5;
+Todoyu::$CONFIG['EXT']['contact']['numFavoriteCountries']	= 5;
 
 
 
 	// Sub tabs
-$CONFIG['EXT']['contact']['tabs'] = array(
+Todoyu::$CONFIG['EXT']['contact']['tabs'] = array(
 	array(
 		'id'		=> 'person',
 		'label'		=> 'LLL:contact.person',
@@ -79,7 +79,7 @@ $CONFIG['EXT']['contact']['tabs'] = array(
 	)
 );
 
-$CONFIG['EXT']['contact']['defaultTypeTab'] = 'person';
+Todoyu::$CONFIG['EXT']['contact']['defaultTypeTab'] = 'person';
 
 	// Load person foreign records data
 TodoyuFormHook::registerLoadData('ext/contact/config/form/person.xml', 'TodoyuContactManager::getPersonForeignRecordData');
@@ -89,11 +89,11 @@ TodoyuFormHook::registerLoadData('ext/contact/config/form/person.xml', 'TodoyuCo
 /**
  * Configure listings for persons
  */
-$CONFIG['EXT']['contact']['listing']['person'] = array(
+Todoyu::$CONFIG['EXT']['contact']['listing']['person'] = array(
 	'name'		=> 'person',
 	'update'	=> 'contact/person/listing',
 	'dataFunc'	=> 'TodoyuContactManager::getPersonListingData',
-	'size'		=> $GLOBALS['CONFIG']['LIST']['size'],
+	'size'		=> Todoyu::$CONFIG['LIST']['size'],
 	'columns'	=> array(
 		'icon'		=> '',
 		'lastname'	=> 'LLL:contact.person.attr.lastname',
@@ -115,11 +115,11 @@ $CONFIG['EXT']['contact']['listing']['person'] = array(
 /**
  * Configure listing for companies
  */
-$CONFIG['EXT']['contact']['listing']['company'] = array(
+Todoyu::$CONFIG['EXT']['contact']['listing']['company'] = array(
 	'name'		=> 'company',
 	'update'	=> 'contact/company/listing',
 	'dataFunc'	=> 'TodoyuContactManager::getCompanyListingData',
-	'size'		=> $GLOBALS['CONFIG']['LIST']['size'],
+	'size'		=> Todoyu::$CONFIG['LIST']['size'],
 	'columns'	=> array(
 		'icon'		=> '',
 		'title'		=> 'LLL:contact.company.attr.title',
@@ -131,7 +131,7 @@ $CONFIG['EXT']['contact']['listing']['company'] = array(
 
 
 
-$CONFIG['EXT']['contact']['panelWidgetStaffSelector'] = array(
+Todoyu::$CONFIG['EXT']['contact']['panelWidgetStaffSelector'] = array(
 	'maxListSize'	=> 15 // Max size of person selector
 );
 

@@ -759,7 +759,7 @@ class TodoyuPersonManager {
 
 		if( ! TodoyuCache::isIn($cacheKey) ) {
 			$colors 			= array();
-			$numColors			= sizeof(TodoyuArray::assure($GLOBALS['CONFIG']['COLORS']));
+			$numColors			= sizeof(TodoyuArray::assure(Todoyu::$CONFIG['COLORS']));
 
 				// Enumerate persons by system specific color to resp. list position
 			foreach($personIDs as $idPerson) {

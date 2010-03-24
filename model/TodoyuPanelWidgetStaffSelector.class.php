@@ -77,7 +77,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 			'id'				=> $this->getID(),
 			'jobTypeMultiple'	=> intval($prefs['multiple'])===1,
 			'listSize'			=> $this->getListSize(sizeof($persons)),
-			'numColors'			=> sizeof($GLOBALS['CONFIG']['COLORS']),
+			'numColors'			=> sizeof(Todoyu::$CONFIG['COLORS']),
 			'colorizeOptions'	=> $this->config['colorizePersonOptions'],
 
 				// Selector options
@@ -202,7 +202,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 	 */
 	private function getListSize($numDisplayedPersons) {
 		$numDisplayedPersons= intval($numDisplayedPersons);
-		$maxListSize		= intval($GLOBALS['CONFIG']['contact']['panelWidgetStaffSelector']['maxListSize']);
+		$maxListSize		= intval(Todoyu::$CONFIG['contact']['panelWidgetStaffSelector']['maxListSize']);
 		$size				= $maxListSize;
 
 		if( $numDisplayedPersons < $maxListSize ) {

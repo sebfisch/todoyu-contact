@@ -152,7 +152,7 @@ class TodoyuAddressManager {
 		$where	= '';
 		$group	= 'id_country';
 		$order	= 'COUNT(*) DESC';
-		$limit	= intval($GLOBALS['CONFIG']['EXT']['contact']['numFavoriteCountries']);
+		$limit	= intval(Todoyu::$CONFIG['EXT']['contact']['numFavoriteCountries']);
 
 		return Todoyu::db()->getColumn($field, $table, $where, $group, $order, $limit);
 	}

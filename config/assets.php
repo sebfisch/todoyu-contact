@@ -23,7 +23,7 @@
  * Assets registration of contact extension
  */
 
-$CONFIG['EXT']['contact']['assets'] = array(
+Todoyu::$CONFIG['EXT']['contact']['assets'] = array(
 	'js'	=> array(
 		array(
 			'file'		=> 'ext/contact/assets/js/Ext.js',

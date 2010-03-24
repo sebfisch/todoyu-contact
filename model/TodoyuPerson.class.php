@@ -184,7 +184,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 
 			// Last fallback is system language
 		if( $lang === false ) {
-			$lang = $GLOBALS['CONFIG']['SYSTEM']['language'];
+			$lang = Todoyu::$CONFIG['SYSTEM']['language'];
 		}
 
 		return $lang;

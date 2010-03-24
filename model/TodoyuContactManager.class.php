@@ -31,7 +31,7 @@ class TodoyuContactManager {
 	 * @return	Array
 	 */
 	public static function getTypesConfig() {
-		return $GLOBALS['CONFIG']['EXT']['contact']['contacttypes'];
+		return Todoyu::$CONFIG['EXT']['contact']['contacttypes'];
 	}
 
 
@@ -55,7 +55,7 @@ class TodoyuContactManager {
 	 * @return	String
 	 */
 	public static function getContactTypeFromXml($contactType) {
-		$typeConfig	= $GLOBALS['CONFIG']['EXT']['contact']['contacttypes'][$contactType];
+		$typeConfig	= Todoyu::$CONFIG['EXT']['contact']['contacttypes'][$contactType];
 
 		if( is_array($typeConfig) ) {
 			return $typeConfig['formXml'];
@@ -74,7 +74,7 @@ class TodoyuContactManager {
 	 * @return	String
 	 */
 	public static function getContactTypeObjClass($type) {
-		return $GLOBALS['CONFIG']['EXT']['contact']['contacttypes'][$type]['objClass'];
+		return Todoyu::$CONFIG['EXT']['contact']['contacttypes'][$type]['objClass'];
 	}
 
 
@@ -86,7 +86,7 @@ class TodoyuContactManager {
 	 * @return	String
 	 */
 	public static function getContactTypeLabel($type)	{
-		return $GLOBALS['CONFIG']['EXT']['contact']['contacttypes'][$type]['label'];
+		return Todoyu::$CONFIG['EXT']['contact']['contacttypes'][$type]['label'];
 	}
 
 
@@ -207,7 +207,7 @@ class TodoyuContactManager {
 	 * @return	Array
 	 */
 	public static function getAddressTypes() {
-		return TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['contact']['addresstypes']);
+		return TodoyuArray::assure(Todoyu::$CONFIG['EXT']['contact']['addresstypes']);
 	}
 
 
@@ -218,7 +218,7 @@ class TodoyuContactManager {
 	 * @return	Array
 	 */
 	public static function getContactinfotypeCategories() {
-		return TodoyuArray::assure($GLOBALS['CONFIG']['EXT']['contact']['contactinfotypecategories']);
+		return TodoyuArray::assure(Todoyu::$CONFIG['EXT']['contact']['contactinfotypecategories']);
 	}
 
 
