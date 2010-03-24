@@ -20,7 +20,7 @@
 		<label index="person.details">Show Person Details</label>
 		<label index="person.saved">Person saved</label>
 		<label index="person.saved.error">Saving Person Failed</label>
-		<label index="person.attr.salutation">Gender</label>
+		<label index="person.attr.salutation">Salutation</label>
 		<label index="person.attr.salutation.m">Mr</label>
 		<label index="person.attr.salutation.f">Ms</label>
 		<label index="person.attr.birthdate">Birthdate</label>
