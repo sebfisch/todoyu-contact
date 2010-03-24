@@ -52,7 +52,7 @@ Todoyu.Ext.contact.QuickCreatePerson = {
 
 
 	/**
-	 * Handler being evoked upon onComplete of person saving. Check for and notify error / success, update display
+	 * Handler being evoked upon onComplete of person saving. Checks for and notify error / success, updates display
 	 *
 	 * @paran	Object		response
 	 */
@@ -70,7 +70,7 @@ Todoyu.Ext.contact.QuickCreatePerson = {
 			Todoyu.notifySuccess('[LLL:contact.person.saved]');
 			
 			if ( Todoyu.getArea() == 'contact' ) {
-				this.showList();
+				Todoyu.Ext.contact.Person.showList();
 			}
 		}
 	}

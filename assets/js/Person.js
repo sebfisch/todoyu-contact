@@ -216,6 +216,9 @@ Todoyu.Ext.contact.Person =  {
 	},
 
 
+	/**
+	 * Close form by reloading the persons list
+	 */
 	closeForm: function() {
 		this.showList();
 	},
@@ -314,4 +317,5 @@ Todoyu.Ext.contact.Person =  {
 	cancelWizard: function()	{
 		Todoyu.Popup.getLastPopup().close();
 	}
+
 };
