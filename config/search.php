@@ -22,10 +22,10 @@
 	// Add search engine types
 if ( allowed('contact', 'general:use') ) {
 	if( allowed('contact', 'contact:area') ) {
-		TodoyuSearchManager::addEngine('person', 'TodoyuPersonSearch::getResults', 'TodoyuPersonSearch::getSuggestions', 'contact.person.search.title', 'contact.person.search.mode', 100);
+		TodoyuSearchManager::addEngine('person', 'TodoyuPersonSearch::getSuggestions', 'contact.person.search.title', 'contact.person.search.mode', 100);
 	}
 	if( allowed('contact', 'contact:area') ) {
-		TodoyuSearchManager::addEngine('company', 'TodoyuCompanySearch::getResults', 'TodoyuCompanySearch::getSuggestions', 'contact.company.search.title', 'contact.company.search.mode', 110);
+		TodoyuSearchManager::addEngine('company', 'TodoyuCompanySearch::getSuggestions', 'contact.company.search.title', 'contact.company.search.mode', 110);
 	}
 }
 

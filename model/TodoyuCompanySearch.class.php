@@ -52,20 +52,6 @@ class TodoyuCompanySearch implements TodoyuSearchEngineIf {
 
 
 	/**
-	 * Get search results for companies
-	 *
-	 * @param	Array		$find
-	 * @param	Array		$ignore
-	 * @param	Integer		$limit
-	 * @return	Array
-	 */
-	public static function getResults(array $find, array $ignore = array(), $limit = 100) {
-		return array();
-	}
-
-
-
-	/**
 	 * Get suggestions data array for company search
 	 *
 	 * @param	Array		$find

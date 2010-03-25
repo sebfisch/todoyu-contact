@@ -80,28 +80,15 @@ class TodoyuPersonSearch implements TodoyuSearchEngineIf {
 		$personIDs		= self::searchPersons($find, $ignore, $limit);
 
 			// Get comment details
-		if( sizeof($personIDs) > 0 ) {
-			$fields	= '	p.id,
-						p.email,
-						p.firstname,
-						p.lastname,
-						p.gender';
-			$table	= self::TABLE . ' p';
-			$where	= '	p.id IN(' . implode(',', $personIDs) . ')';
-			$order	= '	p.lastname ASC';
+		foreach($personIDs as $idPerson) {
+			$label	= TodoyuPersonManager::getLabel($idPerson);
 
-			$persons	= Todoyu::db()->getArray($fields, $table, $where, '', $order);
-
-			foreach($persons as $person) {
-				$label	= TodoyuPersonManager::getLabel($person['id']);
-
-				$suggestions[] = array(
-					'labelTitle'=> $label,
-					'labelInfo'	=> $label,
-					'title'		=> '',
-					'onclick'	=> 'location.href=\'?ext=contact&amp;type=person&amp;id=' . $person['id'] . '\''
-				);
-			}
+			$suggestions[] = array(
+				'labelTitle'=> $label,
+				'labelInfo'	=> $label,
+				'title'		=> '',
+				'onclick'	=> 'location.href=\'?ext=contact&amp;type=person&amp;id=' . $idPerson . '\''
+			);
 		}
 
 		return $suggestions;
