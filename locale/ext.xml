@@ -33,13 +33,13 @@
 		<label index="person.attr.active">Enable Login</label>
 		<label index="person.attr.username">Username</label>
 		<label index="person.attr.password">Password</label>
-		<label index="person.attr.password.hasPassword">Only fill out to change to current password</label>
+		<label index="person.attr.password.hasPassword">Only fill in to change the current password</label>
 		<label index="person.attr.email">Email</label>
 		<label index="person.attr.is_admin">Is Admin</label>
 		<label index="person.attr.role.new">New Role</label>
 		<label index="company.edit">Edit Company</label>
 		<label index="company.delete">Delete Company</label>
-		<label index="company.delete.confirm">Are you sure to delete this company?</label>
+		<label index="company.delete.confirm">Do you really want to delete this company?</label>
 		<label index="company.delete.hasProjects">Can't delete a company with projects</label>
 		<label index="company.details">Show Company Details</label>
 		<label index="company.saved.ok">Company Saved</label>
@@ -206,6 +206,6 @@
 		<label index="person.search.title">Personen</label>
 		<label index="person.search.mode">Suche Personen</label>
 		<label index="company.search.title">Firmen</label>
-		<label index="company.search.mode">Suchen Firmen</label>
+		<label index="company.search.mode">Suche Firmen</label>
 	</labels>
 </locallang>
