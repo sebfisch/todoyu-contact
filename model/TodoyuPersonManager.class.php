@@ -517,6 +517,8 @@ class TodoyuPersonManager {
 	public static function savePersonForeignRecords(array $data, $idPerson) {
 		$idPerson	= intval($idPerson);
 
+		TodoyuDebug::printInFirebug($data, 'data');
+
 			// Contactinfo
 		if( isset($data['contactinfo']) ) {
 			$contactInfoIDs	= TodoyuArray::getColumn($data['contactinfo'], 'id');
@@ -936,7 +938,8 @@ class TodoyuPersonManager {
 		$tables	= '	ext_contact_contactinfo c,
 					ext_contact_mm_person_contactinfo mm';
 		$where	= ' mm.id_contactinfo	= c.id AND
-					mm.id_person			= ' . $idPerson;
+					mm.id_person		= ' . $idPerson . ' AND
+					c.deleted			= 0';
 
 		return Todoyu::db()->getArray($fields, $tables, $where);
 	}
