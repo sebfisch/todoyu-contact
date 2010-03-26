@@ -69,7 +69,7 @@
 					{$address[0][zip]|truncate:8} {htmlencode wordwrap($address[0][city] 30 cut=true)}<br/>
 					{countryName $address[0][id_country]}<br/>
 					{if strlen($address[0][postbox])>0}
-						Postbox: {htmlencode wordwrap($address[0][postbox] 30 cut=true)}
+						{Label contact.address.attr.postbox}: {htmlencode wordwrap($address[0][postbox] 30 cut=true)}
 					{/if}
 				</td>
 			</tr>

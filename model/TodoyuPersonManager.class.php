@@ -789,7 +789,8 @@ class TodoyuPersonManager {
 		$tables	= '	ext_contact_company c,
 					ext_contact_mm_company_person mm';
 		$where	= '	mm.id_company	= c.id AND
-					mm.id_person		= ' . $idPerson;
+					mm.id_person	= ' . $idPerson . ' AND ' .
+				  ' c.deleted = 0';
 
 		return Todoyu::db()->getArray($fields, $tables, $where);
 	}
@@ -806,11 +807,15 @@ class TodoyuPersonManager {
 		$idPerson = intval($idPerson);
 
 		$field	= 'id_company';
-		$table	= 'ext_contact_mm_company_person';
-		$where	= 'id_person = ' . $idPerson;
+		$table	= 'ext_contact_mm_company_person mm,
+				   ext_contact_company c';
+		$where	= 'mm.id_company	= c.id AND
+				   c.deleted = 0 AND 
+				   mm.id_person = ' . $idPerson;
+		$limit	= 1;
 
-		$idCompany	= Todoyu::db()->getFieldValue($field, $table, $where);
-
+		$idCompany	= Todoyu::db()->getFieldValue($field, $table, $where, null, null, $limit);
+		
 		return TodoyuCompanyManager::getCompany($idCompany);
 	}
 

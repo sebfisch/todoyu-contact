@@ -64,7 +64,7 @@ Todoyu.Ext.contact.Company =  {
 	 * @param	Integer	idCompany
 	 */
 	remove: function(idCompany) {
-		if( confirm('[LLL:contact.confirmRemoving]') )	{
+		if( confirm('[LLL:contact.company.delete.confirm]') )	{
 			var url = Todoyu.getUrl('contact', 'company');
 			var options = {
 				'parameters': {

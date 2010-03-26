@@ -197,9 +197,12 @@ class TodoyuPerson extends TodoyuBaseObject {
 	 * @return	Array
 	 */
 	public function getCompanyIDs() {
-		$field	= 'id_company';
-		$table	= 'ext_contact_mm_company_person';
-		$where	= 'id_person = ' . $this->id;
+		$field	= '	mm.id_company';
+		$table	= '	ext_contact_mm_company_person mm,
+					ext_contact_company c';
+		$where	= '	mm.id_person	= ' . $this->id . ' AND
+					mm.id_company	= c.id AND '.
+					'c.deleted		= 0';
 
 		return Todoyu::db()->getColumn($field, $table, $where);
 	}

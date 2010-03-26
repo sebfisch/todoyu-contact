@@ -272,7 +272,8 @@ Todoyu.Ext.contact.Person =  {
 	saveWizard: function(form, target)	{
 		$(form).request ({
 			'parameters': {
-				'action':	'save'
+				'action':	'saveWizard',
+				'idTarget': target
 			},
 			'onComplete': this.onSavedWizard.bind( this, target)
 		});
