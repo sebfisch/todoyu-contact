@@ -810,12 +810,12 @@ class TodoyuPersonManager {
 		$table	= 'ext_contact_mm_company_person mm,
 				   ext_contact_company c';
 		$where	= 'mm.id_company	= c.id AND
-				   c.deleted = 0 AND 
+				   c.deleted = 0 AND
 				   mm.id_person = ' . $idPerson;
 		$limit	= 1;
 
 		$idCompany	= Todoyu::db()->getFieldValue($field, $table, $where, null, null, $limit);
-		
+
 		return TodoyuCompanyManager::getCompany($idCompany);
 	}
 
