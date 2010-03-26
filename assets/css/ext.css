@@ -55,20 +55,20 @@ h1.extIconContact .title {
    -------------------------*/
 
 #contact-tabs .tabkey-person .icon {
-	background: url(../img/icons.png) no-repeat 0 6px;
+	background:url(../img/icons.png) no-repeat 0 6px;
 }
 
 #contact-tabs .tabkey-company .icon {
-	background: url(../img/icons.png) no-repeat 0 -146px;
+	background:url(../img/icons.png) no-repeat 0 -146px;
 }
 
 /*
 .tabs .tabkey-jobtype .icon {
-	background: url(../img/icons.png) no-repeat 0 -145px;
+	background:url(../img/icons.png) no-repeat 0 -145px;
 }
 
 .tabs .tabkey-customerrole .icon {
-	background: url(../img/icons.png) no-repeat 0 -173px;
+	background:url(../img/icons.png) no-repeat 0 -173px;
 }
 */
 
@@ -153,22 +153,21 @@ form.formPerson div.fieldnamePassword div.fField span.textAfterField  {
    -------------------- */
 
 div.visitingCardContent {
-	padding: 12px 0 18px 12px !important;
+	padding:12px 0 18px 12px !important;
 }
 
 div.visitingCardContent table {
-	width: 380px;
+	width:380px;
 }
 
 div.visitingCardContent table tr td {
-	text-align: left;
-	padding: 2px 5px 2px 8px;
+	text-align:left;
+	padding:2px 5px 2px 8px;
 }
 
 div.visitingCardContent table tr td.label {
 	padding-right:18px;
-
-	letter-spacing: 0.3px;
+	letter-spacing:0.3px;
 }
 
 
