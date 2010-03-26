@@ -125,15 +125,7 @@ h1.extIconContact .title {
 /* ---------------------
  	Person edit
    --------------------- */
-form.formPerson fieldset.account {
-	margin:20px 0;
-	border-left:20px solid #CCC;
-}
 
-form.formPerson fieldset.account > div.fElement,
-form.formPerson fieldset.account fieldset.loginfields {
-	width:640px;
-}
 
 form.formPerson div.fieldnamePassword div.fField span.textAfterField  {
 	display:inline-block;
