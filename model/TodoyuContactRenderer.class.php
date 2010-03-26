@@ -18,8 +18,6 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-
-
 /**
  * Render class for the contact module
  *
