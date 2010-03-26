@@ -2,8 +2,8 @@
 	background:url(../../../../core/assets/img/icons.png) no-repeat 8px -444px;
 }
 
-#panelwidget-contactSearch-content {
-	padding-top:5px;
+#panelwidget-contactSearch-content .panelwidgetContent {
+	margin-top:5px;
 }
 
 #panelwidget-contactSearch label {

@@ -1,6 +1,9 @@
 /* ------------------------------------------------------------
 	Staff selector
    ------------------------------------------------------------ */
+#panelwidget-staffselector .panelwidgetContent {
+	margin-top: 5px;
+}
 
 #panelwidget-staffselector h1 .title {
 	background:url(../img/icons.png) no-repeat 5px 6px;
