@@ -91,6 +91,8 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 		$content	= render($tmpl, $data);
 		$this->setContent($content);
 
+		TodoyuDebug::printInFirebug($data);
+
 		return $content;
 	}
 
@@ -109,7 +111,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 			$options[] = array(
 				'value'	=> $person['id'],
 				'label'	=> $person['lastname'] . ' ' . $person['firstname'] . ' (' . $person['jobtype'] . ')',
-				'class'	=> 'enumColOptionLeftIcon' . $person['id']
+				'class'	=> 'enumColOptionLeftIcon' . TodoyuColors::getColorIndex($person['id'])
 			);
 		}
 
