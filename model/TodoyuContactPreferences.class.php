@@ -137,6 +137,11 @@ class TodoyuContactPreferences {
 	}
 
 
+
+	/**
+	 * @todo	comment
+	 * @param	Array	$prefs
+	 */
 	public static function saveStaffSelectorPrefs(array $prefs) {
 		$prefs	= json_encode($prefs);
 
@@ -144,6 +149,11 @@ class TodoyuContactPreferences {
 	}
 
 
+
+	/**
+	 * @todo	comment
+	 * @return
+	 */
 	public static function getStaffSelectorPrefs() {
 		$prefs	= TodoyuContactPreferences::getPref('staffSelector');
 
