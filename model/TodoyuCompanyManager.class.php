@@ -163,11 +163,11 @@ class TodoyuCompanyManager {
 	 */
 	public static function deleteCompany($idCompany) {
 		$idCompany	= intval($idCompany);
-		
+
 		$data	= array(
 			'deleted'	=> 1
-		); 
-		
+		);
+
 		self::updateCompany($idCompany, $data);
 	}
 
