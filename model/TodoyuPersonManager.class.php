@@ -339,20 +339,19 @@ class TodoyuPersonManager {
 	 * @return	Array
 	 */
 	public static function getInternalPersons($getJobType = false, $getWorkAddress = false) {
-		$fields	=	'	u.*'
+		$fields	=	'	p.*'
 					. ($getJobType		=== true ? ', mm.id_jobtype' : '')
 					. ($getWorkAddress	=== true ? ', mm.id_workaddress' : '');
 
-		$table	= 	self::TABLE . ' u,
+		$table	= 	self::TABLE . ' p,
 					ext_contact_company c,
 					ext_contact_mm_company_person mm';
-		$where	= '	u.id			= mm.id_person AND
+		$where	= '	p.id			= mm.id_person AND
 					mm.id_company	= c.id AND
 					c.is_internal	= 1 AND
-					u.deleted		= 0	AND
-					u.active		= 1';
-		$order	= '	u.lastname,
-					u.firstname';
+					p.deleted		= 0	';
+		$order	= '	p.lastname,
+					p.firstname';
 
 		$persons= Todoyu::db()->getIndexedArray('id', $fields, $table, $where, '', $order);
 
@@ -516,9 +515,7 @@ class TodoyuPersonManager {
 	public static function savePersonForeignRecords(array $data, $idPerson) {
 		$idPerson	= intval($idPerson);
 
-		TodoyuDebug::printInFirebug($data, 'data');
-
-			// Contactinfo
+			// Save Contactinfo
 		if( isset($data['contactinfo']) ) {
 			$contactInfoIDs	= TodoyuArray::getColumn($data['contactinfo'], 'id');
 
@@ -540,7 +537,7 @@ class TodoyuPersonManager {
 
 
 
-			// Address
+			// Save Address
 		if( isset($data['address']) ) {
 			$addressIDs	= TodoyuArray::getColumn($data['address'], 'id');
 
@@ -562,7 +559,7 @@ class TodoyuPersonManager {
 
 
 
-			// Person
+			// Save Person
 		if( isset($data['company']) ) {
 			$companyIDs	= TodoyuArray::getColumn($data['company'], 'id');
 
@@ -592,14 +589,13 @@ class TodoyuPersonManager {
 				// Remove all role links which are no longer active
 			self::removeRemovedRoles($idPerson, $roleIDs);
 
-					// Save roles
+				// Save roles
 			if( sizeof($roleIDs) > 0 ) {
 				TodoyuRoleManager::addPersonToRoles($idPerson, $roleIDs);
 			}
 
 			unset($data['role']);
 		}
-
 
 		return $data;
 	}

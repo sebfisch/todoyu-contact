@@ -91,8 +91,6 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 		$content	= render($tmpl, $data);
 		$this->setContent($content);
 
-		TodoyuDebug::printInFirebug($data);
-
 		return $content;
 	}
 
@@ -110,7 +108,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 		foreach($persons as $person) {
 			$options[] = array(
 				'value'	=> $person['id'],
-				'label'	=> $person['lastname'] . ' ' . $person['firstname'] . ' (' . $person['jobtype'] . ')',
+				'label'	=> $person['lastname'] . ' ' . $person['firstname'] . ' (' . ( ! empty($person['jobtype']) ? $person['jobtype'] : Label('panelwidget-staffselector.noFunction') ) . ')',
 				'class'	=> 'enumColOptionLeftIcon' . TodoyuColors::getColorIndex($person['id'])
 			);
 		}
@@ -160,8 +158,8 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 		$persons	= TodoyuJobtypeManager::getInternalPersonsWithJobtype();
 		$options	= array();
 
-			// Select all staff option
-		$jobTypes	= array(
+		$jobtypes	= array(
+				// Select all staff option
 			array(
 				'id'	=> 0,
 				'label'	=> Label('panelwidget-staffselector.selectAllStaff'),
@@ -171,10 +169,10 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 
 			// Find all jobtypes and the person count
 		foreach($persons as $person) {
-			if( array_key_exists($person['id_jobtype'], $jobTypes) ) {
-				$jobTypes[$person['id_jobtype']]['count']++;
+			if( array_key_exists($person['id_jobtype'], $jobtypes) ) {
+				$jobtypes[$person['id_jobtype']]['count']++;
 			} else {
-				$jobTypes[$person['id_jobtype']] = array(
+				$jobtypes[$person['id_jobtype']] = array(
 					'id'	=> $person['id_jobtype'],
 					'label'	=> $person['jobtype'],
 					'count'	=> 1
@@ -182,11 +180,17 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 			}
 		}
 
-			// Create options
-		foreach($jobTypes as $jobType) {
+			// Create options: label is Person name + jobtype
+		foreach($jobtypes as $jobtype) {
+			if ( $jobtype['id'] == 0 ) {
+				$amount	= ' (' . sizeof($persons) . ')';
+			} else {
+				$amount	= $jobtype['count'] > 0 ? ' (' . $jobtype['count'] . ')' : '';
+			}
+
 			$options[] = array(
-				'value'	=> $jobType['id'],
-				'label'	=> $jobType['label'] . ($jobType['count']>0?' (' . $jobType['count'] . ')':'')
+				'value'	=> $jobtype['id'],
+				'label'	=> $jobtype['label'] . $amount
 			);
 		}
 
