@@ -49,7 +49,7 @@ class TodoyuAddress extends TodoyuBaseObject {
 			$address .= $this->postbox . chr(10);
 		}
 
-		$address .= TodoyuDatasource::getCountryShort($this->get('id_country')).' - '.$this->get('zip') . ' ' . $this->get('city');
+		$address .= TodoyuDatasource::getCountryShort($this->get('id_country')) . ' - ' . $this->get('zip') . ' ' . $this->get('city');
 
 		return $address;
 	}
