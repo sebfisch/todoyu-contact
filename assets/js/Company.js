@@ -165,7 +165,7 @@ Todoyu.Ext.contact.Company =  {
 	 * @param	Integer		idCompany
 	 */
 	show: function(idCompany) {
-		var url		= Todoyu.getUrl('contact', 'company')
+		var url		= Todoyu.getUrl('contact', 'company');
 		var options	= {
 			'parameters': {
 				'action':	'detail',

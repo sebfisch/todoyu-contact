@@ -202,7 +202,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	 * Get all perosons which have the requested job type
 	 *
 	 * @param	Integer		jobType
-	 * @return	
+	 * @return	Array
 	 */
 	getJobTypePersons: function(jobType) {
 		return this.jobType2Persons[jobType];

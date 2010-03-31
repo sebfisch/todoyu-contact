@@ -159,8 +159,8 @@ Todoyu.Ext.contact.Person =  {
 	 * @param	Object	parent
 	 */
 	updateCompanyAddressRecords: function(inputField, selectedListElement, baseID, selectedValue, list, parent)	{
-		var idInputFieldArr		= inputField.id.split('-').without('fulltext')
-		var referencedFieldName = parent.acRefs[baseID].options.referencedFieldName
+		var idInputFieldArr		= inputField.id.split('-').without('fulltext');
+		var referencedFieldName = parent.acRefs[baseID].options.referencedFieldName;
 		var idTarget = idInputFieldArr.join('-').replace(idInputFieldArr.last(), referencedFieldName);
 
 		if($(idTarget))	{
@@ -249,7 +249,7 @@ Todoyu.Ext.contact.Person =  {
 	 * @paran	Integer		idPerson
 	 */
 	show: function(idPerson) {
-		var url		= Todoyu.getUrl('contact', 'person')
+		var url		= Todoyu.getUrl('contact', 'person');
 		var options	= {
 			'parameters': {
 				'action':	'detail',
