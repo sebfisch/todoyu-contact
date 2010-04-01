@@ -53,7 +53,7 @@ class TodoyuContactInfoManager {
 	 * @param	Integer	$idContactinfotype
 	 * @return	String
 	 */
-	public function getContactInfoTypeName($idContactInfoType) {
+	public static function getContactInfoTypeName($idContactInfoType) {
 		$idContactInfoType = intval($idContactInfoType);
 
 		$label = Todoyu::db()->getFieldValue('title', 'ext_contact_contactinfotype', 'id = ' . $idContactInfoType);
