@@ -169,15 +169,26 @@ Todoyu.Ext.contact.Person =  {
 					'parameters': {
 						'action':		'getCompanyAddressOptions',
 						'idCompany':	selectedValue
-				}
+					},
+					'onComplete': this.onUpdateCompanyAddressRecords.bind(this, idTarget)
 			};
 
 			Todoyu.Ui.update(idTarget, url, options);
 		}
 	},
+	
+	
+	
+	onUpdateCompanyAddressRecords: function(idTarget)	{
+		new Effect.Highlight($(idTarget), {
+			'startcolor':	'#fffe98',
+			'endcolor':		'#ffffff',
+			'duration':		2.0
+		});
+	},
+	
 
-
-
+	
 	/**
 	 * Save person form
 	 *
