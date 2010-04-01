@@ -179,6 +179,11 @@ Todoyu.Ext.contact.Person =  {
 	
 	
 	
+	/**
+	 * Highlights the referenced selector of company address after updating the company-autocompleter
+	 * 
+	 * @param	String	idTarget
+	 */
 	onUpdateCompanyAddressRecords: function(idTarget)	{
 		new Effect.Highlight($(idTarget), {
 			'startcolor':	'#fffe98',
