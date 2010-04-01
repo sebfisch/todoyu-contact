@@ -85,7 +85,7 @@ class TodoyuPersonManager {
 	 * Get all active persons
 	 *
 	 * @param	Array		$fields			By default, all fields are selected. You can provide a field list instead
-	 * @param	Bool		$showInactive	Also show inactive persons
+	 * @param	Boolean		$showInactive	Also show inactive persons
 	 * @return	Array
 	 */
 	public static function getAllActivePersons(array $fields = array(), $showInactive = false) {
@@ -364,7 +364,7 @@ class TodoyuPersonManager {
 	 *
 	 * @param	Integer		$idPerson
 	 * @param	String		$type
-	 * @param	Bool		$onlyPreferred
+	 * @param	Boolean		$onlyPreferred
 	 * @return	Array
 	 */
 	public static function getContactInfos($idPerson, $type = null, $onlyPreferred = false) {

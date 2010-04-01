@@ -94,7 +94,7 @@ class TodoyuContactManager {
 	 * Get contact type object
 	 *
 	 * @param	String				$type
-	 * @param	Intger				$idRecord
+	 * @param	Integer				$idRecord
 	 * @return	TodoyuBaseObject
 	 */
 	public static function getContactTypeObj($type, $idRecord)	{

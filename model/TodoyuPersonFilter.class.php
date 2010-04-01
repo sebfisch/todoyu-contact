@@ -159,7 +159,7 @@ class TodoyuPersonFilter extends TodoyuFilterBase {
 	 * Get filter config to search for persons name attributes and its company name
 	 *
 	 * @param	String		$value
-	 * @param	Bool		$negate
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
 	public static function Filter_NameAndCompany($value, $negate = false) {
