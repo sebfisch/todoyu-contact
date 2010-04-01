@@ -41,14 +41,14 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 			'staffselector',						// panel widget ID
 			'LLL:panelwidget-staffselector.title',	// widget title text
 			$config,								// widget config array
-			$params,								// widget params
+			$params,								// widget parameters
 			$idArea									// area ID
 		);
 
 			// Add classes
 		$this->addHasIconClass();
 
-			// Get jobtype <> person mapping
+			// Get job type <> person mapping
 		$jobTypes2PersonsJSON	= $this->getJobTypes2PersonsJSON();
 
 			// init widget JS (observers)
@@ -67,7 +67,6 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 	 */
 	public function renderContent() {
 		$prefs		= self::getPrefs();
-
 		$tmpl	= 'ext/contact/view/panelwidget-staffselector.tmpl';
 
 		$personOptions	= $this->getStaffPersonOptions();
@@ -84,8 +83,8 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 			'personOptions'		=> $personOptions,
 
 				// Prefs
-			'selectedJobTypes'	=> TodoyuArray::intExplode(',', $prefs['jobtypes']),
-			'selectedPersons'	=> TodoyuArray::intExplode(',', $prefs['persons']),
+			'selectedJobTypes'	=> TodoyuArray::intval($prefs['jobtypes']),
+			'selectedPersons'	=> TodoyuArray::intval($prefs['persons']),
 		);
 
 		$content	= render($tmpl, $data);
@@ -224,7 +223,9 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 	 * @return	Array
 	 */
 	public static function getPrefs() {
-		return TodoyuContactPreferences::getStaffSelectorPrefs();
+		$prefs	= TodoyuContactPreferences::getPref('panelwidget-staffselector', 0, AREA, false);
+
+		return $prefs !== false ? json_decode($prefs, true) : array();
 	}
 
 
@@ -235,7 +236,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 	 * @return	Array
 	 */
 	public static function getSelectedPersons() {
-		$prefs = json_decode(TodoyuContactPreferences::getPref('panelwidget-staffselector', 0, AREA, false));
+		$prefs = self::getPrefs();
 
 		return is_array($prefs->persons) ? $prefs->persons : array();
 	}
