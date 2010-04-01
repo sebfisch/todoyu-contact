@@ -89,7 +89,7 @@ class TodoyuPersonFilter extends TodoyuFilterBase {
 	 * Get filter for name (firstname, lastname, shortname)
 	 *
 	 * @param	String		$value
-	 * @param	Bool		$negate
+	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
 	public static function Filter_Name($value, $negate = false) {

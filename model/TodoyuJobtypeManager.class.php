@@ -204,7 +204,7 @@ class TodoyuJobtypeManager {
 	 *
 	 * @param	Integer		$idJobtype
 	 * @param	Array		$data
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function updateJobtype($idJobtype, array $data) {
 		return TodoyuRecordManager::updateRecord(self::TABLE, $idJobtype, $data);

@@ -96,7 +96,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 	/**
 	 * Check if person is external (not in an internal company)
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function isExternal() {
 		return $this->isInternal() === false;
@@ -258,7 +258,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 	/**
 	 * Get person template data
 	 *
-	 * @param	Bool		$loadForeignRecords
+	 * @param	Boolean		$loadForeignRecords
 	 * @return	Array
 	 */
 	public function getTemplateData($loadForeignRecords = false) {

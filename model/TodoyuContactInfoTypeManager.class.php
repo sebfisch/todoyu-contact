@@ -49,7 +49,7 @@ class TodoyuContactInfoTypeManager {
 	/**
 	 * Get all contactinfotypes
 	 *
-	 * @param	Bool		$parseLabels
+	 * @param	Boolean		$parseLabels
 	 * @return	Array
 	 */
 	public static function getContactInfoTypes($parseLabels = true) {

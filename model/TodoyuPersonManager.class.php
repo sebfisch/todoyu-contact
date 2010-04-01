@@ -246,8 +246,8 @@ class TodoyuPersonManager {
 	 * Update current persons password
 	 *
 	 * @param	String		$password
-	 * @param	Bool		$alreadyHashed		Is password already a md5 hash?
-	 * @return	Bool		Updated
+	 * @param	Boolean		$alreadyHashed		Is password already a md5 hash?
+	 * @return	Boolean		Updated
 	 */
 	public static function updatePassword($password, $alreadyHashed = true) {
 		if( ! $alreadyHashed ) {
