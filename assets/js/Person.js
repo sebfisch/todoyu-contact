@@ -300,12 +300,11 @@ Todoyu.Ext.contact.Person =  {
 			Todoyu.notifySuccess('Person saved');
 
 			var label		= response.getTodoyuHeader('recordLabel');
-			var idRecord	= response.getTodoyuHeader('idRecord');
 
-			$(target).value = idRecord;
+			$(target).value = response.getTodoyuHeader('idRecord');
 			$(target + '-fulltext').value = label;
 
-			Todoyu.Popup.close('popup-'+target);
+			Todoyu.Popup.close('popup-' + target);
 		}
 	},
 
