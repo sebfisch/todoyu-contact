@@ -396,8 +396,18 @@ class TodoyuCompanyManager {
 	}
 
 
+
+	/**
+	 * Delete all linked contact info records of given company
+	 *
+	 * @todo	see comment in above function 'removeContactinfoLinks'
+	 *
+	 * @static
+	 * @param	Integer		$idCompany
+	 * @return	void
+	 */
 	public static function deleteContactinfos($idCompany) {
-		TodoyuContactInfoManager::deleteLinkedContactInfos('ext_contact_mm_company_contactinfo', $idCompany, 'id_company');
+		TodoyuContactInfoManager::deleteLinkedContactInfos('ext_contact_mm_company_contactinfo', $idCompany, array(), 'id_company');
 	}
 
 

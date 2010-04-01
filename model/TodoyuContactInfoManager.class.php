@@ -136,9 +136,9 @@ class TodoyuContactInfoManager {
 	 *
 	 * @param	String		$mmTable					MM table
 	 * @param	Integer		$idRecord					Record ID which is linked to a contact info
-	 * @param	Array		$currentContactInfoIDs		Contactinfo IDs which should stay linked with the record
-	 * @param	String		$fieldRecord				Fieldname for the record ID
-	 * @param	String		$fieldInfo					Fieldname for the contactinfo ID
+	 * @param	Array		$currentContactInfoIDs		Contact info IDs which should stay linked with the record
+	 * @param	String		$fieldRecord				Field name for the record ID
+	 * @param	String		$fieldInfo					Field name for the contact info ID
 	 * @return	Integer		Number of deleted records
 	 */
 	public static function deleteLinkedContactInfos($mmTable, $idRecord, array $currentContactInfoIDs,  $fieldRecord, $fieldInfo = 'id_contactinfo') {
