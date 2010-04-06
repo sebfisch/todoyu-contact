@@ -60,6 +60,10 @@ Todoyu::$CONFIG['EXT']['contact']['assets'] = array(
 		array(
 			'file'		=> 'ext/contact/assets/js/PanelWidgetStaffSelector.js',
 			'position'	=> 110
+		),
+		array(
+			'file'		=> 'ext/contact/assets/js/Address.js',
+			'position'	=> 111
 		)
 	),
 	'css'	=> array(

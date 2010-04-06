@@ -40,21 +40,15 @@
 					<source type="function">
 						<function>TodoyuContactViewHelper::getCountryOptions</function>
 					</source>
+					<extraAttributes>onchange="Todoyu.Ext.contact.Address.onChangeCountry(this, 'region', 'id-country');"</extraAttributes>
 				</field>
-
-				<field type="textinputAC" name="region">
+				
+				<field type="select" name="region">
 					<label>contact.address.attr.region</label>
-					<config>
-						<acListener>
-							<ext>contact</ext>
-							<controller>autocompletion</controller>
-							<action>region</action>
-						</acListener>
-						<acLabelFunc>TodoyuDatasource::getRegionLabel</acLabelFunc>
-						<options>
-							<onCompleteCustom>Todoyu.Ext.contact.Autocomplete.onRegionAutocomplete</onCompleteCustom>
-						</options>
-					</config>
+					<source type="function">
+						<function>TodoyuContactViewHelper::getRegionOptions</function>
+						<lazyInit/>
+					</source>
 				</field>
 
 				<field type="checkbox" name="is_preferred">

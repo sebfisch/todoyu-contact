@@ -78,6 +78,7 @@
 		<label index="address.attr.postbox">Postbox</label>
 		<label index="address.attr.city">City</label>
 		<label index="address.attr.region">Region</label>
+		<label index="address.noRegion">No Region Available For This Country</label>
 		<label index="address.attr.zip">Zip</label>
 		<label index="address.attr.country">Country</label>
 		<label index="address.attr.comment">Comment</label>
@@ -181,7 +182,8 @@
 		<label index="address.attr.street">Strasse</label>
 		<label index="address.attr.postbox">Postfach</label>
 		<label index="address.attr.city">Stadt</label>
-		<label index="address.attr.region">Region</label>
+		<label index="address.attr.region">Region</label>¨
+		<label index="address.noRegion">Für dieses Land ist keine Region verfügbar</label>
 		<label index="address.attr.zip">PLZ</label>
 		<label index="address.attr.country">Land</label>
 		<label index="address.attr.comment">Kommentar</label>
