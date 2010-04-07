@@ -40,7 +40,7 @@ Todoyu.Ext.contact = {
 	 * @param	String		tab
 	 */
 	onTabSelect: function(event, tab) {
-		this[tab.capitalize()].showList();
+		this[tab.capitalize()].showList(Todoyu.Ext.contact.PanelWidget.ContactSearch.getValue());
 	},
 
 
@@ -67,7 +67,7 @@ Todoyu.Ext.contact = {
 
 		objName	= type.capitalize();
 
-		this[objName].showList();
+		this[objName].showList(Todoyu.Ext.contact.PanelWidget.ContactSearch.getValue());
 	}
 
 };

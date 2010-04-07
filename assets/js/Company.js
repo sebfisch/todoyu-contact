@@ -87,7 +87,7 @@ Todoyu.Ext.contact.Company =  {
 	 */
 	onRemoved: function(response) {
 		if( ! response.hasTodoyuError() ) {
-			this.showList();
+			this.showList(this.ext.PanelWidget.ContactSearch.getValue());
 		}
 	},
 
@@ -125,7 +125,8 @@ Todoyu.Ext.contact.Company =  {
 		} else {
 				// Notify (implement)
 			Todoyu.notifySuccess('[LLL:contact.company.saved.ok]');
-			this.showList();
+			
+			this.showList(this.ext.PanelWidget.ContactSearch.getValue());
 		}
 	},
 
@@ -135,7 +136,7 @@ Todoyu.Ext.contact.Company =  {
 	 * Close company form, update list view
 	 */
 	closeForm: function() {
-		this.showList();
+		this.showList(this.ext.PanelWidget.ContactSearch.getValue());
 	},
 
 

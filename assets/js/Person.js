@@ -114,7 +114,7 @@ Todoyu.Ext.contact.Person =  {
 	 * @paran	Unknown		response
 	 */
 	onRemoved: function(idPerson, response) {
-		this.showList();
+		this.showList(this.ext.PanelWidget.ContactSearch.getValue());
 	},
 
 
@@ -226,7 +226,8 @@ Todoyu.Ext.contact.Person =  {
 			$('contact-form-content').update(response.responseText);
 		} else {
 			Todoyu.notifySuccess('[LLL:contact.person.saved]');
-			this.showList();
+			
+			this.showList(this.ext.PanelWidget.ContactSearch.getValue());
 		}
 	},
 
@@ -235,7 +236,7 @@ Todoyu.Ext.contact.Person =  {
 	 * Close form by reloading the persons list
 	 */
 	closeForm: function() {
-		this.showList();
+		this.showList(this.ext.PanelWidget.ContactSearch.getValue());
 	},
 
 
