@@ -3,6 +3,7 @@
    ------------------------------------------------------------ */
 #panelwidget-staffselector .panelwidgetContent {
 	margin-top:5px;
+	position: relative;
 }
 
 #panelwidget-staffselector h1 .title {
@@ -17,9 +18,15 @@
 	padding-left:10px;
 }
 
+
 #panelwidget-staffselector-jobtype {
-	width:232px;
-	margin:0 2px 8px 0;
+	margin:0 0 8px 0;
+}
+
+#panelwidget-staffselector .toggleSelect {
+	position: absolute;
+	z-index: 1000;
+	right: 0;
 }
 
 #panelwidget-staffselector-jobtypetoggle,
