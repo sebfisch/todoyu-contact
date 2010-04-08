@@ -138,11 +138,7 @@ form.formPerson div.fieldnamePassword div.fField span.textAfterField  {
    -------------------- */
 
 div.visitingCardContent {
-	padding:12px 0 18px 12px !important;
-}
-
-div.visitingCardContent table {
-	width:380px;
+	padding:12px 12px 18px 12px !important;
 }
 
 div.visitingCardContent table tr td {
