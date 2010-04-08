@@ -31,21 +31,21 @@ h1.extIconContact .title {
 .personListing td.icon.person {
 	background:url(../img/icons.png) no-repeat 6px -116px;
 }
-.personListing td.actions div.icon {
+.personListing td.actions span.icon {
 	cursor:pointer;
 	margin-right:5px;
 }
-.personListing td.actions div {
+.personListing td.actions span {
 	background-image:url(../img/icons.png);
 	background-repeat:no-repeat;
 }
-.personListing td.actions div.info {
+.personListing td.actions span.info {
 	background-position:0 -355px;
 }
-.personListing td.actions div.edit {
+.personListing td.actions span.edit {
 	background-position:0 -27px;
 }
-.personListing td.actions div.delete {
+.personListing td.actions span.delete {
 	background-position:0 -57px;
 }
 
