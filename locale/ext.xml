@@ -178,7 +178,7 @@
 		<label index="address.attr.addresstype">Address Type</label>
 		<label index="address.attr.addresstype.1">Heimadresse</label>
 		<label index="address.attr.addresstype.2">Geschäftsadresse</label>
-		<label index="address.attr.addresstype.3">Rechnungsaddress</label>
+		<label index="address.attr.addresstype.3">Rechnungsadresse</label>
 		<label index="address.attr.street">Strasse</label>
 		<label index="address.attr.postbox">Postfach</label>
 		<label index="address.attr.city">Stadt</label>
