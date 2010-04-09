@@ -127,27 +127,6 @@ h1.extIconContact .title {
 	background-position:0 -209px;
 }
 
-
-
-/* ---------------------
- 	Person edit
-   --------------------- */
-
-
-form.formPerson div.fieldnamePassword div.fField span.textAfterField  {
-	display:block;
-	padding:10px;
-	margin: 1px 2px 0 0;
-	border:1px solid #CCC;
-	background-color:#EFEFEF;
-	font-size:10px;
-	color:#666;
-	text-align: left;
-}
-
-
-
-
 /* ---------------------
 	Visiting card
    -------------------- */
