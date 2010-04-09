@@ -7,6 +7,12 @@ h1.extIconContact .title {
 	Personlist
    -------------------------*/
 
+.personListing th,
+.personListing td {
+	vertical-align: middle;
+}
+
+
 	/* Column widths */
 .personListing th.icon {
 	width:15px;
@@ -73,6 +79,11 @@ h1.extIconContact .title {
 	Company list
    -------------------------*/
 
+.companyListing th,
+.companyListing td {
+	vertical-align: middle;
+}
+
 .companyListing th.icon {
 	width:15px;
 }
@@ -91,10 +102,6 @@ h1.extIconContact .title {
 
 .companyListing th.actions {
 	width:80px;
-}
-
-.companyListing td {
-	vertical-align: middle;
 }
 
 	/* Column configs */
