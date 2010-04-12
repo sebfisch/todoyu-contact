@@ -677,8 +677,7 @@ class TodoyuPersonManager {
 			if( $monthEnd < $monthStart ) {
 				$monthsRange = array();
 				$mEnd	= $monthEnd + 12;
-				TodoyuDebug::printHtml($mEnd, 'mEnd');
-				TodoyuDebug::printHtml($monthStart, '$monthStart');
+
 				for($m=$monthStart; $m<=$mEnd; $m++) {
 					$month	= $m%12;
 					$monthsRange[] = $month === 0 ? 12 : $month;
@@ -689,9 +688,14 @@ class TodoyuPersonManager {
 
 			$middleMonths	= array_slice($monthsRange, 1, -1);
 
-			$rangeWhere	= '(MONTH(birthday) IN(' . implode(',', $middleMonths) . ') OR
-							MONTH(birthday) = ' . $monthStart . ' AND DAY(birthday) >= ' . $dayStart . ' OR
-							MONTH(birthday) = ' . $monthEnd . ' AND DAY(birthday) <= ' . $dayEnd . ')';
+				// If there are months between to border months
+			if( sizeof($middleMonths) > 0 ) {
+				$middleWhere = 'MONTH(birthday) IN(' . implode(',', $middleMonths) . ') OR ';
+			}
+
+			$rangeWhere	= '(' . $middleWhere . '
+							(MONTH(birthday) = ' . $monthStart . ' AND DAY(birthday) >= ' . $dayStart . ') OR
+							(MONTH(birthday) = ' . $monthEnd . ' AND DAY(birthday) <= ' . $dayEnd . '))';
 		}
 
 			// Allowed months
@@ -704,6 +708,8 @@ class TodoyuPersonManager {
 		$order	= 'birthday';
 
 		$birthdayPersons = Todoyu::db()->getArray($fields, $table, $where, '', $order);
+
+		TodoyuDebug::printLastQueryInFirebug('birthday');
 
 			// Enrich data with date and age of persons
 		$birthdayPersons	= self::addBirthdayPersonsDateAndAge($birthdayPersons, $dateStart, $dateEnd);
