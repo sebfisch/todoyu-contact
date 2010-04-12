@@ -657,50 +657,49 @@ class TodoyuPersonManager {
 		$mysqlDateEnd	= date('Y-m-d', $dateEnd);
 		$monthStart		= date('n', $dateStart);
 		$monthEnd		= date('n', $dateEnd);
-		$monthDiff		= $monthEnd - $monthStart;
+		$monthDiff		= abs($monthEnd - $monthStart);
 		$dayStart		= date('j', $dateStart);
 		$dayEnd			= date('j', $dateEnd);
 
-			// If range is only one day, only check this day
-		if( $monthStart === $monthEnd && $dayStart === $dayEnd ) {
-			$rangeWhere		= '	(MONTH(birthday) = ' . $monthStart . ' AND DAY(birthday) = ' . $dayStart . ') ';
-		} else { // If end month is not equal start month, set start limit
-			$rangeWhere		= '	(MONTH(birthday) = ' . $monthStart . ' AND DAY(birthday) >= ' . $dayStart . ') ';
-		}
+		$monthsRange 	= array();
+		$rangeWhere		= '';
 
-			// If end month is not equal start month, set end limit
-		if( $monthStart !== $monthEnd ) {
-			$rangeWhere .= ' OR	(MONTH(birthday) = ' . $monthEnd . ' AND DAY(birthday) <= ' . $dayEnd . ')';
-		}
-
-			// Month difference higher than one (ex: range over 3 months)
-			// End month is lower than start month (two years are included in the range (dec-jan))
-		if( $monthDiff > 1 || $monthEnd < $monthStart ) {
-				// Multiple months in the same year
-			if( $monthDiff > 1 ) {
-				$monthsBetween = array_splice(range($monthStart, $monthEnd), 1, -1);
-			}
+			// If range is in the same month
+		if( $monthStart === $monthEnd ) {
+			$monthsRange= array($monthStart);
+			$rangeWhere	= 'DAY(birthday) BETWEEN ' . $dayStart . ' AND ' . $dayEnd;
+		} elseif( $monthDiff === 1 ) {
+			$monthsRange= array($monthStart, $monthEnd);
+			$rangeWhere = '((MONTH(birthday) = ' . $monthStart . ' AND DAY(birthday) > ' . $dayStart . ') OR
+							(MONTH(birthday) = ' . $monthEnd . ' AND DAY(birthday) < ' . $dayEnd . '))';
+		} else {
 				// Crossing the year border (ex: nov-feb)
 			if( $monthEnd < $monthStart ) {
-				$monthsBetween = array();
+				$monthsRange = array();
 				$mEnd	= $monthEnd + 12;
-				for($i=$monthStart+1; $i<$mEnd-1; $i++) {
-					$monthsBetween[] = $i%12+1;
+				TodoyuDebug::printHtml($mEnd, 'mEnd');
+				TodoyuDebug::printHtml($monthStart, '$monthStart');
+				for($m=$monthStart; $m<=$mEnd; $m++) {
+					$month	= $m%12;
+					$monthsRange[] = $month === 0 ? 12 : $month;
 				}
+			} else {
+				$monthsRange = range($monthStart, $monthEnd);
 			}
 
-			if( sizeof($monthsBetween) > 0 ) {
-					// Months in the middle of the range. Day doesn't matter
-				$rangeWhere .= ' OR ( MONTH(birthday) IN(' . implode(',', $monthsBetween) . '))';
-			}
+			$middleMonths	= array_slice($monthsRange, 1, -1);
+
+			$rangeWhere	= '(MONTH(birthday) IN(' . implode(',', $middleMonths) . ') OR
+							MONTH(birthday) = ' . $monthStart . ' AND DAY(birthday) >= ' . $dayStart . ' OR
+							MONTH(birthday) = ' . $monthEnd . ' AND DAY(birthday) <= ' . $dayEnd . ')';
 		}
 
+			// Allowed months
+		$rangeWhere .= ' AND MONTH(birthday) IN(' . implode(',', $monthsRange) . ')';
+
 		$fields	= '	*, YEAR(birthday) as birthyear';
-
 		$table	= self::TABLE;
-
-		$where	= '	birthday < \'' . $mysqlDateStart . '\'
-					AND deleted = 0
+		$where	= '	deleted = 0
 					AND (' . $rangeWhere . ')';
 		$order	= 'birthday';
 
