@@ -42,7 +42,7 @@
 					</source>
 					<extraAttributes>onchange="Todoyu.Ext.contact.Address.onChangeCountry(this, 'region', 'id-country');"</extraAttributes>
 				</field>
-				
+
 				<field type="select" name="region">
 					<label>contact.address.attr.region</label>
 					<source type="function">

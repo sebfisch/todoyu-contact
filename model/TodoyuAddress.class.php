@@ -53,5 +53,16 @@ class TodoyuAddress extends TodoyuBaseObject {
 
 		return $address;
 	}
+
+
+
+	/**
+	 * Get timezone of address
+	 *
+	 * @return	String
+	 */
+	public function getTimezone() {
+		return TodoyuDatasource::getTimezone($this->get('id_timezone'));
+	}
 }
 ?>

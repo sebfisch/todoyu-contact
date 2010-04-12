@@ -64,7 +64,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	public function listAction(array $params) {
 		restrict('contact', 'general:area');
 
-		TodoyuContactPreferences::saveActiveTab('person');
+		TodoyuContactPreferences::saveActiveTab('company');
 
 		$sword	= trim($params['sword']);
 
@@ -201,23 +201,23 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 		return render($tmpl, $data);
 	}
-	
-	
-	
+
+
+
 	/**
-	 * 
+	 *
 	 * @param array $params
 	 */
 	public function getRegionOptionsAction(array $params)	{
 		$tmpl	= 'core/view/form/FormElement_Select_Options.tmpl';
-		
+
 		$idCountry	= intval($params['idCountry']);
-		
+
 		$data	= array(
 			'options'	=> TodoyuDatasource::getRegionOptions($idCountry),
 			'value'		=> array()
 		);
-		
+
 		return render($tmpl, $data);
 	}
 

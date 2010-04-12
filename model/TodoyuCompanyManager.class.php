@@ -620,6 +620,11 @@ class TodoyuCompanyManager {
 
 		return Todoyu::db()->getColumn($field, $table, $where);
 	}
+
+
+	public static function hookAddTimezone(TodoyuForm $form) {
+		$form->addElementsFromXML('ext/contact/config/form/address-timezone.xml');
+	}
 }
 
 ?>

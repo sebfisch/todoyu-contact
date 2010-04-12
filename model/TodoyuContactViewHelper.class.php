@@ -373,18 +373,36 @@ class TodoyuContactViewHelper {
 
 		return TodoyuArray::reform($types, $reform);
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Get selector coptions for Regions in address form
-	 * 
+	 *
 	 * @param	TodoyuFormElement	$field
 	 */
 	public static function getRegionOptions(TodoyuFormElement $field)	{
 		$idCountry = $field->getForm()->getField('id_country')->getValue();
-		
+
 		return TodoyuDatasource::getRegionOptions(intval($idCountry[0]));
+	}
+
+
+
+
+	public static function getTimezoneOptionsGrouped(TodoyuFormElement $field) {
+		$timezones	= TodoyuDatasource::getTimezones();
+		$optgroups	= array();
+
+		foreach($timezones as $timezone) {
+			$tzParts	= explode('/', $timezone['timezone']);
+			$optgroups[$tzParts[0]][] = array(
+				'value'	=> $timezone['id'],
+				'label'	=> $timezone['timezone']
+			);
+		}
+
+		return $optgroups;
 	}
 }
 

@@ -87,16 +87,7 @@ class TodoyuCompany extends TodoyuBaseObject {
 	}
 
 
-
-	/**
-	 * Get all company data as array
-	 *
-	 * @return	Array
-	 */
-	public function getData() {
-		return $this->data;
-	}
-
+	//public function getTimezone
 
 
 	/**

@@ -82,6 +82,7 @@
 		<label index="address.attr.zip">Zip</label>
 		<label index="address.attr.country">Country</label>
 		<label index="address.attr.comment">Comment</label>
+		<label index="address.attr.timezone">Timezone</label>
 		<label index="record.jobtype">Job Type</label>
 		<label index="record.contactinfotype">Contact Information Type</label>
 		<label index="record.contactinfotype.attr.category">Category</label>
@@ -187,6 +188,7 @@
 		<label index="address.attr.zip">PLZ</label>
 		<label index="address.attr.country">Land</label>
 		<label index="address.attr.comment">Kommentar</label>
+		<label index="address.attr.timezone">Zeitzone</label>
 		<label index="record.jobtype">Beschäftigungsart</label>
 		<label index="record.contactinfotype">Kontaktinformationstyp</label>
 		<label index="record.contactinfotype.attr.category">Kategorie</label>

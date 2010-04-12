@@ -243,6 +243,32 @@ class TodoyuPerson extends TodoyuBaseObject {
 
 
 	/**
+	 * Get timezone of the person
+	 * The timezone is defined in the workaddress of the persons company
+	 *
+	 * @return	String		Or FALSE if non defined
+	 */
+	public function getTimezone() {
+		$field	= '	tz.timezone';
+		$tables	= '	ext_contact_mm_company_person mmcp,
+					ext_contact_address a,
+					static_timezone tz';
+		$where	= '	mmcp.id_person		= ' . personid() . ' AND
+					mmcp.id_workaddress	= a.id AND
+					a.id_timezone		= tz.id';
+
+		$timezones	= Todoyu::db()->getArray($field, $tables, $where);
+
+		if( sizeof($timezones) > 0 ) {
+			return $timezones[0]['timezone'];
+		} else {
+			return false;
+		}
+	}
+
+
+
+	/**
 	 * Load all foreing record of a person
 	 *
 	 */

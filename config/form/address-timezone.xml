@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fieldsets>
+		<fieldset name="timezone">
+			<legend>Address timezone</legend>
+			<elements>
+
+				<field type="selectgrouped" name="id_timezone">
+					<label>contact.address.attr.timezone</label>
+					<source type="function">
+						<function>TodoyuContactViewHelper::getTimezoneOptionsGrouped</function>
+					</source>
+				</field>
+
+			</elements>
+		</fieldset>
+	</fieldsets>
+</form>
