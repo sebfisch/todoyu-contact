@@ -709,8 +709,6 @@ class TodoyuPersonManager {
 
 		$birthdayPersons = Todoyu::db()->getArray($fields, $table, $where, '', $order);
 
-		TodoyuDebug::printLastQueryInFirebug('birthday');
-
 			// Enrich data with date and age of persons
 		$birthdayPersons	= self::addBirthdayPersonsDateAndAge($birthdayPersons, $dateStart, $dateEnd);
 

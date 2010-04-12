@@ -238,7 +238,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 	public static function getSelectedPersons() {
 		$prefs = self::getPrefs();
 
-		return is_array($prefs->persons) ? $prefs->persons : array();
+		return TodoyuArray::assure($prefs['persons']);
 	}
 
 
