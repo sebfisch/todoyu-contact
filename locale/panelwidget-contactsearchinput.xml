@@ -10,4 +10,9 @@
 		<label index="showAll.label">Alle anzeigen</label>
 		<label index="clearSword">Eingabe löschen</label>
 	</labels>
+	<labels lang="pt">
+		<label index="title">Procurar</label>
+		<label index="showAll.label">Mostrar Todos</label>
+		<label index="clearSword">Limpar entrada</label>
+	</labels>
 </locallang>
