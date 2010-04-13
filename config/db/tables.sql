@@ -56,7 +56,7 @@ CREATE TABLE `ext_contact_address` (
   `id_addresstype` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `id_country` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `id_holidayset` int(11) NOT NULL DEFAULT '0',
-  `id_timezone` SMALLINT( 3 ) NOT NULL DEFAULT '0',
+  `id_timezone` smallint(3) NOT NULL DEFAULT '0',
   `street` varchar(128) NOT NULL,
   `postbox` varchar(32) NOT NULL,
   `city` varchar(48) NOT NULL,
