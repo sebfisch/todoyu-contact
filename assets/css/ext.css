@@ -137,7 +137,7 @@ div.visitingCardContent {
 
 div.visitingCardContent table tr td {
 	text-align:left;
-	padding:2px 5px 2px 8px;
+	padding:2px 2px 2px 8px !important;
 }
 
 div.visitingCardContent table tr td.label {
