@@ -62,6 +62,17 @@ Todoyu.Ext.contact.Person =  {
 	 * @paran	Unknown		response
 	 */
 	onEdit: function(idPerson, response) {
+		this.initEditForm(idPerson);
+	},
+
+
+
+	/**
+	 * Initialize edit form
+	 *
+	 * @param	Integer		idPerson
+	 */
+	initEditForm: function(idPerson) {
 		this.observeFieldsForShortname(idPerson);
 
 		this.showLoginFields(idPerson);
@@ -219,11 +230,11 @@ Todoyu.Ext.contact.Person =  {
 	 * @paran	Array	response
 	 */
 	onSaved: function(response) {
-		var error	= response.hasTodoyuError();
-
-		if( error ) {
+		if( response.hasTodoyuError() ) {
 			Todoyu.notifyError('[LLL:contact.person.saved.error]');
 			$('contact-form-content').update(response.responseText);
+			var idPerson	= parseInt(response.request.parameters['person[id]'], 10);
+			this.initEditForm(idPerson);
 		} else {
 			Todoyu.notifySuccess('[LLL:contact.person.saved]');
 			

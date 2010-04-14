@@ -132,6 +132,9 @@
 									<allowEmpty />
 								</unique>
 							</validate>
+							<required>
+								<noCheck />
+							</required>
 						</field>
 
 						<field type="textinput" name="password">
@@ -142,6 +145,9 @@
 									<allowEmpty />
 								</goodPassword>
 							</validate>
+							<required>
+								<noCheck />
+							</required>
 							<textAfterField>LLL:contact.person.attr.password.hasPassword</textAfterField>
 						</field>
 
@@ -155,6 +161,9 @@
 									<field>username</field>
 								</requiredIfNotEmpty>
 							</validate>
+							<required>
+								<noCheck />
+							</required>
 						</field>
 
 						<field type="checkbox" name="is_admin">
@@ -175,6 +184,14 @@
 									<noLabel>contact.person.attr.role.new</noLabel>
 								</label>
 							</record>
+							<validate>
+								<requiredIfNotEmpty>
+									<field>username</field>
+								</requiredIfNotEmpty>
+							</validate>
+							<required>
+								<noCheck />
+							</required>
 						</field>
 					</elements>
 				</fieldset>

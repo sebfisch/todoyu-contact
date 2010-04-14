@@ -150,3 +150,7 @@ div.visitingCardContent table tr td.label {
 #search-tab-contact span.icon {
 	background:url(../img/icons.png) no-repeat 0 6px;
 }
+
+form.formPerson fieldset.account {
+	margin-top:20px;
+}
