@@ -244,7 +244,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 
 	/**
 	 * Get timezone of the person
-	 * The timezone is defined in the workaddress of the persons company
+	 * The timezone is defined in the assigned working address of the person's company
 	 *
 	 * @return	String		Or FALSE if non defined
 	 */
@@ -269,8 +269,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 
 
 	/**
-	 * Load all foreing record of a person
-	 *
+	 * Load all foreign records of a person
 	 */
 	public function loadForeignData()	{
 		$this->data['company']		= TodoyuPersonManager::getPersonCompanyRecords($this->id);
@@ -295,8 +294,5 @@ class TodoyuPerson extends TodoyuBaseObject {
 		return parent::getTemplateData();
 	}
 
-
 }
-
-
 ?>
