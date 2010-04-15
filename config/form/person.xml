@@ -186,7 +186,7 @@
 							</record>
 							<validate>
 								<requiredIfNotEmpty>
-									<field>username</field>
+									<field>username,is_admin</field>
 								</requiredIfNotEmpty>
 							</validate>
 							<required>
