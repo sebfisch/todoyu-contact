@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
-	<labels lang="en">
+	<labels lang="en_GB">
 		<label index="toggle.multiselect.title">Toggle Single/ Multi Selection Mode</label>
 		<label index="title">Staff</label>
 		<label index="selectAllStaff">Select all Staff</label>
 		<label index="byFunction">By Jobtype:</label>
 		<label index="noFunction">No Jobtype</label>
 	</labels>
-	<labels lang="de">
+	<labels lang="de_DE">
 		<label index="toggle.multiselect.title">Umschalten zwischen Einfach- und Mehrfachauswahl</label>
 		<label index="title">Mitarbeiter</label>
 		<label index="selectAllStaff">Wähle alle Mitarbeiter aus</label>
 		<label index="byFunction">Nach Tätigkeit:</label>
 		<label index="noFunction">Keine Tätigkeit</label>
 	</labels>
-	<labels lang="pt">
+	<labels lang="pt_BR">
 		<label index="toggle.multiselect.title">Alternar Simples/ Multi Modo de Seleção</label>
 		<label index="title">Participante</label>
 		<label index="selectAllStaff">Selecionar todos os participantes</label>

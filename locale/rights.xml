@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
-	<labels lang="en">
+	<labels lang="en_GB">
 		<label index="general">General Settings</label>
 		<label index="general.use">Use Module Functionalities</label>
 		<label index="general.area">Use Contacts Area</label>
@@ -13,7 +13,7 @@
 		<label index="panelwidgets">Panelwidgets</label>
 		<label index="panelwidgets.staffSelector">Staff Selector</label>
 	</labels>
-	<labels lang="de">
+	<labels lang="de_DE">
 		<label index="general">Allgemeine Einstellungen</label>
 		<label index="general.use">Kontakt-Funktionalitäten benutzen</label>
 		<label index="general.area">Kontakt Bereich benutzen</label>
@@ -26,7 +26,7 @@
 		<label index="panelwidgets">Steuerelemente</label>
 		<label index="panelwidgets.staffSelector">Mitarbeiterwähler</label>
 	</labels>
-	<labels lang="pt">
+	<labels lang="pt_BR">
 		<label index="general">Administração Geral</label>
 		<label index="general.use">Utilizar Funcionalidades de Módulos</label>
 		<label index="general.area">Utilizar Área de Contatos</label>
