@@ -35,9 +35,8 @@ TodoyuLanguage::register('panelwidget-contactsearchinput', PATH_EXT_CONTACT . '/
 TodoyuLanguage::register('panelwidget-staffselector', PATH_EXT_CONTACT . '/locale/panelwidget-staffselector.xml');
 
 	// Request configurations
+	// @notice	Auto-loaded configs if available: admin, assets, create, contextmenu, extinfo, filters, form, page, panelwidgets, rights, search
 require_once( PATH_EXT_CONTACT . '/config/extension.php' );
-require_once( PATH_EXT_CONTACT . '/config/panelwidgets.php' );
-//require_once( PATH_EXT_CONTACT . '/config/admin.php');
 require_once( PATH_EXT_CONTACT . '/dwoo/plugins.php');
 
 ?>
