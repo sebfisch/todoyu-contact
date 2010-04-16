@@ -8,16 +8,12 @@
 				<field type="textinputAC" name="id">
 					<label>contact.company</label>
 					<config>
-						<acListener>
-							<ext>contact</ext>
-							<controller>autocompletion</controller>
-							<action>company</action>
-						</acListener>
-						<acLabelFunc>TodoyuCompanyManager::getLabel</acLabelFunc>
+						<acName>company</acName>
+						<acLabel>TodoyuCompanyManager::getLabel</acLabel>
 						<options>
+							<onCompleteCustom>Todoyu.Ext.contact.Autocomplete.onCompanyAutocomplete</onCompleteCustom>
 							<onElementSelectedCustom>Todoyu.Ext.contact.Person.updateCompanyAddressRecords</onElementSelectedCustom>
 							<referencedFieldName>id-workaddress</referencedFieldName>
-							<onCompleteCustom>Todoyu.Ext.contact.Autocomplete.onCompanyAutocomplete</onCompleteCustom>
 						</options>
 					</config>
 					<required />

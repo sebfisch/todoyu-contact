@@ -24,6 +24,7 @@
 
 
 TodoyuAutocompleter::addAutocompleter('company', 'TodoyuPersonFilterDataSource::autocompleteCompanies', array('contact', 'general:use'));
+TodoyuAutocompleter::addAutocompleter('person', 'TodoyuPersonFilterDataSource::autocompletePersons', array('contact', 'general:use'));
 
 
 

@@ -8,12 +8,8 @@
 				<field type="textinputAC" name="id">
 					<label>contact.person</label>
 					<config>
-						<acListener>
-							<ext>contact</ext>
-							<controller>autocompletion</controller>
-							<action>person</action>
-						</acListener>
-						<acLabelFunc>TodoyuPersonManager::getLabel</acLabelFunc>
+						<acName>person</acName>
+						<acLabel>TodoyuPersonManager::getLabel</acLabel>
 						<options>
 							<onCompleteCustom>Todoyu.Ext.contact.Autocomplete.onPersonAutocomplete</onCompleteCustom>
 						</options>
