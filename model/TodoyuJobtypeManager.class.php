@@ -144,7 +144,7 @@ class TodoyuJobtypeManager {
 	 * @param	String	$search
 	 * @return	Resource
 	 */
-	public static function searchJobTypes(array $searchFieldsArray, $search)	{
+	public static function searchJobtypes(array $searchFieldsArray, $search)	{
 		$table = self::TABLE;
 
 		if( $search != '*' )	{
@@ -170,7 +170,7 @@ class TodoyuJobtypeManager {
 	 *
 	 * @param	Array	$jobTypeData
 	 */
-	public static function saveJobType(array $data)	{
+	public static function saveJobtype(array $data)	{
 		$idJobtype	= intval($data['id']);
 		$xmlPath	= 'ext/contact/config/form/admin/jobtype.xml';
 

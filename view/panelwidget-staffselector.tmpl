@@ -5,7 +5,7 @@
 <label class="toggleSelect collapse {if !$jobTypeMultiple}expand{/if}" id="panelwidget-{$id}-jobtypetoggle-label" title="{Label panelwidget-staffselector.toggle.multiselect.title}" for="panelwidget-{$id}-jobtypetoggle"></label>
 <input class="toggleSelect checkbox" id="panelwidget-{$id}-jobtypetoggle" type="checkbox" {if $jobTypeMultiple}checked="checked"{/if} />
 <span class="staffSelector overflowHidden scrollbarHide displayBlock">
-{select options=$jobTypeOptions value=$selectedJobTypes id="panelwidget-$id-jobtype" name="jobtype" multiple=$jobTypeMultiple}
+{select options=$jobTypeOptions value=$selectedJobtypes id="panelwidget-$id-jobtype" name="jobtype" multiple=$jobTypeMultiple}
 </span>
 {* --------------- Staff persons selector --------------- *}
 <div class="fLabel odd">

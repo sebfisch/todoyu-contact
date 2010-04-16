@@ -22,9 +22,9 @@ TodoyuExtManager::addRecordConfig('contact', 'jobtype', array(
 	'label'		=> 'LLL:contact.record.jobtype',
 	'list'		=> 'TodoyuJobtypeManager::getRecords',
 	'form'		=> 'ext/contact/config/form/admin/jobtype.xml',
-	'object'	=> 'TodoyuJobType',
+	'object'	=> 'TodoyuJobtype',
 	'delete'	=> 'TodoyuJobtypeManager::deleteJobtype',
-	'save'		=> 'TodoyuJobtypeManager::saveJobType',
+	'save'		=> 'TodoyuJobtypeManager::saveJobtype',
 	'table'		=> 'ext_contact_jobtype'
 ));
 

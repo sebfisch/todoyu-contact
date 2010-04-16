@@ -19,20 +19,20 @@
 *****************************************************************************/
 
 /**
- * JobType
+ * Jobtype
  *
  */
 
-class TodoyuJobType extends TodoyuBaseObject {
+class TodoyuJobtype extends TodoyuBaseObject {
 
 
 	/**
 	 * Constructor
 	 *
-	 * @param Integer	$JobTypeID
+	 * @param Integer	$idJobtype
 	 */
-	function __construct($idJobType)	{
-		parent::__construct($idJobType, 'ext_contact_jobtype');
+	function __construct($idJobtype)	{
+		parent::__construct($idJobtype, 'ext_contact_jobtype');
 	}
 
 }
