@@ -167,26 +167,10 @@ class TodoyuPerson extends TodoyuBaseObject {
 	/**
 	 * Get person language
 	 *
-	 * @return $lang
+	 * @return	String
 	 */
-	public function getLanguage() {
-		$lang	= TodoyuContactPreferences::getLanguage();
-
-			// If no preference found, try to detect the browser language
-		if( $lang === false ) {
-			$browserLang = TodoyuBrowserInfo::getBrowserLanguage();
-
-			if( $browserLang !== false ) {
-				$lang = $browserLang;
-			}
-		}
-
-			// Last fallback is system language
-		if( $lang === false ) {
-			$lang = Todoyu::$CONFIG['SYSTEM']['language'];
-		}
-
-		return $lang;
+	public function getLocale() {
+		return TodoyuContactPreferences::getLocale();
 	}
 
 

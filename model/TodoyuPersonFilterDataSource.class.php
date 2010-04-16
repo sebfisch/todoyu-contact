@@ -27,14 +27,14 @@
 class TodoyuPersonFilterDataSource {
 
 	/**
-	 * Get persons autocompletion data
+	 * Get autocomplete list for person
 	 *
-	 * @param	String	$search
-	 * @param	Array	$conf
+	 * @param 	String		$input
+	 * @param	Array		$formData
+	 * @param	String		$name
 	 * @return	Array
-	 * @todo	Unused param $conf
 	 */
-	public static function autocompletePersons($search, array $conf = array())	{
+	public static function autocompletePersons($input, array $formData = array(), $name = '')	{
 		$data = array();
 
 		$fieldsToSearchIn = array(
@@ -43,7 +43,7 @@ class TodoyuPersonFilterDataSource {
 			'shortname'
 		);
 
-		$persons = TodoyuPersonManager::searchPersons($search, $fieldsToSearchIn);
+		$persons = TodoyuPersonManager::searchPersons($input, $fieldsToSearchIn);
 
 		foreach($persons as $person) {
 			$data[$person['id']] = TodoyuPersonManager::getLabel($person['id']);
@@ -75,17 +75,16 @@ class TodoyuPersonFilterDataSource {
 	 * @param	Array	$conf
 	 * @return	Array
 	 */
-	public static function autocompleteCompanies($search, array $conf = array())	{
-		$data = array();
+	public static function autocompleteCompanies($input, array $formData = array(), $name = '')	{
+		$result		= array();
+		$companies	= TodoyuCompanyManager::searchCompany($input);
 
-		$foundCompanies = TodoyuCompanyManager::searchCompany($search);
-
-		foreach($foundCompanies as $companyData)	{
+		foreach($companies as $companyData)	{
 			$company	= TodoyuCompanyManager::getCompany($companyData['id']);
-			$data[$companyData['id']] = $company->getTitle();
+			$result[$companyData['id']] = $company->getTitle();
 		}
 
-		return $data;
+		return $result;
 	}
 
 

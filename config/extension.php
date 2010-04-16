@@ -22,6 +22,12 @@
  * General configuration of the contact extension
  */
 
+
+TodoyuAutocompleter::addAutocompleter('company', 'TodoyuPersonFilterDataSource::autocompleteCompanies', array('contact', 'general:use'));
+
+
+
+
 	// Categories of dynamic contactinfo types
 Todoyu::$CONFIG['EXT']['contact']['contactinfotypecategories'] = array(
 		// Email

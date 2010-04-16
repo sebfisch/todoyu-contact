@@ -119,8 +119,8 @@ class TodoyuContactPreferences {
 	 *
 	 * @return	String
 	 */
-	public static function getLanguage() {
-		return self::getPref('language');
+	public static function getLocale() {
+		return self::getPref('locale');
 	}
 
 
@@ -128,12 +128,12 @@ class TodoyuContactPreferences {
 	/**
 	 * Save persons language
 	 *
-	 * @param	String		$language
+	 * @param	String		$locale
 	 */
-	public static function saveLanguage($language) {
-		$language	= trim(strtolower($language));
+	public static function saveLocale($locale) {
+		$locale	= trim($locale);
 
-		self::savePref('language', $language, 0, true);
+		self::savePref('locale', $locale, 0, true);
 	}
 
 
