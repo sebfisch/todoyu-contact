@@ -22,8 +22,8 @@ Todoyu.Ext.contact.Autocomplete = {
 	/**
 	 * Handler when parenttask field is autocompleted
 	 *
-	 * @param	Ajax.Response			response
-	 * @param	Todoyu.Autocompleter	autocompleter
+	 * @param	{Ajax.Response}			response
+	 * @param	{Todoyu.Autocompleter}	autocompleter
 	 */
 	onRegionAutocomplete: function(response, autocompleter) {
 		if( response.getTodoyuHeader('acElements') == 0 ) {
@@ -36,8 +36,8 @@ Todoyu.Ext.contact.Autocomplete = {
 	/**
 	 * Handler when person field is autocompleted
 	 *
-	 * @param	Ajax.Response			response
-	 * @param	Todoyu.Autocompleter	autocompleter
+	 * @param	{Ajax.Response}			response
+	 * @param	{Todoyu.Autocompleter}	autocompleter
 	 */
 	onPersonAutocomplete: function(response, autocompleter) {
 		if( response.getTodoyuHeader('acElements') == 0 ) {
@@ -50,8 +50,8 @@ Todoyu.Ext.contact.Autocomplete = {
 	/**
 	 * Handler when company field is autocompleted
 	 *
-	 * @param	Ajax.Response			response
-	 * @param	Todoyu.Autocompleter	autocompleter
+	 * @param	{Ajax.Response}			response
+	 * @param	{Todoyu.Autocompleter}	autocompleter
 	 */
 	onCompanyAutocomplete: function(response, autocompleter) {
 		if( response.getTodoyuHeader('acElements') == 0 ) {

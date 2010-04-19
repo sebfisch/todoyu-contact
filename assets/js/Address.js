@@ -25,9 +25,9 @@ Todoyu.Ext.contact.Address = {
 	/**
 	 * Sends Ajax request when the a country is selected to get its country zones
 	 * 
-	 * @param	Object	inputField
-	 * @param	String	referencedFieldName
-	 * @param	String	fieldNameToReplace
+	 * @param	{Object}	inputField
+	 * @param	{String}	referencedFieldName
+	 * @param	{String}	fieldNameToReplace
 	 */
 	onChangeCountry: function(inputField, referencedFieldName, fieldNameToReplace)	{
 		var selectedValue		= inputField.value;
@@ -54,8 +54,8 @@ Todoyu.Ext.contact.Address = {
 	 * Fills the found options to the selector
 	 * Highlights the selector for 2 seconds
 	 * 
-	 * @param	String	idTarget
-	 * @param	Object	response
+	 * @param	{String}	idTarget
+	 * @param	{Object}	response
 	 */
 	onUpdateCompanyAddressRecords: function(idTarget, response)	{
 		$(idTarget).innerHTML = response.responseText;

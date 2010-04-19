@@ -199,6 +199,7 @@ class TodoyuJobtypeManager {
 	}
 
 
+
 	/**
 	 * Update jobtype
 	 *

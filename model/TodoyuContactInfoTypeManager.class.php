@@ -46,6 +46,7 @@ class TodoyuContactInfoTypeManager {
 	}
 
 
+
 	/**
 	 * Get all contactinfotypes
 	 *

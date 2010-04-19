@@ -36,8 +36,8 @@ Todoyu.Ext.contact = {
 	/**
 	 * Handler to be called on selecting tabs of contact
 	 * 
-	 * @param	Object		event
-	 * @param	String		tab
+	 * @param	{Object}		event
+	 * @param	{String}		tab
 	 */
 	onTabSelect: function(event, tab) {
 		this[tab.capitalize()].showList(Todoyu.Ext.contact.PanelWidget.ContactSearch.getValue());
@@ -48,8 +48,8 @@ Todoyu.Ext.contact = {
 	/**
 	 * Update contact page content with response of AJAX request with given URL + options
 	 * 
-	 * @param	String		url
-	 * @param	Array		options 
+	 * @param	{String}		url
+	 * @param	{Array}		options
 	 */
 	updateContent: function(url, options) {
 		Todoyu.Ui.updateContent(url, options);
@@ -60,7 +60,7 @@ Todoyu.Ext.contact = {
 	/**
 	 * Switch display of contacts type to given type
 	 * 
-	 * @param	String		type
+	 * @param	{String}		type
 	 */
 	changeType: function(type) {
 		Todoyu.Tabs.setActive('contact', type);

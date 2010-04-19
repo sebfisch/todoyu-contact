@@ -70,7 +70,7 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Initialize edit form
 	 *
-	 * @param	Integer		idPerson
+	 * @param	{Integer}		idPerson
 	 */
 	initEditForm: function(idPerson) {
 		this.observeFieldsForShortname(idPerson);
@@ -85,8 +85,8 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Toggle display of login related fields of given person
 	 *
-	 * @param	Integer		idPerson
-	 * @param	Event		event
+	 * @param	{Integer}		idPerson
+	 * @param	{Event}		event
 	 */
 	showLoginFields: function(idPerson, event) {
 		var field	= $('person-' + idPerson + '-field-active');
@@ -162,12 +162,12 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Updates working location selector with options of choosen company
 	 *
-	 * @param	Object	inputField
-	 * @param	Object	selectedListElement
-	 * @param	String	baseID
-	 * @param	Mixed	selectedValue
-	 * @param	Object	list
-	 * @param	Object	parent
+	 * @param	{Object}	inputField
+	 * @param	{Object}	selectedListElement
+	 * @param	{String}	baseID
+	 * @param	{Mixed}	selectedValue
+	 * @param	{Object}	list
+	 * @param	{Object}	parent
 	 */
 	updateCompanyAddressRecords: function(inputField, selectedListElement, baseID, selectedValue, list, parent)	{
 		var idInputFieldArr		= inputField.id.split('-').without('fulltext');
@@ -193,7 +193,7 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Highlights the referenced selector of company address after updating the company-autocompleter
 	 * 
-	 * @param	String	idTarget
+	 * @param	{String}	idTarget
 	 */
 	onUpdateCompanyAddressRecords: function(idTarget)	{
 		new Effect.Highlight($(idTarget), {
@@ -209,7 +209,7 @@ Todoyu.Ext.contact.Person =  {
 	 * Save person form
 	 *
 	 * @paran	String		form
-	 * @return	Boolean
+	 * @return	{Boolean}
 	 */
 	save: function(form) {
 		$(form).request ({
@@ -293,9 +293,9 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Save person record from wizard
 	 *
-	 * @param	Object		form
-	 * @param	String		target
-	 * @return	Boolean
+	 * @param	{Object}		form
+	 * @param	{String}		target
+	 * @return	{Boolean}
 	 */
 	saveWizard: function(form, target)	{
 		$(form).request ({
@@ -314,8 +314,8 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Handler evoked upon onComplete of saving from wizard. Check and notify success / error, update display
 	 *
-	 * @param	String	target
-	 * @param	Object	response
+	 * @param	{String}	target
+	 * @param	{Object}	response
 	 */
 	onSavedWizard: function(target, response)	{
 		var error	= response.hasTodoyuError();

@@ -32,7 +32,7 @@ Todoyu.Ext.contact.QuickCreateCompany = {
 	 * Save company
 	 *
 	 * @param	form
-	 * @return	Boolean		false
+	 * @return	{Boolean}		false
 	 */
 	save: function(form) {
 		$(form).request ({
@@ -50,7 +50,7 @@ Todoyu.Ext.contact.QuickCreateCompany = {
 	/**
 	 * Handler evoked upon onComplete of saving: check for and notify success / error, update display
 	 *
-	 * @param	Ajax.Response		response
+	 * @param	{Ajax.Response}		response
 	 */
 	onSaved: function(response) {
 		if( response.hasTodoyuError() ) {

@@ -218,6 +218,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 	}
 
 
+
 	/**
 	 * Get preferences of staff selector
 	 *

@@ -35,7 +35,7 @@ Todoyu.Ext.contact.Company =  {
 	/**
 	 * Edit given company
 	 *
-	 * @param	Integer	idCompany
+	 * @param	{Integer}	idCompany
 	 */
 	edit: function(idCompany) {
 		var url = Todoyu.getUrl('contact', 'company');
@@ -61,7 +61,7 @@ Todoyu.Ext.contact.Company =  {
 	/**
 	 * Confirm if really wanted and remove (delete) given company if
 	 *
-	 * @param	Integer	idCompany
+	 * @param	{Integer}	idCompany
 	 */
 	remove: function(idCompany) {
 		if( confirm('[LLL:contact.company.delete.confirm]') )	{
@@ -83,7 +83,7 @@ Todoyu.Ext.contact.Company =  {
 	/**
 	 * Handle event after company deletion being performed
 	 *
-	 * @param	Response	response
+	 * @param	{Response}	response
 	 */
 	onRemoved: function(response) {
 		if( ! response.hasTodoyuError() ) {
@@ -96,7 +96,7 @@ Todoyu.Ext.contact.Company =  {
 	/**
 	 * Save company record
 	 *
-	 * @param	String		form
+	 * @param	{String}		form
 	 */
 	save: function(form) {
 		$(form).request ({
@@ -114,7 +114,7 @@ Todoyu.Ext.contact.Company =  {
 	/**
 	 * Handler being evoked OnComplete of save company request: check for and notify success / error, update display
 	 *
-	 * @param	Object	response
+	 * @param	{Object}	response
 	 */
 	onSaved: function(response) {
 		var error	= response.hasTodoyuError();
@@ -144,7 +144,7 @@ Todoyu.Ext.contact.Company =  {
 	/**
 	 * Update company list
 	 *
-	 * @param	String		sword		(search word)
+	 * @param	{String}		sword		(search word)
 	 */
 	showList: function(sword) {
 		var url = Todoyu.getUrl('contact', 'company');
@@ -163,7 +163,7 @@ Todoyu.Ext.contact.Company =  {
 	/**
 	 * Show detail view (popup) of given company
 	 *
-	 * @param	Integer		idCompany
+	 * @param	{Integer}		idCompany
 	 */
 	show: function(idCompany) {
 		var url		= Todoyu.getUrl('contact', 'company');

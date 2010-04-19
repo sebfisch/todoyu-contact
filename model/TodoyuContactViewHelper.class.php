@@ -55,6 +55,7 @@ class TodoyuContactViewHelper {
 	}
 
 
+
 	/**
 	 * Get options array with all persons being employees of internal company
 	 *

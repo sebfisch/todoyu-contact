@@ -35,7 +35,7 @@ Todoyu.Ext.contact.QuickCreatePerson = {
 	/**
 	 * Save person
 	 *
-	 * @param	String		form
+	 * @param	{String}		form
 	 */
 	save: function(form) {
 		$(form).request ({
