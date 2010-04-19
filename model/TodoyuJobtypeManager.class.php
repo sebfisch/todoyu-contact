@@ -119,7 +119,7 @@ class TodoyuJobtypeManager {
 
 
 	/**
-	 * Get internal persons with jobtype
+	 * Get internal persons with job type
 	 *
 	 * @return	Array
 	 */
@@ -140,16 +140,16 @@ class TodoyuJobtypeManager {
 	/**
 	 * Search in job types
 	 *
-	 * @param	Array	$searchFieldsArray
-	 * @param	String	$search
+	 * @param	Array		$searchFieldsArray
+	 * @param	String		$search
 	 * @return	Resource
 	 */
 	public static function searchJobtypes(array $searchFieldsArray, $search)	{
 		$table = self::TABLE;
 
 		if( $search != '*' )	{
-			$searchArray = TodoyuArray::trimExplode(' ',$search);
-			if(count($searchArray) > 0)	{
+			$searchArray = TodoyuArray::trimExplode(' ', $search);
+			if( count($searchArray) > 0 )	{
 				$where = Todoyu::db()->buildLikeQuery($searchArray, $searchFieldsArray);
 			} else {
 				return false;

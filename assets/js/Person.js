@@ -174,7 +174,7 @@ Todoyu.Ext.contact.Person =  {
 		var referencedFieldName = parent.acRefs[baseID].options.referencedFieldName;
 		var idTarget = idInputFieldArr.join('-').replace(idInputFieldArr.last(), referencedFieldName);
 
-		if($(idTarget))	{
+		if( $(idTarget) )	{
 			var url = Todoyu.getUrl('contact', 'company');
 			var options = {
 					'parameters': {

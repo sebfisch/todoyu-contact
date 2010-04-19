@@ -34,7 +34,7 @@ Todoyu.Ext.contact.Address = {
 		var idInputFieldArr		= inputField.id.split('-').without('fulltext');
 		var idTarget = idInputFieldArr.join('-').replace(fieldNameToReplace, referencedFieldName);
 		
-		if($(idTarget))	{
+		if( $(idTarget) )	{
 			var url = Todoyu.getUrl('contact', 'company');
 			var options = {
 					'parameters': {
