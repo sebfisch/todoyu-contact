@@ -18,6 +18,7 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+	// Add job types to records area of sysadmin
 TodoyuExtManager::addRecordConfig('contact', 'jobtype', array(
 	'label'		=> 'LLL:contact.record.jobtype',
 	'list'		=> 'TodoyuJobtypeManager::getRecords',
@@ -28,7 +29,7 @@ TodoyuExtManager::addRecordConfig('contact', 'jobtype', array(
 	'table'		=> 'ext_contact_jobtype'
 ));
 
-// add holidaysets to record area of the sysadmin
+	// Add contact info types to records area of sysadmin
 TodoyuExtManager::addRecordConfig('contact', 'contactinfotype', array(
 	'label'		=> 'LLL:contact.record.contactinfotype',
 	'list'		=> 'TodoyuContactInfoTypeManager::getRecords',

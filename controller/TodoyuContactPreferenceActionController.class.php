@@ -22,7 +22,6 @@ class TodoyuContactPreferenceActionController extends TodoyuActionController {
 
 	/**
 	 * Controller init
-	 *
 	 */
 	public function init() {
 		restrict('contact', 'general:use');

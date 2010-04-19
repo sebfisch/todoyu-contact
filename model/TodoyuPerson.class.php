@@ -24,7 +24,6 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-
 class TodoyuPerson extends TodoyuBaseObject {
 
 	/**

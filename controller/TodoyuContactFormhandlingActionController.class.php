@@ -20,6 +20,12 @@
 
 class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 
+	/**
+	 * Get additional sub form
+	 * 
+	 * @param	Array	$params
+	 * @return	String
+	 */
 	public function addSubformAction(array $params) {
 		restrict('contact', 'general:use');
 

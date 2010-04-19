@@ -28,7 +28,6 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 
 	/**
 	 * Initialisation for action controller
-	 *
 	 */
 	public function init() {
 		restrict('contact', 'general:area');

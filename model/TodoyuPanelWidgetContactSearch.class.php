@@ -24,12 +24,10 @@
  * @package Todoyu
  * @subpackage contact
  */
-
 class TodoyuPanelWidgetContactSearch extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
 
 	/**
 	 * Constructor of the class
-	 *
 	 */
 	function __construct(array $config, array $params = array(), $idArea = 0, $expanded = true)	{
 		parent::__construct(
@@ -47,6 +45,12 @@ class TodoyuPanelWidgetContactSearch extends TodoyuPanelWidget implements Todoyu
 	}
 
 
+
+	/**
+	 * Render content of contact search panel widget
+	 * 
+	 * @return String
+	 */
 	public function renderContent() {
 		$contactType = TodoyuContactPreferences::getActiveTab();
 
@@ -66,8 +70,9 @@ class TodoyuPanelWidgetContactSearch extends TodoyuPanelWidget implements Todoyu
 	}
 
 
+	
 	/**
-	 * Renders the panelwidget
+	 * Renders the panel widget
 	 *
 	 * @return	String
 	 */

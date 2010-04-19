@@ -20,11 +20,8 @@
 
 /**
  * Jobtype
- *
  */
-
 class TodoyuJobtype extends TodoyuBaseObject {
-
 
 	/**
 	 * Constructor

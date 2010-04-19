@@ -29,7 +29,7 @@ class TodoyuAddress extends TodoyuBaseObject {
 	/**
 	 * constructor of the class
 	 *
-	 * @param	Integer	$addressID
+	 * @param	Integer		$addressID
 	 */
 	function __construct($idAddress) {
 		parent::__construct($idAddress, 'ext_contact_address');
@@ -38,8 +38,9 @@ class TodoyuAddress extends TodoyuBaseObject {
 
 
 	/**
-	 * returns the full address as newline - splitted string
+	 * Returns the full address as newline - splitted string
 	 *
+	 * @return	String
 	 */
 	public function getFullAddress() {
 		$address = '';

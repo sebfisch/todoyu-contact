@@ -92,7 +92,6 @@ class TodoyuCompany extends TodoyuBaseObject {
 
 	/**
 	 * Loads the related foreign record data to the company
-	 *
 	 */
 	public function loadForeignData()	{
 		$this->data['person']		= TodoyuCompanyManager::getCompanyPersonRecords($this->id);
@@ -101,6 +100,13 @@ class TodoyuCompany extends TodoyuBaseObject {
 	}
 
 
+
+	/**
+	 * Get template data for company
+	 *
+	 * @param	Boolean		$loadForeignData
+	 * @return	Array
+	 */
 	public function getTemplateData($loadForeignData = false) {
 		if( $loadForeignData ) {
 			$this->loadForeignData();

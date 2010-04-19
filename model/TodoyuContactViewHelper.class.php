@@ -18,6 +18,12 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ * Contact specific view helpers
+ *
+ * @package		Todoyu
+ * @subpackage	Contact
+ */
 class TodoyuContactViewHelper {
 
 	/**
