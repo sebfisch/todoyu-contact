@@ -105,10 +105,11 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 		$options	= array();
 
 		foreach($persons as $person) {
-			$options[] = array(
+			$classBase	= TodoyuBrowserInfo::isIE() ? 'enumColBG' : 'enumColOptionLeftIcon';
+			$options[] 	= array(
 				'value'	=> $person['id'],
 				'label'	=> $person['lastname'] . ' ' . $person['firstname'] . ' (' . ( ! empty($person['jobtype']) ? $person['jobtype'] : Label('panelwidget-staffselector.noFunction') ) . ')',
-				'class'	=> 'enumColOptionLeftIcon' . TodoyuColors::getColorIndex($person['id'])
+				'class'	=> $classBase . TodoyuColors::getColorIndex($person['id'])
 			);
 		}
 
