@@ -18,6 +18,12 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ *  Form handling action controller for contact extension
+ *
+ * @package		Todoyu
+ * @subpackage	Contact
+ */
 class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 
 	/**

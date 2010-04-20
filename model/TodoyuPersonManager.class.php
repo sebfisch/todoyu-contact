@@ -514,7 +514,7 @@ class TodoyuPersonManager {
 	public static function savePersonForeignRecords(array $data, $idPerson) {
 		$idPerson	= intval($idPerson);
 
-			// Save Contactinfo
+			// Save contactinfo
 		if( isset($data['contactinfo']) ) {
 			$contactInfoIDs	= TodoyuArray::getColumn($data['contactinfo'], 'id');
 
@@ -536,7 +536,7 @@ class TodoyuPersonManager {
 
 
 
-			// Save Address
+			// Save address
 		if( isset($data['address']) ) {
 			$addressIDs	= TodoyuArray::getColumn($data['address'], 'id');
 
@@ -558,7 +558,7 @@ class TodoyuPersonManager {
 
 
 
-			// Save Person
+			// Save company
 		if( isset($data['company']) ) {
 			$companyIDs	= TodoyuArray::getColumn($data['company'], 'id');
 
@@ -581,7 +581,7 @@ class TodoyuPersonManager {
 
 
 
-			// Roles
+			// Save roles
 		if( isset($data['role']) ) {
 			$roleIDs	= TodoyuArray::getColumn($data['role'], 'id');
 
@@ -598,7 +598,6 @@ class TodoyuPersonManager {
 
 		return $data;
 	}
-
 
 
 
@@ -929,7 +928,6 @@ class TodoyuPersonManager {
 	 * Get contact records for a person
 	 *
 	 * @param	Integer		$idPerson
-	 * @param	Boolean		$getOnlyPreferred
 	 * @return	Array
 	 */
 	public static function getContactinfoRecords($idPerson) {

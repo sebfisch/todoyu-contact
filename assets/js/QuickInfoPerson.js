@@ -37,7 +37,7 @@ Todoyu.Ext.contact.QuickInfoPerson = {
 	/**
 	 * Install quickinfo for person
 	 *
-	 * @param	{Element}	    element
+	 * @param	{Element}		element
 	 */
 	install: function(element) {
 		var idPerson = $(element).id.split('-').last();

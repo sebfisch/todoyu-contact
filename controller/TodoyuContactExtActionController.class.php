@@ -18,12 +18,24 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ *  Default action controller for contact extension
+ *
+ * @package		Todoyu
+ * @subpackage	Contact
+ */
 class TodoyuContactExtActionController extends TodoyuActionController {
 
+	/**
+	 * Default action: setup and render contact page view 
+	 * 
+	 * @param	Array	$params
+	 * @return	String
+	 */
 	public function defaultAction(array $params) {
 		restrict('contact', 'general:use');
 
-			// set active tab
+			// Set active tab
 		TodoyuFrontend::setActiveTab('contact');
 
 		TodoyuPage::init('ext/contact/view/ext.tmpl');
@@ -54,7 +66,7 @@ class TodoyuContactExtActionController extends TodoyuActionController {
 		TodoyuPage::set('tabs', $tabs);
 		TodoyuPage::set('content', $content);
 
-		// Display output
+			// Display output
 		return TodoyuPage::render();
 	}
 

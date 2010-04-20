@@ -18,6 +18,12 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ *  Company records quick creation action controller for contact extension
+ *
+ * @package		Todoyu
+ * @subpackage	Contact
+ */
 class TodoyuContactQuickCreateCompanyActionController extends TodoyuActionController {
 
 	/**
