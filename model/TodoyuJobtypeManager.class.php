@@ -178,6 +178,7 @@ class TodoyuJobtypeManager {
 			$idJobtype = self::addJobtype();
 		}
 
+			// Call hooked save data functions
 		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idJobtype);
 
 		self::updateJobtype($idJobtype, $data);

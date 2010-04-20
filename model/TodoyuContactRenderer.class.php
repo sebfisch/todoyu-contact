@@ -199,6 +199,7 @@ class TodoyuContactRenderer {
 
 		$person	= TodoyuPersonManager::getPerson($idPerson);
 		$data	= $person->getTemplateData(true);
+			// Call hooked load data functions
 		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $idPerson);
 
 		$form->setFormData($data);
@@ -232,6 +233,7 @@ class TodoyuContactRenderer {
 
 		$person	= TodoyuPersonManager::getPerson($idPerson);
 		$data	= $person->getTemplateData(true);
+			// Call hooked load data functions
 		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $idPerson);
 
 		$form->setFormData($data);

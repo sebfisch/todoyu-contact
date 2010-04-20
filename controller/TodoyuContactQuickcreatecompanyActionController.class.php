@@ -45,6 +45,7 @@ class TodoyuContactQuickCreateCompanyActionController extends TodoyuActionContro
 		$form	= TodoyuCompanyManager::getQuickCreateForm();
 
 		$data	= $params['company'];
+			// Call hooked save data functions
 		$data	= TodoyuFormHook::callSaveData('ext/contact/config/form/company.xml', $data, 0);
 		$form->setFormData($data);
 

@@ -110,6 +110,7 @@ class TodoyuContactInfoTypeManager {
 			$idContactInfoType = self::addContactInfoType();
 		}
 
+			// Call hooked save data functions
 		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idContactInfoType);
 
 		self::updateContactInfoType($idContactInfoType, $data);
