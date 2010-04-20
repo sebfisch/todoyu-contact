@@ -8,6 +8,7 @@
 		<label index="person.add">Add Persons</label>
 		<label index="person.editAndDelete">Edit and Delete Persons</label>
 		<label index="person.enableLogin">Create Login Account for Persons</label>
+		<label index="company">Companies</label>
 		<label index="company.add">Add Companies</label>
 		<label index="company.editAndDelete">Edit and Delete Companies</label>
 		<label index="panelwidgets">Panelwidgets</label>
@@ -21,6 +22,7 @@
 		<label index="person.add">Personen erstellen</label>
 		<label index="person.editAndDelete">Personen bearbeiten und löschen</label>
 		<label index="person.enableLogin">Logins für Personen erstellen</label>
+		<label index="company">Firmen</label>
 		<label index="company.add">Firmen erstellen</label>
 		<label index="company.editAndDelete">Firmen editieren und löschen</label>
 		<label index="panelwidgets">Steuerelemente</label>
@@ -34,6 +36,7 @@
 		<label index="person.add">Adicionar Contatos</label>
 		<label index="person.editAndDelete">Editar e Excluir Contatos</label>
 		<label index="person.enableLogin">Criar Login para contatos</label>
+		<label index="company">Empresas</label>
 		<label index="company.add">Adicionar Empresas</label>
 		<label index="company.editAndDelete">Editar e Excluir Empresas</label>
 		<label index="panelwidgets">Painel de widgets</label>

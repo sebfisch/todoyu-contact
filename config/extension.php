@@ -109,10 +109,10 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['person'] = array(
 		'actions'	=> '',
 	),
 	'truncate'	=> array(
-		'lastname'	=> 16,
-		'firstname'	=> 14,
+		'lastname'	=> 17,
+		'firstname'	=> 17,
 		'email'		=> 16,
-		'company'	=> 20
+		'company'	=> 22
 	)
 );
 
