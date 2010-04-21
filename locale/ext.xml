@@ -33,14 +33,14 @@
 		<label index="person.attr.active">Enable Login</label>
 		<label index="person.attr.username">Username</label>
 		<label index="person.attr.password">Password</label>
-		<label index="person.attr.password.hasPassword">Only fill in to change the current password</label>
+		<label index="person.attr.password.hasPassword">Only fill in to set a NEW password or to CHANGE the current one. Leave empty to keep the password.</label>
 		<label index="person.attr.email">Email</label>
 		<label index="person.attr.is_admin">Is Admin</label>
 		<label index="person.attr.role.new">New Role</label>
 		<label index="company.edit">Edit Company</label>
 		<label index="company.delete">Delete Company</label>
-		<label index="company.delete.confirm">Do you really want to delete this company?</label>
-		<label index="company.delete.hasProjects">Can't delete a company with projects</label>
+		<label index="company.delete.confirm">Do you really want to remove this company record?</label>
+		<label index="company.delete.hasProjects">Can't remove a company record with projects attached</label>
 		<label index="company.details">Show Company Details</label>
 		<label index="company.saved.ok">Company Saved</label>
 		<label index="company.saved.error">Saving Company Record Failed</label>
@@ -50,7 +50,7 @@
 		<label index="company.attr.is_internal">Is Internal</label>
 		<label index="company.attr.person">Employee</label>
 		<label index="company.attr.person.new">New Employee</label>
-		<label index="company.attr.person.jobtype.noJobtypes">No Job Types Given. You have To Do This In The Admin Section</label>
+		<label index="company.attr.person.jobtype.noJobtypes">No Job Types Given. You have to do this in the admin section</label>
 		<label index="company.noAddress">No Address Found For This Company</label>
 		<label index="comapny.employees">Employees</label>
 		<label index="contactinfo">Contact Informations</label>
