@@ -104,7 +104,7 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Check if $username and $password are a valid login
+	 * Check whether $username and $password are a valid login
 	 *
 	 * @param	String		$username		Username
 	 * @param	String		$password		Password as sha1
@@ -124,7 +124,7 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Check if $idPerson is a valid person ID
+	 * Check whether $idPerson is a valid person ID
 	 *
 	 * @param	Integer		$idPerson
 	 * @return	Boolean
@@ -136,7 +136,7 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Check if a person with the username $username exists
+	 * Check whether a person with the username $username exists
 	 *
 	 * @param	String		$username
 	 * @return	Boolean

@@ -22,14 +22,12 @@
  * General configuration of the contact extension
  */
 
-
 TodoyuAutocompleter::addAutocompleter('company', 'TodoyuPersonFilterDataSource::autocompleteCompanies', array('contact', 'general:use'));
 TodoyuAutocompleter::addAutocompleter('person', 'TodoyuPersonFilterDataSource::autocompletePersons', array('contact', 'general:use'));
 
 
 
-
-	// Categories of dynamic contactinfo types
+	// Categories of dynamic contact info types
 Todoyu::$CONFIG['EXT']['contact']['contactinfotypecategories'] = array(
 		// Email
 	array(
@@ -138,7 +136,8 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['company'] = array(
 
 
 Todoyu::$CONFIG['EXT']['contact']['panelWidgetStaffSelector'] = array(
-	'maxListSize'	=> 15 // Max size of person selector
+		// Max size of person selector
+	'maxListSize'	=> 15
 );
 
 

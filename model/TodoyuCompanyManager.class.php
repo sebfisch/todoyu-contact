@@ -591,10 +591,10 @@ class TodoyuCompanyManager {
 
 
 	/**
-	 * Check if a company has projects
+	 * Check whether a company has projects
 	 *
 	 * @param	Integer		$idCompany
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function hasProjects($idCompany) {
 		$idCompany	= intval($idCompany);

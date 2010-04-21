@@ -31,7 +31,7 @@
 
 
 /**
- * Check if given ID belongs to the current person
+ * Check whether given ID belongs to the current person
  *
  * @package		Todoyu
  * @subpackage	Template

@@ -107,9 +107,9 @@ class TodoyuContactViewHelper {
 
 
 	/**
-	 * Get availabe jobtypes (to render selector)
+	 * Get available job types (to render selector)
 	 *
-	 * @param	TodoyuForm	$formObject
+	 * @param	TodoyuFormElement	$field
 	 * @return	Array
 	 */
 	public static function getJobtypeOptions(TodoyuFormElement $field) {

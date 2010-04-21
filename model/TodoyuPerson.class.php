@@ -65,7 +65,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 
 
 	/**
-	 * Check if person is an admin
+	 * Check whether person is an admin
 	 *
 	 * @return	Boolean
 	 */
@@ -76,9 +76,9 @@ class TodoyuPerson extends TodoyuBaseObject {
 
 
 	/**
-	 * Check if a person works in a internal company
+	 * Check whether a person works in a internal company
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function isInternal() {
 		if( ! isset($this->cache['isInternal']) ) {
@@ -93,7 +93,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 
 
 	/**
-	 * Check if person is external (not in an internal company)
+	 * Check whether person is external (not in an internal company)
 	 *
 	 * @return	Boolean
 	 */
