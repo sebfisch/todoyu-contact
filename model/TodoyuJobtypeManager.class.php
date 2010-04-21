@@ -51,12 +51,7 @@ class TodoyuJobtypeManager {
 	 * @return	Array
 	 */
 	public static function getAllJobtypes() {
-		$fields	= '*';
-		$table	= self::TABLE;
-		$where	= 'deleted = 0';
-		$order	= 'title';
-
-		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
+		return TodoyuRecordManager::getAllRecords(self::TABLE);
 	}
 
 
@@ -79,7 +74,7 @@ class TodoyuJobtypeManager {
 
 		$order	= 'title';
 
-		$jobTypes	=	Todoyu::db()->getIndexedArray('id', $fields, $table, $where, '', '');
+		$jobTypes	= Todoyu::db()->getIndexedArray('id', $fields, $table, $where, '', '');
 		foreach($jobTypes as $id => $jobType) {
 			$jobTypes[$id]['title'] = TodoyuString::getLabel($jobType['title']);
 			$jobTypes[$id]['id']	= $id;

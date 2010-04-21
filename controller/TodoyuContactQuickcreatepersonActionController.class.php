@@ -51,7 +51,7 @@ class TodoyuContactQuickCreatePersonActionController extends TodoyuActionControl
 		$idPerson	= intval($data['id']);
 
 			// Get form, call save hooks, set data
-		$form	=	TodoyuPersonManager::getQuickCreateForm($idPerson);
+		$form	= TodoyuPersonManager::getQuickCreateForm($idPerson);
 		$data	= TodoyuFormHook::callSaveData('ext/contact/config/form/person.xml', $data, 0);
 		$form->setFormData($data);
 

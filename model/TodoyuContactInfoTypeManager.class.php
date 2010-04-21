@@ -48,17 +48,15 @@ class TodoyuContactInfoTypeManager {
 
 
 	/**
-	 * Get all contactinfotypes
+	 * Get all contact info types, optionally parse title labels
 	 *
 	 * @param	Boolean		$parseLabels
 	 * @return	Array
 	 */
 	public static function getContactInfoTypes($parseLabels = true) {
-		$fields	= '*';
-		$table	= self::TABLE;
 		$where	= 'deleted = 0';
 
-		$types	= Todoyu::db()->getArray($fields, $table, $where);
+		$types	= TodoyuRecordManager::getAllRecords(self::TABLE, $where, '');
 
 		if( $parseLabels ) {
 			foreach($types as $index => $type) {
@@ -88,20 +86,45 @@ class TodoyuContactInfoTypeManager {
 
 
 
+	/**
+	 * @todo	comment
+	 *
+	 * @param	Array	$data
+	 * @return	Integer
+	 */
 	public static function addContactInfoType(array $data = array()) {
 		return TodoyuRecordManager::addRecord(self::TABLE, $data);
 	}
 
 
+
+	/**
+	 * @todo	comment
+	 * @param	Integer		$idContactTypeInfo
+	 * @param	Array		$data
+	 */
 	public static function updateContactInfoType($idContactTypeInfo, array $data) {
 		TodoyuRecordManager::updateRecord(self::TABLE, $idContactTypeInfo, $data);
 	}
 
+
+
+	/**
+	 * @todo	comment
+	 * @param	Integer		$idContactTypeInfo
+	 */
 	public static function deleteContactTypeInfo($idContactTypeInfo) {
 		TodoyuRecordManager::deleteRecord(self::TABLE, $idContactTypeInfo);
 	}
 
 
+
+	/**
+	 * @todo	comment
+	 *
+	 * @param	Array	$data
+	 * @return	Integer
+	 */
 	public static function saveContactInfoType(array $data) {
 		$idContactInfoType	= intval($data['id']);
 		$xmlPath			= 'ext/contact/config/form/admin/contactinfotype.xml';
