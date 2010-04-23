@@ -2,16 +2,16 @@
 <locallang>
 	<labels lang="en_GB">
 		<label index="general">General Settings</label>
-		<label index="general.use">Use Module Functionalities</label>
+		<label index="general.use">Use Module Functionality</label>
 		<label index="general.area">Use Contacts Area</label>
 		<label index="person">Person</label>
 		<label index="person.add">Add Persons</label>
-		<label index="person.editAndDelete">Edit and Delete Persons</label>
-		<label index="person.enableLogin">Create Login Account for Persons</label>
+		<label index="person.editAndDelete">Edit and delete persons</label>
+		<label index="person.enableLogin">Create login account for persons</label>
 		<label index="company">Companies</label>
 		<label index="company.add">Add Companies</label>
-		<label index="company.editAndDelete">Edit and Delete Companies</label>
-		<label index="panelwidgets">Panelwidgets</label>
+		<label index="company.editAndDelete">Edit and delete companies</label>
+		<label index="panelwidgets">Panel Widgets</label>
 		<label index="panelwidgets.staffSelector">Staff Selector</label>
 	</labels>
 	<labels lang="de_DE">
