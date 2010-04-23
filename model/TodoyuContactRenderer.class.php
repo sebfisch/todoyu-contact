@@ -27,6 +27,13 @@
 class TodoyuContactRenderer {
 
 	/**
+	 * Extension key
+	 */
+	const EXTKEY = 'contact';
+
+
+
+	/**
 	 * Render the tab menu
 	 *
 	 * @param	String		$activeTab			e.g 'person' / 'company'
@@ -290,9 +297,7 @@ class TodoyuContactRenderer {
 	 * @return	String
 	 */
 	public static function renderPanelWidgets() {
-		$params	= array();
-
-		return TodoyuPanelWidgetRenderer::renderPanelWidgets('contact', $params);
+		return TodoyuPanelWidgetRenderer::renderPanelWidgets(self::EXTKEY);
 	}
 
 
