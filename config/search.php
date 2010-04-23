@@ -20,10 +20,10 @@
 
 	// Add search engine types
 if ( allowed('contact', 'general:use') ) {
-	if( allowed('contact', 'contact:area') ) {
+	if( allowed('contact', 'general:area') ) {
 		TodoyuSearchManager::addEngine('person', 'TodoyuPersonSearch::getSuggestions', 'contact.person.search.title', 'contact.person.search.mode', 100);
 	}
-	if( allowed('contact', 'contact:area') ) {
+	if( allowed('contact', 'general:area') ) {
 		TodoyuSearchManager::addEngine('company', 'TodoyuCompanySearch::getSuggestions', 'contact.company.search.title', 'contact.company.search.mode', 110);
 	}
 }
