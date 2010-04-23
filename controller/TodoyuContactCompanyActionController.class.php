@@ -95,7 +95,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * Save company record
 	 *
 	 * @param	Array		$params
-	 * @return	String		Form html or company ID
+	 * @return	String		Form HTML or company ID
 	 */
 	public function saveAction(array $params) {
 		restrict('contact', 'person:editAndDelete');

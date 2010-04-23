@@ -24,7 +24,9 @@
 Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 
 	/**
-	 * Extension reference
+	 * Extension backlink
+	 *
+	 * @var	{Object}	ext
 	 */
 	ext:			Todoyu.Ext.contact,
 

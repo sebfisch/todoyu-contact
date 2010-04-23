@@ -18,7 +18,12 @@
 *****************************************************************************/
 
 Todoyu.Ext.contact.QuickCreatePerson = {
-	
+
+	/**
+	 * Extension backlink
+	 *
+	 * @var	{Object}	ext
+	 */
 	ext: Todoyu.Ext.contact,
 	
 	person: Todoyu.Ext.contact.Person,

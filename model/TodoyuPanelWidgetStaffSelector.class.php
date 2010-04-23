@@ -54,7 +54,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 			// init widget JS (observers)
 		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.contact.PanelWidget.StaffSelector.init.bind(Todoyu.Ext.contact.PanelWidget.StaffSelector, ' . $jobTypes2PersonsJSON . ')', 100);
 
-			// Generate person color css and graphic
+			// Generate person color CSS and graphic
 		TodoyuColors::generate();
 	}
 

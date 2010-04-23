@@ -9,7 +9,7 @@ h1.extIconContact .title {
 
 .personListing th,
 .personListing td {
-	vertical-align: middle;
+	vertical-align:middle;
 }
 
 
@@ -31,7 +31,7 @@ h1.extIconContact .title {
 }
 
 .personListing td {
-	vertical-align: middle;
+	vertical-align:middle;
 }
 
 	/* Column configs */
@@ -81,7 +81,7 @@ h1.extIconContact .title {
 
 .companyListing th,
 .companyListing td {
-	vertical-align: middle;
+	vertical-align:middle;
 }
 
 .companyListing th.icon {

@@ -20,7 +20,9 @@
 Todoyu.Ext.contact.Person =  {
 
 	/**
-	 * Ext shortcut
+	 * Extension backlink
+	 *
+	 * @var	{Object}	ext
 	 */
 	ext:	Todoyu.Ext.contact,
 

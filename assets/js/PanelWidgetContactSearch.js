@@ -23,7 +23,9 @@
 Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 
 	/**
-	 * Ext shortcut
+	 * Extension backlink
+	 *
+	 * @var	{Object}	ext
 	 */
 	ext:	Todoyu.Ext.contact,
 
