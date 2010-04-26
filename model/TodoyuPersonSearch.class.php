@@ -34,7 +34,7 @@ class TodoyuPersonSearch implements TodoyuSearchEngineIf {
 
 
 	/**
-	 * Search for persons in fulltext mode. Return the ID of the matching persons
+	 * Search for persons in full-text mode. Return the ID of the matching persons
 	 *
 	 * @param	Array		$find		Keywords which have to be in the person
 	 * @param	Array		$ignore		Keywords which must not be in the person

@@ -60,7 +60,7 @@ class TodoyuPersonFilter extends TodoyuFilterBase {
 
 
 	/**
-	 * Fulltext filter for all textual person data
+	 * Full-text filter for all textual person data
 	 *
 	 * @param	String	 	$value
 	 * @param	Boolean		$negate

@@ -34,7 +34,7 @@ class TodoyuCompanySearch implements TodoyuSearchEngineIf {
 
 
 	/**
-	 * Search company in fulltext mode. Return the ID of the matching companies
+	 * Search company in full-text mode. Return the ID of the matching companies
 	 *
 	 * @param	Array		$find		Keywords which have to be in the company
 	 * @param	Array		$ignore		Keywords which must not be in the company
