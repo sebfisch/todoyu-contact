@@ -39,9 +39,10 @@ class TodoyuContactQuickinfoActionController extends TodoyuActionController {
 
 		$data	= TodoyuPersonManager::getPersonArray($idPerson);
 		$phone	= TodoyuPersonManager::getPreferredPhone($idPerson);
+		$email	= TodoyuPersonManager::getPreferredEmail($idPerson);
 
 		$quickInfo->addInfo('name', TodoyuPersonManager::getLabel($idPerson) );
-		$quickInfo->addInfo('email', 	$data['email'] );
+		$quickInfo->addInfo('email', $email);
 
 		if( $phone !== false ) {
 			$quickInfo->addInfo('phone', $phone['info']);

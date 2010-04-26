@@ -87,12 +87,25 @@ class TodoyuContactInfoManager {
 
 
 
+	/**
+	 * Add contactinfo record
+	 *
+	 * @param	Array		$data
+	 * @return	Integer
+	 */
 	public static function addContactinfo(array $data = array()) {
 		return TodoyuRecordManager::addRecord(self::TABLE, $data);
 	}
 
 
 
+	/**
+	 * Update contactinfo record
+	 *
+	 * @param	Integer		$idContactinfo
+	 * @param	Array		$data
+	 * @return	Boolean
+	 */
 	public static function updateContactinfo($idContactinfo, array $data) {
 		return TodoyuRecordManager::updateRecord(self::TABLE, $idContactinfo, $data);
 	}

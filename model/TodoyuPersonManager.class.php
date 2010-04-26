@@ -367,7 +367,7 @@ class TodoyuPersonManager {
 	 * @param	Boolean		$onlyPreferred
 	 * @return	Array
 	 */
-	public static function getContactInfos($idPerson, $type = null, $onlyPreferred = false) {
+	public static function getContactInfos($idPerson, $category = null, $type = null, $onlyPreferred = false) {
 		$idPerson	= intval($idPerson);
 
 		$fields	= '	ci.*,
@@ -384,6 +384,10 @@ class TodoyuPersonManager {
 
 		if( $onlyPreferred ) {
 			$where .= ' AND ci.preferred = 1';
+		}
+
+		if( ! is_null($category) ) {
+			$where .= ' AND cit.category = ' . intval($category);
 		}
 
 		if( ! is_null($type) ) {
@@ -421,14 +425,42 @@ class TodoyuPersonManager {
 
 
 	/**
+	 * Get preferred email of a person
+	 * First check system email, than check contactinfos. Look for preferred emails
+	 *
+	 * @param	Integer		$idPerson
+	 * @return	String
+	 */
+	public static function getPreferredEmail($idPerson) {
+		$idPerson	= intval($idPerson);
+		$person		= TodoyuPersonManager::getPerson($idPerson);
+
+		$email		= $person->getEmail();
+
+		if( empty($email) ) {
+			$contactEmails	= self::getContactInfos($idPerson, CONTACT_INFOTYPE_CATEGORY_EMAIL);
+
+			if( sizeof($contactEmails) > 0 ) {
+				$email = $contactEmails[0]['info'];
+			}
+		}
+
+		return $email;
+	}
+
+
+
+
+	/**
 	 * Get all contact infos marked as being preferred
 	 *
 	 * @param	Integer		$idPerson
+	 * @param	Integer		$category
 	 * @param	String		$type
 	 * @return	Array
 	 */
-	public static function getPreferredContactInfos($idPerson, $type = null) {
-		return self::getContactInfos($idPerson, $type, true);
+	public static function getPreferredContactInfos($idPerson, $category = null, $type = null) {
+		return self::getContactInfos($idPerson, $category, $type, true);
 	}
 
 

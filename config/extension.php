@@ -32,17 +32,17 @@ TodoyuAutocompleter::addAutocompleter('person', 'TodoyuPersonFilterDataSource::a
 Todoyu::$CONFIG['EXT']['contact']['contactinfotypecategories'] = array(
 		// Email
 	array(
-		'index'	=> 1,
+		'index'	=> CONTACT_INFOTYPE_CATEGORY_EMAIL,
 		'label'	=> 'LLL:contact.record.contactinfotype.email'
 	),
 		// Phone
 	array(
-		'index'	=> 2,
+		'index'	=> CONTACT_INFOTYPE_CATEGORY_PHONE,
 		'label'	=> 'LLL:contact.record.contactinfotype.phone'
 	),
 		// Other
 	array(
-		'index'	=> 3,
+		'index'	=> CONTACT_INFOTYPE_CATEGORY_OTHER,
 		'label'	=> 'LLL:contact.record.contactinfotype.other'
 	),
 );
