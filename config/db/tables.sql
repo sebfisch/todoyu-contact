@@ -22,6 +22,7 @@ CREATE TABLE `ext_contact_person` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `ext_contact_company`
@@ -42,6 +43,7 @@ CREATE TABLE `ext_contact_company` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `ext_contact_address`
@@ -67,6 +69,7 @@ CREATE TABLE `ext_contact_address` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `ext_contact_contactinfo`
@@ -84,6 +87,7 @@ CREATE TABLE `ext_contact_contactinfo` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `ext_contact_contactinfotype`
@@ -101,6 +105,7 @@ CREATE TABLE `ext_contact_contactinfotype` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `ext_contact_jobtype`
@@ -116,6 +121,7 @@ CREATE TABLE `ext_contact_jobtype` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `ext_contact_mm_company_address`
@@ -128,6 +134,7 @@ CREATE TABLE `ext_contact_mm_company_address` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `ext_contact_mm_company_contactinfo`
@@ -140,6 +147,7 @@ CREATE TABLE `ext_contact_mm_company_contactinfo` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `ext_contact_mm_company_person`
@@ -154,6 +162,7 @@ CREATE TABLE `ext_contact_mm_company_person` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `ext_contact_mm_person_address`
@@ -166,6 +175,7 @@ CREATE TABLE `ext_contact_mm_person_address` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `ext_contact_mm_person_contactinfo`
@@ -178,6 +188,7 @@ CREATE TABLE `ext_contact_mm_person_contactinfo` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `ext_contact_mm_person_role`
