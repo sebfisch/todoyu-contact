@@ -128,9 +128,13 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['company'] = array(
 	'columns'	=> array(
 		'icon'		=> '',
 		'title'		=> 'LLL:contact.company.attr.title',
-		'persons'	=> 'LLL:contact.comapny.employees',
-		'address'	=> 'LLL:contact.company.attr.address',
+		//'persons'	=> 'LLL:contact.comapny.employees',
+		'address'	=> 'LLL:contact.address',
 		'actions'	=> ''
+	),
+	'truncate'	=> array(
+		'title'		=> 30,
+		'address'	=> 45
 	)
 );
 

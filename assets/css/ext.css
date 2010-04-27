@@ -89,15 +89,17 @@ h1.extIconContact .title {
 }
 
 .companyListing th.title {
-	width:220px;
+	width:260px;
 }
 
+/*
 .companyListing th.persons {
 	width:65px;
 }
+*/
 
 .companyListing th.address {
-	width:250px;
+	width:270px;
 }
 
 .companyListing th.actions {

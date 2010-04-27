@@ -276,7 +276,7 @@ class TodoyuContactManager {
 			$data['rows'][] = array(
 				'icon'		=> '',
 				'title'		=> $company['title'],
-				'persons'	=> TodoyuCompanyManager::getNumPersons($company['id']),
+				//'persons'	=> TodoyuCompanyManager::getNumPersons($company['id']),
 				'address'	=> TodoyuCompanyManager::getCompanyAddress($company['id']),
 				'actions'	=> TodoyuContactRenderer::renderCompanyActions($company['id'])
 			);
