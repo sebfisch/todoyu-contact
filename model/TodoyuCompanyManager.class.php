@@ -187,14 +187,14 @@ class TodoyuCompanyManager {
 	public static function saveCompanyForeignRecords(array $data, $idCompany) {
 		$idCompany = intval($idCompany);
 
-			// Contactinfo
+			// Contact info
 		if( isset($data['contactinfo']) ) {
 			$contactInfoIDs	= TodoyuArray::getColumn($data['contactinfo'], 'id');
 
-				// Delete all contactinfos which are no longer linked
+				// Delete all contact infos which are no longer linked
 			self::deleteRemovedContactInfos($idCompany, $contactInfoIDs);
 
-				// If contactinfos submitted
+				// If contact infos submitted
 			if( sizeof($data['contactinfo']) > 0 ) {
 				$infoIDs	= array();
 				foreach($data['contactinfo'] as $contactInfo) {
@@ -505,7 +505,7 @@ class TodoyuCompanyManager {
 
 
 	/**
-	 * Get contactinfo records of a company
+	 * Get contact info records of a company
 	 *
 	 * @param	Integer		$idCompany
 	 * @return	Array
