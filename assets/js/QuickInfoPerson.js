@@ -27,49 +27,72 @@ Todoyu.Ext.contact.QuickInfoPerson = {
 	ext:		Todoyu.Ext.contact,
 
 
-	/**
-	 * Init person quickinfo
-	 */
-	init: function() {
 
+	/**
+	 * Selector for event quickinfo
+	 */
+	selector:	'.quickInfoPerson',
+
+
+	/**
+	 * Install quickinfo for events
+	 */
+	install: function() {
+		//Todoyu.QuickInfo.install('person', this.selector, this.getID.bind(this));
+	},
+
+	
+
+	/**
+	 * Uninstall quickinfo for events
+	 */
+	uninstall: function() {
+		Todoyu.QuickInfo.uninstall(this.selector);
 	},
 
 
 
 	/**
-	 * Install quickinfo for person
+	 * Add a quickinfo to a single element
 	 *
-	 * @param	{Element}		element
+	 * @param	{String}	idElement
 	 */
-	install: function(element) {
-		var idPerson = $(element).id.split('-').last();
-
-		$(element).observe('mouseover', this.onMouseOver.bindAsEventListener(this, idPerson));
-		$(element).observe('mouseout', this.onMouseOut.bindAsEventListener(this, idPerson));
+	add: function(idElement) {
+		Todoyu.QuickInfo.install('person', '#' + idElement, this.getID.bind(this));
 	},
 
 
 
 	/**
-	 * Evoked upon mouseOver event upon person element. Shows quick-info tooltip.
+	 * Remove a quickinfo from a single element
 	 *
-	 * @param	{Object}	event		the DOM-event
-	 * @param	{Integer}	idPerson
+	 * @param	{String}	idElement
 	 */
-	onMouseOver: function(event, idPerson) {
-		Todoyu.QuickInfo.show('contact', 'person', idPerson, event.pointerX(), event.pointerY());
+	remove: function(idElement) {
+		Todoyu.QuickInfo.uninstall('#' + idElement);
 	},
 
 
 
 	/**
-	 * Evoked upon mouseOut event upon person element. Hides quick-info tooltip.
+	 * Get ID form observed element
 	 *
-	 * @param	{Object}	event			the DOM-event
-	 * @param	{Integer}	idPrson
+	 * @param	{Element}	element
+	 * @param	{Event}		event
 	 */
-	onMouseOut: function(event, idPerson) {
-		Todoyu.QuickInfo.hide();
+	getID: function(element, event) {
+		return $(element).id.split('-').last();
+	},
+
+
+
+	/**
+	 * Remove given calendar event quickinfo element from cache
+	 *
+	 * @param	{Number}	idPerson
+	 */
+	removeFromCache: function(idPerson) {
+		Todoyu.QuickInfo.removeFromCache('person' + idPerson);
 	}
 
 };

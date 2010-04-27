@@ -203,7 +203,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	/**
 	 * Get all perosons which have the requested job type
 	 *
-	 * @param	{Integer}		jobType
+	 * @param	{Number}		jobType
 	 * @return	Array
 	 */
 	getJobtypePersons: function(jobType) {
@@ -239,7 +239,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	/**
 	 * Get number of select persons
 	 *
-	 * @return	{Integer}
+	 * @return	{Number}
 	 */
 	getNumberOfSelectedPersons: function() {
 		return this.getSelectedPersons().size();

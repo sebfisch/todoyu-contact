@@ -26,7 +26,7 @@
 TodoyuAutocompleter::addAutocompleter('company', 'TodoyuPersonFilterDataSource::autocompleteCompanies', array('contact', 'general:use'));
 TodoyuAutocompleter::addAutocompleter('person', 'TodoyuPersonFilterDataSource::autocompletePersons', array('contact', 'general:use'));
 
-
+TodoyuQuickinfoManager::addFunction('person', 'TodoyuContactQuickinfoManager::getQuickinfoPerson');
 
 	// Categories of dynamic contact info types
 Todoyu::$CONFIG['EXT']['contact']['contactinfotypecategories'] = array(

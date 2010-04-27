@@ -37,7 +37,7 @@ Todoyu.Ext.contact.Company =  {
 	/**
 	 * Edit given company
 	 *
-	 * @param	{Integer}	idCompany
+	 * @param	{Number}	idCompany
 	 */
 	edit: function(idCompany) {
 		var url = Todoyu.getUrl('contact', 'company');
@@ -63,7 +63,7 @@ Todoyu.Ext.contact.Company =  {
 	/**
 	 * Confirm if really wanted and remove (delete) given company if
 	 *
-	 * @param	{Integer}	idCompany
+	 * @param	{Number}	idCompany
 	 */
 	remove: function(idCompany) {
 		if( confirm('[LLL:contact.company.delete.confirm]') )	{
@@ -165,7 +165,7 @@ Todoyu.Ext.contact.Company =  {
 	/**
 	 * Show detail view (popup) of given company
 	 *
-	 * @param	{Integer}		idCompany
+	 * @param	{Number}		idCompany
 	 */
 	show: function(idCompany) {
 		var url		= Todoyu.getUrl('contact', 'company');

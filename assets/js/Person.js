@@ -72,7 +72,7 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Initialize edit form
 	 *
-	 * @param	{Integer}		idPerson
+	 * @param	{Number}		idPerson
 	 */
 	initEditForm: function(idPerson) {
 		this.observeFieldsForShortname(idPerson);
@@ -87,7 +87,7 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Toggle display of login related fields of given person
 	 *
-	 * @param	{Integer}		idPerson
+	 * @param	{Number}		idPerson
 	 * @param	{Event}		event
 	 */
 	showLoginFields: function(idPerson, event) {
