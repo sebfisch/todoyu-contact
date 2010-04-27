@@ -171,7 +171,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 
 
 	/**
-	 * Add a subform to the person form
+	 * Add a sub form to the person form
 	 *
 	 * @param	Array		$params
 	 * @return	String

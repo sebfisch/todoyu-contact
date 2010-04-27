@@ -126,7 +126,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 
 	/**
-	 * Add a subform record to company form
+	 * Add a sub form record to company form
 	 * @param	Array		$params
 	 * @return	String
 	 */
@@ -204,8 +204,8 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 
 	/**
-	 *
-	 * @param array $params
+	 * @todo	comment
+	 * @param	Array		$params
 	 */
 	public function getRegionOptionsAction(array $params)	{
 		$tmpl	= 'core/view/form/FormElement_Select_Options.tmpl';
