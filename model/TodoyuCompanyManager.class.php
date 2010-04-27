@@ -622,6 +622,12 @@ class TodoyuCompanyManager {
 	}
 
 
+
+	/**
+	 * Extend address form with timezone attributes
+	 *
+	 * @param	TodoyuForm		$form
+	 */
 	public static function hookAddTimezone(TodoyuForm $form) {
 		$form->addElementsFromXML('ext/contact/config/form/address-timezone.xml');
 	}
