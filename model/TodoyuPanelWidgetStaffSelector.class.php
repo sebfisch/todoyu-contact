@@ -35,7 +35,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 	 * @param	Boolean		$expanded
 	 */
 	public function __construct(array $config, array $params = array(), $idArea = 0) {
-			// construct PanelWidget (init basic configuration)
+			// Construct panelWidget (init basic configuration)
 		parent::__construct(
 			'contact',								// ext key
 			'staffselector',						// panel widget ID

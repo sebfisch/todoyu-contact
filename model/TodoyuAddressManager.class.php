@@ -36,7 +36,7 @@ class TodoyuAddressManager {
 	/**
 	 * Return the requested Address object
 	 *
-	 * @param	Integer		$idAddress
+	 * @param	Integer			$idAddress
 	 * @return	TodoyuAddress
 	 */
 	public static function getAddress($idAddress)	{
@@ -90,7 +90,7 @@ class TodoyuAddressManager {
 	/**
 	 * Remove record from cache
 	 *
-	 * @param	Integer	$addressID
+	 * @param	Integer	$idAddress
 	 */
 	protected static function removeFromCache($idAddress)	{
 		$idAddress	= intval($idAddress);
@@ -104,8 +104,9 @@ class TodoyuAddressManager {
 	/**
 	 * Get all addresses of given company
 	 *
-	 * @param	Integer	$companyID
+	 * @param	Integer	$idCompany
 	 * @param	String	$addressFields		e.g 'ext_contact_address.*' to get all fields, otherwise comma separated field names
+	 * @param	String	$orderBy
 	 * @return	Array
 	 */
 	public static function getCompanyAddresses($idCompany, $addressFields = '', $orderBy = 'city') {
@@ -128,15 +129,15 @@ class TodoyuAddressManager {
 
 
 	/**
-	 * Get label for addresstype
+	 * Get label for address type
 	 *
-	 * @param	Integer		$idAddresstype
+	 * @param	Integer		$idAddressType
 	 * @return	String
 	 */
-	public static function getAddresstypeLabel($idAddresstype) {
-		$idAddresstype	= intval($idAddresstype);
+	public static function getAddresstypeLabel($idAddressType) {
+		$idAddressType	= intval($idAddressType);
 
-		return TodoyuLanguage::getLabel('LLL:contact.address.attr.addresstype.' . $idAddresstype);
+		return TodoyuLanguage::getLabel('LLL:contact.address.attr.addresstype.' . $idAddressType);
 	}
 
 
@@ -158,6 +159,17 @@ class TodoyuAddressManager {
 	}
 
 
+
+	/**
+	 * Delete linked addresses
+	 *
+	 * @param	String		$mmTable
+	 * @param	Integer		$idRecord
+	 * @param	Array		$currentAddressIDs
+	 * @param	String		$fieldRecord
+	 * @param	String 		$fieldInfo
+	 * @return	Integer							Amount of deleted records
+	 */
 	public static function deleteLinkedAddresses($mmTable, $idRecord, array $currentAddressIDs,  $fieldRecord, $fieldInfo = 'id_address') {
 		return TodoyuDbHelper::deleteOtherMmRecords($mmTable, 'ext_contact_address', $idRecord, $currentAddressIDs, $fieldRecord, $fieldInfo);
 	}

@@ -60,7 +60,7 @@ class TodoyuCompanyManager {
 	/**
 	 * Get a company object
 	 *
-	 * @param	Integer		$idCompany
+	 * @param	Integer				$idCompany
 	 * @return	TodoyuCompany
 	 */
 	public static function getCompany($idCompany) {
@@ -334,20 +334,20 @@ class TodoyuCompanyManager {
 
 	/**
 	 * Add a person to a company (linked)
-	 * Additional data are the workaddress and the jobtype
+	 * Additional data are the working address and the job type
 	 * @deprecated
 	 *
 	 * @param	Integer		$idCompany
 	 * @param	Integer		$idPerson
-	 * @param	Integer		$idWorkadress
-	 * @param	Integer		$idJobtype
+	 * @param	Integer		$idWorkAddress
+	 * @param	Integer		$idJobType
 	 */
-	public static function addPerson($idCompany, $idPerson, $idWorkadress = 0, $idJobtype = 0) {
+	public static function addPerson($idCompany, $idPerson, $idWorkAddress = 0, $idJobType = 0) {
 		$data	= array(
 			'id_company'	=> intval($idCompany) ,
 			'id_person'		=> intval($idPerson),
-			'id_workaddress'=> intval($idWorkadress),
-			'id_jobtype'	=> intval($idJobtype)
+			'id_workaddress'=> intval($idWorkAddress),
+			'id_jobtype'	=> intval($idJobType)
 		);
 
 		Todoyu::db()->addRecord('ext_contact_mm_company_person', $data);

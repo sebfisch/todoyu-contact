@@ -38,7 +38,7 @@ class TodoyuCompany extends TodoyuBaseObject {
 
 
 	/**
-	 * Get company name (fieldname: title)
+	 * Get company name (field name: title)
 	 *
 	 * @return	String
 	 */
@@ -60,7 +60,7 @@ class TodoyuCompany extends TodoyuBaseObject {
 
 
 	/**
-	 * Get company label (fieldname: title)
+	 * Get company label (field name: title)
 	 *
 	 * @return	String
 	 */
