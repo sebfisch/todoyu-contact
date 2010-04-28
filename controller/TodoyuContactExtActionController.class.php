@@ -51,6 +51,14 @@ class TodoyuContactExtActionController extends TodoyuActionController {
 
 			// Get record id from param
 		$idRecord		= intval($params['id']);
+		$searchWord		= trim($params['sword']);
+
+			// Save search word if provided
+		if( $searchWord !== '' ) {
+			TodoyuContactPreferences::saveSearchWord($searchWord);
+		} else {
+			$searchWord	= TodoyuContactPreferences::getSearchWord();
+		}
 
 		$panelWidgets 	= TodoyuContactRenderer::renderPanelWidgets();
 		$tabs 			= TodoyuContactRenderer::renderTabs($type);
@@ -58,7 +66,7 @@ class TodoyuContactExtActionController extends TodoyuActionController {
 		if( $idRecord !== 0 ) {
 			$content	= TodoyuContactRenderer::renderContactEdit($type, $idRecord);
 		} else {
-			$content	= TodoyuContactRenderer::renderContactList($type);
+			$content	= TodoyuContactRenderer::renderContactList($type, $searchWord);
 		}
 
 

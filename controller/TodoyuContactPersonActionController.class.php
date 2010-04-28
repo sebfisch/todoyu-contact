@@ -67,6 +67,9 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 
 		$sword	= trim($params['sword']);
 
+			// Save searchword
+		TodoyuContactPreferences::saveSearchWord($sword);
+
 		$tabs	= TodoyuContactRenderer::renderTabs('person');
 		$content= TodoyuListingRenderer::render('contact', 'person', 0, $sword);
 

@@ -57,8 +57,7 @@ class TodoyuPanelWidgetContactSearch extends TodoyuPanelWidget implements Todoyu
 		$tmpl	= 'ext/contact/view/panelwidget-contactsearch.tmpl';
 		$data	= array(
 			'id'			=> $this->getID(),
-//			'showAll'		=> TodoyuContactPreferences::getShowAll(),
-			'sword'			=> TodoyuRequest::getParam('sword'),
+			'sword'			=> $this->getSearchWord(),
 			'contactType'	=> $contactType
 		);
 
@@ -67,6 +66,11 @@ class TodoyuPanelWidgetContactSearch extends TodoyuPanelWidget implements Todoyu
 		$this->setContent($content);
 
 		return $content;
+	}
+
+
+	private function getSearchWord() {
+		return TodoyuContactPreferences::getSearchWord();
 	}
 
 

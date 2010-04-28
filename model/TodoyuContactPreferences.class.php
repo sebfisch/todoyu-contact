@@ -115,6 +115,28 @@ class TodoyuContactPreferences {
 
 
 	/**
+	 * Save last used search word
+	 *
+	 * @param	String		$searchWord
+	 */
+	public static function saveSearchWord($searchWord) {
+		self::savePref('searchword', $searchWord, 0, true);
+	}
+
+
+
+	/**
+	 * Get last used searchword
+	 *
+	 * @return	String
+	 */
+	public static function getSearchWord() {
+		return self::getPref('searchword');
+	}
+
+
+
+	/**
 	 * Get person language
 	 *
 	 * @return	String
