@@ -154,11 +154,11 @@ CREATE TABLE `ext_contact_mm_company_contactinfo` (
 --
 
 CREATE TABLE `ext_contact_mm_company_person` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_company` int(10) unsigned NOT NULL DEFAULT '0',
   `id_person` int(10) unsigned NOT NULL,
-  `id_workaddress` int(10) NOT NULL,
-  `id_jobtype` int(10) NOT NULL,
+  `id_workaddress` int(10) unsigned NOT NULL,
+  `id_jobtype` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
