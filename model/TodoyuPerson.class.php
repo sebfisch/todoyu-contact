@@ -122,9 +122,9 @@ class TodoyuPerson extends TodoyuBaseObject {
 	 */
 	public function getFullName($lastnameFirst = false) {
 		if( $lastnameFirst ) {
-			return $this->getLastname() . ', ' . $this->getFirstname();
+			return $this->getLastname() . ' ' . $this->getFirstname();
 		} else {
-			return $this->getFirstname() . ', ' . $this->getLastname();
+			return $this->getFirstname() . ' ' . $this->getLastname();
 		}
 	}
 
