@@ -495,9 +495,9 @@ class TodoyuCompanyManager {
 					p.*';
 		$tables	= '	ext_contact_person p,
 					ext_contact_mm_company_person mm';
-		$where	= '	mm.id_person	= p.id AND
-					mm.id_company	= ' . $idCompany . ' AND
-					p.deleted		= 0';
+		$where	= '		mm.id_person	= p.id
+					AND	mm.id_company	= ' . $idCompany .
+				  ' AND	p.deleted		= 0';
 
 		return Todoyu::db()->getArray($fields, $tables, $where);
 	}
@@ -516,9 +516,9 @@ class TodoyuCompanyManager {
 		$fields	= '	c.*';
 		$tables	= '	ext_contact_contactinfo c,
 					ext_contact_mm_company_contactinfo mm';
-		$where	= ' mm.id_contactinfo	= c.id AND
-					mm.id_company		= ' . $idCompany . ' AND
-					c.deleted			= 0';
+		$where	= ' 	mm.id_contactinfo	= c.id
+					AND	mm.id_company		= ' . $idCompany .
+				  ' AND	c.deleted			= 0';
 
 		return Todoyu::db()->getArray($fields, $tables, $where);
 	}
@@ -537,9 +537,9 @@ class TodoyuCompanyManager {
 		$fields	= '	a.*';
 		$tables	= '	ext_contact_address a,
 					ext_contact_mm_company_address mm';
-		$where	= ' mm.id_address	= a.id AND
-					mm.id_company	= ' . $idCompany . ' AND
-					a.deleted		= 0';
+		$where	= '		mm.id_address	= a.id
+					AND	mm.id_company	= ' . $idCompany .
+				  ' AND	a.deleted		= 0';
 		$order	= ' a.is_preferred DESC';
 
 		return Todoyu::db()->getArray($fields, $tables, $where, '', $order);
@@ -615,8 +615,8 @@ class TodoyuCompanyManager {
 
 		$field	= 'id';
 		$table	= 'ext_project_project';
-		$where	= '	id_company	= ' . $idCompany . ' AND
-					deleted		= 0';
+		$where	= '		id_company	= ' . $idCompany .
+				  ' AND	deleted		= 0';
 
 		return Todoyu::db()->getColumn($field, $table, $where);
 	}

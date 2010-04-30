@@ -139,8 +139,9 @@ class TodoyuPersonFilter extends TodoyuFilterBase {
 								ext_contact_company,
 								ext_contact_mm_company_person
 							WHERE
-								ext_contact_person.id = ext_contact_mm_company_person.id_person AND
-								ext_contact_mm_company_person.id_company 	= ext_contact_company.id AND ' . $likeWhere .
+									ext_contact_person.id					= ext_contact_mm_company_person.id_person
+								AND	ext_contact_mm_company_person.id_company= ext_contact_company.id
+								AND ' . $likeWhere .
 						')';
 
 			$queryParts	= array(

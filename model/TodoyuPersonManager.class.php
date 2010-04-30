@@ -113,10 +113,10 @@ class TodoyuPersonManager {
 	public static function isValidLogin($username, $password) {
 		$field	= 'id';
 		$table	= self::TABLE;
-		$where	= '	username = ' . Todoyu::db()->quote($username, true) . ' AND
-					password = ' . Todoyu::db()->quote($password, true) . ' AND
-					active	 = 1 AND
-					deleted  = 0';
+		$where	= '		username = ' . Todoyu::db()->quote($username, true) .
+				  ' AND	password = ' . Todoyu::db()->quote($password, true) .
+				  ' AND	active	 = 1
+				    AND	deleted  = 0';
 
 		return Todoyu::db()->hasResult($field, $table, $where);
 	}
@@ -294,8 +294,8 @@ class TodoyuPersonManager {
 		$fields	= '	r.*';
 		$table	= '	ext_contact_mm_person_role mm,
 					system_role r';
-		$where	= '	id_person		= ' . $idPerson . ' AND
-					mm.id_role	= r.id';
+		$where	= '		id_person	= ' . $idPerson .
+				  ' AND	mm.id_role	= r.id';
 
 		return Todoyu::db()->getArray($fields, $table, $where);
 	}
@@ -345,10 +345,10 @@ class TodoyuPersonManager {
 		$table	= 	self::TABLE . ' p,
 					ext_contact_company c,
 					ext_contact_mm_company_person mm';
-		$where	= '	p.id			= mm.id_person AND
-					mm.id_company	= c.id AND
-					c.is_internal	= 1 AND
-					p.deleted		= 0	';
+		$where	= '		p.id			= mm.id_person
+					AND	mm.id_company	= c.id
+					AND	c.is_internal	= 1
+					AND	p.deleted		= 0	';
 		$order	= '	p.lastname,
 					p.firstname';
 
@@ -376,9 +376,9 @@ class TodoyuPersonManager {
 		$tables	= '	ext_contact_contactinfo ci,
 					ext_contact_contactinfotype cit,
 					ext_contact_mm_person_contactinfo mm';
-		$where	= '	mm.id_person			= ' . $idPerson . ' AND
-					mm.id_contactinfo	= ci.id AND
-					ci.id_contactinfotype = cit.id';
+		$where	= '		mm.id_person			= ' . $idPerson .
+				  ' AND	mm.id_contactinfo	= ci.id
+				  	AND	ci.id_contactinfotype = cit.id';
 		$order	= '	ci.id_contactinfotype ASC,
 					ci.preferred DESC';
 
@@ -413,11 +413,11 @@ class TodoyuPersonManager {
 		$tables	= '	ext_contact_contactinfo ci,
 					ext_contact_contactinfotype cit,
 					ext_contact_mm_person_contactinfo mm';
-		$where	= '	mm.id_person			= ' . $idPerson . ' AND
-					mm.id_contactinfo	= ci.id AND
-					cit.category	= 2 AND
-					ci.id_contactinfotype = cit.id AND
-					ci.preferred = 1';
+		$where	= '		mm.id_person			= ' . $idPerson .
+				  ' AND	mm.id_contactinfo	= ci.id
+				  	AND	cit.category	= 2
+				  	AND	ci.id_contactinfotype = cit.id
+				  	AND	ci.preferred = 1';
 
 		return	Todoyu::db()->getRecordByQuery($fields, $tables, $where);
 	}
@@ -816,9 +816,9 @@ class TodoyuPersonManager {
 					c.*';
 		$tables	= '	ext_contact_company c,
 					ext_contact_mm_company_person mm';
-		$where	= '	mm.id_company	= c.id AND
-					mm.id_person	= ' . $idPerson . ' AND ' .
-				  ' c.deleted = 0';
+		$where	= '		mm.id_company	= c.id
+					AND	mm.id_person	= ' . $idPerson .
+				  ' AND c.deleted 		= 0';
 
 		return Todoyu::db()->getArray($fields, $tables, $where);
 	}
@@ -837,9 +837,9 @@ class TodoyuPersonManager {
 		$field	= 'id_company';
 		$table	= 'ext_contact_mm_company_person mm,
 				   ext_contact_company c';
-		$where	= 'mm.id_company	= c.id AND
-				   c.deleted = 0 AND
-				   mm.id_person = ' . $idPerson;
+		$where	= '		mm.id_company	= c.id 
+					AND c.deleted		= 0
+					AND mm.id_person	= ' . $idPerson;
 		$limit	= 1;
 
 		$idCompany	= Todoyu::db()->getFieldValue($field, $table, $where, null, null, $limit);
@@ -948,8 +948,8 @@ class TodoyuPersonManager {
 		$fields	= '	a.*';
 		$tables	= '	ext_contact_address a,
 					ext_contact_mm_person_address mm';
-		$where	= ' mm.id_address	= a.id AND
-					mm.id_person		= ' . $idPerson;
+		$where	= ' 	mm.id_address	= a.id
+					AND	mm.id_person		= ' . $idPerson;
 
 		return Todoyu::db()->getArray($fields, $tables, $where);
 	}
@@ -968,9 +968,9 @@ class TodoyuPersonManager {
 		$fields	= '	c.*';
 		$tables	= '	ext_contact_contactinfo c,
 					ext_contact_mm_person_contactinfo mm';
-		$where	= ' mm.id_contactinfo	= c.id AND
-					mm.id_person		= ' . $idPerson . ' AND
-					c.deleted			= 0';
+		$where	= ' 	mm.id_contactinfo	= c.id
+					AND	mm.id_person		= ' . $idPerson .
+				  ' AND c.deleted			= 0';
 
 		return Todoyu::db()->getArray($fields, $tables, $where);
 	}

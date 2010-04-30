@@ -117,8 +117,8 @@ class TodoyuAddressManager {
 						ext_contact_address.id addrId';
 		$tables		= '	ext_contact_mm_company_address,
 						ext_contact_address ';
-		$where		= ' ext_contact_mm_company_address.id_company = ' . $idCompany . ' AND
-						ext_contact_address.id = ext_contact_mm_company_address.id_address';
+		$where		= '		ext_contact_mm_company_address.id_company	= ' . $idCompany .
+					  ' AND	ext_contact_address.id 						= ext_contact_mm_company_address.id_address';
 		$orderBy	= 'city';
 		$groupBy	= $limit	= '';
 		$indexField	= 'addrId';

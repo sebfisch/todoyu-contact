@@ -183,9 +183,9 @@ class TodoyuPerson extends TodoyuBaseObject {
 		$field	= '	mm.id_company';
 		$table	= '	ext_contact_mm_company_person mm,
 					ext_contact_company c';
-		$where	= '	mm.id_person	= ' . $this->id . ' AND
-					mm.id_company	= c.id AND '.
-					'c.deleted		= 0';
+		$where	= '		mm.id_person	= ' . $this->id .
+				  ' AND	mm.id_company	= c.id
+				  	AND c.deleted		= 0';
 
 		return Todoyu::db()->getColumn($field, $table, $where);
 	}
@@ -236,9 +236,9 @@ class TodoyuPerson extends TodoyuBaseObject {
 		$tables	= '	ext_contact_mm_company_person mmcp,
 					ext_contact_address a,
 					static_timezone tz';
-		$where	= '	mmcp.id_person		= ' . personid() . ' AND
-					mmcp.id_workaddress	= a.id AND
-					a.id_timezone		= tz.id';
+		$where	= '		mmcp.id_person		= ' . personid() .
+				  ' AND	mmcp.id_workaddress	= a.id
+				  	AND	a.id_timezone		= tz.id';
 
 		$timezones	= Todoyu::db()->getArray($field, $tables, $where);
 
