@@ -40,6 +40,13 @@ class TodoyuContactViewHelper {
 	}
 
 
+
+	/**
+	 * Get options config array for persons selector
+	 *
+	 * @param	TodoyuFormElement	$field
+	 * @return	Array
+	 */
 	public static function getPersonOptions(TodoyuFormElement $field) {
 		$options	= array();
 		$persons	= TodoyuPersonManager::getAllActivePersons();
@@ -85,8 +92,6 @@ class TodoyuContactViewHelper {
 
 		return $options;
 	}
-
-
 
 
 
