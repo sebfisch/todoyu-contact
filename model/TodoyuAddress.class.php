@@ -39,7 +39,7 @@ class TodoyuAddress extends TodoyuBaseObject {
 
 	/**
 	 * Returns the full address as linefeed-separated string
-	 *
+	 * @todo	Is this function still in use? why linebreaks?
 	 * @return	String
 	 */
 	public function getFullAddress() {
@@ -50,7 +50,9 @@ class TodoyuAddress extends TodoyuBaseObject {
 			$address .= $this->postbox . chr(10);
 		}
 
-		$address .= TodoyuDatasource::getCountryShort($this->get('id_country')) . ' - ' . $this->get('zip') . ' ' . $this->get('city');
+		$country	= TodoyuStaticRecords::getCountry($this->get('id_country'));
+
+		$address .= $country['iso_alpha2'] . ' - ' . $this->get('zip') . ' ' . $this->get('city');
 
 		return $address;
 	}
@@ -63,7 +65,9 @@ class TodoyuAddress extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getTimezone() {
-		return TodoyuDatasource::getTimezone($this->get('id_timezone'));
+		$timezone	= TodoyuStaticRecords::getTimezone($this->get('id_timezone'));
+
+		return is_array($timezone) ? $timezone['timezone'] : false;
 	}
 }
 ?>

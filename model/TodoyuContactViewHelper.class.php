@@ -276,15 +276,17 @@ class TodoyuContactViewHelper {
 	 * @return	Array
 	 */
 	public static function getCountryOptions(TodoyuFormElement $field) {
-		$countryOptions				= TodoyuDatasource::getCountryOptions();
+		$countryOptions				= TodoyuStaticRecords::getCountryOptions();
 		$favoriteCountryIDs 		= TodoyuAddressManager::getMostUsedCountryIDs();
 		$favoriteCountries			= array();
 		$favoriteCountrySortOrder	= array_flip($favoriteCountryIDs);
+		
+//		TodoyuDebug::printInFireBug($countryOptions, '$countryOptions');
 
 		if( sizeof($favoriteCountryIDs) > 0 ) {
 			foreach($countryOptions as $countryOption) {
-				if( in_array($countryOption['id'], $favoriteCountryIDs) ) {
-					$sortOrderKey						= $favoriteCountrySortOrder[$countryOption['id']];
+				if( in_array($countryOption['value'], $favoriteCountryIDs) ) {
+					$sortOrderKey						= $favoriteCountrySortOrder[$countryOption['value']];
 					$favoriteCountries[$sortOrderKey]	= $countryOption;
 				}
 			}
@@ -394,16 +396,17 @@ class TodoyuContactViewHelper {
 	 * @param	TodoyuFormElement	$field
 	 */
 	public static function getRegionOptions(TodoyuFormElement $field)	{
-		$idCountry = $field->getForm()->getField('id_country')->getValue();
+		$country	= $field->getForm()->getField('id_country')->getValue();
+		$idCountry	= intval($country[0]);
 
-		return TodoyuDatasource::getRegionOptions(intval($idCountry[0]));
+		return TodoyuStaticRecords::getCountryZoneOptions($idCountry);
 	}
 
 
 
 
 	public static function getTimezoneOptionsGrouped(TodoyuFormElement $field) {
-		$timezones	= TodoyuDatasource::getTimezones();
+		$timezones	= TodoyuStaticRecords::getAllTimezones();
 		$optgroups	= array();
 
 		foreach($timezones as $timezone) {

@@ -213,7 +213,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 		$idCountry	= intval($params['idCountry']);
 
 		$data	= array(
-			'options'	=> TodoyuDatasource::getRegionOptions($idCountry),
+			'options'	=> TodoyuStaticRecords::getCountryZoneOptions($idCountry),
 			'value'		=> array()
 		);
 

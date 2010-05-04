@@ -118,8 +118,10 @@ function Dwoo_Plugin_labelContactinfotype(Dwoo $dwoo, $idContactinfotype) {
  * @return	String
  */
 function Dwoo_Plugin_countryName(Dwoo $dwoo, $idCountry) {
+	$idCountry = intval($idCountry);
+	$country	= TodoyuStaticRecords::getCountry($idCountry);
 
-	return TodoyuDatasource::getCountryLabel($idCountry);
+	return TodoyuStaticRecords::getLabel('country', $country['iso_alpha3']);
 }
 
 
