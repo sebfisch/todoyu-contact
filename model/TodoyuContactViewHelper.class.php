@@ -75,10 +75,12 @@ class TodoyuContactViewHelper {
 		if( sizeof($persons) > 0 ) {
 				// List internal persons
 			foreach($persons as $person) {
-				$options[] = array(
-					'value'	=> $person['id'],
-					'label'	=> TodoyuPersonManager::getLabel($person['id'])
-				);
+				if( $person['id'] != personid() ) {
+					$options[] = array(
+						'value'	=> $person['id'],
+						'label'	=> TodoyuPersonManager::getLabel($person['id'])
+					);
+				}
 			}
 		} else {
 				// No internal persons / firm defined? inform about that
