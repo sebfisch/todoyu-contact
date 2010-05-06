@@ -113,9 +113,9 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 
 		if( toggler.checked ) {
 			this.jobType.multiple	= 'multiple';
-			this.jobType.size		= '';
+			this.jobType.size		= this.jobType.options.length;
 		} else {
-			this.jobType.multiple	= '';
+			this.jobType.multiple	= false;
 			this.jobType.size		= 1;
 		}
 

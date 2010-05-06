@@ -73,7 +73,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 		$data	= array(
 				// Configs
 			'id'				=> $this->getID(),
-			'jobTypeMultiple'	=> intval($prefs['multiple'])===1,
+			'jobTypeMultiple'	=> $prefs['multiple'] === true,
 			'listSize'			=> $this->getListSize(sizeof($personOptions)),
 			'numColors'			=> sizeof(Todoyu::$CONFIG['COLORS']),
 			'colorizeOptions'	=> $this->config['colorizePersonOptions'],
@@ -86,7 +86,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 			'selectedJobtypes'	=> TodoyuArray::intval($prefs['jobtypes']),
 			'selectedPersons'	=> TodoyuArray::intval($prefs['persons']),
 		);
-
+		
 		$content	= render($tmpl, $data);
 		$this->setContent($content);
 
