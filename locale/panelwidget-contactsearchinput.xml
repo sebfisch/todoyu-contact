@@ -3,7 +3,7 @@
 	<labels lang="en_GB">
 		<label index="title">Search</label>
 		<label index="showAll.label">Show All</label>
-		<label index="clearSword">Clear input</label>
+		<label index="clearSword">Clear Input</label>
 	</labels>
 	<labels lang="de_DE">
 		<label index="title">Suche</label>
