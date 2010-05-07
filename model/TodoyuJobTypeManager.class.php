@@ -62,7 +62,7 @@ class TodoyuJobTypeManager {
 	 * @param	Array	$typeIDs	optional
 	 * @return	Array
 	 */
-	public static function getJobtypes($typeIDs = array()) {
+	public static function getJobTypes($typeIDs = array()) {
 		$fields	= 'id, title';
 		$table	= self::TABLE;
 
@@ -101,7 +101,7 @@ class TodoyuJobTypeManager {
 	 * @return	Array
 	 */
 	public static function getJobTypeOptions() {
-		$jobTypes	= self::getJobtypes();
+		$jobTypes	= self::getJobTypes();
 		$reform		= array(
 			'id'	=> 'value',
 			'title'	=> 'label'

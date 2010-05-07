@@ -333,13 +333,13 @@ class TodoyuPersonManager {
 	/**
 	 * Get internal persons (staff)
 	 *
-	 * @param	Boolean		$getJobtype
+	 * @param	Boolean		$getJobType
 	 * @param	Boolean		$getWorkAddress
 	 * @return	Array
 	 */
-	public static function getInternalPersons($getJobtype = false, $getWorkAddress = false) {
+	public static function getInternalPersons($getJobType = false, $getWorkAddress = false) {
 		$fields	=	'	p.*'
-					. ($getJobtype		=== true ? ', mm.id_jobtype' : '')
+					. ($getJobType		=== true ? ', mm.id_jobtype' : '')
 					. ($getWorkAddress	=== true ? ', mm.id_workaddress' : '');
 
 		$table	= 	self::TABLE . ' p,

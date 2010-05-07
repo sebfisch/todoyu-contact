@@ -49,7 +49,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 		$this->addHasIconClass();
 
 			// Get job type <> person mapping
-		$jobTypes2PersonsJSON	= $this->getJobtypes2PersonsJSON();
+		$jobTypes2PersonsJSON	= $this->getJobTypes2PersonsJSON();
 
 			// init widget JS (observers)
 		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.contact.PanelWidget.StaffSelector.init.bind(Todoyu.Ext.contact.PanelWidget.StaffSelector, ' . $jobTypes2PersonsJSON . ')', 100);
@@ -83,7 +83,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 			'personOptions'		=> $personOptions,
 
 				// Prefs
-			'selectedJobtypes'	=> TodoyuArray::intval($prefs['jobtypes']),
+			'selectedJobTypes'	=> TodoyuArray::intval($prefs['jobtypes']),
 			'selectedPersons'	=> TodoyuArray::intval($prefs['persons']),
 		);
 		
@@ -136,7 +136,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 	 *
 	 * @return	String
 	 */
-	private function getJobtypes2PersonsJSON() {
+	private function getJobTypes2PersonsJSON() {
 		$persons	= TodoyuPersonManager::getInternalPersons(true, true);
 		$mapping	= array();
 
