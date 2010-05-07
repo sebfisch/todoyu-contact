@@ -30,7 +30,7 @@
 				<field type="select" name="id_jobtype">
 					<label>contact.jobtype</label>
 					<source type="function">
-						<function>TodoyuContactViewHelper::getJobtypeOptions</function>
+						<function>TodoyuContactViewHelper::getJobTypeOptions</function>
 						<lazyInit/>
 					</source>
 				</field>

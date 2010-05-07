@@ -154,7 +154,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 	 *
 	 * @return	Array
 	 */
-	private function getJobtypeOptions() {
+	private function getJobTypeOptions() {
 		$persons	= TodoyuJobTypeManager::getInternalPersonsWithJobType();
 		$options	= array();
 

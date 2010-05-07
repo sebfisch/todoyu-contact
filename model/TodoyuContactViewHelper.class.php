@@ -117,7 +117,7 @@ class TodoyuContactViewHelper {
 	 * @param	TodoyuFormElement	$field
 	 * @return	Array
 	 */
-	public static function getJobtypeOptions(TodoyuFormElement $field) {
+	public static function getJobTypeOptions(TodoyuFormElement $field) {
 		$options	= TodoyuJobTypeManager::getJobTypeOptions();
 
 		if ( count($options) == 0 ) {
