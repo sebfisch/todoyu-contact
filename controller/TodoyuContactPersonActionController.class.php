@@ -238,6 +238,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 		restrict('contact', 'person:editAndDelete');
 
 		$content = TodoyuPage::getExtJSinline('contact');
+		$content.= '<script type="text/javascript">Todoyu.Ext.contact.Person.onEdit(0);</script>';
 		$content.= TodoyuContactRenderer::renderPersonEditFormWizard(0, $params['idField']);
 
 		return $content;
