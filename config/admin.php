@@ -21,11 +21,11 @@
 	// Add job types to records area of sysadmin
 TodoyuExtManager::addRecordConfig('contact', 'jobtype', array(
 	'label'		=> 'LLL:contact.record.jobtype',
-	'list'		=> 'TodoyuJobtypeManager::getRecords',
+	'list'		=> 'TodoyuJobTypeManager::getRecords',
 	'form'		=> 'ext/contact/config/form/admin/jobtype.xml',
-	'object'	=> 'TodoyuJobtype',
-	'delete'	=> 'TodoyuJobtypeManager::deleteJobtype',
-	'save'		=> 'TodoyuJobtypeManager::saveJobtype',
+	'object'	=> 'TodoyuJobType',
+	'delete'	=> 'TodoyuJobTypeManager::deleteJobType',
+	'save'		=> 'TodoyuJobTypeManager::saveJobType',
 	'table'		=> 'ext_contact_jobtype'
 ));
 

@@ -75,12 +75,10 @@ class TodoyuContactViewHelper {
 		if( sizeof($persons) > 0 ) {
 				// List internal persons
 			foreach($persons as $person) {
-				if( $person['id'] != personid() ) {
-					$options[] = array(
-						'value'	=> $person['id'],
-						'label'	=> TodoyuPersonManager::getLabel($person['id'])
-					);
-				}
+				$options[] = array(
+					'value'	=> $person['id'],
+					'label'	=> TodoyuPersonManager::getLabel($person['id'])
+				);
 			}
 		} else {
 				// No internal persons / firm defined? inform about that
@@ -120,7 +118,7 @@ class TodoyuContactViewHelper {
 	 * @return	Array
 	 */
 	public static function getJobtypeOptions(TodoyuFormElement $field) {
-		$options	= TodoyuJobtypeManager::getJobtypeOptions();
+		$options	= TodoyuJobTypeManager::getJobTypeOptions();
 
 		if ( count($options) == 0 ) {
 			$options[]	= array(

@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuJobtypeManager {
+class TodoyuJobTypeManager {
 
 	/**
 	 * @var	String		Default table for database requests
@@ -36,11 +36,11 @@ class TodoyuJobtypeManager {
 	/**
 	 * Get jobtype object
 	 *
-	 * @param	Integer		$idJobtype
-	 * @return	TodoyuJobtype
+	 * @param	Integer		$idJobType
+	 * @return	TodoyuJobType
 	 */
-	public static function getJobtype($idJobtype) {
-		return TodoyuRecordManager::getRecord('TodoyuJobtype', $idJobtype);
+	public static function getJobType($idJobType) {
+		return TodoyuRecordManager::getRecord('TodoyuJobType', $idJobType);
 	}
 
 
@@ -50,7 +50,7 @@ class TodoyuJobtypeManager {
 	 *
 	 * @return	Array
 	 */
-	public static function getAllJobtypes() {
+	public static function getAllJobTypes() {
 		return TodoyuRecordManager::getAllRecords(self::TABLE);
 	}
 
@@ -85,7 +85,7 @@ class TodoyuJobtypeManager {
 
 
 	public static function getRecords() {
-		$jobtypes	= TodoyuJobtypeManager::getAllJobtypes();
+		$jobtypes	= TodoyuJobTypeManager::getAllJobTypes();
 		$reform		= array(
 			'title'	=> 'label'
 		);
@@ -100,7 +100,7 @@ class TodoyuJobtypeManager {
 	 *
 	 * @return	Array
 	 */
-	public static function getJobtypeOptions() {
+	public static function getJobTypeOptions() {
 		$jobTypes	= self::getJobtypes();
 		$reform		= array(
 			'id'	=> 'value',
@@ -117,9 +117,9 @@ class TodoyuJobtypeManager {
 	 *
 	 * @return	Array
 	 */
-	public static function getInternalPersonsWithJobtype() {
+	public static function getInternalPersonsWithJobType() {
 		$persons	= TodoyuPersonManager::getInternalPersons(true, false);
-		$jobTypes	= self::getAllJobtypes();
+		$jobTypes	= self::getAllJobTypes();
 		$jobTypes	= TodoyuArray::useFieldAsIndex($jobTypes, 'id');
 
 		foreach($persons as $index => $person) {

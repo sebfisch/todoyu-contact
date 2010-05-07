@@ -101,7 +101,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 	 * @return	Array
 	 */
 	public function getStaffPersonOptions() {
-		$persons	= TodoyuJobtypeManager::getInternalPersonsWithJobtype();
+		$persons	= TodoyuJobTypeManager::getInternalPersonsWithJobType();
 		$options	= array();
 
 		foreach($persons as $person) {
@@ -155,7 +155,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 	 * @return	Array
 	 */
 	private function getJobtypeOptions() {
-		$persons	= TodoyuJobtypeManager::getInternalPersonsWithJobtype();
+		$persons	= TodoyuJobTypeManager::getInternalPersonsWithJobType();
 		$options	= array();
 
 		$jobtypes	= array(
