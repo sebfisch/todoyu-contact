@@ -19,10 +19,10 @@
 *****************************************************************************/
 
 /**
- * This class Todoyuhandles the preferences of the contact module
+ * This class handles the preferences of the contact module
  *
- * @package Todoyu
- * @subpackage contact
+ * @package		Todoyu
+ * @subpackage	contact
  */
 class TodoyuContactPreferences {
 

@@ -19,10 +19,10 @@
 *****************************************************************************/
 
 /**
- * class for the contact search input panelwidget
+ * class for the contact search input panelWidget
  *
- * @package Todoyu
- * @subpackage contact
+ * @package		Todoyu
+ * @subpackage	contact
  */
 class TodoyuPanelWidgetContactSearch extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
 
