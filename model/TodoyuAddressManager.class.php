@@ -68,15 +68,38 @@ class TodoyuAddressManager {
 		return $idAddress;
 	}
 
+
+
+	/**
+	 * @todo comment
+	 *
+	 * @param	Array	$data
+	 * @return	Integer
+	 */
 	public static function addAddress(array $data = array()) {
 		return TodoyuRecordManager::addRecord(self::TABLE, $data);
 	}
 
+
+
+	/**
+	 * @todo	comment
+	 *
+	 * @param	Integer		$idAddress
+	 * @param	Array		$data
+	 * @return	Boolean
+	 */
 	public static function updateAddress($idAddress, array $data) {
 		return TodoyuRecordManager::updateRecord(self::TABLE, $idAddress, $data);
 	}
 
 
+
+	/**
+	 * @todo	comment
+	 *
+	 * @param	Integer		$idAddress
+	 */
 	public static function deleteAddress($idAddress) {
 		$update	= array(
 			'deleted'	=> 1
@@ -113,7 +136,7 @@ class TodoyuAddressManager {
 		$idCompany	= intval($idCompany);
 
 		$fields		= '	ext_contact_mm_company_address.*,
-						' .($addressFields != '' ? $addressFields : 'ext_contact_address.*') .',
+						' . ( $addressFields != '' ? $addressFields : 'ext_contact_address.*' ) . ',
 						ext_contact_address.id addrId';
 		$tables		= '	ext_contact_mm_company_address,
 						ext_contact_address ';
@@ -156,6 +179,27 @@ class TodoyuAddressManager {
 		$limit	= intval(Todoyu::$CONFIG['EXT']['contact']['numFavoriteCountries']);
 
 		return Todoyu::db()->getColumn($field, $table, $where, $group, $order, $limit);
+	}
+
+
+
+	/**
+	 * Get label of given address
+	 *
+	 * @return String
+	 */
+	public static function getLabel($idAddress) {
+		$idAddress	= intval($idAddress);
+
+		if ($idAddress > 0) {
+			$address= self::getAddress($idAddress);
+			$countryLabel	= TodoyuStaticRecords::getCountryLabel($address['id_country']);
+			$label			= $address['street'] . ', ' . $address['zip'] . ', ' . $address['city'] . ', ' . $countryLabel;
+		} else {
+			$label	= '';
+		}
+
+		return $label;
 	}
 
 
