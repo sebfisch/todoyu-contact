@@ -391,7 +391,7 @@ class TodoyuContactViewHelper {
 
 
 	/**
-	 * Get selector coptions for Regions in address form
+	 * Get selector options config array for regions in address form
 	 *
 	 * @param	TodoyuFormElement	$field
 	 */
@@ -404,20 +404,25 @@ class TodoyuContactViewHelper {
 
 
 
-
+	/**
+	 * Get selector options config array for timezones, grouped into optGroups of continents
+	 *
+	 * @param	TodoyuFormElement $field
+	 * @return	Array
+	 */
 	public static function getTimezoneOptionsGrouped(TodoyuFormElement $field) {
 		$timezones	= TodoyuStaticRecords::getAllTimezones();
-		$optgroups	= array();
+		$optGroups	= array();
 
 		foreach($timezones as $timezone) {
 			$tzParts	= explode('/', $timezone['timezone']);
-			$optgroups[$tzParts[0]][] = array(
+			$optGroups[$tzParts[0]][] = array(
 				'value'	=> $timezone['id'],
 				'label'	=> $timezone['timezone']
 			);
 		}
 
-		return $optgroups;
+		return $optGroups;
 	}
 }
 
