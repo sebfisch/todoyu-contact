@@ -42,4 +42,18 @@
 		<label index="panelwidgets">Painel de widgets</label>
 		<label index="panelwidgets.staffSelector">Seletor de Participantes</label>
 	</labels>
+	<labels lang="ru_RU">
+		<label index="general">Общие</label>
+		<label index="general.use">Использовать возможности модуля</label>
+		<label index="general.area">Использовать области контактов</label>
+		<label index="person">Участник</label>
+		<label index="person.add">Обавить участников</label>
+		<label index="person.editAndDelete">Изменить или удалить участника</label>
+		<label index="person.enableLogin">Создать учётные записиь участников</label>
+		<label index="company">Компании</label>
+		<label index="company.add">Добавить компании</label>
+		<label index="company.editAndDelete">Изменить или удалить компании</label>
+		<label index="panelwidgets">Элементы панели</label>
+		<label index="panelwidgets.staffSelector">Выбор работников</label>
+	</labels>
 </locallang>

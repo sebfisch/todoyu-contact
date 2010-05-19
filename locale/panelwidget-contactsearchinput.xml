@@ -15,4 +15,9 @@
 		<label index="showAll.label">Mostrar Todos</label>
 		<label index="clearSword">Limpar entrada</label>
 	</labels>
+	<labels lang="ru_RU">
+		<label index="title">Поиск</label>
+		<label index="showAll.label">Показать все</label>
+		<label index="clearSword">Очистить</label>
+	</labels>
 </locallang>
