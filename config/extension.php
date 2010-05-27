@@ -74,12 +74,12 @@ Todoyu::$CONFIG['EXT']['contact']['numFavoriteCountries']	= 5;
 Todoyu::$CONFIG['EXT']['contact']['tabs'] = array(
 	array(
 		'id'		=> 'person',
-		'label'		=> 'LLL:contact.person',
+		'label'		=> 'LLL:contact.persons',
 		'require'	=> 'contact.general:area'
 	),
 	array(
 		'id'		=> 'company',
-		'label'		=> 'LLL:contact.company',
+		'label'		=> 'LLL:contact.companys',
 		'require'	=> 'contact.general:area'
 	)
 );
