@@ -20,4 +20,9 @@
 		<label index="showAll.label">Показать все</label>
 		<label index="clearSword">Очистить</label>
 	</labels>
+	<labels lang="nl_NL">
+		<label index="title">Zoeken</label>
+		<label index="showAll.label">Alles weergeven</label>
+		<label index="clearSword">Invoer wissen</label>
+	</labels>
 </locallang>
