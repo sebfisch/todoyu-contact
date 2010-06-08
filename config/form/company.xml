@@ -21,7 +21,7 @@
 					<label>contact.company.attr.shortname</label>
 				</field>
 
-				<field type="dateinput" name="date_enter">
+				<field type="date" name="date_enter">
 					<label>contact.company.attr.date_enter</label>
 				</field>
 

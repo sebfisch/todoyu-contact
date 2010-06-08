@@ -43,7 +43,7 @@
 					<label>contact.person.attr.shortname</label>
 				</field>
 
-				<field type="dateinput" name="birthday">
+				<field type="date" name="birthday">
 					<label>contact.person.attr.birthday</label>
 					<calendar>
 						<range>[1940,2020]</range>
