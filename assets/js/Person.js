@@ -171,22 +171,22 @@ Todoyu.Ext.contact.Person =  {
 	 * @param	{Object}	list
 	 * @param	{Object}	parent
 	 */
-	updateCompanyAddressRecords: function(inputField, selectedListElement, baseID, selectedValue, list, parent)	{
-		var idInputFieldArr		= inputField.id.split('-').without('fulltext');
-		var referencedFieldName = parent.acRefs[baseID].options.referencedFieldName;
-		var idTarget = idInputFieldArr.join('-').replace(idInputFieldArr.last(), referencedFieldName);
+	updateCompanyAddressRecords: function(inputField, idField, selectedValue, selectedText, autocompleter)	{
+		var refFieldName	= autocompleter.getOptions(idField.id).referencedFieldName.replace('_', '-');
+		var baseID			= idField.id.substr(0, idField.id.indexOf('-field-')+6);
+		var idAddressList	= baseID + '-' + refFieldName;
 
-		if( $(idTarget) )	{
+		if( Todoyu.exists(idAddressList) )	{
 			var url = Todoyu.getUrl('contact', 'company');
 			var options = {
-					'parameters': {
-						'action':		'getCompanyAddressOptions',
-						'idCompany':	selectedValue
-					},
-					'onComplete': this.onUpdateCompanyAddressRecords.bind(this, idTarget)
+				'parameters': {
+					'action':		'getCompanyAddressOptions',
+					'idCompany':	selectedValue
+				},
+				'onComplete': this.onUpdateCompanyAddressRecords.bind(this, $(idAddressList))
 			};
 
-			Todoyu.Ui.update(idTarget, url, options);
+			Todoyu.Ui.update(idAddressList, url, options);
 		}
 	},
 	
@@ -197,8 +197,8 @@ Todoyu.Ext.contact.Person =  {
 	 * 
 	 * @param	{String}	idTarget
 	 */
-	onUpdateCompanyAddressRecords: function(idTarget)	{
-		new Effect.Highlight($(idTarget), {
+	onUpdateCompanyAddressRecords: function(addressList)	{
+		new Effect.Highlight($(addressList), {
 			'startcolor':	'#fffe98',
 			'endcolor':		'#ffffff',
 			'duration':		2.0
@@ -215,11 +215,11 @@ Todoyu.Ext.contact.Person =  {
 	 */
 	save: function(form) {
 		$(form).request ({
-				'parameters': {
-					'action':	'save'
-				},
-				'onComplete': this.onSaved.bind(this)
-			});
+			'parameters': {
+				'action':	'save'
+			},
+			'onComplete': this.onSaved.bind(this)
+		});
 
 		return false;
 	},

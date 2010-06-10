@@ -12,7 +12,7 @@
 						<acLabel>TodoyuCompanyManager::getLabel</acLabel>
 						<options>
 							<onCompleteCustom>Todoyu.Ext.contact.Autocomplete.onCompanyAutocomplete</onCompleteCustom>
-							<onElementSelectedCustom>Todoyu.Ext.contact.Person.updateCompanyAddressRecords</onElementSelectedCustom>
+							<onSelectCustom>Todoyu.Ext.contact.Person.updateCompanyAddressRecords</onSelectCustom>
 							<referencedFieldName>id-workaddress</referencedFieldName>
 						</options>
 					</config>
