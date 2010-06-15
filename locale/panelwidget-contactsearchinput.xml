@@ -25,4 +25,9 @@
 		<label index="showAll.label">Alles weergeven</label>
 		<label index="clearSword">Invoer wissen</label>
 	</labels>
+	<labels lang="ja_JP">
+		<label index="title">検索</label>
+		<label index="showAll.label">全て表示</label>
+		<label index="clearSword">入力のクリア</label>
+	</labels>
 </locallang>

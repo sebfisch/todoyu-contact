@@ -35,4 +35,11 @@
 		<label index="byFunction">Op type baan:</label>
 		<label index="noFunction">Geen baantype</label>
 	</labels>
+	<labels lang="ja_JP">
+		<label index="toggle.multiselect.title">単一/複数セクションモードの切り替え</label>
+		<label index="title">スタッフ</label>
+		<label index="selectAllStaff">全てのスタッフを選択</label>
+		<label index="byFunction">職種:</label>
+		<label index="noFunction">職種がありません</label>
+	</labels>
 </locallang>
