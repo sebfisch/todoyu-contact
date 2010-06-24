@@ -148,10 +148,10 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Get person data by username
+	 * Get person ID by username
 	 *
 	 * @param	String		$username
-	 * @return	Array
+	 * @return	Integer
 	 */
 	public static function getPersonIDByUsername($username) {
 		$fields	= 'id';
