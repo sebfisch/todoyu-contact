@@ -69,5 +69,14 @@ class TodoyuAddress extends TodoyuBaseObject {
 
 		return is_array($timezone) ? $timezone['timezone'] : false;
 	}
+	
+
+
+	/**
+	 * @return	Array
+	 */
+	public function getCountry() {
+		return TodoyuStaticRecords::getCountry($this->get('id_country'));
+	}
 }
 ?>
