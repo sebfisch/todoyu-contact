@@ -167,7 +167,8 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 
 	/**
-	 * Show company details
+	 * Show company details (popUp)
+	 *
 	 * @param	Array		$params
 	 * @return	String
 	 */

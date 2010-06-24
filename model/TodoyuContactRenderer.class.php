@@ -365,9 +365,8 @@ class TodoyuContactRenderer {
 	public static function renderCompanyInfo($idCompany)	{
 		$idCompany = intval($idCompany);
 
-		$company	= TodoyuCompanyManager::getCompany($idCompany);
-
 		$tmpl		= 'ext/contact/view/info-company.tmpl';
+		$company	= TodoyuCompanyManager::getCompany($idCompany);
 		$data		= $company->getTemplateData(true);
 
 		return render($tmpl, $data);
