@@ -73,10 +73,16 @@ class TodoyuAddress extends TodoyuBaseObject {
 
 
 	/**
-	 * @return	Array
+	 * Get country
+	 * 
+	 * @return	TodoyuCountry
 	 */
 	public function getCountry() {
-		return TodoyuStaticRecords::getCountry($this->get('id_country'));
+		return TodoyuCountryManager::getCountry($this->get('id_country'));
+	}
+
+	public function getLabel() {
+		 return $this->getStreet() . ', ' . $this->getZip() . ', ' . $this->getCity() . ', ' . $this->getCountry()->getCode2();
 	}
 }
 ?>
