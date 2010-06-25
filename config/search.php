@@ -18,7 +18,13 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-	// Add search engine types
+/**
+ * Add contact search engine types: persons, comments
+ *
+ * @package		Todoyu
+ * @subpackage	Project
+ */
+
 if ( allowed('contact', 'general:use') ) {
 	if( allowed('contact', 'general:area') ) {
 		TodoyuSearchManager::addEngine('person', 'TodoyuPersonSearch::getSuggestions', 'contact.person.search.title', 'contact.person.search.mode', 100);
