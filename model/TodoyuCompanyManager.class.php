@@ -231,11 +231,10 @@ class TodoyuCompanyManager {
 
 			// Person
 		if( isset($data['person']) ) {
-			$personIDs	= TodoyuArray::getColumn($data['person'], 'id');
+				// Remove all person links
+			self::removeAllPersons($idCompany);
 
-				// Remove all person links which are no longer active
-			self::removeRemovedPersons($idCompany, $personIDs);
-
+				// Save person links
 			if( sizeof($data['person']) > 0 ) {
 				foreach($data['person'] as $index => $person) {
 						// Prepare data form mm-table
@@ -376,8 +375,6 @@ class TodoyuCompanyManager {
 	 * @param	Integer		$idCompany
 	 */
 	public static function removeAllPersons($idCompany) {
-		$idCompany	= intval($idCompany);
-
 		TodoyuDbHelper::removeMMrelations('ext_contact_mm_company_person', 'id_company', $idCompany);
 	}
 
@@ -498,8 +495,9 @@ class TodoyuCompanyManager {
 		$where	= '		mm.id_person	= p.id
 					AND	mm.id_company	= ' . $idCompany .
 				  ' AND	p.deleted		= 0';
+		$order	= 'mm.id';
 
-		return Todoyu::db()->getArray($fields, $tables, $where);
+		return Todoyu::db()->getArray($fields, $tables, $where, '', $order);
 	}
 
 
