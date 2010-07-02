@@ -28,8 +28,6 @@
 
 
 
-
-
 /**
  * Check whether given ID belongs to the current person
  *
