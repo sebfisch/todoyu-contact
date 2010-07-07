@@ -16,21 +16,21 @@
 					<required />
 				</field>
 
-				<field type="textinput" name="street">
+				<field type="text" name="street">
 					<label>contact.address.attr.street</label>
 					<required />
 				</field>
 
-				<field type="textinput" name="postbox">
+				<field type="text" name="postbox">
 					<label>contact.address.attr.postbox</label>
 				</field>
 
-				<field type="textinput" name="zip">
+				<field type="text" name="zip">
 					<label>contact.address.attr.zip</label>
 					<required />
 				</field>
 
-				<field type="textinput" name="city">
+				<field type="text" name="city">
 					<label>contact.address.attr.city</label>
 					<required />
 				</field>

@@ -16,7 +16,7 @@
 					<required />
 				</field>
 
-				<field type="textinput" name="info">
+				<field type="text" name="info">
 					<label>contact.contactinfo.attr.info</label>
 					<required />
 				</field>

@@ -5,7 +5,7 @@
 			<legend>Main company data</legend>
 			<elements>
 
-				<field type="textinputAC" name="id">
+				<field type="textAC" name="id">
 					<label>contact.company</label>
 					<config>
 						<acName>company</acName>

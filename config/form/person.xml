@@ -29,17 +29,17 @@
 					<noPleaseSelect />
 				</field>
 
-				<field type="textinput" name="lastname">
+				<field type="text" name="lastname">
 					<label>contact.person.attr.lastname</label>
 					<required/>
 				</field>
 
-				<field type="textinput" name="firstname">
+				<field type="text" name="firstname">
 					<label>contact.person.attr.firstname</label>
 					<required />
 				</field>
 
-				<field type="textinput" name="shortname">
+				<field type="text" name="shortname">
 					<label>contact.person.attr.shortname</label>
 				</field>
 
@@ -124,7 +124,7 @@
 				<fieldset name="loginfields">
 					<elements>
 
-						<field type="textinput" name="username">
+						<field type="text" name="username">
 							<label>contact.person.attr.username</label>
 							<validate>
 								<unique>
@@ -137,7 +137,7 @@
 							</required>
 						</field>
 
-						<field type="textinput" name="password">
+						<field type="text" name="password">
 							<label>contact.person.attr.password</label>
 							<type>password</type>
 							<validate>
@@ -151,7 +151,7 @@
 							<textAfterField>LLL:contact.person.attr.password.hasPassword</textAfterField>
 						</field>
 
-						<field type="textinput" name="email">
+						<field type="text" name="email">
 							<label>contact.person.attr.email</label>
 							<validate>
 								<email>
