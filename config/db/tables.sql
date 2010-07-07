@@ -159,7 +159,8 @@ CREATE TABLE `ext_contact_mm_company_person` (
 	`id_person` int(10) unsigned NOT NULL,
 	`id_workaddress` int(10) unsigned NOT NULL,
 	`id_jobtype` int(10) unsigned NOT NULL,
-	PRIMARY KEY (`id`)
+	PRIMARY KEY (`id`),
+	KEY `person` (`id_person`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

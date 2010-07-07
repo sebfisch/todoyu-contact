@@ -232,21 +232,23 @@ class TodoyuPerson extends TodoyuBaseObject {
 	 * @return	String		Or FALSE if non defined
 	 */
 	public function getTimezone() {
-		$field	= '	tz.timezone';
-		$tables	= '	ext_contact_mm_company_person mmcp,
-					ext_contact_address a,
-					static_timezone tz';
-		$where	= '		mmcp.id_person		= ' . personid() .
-				  ' AND	mmcp.id_workaddress	= a.id
-				  	AND	a.id_timezone		= tz.id';
+		if( $this->getID() !== 0 ) {
+			$field	= '	tz.timezone';
+			$tables	= '	ext_contact_mm_company_person mmcp,
+						ext_contact_address a,
+						static_timezone tz';
+			$where	= '		mmcp.id_person		= ' . $this->getID() .
+					  ' AND	mmcp.id_workaddress	= a.id
+						AND	a.id_timezone		= tz.id';
 
-		$timezones	= Todoyu::db()->getArray($field, $tables, $where);
+			$timezones	= Todoyu::db()->getArray($field, $tables, $where);
 
-		if( sizeof($timezones) > 0 ) {
-			return $timezones[0]['timezone'];
-		} else {
-			return false;
+			if( sizeof($timezones) > 0 ) {
+				return $timezones[0]['timezone'];
+			}
 		}
+
+		return false;
 	}
 
 

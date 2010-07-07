@@ -111,6 +111,14 @@ class TodoyuPersonManager {
 	 * @return	Boolean
 	 */
 	public static function isValidLogin($username, $password) {
+		$username	= trim($username);
+		$password	= trim($password);
+
+			// Prevent empty login data
+		if( $username === '' || $password === '' ) {
+			return false;
+		}
+
 		$field	= 'id';
 		$table	= self::TABLE;
 		$where	= '		username = ' . Todoyu::db()->quote($username, true) .
