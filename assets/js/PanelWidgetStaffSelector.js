@@ -60,7 +60,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	init: function(jobType2Persons) {
 		this.list			= $('panelwidget-staffselector-persons');
 		this.jobType		= $('panelwidget-staffselector-jobtype');
-		this.jobTypeToggle	= $('panelwidget-staffselector-jobtypetoggle');
+		this.jobTypeToggle	= $('panelwidget-staffselector-jobtypetoggle-label');
 		this.jobType2Persons= jobType2Persons;
 
 		this.installObservers();
@@ -74,7 +74,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	installObservers: function() {
 		this.list.observe('change', this.onSelectionChange.bindAsEventListener(this));
 		this.jobType.observe('change', this.onJobtypeSelected.bindAsEventListener(this));
-		this.jobTypeToggle.observe('change', this.onJobtypeToggleChange.bindAsEventListener(this));
+		this.jobTypeToggle.observe('click', this.onJobtypeToggleChange.bindAsEventListener(this));
 	},
 
 
@@ -109,9 +109,9 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	 * @param	{Event}		event
 	 */
 	onJobtypeToggleChange: function(event) {
-		var toggler	= event.findElement('input');
+		var toggler	= event.findElement('div').down('input');
 
-		if( toggler.checked ) {
+		if( ! toggler.checked ) {
 			this.jobType.multiple	= 'multiple';
 			this.jobType.size		= this.jobType.options.length;
 		} else {
@@ -120,6 +120,11 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 		}
 
 		$(toggler.id + '-label').toggleClassName('expand');
+
+			// Fix for IE. Label click doesn't update input if input is hidden
+		if( Prototype.Browser.IE ) {
+			toggler.checked = !toggler.checked;
+		}
 
 		this.onUpdate();
 	},
