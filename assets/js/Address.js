@@ -19,9 +19,7 @@
 
 
 Todoyu.Ext.contact.Address = {
-	
-		
-		
+
 	/**
 	 * Sends Ajax request when the a country is selected to get its country zones
 	 * 

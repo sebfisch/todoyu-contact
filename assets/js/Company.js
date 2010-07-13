@@ -85,7 +85,7 @@ Todoyu.Ext.contact.Company =  {
 	/**
 	 * Handle event after company deletion being performed
 	 *
-	 * @param	{Response}	response
+	 * @param	{Ajax.Response}	response
 	 */
 	onRemoved: function(response) {
 		if( ! response.hasTodoyuError() ) {
