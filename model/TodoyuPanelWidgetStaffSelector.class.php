@@ -82,15 +82,13 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 			'jobTypeOptions'	=> $this->getJobtypeOptions(),
 			'personOptions'		=> $personOptions,
 
-				// Prefs
+				// Preferences
 			'selectedJobTypes'	=> TodoyuArray::intval($prefs['jobtypes']),
 			'selectedPersons'	=> TodoyuArray::intval($prefs['persons']),
 		);
 		
 		$content	= render($tmpl, $data);
 		$this->setContent($content);
-		
-		TodoyuDebug::printInFireBug($data, 'data');
 
 		return $content;
 	}
@@ -160,7 +158,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 		$persons	= TodoyuJobTypeManager::getInternalPersonsWithJobType();
 		$options	= array();
 
-		$jobtypes	= array(
+		$jobTypes	= array(
 				// Select all staff option
 			array(
 				'id'	=> 0,
@@ -169,12 +167,12 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 			)
 		);
 
-			// Find all jobtypes and the person count
+			// Find all job types and the person count
 		foreach($persons as $person) {
-			if( array_key_exists($person['id_jobtype'], $jobtypes) ) {
-				$jobtypes[$person['id_jobtype']]['count']++;
+			if( array_key_exists($person['id_jobtype'], $jobTypes) ) {
+				$jobTypes[$person['id_jobtype']]['count']++;
 			} else {
-				$jobtypes[$person['id_jobtype']] = array(
+				$jobTypes[$person['id_jobtype']] = array(
 					'id'	=> $person['id_jobtype'],
 					'label'	=> $person['jobtype'],
 					'count'	=> 1
@@ -182,17 +180,13 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 			}
 		}
 
-			// Create options: label is Person name + jobtype
-		foreach($jobtypes as $jobtype) {
-			if ( $jobtype['id'] == 0 ) {
-				$amount	= ' (' . sizeof($persons) . ')';
-			} else {
-				$amount	= $jobtype['count'] > 0 ? ' (' . $jobtype['count'] . ')' : '';
-			}
+			// Create options: label is Person name + job type
+		foreach($jobTypes as $jobType) {
+			$amount	= ( $jobType['id'] == 0 ) ? ' (' . sizeof($persons) . ')' : ( ( $jobType['count'] > 0 ) ? ' (' . $jobType['count'] . ')' : '' );
 
 			$options[] = array(
-				'value'	=> $jobtype['id'],
-				'label'	=> $jobtype['label'] . $amount
+				'value'	=> $jobType['id'],
+				'label'	=> $jobType['label'] . $amount
 			);
 		}
 
@@ -202,7 +196,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 
 
 	/**
-	 * Get list size
+	 * Get display size of staff list (amount of visible entries w/o scrolling)
 	 *
 	 * @param	Integer		$numDisplayedPersons
 	 * @return	Integer
@@ -210,13 +204,8 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 	private function getListSize($numDisplayedPersons) {
 		$numDisplayedPersons= intval($numDisplayedPersons);
 		$maxListSize		= intval(Todoyu::$CONFIG['contact']['panelWidgetStaffSelector']['maxListSize']);
-		$size				= $maxListSize;
 
-		if( $numDisplayedPersons < $maxListSize ) {
-			$size = $numDisplayedPersons;
-		}
-
-		return $size;
+		return ( $numDisplayedPersons < $maxListSize ) ? $numDisplayedPersons : $maxListSize;
 	}
 
 
@@ -229,7 +218,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 	public static function getPrefs() {
 		$prefs	= TodoyuContactPreferences::getPref('panelwidget-staffselector', 0, AREA, false);
 
-		return $prefs !== false ? json_decode($prefs, true) : array();
+		return ( $prefs !== false ) ? json_decode($prefs, true) : array();
 	}
 
 
@@ -257,4 +246,5 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 	}
 
 }
+
 ?>
