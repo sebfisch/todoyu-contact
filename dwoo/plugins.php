@@ -79,8 +79,7 @@ function Dwoo_Plugin_personLabel(Dwoo $dwoo, $idPerson = 0, $idPrefix = '', $idR
 	$closingTag	= '</' . $tag . '>';
 
 	$label	= TodoyuPersonManager::getLabel($idPerson);
-
-	$script	= '<script type="text/javascript">Todoyu.Ext.contact.QuickInfoPerson.add(\'' . $htmlID . '\');</script>';
+	$script	= TodoyuString::wrapScript('Todoyu.Ext.contact.QuickInfoPerson.add(\'' . $htmlID . '\');');
 
 	return $openingTag . $label . $closingTag . $script;
 }

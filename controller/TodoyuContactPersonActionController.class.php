@@ -227,7 +227,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 
 
 	/**
-	 * Content for the person-wizard popup
+	 * Content for the person-wizard popUp
 	 *
 	 * @todo Move restriction to displayCondition in form
 	 *
@@ -238,7 +238,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 		restrict('contact', 'person:editAndDelete');
 
 		$content = TodoyuPage::getExtJSinline('contact');
-		$content.= '<script type="text/javascript">Todoyu.Ext.contact.Person.onEdit(0);</script>';
+		$content.= TodoyuString::wrapScript('Todoyu.Ext.contact.Person.onEdit(0);');
 		$content.= TodoyuContactRenderer::renderPersonEditFormWizard(0, $params['idField']);
 
 		return $content;
