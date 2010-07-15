@@ -22,7 +22,7 @@
  * General configuration of the contact extension
  */
 
-	// Add contact autocompleters for data types company and person
+	// Add contact autoCompleters for data types company and person
 TodoyuAutocompleter::addAutocompleter('company', 'TodoyuPersonFilterDataSource::autocompleteCompanies', array('contact', 'general:use'));
 TodoyuAutocompleter::addAutocompleter('person', 'TodoyuPersonFilterDataSource::autocompletePersons', array('contact', 'general:use'));
 
@@ -128,7 +128,7 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['company'] = array(
 	'columns'	=> array(
 		'icon'		=> '',
 		'title'		=> 'LLL:contact.company.attr.title',
-		//'persons'	=> 'LLL:contact.comapny.employees',
+		//'persons'	=> 'LLL:contact.company.employees',
 		'address'	=> 'LLL:contact.address',
 		'actions'	=> ''
 	),
