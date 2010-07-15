@@ -668,7 +668,8 @@ class TodoyuPersonManager {
 		if( sizeof($personIDs) > 0) {
 			$field	= 'id_workaddress';
 			$table	= 'ext_contact_mm_company_person';
-			$where	= 'id_person IN (' . implode(',', $personIDs) . ') ';
+			$where	= '		id_person IN (' . implode(',', $personIDs) . ') '
+					. ' AND id_workaddress != 0';
 
 			$addressIDs	= Todoyu::db()->getColumn($field, $table, $where);
 		}
