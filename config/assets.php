@@ -68,10 +68,6 @@ Todoyu::$CONFIG['EXT']['contact']['assets'] = array(
 	),
 	'css'	=> array(
 		array(
-			'file'		=> 'ext/contact/assets/css/global.css',
-			'position'	=> 100
-		),
-		array(
 			'file' 		=> 'ext/contact/assets/css/quickinfo.css',
 			'position'	=> 100
 		),
