@@ -206,7 +206,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 
 
 	/**
-	 * Get all perosons which have the requested job type
+	 * Get all persons which have the requested job type
 	 *
 	 * @param	{Number}		jobType
 	 * @return	Array
