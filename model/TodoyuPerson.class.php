@@ -276,7 +276,11 @@ class TodoyuPerson extends TodoyuBaseObject {
 			$this->loadForeignData();
 		}
 
-		return parent::getTemplateData();
+		$data = parent::getTemplateData();
+
+		$data['fullname'] = $this->getFullName();		
+
+		return $data;
 	}
 
 }
