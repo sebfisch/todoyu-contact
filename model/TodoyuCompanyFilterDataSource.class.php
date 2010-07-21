@@ -24,35 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuPersonFilterDataSource {
-
-	/**
-	 * Get autocomplete list for person
-	 *
-	 * @param 	String		$input
-	 * @param	Array		$formData
-	 * @param	String		$name
-	 * @return	Array
-	 */
-	public static function autocompletePersons($input, array $formData = array(), $name = '')	{
-		$data = array();
-
-		$fieldsToSearchIn = array(
-			'firstname',
-			'lastname',
-			'shortname'
-		);
-
-		$persons = TodoyuPersonManager::searchPersons($input, $fieldsToSearchIn);
-
-		foreach($persons as $person) {
-			$data[$person['id']] = TodoyuPersonManager::getLabel($person['id']);
-		}
-		
-		return $data;
-	}
-
-
+class TodoyuCompanyFilterDataSource {
 
 	/**
 	 * Get person filter definition label
@@ -61,11 +33,48 @@ class TodoyuPersonFilterDataSource {
 	 * @return	Array
 	 */
 	public static function getLabel($definitions)	{
-		$definitions['value_label'] = TodoyuPersonManager::getLabel($definitions['value']);
+		$definitions['value_label'] = TodoyuCompanyManager::getLabel($definitions['value']);
 
 		return $definitions;
 	}
 
+
+
+	/**
+	 * Get company autocompletion data
+	 *
+	 * @param	String	$search
+	 * @param	Array	$conf
+	 * @return	Array
+	 */
+	public static function autocompleteCompanies($input, array $formData = array(), $name = '')	{
+		$result		= array();
+		$companies	= TodoyuCompanyManager::searchCompany($input);
+
+		foreach($companies as $companyData)	{
+			$company	= TodoyuCompanyManager::getCompany($companyData['id']);
+			$result[$companyData['id']] = $company->getTitle();
+		}
+
+		return $result;
+	}
+
+
+
+	/**
+	 * Get company label
+	 *
+	 * @param	Array	$definitions
+	 * @return	Array
+	 */
+	public static function getCompanyLabel($definitions) {
+		$idCompany	= intval($definitions['value']);
+		$company	= TodoyuCompanyManager::getCompany($idCompany);
+
+		$definitions['value_label'] = $company->getTitle();
+
+		return $definitions;
+	}
 
 }
 ?>

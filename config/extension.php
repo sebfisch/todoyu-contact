@@ -23,7 +23,7 @@
  */
 
 	// Add contact autoCompleters for data types company and person
-TodoyuAutocompleter::addAutocompleter('company', 'TodoyuPersonFilterDataSource::autocompleteCompanies', array('contact', 'general:use'));
+TodoyuAutocompleter::addAutocompleter('company', 'TodoyuCompanyFilterDataSource::autocompleteCompanies', array('contact', 'general:use'));
 TodoyuAutocompleter::addAutocompleter('person', 'TodoyuPersonFilterDataSource::autocompletePersons', array('contact', 'general:use'));
 
 TodoyuQuickinfoManager::addFunction('person', 'TodoyuContactQuickinfoManager::getQuickinfoPerson');
