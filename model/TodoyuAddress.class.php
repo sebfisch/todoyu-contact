@@ -38,28 +38,6 @@ class TodoyuAddress extends TodoyuBaseObject {
 
 
 	/**
-	 * Returns the full address as linefeed-separated string
-	 * @todo	Is this function still in use? why linebreaks?
-	 * @return	String
-	 */
-	public function getFullAddress() {
-		$address = '';
-
-		$address .= $this->get('street') . chr(10);
-		if( $this->postbox )	{
-			$address .= $this->postbox . chr(10);
-		}
-
-		$country	= TodoyuStaticRecords::getCountry($this->get('id_country'));
-
-		$address .= $country['iso_alpha2'] . ' - ' . $this->get('zip') . ' ' . $this->get('city');
-
-		return $address;
-	}
-
-
-
-	/**
 	 * Get timezone of address
 	 *
 	 * @return	String
@@ -80,9 +58,28 @@ class TodoyuAddress extends TodoyuBaseObject {
 	public function getCountry() {
 		return TodoyuCountryManager::getCountry($this->get('id_country'));
 	}
+	
 
+
+	/**
+	 * Get address holidayset
+	 *
+	 * @return	TodoyuHolidaySet
+	 */
+	public function getHolidaySet() {
+		return TodoyuHolidaySetManager::getHolidaySet($this->get('id_holidayset'));
+	}
+
+
+
+	/**
+	 * Get address label with all informations
+	 *
+	 * @return	String
+	 */
 	public function getLabel() {
 		 return $this->getStreet() . ', ' . $this->getZip() . ', ' . $this->getCity() . ', ' . $this->getCountry()->getCode2();
 	}
+	
 }
 ?>
