@@ -35,6 +35,13 @@
 		<label index="byFunction">Op type baan:</label>
 		<label index="noFunction">Geen baantype</label>
 	</labels>
+	<labels lang="sr_RS">
+		<label index="toggle.multiselect.title">Пребаци између појединачног и вишеструког избора</label>
+		<label index="title">Особље</label>
+		<label index="selectAllStaff">Изабери цело особље</label>
+		<label index="byFunction">По запошљењу:</label>
+		<label index="noFunction">Без запошљења</label>
+	</labels>
 	<labels lang="ja_JP">
 		<label index="toggle.multiselect.title">単一/複数セクションモードの切り替え</label>
 		<label index="title">スタッフ</label>
