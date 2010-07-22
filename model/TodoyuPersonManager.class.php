@@ -535,7 +535,7 @@ class TodoyuPersonManager {
 		$idPerson	= intval($idPerson);
 		$label	= '';
 
-		if ( $idPerson !== 0 ) {
+		if( $idPerson !== 0 ) {
 			$label	= self::getPerson($idPerson)->getLabel($showEmail, $lastnameFirst);
 		}
 

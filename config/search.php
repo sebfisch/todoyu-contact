@@ -25,7 +25,7 @@
  * @subpackage	Project
  */
 
-if ( allowed('contact', 'general:use') ) {
+if( allowed('contact', 'general:use') ) {
 	if( allowed('contact', 'general:area') ) {
 		TodoyuSearchManager::addEngine('person', 'TodoyuPersonSearch::getSuggestions', 'contact.person.search.title', 'contact.person.search.mode', 100);
 	}

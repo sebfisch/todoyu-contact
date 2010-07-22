@@ -73,7 +73,7 @@ Todoyu.Ext.contact.QuickCreatePerson = {
 			Todoyu.Popup.close('quickcreate');
 			Todoyu.notifySuccess('[LLL:contact.person.saved]');
 			
-			if ( Todoyu.getArea() == 'contact' ) {
+			if( Todoyu.getArea() == 'contact' ) {
 				Todoyu.Ext.contact.Person.showList();
 			}
 		}

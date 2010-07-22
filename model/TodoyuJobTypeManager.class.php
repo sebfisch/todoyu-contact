@@ -67,7 +67,7 @@ class TodoyuJobTypeManager {
 		$table	= self::TABLE;
 
 		$where	= 'deleted = 0';
-		if ( count($typeIDs) > 0 ) {
+		if( count($typeIDs) > 0 ) {
 			$typeIDs	= TodoyuArray::intval($typeIDs);
 			$where		.= ' AND id IN (' . TodoyuArray::intImplode($typeIDs, ',') . ') ';
 		}

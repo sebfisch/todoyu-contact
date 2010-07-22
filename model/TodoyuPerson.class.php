@@ -49,13 +49,13 @@ class TodoyuPerson extends TodoyuBaseObject {
 	public function getLabel($showEmail = false, $lastnameFirst = true, $showTitle = false, $idRole = 0)	{
 		 $label	= $this->getFullName($lastnameFirst);
 
-		if ( $showTitle === true) {
+		if( $showTitle === true) {
 			$role	= TodoyuRoleManager::getRole($idRole);
 
 			$label	.= ', ' . $role->getTitle();
 		}
 
-		 if ( $showEmail === true ) {
+		 if( $showEmail === true ) {
 		 	$label	.= ' (' . $this->getEmail() . ')';
 		 }
 

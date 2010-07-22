@@ -191,7 +191,7 @@ class TodoyuAddressManager {
 	public static function getLabel($idAddress) {
 		$idAddress	= intval($idAddress);
 
-		if ($idAddress > 0) {
+		if($idAddress > 0) {
 			$address= self::getAddress($idAddress);
 			$countryLabel	= TodoyuStaticRecords::getCountryLabel($address['id_country']);
 			$label			= $address['street'] . ', ' . $address['zip'] . ', ' . $address['city'] . ', ' . $countryLabel;

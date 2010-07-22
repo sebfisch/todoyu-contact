@@ -120,7 +120,7 @@ class TodoyuContactViewHelper {
 	public static function getJobTypeOptions(TodoyuFormElement $field) {
 		$options	= TodoyuJobTypeManager::getJobTypeOptions();
 
-		if ( count($options) == 0 ) {
+		if( count($options) == 0 ) {
 			$options[]	= array(
 				'value'		=> 'disabled',
 				'label'		=> 'LLL:contact.company.attr.person.jobtype.noJobtypes',
