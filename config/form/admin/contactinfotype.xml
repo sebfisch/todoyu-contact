@@ -16,7 +16,7 @@
 					</source>
 					<required />
 				</field>
-				
+
 				<field type="text" name="title">
 					<label>core.title</label>
 					<required />

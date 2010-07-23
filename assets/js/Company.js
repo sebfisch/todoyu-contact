@@ -127,7 +127,7 @@ Todoyu.Ext.contact.Company =  {
 		} else {
 				// Notify (implement)
 			Todoyu.notifySuccess('[LLL:contact.company.saved.ok]');
-			
+
 			this.showList(this.ext.PanelWidget.ContactSearch.getValue());
 		}
 	},

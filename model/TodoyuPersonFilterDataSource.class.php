@@ -48,7 +48,7 @@ class TodoyuPersonFilterDataSource {
 		foreach($persons as $person) {
 			$data[$person['id']] = TodoyuPersonManager::getLabel($person['id']);
 		}
-		
+
 		return $data;
 	}
 

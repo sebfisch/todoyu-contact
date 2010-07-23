@@ -278,7 +278,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 
 		$data = parent::getTemplateData();
 
-		$data['fullname'] = $this->getFullName();		
+		$data['fullname'] = $this->getFullName();
 
 		return $data;
 	}

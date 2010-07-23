@@ -25,7 +25,7 @@ Todoyu.Ext.contact.QuickCreatePerson = {
 	 * @var	{Object}	ext
 	 */
 	ext: Todoyu.Ext.contact,
-	
+
 	person: Todoyu.Ext.contact.Person,
 
 	/**
@@ -72,7 +72,7 @@ Todoyu.Ext.contact.QuickCreatePerson = {
 
 			Todoyu.Popup.close('quickcreate');
 			Todoyu.notifySuccess('[LLL:contact.person.saved]');
-			
+
 			if( Todoyu.getArea() == 'contact' ) {
 				Todoyu.Ext.contact.Person.showList();
 			}

@@ -47,7 +47,7 @@ class TodoyuAddress extends TodoyuBaseObject {
 
 		return is_array($timezone) ? $timezone['timezone'] : false;
 	}
-	
+
 
 
 	/**

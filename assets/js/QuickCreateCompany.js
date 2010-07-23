@@ -62,7 +62,7 @@ Todoyu.Ext.contact.QuickCreateCompany = {
 
 			Todoyu.Headlet.QuickCreate.closePopup();
 			Todoyu.notifySuccess('[LLL:contact.company.saved.ok]');
-			
+
 			if( Todoyu.getArea() == 'contact' ) {
 				Todoyu.Ext.contact.Company.showList();
 			}

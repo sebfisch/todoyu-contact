@@ -74,7 +74,7 @@ class TodoyuPanelWidgetContactSearch extends TodoyuPanelWidget implements Todoyu
 	}
 
 
-	
+
 	/**
 	 * Renders the panel widget
 	 *

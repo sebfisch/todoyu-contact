@@ -41,7 +41,7 @@ Todoyu.Ext.contact.QuickInfoPerson = {
 		//Todoyu.QuickInfo.install('person', this.selector, this.getID.bind(this));
 	},
 
-	
+
 
 	/**
 	 * Uninstall quickinfo for events

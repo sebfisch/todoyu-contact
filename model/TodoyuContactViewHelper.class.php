@@ -280,7 +280,7 @@ class TodoyuContactViewHelper {
 		$favoriteCountryIDs 		= TodoyuAddressManager::getMostUsedCountryIDs();
 		$favoriteCountries			= array();
 		$favoriteCountrySortOrder	= array_flip($favoriteCountryIDs);
-		
+
 //		TodoyuDebug::printInFireBug($countryOptions, '$countryOptions');
 
 		if( sizeof($favoriteCountryIDs) > 0 ) {

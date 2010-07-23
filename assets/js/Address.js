@@ -31,7 +31,7 @@ Todoyu.Ext.contact.Address = {
 		var selectedValue		= inputField.value;
 		var idInputFieldArr		= inputField.id.split('-').without('fulltext');
 		var idTarget = idInputFieldArr.join('-').replace(fieldNameToReplace, referencedFieldName);
-		
+
 		if( $(idTarget) )	{
 			var url = Todoyu.getUrl('contact', 'company');
 			var options = {
@@ -41,13 +41,13 @@ Todoyu.Ext.contact.Address = {
 					},
 					'onComplete': this.onUpdateCompanyAddressRecords.bind(this, idTarget)
 			};
-	
+
 			Todoyu.Ui.update(idTarget, url, options);
 		}
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Fills the found options to the selector
 	 * Highlights the selector for 2 seconds
@@ -57,11 +57,11 @@ Todoyu.Ext.contact.Address = {
 	 */
 	onUpdateCompanyAddressRecords: function(idTarget, response)	{
 		$(idTarget).innerHTML = response.responseText;
-		
+
 		new Effect.Highlight($(idTarget), {
 			'startcolor':	'#fffe98',
 			'endcolor':		'#ffffff',
 			'duration':		2.0
 		});
-	}	
+	}
 };

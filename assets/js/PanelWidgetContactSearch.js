@@ -84,10 +84,10 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 	 */
 	onKeyup: function(event) {
 		this.toggleClearButton();
-		
+
 		this.clearTimeout();
-		
-		this.timeout = this.search.bind(this).delay(this.delayTime);		
+
+		this.timeout = this.search.bind(this).delay(this.delayTime);
 	},
 
 

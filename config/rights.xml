@@ -4,18 +4,18 @@
 		<right name="use" />
 		<right name="area" require="general:use" />
 	</section>
-	
+
 	<section name="person" require="general:area">
 		<right name="add" />
 		<right name="editAndDelete" />
 		<right name="enableLogin" require="person:editAndDelete" />
 	</section>
-	
+
 	<section name="company" require="general:area">
 		<right name="add" />
 		<right name="editAndDelete" />
 	</section>
-	
+
 	<section name="panelwidgets" require="general:use">
 		<right name="staffSelector" />
 	</section>

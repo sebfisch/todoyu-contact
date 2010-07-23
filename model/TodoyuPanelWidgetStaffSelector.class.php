@@ -68,7 +68,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 	public function renderContent() {
 		$prefs		= self::getPrefs();
 		$tmpl	= 'ext/contact/view/panelwidget-staffselector.tmpl';
-		
+
 		$personOptions	= $this->getStaffPersonOptions();
 		$data	= array(
 				// Configs
@@ -86,7 +86,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 			'selectedJobTypes'	=> TodoyuArray::intval($prefs['jobtypes']),
 			'selectedPersons'	=> TodoyuArray::intval($prefs['persons']),
 		);
-		
+
 		$content	= render($tmpl, $data);
 		$this->setContent($content);
 

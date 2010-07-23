@@ -128,9 +128,9 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 			return $form->render();
 		}
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Save person from Wizard
 	 * 
@@ -143,14 +143,14 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 		$xmlPath	= 'ext/contact/config/form/person.xml';
 		$data		= $params['person'];
 		$idPerson	= intval($data['id']);
-		
+
 		$form 		= TodoyuFormManager::getForm($xmlPath, $idPerson);
-		
+
 		$idTarget = $params['idTarget'];
 
 		// Set form data
 		$form->setFormData($data);
-		
+
 			// Validate, render
 		if( $form->isValid() )	{
 			$storageData= $form->getStorageData();
@@ -163,10 +163,10 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 			return $idPerson;
 		} else {
 			TodoyuHeader::sendTodoyuErrorHeader();
-			
+
 			$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Ext.contact.Person.cancelWizard();');
 			$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Ext.contact.Person.saveWizard(this.form, \''.$idTarget.'\');');
-			
+
 			return $form->render();
 		}
 	}
@@ -190,7 +190,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 		$index		= intval($params['index']);
 		$idRecord	= intval($params['record']);
 
-		return TodoyuFormManager::renderSubformRecord($xmlPath, $fieldName, $formName, $index, $idRecord);
+		return TodoyuFormManager::renderSubFormRecord($xmlPath, $fieldName, $formName, $index, $idRecord);
 	}
 
 

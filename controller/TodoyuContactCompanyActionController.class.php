@@ -140,7 +140,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 		$idRecord	= intval($params['record']);
 		$xmlPath	= 'ext/contact/config/form/company.xml';
 
-		return TodoyuFormManager::renderSubformRecord($xmlPath, $fieldName, $formName, $index, $idRecord);
+		return TodoyuFormManager::renderSubFormRecord($xmlPath, $fieldName, $formName, $index, $idRecord);
 	}
 
 

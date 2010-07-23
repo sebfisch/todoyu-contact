@@ -4,14 +4,14 @@
 		<fieldset name="main">
 			<legend>Main role data</legend>
 			<elements>
-				
+
 				<field type="select" name="id">
 					<label>core.role</label>
 					<source type="function">
 						<function>TodoyuRoleViewHelper::getRoleOptions</function>
 					</source>
 				</field>
-				
+
 			</elements>
 		</fieldset>
 	</fieldsets>

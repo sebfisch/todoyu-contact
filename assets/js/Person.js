@@ -189,9 +189,9 @@ Todoyu.Ext.contact.Person =  {
 			Todoyu.Ui.update(idAddressList, url, options);
 		}
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Highlights the referenced selector of company address after updating the company-autocompleter
 	 * 
@@ -204,9 +204,9 @@ Todoyu.Ext.contact.Person =  {
 			'duration':		2.0
 		});
 	},
-	
 
-	
+
+
 	/**
 	 * Save person form
 	 *
@@ -239,7 +239,7 @@ Todoyu.Ext.contact.Person =  {
 			this.initEditForm(idPerson);
 		} else {
 			Todoyu.notifySuccess('[LLL:contact.person.saved]');
-			
+
 			this.showList(this.ext.PanelWidget.ContactSearch.getValue());
 		}
 	},
