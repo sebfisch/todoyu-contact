@@ -51,6 +51,9 @@ class TodoyuPersonManager {
 		$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Ext.contact.QuickCreatePerson.save(this.form)');
 		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Popup.close(\'quickcreate\')');
 
+		// make sure that birthday field isn't set to default
+		$form->setFieldFormData('birthday', false);
+
 		return $form;
 	}
 
