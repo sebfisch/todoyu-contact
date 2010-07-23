@@ -162,7 +162,7 @@ Todoyu.Ext.contact.Person =  {
 
 
 	/**
-	 * Updates working location selector with options of choosen company
+	 * Updates working location selector with options of chosen company
 	 *
 	 * @param	{Object}	inputField
 	 * @param	{Object}	selectedListElement
