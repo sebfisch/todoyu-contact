@@ -58,7 +58,7 @@ class TodoyuAddress extends TodoyuBaseObject {
 	public function getCountry() {
 		return TodoyuCountryManager::getCountry($this->get('id_country'));
 	}
-	
+
 
 
 	/**
@@ -80,6 +80,6 @@ class TodoyuAddress extends TodoyuBaseObject {
 	public function getLabel() {
 		 return $this->getStreet() . ', ' . $this->getZip() . ', ' . $this->getCity() . ', ' . $this->getCountry()->getCode2();
 	}
-	
+
 }
 ?>
