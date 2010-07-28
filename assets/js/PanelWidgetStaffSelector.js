@@ -297,4 +297,5 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	onPrefsSaved: function(response) {
 		Todoyu.PanelWidget.fire('staffselector', this.getSelectedPersons());
 	}
+
 };

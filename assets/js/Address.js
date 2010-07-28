@@ -64,4 +64,5 @@ Todoyu.Ext.contact.Address = {
 			'duration':		2.0
 		});
 	}
+
 };
