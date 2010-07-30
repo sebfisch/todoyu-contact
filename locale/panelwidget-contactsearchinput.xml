@@ -20,6 +20,11 @@
 		<label index="showAll.label">Показать все</label>
 		<label index="clearSword">Очистить</label>
 	</labels>
+	<labels lang="fr_FR">
+		<label index="title">Recherche</label>
+		<label index="showAll.label">Afficher tout</label>
+		<label index="clearSword">Effacer la recherche</label>
+	</labels>
 	<labels lang="nl_NL">
 		<label index="title">Zoeken</label>
 		<label index="showAll.label">Alles weergeven</label>

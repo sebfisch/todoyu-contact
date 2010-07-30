@@ -28,6 +28,13 @@
 		<label index="byFunction">По типу работы:</label>
 		<label index="noFunction">Нет типа работы</label>
 	</labels>
+	<labels lang="fr_FR">
+		<label index="toggle.multiselect.title">Basculer en mode simple ou multi sélection</label>
+		<label index="title">Équipe</label>
+		<label index="selectAllStaff">Sélectionner toute l'équipe</label>
+		<label index="byFunction">Par type de job:</label>
+		<label index="noFunction">Aucun type de job</label>
+	</labels>
 	<labels lang="nl_NL">
 		<label index="toggle.multiselect.title">Wisselen tussen enkele en meervoudige keuzemogelijkheid</label>
 		<label index="title">Medewerkers</label>
