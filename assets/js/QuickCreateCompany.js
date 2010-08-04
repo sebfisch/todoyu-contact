@@ -58,7 +58,7 @@ Todoyu.Ext.contact.QuickCreateCompany = {
 			Todoyu.notifyError('[LLL:contact.company.saved.error]');
 		} else {
 			var idCompany	= response.getTodoyuHeader('idCompany');
-			Todoyu.Hook.exec('onCompanySaved', idCompany);
+			Todoyu.Hook.exec('companySaved', idCompany);
 
 			Todoyu.Headlet.QuickCreate.closePopup();
 			Todoyu.notifySuccess('[LLL:contact.company.saved.ok]');

@@ -68,7 +68,7 @@ Todoyu.Ext.contact.QuickCreatePerson = {
 		} else {
 				// Saving succeeded
 			var idPerson	= response.getTodoyuHeader('idPerson');
-			Todoyu.Hook.exec('onPersonSaved', idPerson);
+			Todoyu.Hook.exec('personSaved', idPerson);
 
 			Todoyu.Popup.close('quickcreate');
 			Todoyu.notifySuccess('[LLL:contact.person.saved]');
