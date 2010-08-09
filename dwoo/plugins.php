@@ -92,8 +92,8 @@ function Dwoo_Plugin_personLabel(Dwoo $dwoo, $idPerson = 0, $idPrefix = '', $idR
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param	Dwoo	$dwoo
- * @param	Integer	$idContactinfotype
+ * @param	Dwoo		$dwoo
+ * @param	Integer		$idContactinfotype
  * @return	String
  */
 function Dwoo_Plugin_labelContactinfotype(Dwoo $dwoo, $idContactinfotype) {
@@ -110,8 +110,9 @@ function Dwoo_Plugin_labelContactinfotype(Dwoo $dwoo, $idContactinfotype) {
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param	Dwoo	$dwoo
- * @param	Integer	$idCountry
+ * @todo	check	- relocate into core?
+ * @param	Dwoo		$dwoo
+ * @param	Integer		$idCountry
  * @return	String
  */
 function Dwoo_Plugin_countryName(Dwoo $dwoo, $idCountry) {
@@ -125,7 +126,7 @@ function Dwoo_Plugin_countryName(Dwoo $dwoo, $idCountry) {
 
 
 /**
- * Returns the label of the addresstype with given id
+ * Returns the label of the address type with given id
  *
  * @param	Dwoo_Compiler	$compiler
  * @param	Integer			$idAddressType
