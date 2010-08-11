@@ -87,8 +87,17 @@ class TodoyuCompany extends TodoyuBaseObject {
 	}
 
 
-	//public function getTimezone
 
+	/**
+	 * Get records of all persons which are employees in this company
+	 *
+	 * @return	Array
+	 */
+	public function getEmplyeesRecords() {
+		return TodoyuCompanyManager::getCompanyPersonRecords($this->getID());
+	}
+
+	
 
 	/**
 	 * Loads the related foreign record data to the company
