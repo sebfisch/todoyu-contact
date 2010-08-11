@@ -173,7 +173,7 @@ Todoyu.Ext.contact.Person =  {
 	 */
 	updateCompanyAddressRecords: function(inputField, idField, selectedValue, selectedText, autocompleter)	{
 		var refFieldName	= autocompleter.getOptions(idField.id).referencedFieldName.replace('_', '-');
-		var baseID			= idField.id.substr(0, idField.id.indexOf('-field-')+6);
+		var baseID			= idField.id.substr(0, idField.id.indexOf('-field-') + 6);
 		var idAddressList	= baseID + '-' + refFieldName;
 
 		if( Todoyu.exists(idAddressList) )	{
@@ -325,7 +325,7 @@ Todoyu.Ext.contact.Person =  {
 		if( error ) {
 			Todoyu.notifyError('Saving person failed');
 
-			Todoyu.Popup.getContentElement('popup-'+target).update(response.responseText);
+			Todoyu.Popup.getContentElement('popup-' + target).update(response.responseText);
 		} else {
 			Todoyu.notifySuccess('Person saved');
 
