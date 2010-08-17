@@ -36,7 +36,6 @@ CREATE TABLE `ext_contact_company` (
 	`deleted` tinyint(2) NOT NULL DEFAULT '0',
 	`title` tinytext NOT NULL,
 	`shortname` tinytext NOT NULL,
-	`id_currency` tinyint(1) unsigned NOT NULL DEFAULT '0',
 	`date_enter` int(10) unsigned NOT NULL DEFAULT '0',
 	`is_internal` tinyint(1) NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`)
