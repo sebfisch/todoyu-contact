@@ -48,7 +48,7 @@ class TodoyuContactQuickinfoManager {
 		}
 
 			// Add birthday information for internal persons
-		if( Todoyu::person()->isInternal() ) {
+		if( Todoyu::person()->isAdmin() || Todoyu::person()->isInternal() ) {
 			$birthday	= $data['birthday'] === '0000-00-00' ? Label('core.unknown') : $data['birthday'];
 			$quickinfo->addInfo('birthday', $birthday);
 		}
