@@ -582,8 +582,9 @@ class TodoyuCompanyManager {
 
 		if( sizeof($addresses) > 0 ) {
 			$address = $addresses[0];
-
-			$label	= $address['street'] . ', ' . $address['zip'] . ' ' . $address['city'];
+			$label	= 	  ($address['street'] !== '' ? $address['street'] . ', ' : '')
+						. ($address['zip']	!== '' ? $address['zip'] . ' ' : '')
+						. $address['city'];
 		}
 
 		return $label;
