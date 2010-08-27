@@ -50,7 +50,7 @@ class TodoyuContactInfoManager {
 	/**
 	 * Get name of given contact info type
 	 *
-	 * @param	Integer	$idContactinfotype
+	 * @param	Integer	$idContactInfotype
 	 * @return	String
 	 */
 	public static function getContactInfoTypeName($idContactInfoType) {

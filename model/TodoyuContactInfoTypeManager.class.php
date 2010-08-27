@@ -87,9 +87,9 @@ class TodoyuContactInfoTypeManager {
 
 
 	/**
-	 * @todo	comment
+	 * Create new contactinfotype record with given data 
 	 *
-	 * @param	Array	$data
+	 * @param	Array		$data
 	 * @return	Integer
 	 */
 	public static function addContactInfoType(array $data = array()) {
@@ -99,7 +99,8 @@ class TodoyuContactInfoTypeManager {
 
 
 	/**
-	 * @todo	comment
+	 * Update contactinfo type of given ID with given data
+	 *
 	 * @param	Integer		$idContactTypeInfo
 	 * @param	Array		$data
 	 */
@@ -110,7 +111,8 @@ class TodoyuContactInfoTypeManager {
 
 
 	/**
-	 * @todo	comment
+	 * Delete given contact type info record of given ID
+	 *
 	 * @param	Integer		$idContactTypeInfo
 	 */
 	public static function deleteContactTypeInfo($idContactTypeInfo) {
@@ -120,7 +122,7 @@ class TodoyuContactInfoTypeManager {
 
 
 	/**
-	 * @todo	comment
+	 * Save given data into contactinfo type (update if ID given or add new record)
 	 *
 	 * @param	Array	$data
 	 * @return	Integer

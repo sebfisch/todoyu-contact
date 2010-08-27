@@ -272,7 +272,6 @@ class TodoyuCompanyManager {
 	 *
 	 * @param	Integer		$idCompany
 	 * @param	Array		$contactInfoIDs
-	 * @return
 	 */
 	public static function linkContactInfos($idCompany, array $contactInfoIDs) {
 		TodoyuDbHelper::addMMLinks('ext_contact_mm_company_contactinfo', 'id_company', 'id_contactinfo', $idCompany, $contactInfoIDs);
@@ -399,7 +398,6 @@ class TodoyuCompanyManager {
 	 *
 	 * @todo	see comment in above function 'removeContactinfoLinks'
 	 *
-	 * @static
 	 * @param	Integer		$idCompany
 	 * @return	void
 	 */
