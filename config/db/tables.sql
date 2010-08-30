@@ -61,7 +61,7 @@ CREATE TABLE `ext_contact_address` (
 	`postbox` varchar(32) NOT NULL,
 	`city` varchar(48) NOT NULL,
 	`region` varchar(32) NOT NULL,
-	`zip` tinytext NOT NULL,
+	`zip` varchar(10) NOT NULL,
 	`comment` varchar(255) NOT NULL,
 	`is_preferred` tinyint(1) NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`)
