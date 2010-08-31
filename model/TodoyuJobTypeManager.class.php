@@ -107,7 +107,9 @@ class TodoyuJobTypeManager {
 			'title'	=> 'label'
 		);
 
-		return TodoyuArray::reform($jobTypes, $reform);
+		$options	= TodoyuArray::reform($jobTypes, $reform);
+
+		return TodoyuArray::sortByLabel($options, 'label');
 	}
 
 

@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 	// Add main menu area entry for contact
-if( allowed('contact', 'general:area') ) {
+if( Todoyu::person()->isInternal() && allowed('contact', 'general:area') ) {
 	TodoyuFrontend::addMenuEntry('contact', 'LLL:contact.page.title', '?ext=contact', 40);
 
 		// Add sub entries: person, company
