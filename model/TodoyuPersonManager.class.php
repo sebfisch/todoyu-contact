@@ -167,7 +167,9 @@ class TodoyuPersonManager {
 	public static function getPersonIDByUsername($username) {
 		$fields	= 'id';
 		$table	= self::TABLE;
-		$where	= 'username = ' . Todoyu::db()->quote($username, true);
+		$where	= '		username= ' . Todoyu::db()->quote($username, true)
+				. ' AND active	= 1'
+				. ' AND deleted	= 0';
 		$limit	= '1';
 
 		$row	= Todoyu::db()->doSelectRow($fields, $table, $where, '', '', $limit);
@@ -849,7 +851,7 @@ class TodoyuPersonManager {
 		$field	= 'id_company';
 		$table	= 'ext_contact_mm_company_person mm,
 				   ext_contact_company c';
-		$where	= '		mm.id_company	= c.id 
+		$where	= '		mm.id_company	= c.id
 					AND c.deleted		= 0
 					AND mm.id_person	= ' . $idPerson;
 		$limit	= 1;
