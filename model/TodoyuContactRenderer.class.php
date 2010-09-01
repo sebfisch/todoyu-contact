@@ -175,19 +175,19 @@ class TodoyuContactRenderer {
 
 		return TodoyuListingRenderer::render('contact', 'company');
 
-		$tmpl	= 'ext/contact/view/companylist.tmpl';
-		$data	= array();
-
-		$companies	= TodoyuCompanyManager::searchCompany($sword);
-
-		foreach($companies as $index => $company) {
-			$companies[$index]['persons']	= TodoyuCompanyManager::getNumPersons($company['id']);
-			$companies[$index]['address']	= TodoyuCompanyManager::getCompanyAddress($company['id']);
-		}
-
-		$data['companys'] = $companies;
-
-		return render($tmpl, $data);
+//		$tmpl	= 'ext/contact/view/companylist.tmpl';
+//		$data	= array();
+//
+//		$companies	= TodoyuCompanyManager::searchCompany($sword);
+//
+//		foreach($companies as $index => $company) {
+//			$companies[$index]['persons']	= TodoyuCompanyManager::getNumPersons($company['id']);
+//			$companies[$index]['address']	= TodoyuCompanyManager::getCompanyAddress($company['id']);
+//		}
+//
+//		$data['companys'] = $companies;
+//
+//		return render($tmpl, $data);
 	}
 
 
