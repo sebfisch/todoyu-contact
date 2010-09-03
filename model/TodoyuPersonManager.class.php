@@ -107,6 +107,25 @@ class TodoyuPersonManager {
 
 
 	/**
+	 * Get all persons with an active login
+	 *
+	 * @return	Array
+	 */
+	public static function getAllLoginPersons() {
+		$fields	= '*';
+		$table	= self::TABLE;
+		$where	= '		deleted		= 0'
+				. ' AND active		= 1'
+				. ' AND username	!= \'\''
+				. ' AND password	!= \'\'';
+		$order	= 'lastname, firstname';
+
+		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
+	}
+
+
+
+	/**
 	 * Check whether $username and $password are a valid login
 	 *
 	 * @param	String		$username		Username
