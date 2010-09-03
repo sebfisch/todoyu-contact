@@ -41,7 +41,9 @@ class TodoyuContactQuickinfoManager {
 		$email		= TodoyuPersonManager::getPreferredEmail($idPerson);
 		$fullName	= TodoyuPersonManager::getPerson($idPerson)->getFullName();
 
-		$quickinfo->addInfo('name', TodoyuPersonManager::getLabel($idPerson) );
+		$name	= '<a href="index.php?ext=contact&type=person&id=' . $idPerson . '">' . TodoyuPersonManager::getLabel($idPerson) . '</<a>';
+		$quickinfo->addInfo('name', $name, 0, false);
+
 		$quickinfo->addEmail('email', $email, $fullName);
 
 		if( $phone !== false ) {
@@ -53,6 +55,8 @@ class TodoyuContactQuickinfoManager {
 			$birthday	= $data['birthday'] === '0000-00-00' ? Label('core.unknown') : $data['birthday'];
 			$quickinfo->addInfo('birthday', $birthday);
 		}
+
+		$quickinfo->addInfo('link-contact', $contactLink);
 	}
 
 }
