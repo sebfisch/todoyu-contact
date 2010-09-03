@@ -39,9 +39,10 @@ class TodoyuContactQuickinfoManager {
 
 		$phone		= TodoyuPersonManager::getPreferredPhone($idPerson);
 		$email		= TodoyuPersonManager::getPreferredEmail($idPerson);
+		$fullName	= TodoyuPersonManager::getPerson($idPerson)->getFullName();
 
 		$quickinfo->addInfo('name', TodoyuPersonManager::getLabel($idPerson) );
-		$quickinfo->addEmail('email', $email);
+		$quickinfo->addEmail('email', $email, $fullName);
 
 		if( $phone !== false ) {
 			$quickinfo->addInfo('phone', $phone['info']);
