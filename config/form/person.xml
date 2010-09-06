@@ -173,6 +173,9 @@
 
 						<field type="databaseRelation" name="role">
 							<label>core.roles</label>
+							<restrict>
+								<allow ext="contact" right="person:setRole" />
+							</restrict>
 							<addLabel>core.role.new</addLabel>
 							<record>
 								<form>ext/contact/config/form/person-role.xml</form>
@@ -194,7 +197,6 @@
 							<required>
 								<noCheck />
 							</required>
-							<restrictAdmin />
 						</field>
 					</elements>
 				</fieldset>

@@ -8,6 +8,7 @@
 	<section name="person" require="general:area">
 		<right name="add" />
 		<right name="editAndDelete" />
+		<right name="setRole" require="person:editAndDelete" />
 		<right name="enableLogin" require="person:editAndDelete" />
 	</section>
 
