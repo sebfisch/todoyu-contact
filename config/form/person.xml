@@ -194,6 +194,7 @@
 							<required>
 								<noCheck />
 							</required>
+							<restrictAdmin />
 						</field>
 					</elements>
 				</fieldset>
