@@ -75,7 +75,6 @@ class TodoyuPersonFilter extends TodoyuFilterBase {
 			$fields		= array('username', 'lastname', 'firstname', 'shortname', 'email');
 			$queryParts	= array(
 				'where'		=> Todoyu::db()->buildLikeQuery($valueParts, $fields),
-				'tables'	=> array('ext_contact_person')
 			);
 		}
 
@@ -104,7 +103,6 @@ class TodoyuPersonFilter extends TodoyuFilterBase {
 
 			$queryParts	= array(
 				'where'		=> Todoyu::db()->buildLikeQuery($valueParts, $fields),
-				'tables'	=> array('ext_contact_person')
 			);
 		}
 
@@ -146,7 +144,6 @@ class TodoyuPersonFilter extends TodoyuFilterBase {
 
 			$queryParts	= array(
 				'where'		=> $where,
-				'tables'	=> array('ext_contact_person')
 			);
 		}
 
@@ -174,6 +171,7 @@ class TodoyuPersonFilter extends TodoyuFilterBase {
 		}
 
 		$tables	= TodoyuArray::mergeUnique($filterName['tables'], $filterCompany['tables']);
+		$join	= array_unique((array)$filterName['join'], (array)$filterCompany['join']);
 
 		if( array_key_exists('where', $filterName) && array_key_exists('where', $filterCompany) ) {
 			$where = '((' . $filterName['where'] . ') OR (' . $filterCompany['where'] . '))';
@@ -182,8 +180,9 @@ class TodoyuPersonFilter extends TodoyuFilterBase {
 		}
 
 		return array(
-			'tables'	=> $tables,
-			'where'		=> $where
+			'tables'=> $tables,
+			'where'	=> $where,
+			'join'	=> $join
 		);
 	}
 
