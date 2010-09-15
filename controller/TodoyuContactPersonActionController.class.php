@@ -133,7 +133,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 
 	/**
 	 * Save person from Wizard
-	 * 
+	 *
 	 * @param	Array	$params
 	 * @return	String
 	 */
@@ -237,8 +237,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	public function addNewContactWizardAction(array $params)	{
 		restrict('contact', 'person:editAndDelete');
 
-		$content = TodoyuPage::getExtJSinline('contact');
-		$content.= TodoyuString::wrapScript('Todoyu.Ext.contact.Person.onEdit(0);');
+		$content= TodoyuString::wrapScript('Todoyu.Ext.contact.Person.onEdit(0);');
 		$content.= TodoyuContactRenderer::renderPersonEditFormWizard(0, $params['idField']);
 
 		return $content;
