@@ -464,6 +464,29 @@ class TodoyuCompanyManager {
 
 
 	/**
+	 * Alias method for searchCompany, returns a flatten array of ids
+	 *
+	 * @param	String	$sword
+	 * @param	Array	$searchFields
+	 * @param	Integer	$size
+	 * @param	Integer	$offset
+	 * @return	Array
+	 */
+	public static function searchCompanyIDs($sword, array $searchFields = null, $size = 100, $offset = 0)	{
+		$companyIds = array();
+
+		$companies	= self::searchCompany($sword, $searchFields, $size, $offset);
+
+		foreach($companies as $company)	{
+			$companyIds[]	= $company['id'];
+		}
+
+		return $companyIds;
+	}
+
+
+
+	/**
 	 * Remove company object from cache
 	 *
 	 * @param	Integer		$idCompany
