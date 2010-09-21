@@ -981,8 +981,9 @@ class TodoyuPersonManager {
 		$fields	= '	a.*';
 		$tables	= '	ext_contact_address a,
 					ext_contact_mm_person_address mm';
-		$where	= ' 	mm.id_address	= a.id
-					AND	mm.id_person		= ' . $idPerson;
+		$where	= ' 	a.deleted		= 0'
+				. ' AND mm.id_address	= a.id'
+				. ' AND	mm.id_person	= ' . $idPerson;
 
 		return Todoyu::db()->getArray($fields, $tables, $where);
 	}
