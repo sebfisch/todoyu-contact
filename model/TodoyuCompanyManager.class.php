@@ -108,7 +108,6 @@ class TodoyuCompanyManager {
 	 * @return	Integer		Company ID
 	 */
 	public static function saveCompany(array $data) {
-		$xmlPath	= 'ext/contact/config/form/company.xml';
 		$idCompany	= intval($data['id']);
 
 		if( $idCompany === 0 ) {
