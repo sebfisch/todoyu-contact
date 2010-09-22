@@ -52,7 +52,7 @@ class TodoyuAddress extends TodoyuBaseObject {
 
 	/**
 	 * Get country
-	 * 
+	 *
 	 * @return	TodoyuCountry
 	 */
 	public function getCountry() {
@@ -79,6 +79,33 @@ class TodoyuAddress extends TodoyuBaseObject {
 	 */
 	public function getLabel() {
 		 return $this->getStreet() . ', ' . $this->getZip() . ', ' . $this->getCity() . ', ' . $this->getCountry()->getCode2();
+	}
+
+
+
+	/**
+	 * Load foreign data
+	 *
+	 */
+	protected function loadForeignData() {
+		$this->data['country']	= $this->getCountry()->getTemplateData();
+	}
+
+
+
+	/**
+	 * Get template data of address
+	 * Foreign data: country
+	 *
+	 * @param	Boolean		$loadForeignData
+	 * @return	Array
+	 */
+	public function getTemplateData($loadForeignData = false) {
+		if( $loadForeignData ) {
+			$this->loadForeignData();
+		}
+
+		return parent::getTemplateData();
 	}
 
 }
