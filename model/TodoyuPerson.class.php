@@ -76,6 +76,17 @@ class TodoyuPerson extends TodoyuBaseObject {
 
 
 	/**
+	 * Get username
+	 *
+	 * @return	String
+	 */
+	public function getUsername() {
+		return $this->get('username');
+	}
+
+
+
+	/**
 	 * Check whether a person works in a internal company
 	 *
 	 * @return	Boolean
