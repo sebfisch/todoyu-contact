@@ -74,8 +74,8 @@
 	</labels>
 	<labels lang="sr_RS">
 		<label index="general">Општа подешавања</label>
-		<label index="general.use">Користи функције контакта</label>
-		<label index="general.area">Користи област функције</label>
+		<label index="general.use">Употреби функције контакта</label>
+		<label index="general.area">Употреби област функције</label>
 		<label index="person">Особа</label>
 		<label index="person.add">Додај особу</label>
 		<label index="person.editAndDelete">Уреди и избриши особе</label>
