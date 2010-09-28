@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labels>
+	<label index="toggle.multiselect.title">Umschalten zwischen Einfach- und Mehrfachauswahl</label>
+	<label index="title">Mitarbeiter</label>
+	<label index="selectAllStaff">Wähle alle Mitarbeiter aus</label>
+	<label index="byFunction">Nach Tätigkeit:</label>
+	<label index="noFunction">Keine Tätigkeit</label>
+</labels>

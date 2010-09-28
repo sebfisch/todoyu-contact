@@ -160,7 +160,7 @@ class TodoyuAddressManager {
 	public static function getAddresstypeLabel($idAddressType) {
 		$idAddressType	= intval($idAddressType);
 
-		return TodoyuLanguage::getLabel('LLL:contact.address.attr.addresstype.' . $idAddressType);
+		return TodoyuLabelManager::getLabel('LLL:contact.address.attr.addresstype.' . $idAddressType);
 	}
 
 

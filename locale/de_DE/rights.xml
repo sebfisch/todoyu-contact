@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labels>
+	<label index="general">Allgemeine Einstellungen</label>
+	<label index="general.use">Kontakt-Funktionalitäten benutzen</label>
+	<label index="general.area">Kontakt Bereich benutzen</label>
+	<label index="person">Personen</label>
+	<label index="person.add">Personen erstellen</label>
+	<label index="person.setRole">Personen Rolle(n) zuweisen</label>
+	<label index="person.editAndDelete">Personen bearbeiten und löschen</label>
+	<label index="person.enableLogin">Logins für Personen erstellen</label>
+	<label index="company">Firmen</label>
+	<label index="company.add">Firmen erstellen</label>
+	<label index="company.editAndDelete">Firmen editieren und löschen</label>
+	<label index="panelwidgets">Steuerelemente</label>
+	<label index="panelwidgets.staffSelector">Mitarbeiterwähler</label>
+</labels>

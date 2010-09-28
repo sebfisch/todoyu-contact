@@ -30,9 +30,9 @@ define('EXTID_CONTACT', 106);
 define('PATH_EXT_CONTACT', PATH_EXT . '/contact');
 
 	// Register module locales
-TodoyuLanguage::register('contact', PATH_EXT_CONTACT . '/locale/ext.xml');
-TodoyuLanguage::register('panelwidget-contactsearchinput', PATH_EXT_CONTACT . '/locale/panelwidget-contactsearchinput.xml');
-TodoyuLanguage::register('panelwidget-staffselector', PATH_EXT_CONTACT . '/locale/panelwidget-staffselector.xml');
+TodoyuLabelManager::register('contact', 'contact', 'ext.xml');
+TodoyuLabelManager::register('panelwidget-contactsearchinput', 'contact', 'panelwidget-contactsearchinput.xml');
+TodoyuLabelManager::register('panelwidget-staffselector', 'contact', 'panelwidget-staffselector.xml');
 
 	// Request configurations
 	// @notice	Auto-loaded configs if available: admin, assets, create, contextmenu, extinfo, filters, form, page, panelwidgets, rights, search
