@@ -184,7 +184,8 @@ CREATE TABLE `ext_contact_mm_person_contactinfo` (
 	`id` int(10) NOT NULL AUTO_INCREMENT,
 	`id_person` int(10) unsigned NOT NULL DEFAULT '0',
 	`id_contactinfo` int(10) unsigned NOT NULL DEFAULT '0',
-	PRIMARY KEY (`id`)
+	PRIMARY KEY (`id`),
+	KEY `personinfo` (`id_person`,`id_contactinfo`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
