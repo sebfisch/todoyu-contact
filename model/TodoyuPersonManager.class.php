@@ -717,13 +717,14 @@ class TodoyuPersonManager {
 		$dateStart	= intval($dateStart);
 		$dateEnd	= intval($dateEnd);
 
-		$mysqlDateStart	= date('Y-m-d', $dateStart);
-		$mysqlDateEnd	= date('Y-m-d', $dateEnd);
 		$monthStart		= date('n', $dateStart);
 		$monthEnd		= date('n', $dateEnd);
-		$monthDiff		= abs($monthEnd - $monthStart);
+		$yearStart		= date('Y', $dateStart);
+		$yearEnd		= date('Y', $dateEnd);
 		$dayStart		= date('j', $dateStart);
 		$dayEnd			= date('j', $dateEnd);
+		$monthDiff		= abs($monthEnd - $monthStart);
+		$yearDiff		= abs($yearEnd-$yearStart);
 
 		$monthsRange 	= array();
 		$rangeWhere		= '';
@@ -732,7 +733,7 @@ class TodoyuPersonManager {
 		if( $monthStart === $monthEnd ) {
 			$monthsRange= array($monthStart);
 			$rangeWhere	= 'DAY(birthday) BETWEEN ' . $dayStart . ' AND ' . $dayEnd;
-		} elseif( $monthDiff === 1 ) {
+		} elseif( $monthDiff === 1 && $yearDiff === 0 ) {
 			$monthsRange= array($monthStart, $monthEnd);
 			$rangeWhere = '((MONTH(birthday) = ' . $monthStart . ' AND DAY(birthday) > ' . $dayStart . ') OR
 							(MONTH(birthday) = ' . $monthEnd . ' AND DAY(birthday) < ' . $dayEnd . '))';
@@ -765,11 +766,13 @@ class TodoyuPersonManager {
 			// Allowed months
 		$rangeWhere .= ' AND MONTH(birthday) IN(' . implode(',', $monthsRange) . ')';
 
-		$fields	= '	*, YEAR(birthday) as birthyear';
+		$fields	= '	*,
+					YEAR(birthday) as birthyear,
+					MONTH(birthday)-MONTH(CURDATE())<0 as beforemonth';
 		$table	= self::TABLE;
 		$where	= '	deleted = 0
 					AND (' . $rangeWhere . ')';
-		$order	= 'birthday';
+		$order	= 'beforemonth, MONTH(birthday), DAY(birthday)';
 
 		$birthdayPersons = Todoyu::db()->getArray($fields, $table, $where, '', $order);
 
