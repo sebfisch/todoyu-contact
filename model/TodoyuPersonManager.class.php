@@ -735,8 +735,8 @@ class TodoyuPersonManager {
 			$rangeWhere	= 'DAY(birthday) BETWEEN ' . $dayStart . ' AND ' . $dayEnd;
 		} elseif( $monthDiff === 1 && $yearDiff === 0 ) {
 			$monthsRange= array($monthStart, $monthEnd);
-			$rangeWhere = '((MONTH(birthday) = ' . $monthStart . ' AND DAY(birthday) > ' . $dayStart . ') OR
-							(MONTH(birthday) = ' . $monthEnd . ' AND DAY(birthday) < ' . $dayEnd . '))';
+			$rangeWhere = '((MONTH(birthday) = ' . $monthStart . ' AND DAY(birthday) >= ' . $dayStart . ') OR
+							(MONTH(birthday) = ' . $monthEnd . ' AND DAY(birthday) <= ' . $dayEnd . '))';
 		} else {
 				// Crossing the year border (ex: nov-feb)
 			if( $monthEnd < $monthStart ) {
