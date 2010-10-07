@@ -143,10 +143,10 @@ class TodoyuPersonManager {
 
 		$field	= 'id';
 		$table	= self::TABLE;
-		$where	= '		username = ' . Todoyu::db()->quote($username, true) .
-				  ' AND	password = ' . Todoyu::db()->quote($password, true) .
-				  ' AND	active	 = 1
-				    AND	deleted  = 0';
+		$where	= '		`username`	= ' . Todoyu::db()->quote($username, true) .
+				  ' AND	`password`	= ' . Todoyu::db()->quote($password, true) .
+				  ' AND	`active`	= 1
+				    AND	`deleted`	= 0';
 
 		return Todoyu::db()->hasResult($field, $table, $where);
 	}
