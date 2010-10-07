@@ -129,7 +129,8 @@ CREATE TABLE `ext_contact_mm_company_address` (
 	`id` int(10) NOT NULL AUTO_INCREMENT,
 	`id_company` int(10) unsigned NOT NULL DEFAULT '0',
 	`id_address` int(10) unsigned NOT NULL,
-	PRIMARY KEY (`id`)
+	PRIMARY KEY (`id`),
+	KEY `ref` (`id_company`,`id_address`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -142,7 +143,8 @@ CREATE TABLE `ext_contact_mm_company_contactinfo` (
 	`id` int(10) NOT NULL AUTO_INCREMENT,
 	`id_company` int(10) unsigned NOT NULL DEFAULT '0',
 	`id_contactinfo` int(10) unsigned NOT NULL,
-	PRIMARY KEY (`id`)
+	PRIMARY KEY (`id`),
+	KEY `ref` (`id_company`,`id_contactinfo`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -158,7 +160,7 @@ CREATE TABLE `ext_contact_mm_company_person` (
 	`id_workaddress` int(10) unsigned NOT NULL,
 	`id_jobtype` int(10) unsigned NOT NULL,
 	PRIMARY KEY (`id`),
-	KEY `person` (`id_person`)
+	KEY `ref` (`id_company`,`id_person`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -171,7 +173,8 @@ CREATE TABLE `ext_contact_mm_person_address` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`id_person` smallint(5) unsigned NOT NULL DEFAULT '0',
 	`id_address` int(10) unsigned NOT NULL,
-	PRIMARY KEY (`id`)
+	PRIMARY KEY (`id`),
+	KEY `ref` (`id_person`,`id_address`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -185,7 +188,7 @@ CREATE TABLE `ext_contact_mm_person_contactinfo` (
 	`id_person` int(10) unsigned NOT NULL DEFAULT '0',
 	`id_contactinfo` int(10) unsigned NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`),
-	KEY `personinfo` (`id_person`,`id_contactinfo`)
+	KEY `ref` (`id_person`,`id_contactinfo`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -198,5 +201,6 @@ CREATE TABLE `ext_contact_mm_person_role` (
 	`id` int(10) NOT NULL AUTO_INCREMENT,
 	`id_person` int(10) unsigned NOT NULL DEFAULT '0',
 	`id_role` int(10) unsigned NOT NULL DEFAULT '0',
-	PRIMARY KEY (`id`)
+	PRIMARY KEY (`id`),
+	KEY `ref` (`id_person`,`id_role`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
