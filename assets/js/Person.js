@@ -323,11 +323,11 @@ Todoyu.Ext.contact.Person =  {
 		var error	= response.hasTodoyuError();
 
 		if( error ) {
-			Todoyu.notifyError('Saving person failed');
+			Todoyu.notifyError('[LLL:contact.person.saved.error]');
 
 			Todoyu.Popup.getContentElement('popup-' + target).update(response.responseText);
 		} else {
-			Todoyu.notifySuccess('Person saved');
+			Todoyu.notifySuccess('[LLL:contact.person.saved]');
 
 			var label		= response.getTodoyuHeader('recordLabel');
 

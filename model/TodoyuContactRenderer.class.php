@@ -262,13 +262,50 @@ class TodoyuContactRenderer {
 
 
 	/**
+	 * Render company edit form for popup (different save and cancel handling than conventional)
+	 *
+	 * @param	Integer	$idCompany
+	 * @param	String	$idTarget		HTML Id of the input field
+	 * @return	String
+	 */
+	public static function renderCompanyEditFormWizard($idCompany, $idTarget)	{
+		restrict('contact', 'company:editAndDelete');
+
+		$idCompany	= intval($idCompany);
+		$xmlPath	= 'ext/contact/config/form/company.xml';
+
+		$form	= TodoyuFormManager::getForm($xmlPath, $idCompany);
+
+		$company	= TodoyuCompanyManager::getCompany($idCompany);
+		$data	= $company->getTemplateData(true);
+			// Call hooked load data functions
+		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $idCompany);
+
+		$form->setFormData($data);
+		$form->setRecordID($idCompany);
+
+		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Ext.contact.Company.cancelWizard();');
+		$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Ext.contact.Company.saveWizard(this.form, \''.$idTarget.'\');');
+
+		$tmpl	= 'ext/contact/view/form.tmpl';
+		$data	= array(
+			'formheader'	=> $company->getLabel(),
+			'formhtml'		=> $form->render()
+		);
+
+		return render($tmpl, $data);
+	}
+
+
+
+	/**
 	 * Render company edit form
 	 *
 	 * @param	Integer	$idCompany
 	 * @return	String
 	 */
 	public static function renderCompanyEditForm($idCompany) {
-		restrict('contact', 'person:editAndDelete');
+		restrict('contact', 'company:editAndDelete');
 		$idCompany	= intval($idCompany);
 		$xmlPath	= 'ext/contact/config/form/company.xml';
 

@@ -117,7 +117,7 @@ class TodoyuCompany extends TodoyuBaseObject {
 	 * @return	Array
 	 */
 	public function getTemplateData($loadForeignData = false) {
-		if( $loadForeignData ) {
+		if( $loadForeignData && $this->getID() !== 0 ) {
 			$this->loadForeignData();
 		}
 

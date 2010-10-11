@@ -221,6 +221,68 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 		return render($tmpl, $data);
 	}
 
+
+
+	/**
+	 * Content for the company-wizard popUp
+	 *
+	 * @todo Move restriction to displayCondition in form
+	 *
+	 * @param	Array	$params
+	 * @return	String
+	 */
+	public function addNewContactWizardAction(array $params)	{
+		restrict('contact', 'company:editAndDelete');
+
+		$content = TodoyuString::wrapScript('Todoyu.Ext.contact.Company.onEdit(0);');
+		$content.= TodoyuContactRenderer::renderCompanyEditFormWizard(0, $params['idField']);
+
+		return $content;
+	}
+
+
+
+	/**
+	 * Save company from Wizard
+	 *
+	 * @param	Array	$params
+	 * @return	String
+	 */
+	public static function saveWizardAction(array $params)	{
+		restrict('contact', 'company:editAndDelete');
+
+		$xmlPath	= 'ext/contact/config/form/company.xml';
+		$data		= $params['company'];
+		$idCompany	= intval($data['id']);
+
+		$form 		= TodoyuFormManager::getForm($xmlPath, $idCompany);
+
+		$idTarget = $params['idTarget'];
+
+		// Set form data
+		$form->setFormData($data);
+
+			// Validate, render
+		if( $form->isValid() )	{
+			$storageData= $form->getStorageData();
+
+			$idCompany	= TodoyuCompanyManager::saveCompany($storageData);
+
+			TodoyuHeader::sendTodoyuHeader('idRecord', $idCompany);
+			TodoyuHeader::sendTodoyuHeader('recordLabel', $storageData['title']);
+
+			return $idCompany;
+		} else {
+			TodoyuHeader::sendTodoyuErrorHeader();
+
+			$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Ext.contact.Company.cancelWizard();');
+			$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Ext.contact.Company.saveWizard(this.form, \''.$idTarget.'\');');
+
+			return $form->render();
+		}
+	}
+	
+
 }
 
 ?>

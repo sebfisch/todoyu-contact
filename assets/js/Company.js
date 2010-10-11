@@ -177,6 +177,63 @@ Todoyu.Ext.contact.Company =  {
 		};
 
 		Todoyu.Popup.openWindow('popupRecordInfo', 'Info', 420, url, options);
+	},
+
+
+
+		/**
+	 * Save person record from wizard
+	 *
+	 * @param	{Object}		form
+	 * @param	{String}		target
+	 * @return	{Boolean}
+	 */
+	saveWizard: function(form, target)	{
+		$(form).request ({
+			'parameters': {
+				'action':	'saveWizard',
+				'idTarget': target
+			},
+			'onComplete': this.onSavedWizard.bind( this, target)
+		});
+
+		return false;
+	},
+
+
+
+	/**
+	 * Handler evoked upon onComplete of saving from wizard. Check and notify success / error, update display
+	 *
+	 * @param	{String}	target
+	 * @param	{Object}	response
+	 */
+	onSavedWizard: function(target, response)	{
+		var error	= response.hasTodoyuError();
+
+		if( error ) {
+			Todoyu.notifyError('[LLL:contact.company.saved.error]');
+
+			Todoyu.Popup.getContentElement('popup-' + target).update(response.responseText);
+		} else {
+			Todoyu.notifySuccess('[LLL:contact.company.saved.ok]');
+
+			var label		= response.getTodoyuHeader('recordLabel');
+
+			$(target).value = response.getTodoyuHeader('idRecord');
+			$(target + '-fulltext').value = label;
+
+			Todoyu.Popup.close('popup-' + target);
+		}
+	},
+
+
+
+	/**
+	 * Cancel handling for wizard: close popup
+	 */
+	cancelWizard: function()	{
+		Todoyu.Popup.getLastPopup().close();
 	}
 
 };
