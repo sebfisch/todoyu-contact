@@ -72,7 +72,7 @@ class TodoyuJobTypeManager {
 			$where		.= ' AND id IN (' . TodoyuArray::intImplode($typeIDs, ',') . ') ';
 		}
 
-		$order	= 'title';
+//		$order	= 'title';
 
 		$jobTypes	= Todoyu::db()->getIndexedArray('id', $fields, $table, $where, '', '');
 		foreach($jobTypes as $id => $jobType) {
@@ -84,6 +84,11 @@ class TodoyuJobTypeManager {
 	}
 
 
+
+	/**
+	 * @todo	comment
+	 * @return	Array
+	 */
 	public static function getRecords() {
 		$jobtypes	= TodoyuJobTypeManager::getAllJobTypes();
 		$reform		= array(

@@ -231,9 +231,7 @@ class TodoyuContactManager {
 	 * @return	Array
 	 */
 	public static function getPersonListingData($size, $offset = 0, $searchWord = '') {
-		$data	= array();
 		$persons= TodoyuPersonManager::searchPersons($searchWord, null, $size, $offset);
-
 		$data	= array(
 			'rows'	=> array(),
 			'total'	=> Todoyu::db()->getTotalFoundRows()
@@ -272,7 +270,7 @@ class TodoyuContactManager {
 			'total'	=> Todoyu::db()->getTotalFoundRows()
 		);
 
-		foreach($companies as $index => $company) {
+		foreach($companies as $company) {
 			$data['rows'][] = array(
 				'icon'		=> '',
 				'title'		=> $company['title'],
