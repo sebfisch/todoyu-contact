@@ -158,7 +158,7 @@
 									<allowEmpty />
 								</email>
 								<requiredIfNotEmpty>
-									<fields>username</fields>
+									<fields>username,active</fields>
 								</requiredIfNotEmpty>
 							</validate>
 							<required>
