@@ -578,14 +578,14 @@ class TodoyuPersonManager {
 	public static function savePersonForeignRecords(array $data, $idPerson) {
 		$idPerson	= intval($idPerson);
 
-			// Save contactinfo
+			// Save contact info
 		if( isset($data['contactinfo']) ) {
 			$contactInfoIDs	= TodoyuArray::getColumn($data['contactinfo'], 'id');
 
-				// Delete all contactinfos which are no longer linked
+				// Delete all contact infos which are no longer linked
 			self::deleteRemovedContactInfos($idPerson, $contactInfoIDs);
 
-				// If contactinfos submitted
+				// If contact infos submitted
 			if( sizeof($data['contactinfo']) > 0 ) {
 				$infoIDs	= array();
 				foreach($data['contactinfo'] as $contactInfo) {
