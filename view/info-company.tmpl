@@ -2,19 +2,19 @@
 	<table>
 		<tr class="odd">
 			<td class="label">{Label contact.company.attr.title}:</td>
-			<td width="70%" colspan="3">{$title}</td>
+			<td width="70%" colspan="3">{htmlencode $title}</td>
 		</tr>
 		{if strlen($shortname) > 0}
 			<tr class="odd">
 				<td class="label">{Label contact.company.attr.shortname}:</td>
-				<td colspan="3">{$shortname}</td>
+				<td colspan="3">{htmlencode $shortname}</td>
 			</tr>
 		{/if}
 		<tr class="even"><td colspan="4"><br/></td></tr>
 		{if $date_enter != 0}
 			<tr>
 				<td class="label">{Label contact.company.attr.date_enter}:</td>
-				<td colspan="3">{dateFormat $date_enter "date" }</td>
+				<td colspan="3">{dateFormat $date_enter "date"}</td>
 			</tr>
 		{/if}
 
@@ -36,7 +36,7 @@
 					{labelContactinfotype $contactinfoData.id_contactinfotype}
 				</td>
 				<td colspan="2">
-				 	{$contactinfoData.info}
+				 	{htmlencode $contactinfoData.info}
 				</td>
 			</tr>
 		{/foreach}
@@ -55,15 +55,15 @@
 					<td class="label"></td>
 				{/if}
 				<td colspan="3">
-					{$addressData.street}<br />
-					{if $addressData.postbox} {Label contact.address.attr.postbox}: {$addressData.postbox}<br />{/if}
-					{$addressData.zip} {$addressData.city}<br />
-					{if $addressData.region}{$addressData.region}{/if}
+					{htmlencode $addressData.street}<br />
+					{if $addressData.postbox} {Label contact.address.attr.postbox}: {htmlencode $addressData.postbox}<br />{/if}
+					{htmlencode $addressData.zip} {htmlencode $addressData.city}<br />
+					{if $addressData.region}{htmlencode $addressData.region}{/if}
 					{if $addressData.id_country} {countryName $addressData.id_country}<br />{/if}
 					<br />
 					{if $addressData.comment}
 						<p>
-							{$addressData.comment}
+							{htmlencode $addressData.comment}
 						</p>
 					{/if}
 				<td>
@@ -86,12 +86,12 @@
 					<td class="label"></td>
 				{/if}
 				<td>
-					{$personData.lastname}</td>
+					{htmlencode $personData.lastname}</td>
 				<td>
-				 	{$personData.firstname}
+				 	{htmlencode $personData.firstname}
 				</td>
 				<td>
-					{$personData.email}
+					{htmlencode $personData.email}
 				</td>
 			</tr>
 		{/foreach}

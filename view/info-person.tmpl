@@ -15,7 +15,7 @@
 		{if strlen($shortname) > 0}
 			<tr class="odd">
 				<td class="label">{Label contact.company.attr.shortname}:</td>
-				<td>{$shortname}</td>
+				<td>{htmlencode $shortname}</td>
 			</tr>
 		{/if}
 		<tr class="even"><td colspan="2"><br/></td></tr>
