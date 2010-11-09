@@ -67,6 +67,9 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 		$sword	= trim($params['sword']);
 
+			// Save searchword
+		TodoyuContactPreferences::saveSearchWord($sword);
+
 		$tabs	= TodoyuContactRenderer::renderTabs('company');
 		$content= TodoyuListingRenderer::render('contact', 'company', 0, $sword);
 
@@ -281,7 +284,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 			return $form->render();
 		}
 	}
-	
+
 
 }
 
