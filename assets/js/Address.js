@@ -17,12 +17,21 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ * @module	Contact
+ */
 
+/**
+ * Contact Address
+ *
+ * @class		Address
+ * @namespace	Todoyu.Ext.contact
+ */
 Todoyu.Ext.contact.Address = {
 
 	/**
 	 * Sends Ajax request when the a country is selected to get its country zones
-	 * 
+	 *
 	 * @param	{Object}	inputField
 	 * @param	{String}	referencedFieldName
 	 * @param	{String}	fieldNameToReplace
@@ -51,7 +60,7 @@ Todoyu.Ext.contact.Address = {
 	/**
 	 * Fills the found options to the selector
 	 * Highlights the selector for 2 seconds
-	 * 
+	 *
 	 * @param	{String}	idTarget
 	 * @param	{Object}	response
 	 */
