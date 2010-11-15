@@ -281,12 +281,13 @@ class TodoyuPersonManager {
 	 * @param	Boolean		$alreadyHashed		Is password already a md5 hash?
 	 * @return	Boolean		Updated
 	 */
-	public static function updatePassword($password, $alreadyHashed = true) {
+	public static function updatePassword($idPerson, $password, $alreadyHashed = true) {
+		$idPersons	=	intval($idPersons);
+		
 		if( ! $alreadyHashed ) {
 			$password = md5($password);
 		}
 
-		$idPerson	= personid();
 		$data		= array(
 			'password'	=> $password
 		);
