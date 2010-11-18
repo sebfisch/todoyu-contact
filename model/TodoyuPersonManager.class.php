@@ -282,7 +282,7 @@ class TodoyuPersonManager {
 	 * @return	Boolean		Updated
 	 */
 	public static function updatePassword($idPerson, $password, $alreadyHashed = true) {
-		$idPersons	=	intval($idPersons);
+		$idPerson	=	intval($idPerson);
 		
 		if( ! $alreadyHashed ) {
 			$password = md5($password);
