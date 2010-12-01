@@ -283,7 +283,7 @@ class TodoyuPersonManager {
 	 */
 	public static function updatePassword($idPerson, $password, $alreadyHashed = true) {
 		$idPerson	=	intval($idPerson);
-		
+
 		if( ! $alreadyHashed ) {
 			$password = md5($password);
 		}
@@ -446,11 +446,12 @@ class TodoyuPersonManager {
 		$tables	= '	ext_contact_contactinfo ci,
 					ext_contact_contactinfotype cit,
 					ext_contact_mm_person_contactinfo mm';
-		$where	= '		mm.id_person			= ' . $idPerson .
-				  ' AND	mm.id_contactinfo	= ci.id
-				  	AND	cit.category	= 2
-				  	AND	ci.id_contactinfotype = cit.id
-				  	AND	ci.preferred = 1';
+		$where	= '		mm.id_person			= ' . $idPerson
+				. ' AND	mm.id_contactinfo		= ci.id'
+				. ' AND	cit.category			= 2'
+				. ' AND	ci.id_contactinfotype 	= cit.id'
+				. ' AND	ci.preferred 			= 1'
+				. ' AND ci.deleted				= 0';
 
 		return	Todoyu::db()->getRecordByQuery($fields, $tables, $where);
 	}
