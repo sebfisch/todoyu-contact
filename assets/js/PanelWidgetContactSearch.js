@@ -79,7 +79,7 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 
 	/**
 	 * KeyUp handler (on text entered)
-	 * 
+	 *
 	 * @param	{Event}	event
 	 */
 	onKeyup: function(event) {
@@ -110,7 +110,7 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 	 * @return	{String}		e.g. 'person' / 'company'
 	 */
 	getType: function() {
-		return Todoyu.Tabs.getActive('contact-tabs').id.replace('contact-tab-','');
+		return Todoyu.Tabs.getActive('contact').id.replace('contact-tab-','');
 	},
 
 
