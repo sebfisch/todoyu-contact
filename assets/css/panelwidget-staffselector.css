@@ -1,8 +1,7 @@
 /* -----------------------------------------------------
 	Staff selector
    ----------------------------------------------------- */
-#panelwidget-staffselector .panelwidgetContent {
-	/*margin-top:5px;*/
+#panelwidget-staffselector .panelWidget .content {
 	position:relative;
 }
 
