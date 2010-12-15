@@ -141,27 +141,25 @@ class TodoyuJobTypeManager {
 	/**
 	 * Search in job types
 	 *
-	 * @param	Array		$searchFieldsArray
 	 * @param	String		$search
-	 * @return	Resource
+	 * @return	Array
 	 */
-	public static function searchJobtypes(array $searchFieldsArray, $search)	{
-		$table = self::TABLE;
+	public static function searchJobtypes($search) {
+		$fields		= '*';
+		$table		= self::TABLE;
+		$order		= 'title';
+		$search		= TodoyuArray::trimExplode(' ', $search, true);
+		$searchFields = array('title');
 
-		if( $search != '*' )	{
-			$searchArray = TodoyuArray::trimExplode(' ', $search);
-			if( count($searchArray) > 0 )	{
-				$where = Todoyu::db()->buildLikeQuery($searchArray, $searchFieldsArray);
-			} else {
-				return false;
-			}
+		if( sizeof($search) > 0 ) {
+			$where = Todoyu::db()->buildLikeQuery($search, $searchFields);
 		} else {
-			$where = '';
+			$where = '1';
 		}
 
-		$where = strlen($where) > 0 ? $where.' AND deleted = 0':' deleted = 0';
+		$where .= ' AND deleted = 0';
 
-		return Todoyu::db()->doSelect('id', $table, $where, '', 'title');
+		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
 	}
 
 
@@ -225,6 +223,29 @@ class TodoyuJobTypeManager {
 
 		return Todoyu::db()->deleteRecord(self::TABLE, $idJobtype);
 	}
+
+
+
+	/**
+	 * Get autocomplete list for person
+	 *
+	 * @param 	String		$input
+	 * @param	Array		$formData
+	 * @param	String		$name
+	 * @return	Array
+	 */
+	public static function autocompleteJobtypes($input, array $formData = array(), $name = '')	{
+		$data		= array();
+		$jobtypes	= self::searchJobtypes($input);
+
+		foreach($jobtypes as $jobtype) {
+			$data[$jobtype['id']] = $jobtype['title'];
+		}
+
+		return $data;
+	}
+
+
 }
 
 ?>
