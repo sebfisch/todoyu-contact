@@ -58,7 +58,7 @@ Todoyu.Ext.contact.QuickCreatePerson = {
 	/**
 	 * Handler being evoked upon onComplete of person saving. Checks for and notify error / success, updates display
 	 *
-	 * @paran	Object		response
+	 * @param	Object		response
 	 */
 	onSaved: function(response) {
 		if( response.hasTodoyuError() ) {
