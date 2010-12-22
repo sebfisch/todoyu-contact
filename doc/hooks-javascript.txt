@@ -11,3 +11,10 @@ Contact Extension - JavaScript Hooks
 	contact.company.saved
 	@param	{Number} idCompany
 	Evoked after company saved. (DB record updated, company elements updated in DOM)
+
+
+
+3. Panelwdiget Stafflist
+	panelwidget.stafflist.onPersonClick
+	@param	{Number} idPerson
+	Evoked after person selected from stafflist.
