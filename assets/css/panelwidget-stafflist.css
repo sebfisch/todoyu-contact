@@ -1,0 +1,56 @@
+#panelwidget-stafflist h1 span.title {
+	background:url(../img/panelwidget-stafflist.png) no-repeat 4px 4px;
+}
+
+#panelwidget-stafflist .content {
+	display:inline-block;
+	width:100%;
+}
+
+
+/*
+ * Form
+ */
+#formElement-panelwidget-stafflist-field-fulltext-labelbox {
+	width:50px;
+}
+
+#formElement-panelwidget-stafflist-field-fulltext-inputbox {
+	width:190px;
+}
+
+/*
+ * List
+ */
+#panelwidget-stafflist-list {
+	display:inline-block;
+	width:95%;
+	padding:5px;
+	margin-top:5px;
+	border:1px dotted #CCC;
+}
+
+#panelwidget-stafflist-list li {
+	line-height:18px;
+	margin-bottom:1px;
+	overflow:hidden;
+}
+
+#panelwidget-stafflist-list li:hover {
+	background-color:#eee;
+}
+
+#panelwidget-stafflist-list li a {
+	display:block;
+	padding-left:20px;
+	height:18px;
+	width:250px;
+}
+
+#panelwidget-stafflist-list li a.m {
+	background:url(../img/panelwidget-stafflist.png)  no-repeat 4px -29px;
+}
+
+#panelwidget-stafflist-list li a.w {
+	background:url(../img/panelwidget-stafflist.png)  no-repeat 4px -57px;
+}

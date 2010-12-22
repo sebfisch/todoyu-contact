@@ -18,20 +18,41 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-	// Declare ext ID, path
-define('EXTID_CONTACT', 106);
-define('PATH_EXT_CONTACT', PATH_EXT . '/contact');
+/**
+ * Controller for project autocomplete
+ *
+ * @package		Todoyu
+ * @subpackage	Contact
+ */
+class TodoyuContactPanelwidgetStafflistActionController extends TodoyuActionController {
 
-require_once( PATH_EXT_CONTACT . '/config/constants.php' );
-require_once( PATH_EXT_CONTACT . '/dwoo/plugins.php');
+	/**
+	 * Check whether use of project area is allowed
+	 *
+	 * @param	Array		$params
+	 */
+	public function init(array $params) {
+		restrict('contact', 'general:area');
+	}
 
-	// Register module locales
-TodoyuLabelManager::register('contact', 'contact', 'ext.xml');
-TodoyuLabelManager::register('panelwidget-contactsearchinput', 'contact', 'panelwidget-contactsearchinput.xml');
-TodoyuLabelManager::register('panelwidget-staffselector', 'contact', 'panelwidget-staffselector.xml');
-TodoyuLabelManager::register('panelwidget-stafflist', 'contact', 'panelwidget-stafflist.xml');
 
-// Implement person quickInfo class to various person labels
-TodoyuHookManager::registerHook('project', 'taskdataattributes', 'TodoyuPersonHooks::extendTaskDataAttributes', 10);
+
+	/**
+	 * Get person list for current filter
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
+	public function listAction(array $params) {
+		$filters	= json_decode($params['filters'], true);
+
+		$widget	= TodoyuPanelWidgetManager::getPanelWidget('StaffList');
+
+		$widget->saveFilters($filters);
+
+		return $widget->renderList();
+	}
+
+}
 
 ?>

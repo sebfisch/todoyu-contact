@@ -136,10 +136,12 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['company'] = array(
 );
 
 
+	// Maximum persons in staff listing widget
+Todoyu::$CONFIG['EXT']['contact']['panelWidgetProjectList']['maxPersons']	= 30;
 
-Todoyu::$CONFIG['EXT']['contact']['panelWidgetStaffSelector'] = array(
 	// Max size of person selector
-'maxListSize'	=> 15
+Todoyu::$CONFIG['EXT']['contact']['panelWidgetStaffSelector'] = array(
+	'maxListSize'	=> 15
 );
 
 

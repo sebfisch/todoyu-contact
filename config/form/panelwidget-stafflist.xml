@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<attributes>
+		<attribute name="name">panelwidget-stafflist</attribute>
+		<attribute name="onsubmit">return false</attribute>
+	</attributes>
+	<fieldsets>
+		<fieldset name="filters">
+			<legend>Staff filters</legend>
+			<elements>
+
+				<field type="text" name="fulltext">
+					<label>panelwidget-stafflist.search</label>
+				</field>
+
+			</elements>
+		</fieldset>
+
+	</fieldsets>
+</form>
