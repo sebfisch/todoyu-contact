@@ -174,20 +174,6 @@ class TodoyuContactRenderer {
 		restrict('contact', 'general:area');
 
 		return TodoyuListingRenderer::render('contact', 'company');
-
-//		$tmpl	= 'ext/contact/view/companylist.tmpl';
-//		$data	= array();
-//
-//		$companies	= TodoyuCompanyManager::searchCompany($sword);
-//
-//		foreach($companies as $index => $company) {
-//			$companies[$index]['persons']	= TodoyuCompanyManager::getNumPersons($company['id']);
-//			$companies[$index]['address']	= TodoyuCompanyManager::getCompanyAddress($company['id']);
-//		}
-//
-//		$data['companys'] = $companies;
-//
-//		return render($tmpl, $data);
 	}
 
 
@@ -361,6 +347,35 @@ class TodoyuContactRenderer {
 		}
 
 		return $content;
+	}
+
+
+
+	/**
+	 * Render general person header
+	 *
+	 * @param	Integer		$idPerson
+	 * @return	String
+	 */
+	public static function renderPersonHeader($idPerson, $withDetails = null) {
+		$idPerson	= intval($idPerson);
+		$person		= TodoyuPersonManager::getPerson($idPerson);
+
+		$tmpl		= 'ext/contact/view/person-header.tmpl';
+
+		$data	= $person->getTemplateData();
+		$data	= TodoyuHookManager::callHookDataModifier('person', 'renderPersonHeader', $data);
+
+			// If not forced, check preference
+		if( is_null($withDetails) ) {
+			$withDetails = TodoyuContactPreferences::isPersonDetailsExpanded($idPerson);
+		}
+
+		if( $withDetails === true ) {
+//			$data['details'] = self::renderPersonDetails($idPerson);
+		}
+
+		return render($tmpl, $data);
 	}
 
 

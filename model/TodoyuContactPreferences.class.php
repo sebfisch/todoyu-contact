@@ -161,6 +161,20 @@ class TodoyuContactPreferences {
 
 
 	/**
+	 * Check whether given person header details are expanded
+	 *
+	 * @param	Integer		$idPerson
+	 * @return	Boolean
+	 */
+	public static function isPersonDetailsExpanded($idPerson) {
+		$idPerson	= intval($idPerson);
+
+		return self::getPref('detailsexpanded', $idPerson) == 1;
+	}
+
+
+
+	/**
 	 * @todo	comment
 	 * @param	Array	$prefs
 	 */

@@ -36,6 +36,7 @@
 	<label index="person.attr.email">E-mail</label>
 	<label index="person.attr.is_admin">Is Admin</label>
 	<label index="person.attr.role.new">New Role</label>
+	<label index="person.header.noneselected">No Person Selected.</label>
 	<label index="company.edit">Edit Company</label>
 	<label index="company.delete">Delete Company</label>
 	<label index="company.delete.confirm">Do you really want to remove this company record?</label>
