@@ -68,6 +68,20 @@ Todoyu.Ext.contact = {
 		objName	= type.capitalize();
 
 		this[objName].showList(Todoyu.Ext.contact.PanelWidget.ContactSearch.getValue());
+	},
+
+
+
+	/**
+	 * Save contact pref
+	 *
+	 * @param	{String}	preference
+	 * @param	{String}	value
+	 * @param	{Number}	idItem
+	 * @param	{String}	onComplete
+	 */
+	savePref: function(preference, value, idItem, onComplete) {
+		Todoyu.Pref.save('contact', preference, value, idItem, onComplete);
 	}
 
 };

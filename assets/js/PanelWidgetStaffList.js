@@ -84,7 +84,7 @@ Todoyu.Ext.contact.PanelWidget.StaffList = {
 
 
 	/**
-	 * Click event handler for project
+	 * Click event handler for person: save pref, execute callbacks
 	 *
 	 * @param	{Object}		event
 	 */
@@ -94,6 +94,7 @@ Todoyu.Ext.contact.PanelWidget.StaffList = {
 		if( Object.isElement(listElement) ) {
 			var idPerson = listElement.id.split('-').last();
 
+			this.ext.savePref('panelwidgetstafflist', idPerson);
 			Todoyu.Hook.exec('panelwidget.stafflist.onPersonClick', idPerson);
 		}
 	},

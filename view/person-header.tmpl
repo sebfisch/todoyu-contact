@@ -1,9 +1,9 @@
 <h1 onclick="" id="person-{$idPerson}-header" class="title headerLine contextmenuperson">
 	<span title="ID: {$idPerson}" class="title titleLabel first" id="person-{$idPerson}-titlelabel">
-		{$person.firstname} {$person.lastname}
-		{if $idPerson == 0}{Label contact.person.header.noneselected}{/if}
+		{$firstname} {$lastname}
+		{if $id == 0}{Label contact.person.header.noneselected}{/if}
 	</span>
 	<span class="personIcons"> </span>
 	<span class="rgt"><!-- right --></span>
 </h1>
-<div style="display: none;" id="person-{$idPerson}-details"> </div>
+<div style="display:none;" id="person-{$idPerson}-details"> </div>
