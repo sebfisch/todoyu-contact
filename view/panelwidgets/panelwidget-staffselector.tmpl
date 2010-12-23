@@ -1,17 +1,19 @@
-{* --------------- Workfunction dropdown --------------- *}
-<div class="fLabel odd jobTypeToggleLabel">
-	<label>{Label panelwidget-staffselector.byFunction}</label>
-</div>
-<label class="toggleSelect collapse {if !$jobTypeMultiple}expand{/if}" id="panelwidget-{$id}-jobtypetoggle-label" title="{Label panelwidget-staffselector.toggle.multiselect.title}" for="panelwidget-{$id}-jobtypetoggle"></label>
-<input class="toggleSelect checkbox" id="panelwidget-{$id}-jobtypetoggle" type="checkbox" {if $jobTypeMultiple}checked="checked"{/if} />
-<span class="staffSelector overflowHidden scrollbarHide displayBlock">
-{select options=$jobTypeOptions value=$selectedJobTypes id="panelwidget-$id-jobtype" name="jobtype" multiple=$jobTypeMultiple}
-</span>
-{* --------------- Staff persons selector --------------- *}
-<div class="fLabel odd">
-	<label>{Label panelwidget-staffselector.title}:</label>
-</div>
+<div class="panelwidgetContent">
+	{* --------------- Workfunction dropdown --------------- *}
+	<div class="fLabel odd jobTypeToggleLabel">
+		<label>{Label panelwidget-staffselector.byFunction}</label>
+	</div>
+	<label class="toggleSelect collapse {if !$jobTypeMultiple}expand{/if}" id="panelwidget-{$id}-jobtypetoggle-label" title="{Label panelwidget-staffselector.toggle.multiselect.title}" for="panelwidget-{$id}-jobtypetoggle"></label>
+	<input class="toggleSelect checkbox" id="panelwidget-{$id}-jobtypetoggle" type="checkbox" {if $jobTypeMultiple}checked="checked"{/if} />
+	<span class="staffSelector overflowHidden scrollbarHide displayBlock">
+	{select options=$jobTypeOptions value=$selectedJobTypes id="panelwidget-$id-jobtype" name="jobtype" multiple=$jobTypeMultiple}
+	</span>
+	{* --------------- Staff persons selector --------------- *}
+	<div class="fLabel odd">
+		<label>{Label panelwidget-staffselector.title}:</label>
+	</div>
 
-<span class="overflowHidden scrollbarHide displayBlock">
-	{select options=$personOptions value=$selectedPersons id="panelwidget-$id-persons" multiple=true size=$listSize}
-</span>
+	<span class="overflowHidden scrollbarHide displayBlock">
+		{select options=$personOptions value=$selectedPersons id="panelwidget-$id-persons" multiple=true size=$listSize}
+	</span>
+</div>
