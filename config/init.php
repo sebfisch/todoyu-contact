@@ -27,65 +27,61 @@ TodoyuQuickinfoManager::addFunction('person', 'TodoyuContactQuickinfoManager::ge
 
 // Categories of dynamic contact info types
 Todoyu::$CONFIG['EXT']['contact']['contactinfotypecategories'] = array(
-	// Email
-array(
-	'index'	=> CONTACT_INFOTYPE_CATEGORY_EMAIL,
-	'label'	=> 'LLL:contact.record.contactinfotype.email'
-),
-	// Phone
-array(
-	'index'	=> CONTACT_INFOTYPE_CATEGORY_PHONE,
-	'label'	=> 'LLL:contact.record.contactinfotype.phone'
-),
-	// Other
-array(
-	'index'	=> CONTACT_INFOTYPE_CATEGORY_OTHER,
-	'label'	=> 'LLL:contact.record.contactinfotype.other'
-),
+	array(	// Email
+		'index'	=> CONTACT_INFOTYPE_CATEGORY_EMAIL,
+		'label'	=> 'LLL:contact.record.contactinfotype.email'
+	),	
+	array(	// Phone
+		'index'	=> CONTACT_INFOTYPE_CATEGORY_PHONE,
+		'label'	=> 'LLL:contact.record.contactinfotype.phone'
+	),
+	array(	// Other
+		'index'	=> CONTACT_INFOTYPE_CATEGORY_OTHER,
+		'label'	=> 'LLL:contact.record.contactinfotype.other'
+	),
 );
 
-// Types of addresses
+	// Types of addresses
 Todoyu::$CONFIG['EXT']['contact']['addresstypes'] = array(
-	// Home address
-array(
-	'index'	=> 1,
-	'label'	=> 'LLL:contact.address.attr.addresstype.1'
-),
-	// Business address
-array(
-	'index'	=> 2,
-	'label'	=> 'LLL:contact.address.attr.addresstype.2'
-),
-	// Billing address
-array(
-	'index'	=> 3,
-	'label'	=> 'LLL:contact.address.attr.addresstype.3'
-)
+	array(	// Home address
+		'index'	=> 1,
+		'label'	=> 'LLL:contact.address.attr.addresstype.1'
+	),
+		
+	array(	// Business address
+		'index'	=> 2,
+		'label'	=> 'LLL:contact.address.attr.addresstype.2'
+	),
+	array(	// Billing address
+		'index'	=> 3,
+		'label'	=> 'LLL:contact.address.attr.addresstype.3'
+	)
 );
 
 Todoyu::$CONFIG['EXT']['contact']['numFavoriteCountries']	= 5;
 
 
 
-// Sub tabs
+	// Sub tabs
 Todoyu::$CONFIG['EXT']['contact']['tabs'] = array(
-array(
-	'id'		=> 'person',
-	'label'		=> 'LLL:contact.persons',
-	'require'	=> 'contact.general:area'
-),
-array(
-	'id'		=> 'company',
-	'label'		=> 'LLL:contact.companys',
-	'require'	=> 'contact.general:area'
-)
+	array(
+		'id'		=> 'person',
+		'label'		=> 'LLL:contact.persons',
+		'require'	=> 'contact.general:area'
+	),
+	array(
+		'id'		=> 'company',
+		'label'		=> 'LLL:contact.companys',
+		'require'	=> 'contact.general:area'
+	)
 );
 
 Todoyu::$CONFIG['EXT']['contact']['defaultTypeTab'] = 'person';
 
-// Load person foreign records data
+	// Load person foreign records data
 TodoyuFormHook::registerLoadData('ext/contact/config/form/person.xml', 'TodoyuContactManager::getPersonForeignRecordData');
 TodoyuFormHook::registerBuildForm('ext/contact/config/form/address.xml', 'TodoyuCompanyManager::hookAddTimezone');
+
 
 
 /**
@@ -125,7 +121,7 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['company'] = array(
 'columns'	=> array(
 	'icon'		=> '',
 	'title'		=> 'LLL:contact.company.attr.title',
-	//'persons'	=> 'LLL:contact.company.employees',
+//	'persons'	=> 'LLL:contact.company.employees',
 	'address'	=> 'LLL:contact.address',
 	'actions'	=> ''
 ),
