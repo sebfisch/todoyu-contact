@@ -597,7 +597,6 @@ class TodoyuCompanyManager {
 		$idCompany	= intval($idCompany);
 
 		$addresses	= self::getCompanyAddressRecords($idCompany);
-		$address	= null;
 		$label		= '';
 
 		if( sizeof($addresses) > 0 ) {

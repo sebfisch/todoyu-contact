@@ -728,9 +728,6 @@ class TodoyuPersonManager {
 		$monthDiff		= abs($monthEnd - $monthStart);
 		$yearDiff		= abs($yearEnd-$yearStart);
 
-		$monthsRange 	= array();
-		$rangeWhere		= '';
-
 			// If range is in the same month
 		if( $monthStart === $monthEnd ) {
 			$monthsRange= array($monthStart);
