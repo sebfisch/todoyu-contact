@@ -11,7 +11,7 @@
 						<acName>person</acName>
 						<acLabel>TodoyuPersonManager::getLabel</acLabel>
 						<options>
-							<onCompleteCustom>Todoyu.Ext.contact.Autocomplete.onPersonAutocomplete</onCompleteCustom>
+							<onComplete>Todoyu.Ext.contact.Autocomplete.onPersonAutocomplete</onComplete>
 						</options>
 					</config>
 					<wizard>

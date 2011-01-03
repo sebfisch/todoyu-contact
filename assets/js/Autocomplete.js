@@ -40,8 +40,9 @@ Todoyu.Ext.contact.Autocomplete = {
 	 * @param	{Todoyu.Autocompleter}	autocompleter
 	 */
 	onPersonAutocomplete: function(response, autocompleter) {
-		if( response.getTodoyuHeader('acElements') == 0 ) {
+		if( response.isEmptyAcResult() ) {
 			Todoyu.notifyInfo('[LLL:contact.ac.person.notFoundInfo]');
+			return false;
 		}
 	},
 
@@ -54,8 +55,9 @@ Todoyu.Ext.contact.Autocomplete = {
 	 * @param	{Todoyu.Autocompleter}	autocompleter
 	 */
 	onCompanyAutocomplete: function(response, autocompleter) {
-		if( response.getTodoyuHeader('acElements') == 0 ) {
+		if( response.isEmptyAcResult() ) {
 			Todoyu.notifyInfo('[LLL:contact.ac.company.notFoundInfo]');
+			return false;
 		}
 	}
 
