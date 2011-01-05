@@ -433,12 +433,12 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Get preferred phone number of given person
+	 * Get all phone numbers, or only preferred one, of given person
 	 *
 	 * @param	Integer		$idPerson
 	 * @return	String
 	 */
-	public static function getPreferredPhone($idPerson) {
+	public static function getPhones($idPerson, $preferredOnly = false) {
 		$idPerson	= intval($idPerson);
 
 		$fields	= '	ci.info,
@@ -450,10 +450,26 @@ class TodoyuPersonManager {
 				. ' AND	mm.id_contactinfo		= ci.id'
 				. ' AND	cit.category			= 2'
 				. ' AND	ci.id_contactinfotype 	= cit.id'
-				. ' AND	ci.preferred 			= 1'
+				. ( $preferredOnly ? ' AND	ci.preferred = 1' : '')
 				. ' AND ci.deleted				= 0';
 
-		return	Todoyu::db()->getRecordByQuery($fields, $tables, $where);
+		if( $preferredOnly ) {
+			return	Todoyu::db()->getRecordByQuery($fields, $tables, $where);
+		} else {
+			return Todoyu::db()->getArray($fields, $tables, $where);
+		}
+	}
+
+
+
+	/**
+	 * Get preferred phone number of given person
+	 *
+	 * @param	Integer		$idPerson
+	 * @return	String
+	 */
+	public static function getPreferredPhone($idPerson) {
+		return	self::getPhones($idPerson, true);
 	}
 
 

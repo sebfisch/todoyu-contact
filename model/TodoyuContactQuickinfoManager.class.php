@@ -37,7 +37,15 @@ class TodoyuContactQuickinfoManager {
 
 		$data	= TodoyuPersonManager::getPersonArray($idPerson);
 
+			// Get preferred or only phone
 		$phone		= TodoyuPersonManager::getPreferredPhone($idPerson);
+		if( $phone === false ) {
+			$phones	= TodoyuPersonManager::getPhones($idPerson, false);
+			if( count($phones) == 1) {
+				$phone	= $phones[0];
+			}
+		}
+
 		$email		= TodoyuPersonManager::getPreferredEmail($idPerson);
 		$fullName	= TodoyuPersonManager::getPerson($idPerson)->getFullName();
 
