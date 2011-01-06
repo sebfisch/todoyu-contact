@@ -4,11 +4,14 @@
 	<label index="general.use">Use Module Functionality</label>
 	<label index="general.area">Use Contacts Area</label>
 	<label index="person">Person</label>
+	<label index="person.seeAllInternalPersons">See all internal persons</label>
+	<label index="person.seeAllPersons">See All Persons</label>
 	<label index="person.add">Add Persons</label>
 	<label index="person.setRole">Set Person Role</label>
 	<label index="person.editAndDelete">Edit and delete persons</label>
 	<label index="person.enableLogin">Create login account for persons</label>
 	<label index="company">Companies</label>
+	<label index="company.seeAllCompanies">See All Companies</label>
 	<label index="company.add">Add Companies</label>
 	<label index="company.editAndDelete">Edit and delete companies</label>
 	<label index="panelwidgets">Panel Widgets</label>

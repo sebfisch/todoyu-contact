@@ -56,6 +56,21 @@ class TodoyuCompanyManager {
 	}
 
 
+	/**
+	 * Get IDs of all companies marked as "internal"
+	 *
+	 * @return	Array
+	 */
+	public static function getInternalCompanyIDs() {
+		$fields	= 'id';
+		$table	= self::TABLE;
+		$where	= '		deleted		= 0
+					AND	is_internal	= 1';
+
+		return Todoyu::db()->getColumn($fields, $table, $where, '', '', '', 'id');
+	}
+
+
 
 	/**
 	 * Get a company object
@@ -434,28 +449,32 @@ class TodoyuCompanyManager {
 	/**
 	 * Search companies
 	 *
-	 * @param	String		$sword
+	 * @param	String		$sWord
 	 * @param	Array		$searchFields
 	 * @param	Integer		$size
 	 * @param	Integer		$offset
 	 * @return	Array
 	 */
-	public static function searchCompany($sword, array $searchFields = null, $size = 100, $offset = 0)	{
+	public static function searchCompany($sWord, array $searchFields = null, $size = 100, $offset = 0)	{
 		$fields	= 'SQL_CALC_FOUND_ROWS *';
+		$where	= ' deleted = 0';
 		$table 	= self::TABLE;
 		$order	= 'title';
-		$swords	= TodoyuArray::trimExplode(' ', $sword);
 		$limit	= intval($offset) . ',' . intval($size);
 
-		$searchFields	= is_null($searchFields) ? array('title', 'shortname') : $searchFields;
+		$sWords	= TodoyuArray::trimExplode(' ', $sWord);
+		if( sizeof($sWords) ) {
+			$searchFields	= is_null($searchFields) ? array('title', 'shortname') : $searchFields;
 
-		if( sizeof($swords) ) {
-			$where = Todoyu::db()->buildLikeQuery($swords, $searchFields);
-		} else {
-			$where = '1';
+			$where	.= ' AND ' . Todoyu::db()->buildLikeQuery($sWords, $searchFields);
 		}
 
-		$where .= ' AND deleted = 0';
+			// Limit results to allowed person records
+		if( ! TodoyuAuth::isAdmin() && ! allowed('contact', 'company:seeAllCompanies') ) {
+			$allowedWhere	= TodoyuCompanyRights::getAllowedToBeSeenCompaniesWhereClause();
+
+			$where .= ' AND ' . $allowedWhere;
+		}
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order, $limit);
 	}

@@ -5,16 +5,19 @@
 		<right name="area" require="general:use" />
 	</section>
 
-	<section name="person" require="general:area">
-		<right name="add" />
-		<right name="editAndDelete" />
+	<section name="person" require="general:use">
+		<right name="seeAllInternalPersons" />
+		<right name="seeAllPersons" />
+		<right name="add" require="general:area" />
+		<right name="editAndDelete" require="general:area" />
 		<right name="setRole" require="person:editAndDelete" />
 		<right name="enableLogin" require="person:editAndDelete" />
 	</section>
 
-	<section name="company" require="general:area">
-		<right name="add" />
-		<right name="editAndDelete" />
+	<section name="company" require="general:use">
+		<right name="seeAllCompanies" />
+		<right name="add" require="general:area" />
+		<right name="editAndDelete" require="general:area" />
 	</section>
 
 	<section name="panelwidgets" require="general:use">

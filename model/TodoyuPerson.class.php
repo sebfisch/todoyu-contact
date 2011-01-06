@@ -198,11 +198,11 @@ class TodoyuPerson extends TodoyuBaseObject {
 		$field	= '	mm.id_company';
 		$table	= '	ext_contact_mm_company_person mm,
 					ext_contact_company c';
-		$where	= '		mm.id_person	= ' . $this->id .
-				  ' AND	mm.id_company	= c.id
-				  	AND c.deleted		= 0';
+		$where	= '		mm.id_person	= ' . $this->id . '
+					AND	mm.id_company	= c.id
+					AND	c.deleted		= 0';
 
-		return Todoyu::db()->getColumn($field, $table, $where);
+		return Todoyu::db()->getColumn($field, $table, $where, '', '', '', 'id_company');
 	}
 
 

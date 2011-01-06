@@ -525,19 +525,28 @@ class TodoyuPersonManager {
 	public static function searchPersons($sword = '', array $searchFields = null, $size = 100, $offset = 0) {
 		$fields	= 'SQL_CALC_FOUND_ROWS *';
 		$table	= self::TABLE;
+		$where	= ' deleted = 0';
 		$order	= 'lastname';
-		$swords	= TodoyuArray::trimExplode(' ', $sword);
 		$limit	= intval($offset) . ',' . intval($size);
 
-		$searchFields	= is_null($searchFields) ? array('username', 'email', 'firstname', 'lastname', 'shortname') : $searchFields;
-
+		$swords	= TodoyuArray::trimExplode(' ', $sword);
 		if( sizeof($swords) > 0 ) {
-			$where = Todoyu::db()->buildLikeQuery($swords, $searchFields);
-		} else {
-			$where = '1';
+			$searchFields	= is_null($searchFields) ? array('username', 'email', 'firstname', 'lastname', 'shortname') : $searchFields;
+
+			$where	.= ' AND ' . Todoyu::db()->buildLikeQuery($swords, $searchFields);
 		}
 
-		$where .= ' AND deleted = 0';
+			// Limit results to allowed person records
+		if( ! allowed('contact', 'person:seeAllPersons') ) {
+			$allowedWhere =	TodoyuPersonRights::getAllowedToBeSeenPersonsWhereClause();
+
+			if( $allowedWhere === false ) {
+					// No persons allowed to be seen
+				return array();
+			}
+
+			$where .= ' AND ' . $allowedWhere;
+		}
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order, $limit);
 	}
