@@ -66,7 +66,7 @@ Todoyu.Ext.contact.Company =  {
 	 * @param	{Number}	idCompany
 	 */
 	remove: function(idCompany) {
-		if( confirm('[LLL:contact.company.delete.confirm]') )	{
+		if( confirm('[LLL:contact.company.delete.confirm]') ) {
 			var url = Todoyu.getUrl('contact', 'company');
 			var options = {
 				'parameters': {
@@ -188,7 +188,7 @@ Todoyu.Ext.contact.Company =  {
 	 * @param	{String}		target
 	 * @return	{Boolean}
 	 */
-	saveWizard: function(form, target)	{
+	saveWizard: function(form, target) {
 		$(form).request ({
 			'parameters': {
 				'action':	'saveWizard',
@@ -208,7 +208,7 @@ Todoyu.Ext.contact.Company =  {
 	 * @param	{String}	target
 	 * @param	{Object}	response
 	 */
-	onSavedWizard: function(target, response)	{
+	onSavedWizard: function(target, response) {
 		var error	= response.hasTodoyuError();
 
 		if( error ) {
@@ -232,7 +232,7 @@ Todoyu.Ext.contact.Company =  {
 	/**
 	 * Cancel handling for wizard: close popup
 	 */
-	cancelWizard: function()	{
+	cancelWizard: function() {
 		Todoyu.Popup.getLastPopup().close();
 	}
 

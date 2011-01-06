@@ -36,12 +36,12 @@ Todoyu.Ext.contact.Address = {
 	 * @param	{String}	referencedFieldName
 	 * @param	{String}	fieldNameToReplace
 	 */
-	onChangeCountry: function(inputField, referencedFieldName, fieldNameToReplace)	{
+	onChangeCountry: function(inputField, referencedFieldName, fieldNameToReplace) {
 		var selectedValue		= inputField.value;
 		var idInputFieldArr		= inputField.id.split('-').without('fulltext');
 		var idTarget = idInputFieldArr.join('-').replace(fieldNameToReplace, referencedFieldName);
 
-		if( $(idTarget) )	{
+		if( $(idTarget) ) {
 			var url = Todoyu.getUrl('contact', 'company');
 			var options = {
 					'parameters': {
@@ -64,7 +64,7 @@ Todoyu.Ext.contact.Address = {
 	 * @param	{String}	idTarget
 	 * @param	{Object}	response
 	 */
-	onUpdateCompanyAddressRecords: function(idTarget, response)	{
+	onUpdateCompanyAddressRecords: function(idTarget, response) {
 		$(idTarget).innerHTML = response.responseText;
 
 		new Effect.Highlight($(idTarget), {

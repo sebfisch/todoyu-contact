@@ -104,7 +104,7 @@ Todoyu.Ext.contact.Person =  {
 	 * @param	{Number}		idPerson
 	 */
 	remove: function(idPerson) {
-		if( confirm('[LLL:contact.person.delete.confirm]') )	{
+		if( confirm('[LLL:contact.person.delete.confirm]') ) {
 			var url = Todoyu.getUrl('contact', 'person');
 			var options = {
 				'parameters': {
@@ -171,12 +171,12 @@ Todoyu.Ext.contact.Person =  {
 	 * @param	{Object}	list
 	 * @param	{Object}	parent
 	 */
-	updateCompanyAddressRecords: function(inputField, idField, selectedValue, selectedText, autocompleter)	{
+	updateCompanyAddressRecords: function(inputField, idField, selectedValue, selectedText, autocompleter) {
 		var refFieldName	= autocompleter.getOptions(idField.id).referencedFieldName.replace('_', '-');
 		var baseID			= idField.id.substr(0, idField.id.indexOf('-field-') + 6);
 		var idAddressList	= baseID + '-' + refFieldName;
 
-		if( Todoyu.exists(idAddressList) )	{
+		if( Todoyu.exists(idAddressList) ) {
 			var url = Todoyu.getUrl('contact', 'company');
 			var options = {
 				'parameters': {
@@ -197,7 +197,7 @@ Todoyu.Ext.contact.Person =  {
 	 * 
 	 * @param	{String}	idTarget
 	 */
-	onUpdateCompanyAddressRecords: function(addressList)	{
+	onUpdateCompanyAddressRecords: function(addressList) {
 		new Effect.Highlight($(addressList), {
 			'startcolor':	'#fffe98',
 			'endcolor':		'#ffffff',
@@ -299,7 +299,7 @@ Todoyu.Ext.contact.Person =  {
 	 * @param	{String}		target
 	 * @return	{Boolean}
 	 */
-	saveWizard: function(form, target)	{
+	saveWizard: function(form, target) {
 		$(form).request ({
 			'parameters': {
 				'action':	'saveWizard',
@@ -319,7 +319,7 @@ Todoyu.Ext.contact.Person =  {
 	 * @param	{String}	target
 	 * @param	{Object}	response
 	 */
-	onSavedWizard: function(target, response)	{
+	onSavedWizard: function(target, response) {
 		var error	= response.hasTodoyuError();
 
 		if( error ) {
@@ -343,7 +343,7 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Cancel handling for wizard: close popup
 	 */
-	cancelWizard: function()	{
+	cancelWizard: function() {
 		Todoyu.Popup.getLastPopup().close();
 	}
 
