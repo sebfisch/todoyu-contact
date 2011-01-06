@@ -172,7 +172,7 @@ Todoyu.Ext.contact.Person =  {
 	 * @param	{Object}	parent
 	 */
 	updateCompanyAddressRecords: function(inputField, idField, selectedValue, selectedText, autocompleter) {
-		var refFieldName	= autocompleter.getOptions(idField.id).referencedFieldName.replace('_', '-');
+		var refFieldName	= autocompleter.options['referencedFieldName'].replace('_', '-');
 		var baseID			= idField.id.substr(0, idField.id.indexOf('-field-') + 6);
 		var idAddressList	= baseID + '-' + refFieldName;
 
@@ -194,7 +194,7 @@ Todoyu.Ext.contact.Person =  {
 
 	/**
 	 * Highlights the referenced selector of company address after updating the company-autocompleter
-	 * 
+	 *
 	 * @param	{String}	idTarget
 	 */
 	onUpdateCompanyAddressRecords: function(addressList) {
