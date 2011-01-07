@@ -538,14 +538,7 @@ class TodoyuPersonManager {
 
 			// Limit results to allowed person records
 		if( ! allowed('contact', 'person:seeAllPersons') ) {
-			$allowedWhere =	TodoyuPersonRights::getAllowedToBeSeenPersonsWhereClause();
-
-			if( $allowedWhere === false ) {
-					// No persons allowed to be seen
-				return array();
-			}
-
-			$where .= ' AND ' . $allowedWhere;
+			$where .= ' AND ' . TodoyuPersonRights::getAllowedToBeSeenPersonsWhereClause();
 		}
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order, $limit);
