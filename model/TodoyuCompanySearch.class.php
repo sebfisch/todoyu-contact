@@ -45,7 +45,12 @@ class TodoyuCompanySearch implements TodoyuSearchEngineIf {
 		$table	= self::TABLE;
 		$fields	= array('title', 'shortname');
 
-		return TodoyuSearch::searchTable($table, $fields, $find, $ignore, $limit);
+		$addToWhere = ' AND deleted = 0';
+		if( ! allowed('contact', 'company:seeAllCompanies') ) {
+			$addToWhere	.= ' AND ' . TodoyuCompanyRights::getAllowedToBeSeenCompaniesWhereClause();
+		}
+
+		return TodoyuSearch::searchTable($table, $fields, $find, $ignore, $limit, $addToWhere);
 	}
 
 

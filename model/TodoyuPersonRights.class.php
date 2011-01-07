@@ -105,7 +105,7 @@ class TodoyuPersonRights {
 		$table	= TodoyuPersonManager::TABLE;
 		$where	= self::getAllowedToBeSeenPersonsWhereClause($withAccount);
 
-		return Todoyu::db()->getColumn($fields, $table, $where, '', '', '', 'id');
+		return $where ? Todoyu::db()->getColumn($fields, $table, $where, '', '', '', 'id') : array();
 	}
 
 
