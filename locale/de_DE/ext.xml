@@ -55,6 +55,7 @@
 	<label index="contactinfo">Kontaktinformation</label>
 	<label index="contactinfo.new">Neue Kontaktinformation</label>
 	<label index="contactinfo.attr.type">Informationstyp</label>
+	<label index="contactinfo.attr.info">Information</label>
 	<label index="contactinfo.type.email_business">Email geschäftlich</label>
 	<label index="contactinfo.type.email_private">Email privat</label>
 	<label index="contactinfo.type.tel_private">Telefon privat</label>
@@ -69,7 +70,7 @@
 	<label index="contactinfo.type.skype">Skype</label>
 	<label index="address">Adresse</label>
 	<label index="address.new">Neue Adresse</label>
-	<label index="address.attr.addresstype">Address Type</label>
+	<label index="address.attr.addresstype">Adresstyp</label>
 	<label index="address.attr.addresstype.1">Heimadresse</label>
 	<label index="address.attr.addresstype.2">Geschäftsadresse</label>
 	<label index="address.attr.addresstype.3">Rechnungsadresse</label>

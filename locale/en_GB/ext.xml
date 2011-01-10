@@ -56,6 +56,7 @@
 	<label index="contactinfo">Contact Information</label>
 	<label index="contactinfo.new">New Contact Info</label>
 	<label index="contactinfo.attr.type">Contact Info Type</label>
+	<label index="contactinfo.attr.info">Information</label>
 	<label index="contactinfo.type.email_business">Business E-mail</label>
 	<label index="contactinfo.type.email_private">Private E-mail</label>
 	<label index="contactinfo.type.tel_private">Personal Phone</label>
