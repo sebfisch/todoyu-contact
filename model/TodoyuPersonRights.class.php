@@ -52,7 +52,7 @@ class TodoyuPersonRights {
 		}
 
 		if( allowed('contact', 'person::seeAllInternalPersons') ) {
-			if ( TodoyuPersonManager::getPerson($idPerson)->isInternal() ) {
+			if( TodoyuPersonManager::getPerson($idPerson)->isInternal() ) {
 				return true;
 			}
 		}
