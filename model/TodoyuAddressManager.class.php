@@ -71,7 +71,7 @@ class TodoyuAddressManager {
 
 
 	/**
-	 * @todo comment
+	 * Add address record to DB
 	 *
 	 * @param	Array	$data
 	 * @return	Integer
@@ -83,7 +83,7 @@ class TodoyuAddressManager {
 
 
 	/**
-	 * @todo	comment
+	 * Update address record in DB
 	 *
 	 * @param	Integer		$idAddress
 	 * @param	Array		$data
@@ -96,7 +96,7 @@ class TodoyuAddressManager {
 
 
 	/**
-	 * @todo	comment
+	 * Set given address record in DB deleted
 	 *
 	 * @param	Integer		$idAddress
 	 */

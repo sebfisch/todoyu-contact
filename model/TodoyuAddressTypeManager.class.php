@@ -27,7 +27,8 @@
 class TodoyuAddressTypeManager {
 
 	/**
-	 * @todo	comment
+	 * Get all configured contact address types
+	 *
 	 * @return	Array
 	 */
 	public static function getAddressTypes() {
@@ -37,7 +38,8 @@ class TodoyuAddressTypeManager {
 
 
 	/**
-	 * @todo	comment
+	 * Get configuration of contact address type with given ID
+	 *
 	 * @param	Integer		$idAddressType
 	 * @return	Array
 	 */

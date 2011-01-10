@@ -86,7 +86,8 @@ class TodoyuJobTypeManager {
 
 
 	/**
-	 * @todo	comment
+	 * Get all jobtype records
+	 *
 	 * @return	Array
 	 */
 	public static function getRecords() {

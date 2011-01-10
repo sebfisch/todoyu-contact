@@ -175,7 +175,8 @@ class TodoyuContactPreferences {
 
 
 	/**
-	 * @todo	comment
+	 * Save staff selector preferences
+	 *
 	 * @param	Array	$prefs
 	 */
 	public static function saveStaffSelectorPrefs(array $prefs) {

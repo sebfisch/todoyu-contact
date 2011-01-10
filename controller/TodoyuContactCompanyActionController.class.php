@@ -208,8 +208,10 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 
 	/**
-	 * @todo	comment
+	 * Render select options of regions of given country
+	 *
 	 * @param	Array		$params
+	 * @return	String
 	 */
 	public function getRegionOptionsAction(array $params)	{
 		$tmpl	= 'core/view/form/FormElement_Select_Options.tmpl';
