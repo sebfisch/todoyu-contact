@@ -737,61 +737,75 @@ class TodoyuPersonManager {
 		$dateStart	= intval($dateStart);
 		$dateEnd	= intval($dateEnd);
 
-		$monthStart		= date('n', $dateStart);
-		$monthEnd		= date('n', $dateEnd);
-		$yearStart		= date('Y', $dateStart);
-		$yearEnd		= date('Y', $dateEnd);
-		$dayStart		= date('j', $dateStart);
-		$dayEnd			= date('j', $dateEnd);
-		$monthDiff		= abs($monthEnd - $monthStart);
-		$yearDiff		= abs($yearEnd-$yearStart);
+		$monthStart	= date('n', $dateStart);
+		$monthEnd	= date('n', $dateEnd);
+		$yearStart	= date('Y', $dateStart);
+		$yearEnd	= date('Y', $dateEnd);
+		$dayStart	= date('j', $dateStart);
+		$dayEnd		= date('j', $dateEnd);
 
-			// If range is in the same month
+			// Range spans over just one month
 		if( $monthStart === $monthEnd ) {
 			$monthsRange= array($monthStart);
-			$rangeWhere	= 'DAY(birthday) BETWEEN ' . $dayStart . ' AND ' . $dayEnd;
-		} elseif( $monthDiff === 1 && $yearDiff === 0 ) {
-			$monthsRange= array($monthStart, $monthEnd);
-			$rangeWhere = '((MONTH(birthday) = ' . $monthStart . ' AND DAY(birthday) >= ' . $dayStart . ') OR
-							(MONTH(birthday) = ' . $monthEnd . ' AND DAY(birthday) <= ' . $dayEnd . '))';
+			$rangeWhere	= 'DAY(birthday)		BETWEEN ' . $dayStart . ' AND ' . $dayEnd;
 		} else {
-				// Crossing the year border (ex: nov-feb)
+			$monthDiff	= abs($monthEnd - $monthStart);
+			$yearDiff	= abs($yearEnd - $yearStart);
+		}
+			// Range spans over more than one and maximum 2 month
+		if( $monthStart !== $monthEnd && $monthDiff === 1 && $yearDiff === 0 ) {
+			$monthsRange= array($monthStart, $monthEnd);
+			$rangeWhere = '((MONTH(birthday)	= ' . $monthStart . ' AND DAY(birthday)	>= ' . $dayStart . ') OR
+							(MONTH(birthday)	= ' . $monthEnd . ' AND DAY(birthday)		<= ' . $dayEnd . '))';
+		} else {
+				// Range crosses the year border (ex: nov-feb)
 			if( $monthEnd < $monthStart ) {
-				$monthsRange = array();
+				$monthsRange= array();
 				$mEnd	= $monthEnd + 12;
 
-				for($m=$monthStart; $m<=$mEnd; $m++) {
-					$month	= $m%12;
-					$monthsRange[] = $month === 0 ? 12 : $month;
+				for($m=$monthStart; $m <= $mEnd; $m++) {
+					$month			= $m % 12;
+					$monthsRange[]	= $month === 0 ? 12 : $month;
 				}
 			} else {
 				$monthsRange = range($monthStart, $monthEnd);
 			}
 
+				// If there are months between to border months
 			$middleMonths	= array_slice($monthsRange, 1, -1);
 
-				// If there are months between to border months
 			if( sizeof($middleMonths) > 0 ) {
-				$middleWhere = 'MONTH(birthday) IN(' . implode(',', $middleMonths) . ') OR ';
+				$middleWhere = 'MONTH(birthday)	IN(' . implode(',', $middleMonths) . ') OR ';
 			}
 
 			$rangeWhere	= '(' . $middleWhere . '
-							(MONTH(birthday) = ' . $monthStart . ' AND DAY(birthday) >= ' . $dayStart . ') OR
-							(MONTH(birthday) = ' . $monthEnd . ' AND DAY(birthday) <= ' . $dayEnd . '))';
+							(MONTH(birthday) = ' . $monthStart . ' AND DAY(birthday)	>= ' . $dayStart . ') OR
+							(MONTH(birthday) = ' . $monthEnd . ' AND DAY(birthday)		<= ' . $dayEnd . ')
+						   )';
 		}
 
 			// Allowed months
-		$rangeWhere .= ' AND MONTH(birthday) IN(' . implode(',', $monthsRange) . ')';
+		$rangeWhere .= ' AND MONTH(birthday)	IN(' . implode(',', $monthsRange) . ')';
 
-		$fields	= '	*,
-					YEAR(birthday) as birthyear,
-					MONTH(birthday)-MONTH(CURDATE())<0 as beforemonth';
+		$fields	= '	id,
+					email,
+					firstname,
+					lastname,
+					shortname,
+					salutation,
+					title,
+					birthday,
+					MONTH(birthday) <= MONTH(CURDATE())		as incurrentyear,
+					YEAR(birthday)							as birthyear,
+					MONTH(birthday) - MONTH(CURDATE()) < 0	as beforemonth';
+
 		$table	= self::TABLE;
-		$where	= '	deleted = 0
-					AND (' . $rangeWhere . ')';
-		$order	= 'beforemonth, MONTH(birthday), DAY(birthday)';
+		$where	= '		deleted						= 0
+					AND UNIX_TIMESTAMP(birthday)	> 0
+					AND	(' . $rangeWhere . ')';
+		$order	= 'incurrentyear ASC, beforemonth, MONTH(birthday), DAY(birthday)';
 
-		$birthdayPersons = Todoyu::db()->getArray($fields, $table, $where, '', $order);
+		$birthdayPersons	= Todoyu::db()->getArray($fields, $table, $where, '', $order);
 
 			// Enrich data with date and age of persons
 		$birthdayPersons	= self::addBirthdayPersonsDateAndAge($birthdayPersons, $dateStart, $dateEnd);
@@ -814,15 +828,17 @@ class TodoyuPersonManager {
 			$dateParts	= explode('-', $birthdayPerson['birthday']);
 			$birthday	= mktime(0, 0, 0, $dateParts[1], $dateParts[2], date('Y', $dateStart));
 
-				// If a persons birthday is in the new year, use $dateEnd for year information
+				// If a persons birthday is in the next year, use $dateEnd for year information
 			if( $birthday < $dateStart ) {
 				$birthday = mktime(0, 0, 0, $dateParts[1], $dateParts[2], date('Y', $dateEnd));
+
+				$birthdayPersons[$index]['age']	= floor(date('Y', $dateStart) - intval($birthdayPerson['birthyear']) + 1);
+			} else {
+				$birthdayPersons[$index]['age']	= floor(date('Y', $dateStart) - intval($birthdayPerson['birthyear']));
 			}
 
-				// Set date of the birthday this year
+				// Set date of the upcoming birthday
 			$birthdayPersons[$index]['date'] 	= $birthday;
-				// Set age on this birthday
-			$birthdayPersons[$index]['age']	= floor(date('Y', $dateStart) - intval($birthdayPerson['birthyear']));
 		}
 
 		return $birthdayPersons;
@@ -831,7 +847,7 @@ class TodoyuPersonManager {
 
 
 	/**
-	 * Get color IDs to given person id's (persons are enumeratedly given colors by their position in the list)
+	 * Get color IDs to given person id's (persons are given enumerated colors by their position in the list)
 	 *
 	 * @param	Array	$personIDs
 	 * @return	Array
