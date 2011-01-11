@@ -146,7 +146,7 @@ class TodoyuPersonManager {
 		$where	= '		`username`	= ' . Todoyu::db()->quote($username, true) .
 				  ' AND	`password`	= ' . Todoyu::db()->quote($password, true) .
 				  ' AND	`active`	= 1
-				    AND	`deleted`	= 0';
+					AND	`deleted`	= 0';
 
 		return Todoyu::db()->hasResult($field, $table, $where);
 	}
@@ -888,8 +888,8 @@ class TodoyuPersonManager {
 		$idPerson = intval($idPerson);
 
 		$field	= 'id_company';
-		$table	= 'ext_contact_mm_company_person mm,
-				   ext_contact_company c';
+		$table	= ' ext_contact_mm_company_person mm,
+					ext_contact_company c';
 		$where	= '		mm.id_company	= c.id
 					AND c.deleted		= 0
 					AND mm.id_person	= ' . $idPerson;
