@@ -795,15 +795,15 @@ class TodoyuPersonManager {
 					salutation,
 					title,
 					birthday,
-					MONTH(birthday) <= MONTH(CURDATE())		as incurrentyear,
-					YEAR(birthday)							as birthyear,
-					MONTH(birthday) - MONTH(CURDATE()) < 0	as beforemonth';
+					MONTH(birthday) >= MONTH(FROM_UNIXTIME(' . NOW . '))	as incurrentyear,
+					YEAR(birthday)								as birthyear,
+					MONTH(birthday) > MONTH(FROM_UNIXTIME(' . NOW . ')) 	as beforemonth';
 
 		$table	= self::TABLE;
 		$where	= '		deleted						= 0
 					AND UNIX_TIMESTAMP(birthday)	> 0
 					AND	(' . $rangeWhere . ')';
-		$order	= 'incurrentyear ASC, beforemonth, MONTH(birthday), DAY(birthday)';
+		$order	= 'incurrentyear DESC, beforemonth, MONTH(birthday), DAY(birthday)';
 
 		$birthdayPersons	= Todoyu::db()->getArray($fields, $table, $where, '', $order);
 
