@@ -84,7 +84,7 @@ class TodoyuPersonRights {
 			// Get all persons marked "visible for externals" in any of their projects
 		$projectsPersonsIDs	= TodoyuProjectManager::getProjectsPersonsIDs($projectIDs, $withAccount);
 
-		$personIDs	[]=	personid();
+		$personIDs	[]= personid();
 		$allowedPersonsIDs	= array_unique(array_merge($personIDs, $projectsPersonsIDs));
 
 		return ' id IN ( ' . TodoyuArray::intImplode($allowedPersonsIDs, ',') . ')';
