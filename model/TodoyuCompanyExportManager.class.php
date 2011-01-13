@@ -76,7 +76,7 @@ class TodoyuCompanyExportManager {
 	protected static function parseDataForExport(TodoyuCompany $company) {
 		
 		$exportData = array(
-			'id[Label]'		=> $company->id,
+			TodoyuLabelManager::getLabel('LLL:contact.company.attr.id')				=> $company->id,
 			TodoyuLabelManager::getLabel('LLL:core.date_create')					=> TodoyuTime::format($company->date_create),
 			TodoyuLabelManager::getLabel('LLL:core.date_update')					=> TodoyuTime::format($company->date_update),
 			TodoyuLabelManager::getLabel('LLL:core.id_person_create')				=> TodoyuPersonManager::getPerson($company->id_person_create)->getFullName(),

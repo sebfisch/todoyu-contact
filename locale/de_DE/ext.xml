@@ -19,6 +19,7 @@
 	<label index="person.details">Details der Person anzeigen</label>
 	<label index="person.saved">Person gespeichert</label>
 	<label index="person.saved.error">Person konnte nicht gespeichert werden</label>
+	<label index="person.attr.id">Personen ID</label>
 	<label index="person.attr.salutation">Anrede</label>
 	<label index="person.attr.salutation.m">Herr</label>
 	<label index="person.attr.salutation.f">Frau</label>
@@ -43,6 +44,7 @@
 	<label index="company.details">Zeige Firmendetails</label>
 	<label index="company.saved.ok">Firma gespeichert</label>
 	<label index="company.saved.error">Firma konnte nicht gespeichert werden</label>
+	<label index="company.attr.id">Firmen ID</label>
 	<label index="company.attr.title">Name</label>
 	<label index="company.attr.shortname">Kurzname</label>
 	<label index="company.attr.date_enter">Eintrittsdatum</label>
