@@ -271,7 +271,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 	/**
 	 * Load all foreign records of a person
 	 */
-	public function loadForeignData()	{
+	public function loadForeignData() {
 		$this->data['company']		= TodoyuPersonManager::getPersonCompanyRecords($this->getID());
 		$this->data['contactinfo']	= TodoyuPersonManager::getContactinfoRecords($this->getID());
 		$this->data['address']		= TodoyuPersonManager::getAddressRecords($this->getID());
