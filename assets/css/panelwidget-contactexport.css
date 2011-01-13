@@ -2,7 +2,8 @@
 	background:url(../img/icons.png) no-repeat 4px -386px;
 }
 
-#panelwidget-contactExport #export-person .icon {
+#panelwidget-contactExport #export-person .icon,
+#panelwidget-contactExport #export-company .icon {
 	background: url(../img/icons.png) no-repeat 0 -390px;
 }
 

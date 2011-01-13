@@ -11,7 +11,17 @@ Contact Extension - PHP Hooks
 
 2. Event Data Modification
 --------------------------
-	none yet.
+	personCSVExportParseData
+	@param	Array			$exportData
+	@param	TodoyuPerson	$person
+	@return	Array
+	Evoked after person data is parsed for the export. Its possible to modify the exportData array. Has to give it back.
+
+	companyCSVExportParseData
+	@param	Array			$exportData
+	@param	TodoyuCompany	$person
+	@return	Array
+	Evoked after company data is parsed for the export. Its possible to modify the exportData array. Has to give it back.
 
 
 

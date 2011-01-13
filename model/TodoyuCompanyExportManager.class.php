@@ -118,6 +118,8 @@ class TodoyuCompanyExportManager {
 			$exportData[TodoyuLabelManager::getLabel('LLL:contact.company.attr.person') . '_' . ($index + 1)]	= $person['firstname'] . ' ' . $person['lastname'];
 		}
 
+		$exportData = TodoyuHookManager::callHookDataModifier('contact', 'companyCSVExportParseData', $exportData, array('company'	=> $company));
+
 		return $exportData;
 	}
 }

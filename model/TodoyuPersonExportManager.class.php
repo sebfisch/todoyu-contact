@@ -129,6 +129,8 @@ class TodoyuPersonExportManager {
 			$exportData[TodoyuLabelManager::getLabel('LLL:core.role') . '_' . ($index + 1)]	= $role['title'];
 		}
 
+		$exportData = TodoyuHookManager::callHookDataModifier('contact', 'personCSVExportParseData', $exportData, array('company'	=> $company));
+
 		return $exportData;
 	}
 }
