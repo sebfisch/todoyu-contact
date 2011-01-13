@@ -1,0 +1,11 @@
+#panelwidget-contactExport h1 .title {
+	background:url(../img/icons.png) no-repeat 4px -386px;
+}
+
+#panelwidget-contactExport #export-person .icon {
+	background: url(../img/icons.png) no-repeat 0 -390px;
+}
+
+#panelwidget-contactExport p.instructiontext {
+	padding: 10px 0;
+}

@@ -30,6 +30,7 @@ TodoyuLabelManager::register('contact', 'contact', 'ext.xml');
 TodoyuLabelManager::register('panelwidget-contactsearchinput', 'contact', 'panelwidget-contactsearchinput.xml');
 TodoyuLabelManager::register('panelwidget-staffselector', 'contact', 'panelwidget-staffselector.xml');
 TodoyuLabelManager::register('panelwidget-stafflist', 'contact', 'panelwidget-stafflist.xml');
+TodoyuLabelManager::register('panelwidget-contactexport', 'contact', 'panelwidget-contactexport.xml');
 
 // Implement person quickInfo class to various person labels
 TodoyuHookManager::registerHook('project', 'taskdataattributes', 'TodoyuPersonHooks::extendTaskDataAttributes', 10);

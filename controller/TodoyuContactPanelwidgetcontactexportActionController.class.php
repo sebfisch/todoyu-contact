@@ -18,12 +18,20 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-/**
- * Configure panel widgets to be shown in Contact area
- */
 
-	// Add default panel widgets
-TodoyuPanelWidgetManager::addDefaultPanelWidget('contact', 'TodoyuPanelWidgetContactSearch', 10);
-TodoyuPanelWidgetManager::addDefaultPanelWidget('contact', 'TodoyuPanelWidgetContactExport', 50);
+
+class TodoyuContactPanelwidgetcontactexportActionController extends TodoyuActionController {
+
+	public function exportAction(array $params) {
+		$searchword	= $params['searchword'];
+		$tab		= $params['tab'];
+
+		if( $tab == 'person' ) {
+			TodoyuPersonExportManager::exportCSV($searchword);
+		} else if( $tab == 'company' ) {
+			TodoyuCompanyExportManager::exportCSV($searchword);
+		}
+	}
+}
 
 ?>

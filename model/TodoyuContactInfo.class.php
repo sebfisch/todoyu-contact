@@ -43,6 +43,17 @@ class TodoyuContactInfo extends TodoyuBaseObject {
 	function __construct($idContactInfo) {
 		parent::__construct($idContactInfo, $this->table);
 	}
+
+
+
+	/**
+	 *
+	 */
+	function getTypeLabel() {
+		$contactInfoType = new TodoyuContactInfoType($this->id_contactinfotype);
+
+		return (strlen(trim($contactInfoType['title'])) > 0) ? TodoyuLabelManager::getLabel($contactInfoType['title']) : '';
+	}
 }
 
 ?>

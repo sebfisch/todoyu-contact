@@ -108,5 +108,17 @@ class TodoyuAddress extends TodoyuBaseObject {
 		return parent::getTemplateData();
 	}
 
+
+
+	/**
+	 * Returns the label of the selected region of the address
+	 *
+	 * @return	String
+	 */
+	public function getRegionLabel() {
+		$region	= TodoyuStaticRecords::getRecord('country_zone', $this->data['region']);
+		return $region->data['id'] > 0 ? TodoyuStaticRecords::getLabel('country_zone', $region['iso_alpha3_country'] . '.' . $region['code']) : '';
+	}
+
 }
 ?>

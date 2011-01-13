@@ -1,0 +1,125 @@
+<?php
+/****************************************************************************
+* todoyu is published under the BSD License:
+* http://www.opensource.org/licenses/bsd-license.php
+*
+* Copyright (c) 2010, snowflake productions GmbH, Switzerland
+* All rights reserved.
+*
+* This script is part of the todoyu project.
+* The todoyu project is free software; you can redistribute it and/or modify
+* it under the terms of the BSD License.
+*
+* This script is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the BSD License
+* for more details.
+*
+* This copyright notice MUST APPEAR in all copies of the script.
+*****************************************************************************/
+
+
+/**
+ * Export manager for companies
+ */
+class TodoyuCompanyExportManager {
+
+	/**
+	 * Exports companies as csv - file
+	 *
+	 * @static
+	 * @param	$searchword
+	 */
+	public static function exportCSV($searchword) {
+		$persons	= TodoyuCompanyManager::searchCompany($searchword, null, '', '');
+
+		$exportData	= self::prepareDataForExport($persons);
+
+		$export = new TodoyuExportCSV($exportData);
+
+		$export->setFilename('todoyu_company_export_' . date('YmdHis') . '.csv');
+
+		$export->download();
+	}
+
+
+
+	/**
+	 * Prepares the given companies to be exported
+	 *
+	 * @static
+	 * @param	Array	$companies
+	 * @return	Array
+	 */
+	protected static function prepareDataForExport(array $companies) {
+		$exportData = array();
+
+		foreach($companies as $company)	{
+			$companyObj	= TodoyuCompanyManager::getCompany($company['id']);
+
+			$companyObj->loadForeignData();
+			$exportData[]	= self::parseDataForExport($companyObj);
+		}
+
+		return $exportData;
+	}
+
+
+
+	/**
+	 * Parses company-data for export
+	 *
+	 * @static
+	 * @param	TodoyuCompany	$company
+	 * @return	Array
+	 */
+	protected static function parseDataForExport(TodoyuCompany $company) {
+		
+		$exportData = array(
+			'id[Label]'		=> $company->id,
+			TodoyuLabelManager::getLabel('LLL:core.date_create')					=> TodoyuTime::format($company->date_create),
+			TodoyuLabelManager::getLabel('LLL:core.date_update')					=> TodoyuTime::format($company->date_update),
+			TodoyuLabelManager::getLabel('LLL:core.id_person_create')				=> TodoyuPersonManager::getPerson($company->id_person_create)->getFullName(),
+
+			TodoyuLabelManager::getLabel('LLL:contact.company.attr.title')			=> $company->title,
+			TodoyuLabelManager::getLabel('LLL:contact.company.attr.shortname')		=> $company->shortname,
+
+			TodoyuLabelManager::getLabel('LLL:contact.company.attr.is_internal')	=> $company->is_internal ? TodoyuLabelManager::getLabel('LLL:core.yes') : TodoyuLabelManager::getLabel('LLL:core.no'),
+		);
+
+		// map & prepare contactinfo records of company
+		foreach( $company->contactinfo as $index => $contactinfo ) {
+			$prefix			= TodoyuLabelManager::getLabel('LLL:contact.contactinfo') . '_' . ($index + 1) . '_';
+			$contactinfoObj	= TodoyuContactInfoManager::getContactinfo($contactinfo['id']);
+
+			$exportData[$prefix . TodoyuLabelManager::getLabel('LLL:contact.contactinfo.attr.type')]	= $contactinfoObj->getTypeLabel();
+			$exportData[$prefix . TodoyuLabelManager::getLabel('LLL:contact.contactinfo.attr.info')]	= $contactinfo['info'];
+			$exportData[$prefix . TodoyuLabelManager::getLabel('LLL:form.is_preferred')]				= $contactinfo['preferred'] ? TodoyuLabelManager::getLabel('LLL:core.yes') : TodoyuLabelManager::getLabel('LLL:core.no');
+		}
+
+		// map & prepare address records of company
+		foreach( $company->address as $index => $address) {
+			$prefix			= TodoyuLabelManager::getLabel('LLL:contact.address') . '_' . ($index + 1) . '_';
+			$addressObj		= TodoyuAddressManager::getAddress($address['id']);
+
+			$exportData[$prefix . TodoyuLabelManager::getLabel('LLL:contact.address.attr.addresstype')]	= TodoyuAddressTypeManager::getAddressTypeLabel($address['id_addresstype']);
+			$exportData[$prefix . TodoyuLabelManager::getLabel('LLL:contact.address.attr.street')]		= $address['street'];
+			$exportData[$prefix . TodoyuLabelManager::getLabel('LLL:contact.address.attr.postbox')]		= $address['postbox'];
+			$exportData[$prefix . TodoyuLabelManager::getLabel('LLL:contact.address.attr.zip')]			= $address['zip'];
+			$exportData[$prefix . TodoyuLabelManager::getLabel('LLL:contact.address.attr.city')]		= $address['city'];
+			$exportData[$prefix . TodoyuLabelManager::getLabel('LLL:contact.address.attr.region')]		= $addressObj->getRegionLabel();
+			$exportData[$prefix . TodoyuLabelManager::getLabel('LLL:contact.address.attr.country')]		= $addressObj->getCountry()->getLabel();
+			$exportData[$prefix . TodoyuLabelManager::getLabel('LLL:form.is_preferred')]				= $address['is_preferred'] ? TodoyuLabelManager::getLabel('LLL:core.yes') : TodoyuLabelManager::getLabel('LLL:core.no');
+			$exportData[$prefix . TodoyuLabelManager::getLabel('LLL:contact.address.attr.comment')]		= $address['comment'];
+		}
+
+		// map & prepare employee records of company
+		foreach( $company->getEmplyeesRecords() as $index => $person ) {
+			$exportData[TodoyuLabelManager::getLabel('LLL:contact.company.attr.person') . '_' . ($index + 1)]	= $person['firstname'] . ' ' . $person['lastname'];
+		}
+
+		return $exportData;
+	}
+}
+
+?>

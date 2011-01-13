@@ -527,12 +527,12 @@ class TodoyuPersonManager {
 		$table	= self::TABLE;
 		$where	= ' deleted = 0';
 		$order	= 'lastname';
-		$limit	= intval($offset) . ',' . intval($size);
+		$limit	= ($size != '') ? intval($offset) . ',' . intval($size) : '';
 
 		$swords	= TodoyuArray::trimExplode(' ', $sword);
 		if( sizeof($swords) > 0 ) {
 			$searchFields	= is_null($searchFields) ? array('username', 'email', 'firstname', 'lastname', 'shortname') : $searchFields;
-
+			
 			$where	.= ' AND ' . Todoyu::db()->buildLikeQuery($swords, $searchFields);
 		}
 

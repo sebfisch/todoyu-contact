@@ -298,5 +298,18 @@ class TodoyuPerson extends TodoyuBaseObject {
 		return $data;
 	}
 
+
+
+	/**
+	 * Parses the salutation to label
+	 *
+	 * @return	String
+	 */
+	public function getSalutationLabel() {
+		$salutation = $this->salutation == 'w' ? 'f' : $this->salutation;
+
+		return TodoyuLabelManager::getLabel('LLL:contact.person.attr.salutation.'.$salutation);
+	}
+
 }
 ?>

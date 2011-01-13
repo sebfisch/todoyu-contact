@@ -460,7 +460,7 @@ class TodoyuCompanyManager {
 		$where	= ' deleted = 0';
 		$table 	= self::TABLE;
 		$order	= 'title';
-		$limit	= intval($offset) . ',' . intval($size);
+		$limit	= ($size != '') ? intval($offset) . ',' . intval($size) : '';
 
 		$sWords	= TodoyuArray::trimExplode(' ', $sWord);
 		if( sizeof($sWords) ) {

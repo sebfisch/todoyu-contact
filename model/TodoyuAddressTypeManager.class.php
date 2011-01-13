@@ -46,7 +46,21 @@ class TodoyuAddressTypeManager {
 	public static function getAddressType($idAddressType) {
 		$idAddressType	= intval($idAddressType);
 
-		return Todoyu::$CONFIG['EXT']['contact']['addressTypes'][$idAddressType];
+		return Todoyu::$CONFIG['EXT']['contact']['addresstypes'][($idAddressType-1)];
+	}
+
+
+
+	/**
+	 * 
+	 *
+	 * @static
+	 * @param	Integer	$idAddressType
+	 * @return	String
+	 */
+	public static function getAddressTypeLabel($idAddressType) {
+		$addressType = self::getAddressType($idAddressType);
+		return TodoyuLabelManager::getLabel($addressType['label']);
 	}
 
 }
