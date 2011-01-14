@@ -94,7 +94,7 @@ class TodoyuContactPreferences {
 		$tab	= self::getPref('tab');
 
 		if( $tab === false ) {
-			$tabs	= TodoyuTabManager::getTabs(Todoyu::$CONFIG['EXT']['contact']['tabs']);
+			$tabs	= TodoyuTabManager::getAllowedTabs(Todoyu::$CONFIG['EXT']['contact']['tabs']);
 			$tab	= $tabs[0]['id'];
 		}
 
