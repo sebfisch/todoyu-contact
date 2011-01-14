@@ -22,17 +22,17 @@ Todoyu.Ext.contact.PanelWidget.ContactExport = {
 
 
 	/**
-	 * 
+	 *
 	 */
 	ext: Todoyu.Ext.contact,
 
 
 
 	/**
-	 * 
+	 *
 	 * @param type
 	 */
-	export: function() {
+	exportResults: function() {
 		var options = {
 			'action':		'export',
 			'tab':			Todoyu.Tabs.getActive('contact').id.replace('contact-tab-',''),
