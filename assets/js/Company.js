@@ -116,7 +116,7 @@ Todoyu.Ext.contact.Company =  {
 	/**
 	 * Handler being evoked OnComplete of save company request: check for and notify success / error, update display
 	 *
-	 * @param	{Object}	response
+	 * @param	{Ajax.Response}		response
 	 */
 	onSaved: function(response) {
 		var error	= response.hasTodoyuError();
@@ -205,8 +205,8 @@ Todoyu.Ext.contact.Company =  {
 	/**
 	 * Handler evoked upon onComplete of saving from wizard. Check and notify success / error, update display
 	 *
-	 * @param	{String}	target
-	 * @param	{Object}	response
+	 * @param	{String}			target
+	 * @param	{Ajax.Response}		response
 	 */
 	onSavedWizard: function(target, response) {
 		var error	= response.hasTodoyuError();

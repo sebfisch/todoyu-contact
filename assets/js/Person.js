@@ -60,8 +60,8 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * On edit (person) handler
 	 *
-	 * @param	{Number}		idPerson
-	 * @param	{Object}		response
+	 * @param	{Number}			idPerson
+	 * @param	{Ajax.Response}		response
 	 */
 	onEdit: function(idPerson, response) {
 		this.initEditForm(idPerson);
@@ -123,8 +123,8 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Handler being evoked after onComplete of person deletion: update listing display
 	 *
-	 * @param	{Number}		idPerson
-	 * @param	{Object}		response
+	 * @param	{Number}			idPerson
+	 * @param	{Ajax.Response}		response
 	 */
 	onRemoved: function(idPerson, response) {
 		this.showList(this.ext.PanelWidget.ContactSearch.getValue());
@@ -316,8 +316,8 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Handler evoked upon onComplete of saving from wizard. Check and notify success / error, update display
 	 *
-	 * @param	{String}	target
-	 * @param	{Object}	response
+	 * @param	{String}			target
+	 * @param	{Ajax.Response}		response
 	 */
 	onSavedWizard: function(target, response) {
 		var error	= response.hasTodoyuError();

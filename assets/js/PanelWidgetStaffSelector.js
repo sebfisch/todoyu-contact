@@ -292,7 +292,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	/**
 	 * Handler being called after saving of prefs
 	 * 
-	 * @param	{Object}	response
+	 * @param	{Ajax.Response}		response
 	 */
 	onPrefsSaved: function(response) {
 		Todoyu.PanelWidget.fire('staffselector', this.getSelectedPersons());

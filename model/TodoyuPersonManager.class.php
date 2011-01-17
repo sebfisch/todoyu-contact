@@ -476,7 +476,7 @@ class TodoyuPersonManager {
 
 	/**
 	 * Get preferred email of a person
-	 * First check system email, than check contactinfos. Look for preferred emails
+	 * First check system email, than check "contactinfo" records. Look for preferred emails
 	 *
 	 * @param	Integer		$idPerson
 	 * @return	String
@@ -497,7 +497,6 @@ class TodoyuPersonManager {
 
 		return $email;
 	}
-
 
 
 

@@ -61,8 +61,8 @@ Todoyu.Ext.contact.Address = {
 	 * Fills the found options to the selector
 	 * Highlights the selector for 2 seconds
 	 *
-	 * @param	{String}	idTarget
-	 * @param	{Object}	response
+	 * @param	{String}			idTarget
+	 * @param	{Ajax.Response}		response
 	 */
 	onUpdateCompanyAddressRecords: function(idTarget, response) {
 		$(idTarget).innerHTML = response.responseText;
