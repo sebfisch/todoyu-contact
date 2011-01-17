@@ -72,7 +72,7 @@ Todoyu.Ext.contact.PanelWidget.StaffList = {
 	/**
 	 * Handler for keyup events of full-text search input field
 	 *
-	 * @param	{Object}		event
+	 * @param	{Event}		event
 	 */
 	onFulltextKeyup: function(event) {
 		this.clearTimeout();
@@ -86,7 +86,7 @@ Todoyu.Ext.contact.PanelWidget.StaffList = {
 	/**
 	 * Click event handler for person: save pref, execute callbacks
 	 *
-	 * @param	{Object}		event
+	 * @param	{Event}		event
 	 */
 	onPersonClick: function(event) {
 		var listElement = event.findElement('li');
@@ -168,7 +168,7 @@ Todoyu.Ext.contact.PanelWidget.StaffList = {
 	/**
 	 * Handler to be evoked after refresh of project list panelWidget
 	 *
-	 * @param	{Object}  response
+	 * @param	{Ajax.Response}		response
 	 */
 	onUpdated: function(response) {
 		this.observePersons();

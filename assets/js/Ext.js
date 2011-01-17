@@ -36,8 +36,8 @@ Todoyu.Ext.contact = {
 	/**
 	 * Handler to be called on selecting tabs of contact
 	 * 
-	 * @param	{Object}		event
-	 * @param	{String}		tab
+	 * @param	{Event}		event
+	 * @param	{String}	tab
 	 */
 	onTabSelect: function(event, tab) {
 		this[tab.capitalize()].showList(Todoyu.Ext.contact.PanelWidget.ContactSearch.getValue());
