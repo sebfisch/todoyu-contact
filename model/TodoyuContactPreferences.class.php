@@ -142,7 +142,7 @@ class TodoyuContactPreferences {
 	 * @return	String
 	 */
 	public static function getLocale() {
-		return self::getPref('locale');
+		return TodoyuPreferenceManager::getPreference(0, 'locale');
 	}
 
 
@@ -155,7 +155,7 @@ class TodoyuContactPreferences {
 	public static function saveLocale($locale) {
 		$locale	= trim($locale);
 
-		self::savePref('locale', $locale, 0, true);
+		TodoyuPreferenceManager::savePreference(0, 'locale', $locale, 0, true);
 	}
 
 
