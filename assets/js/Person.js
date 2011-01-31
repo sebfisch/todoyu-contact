@@ -135,7 +135,7 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Start observation of modification of first- / lastname input fields (evoke auto-generation of shortname than)
 	 *
-	 * @param	Integer		idPerson
+	 * @param	{Number}		idPerson
 	 */
 	observeFieldsForShortname: function(idPerson) {
 		$('person-' + idPerson + '-field-lastname').observe('keyup', this.generateShortName.bindAsEventListener(this, idPerson));

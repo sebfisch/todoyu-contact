@@ -31,7 +31,7 @@ Todoyu.Ext.contact.QuickCreateCompany = {
 	/**
 	 * Save company
 	 *
-	 * @param	form
+	 * @param	{Element}		form
 	 * @return	{Boolean}		false
 	 */
 	save: function(form) {

@@ -531,7 +531,7 @@ class TodoyuPersonManager {
 		$swords	= TodoyuArray::trimExplode(' ', $sword);
 		if( sizeof($swords) > 0 ) {
 			$searchFields	= is_null($searchFields) ? array('username', 'email', 'firstname', 'lastname', 'shortname') : $searchFields;
-			
+
 			$where	.= ' AND ' . Todoyu::db()->buildLikeQuery($swords, $searchFields);
 		}
 
