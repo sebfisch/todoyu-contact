@@ -28,10 +28,10 @@ class TodoyuPersonExportManager {
 	 * Exports persons as csv - file
 	 *
 	 * @static
-	 * @param	$searchword
+	 * @param	$searchWord
 	 */
-	public static function exportCSV($searchword) {
-		$persons	= TodoyuPersonManager::searchPersons($searchword, null, '', '');
+	public static function exportCSV($searchWord) {
+		$persons	= TodoyuPersonManager::searchPersons($searchWord, null, '', '');
 
 		$exportData	= self::prepareDataForExport($persons);
 
@@ -93,12 +93,12 @@ class TodoyuPersonExportManager {
 
 		);
 
-		// map & prepare company records of person
+			// Map & prepare company records of person
 		foreach( $person->company as $index => $company ) {
 			$exportData[TodoyuLabelManager::getLabel('LLL:contact.person.attr.company') . '_' . ($index + 1)]	= $company['title']; 
 		}
 
-		// map & prepare contactinfo records of person
+			// Map & prepare contactinfo records of person
 		foreach( $person->contactinfo as $index => $contactinfo ) {
 			$prefix			= TodoyuLabelManager::getLabel('LLL:contact.contactinfo') . '_' . ($index + 1) . '_';
 			$contactinfoObj	= TodoyuContactInfoManager::getContactinfo($contactinfo['id']);
@@ -108,7 +108,7 @@ class TodoyuPersonExportManager {
 			$exportData[$prefix . TodoyuLabelManager::getLabel('LLL:form.is_preferred')]				= $contactinfo['preferred'] ? TodoyuLabelManager::getLabel('LLL:core.yes') : TodoyuLabelManager::getLabel('LLL:core.no');
 		}
 
-		// map & prepare address records of person
+			// Map & prepare address records of person
 		foreach( $person->address as $index => $address) {
 			$prefix			= TodoyuLabelManager::getLabel('LLL:contact.address') . '_' . ($index + 1) . '_';
 			$addressObj		= TodoyuAddressManager::getAddress($address['id']);
@@ -124,7 +124,7 @@ class TodoyuPersonExportManager {
 			$exportData[$prefix . TodoyuLabelManager::getLabel('LLL:contact.address.attr.comment')]		= $address['comment'];
 		}
 
-		// map & prepare role records of person
+			// Map & prepare role records of person
 		foreach( $person->role as $index => $role) {
 			$exportData[TodoyuLabelManager::getLabel('LLL:core.role') . '_' . ($index + 1)]	= $role['title'];
 		}
