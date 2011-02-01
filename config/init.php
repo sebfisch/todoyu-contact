@@ -18,14 +18,24 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-// Add contact autoCompleters for data types company and person
+/* ---------------------------------------------
+	Add autocompleters for contact data types
+   --------------------------------------------- */
+	// Company
 TodoyuAutocompleter::addAutocompleter('company', 'TodoyuCompanyFilterDataSource::autocompleteCompanies', array('contact', 'general:use'));
+	// Person
 TodoyuAutocompleter::addAutocompleter('person', 'TodoyuPersonFilterDataSource::autocompletePersons', array('contact', 'general:use'));
+	// Jobtype
 TodoyuAutocompleter::addAutocompleter('jobtype', 'TodoyuJobTypeManager::autocompleteJobtypes', array('contact', 'general:use'));
 
+	// Add quickInfo callback for person labels
 TodoyuQuickinfoManager::addFunction('person', 'TodoyuContactQuickinfoManager::getQuickinfoPerson');
 
-// Categories of dynamic contact info types
+
+
+/* ---------------------------------------------
+	Categories of dynamic contact info types
+   --------------------------------------------- */
 Todoyu::$CONFIG['EXT']['contact']['contactinfotypecategories'] = array(
 	array(	// Email
 		'index'	=> CONTACT_INFOTYPE_CATEGORY_EMAIL,
@@ -41,7 +51,11 @@ Todoyu::$CONFIG['EXT']['contact']['contactinfotypecategories'] = array(
 	),
 );
 
-	// Types of addresses
+
+
+/* -----------------------
+	Types of addresses
+   ----------------------- */
 Todoyu::$CONFIG['EXT']['contact']['addresstypes'] = array(
 	array(	// Home address
 		'index'	=> 1,
@@ -62,7 +76,9 @@ Todoyu::$CONFIG['EXT']['contact']['numFavoriteCountries']	= 5;
 
 
 
-	// Sub tabs
+/* -------------------------------
+	Content Tabs Configuration
+   ------------------------------- */
 Todoyu::$CONFIG['EXT']['contact']['tabs'] = array(
 	array(
 		'id'		=> 'person',
@@ -78,15 +94,19 @@ Todoyu::$CONFIG['EXT']['contact']['tabs'] = array(
 
 Todoyu::$CONFIG['EXT']['contact']['defaultTypeTab'] = 'person';
 
+
+
+
 	// Load person foreign records data
 TodoyuFormHook::registerLoadData('ext/contact/config/form/person.xml', 'TodoyuContactManager::getPersonForeignRecordData');
 TodoyuFormHook::registerBuildForm('ext/contact/config/form/address.xml', 'TodoyuCompanyManager::hookAddTimezone');
 
 
 
-/**
-* Configure listings for persons
-*/
+/* ----------------------------------------
+	Configure contact data types listings
+   --------------------------------------- */
+	// Person
 Todoyu::$CONFIG['EXT']['contact']['listing']['person'] = array(
 'name'		=> 'person',
 'update'	=> 'contact/person/listing',
@@ -108,11 +128,7 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['person'] = array(
 )
 );
 
-
-
-/**
-* Configure listing for companies
-*/
+	// Company
 Todoyu::$CONFIG['EXT']['contact']['listing']['company'] = array(
 'name'		=> 'company',
 'update'	=> 'contact/company/listing',
@@ -132,13 +148,15 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['company'] = array(
 );
 
 
+
+/* ----------------------------
+	Configure panel widgets
+   ---------------------------- */
 	// Maximum persons in staff listing widget
 Todoyu::$CONFIG['EXT']['contact']['panelWidgetProjectList']['maxPersons']	= 30;
-
-	// Max size of person selector
+	// Max size of person selector widget
 Todoyu::$CONFIG['EXT']['contact']['panelWidgetStaffSelector'] = array(
 	'maxListSize'	=> 15
 );
-
 
 ?>
