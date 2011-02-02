@@ -56,6 +56,7 @@ class TodoyuCompanyManager {
 	}
 
 
+
 	/**
 	 * Get IDs of all companies marked as "internal"
 	 *

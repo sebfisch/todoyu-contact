@@ -69,6 +69,7 @@ class TodoyuPanelWidgetContactExport extends TodoyuPanelWidget implements Todoyu
 	}
 
 
+
 	/**
 	 * Renders the panel widget
 	 *
