@@ -2,6 +2,8 @@
 <labels>
 	<label index="ext.title">Контакт</label>
 	<label index="page.title">Контакти</label>
+	<label index="subMenuEntry.person">Особе</label>
+	<label index="subMenuEntry.company">Предузећа</label>
 	<label index="person">Особа</label>
 	<label index="persons">Особе</label>
 	<label index="company">Предузеће</label>

@@ -2,6 +2,8 @@
 <labels>
 	<label index="ext.title">Contact</label>
 	<label index="page.title">Contacts</label>
+	<label index="subMenuEntry.person">Persons</label>
+	<label index="subMenuEntry.company">Companies</label>
 	<label index="person">Person</label>
 	<label index="persons">Persons</label>
 	<label index="company">Company</label>

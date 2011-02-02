@@ -80,15 +80,19 @@ Todoyu::$CONFIG['EXT']['contact']['numFavoriteCountries']	= 5;
 	Content Tabs Configuration
    ------------------------------- */
 Todoyu::$CONFIG['EXT']['contact']['tabs'] = array(
-	array(
+	'person'	=> array(
+		'key'		=> 'person',
 		'id'		=> 'person',
 		'label'		=> 'LLL:contact.persons',
-		'require'	=> 'contact.general:area'
+		'require'	=> 'contact.general:area',
+		'position'	=> 105
 	),
-	array(
+	'company'	=> array(
+		'key'		=> 'company',
 		'id'		=> 'company',
 		'label'		=> 'LLL:contact.companys',
-		'require'	=> 'contact.general:area'
+		'require'	=> 'contact.general:area',
+		'position'	=> 110
 	)
 );
 

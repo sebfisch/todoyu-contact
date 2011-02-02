@@ -2,6 +2,8 @@
 <labels>
 	<label index="ext.title">Контакты</label>
 	<label index="page.title">Контакты</label>
+	<label index="subMenuEntry.person">Персоны</label>
+	<label index="subMenuEntry.company">Компании</label>
 	<label index="person">Персона</label>
 	<label index="persons">Персоны</label>
 	<label index="company">Компания</label>

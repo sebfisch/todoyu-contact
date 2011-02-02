@@ -2,6 +2,8 @@
 <labels>
 	<label index="ext.title">連絡先</label>
 	<label index="page.title">連絡先</label>
+	<label index="subMenuEntry.person">個人情報</label>
+	<label index="subMenuEntry.company">企業情報</label>
 	<label index="person">個人情報</label>
 	<label index="persons">個人情報</label>
 	<label index="company">企業情報</label>

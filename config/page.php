@@ -22,11 +22,12 @@
 if( /*(Todoyu::person()->isInternal() || TodoyuAuth::isAdmin()) &&*/ allowed('contact', 'general:area') ) {
 	TodoyuFrontend::addMenuEntry('contact', 'LLL:contact.page.title', '?ext=contact', 40);
 
-		// Add sub entries: person, company
+		// Add sub menu entries
 	if( allowed('contact', 'general:area') ) {
-		TodoyuFrontend::addSubmenuEntry('contact', 'contactPerson',		'LLL:contact.persons',	'?ext=contact&type=person', 105);
-		TodoyuFrontend::addSubmenuEntry('contact', 'contactCompany',	'LLL:contact.companys',	'?ext=contact&type=company', 110);
+		$subTabsConfig	= Todoyu::$CONFIG['EXT']['contact']['tabs'];
+		TodoyuFrontend::addSubMenuEntriesFromTabsConf('contact', 'contact', $subTabsConfig);
 	}
+
 }
 
 ?>
