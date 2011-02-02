@@ -42,7 +42,7 @@ class TodoyuContactExtActionController extends TodoyuActionController {
 		TodoyuPage::setTitle('LLL:contact.page.title');
 
 			// Get type from parameter or preferences
-		$type	= $params['type'];
+		$type	= isset($params['tab']) ? $params['tab'] : $params['type'];
 		if( empty($type) ) {
 			$type	= TodoyuContactPreferences::getActiveTab();
 		} else {
