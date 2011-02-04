@@ -26,8 +26,16 @@ Todoyu.Ext.contact.PanelWidget.StaffList = {
 	 */
 	ext: Todoyu.Ext.contact,
 
+	/**
+ 	 * @property	fulltextTimeout
+	 * @type		Object
+	 */
 	fulltextTimeout: null,
 
+	/**
+ 	 * @property	filters
+	 * @type		Object
+	 */
 	filters: {},
 
 

@@ -21,6 +21,8 @@ Todoyu.Ext.contact.QuickCreateCompany = {
 
 	/**
 	 * Evoked upon opening of company quick create wizard popup
+	 *
+	 * @method	onPopupOpened
 	 */
 	onPopupOpened: function() {
 

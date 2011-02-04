@@ -31,23 +31,49 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 
 	/**
 	 * Widget ID
+	 *
+	 * @property	id
+	 * @type		String
 	 */
 	id:		'contactSearch',
 
 	/**
-	 * Element references
+	 * Element reference for search input
+	 *
+	 * @property	input
+	 * @type		Element
 	 */
 	input:			null,
+
+	/**
+	 * Element reference for search form
+	 *
+	 * @property	form
+	 * @type		Element
+	 */
 	form:			null,
+
+	/**
+	 * Element reference for search clearButton
+	 *
+	 * @property	clearButton
+	 * @type		Element
+	 */
 	clearButton:	null,
 
 	/**
 	 * Delay time before sending search request
+	 *
+	 * @property	delayTime
+	 * @type		Number
 	 */
 	delayTime:	0.5,
 
 	/**
 	 * Timeout ID
+	 *
+	 * @property	timeout
+	 * @type		Object
 	 */
 	timeout:	null,
 

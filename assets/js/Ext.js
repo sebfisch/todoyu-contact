@@ -19,13 +19,24 @@
 
 Todoyu.Ext.contact = {
 
+	/**
+	 * @property	PanelWidget
+	 * @type		Object
+	 */
 	PanelWidget: {},
 
+	/**
+	 * @property	Headlet
+	 * @type		Object
+	 */
 	Headlet: {},
+
 
 
 	/**
 	 * Initialize
+	 *
+	 * @method	init
 	 */
 	init: function() {
 

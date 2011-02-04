@@ -19,6 +19,11 @@
 
 Todoyu.Ext.contact.PanelWidget.ContactExport = {
 
+	/**
+	 * Extension backlink
+	 *
+	 * @var	{Object}	ext
+	 */
 	ext: Todoyu.Ext.contact,
 
 
