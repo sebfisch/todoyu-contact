@@ -55,6 +55,8 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 
 	/**
 	 * Init the widget: install observers, initialize UI
+	 *
+	 * @method	init
 	 */
 	init: function() {
 		this.input		= $('panelwidget-' + this.id + '-sword');
@@ -69,6 +71,8 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 
 	/**
 	 * Install observers on input field and form
+	 *
+	 * @method	installObservers
 	 */
 	installObservers: function() {
 		this.input.observe('keyup', this.onKeyup.bindAsEventListener(this));
@@ -80,6 +84,7 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 	/**
 	 * KeyUp handler (on text entered)
 	 *
+	 * @method	onKeyup
 	 * @param	{Event}	event
 	 */
 	onKeyup: function(event) {
@@ -95,7 +100,8 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 	/**
 	 * Form submit handler (prevent normal submit)
 	 *
-	 * @param	{Event}	event
+	 * @method	onFormSubmit
+	 * @param	{Event}			event
 	 */
 	onFormSubmit: function(event) {
 		event.stop();
@@ -107,6 +113,7 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 	/**
 	 * Get current selected contact type (tab)
 	 *
+	 * @method	getType
 	 * @return	{String}		e.g. 'person' / 'company'
 	 */
 	getType: function() {
@@ -117,6 +124,8 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 
 	/**
 	 * Execute search request
+	 *
+	 * @method	search
 	 */
 	search: function() {
 		this.toggleClearButton();
@@ -130,6 +139,8 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 
 	/**
 	 * Get current search value
+	 *
+	 * @method	getValue
 	 */
 	getValue: function() {
 		return $F(this.input);
@@ -139,6 +150,8 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 
 	/**
 	 * Toggle clear button. Only visible if search text entered
+	 *
+	 * @method	toggleClearButton
 	 */
 	toggleClearButton: function() {
 		if( this.getValue().strip() === '' ) {
@@ -152,6 +165,8 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 
 	/**
 	 * Clear current timeout if set
+	 *
+	 * @method	clearTimeout
 	 */
 	clearTimeout: function() {
 		if( this.timeout !== null ) {
@@ -164,6 +179,8 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 
 	/**
 	 * Clear input field
+	 *
+	 * @method	clear
 	 */
 	clear: function() {
 		this.input.clear();

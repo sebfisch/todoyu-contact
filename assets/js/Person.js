@@ -40,6 +40,7 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Edit (person)
 	 *
+	 * @method	edit
 	 * @param	{Number}		idPerson
 	 */
 	edit: function(idPerson) {
@@ -60,6 +61,7 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * On edit (person) handler
 	 *
+	 * @method	onEdit
 	 * @param	{Number}			idPerson
 	 * @param	{Ajax.Response}		response
 	 */
@@ -72,6 +74,7 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Initialize edit form
 	 *
+	 * @method	initEditForm
 	 * @param	{Number}		idPerson
 	 */
 	initEditForm: function(idPerson) {
@@ -87,6 +90,7 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Toggle display of login related fields of given person
 	 *
+	 * @method	showLoginFields
 	 * @param	{Number}		idPerson
 	 * @param	{Event}		event
 	 */
@@ -101,6 +105,7 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Delete given person record
 	 *
+	 * @method	remove
 	 * @param	{Number}		idPerson
 	 */
 	remove: function(idPerson) {
@@ -123,6 +128,7 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Handler being evoked after onComplete of person deletion: update listing display
 	 *
+	 * @method	onRemoved
 	 * @param	{Number}			idPerson
 	 * @param	{Ajax.Response}		response
 	 */
@@ -135,6 +141,7 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Start observation of modification of first- / lastname input fields (evoke auto-generation of shortname than)
 	 *
+	 * @method	observeFieldForShortname
 	 * @param	{Number}		idPerson
 	 */
 	observeFieldsForShortname: function(idPerson) {
@@ -145,8 +152,9 @@ Todoyu.Ext.contact.Person =  {
 
 
 	/**
-	 * Generate person shortname from it's first- + lastname
+	 * Generate person short name from it's first- + lastname
 	 *
+	 * @method	generateShortName
 	 * @param	{Event}		event
 	 * @param	{Number}	idPerson
 	 */
@@ -164,6 +172,7 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Updates working location selector with options of chosen company
 	 *
+	 * @method	updateCompanyAdressRecords
 	 * @param	{Object}	inputField
 	 * @param	{Object}	selectedListElement
 	 * @param	{String}	baseID
@@ -195,6 +204,7 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Highlights the referenced selector of company address after updating the company-autocompleter
 	 *
+	 * @method	onUpdateCompanyAddressRecords
 	 * @param	{String}	idTarget
 	 */
 	onUpdateCompanyAddressRecords: function(addressList) {
@@ -210,6 +220,7 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Save person form
 	 *
+	 * @method	save
 	 * @param	{String}		form
 	 * @return	{Boolean}
 	 */
@@ -229,6 +240,7 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Handler evoked upon onComplete of person saving: check for and notify success / error, update display
 	 *
+	 * @method	onSaved
 	 * @param	{Array}		response
 	 */
 	onSaved: function(response) {
@@ -247,6 +259,8 @@ Todoyu.Ext.contact.Person =  {
 
 	/**
 	 * Close form by reloading the persons list
+	 *
+	 * @method	closeForm
 	 */
 	closeForm: function() {
 		this.showList(this.ext.PanelWidget.ContactSearch.getValue());
@@ -257,6 +271,7 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Show (filtered) persons list
 	 *
+	 * @method	showList
 	 * @param	{String}		sword		(search word)
 	 */
 	showList: function(sword) {
@@ -276,6 +291,7 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Show info popup to given person data
 	 *
+	 * @method	show
 	 * @param	{Number}		idPerson
 	 */
 	show: function(idPerson) {
@@ -295,6 +311,7 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Save person record from wizard
 	 *
+	 * @method	saveWizard
 	 * @param	{Object}		form
 	 * @param	{String}		target
 	 * @return	{Boolean}
@@ -316,6 +333,7 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Handler evoked upon onComplete of saving from wizard. Check and notify success / error, update display
 	 *
+	 * @method	onSaveWizard
 	 * @param	{String}			target
 	 * @param	{Ajax.Response}		response
 	 */
@@ -342,6 +360,8 @@ Todoyu.Ext.contact.Person =  {
 
 	/**
 	 * Cancel handling for wizard: close popup
+	 *
+	 * @method	cancelWizard
 	 */
 	cancelWizard: function() {
 		Todoyu.Popup.getLastPopup().close();

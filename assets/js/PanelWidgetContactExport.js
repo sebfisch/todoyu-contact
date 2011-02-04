@@ -19,18 +19,14 @@
 
 Todoyu.Ext.contact.PanelWidget.ContactExport = {
 
-
-
-	/**
-	 *
-	 */
 	ext: Todoyu.Ext.contact,
 
 
 
 	/**
+	 * Export contact results
 	 *
-	 * @param type
+	 * @method	exportResults
 	 */
 	exportResults: function() {
 		var options = {
@@ -41,4 +37,5 @@ Todoyu.Ext.contact.PanelWidget.ContactExport = {
 
 		Todoyu.goTo('contact', 'panelwidgetcontactexport', options , '', false);
 	}
+
 };

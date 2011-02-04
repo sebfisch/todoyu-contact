@@ -35,7 +35,8 @@ Todoyu.Ext.contact = {
 
 	/**
 	 * Handler to be called on selecting tabs of contact
-	 * 
+	 *
+	 * @method	onTabSelect
 	 * @param	{Event}		event
 	 * @param	{String}	tab
 	 */
@@ -47,7 +48,8 @@ Todoyu.Ext.contact = {
 
 	/**
 	 * Update contact page content with response of AJAX request with given URL + options
-	 * 
+	 *
+	 * @method	updateContent
 	 * @param	{String}		url
 	 * @param	{Array}		options
 	 */
@@ -59,7 +61,8 @@ Todoyu.Ext.contact = {
 
 	/**
 	 * Switch display of contacts type to given type
-	 * 
+	 *
+	 * @method	changeType
 	 * @param	{String}		type
 	 */
 	changeType: function(type) {
@@ -75,6 +78,7 @@ Todoyu.Ext.contact = {
 	/**
 	 * Save contact pref
 	 *
+	 * @method	savePref
 	 * @param	{String}	preference
 	 * @param	{String}	value
 	 * @param	{Number}	idItem

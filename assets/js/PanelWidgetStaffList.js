@@ -35,6 +35,7 @@ Todoyu.Ext.contact.PanelWidget.StaffList = {
 	/**
 	 * Initialize panelWidget
 	 *
+	 * @method	init
 	 * @param	{Object}		filters		Filter hash. Because of JSON, an (empty) array means no data
 	 */
 	init: function(filters) {
@@ -53,6 +54,8 @@ Todoyu.Ext.contact.PanelWidget.StaffList = {
 
 	/**
 	 * Install keyup event observer on full-text search input field
+	 *
+	 * @method	observeFulltext
 	 */
 	observeFulltext: function() {
 		$('panelwidget-stafflist-field-fulltext').observe('keyup', this.onFulltextKeyup.bindAsEventListener(this));
@@ -61,7 +64,9 @@ Todoyu.Ext.contact.PanelWidget.StaffList = {
 
 
 	/**
-	 * Install click event observer on items of persons list 
+	 * Install click event observer on items of persons list
+	 *
+	 * @method	observePersons
 	 */
 	observePersons: function() {
 		$('panelwidget-stafflist-list').observe('click', this.onPersonClick.bindAsEventListener(this));
@@ -72,6 +77,7 @@ Todoyu.Ext.contact.PanelWidget.StaffList = {
 	/**
 	 * Handler for keyup events of full-text search input field
 	 *
+	 * @method	onFulltextKeyup
 	 * @param	{Event}		event
 	 */
 	onFulltextKeyup: function(event) {
@@ -86,7 +92,8 @@ Todoyu.Ext.contact.PanelWidget.StaffList = {
 	/**
 	 * Click event handler for person: save pref, execute callbacks
 	 *
-	 * @param	{Event}		event
+	 * @method	onPersonClick
+	 * @param	{Event}			event
 	 */
 	onPersonClick: function(event) {
 		var listElement = event.findElement('li');
@@ -103,6 +110,8 @@ Todoyu.Ext.contact.PanelWidget.StaffList = {
 
 	/**
 	 * Clear (full-text) timeout
+	 *
+	 * @method	clearTimeout
 	 */
 	clearTimeout: function() {
 		clearTimeout(this.fulltextTimeout);
@@ -112,6 +121,8 @@ Todoyu.Ext.contact.PanelWidget.StaffList = {
 
 	/**
 	 * Install full-text timeout
+	 *
+	 * @method	startTimeout
 	 */
 	startTimeout: function() {
 		this.fulltextTimeout = this.update.bind(this).delay(0.3);
@@ -121,6 +132,8 @@ Todoyu.Ext.contact.PanelWidget.StaffList = {
 
 	/**
 	 * Get full-text input field value
+	 *
+	 * @method	getFulltext
 	 */
 	getFulltext: function() {
 		return $F('panelwidget-stafflist-field-fulltext');
@@ -131,6 +144,7 @@ Todoyu.Ext.contact.PanelWidget.StaffList = {
 	/**
 	 * Apply filter to staff list panelwidget
 	 *
+	 * @method	applyFilter
 	 * @param	{String}		name
 	 * @param	{String}		value
 	 * @param	{Boolean}		update
@@ -148,6 +162,8 @@ Todoyu.Ext.contact.PanelWidget.StaffList = {
 
 	/**
 	 * Refresh staff list panelWidget
+	 *
+	 * @method	update
 	 */
 	update: function() {
 		var url		= Todoyu.getUrl('contact', 'panelwidgetstafflist');
@@ -168,6 +184,7 @@ Todoyu.Ext.contact.PanelWidget.StaffList = {
 	/**
 	 * Handler to be evoked after refresh of project list panelWidget
 	 *
+	 * @method	onUpdated
 	 * @param	{Ajax.Response}		response
 	 */
 	onUpdated: function(response) {
@@ -179,6 +196,7 @@ Todoyu.Ext.contact.PanelWidget.StaffList = {
 	/**
 	 * Check whether given project is listed in panelWidget's project list
 	 *
+	 * @method	isPersonListed
 	 * @param	{Number}		idPerson
 	 * @return  {Boolean}
 	 */

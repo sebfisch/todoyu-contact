@@ -37,6 +37,7 @@ Todoyu.Ext.contact.Company =  {
 	/**
 	 * Edit given company
 	 *
+	 * @method	edit
 	 * @param	{Number}	idCompany
 	 */
 	edit: function(idCompany) {
@@ -54,6 +55,13 @@ Todoyu.Ext.contact.Company =  {
 
 
 
+	/**
+	 * On edit company handler
+	 *
+	 * @method	onEdit
+	 * @param	{Number}			idCompany
+	 * @param	{Ajax.Response}		response
+	 */
 	onEdit: function(idCompany, response) {
 
 	},
@@ -63,6 +71,7 @@ Todoyu.Ext.contact.Company =  {
 	/**
 	 * Confirm if really wanted and remove (delete) given company if
 	 *
+	 * @method	remove
 	 * @param	{Number}	idCompany
 	 */
 	remove: function(idCompany) {
@@ -85,6 +94,7 @@ Todoyu.Ext.contact.Company =  {
 	/**
 	 * Handle event after company deletion being performed
 	 *
+	 * @method	onRemoved
 	 * @param	{Ajax.Response}	response
 	 */
 	onRemoved: function(response) {
@@ -98,6 +108,7 @@ Todoyu.Ext.contact.Company =  {
 	/**
 	 * Save company record
 	 *
+	 * @method	save
 	 * @param	{String}		form
 	 */
 	save: function(form) {
@@ -116,6 +127,7 @@ Todoyu.Ext.contact.Company =  {
 	/**
 	 * Handler being evoked OnComplete of save company request: check for and notify success / error, update display
 	 *
+	 * @method	onSaved
 	 * @param	{Ajax.Response}		response
 	 */
 	onSaved: function(response) {
@@ -136,6 +148,8 @@ Todoyu.Ext.contact.Company =  {
 
 	/**
 	 * Close company form, update list view
+	 *
+	 * @method	closeForm
 	 */
 	closeForm: function() {
 		this.showList(this.ext.PanelWidget.ContactSearch.getValue());
@@ -146,6 +160,7 @@ Todoyu.Ext.contact.Company =  {
 	/**
 	 * Update company list
 	 *
+	 * @method	showList
 	 * @param	{String}		sword		(search word)
 	 */
 	showList: function(sword) {
@@ -165,6 +180,7 @@ Todoyu.Ext.contact.Company =  {
 	/**
 	 * Show detail view (popup) of given company
 	 *
+	 * @method	show
 	 * @param	{Number}		idCompany
 	 */
 	show: function(idCompany) {
@@ -181,9 +197,10 @@ Todoyu.Ext.contact.Company =  {
 
 
 
-		/**
+	/**
 	 * Save person record from wizard
 	 *
+	 * @method	saveWizard
 	 * @param	{Object}		form
 	 * @param	{String}		target
 	 * @return	{Boolean}
@@ -205,6 +222,7 @@ Todoyu.Ext.contact.Company =  {
 	/**
 	 * Handler evoked upon onComplete of saving from wizard. Check and notify success / error, update display
 	 *
+	 * @method	onSavedWizard
 	 * @param	{String}			target
 	 * @param	{Ajax.Response}		response
 	 */
@@ -231,6 +249,8 @@ Todoyu.Ext.contact.Company =  {
 
 	/**
 	 * Cancel handling for wizard: close popup
+	 *
+	 * @method	cancelWizard
 	 */
 	cancelWizard: function() {
 		Todoyu.Popup.getLastPopup().close();

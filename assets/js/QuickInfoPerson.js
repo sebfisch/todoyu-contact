@@ -45,6 +45,8 @@ Todoyu.Ext.contact.QuickInfoPerson = {
 
 	/**
 	 * Uninstall quickinfo for events
+	 *
+	 * @method	uninstall
 	 */
 	uninstall: function() {
 		Todoyu.QuickInfo.uninstall(this.selector);
@@ -55,6 +57,7 @@ Todoyu.Ext.contact.QuickInfoPerson = {
 	/**
 	 * Add a quickinfo to a single element
 	 *
+	 * @method	add
 	 * @param	{String}	idElement
 	 */
 	add: function(idElement) {
@@ -66,6 +69,7 @@ Todoyu.Ext.contact.QuickInfoPerson = {
 	/**
 	 * Remove a quickinfo from a single element
 	 *
+	 * @method	remove
 	 * @param	{String}	idElement
 	 */
 	remove: function(idElement) {
@@ -77,6 +81,7 @@ Todoyu.Ext.contact.QuickInfoPerson = {
 	/**
 	 * Get ID form observed element
 	 *
+	 * @method	getID
 	 * @param	{Element}	element
 	 * @param	{Event}		event
 	 */
@@ -89,6 +94,7 @@ Todoyu.Ext.contact.QuickInfoPerson = {
 	/**
 	 * Remove given calendar event quickinfo element from cache
 	 *
+	 * @method	removeFromCache
 	 * @param	{Number}	idPerson
 	 */
 	removeFromCache: function(idPerson) {

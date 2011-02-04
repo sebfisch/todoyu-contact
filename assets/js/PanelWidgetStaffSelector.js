@@ -55,6 +55,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	/**
 	 * Initialize widget. Link elements and set jobtype mapping
 	 *
+	 * @method	init
 	 * @param	{Object}		jobType2Persons
 	 */
 	init: function(jobType2Persons) {
@@ -70,6 +71,8 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 
 	/**
 	 * Install observers
+	 *
+	 * @method	installObservers
 	 */
 	installObservers: function() {
 		this.list.observe('change', this.onSelectionChange.bindAsEventListener(this));
@@ -82,6 +85,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	/**
 	 * Handler of person selection changes
 	 *
+	 * @method	onSelectionChange
 	 * @param	{Event}		event
 	 */
 	onSelectionChange: function(event) {
@@ -93,7 +97,8 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 
 	/**
 	 * Handler of jobtype selection changes
-	 * 
+	 *
+	 * @method	onJobtypeSelected
 	 * @param	{Event}		event
 	 */
 	onJobtypeSelected: function(event) {
@@ -105,7 +110,8 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 
 	/**
 	 * Handler of jobtype toggler changes
-	 * 
+	 *
+	 * @method	onJobtypeToggleChange
 	 * @param	{Event}		event
 	 */
 	onJobtypeToggleChange: function(event) {
@@ -133,6 +139,8 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 
 	/**
 	 * If widget has changed inform all listeners which persons are selected
+	 *
+	 * @method	onUpdate
 	 */
 	onUpdate: function() {
 		this.savePrefs();
@@ -143,6 +151,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	/**
 	 * Select all/no jobTypes
 	 *
+	 * @method	selectAllJobtypes
 	 * @param	{Boolean}		select
 	 */
 	selectAllJobtypes: function(select) {
@@ -157,7 +166,8 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	/**
 	 * Select all/no persons
 	 *
-	 * @param	{Boolean}		select
+	 * @method	selectAllPersons
+	 * @param	{Boolean}			select
 	 */
 	selectAllPersons: function(select) {
 		var selected = select === true;
@@ -171,7 +181,8 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	/**
 	 * Select (one or multiple) given persons
 	 *
-	 * @param	{Array}		personIDs
+	 * @method	selectPersons
+	 * @param	{Array}			personIDs
 	 */
 	selectPersons: function(personIDs) {
 		this.list.select('option').each(function(option){
@@ -185,6 +196,8 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 
 	/**
 	 * Select persons having selected job type assigned
+	 *
+	 * @method	selectPersonsByJobtype
 	 */
 	selectPersonsByJobtype: function() {
 		this.selectAllPersons(false);
@@ -208,6 +221,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	/**
 	 * Get all persons which have the requested job type
 	 *
+	 * @method	getJobtypePersons
 	 * @param	{Number}		jobType
 	 * @return	Array
 	 */
@@ -220,6 +234,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	/**
 	 * Get IDs of currently selected persons
 	 *
+	 * @method	getSelectedPersons
 	 * @return	Array
 	 */
 	getSelectedPersons: function() {
@@ -231,6 +246,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	/**
 	 * Get selected jobtypes
 	 *
+	 * @method	getSelectedJobtypes
 	 * @return	Array
 	 */
 	getSelectedJobtypes: function() {
@@ -244,6 +260,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	/**
 	 * Get number of select persons
 	 *
+	 * @method	getNumberOfSelectedPersons
 	 * @return	{Number}
 	 */
 	getNumberOfSelectedPersons: function() {
@@ -255,6 +272,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 	/**
 	 * Check if any person is currently selected
 	 *
+	 * @method	isAnyPersonSelected
 	 * @return	{Boolean}
 	 */
 	isAnyPersonSelected: function() {
@@ -265,7 +283,8 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 
 	/**
 	 * Check if jobtype is in multiselect mode
-	 * 
+	 *
+	 * @method	isMultiJobtypes
 	 * @return	{Boolean}
 	 */
 	isMultiJobtypes: function() {
@@ -276,6 +295,8 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 
 	/**
 	 * Store prefs
+	 *
+	 * @method	savePrefs
 	 */
 	savePrefs: function() {
 		var pref = Object.toJSON({
@@ -291,7 +312,8 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 
 	/**
 	 * Handler being called after saving of prefs
-	 * 
+	 *
+	 * @method	onPrefsSaved
 	 * @param	{Ajax.Response}		response
 	 */
 	onPrefsSaved: function(response) {

@@ -20,7 +20,7 @@
 Todoyu.Ext.contact.Autocomplete = {
 
 	/**
-	 * Handler when parenttask field is autocompleted
+	 * Handler when parent task field is autocompleted
 	 *
 	 * @param	{Ajax.Response}			response
 	 * @param	{Todoyu.Autocompleter}	autocompleter
@@ -36,6 +36,7 @@ Todoyu.Ext.contact.Autocomplete = {
 	/**
 	 * Handler when person field is autocompleted
 	 *
+	 * @method	onPersonAutocomplete
 	 * @param	{Ajax.Response}			response
 	 * @param	{Todoyu.Autocompleter}	autocompleter
 	 */
@@ -51,6 +52,7 @@ Todoyu.Ext.contact.Autocomplete = {
 	/**
 	 * Handler when company field is autocompleted
 	 *
+	 * @method	onCompanyAutocomplete
 	 * @param	{Ajax.Response}			response
 	 * @param	{Todoyu.Autocompleter}	autocompleter
 	 */

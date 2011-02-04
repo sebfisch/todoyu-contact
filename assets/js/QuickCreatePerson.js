@@ -30,6 +30,8 @@ Todoyu.Ext.contact.QuickCreatePerson = {
 
 	/**
 	 * Evoked upon opening of person quick create wizard popup
+	 *
+	 * @method	onPopupOpened
 	 */
 	onPopupOpened: function() {
 		this.person.onEdit(0);
@@ -40,6 +42,7 @@ Todoyu.Ext.contact.QuickCreatePerson = {
 	/**
 	 * Save person
 	 *
+	 * @method	save
 	 * @param	{String}		form
 	 */
 	save: function(form) {
@@ -58,6 +61,7 @@ Todoyu.Ext.contact.QuickCreatePerson = {
 	/**
 	 * Handler being evoked upon onComplete of person saving. Checks for and notify error / success, updates display
 	 *
+	 * @method	onSaved
 	 * @param	{Ajax.Response}		response
 	 */
 	onSaved: function(response) {

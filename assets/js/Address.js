@@ -32,6 +32,7 @@ Todoyu.Ext.contact.Address = {
 	/**
 	 * Sends Ajax request when the a country is selected to get its country zones
 	 *
+	 * @method	onChangeCountry
 	 * @param	{Object}	inputField
 	 * @param	{String}	referencedFieldName
 	 * @param	{String}	fieldNameToReplace
@@ -61,6 +62,7 @@ Todoyu.Ext.contact.Address = {
 	 * Fills the found options to the selector
 	 * Highlights the selector for 2 seconds
 	 *
+	 * @method	onUpdateCompanyAddressRecords
 	 * @param	{String}			idTarget
 	 * @param	{Ajax.Response}		response
 	 */
