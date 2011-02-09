@@ -18,6 +18,7 @@ contact 1.1.0 (requires core >= 2.1) - not released yet
    	* Feature: Added create - wizard for companies - auto - completer (person + project)
    	* Feature: Changed locale format
 
+
 contact 1.0.7 - not released yet
 	* Feature: Added changelog
 	* Feature: Added (empty still) locale files for spanish (columbia) locales to come of extensions
