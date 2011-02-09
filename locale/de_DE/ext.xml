@@ -14,6 +14,8 @@
 	<label index="company.new">Neue Firma</label>
 	<label index="create.person.label">Neue Person</label>
 	<label index="create.company.label">Neue Firma</label>
+	<label index="contactimage.upload">Bild hochladen</label>
+	<label index="contactimage.upload.success">Bild wurde erfolgreich hochgeladen</label>
 	<label index="person.create">Neue Person hinzufügen</label>
 	<label index="person.edit">Person bearbeiten</label>
 	<label index="person.delete">Person löschen</label>
@@ -39,6 +41,9 @@
 	<label index="person.attr.email">Email</label>
 	<label index="person.attr.is_admin">Hat Administratorrechte</label>
 	<label index="person.attr.role.new">Neue Rolle</label>
+	<label index="person.attr.image.upload">Profilbild hochladen</label>
+	<label index="person.mainpersondata">Personen Daten</label>
+	<label index="person.userinformation">Benutzerinformationen</label>
 	<label index="company.edit">Firma bearbeiten</label>
 	<label index="company.delete">Firma löschen</label>
 	<label index="company.delete.confirm">Diese Firma löschen?</label>
@@ -56,6 +61,8 @@
 	<label index="company.attr.person.jobtype.noJobtypes">Keine Beschäftigungsarten verfügbar</label>
 	<label index="company.noAddress">Keine Adressen verfügbar</label>
 	<label index="company.employees">Angestellte</label>
+	<label index="company.attr.image.upload">Firmenlogo hochladen</label>
+	<label index="company.maincompanydata">Allgemeine Information</label>
 	<label index="contactinfo">Kontaktinformation</label>
 	<label index="contactinfo.new">Neue Kontaktinformation</label>
 	<label index="contactinfo.attr.type">Informationstyp</label>
@@ -109,4 +116,5 @@
 	<label index="person.search.mode">Suche Personen</label>
 	<label index="company.search.title">Firmen</label>
 	<label index="company.search.mode">Suche Firmen</label>
+	<label index="other">Weiter Informationen</label>
 </labels>

@@ -49,7 +49,7 @@ class TodoyuPersonManager {
 		$form->setAttribute('action', '?ext=contact&amp;controller=quickcreateperson');
 		$form->setAttribute('onsubmit', 'return false');
 		$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Ext.contact.QuickCreatePerson.save(this.form)');
-		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Popup.close(\'quickcreate\')');
+		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Ext.contact.Person.removeUnusedImages(this.form);Todoyu.Popup.close(\'quickcreate\')');
 
 			// Make sure that birthday field isn't set to default
 		$form->setFieldFormData('birthday', false);
@@ -254,6 +254,12 @@ class TodoyuPersonManager {
 		if( $idPerson === 0 ) {
 			$idPerson = self::addPerson();
 		}
+
+		if( $data['image_id'] != 0 ) {
+			TodoyuContactImageManager::renameStorageFolder('person', $data['image_id'], $idPerson);
+		}
+
+		unset($data['image_id']);
 
 			// Update/set password?
 		if( strlen($data['password']) > 0 ) {
@@ -886,7 +892,7 @@ class TodoyuPersonManager {
 					ext_contact_mm_company_person mm';
 		$where	= '		mm.id_company	= c.id
 					AND	mm.id_person	= ' . $idPerson .
-				  ' AND c.deleted 		= 0';
+				  ' AND c.deleted 		= 0 ';
 
 		return Todoyu::db()->getArray($fields, $tables, $where);
 	}
@@ -1044,5 +1050,17 @@ class TodoyuPersonManager {
 		return Todoyu::db()->getArray($fields, $tables, $where);
 	}
 
+
+	
+	/**
+	 * Gets the preview image for the form
+	 *
+	 * @static
+	 * @param	FormElement_Comment	$formElement
+	 * @return	String
+	 */
+	public static function getPreviewImageForm(TodoyuFormElement_Comment $formElement)	{
+		return TodoyuContactImageManager::renderImageForm($formElement, 'person');
+	}
 }
 ?>

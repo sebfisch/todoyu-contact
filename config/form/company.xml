@@ -6,6 +6,7 @@
 	</attributes>
 	<hiddenFields>
 		<field name="id" />
+		<field name="image_id" />
 	</hiddenFields>
 	<fieldsets>
 		<fieldset name="main">
@@ -80,13 +81,31 @@
 			</elements>
 		</fieldset>
 
+		<fieldset name="image">
+			<legend>Logo</legend>
+			<elements>
+
+				<field type="comment" name="preview">
+					<comment type="function">
+						<function>TodoyuCompanyManager::getPreviewImageForm</function>
+					</comment>
+				</field>
+				<field type="button" name="upload">
+					<text>LLL:contact.company.attr.image.upload</text>
+					<class>buttonUploadContactImage</class>
+					<onclick>Todoyu.Ext.contact.Upload.showUploadForm(this.form, 'company')</onclick>
+				</field>
+
+			</elements>
+		</fieldset>
+
 		<fieldset name="buttons">
 			<legend>Actions</legend>
 			<class>buttons</class>
 			<elements>
 
 				<field type="cancelButton" name="cancel">
-					<onclick>Todoyu.Ext.contact.Company.closeForm()</onclick>
+					<onclick>Todoyu.Ext.contact.Company.closeForm(this.form)</onclick>
 				</field>
 
 				<field type="saveButton" name="save">

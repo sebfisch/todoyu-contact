@@ -50,7 +50,7 @@ class TodoyuCompanyManager {
 		$form->setAttribute('action', '?ext=contact&amp;controller=quickcreatecompany');
 		$form->setAttribute('onsubmit', 'return false');
 		$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Ext.contact.QuickCreateCompany.save(this.form)');
-		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Popup.close(\'quickcreate\')');
+		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Ext.contact.Company.removeUnusedImages(this.form);Todoyu.Popup.close(\'quickcreate\')');
 
 		return $form;
 	}
@@ -129,6 +129,12 @@ class TodoyuCompanyManager {
 		if( $idCompany === 0 ) {
 			$idCompany	= self::addCompany();
 		}
+		
+		if( $data['image_id'] != 0 ) {
+			TodoyuContactImageManager::renameStorageFolder('company', $data['image_id'], $idCompany);
+		}
+
+		unset($data['image_id']);
 
 			// Save own external fields
 		$data	= self::saveCompanyForeignRecords($data, $idCompany);
@@ -671,6 +677,19 @@ class TodoyuCompanyManager {
 	 */
 	public static function hookAddTimezone(TodoyuForm $form) {
 		$form->addElementsFromXML('ext/contact/config/form/address-timezone.xml');
+	}
+
+
+
+	/**
+	 * Gets the preview image for the form
+	 *
+	 * @static
+	 * @param	FormElement_Comment	$formElement
+	 * @return	String
+	 */
+	public static function getPreviewImageForm(TodoyuFormElement_Comment $formElement)	{
+		return TodoyuContactImageManager::renderImageForm($formElement, 'company');
 	}
 }
 

@@ -163,4 +163,20 @@ Todoyu::$CONFIG['EXT']['contact']['panelWidgetStaffSelector'] = array(
 	'maxListSize'	=> 15
 );
 
+
+
+/* ----------------------------
+	Configure Contact Images
+   ---------------------------- */
+	//configuration of the contact-image
+Todoyu::$CONFIG['EXT']['contact']['contactimage'] = array(
+	'pathperson'	=> 'files/contact/person',
+	'pathcompany'	=> 'files/contact/company',
+	'max_file_size'	=> 250000,
+	'dimension'		=> array(
+		'x'	=> 100,
+		'y'	=> 100
+	)
+);
+
 ?>

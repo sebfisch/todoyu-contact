@@ -124,7 +124,6 @@ function Dwoo_Plugin_countryName(Dwoo $dwoo, $idCountry) {
 
 
 
-
 /**
  * Returns the label of the address type with given id
  *
@@ -134,6 +133,51 @@ function Dwoo_Plugin_countryName(Dwoo $dwoo, $idCountry) {
  */
 function Dwoo_Plugin_addressType_compile(Dwoo_Compiler $compiler, $idAddressType)	{
 	return 'TodoyuAddressManager::getAddresstypeLabel(' . $idAddressType . ')';
+}
+
+
+
+/**
+ * Returns the salutation Label of a person
+ *
+ * @param	Dwoo $dwoo
+ * @param	Integer	$idPerson
+ * @return	String
+ */
+function Dwoo_Plugin_salutationLabel(Dwoo $dwoo, $idPerson) {
+	$idPerson	= intval($idPerson);
+	
+	if($idPerson > 0) {
+		return TodoyuPersonManager::getPerson($idPerson)->getSalutationLabel();
+	}
+
+	return '';
+}
+
+
+
+/**
+ * Renders the image of given person
+ *
+ * @param	Dwoo_Compiler	$compiler
+ * @param 	Integer			$idPerson
+ * @return	String
+ */
+function Dwoo_Plugin_personImage_compile(Dwoo_Compiler $compiler, $idPerson) {
+	return 'TodoyuContactImageManager::getImage(' . $idPerson . ', \'person\')';
+}
+
+
+
+/**
+ * Renders image of given company
+ *
+ * @param	Dwoo_Compiler	$compiler
+ * @param 	Integer			$idPerson
+ * @return	String
+ */
+function Dwoo_Plugin_companyImage_compile(Dwoo_Compiler $compiler, $idCompany) {
+	return 'TodoyuContactImageManager::getImage(' . $idCompany . ', \'company\')';
 }
 
 ?>

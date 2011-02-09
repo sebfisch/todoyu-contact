@@ -181,7 +181,12 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 		$idCompany	= intval($params['company']);
 		$type		= 'company';
 
-		return TodoyuContactRenderer::renderInfoPopupContent($type, $idCompany);
+		$tabs		= TodoyuContactRenderer::renderTabs('company');
+		$content	= TodoyuContactRenderer::renderInfoPopupContent($type, $idCompany);
+
+		$content	= TodoyuRenderer::renderContent($content, $tabs);
+
+		return TodoyuRequest::isAjaxRequest() ? $content : TodoyuContactRenderer::renderContactPage('company', $idCompany, '', $content);
 	}
 
 
@@ -280,7 +285,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 		} else {
 			TodoyuHeader::sendTodoyuErrorHeader();
 
-			$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Ext.contact.Company.cancelWizard();');
+			$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Ext.contact.Company.cancelWizard(this.form);');
 			$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Ext.contact.Company.saveWizard(this.form, \''.$idTarget.'\');');
 
 			return $form->render();
@@ -288,6 +293,45 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	}
 
 
+
+	/**
+	 * Renders the image - tag
+	 *
+	 * @param	Array	$params
+	 * @return	String
+	 */
+	public function loadimageAction(array $params)	{
+		$idImage	= $params['idImage'];
+
+		return TodoyuContactImageManager::getImage($idImage, 'company');
+	}
+
+
+
+	/**
+	 * Output of an image
+	 *
+	 * @param  $params
+	 * @return void
+	 */
+	public function renderimageAction(array $params)	{
+		$idPerson	= $params['idImage'];
+
+		TodoyuContactImageManager::renderImage($idPerson, 'company');
+	}
+
+
+
+	/**
+	 * Remove the given Image
+	 *
+	 * @param	$params
+	 */
+	public function removeimageAction(array $params)	{
+		$idImage	= $params['idImage'];
+
+		TodoyuContactImageManager::removeImage($idImage, 'company');
+	}
 }
 
 ?>

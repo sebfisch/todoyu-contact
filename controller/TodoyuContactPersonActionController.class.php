@@ -211,7 +211,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 
 
 	/**
-	 * Show person info
+	 * Show person info. If its an ajax call, just returns the main-content. Else it returns the whole rendered page.
 	 *
 	 * @param	Array		$params
 	 * @return	String
@@ -221,7 +221,15 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 
 		$idPerson	= intval($params['person']);
 
-		return TodoyuContactRenderer::renderPersonInfo($idPerson);
+
+		$content	= TodoyuContactRenderer::renderPersonInfo($idPerson);
+
+		if( TodoyuRequest::isAjaxRequest() ) {
+			$tabs		= TodoyuContactRenderer::renderTabs('person');
+			return TodoyuRenderer::renderContent($content, $tabs);
+		} else {
+			return TodoyuContactRenderer::renderContactPage('person', $idPerson, '', $content);
+		}
 	}
 
 
@@ -241,6 +249,47 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 		$content.= TodoyuContactRenderer::renderPersonEditFormWizard(0, $params['idField']);
 
 		return $content;
+	}
+
+
+
+	/**
+	 * Renders the image - tag
+	 *
+	 * @param	Array	$params
+	 * @return	String
+	 */
+	public function loadimageAction(array $params)	{
+		$idImage	= $params['idImage'];
+
+		return TodoyuContactImageManager::getImage($idImage, 'person');
+	}
+
+
+
+	/**
+	 * Output of an image
+	 *
+	 * @param  $params
+	 * @return void
+	 */
+	public function renderimageAction(array $params)	{
+		$idPerson	= $params['idImage'];
+
+		TodoyuContactImageManager::renderImage($idPerson, 'person');
+	}
+
+
+
+	/**
+	 * Remove the given Image
+	 *
+	 * @param	$params
+	 */
+	public function removeimageAction(array $params)	{
+		$idImage	= $params['idImage'];
+
+		TodoyuContactImageManager::removeImage($idImage, 'person');
 	}
 
 }

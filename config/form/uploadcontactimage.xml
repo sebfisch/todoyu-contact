@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<attributes>
+		<attribute name="action">index.php?ext=contact&amp;controller=formhandling&amp;action=uploadcontactimage</attribute>
+		<attribute name="name">uploadcontactimage</attribute>
+		<attribute name="target">upload-iframe-contactimage</attribute>
+	</attributes>
+	<hiddenFields>
+		<field name="MAX_FILE_SIZE" value="100000000" noWrap="true" noStorage="true" />
+		<field name="idContact" />
+		<field name="recordType" />
+	</hiddenFields>
+	<fieldsets>
+
+		<fieldset name="upload">
+			<legend>Upload</legend>
+			<class>uploadform</class>
+			<elements>
+
+				<field type="upload" name="file">
+					<label>contact.contactimage.upload</label>
+					<onchange>Todoyu.Ext.contact.Upload.upload(this.form)</onchange>
+				</field>
+
+				<field type="button" name="cancel">
+					<text>LLL:core.cancel</text>
+					<class>buttonCancel cancel</class>
+					<hasIcon />
+					<onclick>Todoyu.Ext.contact.Upload.removeUploadForm()</onclick>
+				</field>
+				
+			</elements>
+		</fieldset>
+
+	</fieldsets>
+</form>

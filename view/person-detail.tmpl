@@ -1,0 +1,81 @@
+<div id="contact-details" class="person">
+	<h5>{$fullname}</h5>
+
+	<div class="left main-person-data">
+		<h3>{Label LLL:contact.person.mainpersondata}</h3>
+		<dl class="nofloat">
+			<dd>{salutationLabel $id}</dd>
+			<dd>{$fullname}</dd>
+			<dd>{$email}</dd>
+		</dl>
+	</div>
+
+	<div class="right image">
+		{personImage $id}
+	</div>
+
+	<div class="clear contact-info">
+		<h3>{Label LLL:contact.contactinfo}</h3>
+		<dl>
+			{foreach $contactinfo numCi ciData}
+				<dt>{labelContactinfotype $ciData.id_contactinfotype}:</dt><dd>{htmlencode wordwrap($ciData.info 30 cut=false)}</dd>
+			{/foreach}
+		</dl>
+	</div>
+
+	<div class="clear addressPart">
+		{foreach $address numAddr addressType}
+			<div class="{if $numAddr%2}right{else}left{/if} address">
+				<h3>{addressType $addressType.id_addresstype}</h3>
+				{$addressType.street}<br />
+				{if strlen($addressType.postbox)>0}
+					{Label contact.address.attr.postbox}: {htmlencode wordwrap($addressType.postbox 30 cut=true)}<br />
+				{/if}
+				{$addressType.zip} {$addressType.city}<br />
+				{countryName $addressType.id_country}
+			</div>
+		{/foreach}
+	</div>
+
+	{foreach $company comp}
+		<div class="clear employer">
+			<h3><a href="{link 'contact' 'company' '&action=detail&company=$comp.id'}">{Label LLL:contact.person.attr.company}: {$comp.title}</a></h3>
+			<dl>
+				<dt>{Label LLL:contact.jobtype}:</dt><dd>{$comp.jobtype.title}</dd>
+				{if $comp.id_workaddress > 0}
+					<dt>{Label LLL:contact.workaddress}:</dt><dd>{$comp.workaddress.street}, {$comp.workaddress.zip} {$comp.workaddress.city}, {countryName $comp.workaddress.id_country}</dd>
+				{/if}
+			</dl>
+		</div>
+	{/foreach}
+
+	{if $active}
+	<div class="clear userinformations">
+		<h3>{Label LLL:contact.person.userinformation}</h3>
+		<dl>
+			<dt>{Label LLL:contact.person.attr.username}:</dt><dd>{$username}</dd>
+			<dt>{Label LLL:contact.person.attr.email}:</dt><dd>{$email}</dd>
+			<dt>{Label LLL:core.roles}:</dt>
+			<dd>
+				<dl class="nofloat">
+					{foreach $role roleItem}
+						<dd>{$roleItem.title}</dd>
+					{/foreach}
+				</dl>
+			</dd>
+			<dt>{Label LLL:contact.person.attr.is_admin}:</dt><dd>{if $is_admin}{Label LLL:core.yes}{else}{Label LLL:core.no}{/if}</dd>
+		</dl>
+
+
+	</div>
+	{/if}
+
+	{if $birthday != '0000-00-00'}
+		<div class="clear others">
+			<h3>{Label LLL:contact.other}</h3>
+			<dl>
+				<dt>{Label LLL:contact.person.attr.birthday}:</dt><dd>{$birthday}</dd>
+			</dl>
+		</div>
+	{/if}
+</div>

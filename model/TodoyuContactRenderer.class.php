@@ -34,6 +34,43 @@ class TodoyuContactRenderer {
 
 
 	/**
+	 * Renders the contact page. The content is given from controller
+	 *
+	 * @static
+	 * @param	String	$type
+	 * @param	Integer	$idRecord
+	 * @param	String	$searchWord
+	 * @param	String	$content
+	 * @return	String
+	 */
+	public static function renderContactPage($type, $idRecord, $searchWord, $content = '') {
+					// Set active tab
+		TodoyuFrontend::setActiveTab('contact');
+
+		TodoyuPage::init('ext/contact/view/ext.tmpl');
+		TodoyuPage::setTitle('LLL:contact.page.title');
+
+			// Save search word if provided
+		if( $searchWord !== '' ) {
+			TodoyuContactPreferences::saveSearchWord($searchWord);
+		} else {
+			$searchWord	= TodoyuContactPreferences::getSearchWord();
+		}
+
+		$panelWidgets 	= self::renderPanelWidgets();
+		$tabs 			= self::renderTabs($type);
+
+		TodoyuPage::set('panelWidgets', $panelWidgets);
+		TodoyuPage::set('tabs', $tabs);
+		TodoyuPage::set('content', $content);
+
+			// Display output
+		return TodoyuPage::render();
+	}
+
+
+
+	/**
 	 * Render the tab menu
 	 *
 	 * @param	String		$activeTab			e.g 'person' / 'company'
@@ -390,7 +427,7 @@ class TodoyuContactRenderer {
 		$idPerson	= intval($idPerson);
 		$person		= TodoyuPersonManager::getPerson($idPerson);
 
-		$tmpl	= 'ext/contact/view/info-person.tmpl';
+		$tmpl	= 'ext/contact/view/person-detail.tmpl';
 		$data	= $person->getTemplateData(true);
 
 		$companyIDs = $person->getCompanyIDs();
@@ -402,7 +439,7 @@ class TodoyuContactRenderer {
 		}
 
 		$data['email']	= $person->getEmail();
-
+		
 		return render($tmpl, $data);
 	}
 
@@ -417,7 +454,7 @@ class TodoyuContactRenderer {
 	public static function renderCompanyInfo($idCompany)	{
 		$idCompany = intval($idCompany);
 
-		$tmpl		= 'ext/contact/view/info-company.tmpl';
+		$tmpl		= 'ext/contact/view/company-detail.tmpl';
 		$company	= TodoyuCompanyManager::getCompany($idCompany);
 		$data		= $company->getTemplateData(true);
 
@@ -453,6 +490,60 @@ class TodoyuContactRenderer {
 		$tmpl	= 'ext/contact/view/company-actions.tmpl';
 		$data	= array(
 			'id'	=> intval($idCompany)
+		);
+
+		return render($tmpl, $data);
+	}
+
+
+
+	/**
+	 * @static
+	 * @return String
+	 */
+	public static function renderContactImageUploadForm($idRecord, $recordType)	{
+		$idRecord	= intval($idRecord);
+		
+				// Construct form object
+		$xmlPath	= 'ext/contact/config/form/uploadcontactimage.xml';
+		$form		= TodoyuFormManager::getForm($xmlPath);
+
+			// Set form data
+		$formData	= array(
+			'MAX_FILE_SIZE'	=> intval(Todoyu::$CONFIG['EXT']['contact']['contactimage']['max_file_size'])
+		);
+
+		$formData				= TodoyuFormHook::callLoadData($xmlPath, $formData);
+		$formData['idContact']	= $idRecord;
+		$formData['recordType']	= $recordType;
+
+		$form->setFormData($formData);
+		$form->setUseRecordID(false);
+
+
+			// Render form
+		$data	= array(
+			'formhtml'	=> $form->render()
+		);
+
+			// Render form wrapped via dwoo template
+		return render('ext/contact/view/contactimageuploadform.tmpl', $data);
+	}
+
+
+
+	/**
+	 * @static
+	 * @param  $recordType
+	 * @param  $idContact
+	 * @param  $idReplace
+	 * @return String
+	 */
+	public static function renderUploadFormFinished($recordType, $idContact, $idReplace)	{
+		$tmpl	= 'core/view/htmldoc.tmpl';
+		$data	= array(
+			'title'		=> 'Uploader IFrame',
+			'content'	=> TodoyuString::wrapScript('window.parent.Todoyu.Ext.contact.Upload.uploadFinished(\'' . $recordType . '\', ' . $idContact . ', \'' .$idReplace . '\');')
 		);
 
 		return render($tmpl, $data);

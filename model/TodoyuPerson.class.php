@@ -269,10 +269,28 @@ class TodoyuPerson extends TodoyuBaseObject {
 
 
 	/**
+	 * loads all employers of a person
+	 *
+	 * @return	Array
+	 */
+	public function getEmployers()	{
+		$employers	= TodoyuPersonManager::getPersonCompanyRecords($this->getID());
+
+		foreach($employers as $index => $employer)	{
+			$employers[$index]['workaddress'] = TodoyuAddressManager::getAddress($employer['id_workaddress']);
+			$employers[$index]['jobtype'] = TodoyuJobTypeManager::getJobType($employer['id_jobtype']);
+		}
+
+
+		return $employers;
+	}
+
+
+	/**
 	 * Load all foreign records of a person
 	 */
 	public function loadForeignData() {
-		$this->data['company']		= TodoyuPersonManager::getPersonCompanyRecords($this->getID());
+		$this->data['company']		= $this->getEmployers();
 		$this->data['contactinfo']	= TodoyuPersonManager::getContactinfoRecords($this->getID());
 		$this->data['address']		= TodoyuPersonManager::getAddressRecords($this->getID());
 		$this->data['role']			= TodoyuPersonManager::getRoles($this->getID());

@@ -1,6 +1,8 @@
 todoyu contact extension changelog
 
 contact 1.1.0 (requires core >= 2.1) - not released yet
+	* Feature: Better detail-view for person and company
+	* Feature: Profile images for person and company
 	* Feature: Cleanup (topical order and readability) of extension config (init.php) file
 	* Feature: Readability of ext init file
 	* Bugfix: Locale preferences problems in contact

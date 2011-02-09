@@ -3,10 +3,10 @@
 	<attributes>
 		<attribute name="action">?ext=contact&amp;controller=person</attribute>
 		<attribute name="name">person</attribute>
-
 	</attributes>
 	<hiddenFields>
-		<field name="id"/>
+		<field name="id" />
+		<field name="image_id" />
 	</hiddenFields>
 	<fieldsets>
 
@@ -51,6 +51,24 @@
 					<storeAsDate />
 				</field>
 
+			</elements>
+		</fieldset>
+
+		<fieldset name="image">
+			<legend>Image</legend>
+			<elements>
+				
+				<field type="comment" name="preview">
+					<comment type="function">
+						<function>TodoyuPersonManager::getPreviewImageForm</function>
+					</comment>
+				</field>
+				<field type="button" name="upload">
+					<text>LLL:contact.person.attr.image.upload</text>
+					<class>buttonUploadContactImage</class>
+					<onclick>Todoyu.Ext.contact.Upload.showUploadForm(this.form, 'person')</onclick>
+				</field>
+				
 			</elements>
 		</fieldset>
 
@@ -210,7 +228,7 @@
 			<elements>
 
 				<field type="cancelButton" name="cancel">
-					<onclick>Todoyu.Ext.contact.Person.closeForm()</onclick>
+					<onclick>Todoyu.Ext.contact.Person.closeForm(this.form)</onclick>
 				</field>
 
 				<field type="saveButton" name="save">

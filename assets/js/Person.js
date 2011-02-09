@@ -225,7 +225,7 @@ Todoyu.Ext.contact.Person =  {
 	 * @return	{Boolean}
 	 */
 	save: function(form) {
-		$(form).request ({
+		$(form).request({
 			'parameters': {
 				'action':	'save'
 			},
@@ -262,7 +262,8 @@ Todoyu.Ext.contact.Person =  {
 	 *
 	 * @method	closeForm
 	 */
-	closeForm: function() {
+	closeForm: function(form) {
+		this.removeUnusedImages(form);
 		this.showList(this.ext.PanelWidget.ContactSearch.getValue());
 	},
 
@@ -303,7 +304,7 @@ Todoyu.Ext.contact.Person =  {
 			}
 		};
 
-		Todoyu.Popup.openWindow('popupRecordInfo', 'Info', 420, url, options);
+		this.ext.updateContent(url, options);
 	},
 
 
@@ -363,8 +364,34 @@ Todoyu.Ext.contact.Person =  {
 	 *
 	 * @method	cancelWizard
 	 */
-	cancelWizard: function() {
+	cancelWizard: function(form) {
+		this.removeUnusedImages(form);
 		Todoyu.Popup.getLastPopup().close();
+	},
+
+
+
+	/**
+	 * 
+	 * @param form
+	 */
+	removeUnusedImages: function(form) {
+		if(form.down('[name = person[id]]').getValue() == 0) {
+			if(form.down('[name = person[image_id]]').getValue() != 0)	{
+				var idImage	= form.down('[name=person[image_id]]').getValue();
+				var url		= Todoyu.getUrl('contact', 'person');
+
+				var options = {
+					'parameters': {
+						'action':	'removeimage',
+						'idImage':	idImage
+					}
+				}
+
+				Todoyu.send(url, options);
+			}
+		}
 	}
+
 
 };

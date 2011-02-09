@@ -35,47 +35,26 @@ class TodoyuContactExtActionController extends TodoyuActionController {
 	public function defaultAction(array $params) {
 		restrict('contact', 'general:use');
 
-			// Set active tab
-		TodoyuFrontend::setActiveTab('contact');
+			// Get record id from param
+		$idRecord		= intval($params['id']);
+		$searchWord		= trim($params['sword']);
 
-		TodoyuPage::init('ext/contact/view/ext.tmpl');
-		TodoyuPage::setTitle('LLL:contact.page.title');
+		$type	= isset($params['tab']) ? $params['tab'] : $params['type'];
 
 			// Get type from parameter or preferences
-		$type	= isset($params['tab']) ? $params['tab'] : $params['type'];
 		if( empty($type) ) {
 			$type	= TodoyuContactPreferences::getActiveTab();
 		} else {
 			TodoyuContactPreferences::saveActiveTab($type);
 		}
 
-			// Get record id from param
-		$idRecord		= intval($params['id']);
-		$searchWord		= trim($params['sword']);
-
-			// Save search word if provided
-		if( $searchWord !== '' ) {
-			TodoyuContactPreferences::saveSearchWord($searchWord);
-		} else {
-			$searchWord	= TodoyuContactPreferences::getSearchWord();
-		}
-
-		$panelWidgets 	= TodoyuContactRenderer::renderPanelWidgets();
-		$tabs 			= TodoyuContactRenderer::renderTabs($type);
-
 		if( $idRecord !== 0 ) {
 			$content	= TodoyuContactRenderer::renderContactEdit($type, $idRecord);
 		} else {
 			$content	= TodoyuContactRenderer::renderContactList($type, $searchWord);
 		}
-
-
-		TodoyuPage::set('panelWidgets', $panelWidgets);
-		TodoyuPage::set('tabs', $tabs);
-		TodoyuPage::set('content', $content);
-
-			// Display output
-		return TodoyuPage::render();
+	
+		return TodoyuContactRenderer::renderContactPage($type, $idRecord, $searchWord, $content);
 	}
 
 }

@@ -151,7 +151,8 @@ Todoyu.Ext.contact.Company =  {
 	 *
 	 * @method	closeForm
 	 */
-	closeForm: function() {
+	closeForm: function(form) {
+		this.removeUnusedImages(form);
 		this.showList(this.ext.PanelWidget.ContactSearch.getValue());
 	},
 
@@ -192,7 +193,7 @@ Todoyu.Ext.contact.Company =  {
 			}
 		};
 
-		Todoyu.Popup.openWindow('popupRecordInfo', 'Info', 420, url, options);
+		this.ext.updateContent(url, options);
 	},
 
 
@@ -252,8 +253,33 @@ Todoyu.Ext.contact.Company =  {
 	 *
 	 * @method	cancelWizard
 	 */
-	cancelWizard: function() {
+	cancelWizard: function(form) {
+		this.removeUnusedImages(form);
 		Todoyu.Popup.getLastPopup().close();
+	},
+
+
+
+	/**
+	 *
+	 * @param form
+	 */
+	removeUnusedImages: function(form) {
+		if(form.down('[name = company[id]]').getValue() == 0) {
+			if(form.down('[name = company[image_id]]').getValue() != 0)	{
+				var idImage	= form.down('[name=company[image_id]]').getValue();
+				var url		= Todoyu.getUrl('contact', 'company');
+
+				var options = {
+					'parameters': {
+						'action':	'removeimage',
+						'idImage':	idImage
+					}
+				}
+
+				Todoyu.send(url, options);
+			}
+		}
 	}
 
 };

@@ -72,7 +72,11 @@ Todoyu::$CONFIG['EXT']['contact']['assets'] = array(
 		array(
 			'file'		=> 'ext/contact/assets/js/PanelWidgetContactExport.js',
 			'position'	=> 112
-		)
+		),
+		array(
+			'file'		=> 'ext/contact/assets/js/Upload.js',
+			'position'	=> 113
+		),
 	),
 	'css'	=> array(
 		array(
