@@ -558,7 +558,7 @@ class TodoyuPersonManager {
 	 * @param	TodoyuBaseObject	$record
 	 * @return	String
 	 */
-	public static function getDatabaseRelationLabel(TodoyuFormElement $field, array $record)	{
+	public static function getDatabaseRelationLabel(TodoyuFormElement $field, array $record) {
 		$idPerson	= intval($record['id']);
 
 		if( $idPerson === 0 ) {
@@ -580,7 +580,7 @@ class TodoyuPersonManager {
 	 * @param	Boolean		$lastnameFirst
 	 * @return	String
 	 */
-	public static function getLabel($idPerson, $showEmail = false, $lastnameFirst = true)	{
+	public static function getLabel($idPerson, $showEmail = false, $lastnameFirst = true) {
 		$idPerson	= intval($idPerson);
 		$label	= '';
 
@@ -695,7 +695,7 @@ class TodoyuPersonManager {
 	 *
 	 * @param	Integer		$idPerson
 	 */
-	public static function removeFromCache($idPerson)	{
+	public static function removeFromCache($idPerson) {
 		$idPerson		= intval($idPerson);
 
 		TodoyuRecordManager::removeRecordCache('TodoyuPerson', $idPerson);
@@ -1059,7 +1059,7 @@ class TodoyuPersonManager {
 	 * @param	FormElement_Comment	$formElement
 	 * @return	String
 	 */
-	public static function getPreviewImageForm(TodoyuFormElement_Comment $formElement)	{
+	public static function getPreviewImageForm(TodoyuFormElement_Comment $formElement) {
 		return TodoyuContactImageManager::renderImageForm($formElement, 'person');
 	}
 }

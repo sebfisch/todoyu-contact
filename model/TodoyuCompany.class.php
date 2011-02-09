@@ -64,7 +64,7 @@ class TodoyuCompany extends TodoyuBaseObject {
 	 *
 	 * @return	String
 	 */
-	public function getLabel()	{
+	public function getLabel() {
 		return $this->get('title');
 	}
 
@@ -109,7 +109,7 @@ class TodoyuCompany extends TodoyuBaseObject {
 	/**
 	 * Loads the related foreign record data to the company
 	 */
-	public function loadForeignData()	{
+	public function loadForeignData() {
 		$this->data['person']		= $this->getEmplyeesRecords();
 		$this->data['contactinfo']	= TodoyuCompanyManager::getCompanyContactinfoRecords($this->getID());
 		$this->data['address']		= TodoyuCompanyManager::getCompanyAddressRecords($this->getID());

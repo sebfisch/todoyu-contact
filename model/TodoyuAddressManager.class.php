@@ -39,7 +39,7 @@ class TodoyuAddressManager {
 	 * @param	Integer			$idAddress
 	 * @return	TodoyuAddress
 	 */
-	public static function getAddress($idAddress)	{
+	public static function getAddress($idAddress) {
 		$idAddress	= intval($idAddress);
 
 		return TodoyuRecordManager::getRecord('TodoyuAddress', $idAddress);
@@ -54,7 +54,7 @@ class TodoyuAddressManager {
 	 * @param	Array	$addressData
 	 * @return	Integer
 	 */
-	public static function saveAddress(array $data)	{
+	public static function saveAddress(array $data) {
 		$idAddress	= intval($data['id']);
 
 		if( $idAddress === 0 ) {
@@ -115,7 +115,7 @@ class TodoyuAddressManager {
 	 *
 	 * @param	Integer	$idAddress
 	 */
-	protected static function removeFromCache($idAddress)	{
+	protected static function removeFromCache($idAddress) {
 		$idAddress	= intval($idAddress);
 
 		TodoyuRecordManager::removeRecordCache('TodoyuAddress', $idAddress);
@@ -191,7 +191,7 @@ class TodoyuAddressManager {
 	public static function getLabel($idAddress) {
 		$idAddress	= intval($idAddress);
 
-		if($idAddress > 0) {
+		if( $idAddress > 0 ) {
 			$address= self::getAddress($idAddress);
 			$countryLabel	= TodoyuStaticRecords::getCountryLabel($address['id_country']);
 			$label			= $address['street'] . ', ' . $address['zip'] . ', ' . $address['city'] . ', ' . $countryLabel;

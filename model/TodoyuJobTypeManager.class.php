@@ -170,7 +170,7 @@ class TodoyuJobTypeManager {
 	 *
 	 * @param	Array	$jobTypeData
 	 */
-	public static function saveJobtype(array $data)	{
+	public static function saveJobtype(array $data) {
 		$idJobtype	= intval($data['id']);
 		$xmlPath	= 'ext/contact/config/form/admin/jobtype.xml';
 
@@ -219,7 +219,7 @@ class TodoyuJobTypeManager {
 	 *
 	 * @param	Integer	$idJobtype
 	 */
-	public static function deleteJobtype($idJobtype)	{
+	public static function deleteJobtype($idJobtype) {
 		$idJobtype	= intval($idJobtype);
 
 		return Todoyu::db()->deleteRecord(self::TABLE, $idJobtype);
@@ -235,7 +235,7 @@ class TodoyuJobTypeManager {
 	 * @param	String		$name
 	 * @return	Array
 	 */
-	public static function autocompleteJobtypes($input, array $formData = array(), $name = '')	{
+	public static function autocompleteJobtypes($input, array $formData = array(), $name = '') {
 		$data		= array();
 		$jobtypes	= self::searchJobtypes($input);
 

@@ -84,7 +84,7 @@ class TodoyuContactManager {
 	 * @param	String	$type
 	 * @return	String
 	 */
-	public static function getContactTypeLabel($type)	{
+	public static function getContactTypeLabel($type) {
 		return Todoyu::$CONFIG['EXT']['contact']['contacttypes'][$type]['label'];
 	}
 
@@ -97,7 +97,7 @@ class TodoyuContactManager {
 	 * @param	Integer				$idRecord
 	 * @return	TodoyuBaseObject
 	 */
-	public static function getContactTypeObj($type, $idRecord)	{
+	public static function getContactTypeObj($type, $idRecord) {
 		$idRecord	= intval($idRecord);
 		$className	= self::getContactTypeObjClass($type);
 
@@ -113,7 +113,7 @@ class TodoyuContactManager {
 	 * @param	Array			$option
 	 * @return	String
 	 */
-	public static function getCountryLabel($form, $option)	{
+	public static function getCountryLabel($form, $option) {
 
 		return $option[ 'name_' . TodoyuLabelManager::getLocale() ];
 	}
@@ -152,7 +152,7 @@ class TodoyuContactManager {
 	 * @param	Array		$data
 	 * @return	Integer
 	 */
-	public function saveCompany(array $data)	{
+	public function saveCompany(array $data) {
 		$xmlPath	= 'ext/contact/config/form/company.xml';
 		$idCompany	= intval($data['id']);
 

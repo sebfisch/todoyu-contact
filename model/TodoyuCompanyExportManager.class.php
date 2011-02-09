@@ -54,7 +54,7 @@ class TodoyuCompanyExportManager {
 	protected static function prepareDataForExport(array $companies) {
 		$exportData = array();
 
-		foreach($companies as $company)	{
+		foreach($companies as $company) {
 			$companyObj	= TodoyuCompanyManager::getCompany($company['id']);
 
 			$companyObj->loadForeignData();

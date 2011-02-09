@@ -56,7 +56,7 @@ class TodoyuContactQuickCreatePersonActionController extends TodoyuActionControl
 		$form->setFormData($data);
 
 			// Validate, render
-		if( $form->isValid() )	{
+		if( $form->isValid() ) {
 			$storageData= $form->getStorageData();
 
 			$idPerson	= TodoyuPersonManager::savePerson($storageData);

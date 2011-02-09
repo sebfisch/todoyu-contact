@@ -462,7 +462,7 @@ class TodoyuCompanyManager {
 	 * @param	Integer		$offset
 	 * @return	Array
 	 */
-	public static function searchCompany($sWord, array $searchFields = null, $size = 100, $offset = 0)	{
+	public static function searchCompany($sWord, array $searchFields = null, $size = 100, $offset = 0) {
 		$fields	= 'SQL_CALC_FOUND_ROWS *';
 		$where	= ' deleted = 0';
 		$table 	= self::TABLE;
@@ -497,12 +497,12 @@ class TodoyuCompanyManager {
 	 * @param	Integer	$offset
 	 * @return	Array
 	 */
-	public static function searchCompanyIDs($sword, array $searchFields = null, $size = 100, $offset = 0)	{
+	public static function searchCompanyIDs($sword, array $searchFields = null, $size = 100, $offset = 0) {
 		$companyIds = array();
 
 		$companies	= self::searchCompany($sword, $searchFields, $size, $offset);
 
-		foreach($companies as $company)	{
+		foreach($companies as $company) {
 			$companyIds[]	= $company['id'];
 		}
 
@@ -516,7 +516,7 @@ class TodoyuCompanyManager {
 	 *
 	 * @param	Integer		$idCompany
 	 */
-	public static function removeFromCache($idCompany)	{
+	public static function removeFromCache($idCompany) {
 		$idCompany	= intval($idCompany);
 
 		TodoyuRecordManager::removeRecordCache('TodoyuCompany', $idCompany);
@@ -688,7 +688,7 @@ class TodoyuCompanyManager {
 	 * @param	FormElement_Comment	$formElement
 	 * @return	String
 	 */
-	public static function getPreviewImageForm(TodoyuFormElement_Comment $formElement)	{
+	public static function getPreviewImageForm(TodoyuFormElement_Comment $formElement) {
 		return TodoyuContactImageManager::renderImageForm($formElement, 'company');
 	}
 }

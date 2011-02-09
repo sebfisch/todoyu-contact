@@ -55,7 +55,7 @@ class TodoyuContactInfoType extends TodoyuBaseObject {
 	 * @param	Array	$option
 	 * @return	String
 	 */
-	public function getLabelForFormElementSelect($form, $option)	{
+	public function getLabelForFormElementSelect($form, $option) {
 		return TodoyuLabelManager::getLabel($option['title']);
 	}
 
@@ -68,7 +68,7 @@ class TodoyuContactInfoType extends TodoyuBaseObject {
 	 * @param	BaseObj							$record
 	 * @return	String
 	 */
-	public static function getLabelForDatabaseRelation($formElement, $data)	{
+	public static function getLabelForDatabaseRelation($formElement, $data) {
 		$ContactInfoType = new TodoyuContactInfoType($data['id_contactinfotype']);
 
 		return (strlen(trim($ContactInfoType['title'])) > 0) ? TodoyuLabelManager::getLabel($ContactInfoType['title']) : '';

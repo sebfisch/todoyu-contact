@@ -32,7 +32,7 @@ class TodoyuCompanyFilterDataSource {
 	 * @param	Array	$definitions
 	 * @return	Array
 	 */
-	public static function getLabel($definitions)	{
+	public static function getLabel($definitions) {
 		$definitions['value_label'] = TodoyuCompanyManager::getLabel($definitions['value']);
 
 		return $definitions;
@@ -47,11 +47,11 @@ class TodoyuCompanyFilterDataSource {
 	 * @param	Array	$conf
 	 * @return	Array
 	 */
-	public static function autocompleteCompanies($input, array $formData = array(), $name = '')	{
+	public static function autocompleteCompanies($input, array $formData = array(), $name = '') {
 		$result		= array();
 		$companies	= TodoyuCompanyManager::searchCompany($input);
 
-		foreach($companies as $companyData)	{
+		foreach($companies as $companyData) {
 			$company	= TodoyuCompanyManager::getCompany($companyData['id']);
 			$result[$companyData['id']] = $company->getTitle();
 		}

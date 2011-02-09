@@ -30,7 +30,7 @@ class TodoyuPanelWidgetContactExport extends TodoyuPanelWidget implements Todoyu
 	/**
 	 * Constructor of the class
 	 */
-	function __construct(array $config, array $params = array(), $idArea = 0, $expanded = true)	{
+	function __construct(array $config, array $params = array(), $idArea = 0, $expanded = true) {
 		parent::__construct(
 				'contact',										// ext key
 				'contactExport',								// panel widget ID
@@ -75,7 +75,7 @@ class TodoyuPanelWidgetContactExport extends TodoyuPanelWidget implements Todoyu
 	 *
 	 * @return	String
 	 */
-	public function render()	{
+	public function render() {
 		$this->renderContent();
 
 		return parent::render();

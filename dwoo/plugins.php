@@ -72,7 +72,7 @@ function Dwoo_Plugin_name_compile(Dwoo_Compiler $compiler, $idPerson) {
  * @param	String			$class
  * @return	String
  */
-function Dwoo_Plugin_personLabel(Dwoo $dwoo, $idPerson = 0, $idPrefix = '', $idRecord = 0, $tag = 'span', $class = '')	{
+function Dwoo_Plugin_personLabel(Dwoo $dwoo, $idPerson = 0, $idPrefix = '', $idRecord = 0, $tag = 'span', $class = '') {
 	$htmlID		= $idPrefix . '-' . $idRecord . '-' . $idPerson;
 
 	$openingTag	= '<' . $tag . ' id="' . $htmlID . '" class="quickInfoPerson ' . $class . '">';
@@ -131,7 +131,7 @@ function Dwoo_Plugin_countryName(Dwoo $dwoo, $idCountry) {
  * @param	Integer			$idAddressType
  * @return	String
  */
-function Dwoo_Plugin_addressType_compile(Dwoo_Compiler $compiler, $idAddressType)	{
+function Dwoo_Plugin_addressType_compile(Dwoo_Compiler $compiler, $idAddressType) {
 	return 'TodoyuAddressManager::getAddresstypeLabel(' . $idAddressType . ')';
 }
 
@@ -147,7 +147,7 @@ function Dwoo_Plugin_addressType_compile(Dwoo_Compiler $compiler, $idAddressType
 function Dwoo_Plugin_salutationLabel(Dwoo $dwoo, $idPerson) {
 	$idPerson	= intval($idPerson);
 	
-	if($idPerson > 0) {
+	if( $idPerson > 0 ) {
 		return TodoyuPersonManager::getPerson($idPerson)->getSalutationLabel();
 	}
 

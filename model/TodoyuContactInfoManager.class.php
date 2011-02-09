@@ -39,7 +39,7 @@ class TodoyuContactInfoManager {
 	 * @param	Integer		$idContactInfo
 	 * @return	TodoyuContactInfo
 	 */
-	public static function getContactinfo($idContactInfo)	{
+	public static function getContactinfo($idContactInfo) {
 		$idContactInfo	= intval($idContactInfo);
 
 		return TodoyuRecordManager::getRecord('TodoyuContactInfo', $idContactInfo);
@@ -117,7 +117,7 @@ class TodoyuContactInfoManager {
 	 *
 	 * @return	Integer
 	 */
-	protected static function createNewContactInfoRecord()	{
+	protected static function createNewContactInfoRecord() {
 		$insertArray = array(
 			'date_create'		=> NOW,
 			'id_person_create'	=> personid(),
@@ -134,7 +134,7 @@ class TodoyuContactInfoManager {
 	 *
 	 * @param	Integer		$idContactInfo
 	 */
-	public static function removeFromCache($idContactInfo)	{
+	public static function removeFromCache($idContactInfo) {
 		$idContactInfo	= intval($idContactInfo);
 
 		TodoyuRecordManager::removeRecordCache('TodoyuContactInfo', $idContactInfo);

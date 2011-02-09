@@ -34,7 +34,7 @@ class TodoyuPersonFilterDataSource {
 	 * @param	String		$name
 	 * @return	Array
 	 */
-	public static function autocompletePersons($input, array $formData = array(), $name = '')	{
+	public static function autocompletePersons($input, array $formData = array(), $name = '') {
 		$data = array();
 
 		$fieldsToSearchIn = array(
@@ -60,7 +60,7 @@ class TodoyuPersonFilterDataSource {
 	 * @param	Array	$definitions
 	 * @return	Array
 	 */
-	public static function getLabel($definitions)	{
+	public static function getLabel($definitions) {
 		$definitions['value_label'] = TodoyuPersonManager::getLabel($definitions['value']);
 
 		return $definitions;

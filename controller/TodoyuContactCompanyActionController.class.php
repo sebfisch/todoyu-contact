@@ -113,7 +113,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 		$form->setFormData($data);
 
 			// Validate, render
-		if( $form->isValid() )	{
+		if( $form->isValid() ) {
 			$storageData= $form->getStorageData();
 
 			$idCompany	= TodoyuCompanyManager::saveCompany($storageData);
@@ -197,7 +197,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 * @return	String
 	 */
-	public function getCompanyAddressOptionsAction(array $params)	{
+	public function getCompanyAddressOptionsAction(array $params) {
 		$tmpl		= 'core/view/form/FormElement_Select_Options.tmpl';
 
 		$idCompany	= intval($params['idCompany']);
@@ -218,7 +218,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @param	Array		$params
 	 * @return	String
 	 */
-	public function getRegionOptionsAction(array $params)	{
+	public function getRegionOptionsAction(array $params) {
 		$tmpl	= 'core/view/form/FormElement_Select_Options.tmpl';
 
 		$idCountry	= intval($params['idCountry']);
@@ -241,7 +241,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 * @return	String
 	 */
-	public function addNewContactWizardAction(array $params)	{
+	public function addNewContactWizardAction(array $params) {
 		restrict('contact', 'company:editAndDelete');
 
 		$content = TodoyuString::wrapScript('Todoyu.Ext.contact.Company.onEdit(0);');
@@ -258,7 +258,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 * @return	String
 	 */
-	public static function saveWizardAction(array $params)	{
+	public static function saveWizardAction(array $params) {
 		restrict('contact', 'company:editAndDelete');
 
 		$xmlPath	= 'ext/contact/config/form/company.xml';
@@ -273,7 +273,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 		$form->setFormData($data);
 
 			// Validate, render
-		if( $form->isValid() )	{
+		if( $form->isValid() ) {
 			$storageData= $form->getStorageData();
 
 			$idCompany	= TodoyuCompanyManager::saveCompany($storageData);
@@ -300,7 +300,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 * @return	String
 	 */
-	public function loadimageAction(array $params)	{
+	public function loadimageAction(array $params) {
 		$idImage	= $params['idImage'];
 
 		return TodoyuContactImageManager::getImage($idImage, 'company');
@@ -314,7 +314,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @param  $params
 	 * @return void
 	 */
-	public function renderimageAction(array $params)	{
+	public function renderimageAction(array $params) {
 		$idPerson	= $params['idImage'];
 
 		TodoyuContactImageManager::renderImage($idPerson, 'company');
@@ -327,7 +327,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 *
 	 * @param	$params
 	 */
-	public function removeimageAction(array $params)	{
+	public function removeimageAction(array $params) {
 		$idImage	= $params['idImage'];
 
 		TodoyuContactImageManager::removeImage($idImage, 'company');

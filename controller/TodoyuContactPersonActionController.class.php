@@ -113,7 +113,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 		$form->setFormData($data);
 
 			// Validate, render
-		if( $form->isValid() )	{
+		if( $form->isValid() ) {
 			$storageData= $form->getStorageData();
 
 			$idPerson	= TodoyuPersonManager::savePerson($storageData);
@@ -137,7 +137,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 * @return	String
 	 */
-	public static function saveWizardAction(array $params)	{
+	public static function saveWizardAction(array $params) {
 		restrict('contact', 'person:editAndDelete');
 
 		$xmlPath	= 'ext/contact/config/form/person.xml';
@@ -152,7 +152,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 		$form->setFormData($data);
 
 			// Validate, render
-		if( $form->isValid() )	{
+		if( $form->isValid() ) {
 			$storageData= $form->getStorageData();
 
 			$idPerson	= TodoyuPersonManager::savePerson($storageData);
@@ -242,7 +242,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 * @return	String
 	 */
-	public function addNewContactWizardAction(array $params)	{
+	public function addNewContactWizardAction(array $params) {
 		restrict('contact', 'person:editAndDelete');
 
 		$content= TodoyuString::wrapScript('Todoyu.Ext.contact.Person.onEdit(0);');
@@ -259,7 +259,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 * @return	String
 	 */
-	public function loadimageAction(array $params)	{
+	public function loadimageAction(array $params) {
 		$idImage	= $params['idImage'];
 
 		return TodoyuContactImageManager::getImage($idImage, 'person');
@@ -273,7 +273,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @param  $params
 	 * @return void
 	 */
-	public function renderimageAction(array $params)	{
+	public function renderimageAction(array $params) {
 		$idPerson	= $params['idImage'];
 
 		TodoyuContactImageManager::renderImage($idPerson, 'person');
@@ -286,7 +286,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 *
 	 * @param	$params
 	 */
-	public function removeimageAction(array $params)	{
+	public function removeimageAction(array $params) {
 		$idImage	= $params['idImage'];
 
 		TodoyuContactImageManager::removeImage($idImage, 'person');

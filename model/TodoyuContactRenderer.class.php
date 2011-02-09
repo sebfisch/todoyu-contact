@@ -77,7 +77,7 @@ class TodoyuContactRenderer {
 	 * @param	Boolean		$onlyActive
 	 * @return	String
 	 */
-	public static function renderTabs($activeTab, $onlyActive = false)	{
+	public static function renderTabs($activeTab, $onlyActive = false) {
 		$tabs	= TodoyuTabManager::getAllowedTabs(Todoyu::$CONFIG['EXT']['contact']['tabs']);
 
 			// Render only the currenty active tab?
@@ -141,7 +141,7 @@ class TodoyuContactRenderer {
 	 * @param	String		$searchWord
 	 * @return	String
 	 */
-	public static function renderContactList($type, $searchWord = '')	{
+	public static function renderContactList($type, $searchWord = '') {
 		$content	= '';
 
 		switch($type) {
@@ -254,7 +254,7 @@ class TodoyuContactRenderer {
 	 * @param	String	$idTarget		HTML Id of the input field
 	 * @return	String
 	 */
-	public static function renderPersonEditFormWizard($idPerson, $idTarget)	{
+	public static function renderPersonEditFormWizard($idPerson, $idTarget) {
 		restrict('contact', 'person:editAndDelete');
 
 		$idPerson	= intval($idPerson);
@@ -291,7 +291,7 @@ class TodoyuContactRenderer {
 	 * @param	String	$idTarget		HTML Id of the input field
 	 * @return	String
 	 */
-	public static function renderCompanyEditFormWizard($idCompany, $idTarget)	{
+	public static function renderCompanyEditFormWizard($idCompany, $idTarget) {
 		restrict('contact', 'company:editAndDelete');
 
 		$idCompany	= intval($idCompany);
@@ -451,7 +451,7 @@ class TodoyuContactRenderer {
 	 * @param	Integer	$idCompany
 	 * @return	String
 	 */
-	public static function renderCompanyInfo($idCompany)	{
+	public static function renderCompanyInfo($idCompany) {
 		$idCompany = intval($idCompany);
 
 		$tmpl		= 'ext/contact/view/company-detail.tmpl';
@@ -501,7 +501,7 @@ class TodoyuContactRenderer {
 	 * @static
 	 * @return String
 	 */
-	public static function renderContactImageUploadForm($idRecord, $recordType)	{
+	public static function renderContactImageUploadForm($idRecord, $recordType) {
 		$idRecord	= intval($idRecord);
 		
 				// Construct form object
@@ -539,7 +539,7 @@ class TodoyuContactRenderer {
 	 * @param  $idReplace
 	 * @return String
 	 */
-	public static function renderUploadFormFinished($recordType, $idContact, $idReplace)	{
+	public static function renderUploadFormFinished($recordType, $idContact, $idReplace) {
 		$tmpl	= 'core/view/htmldoc.tmpl';
 		$data	= array(
 			'title'		=> 'Uploader IFrame',

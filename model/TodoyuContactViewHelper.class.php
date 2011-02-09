@@ -315,7 +315,7 @@ class TodoyuContactViewHelper {
 	 * @param	TodoyuFormElement	$field
 	 * @return	Array
 	 */
-	public static function getWorkaddressOptionsCompany(TodoyuFormElement $field)	{
+	public static function getWorkaddressOptionsCompany(TodoyuFormElement $field) {
 		$idCompany = intval($field->getForm()->getVar('parent'));
 
 		return self::getWorkaddressOptions($idCompany);
@@ -329,7 +329,7 @@ class TodoyuContactViewHelper {
 	 * @param	TodoyuFormElement	$field
 	 * @return	Array
 	 */
-	public static function getWorkaddressOptionsPerson(TodoyuFormElement $field)	{
+	public static function getWorkaddressOptionsPerson(TodoyuFormElement $field) {
 		$idCompany = intval($field->getForm()->getField('id')->getValue());
 
 		return self::getWorkaddressOptions($idCompany);
@@ -350,7 +350,7 @@ class TodoyuContactViewHelper {
 		if( $idCompany !== 0 ) {
 			$addresses	= TodoyuCompanyManager::getCompanyAddressRecords($idCompany);
 
-			if(count($addresses) > 0)	{
+			if( count($addresses) > 0 ) {
 				foreach($addresses as $address) {
 					$options[] = array(
 						'value'	=> $address['id'],
@@ -395,7 +395,7 @@ class TodoyuContactViewHelper {
 	 *
 	 * @param	TodoyuFormElement	$field
 	 */
-	public static function getRegionOptions(TodoyuFormElement $field)	{
+	public static function getRegionOptions(TodoyuFormElement $field) {
 		$country	= $field->getForm()->getField('id_country')->getValue();
 		$idCountry	= intval($country[0]);
 

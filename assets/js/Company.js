@@ -265,8 +265,8 @@ Todoyu.Ext.contact.Company =  {
 	 * @param form
 	 */
 	removeUnusedImages: function(form) {
-		if(form.down('[name = company[id]]').getValue() == 0) {
-			if(form.down('[name = company[image_id]]').getValue() != 0)	{
+		if( form.down('[name = company[id]]').getValue() == 0 ) {
+			if( form.down('[name = company[image_id]]').getValue() != 0 ) {
 				var idImage	= form.down('[name=company[image_id]]').getValue();
 				var url		= Todoyu.getUrl('contact', 'company');
 

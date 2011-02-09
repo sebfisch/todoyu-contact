@@ -31,7 +31,7 @@ class TodoyuJobType extends TodoyuBaseObject {
 	 *
 	 * @param	Integer		$idJobType
 	 */
-	function __construct($idJobType)	{
+	function __construct($idJobType) {
 		parent::__construct($idJobType, 'ext_contact_jobtype');
 	}
 

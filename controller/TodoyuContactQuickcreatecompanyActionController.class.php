@@ -56,7 +56,7 @@ class TodoyuContactQuickCreateCompanyActionController extends TodoyuActionContro
 		$form->setFormData($data);
 
 			// Validate, render
-		if( $form->isValid() )	{
+		if( $form->isValid() ) {
 			$storageData= $form->getStorageData();
 			$idCompany	= TodoyuCompanyManager::saveCompany($storageData);
 

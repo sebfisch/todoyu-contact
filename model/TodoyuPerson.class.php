@@ -46,7 +46,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 	 * @param	Integer		$idRole
 	 * @return	String
 	 */
-	public function getLabel($showEmail = false, $lastnameFirst = true, $showTitle = false, $idRole = 0)	{
+	public function getLabel($showEmail = false, $lastnameFirst = true, $showTitle = false, $idRole = 0) {
 		 $label	= $this->getFullName($lastnameFirst);
 
 		if( $showTitle === true) {
@@ -132,7 +132,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getFullName($lastnameFirst = false) {
-		if($this->getID() > 0)	{
+		if( $this->getID() > 0 ) {
 			if( $lastnameFirst ) {
 				return $this->getLastname() . ' ' . $this->getFirstname();
 			} else {
@@ -273,10 +273,10 @@ class TodoyuPerson extends TodoyuBaseObject {
 	 *
 	 * @return	Array
 	 */
-	public function getEmployers()	{
+	public function getEmployers() {
 		$employers	= TodoyuPersonManager::getPersonCompanyRecords($this->getID());
 
-		foreach($employers as $index => $employer)	{
+		foreach($employers as $index => $employer) {
 			$employers[$index]['workaddress'] = TodoyuAddressManager::getAddress($employer['id_workaddress']);
 			$employers[$index]['jobtype'] = TodoyuJobTypeManager::getJobType($employer['id_jobtype']);
 		}
