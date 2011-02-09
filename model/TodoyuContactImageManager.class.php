@@ -67,7 +67,7 @@ class TodoyuContactImageManager {
 
 		$dimension	= TodoyuContactImageManager::getDimension();
 
-		return TodoyuString::getImgTag(TodoyuString::buildUrl($params, NOW), $dimension['x'], $dimension['y']);
+		return TodoyuString::getImgTag(TodoyuString::buildUrl($params, NOW));
 	}
 
 
@@ -121,7 +121,7 @@ class TodoyuContactImageManager {
 
 		$dimension	= self::getDimension();
 
-		TodoyuImageManager::saveResizedImage($path, $storageDir . '/' . $idContact . '/' . self::$destFileName, $dimension['x'], $dimension['y']);
+		TodoyuImageManager::saveResizedImage($path, $storageDir . '/' . $idContact . '/' . self::$destFileName, $dimension['x'], $dimension['y'], null, true);
 		return $new ? $idContact : 0;
 	}
 
