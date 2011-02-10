@@ -27,8 +27,8 @@ Todoyu.Ext.contact.Upload = {
 	/**
 	 * Shows upload form on button click
 	 *
-	 * @param form
-	 * @param recordType
+	 * @param	{String}	form
+	 * @param	{String}	recordType		(person / company)
 	 */
 	showUploadForm: function(form, recordType) {
 		var idRecord = $(form).id.split('-')[1];
@@ -55,8 +55,8 @@ Todoyu.Ext.contact.Upload = {
 	/**
 	 * Add upload form for contact images
 	 *
-	 * @param idRecord
-	 * @param {String}	recordType	(person / company)
+	 * @param	{Number}	idRecord
+	 * @param	{String}	recordType	(person / company)
 	 */
 	addUploadForm: function(idRecord, recordType) {
 		var url		= Todoyu.getUrl('contact', 'formhandling');
@@ -95,9 +95,9 @@ Todoyu.Ext.contact.Upload = {
 	/**
 	 * Contact image upload finished handler
 	 * 
-	 * @param recordType
-	 * @param idContact
-	 * @param idReplace
+	 * @param	{String}	recordType		(person / company)
+	 * @param	{Number}	idContact
+	 * @param	{Number}	idReplace
 	 */
 	uploadFinished: function(recordType, idContact, idReplace) {
 		var form = $(recordType + '-' + idContact + '-form');
@@ -114,9 +114,9 @@ Todoyu.Ext.contact.Upload = {
 	/**
 	 * Refreshes the preview image in the form
 	 *
-	 * @param form
-	 * @param idImage
-	 * @param recordType
+	 * @param	{String}	form
+	 * @param	{Number}	idImage
+	 * @param	{String}	recordType		(person / company)
 	 */
 	refreshPreviewImage: function(form, idImage, recordType) {
 		var url		= Todoyu.getUrl('contact', recordType);
@@ -136,7 +136,9 @@ Todoyu.Ext.contact.Upload = {
 	/**
 	 * Sets the temporary id (folder-name) of the uploaded image to the hidden field 
 	 *
-	 * @param form
+	 * @param	{String}	form
+	 * @param	{Number}	idReplace
+	 * @param	{String}	recordType		(person / company)
 	 */
 	setReplaceIdToHiddenField: function(form, idReplace, recordType) {
 		var field = $(form).down('[name = ' + recordType +'[image_id]]');
