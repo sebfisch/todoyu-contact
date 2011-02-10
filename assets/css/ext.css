@@ -117,10 +117,13 @@ span.wizardIcon.createNewCompany	{
 .personListing td.icon.person {
 	background:url(../img/icons.png) no-repeat 6px -116px;
 }
+
+#contact-details div.actions span.icon,
 .personListing td.actions span.icon {
 	cursor:pointer;
 	margin-right:5px;
 }
+#contact-details div.actions span,
 .personListing td.actions span {
 	background-image:url(../img/icons.png);
 	background-repeat:no-repeat;
@@ -128,9 +131,11 @@ span.wizardIcon.createNewCompany	{
 .personListing td.actions span.info {
 	background-position:0 -356px;
 }
+#contact-details.person div.actions span.edit,
 .personListing td.actions span.edit {
 	background-position:0 -28px;
 }
+#contact-details.person div.actions span.delete,
 .personListing td.actions span.delete {
 	background-position:0 -58px;
 }
@@ -198,9 +203,11 @@ span.wizardIcon.createNewCompany	{
 .companyListing td.actions span.info {
 	background-position:0 -356px;
 }
+#contact-details.company div.actions span.edit,
 .companyListing td.actions span.edit {
 	background-position:0 -179px;
 }
+#contact-details.company div.actions span.delete,
 .companyListing td.actions span.delete {
 	background-position:0 -209px;
 }
@@ -276,4 +283,10 @@ div.visitingCardContent table tr td.label {
 #contact-details dl.noflaot dd,
 #contact-details dl.noflaot dt {
 	float: none;
+}
+
+#contact-details div.actions {
+	padding: 5px 0 5px 0px;
+	background-color: #d5dee5;
+	height: 20px;
 }

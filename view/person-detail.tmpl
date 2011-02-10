@@ -81,4 +81,12 @@
 			</dl>
 		</div>
 	{/if}
+
+
+	{if allowed('contact', 'person:editAndDelete')}
+		<div class="clear actions">
+			<span class="icon edit" onclick="Todoyu.Ext.contact.Person.edit({$id});" title="{Label LLL:contact.person.edit}"></span>
+			<span class="icon delete" onclick="Todoyu.Ext.contact.Person.remove({$id});" title="{Label LLL:contact.person.delete}"></span>
+		</div>
+	{/if}
 </div>
