@@ -49,7 +49,7 @@ class TodoyuContactQuickinfoManager {
 		$email		= TodoyuPersonManager::getPreferredEmail($idPerson);
 		$fullName	= TodoyuPersonManager::getPerson($idPerson)->getFullName();
 
-		$linkedName	= '<a href="?ext=contact&type=person&id=' . $idPerson . '">' . TodoyuPersonManager::getLabel($idPerson) . '</a>';
+		$linkedName	= '<a href="?ext=contact&controller=person&action=detail&person=' . $idPerson . '">' . TodoyuPersonManager::getLabel($idPerson) . '</a>';
 		$quickinfo->addInfo('name', $linkedName, 0, false);
 
 		$quickinfo->addEmail('email', $email, $fullName);
