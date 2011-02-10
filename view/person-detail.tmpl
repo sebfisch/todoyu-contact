@@ -75,6 +75,9 @@
 			<h3>{Label LLL:contact.other}</h3>
 			<dl>
 				<dt>{Label LLL:contact.person.attr.birthday}:</dt><dd>{$birthday}</dd>
+				{if allowed('contact', 'person:seeComment')}
+					<dt>{Label LLL:contact.person.attr.comment}:</dt><dd>{$comment}</dd>
+				{/if}
 			</dl>
 		</div>
 	{/if}

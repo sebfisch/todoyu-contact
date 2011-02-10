@@ -42,6 +42,7 @@
 	<label index="person.attr.is_admin">Is Admin</label>
 	<label index="person.attr.role.new">New Role</label>
 	<label index="person.attr.image.upload">Upload a profile picture</label>
+	<label index="person.attr.comment">Comment</label>
 	<label index="person.header.noneselected">No Person Selected.</label>
 	<label index="person.mainpersondata">Main Person Data</label>
 	<label index="person.userinformation">User Information</label>
@@ -63,6 +64,7 @@
 	<label index="company.noAddress">No address found for this company</label>
 	<label index="company.employees">Employees</label>
 	<label index="company.attr.image.upload">Upload a company logo</label>
+	<label index="company.attr.comment">Comment</label>
 	<label index="company.maincompanydata">Main company data</label>
 	<label index="contactinfo">Contact Information</label>
 	<label index="contactinfo.new">New Contact Info</label>

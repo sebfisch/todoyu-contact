@@ -19,6 +19,7 @@ CREATE TABLE `ext_contact_person` (
 	`salutation` varchar(1) NOT NULL,
 	`title` varchar(64) NOT NULL,
 	`birthday` date NOT NULL,
+	`comment` text NOT NULL,
 	PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
@@ -38,6 +39,7 @@ CREATE TABLE `ext_contact_company` (
 	`shortname` tinytext NOT NULL,
 	`date_enter` int(10) unsigned NOT NULL DEFAULT '0',
 	`is_internal` tinyint(1) NOT NULL DEFAULT '0',
+	`comment` text NOT NULL,
 	PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 

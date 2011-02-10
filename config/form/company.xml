@@ -78,6 +78,14 @@
 					</record>
 				</field>
 
+				<field type="textarea" name="comment">
+					<label>contact.company.attr.comment</label>
+					<rows>5</rows>
+					<restrict>
+						<allow ext="contact" right="company.:editComment" />
+					</restrict>
+				</field>
+
 			</elements>
 		</fieldset>
 

@@ -51,6 +51,14 @@
 					<storeAsDate />
 				</field>
 
+				<field type="textarea" name="comment">
+					<label>contact.person.attr.comment</label>
+					<rows>5</rows>
+					<restrict>
+						<allow ext="contact" right="person:editComment" />
+					</restrict>
+				</field>
+
 			</elements>
 		</fieldset>
 

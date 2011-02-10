@@ -12,12 +12,16 @@
 		<right name="editAndDelete" require="general:area" />
 		<right name="setRole" require="person:editAndDelete" />
 		<right name="enableLogin" require="person:editAndDelete" />
+		<right name="editComment" require="person:editAndDelete" />
+		<right name="seeComment" require="person:seeAllPersons" />
 	</section>
 
 	<section name="company" require="general:use">
 		<right name="seeAllCompanies" />
 		<right name="add" require="general:area" />
 		<right name="editAndDelete" require="general:area" />
+		<right name="editComment" require="company:editAndDelete" />
+		<right name="seeComment" require="company:seeAllCompanies" />
 	</section>
 
 	<section name="panelwidgets" require="general:use">

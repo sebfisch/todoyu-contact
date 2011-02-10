@@ -53,6 +53,9 @@
 			<h3>{Label LLL:contact.other}</h3>
 			<dl>
 				<dt>{Label LLL:contact.company.attr.date_enter}:</dt><dd>{dateFormat $date_enter "date"}</dd>
+				{if allowed('contact', 'company:seeComment')}
+					<dt>{Label LLL:contact.company.attr.comment}:</dt><dd>{$comment}</dd>
+				{/if}
 			</dl>
 		</div>
 	{/if}
