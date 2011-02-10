@@ -176,6 +176,11 @@ Todoyu::$CONFIG['EXT']['contact']['contactimage'] = array(
 	'dimension'		=> array(
 		'x'	=> 100,
 		'y'	=> 100
+	),
+	'allowedTypes'	=> array(
+		'image/png',
+		'image/jpeg',
+		'image/gif'
 	)
 );
 

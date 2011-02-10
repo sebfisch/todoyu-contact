@@ -549,6 +549,25 @@ class TodoyuContactRenderer {
 		return render($tmpl, $data);
 	}
 
+
+
+	/**
+	 * @static
+	 * @return void
+	 */
+	public static function renderUploadframeContentFailed($error, $filename) {
+		$error		= intval($error);
+		$maxFileSize= intval(Todoyu::$CONFIG['EXT']['contact']['contactimage']['max_file_size']);
+
+		$tmpl	= 'core/view/htmldoc.tmpl';
+		$data	= array(
+			'title'		=> 'Uploader IFrame',
+			'content'	=> TodoyuString::wrapScript('window.parent.Todoyu.Ext.contact.Upload.uploadFailed(' . $error . ', \'' . $filename . '\', \'' . $maxFileSize . '\');')
+		);
+
+		return render($tmpl, $data);
+	}
+
 }
 
 ?>

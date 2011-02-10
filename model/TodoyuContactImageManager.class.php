@@ -195,6 +195,25 @@ class TodoyuContactImageManager {
 			rmdir($dir);
 		}
 	}
+
+
+
+	/**
+	 * Checks if the type of the uploaded file is in the allowed types
+	 *
+	 * @static
+	 * @param  $type
+	 * @return bool
+	 */
+	public static function checkFileType($type)	{
+		$allowedTypes	= Todoyu::$CONFIG['EXT']['contact']['contactimage']['allowedTypes'];
+
+		if( !in_array($type, $allowedTypes) ) {
+			return false;
+		}
+
+		return true;
+	}
 }
 
 ?>

@@ -84,12 +84,10 @@ class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 		$data		= $params['uploadcontactimage'];
 		$idContact	= intval($data['idContact']);
 		$recordType	= $data['recordType'];
-		
-			// Check again for file limit
-		$maxFileSize	= intval(Todoyu::$CONFIG['EXT']['contact']['contactimage']['max_file_size']);
 
-		if( $file['size'] > $maxFileSize ) {
-			$error	= UPLOAD_ERR_FORM_SIZE;
+			// check against the file mime type
+		if( $error === UPLOAD_ERR_OK && !TodoyuContactImageManager::checkFileType($file['type']) ) {
+			$error	= UPLOAD_ERR_EXTENSION;
 		}
 
 			// Render frame content. Success or error
@@ -100,6 +98,8 @@ class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 		} else {
 				// Notify upload failure
 			Todoyu::log('File upload failed: ' . $file['name'] . ' (ERROR:' . $error . ')', TodoyuLogger::LEVEL_ERROR);
+
+			return TodoyuContactRenderer::renderUploadframeContentFailed($file['error'], $file['name']);
 		}
 	}
 

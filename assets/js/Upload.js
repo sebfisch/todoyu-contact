@@ -141,5 +141,34 @@ Todoyu.Ext.contact.Upload = {
 	setReplaceIdToHiddenField: function(form, idReplace, recordType) {
 		var field = $(form).down('[name = ' + recordType +'[image_id]]');
 		field.setValue(idReplace);
+	},
+
+
+
+	/**
+	 * Check whether upload failed, determine reason (file too big / failure) and notify
+	 *
+	 * @method	uploadFailed
+	 * @param	{Number}		error		1 = filesize exceeded, 2 = failure
+	 * @param	{String}		filename
+	 * @param	{Number}		maxFileSize
+	 */
+	uploadFailed: function(error, filename, maxFileSize) {
+		this.removeUploadForm();
+
+		var info	= {
+			'filename': 	filename,
+			'maxFileSize':	maxFileSize
+		};
+
+		var msg		= '';
+
+		if( error === 1 || error === 2 ) {
+			msg	= '[LLL:contact.contactimage.upload.maxFileSizeExceeded]';
+		} else {
+			msg	= '[LLL:contact.contactimage.upload.uploadFailed]';
+		}
+
+		Todoyu.notifyError(msg.interpolate(info), 10);
 	}
 };
