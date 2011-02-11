@@ -172,5 +172,47 @@ Todoyu.Ext.contact.Upload = {
 		}
 
 		Todoyu.notifyError(msg.interpolate(info), 10);
+	},
+
+
+
+	/**
+	 * Send Request to remove image of current user
+	 *
+	 * @param	{String}	form
+	 * @param	{String}	recordType
+	 */
+	removeImage: function(form, recordType) {
+		var url = Todoyu.getUrl('contact', 'formhandling');
+		var idImage = this.getImageId(form, recordType);
+
+		var options = {
+			'parameters': {
+				'action':		'removeimage',
+				'idRecord':		idImage,
+				'recordType':	recordType
+			},
+			'onComplete': this.refreshPreviewImage.bind(this, form, idImage, recordType)
+		};
+
+		Todoyu.send(url, options);
+	},
+
+
+
+	/**
+	 * Returns the id of the image.
+	 *
+	 * @param	{String}	form
+	 * @param	{String}	recordType
+	 */
+	getImageId: function(form, recordType) {
+		var field = $(form).down('[name = ' + recordType +'[image_id]]');
+
+		if( field && field.getValue() ) {
+			return field.getValue()
+		} else {
+			return $(form).id.split('-')[1];
+		}
 	}
 };

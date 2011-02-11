@@ -103,6 +103,20 @@ class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 		}
 	}
 
+
+
+	/**
+	 * Removes Image form file-system
+	 *
+	 * @param	Array	$params
+	 */
+	public function removeimageAction(array $params) {
+		$idImage	= $params['idRecord'];
+		$recordType	= $params['recordType'];
+
+		TodoyuContactImageManager::removeImage($idImage, $recordType);
+	}
+
 }
 
 ?>

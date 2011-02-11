@@ -103,7 +103,11 @@
 					<class>buttonUploadContactImage</class>
 					<onclick>Todoyu.Ext.contact.Upload.showUploadForm(this.form, 'company')</onclick>
 				</field>
-
+				<field type="button" name="remove">
+					<text>LLL:contact.contactimage.upload.remove</text>
+					<class>buttonRemoveContactImage</class>
+					<onclick>Todoyu.Ext.contact.Upload.removeImage(this.form, 'company')</onclick>
+				</field>
 			</elements>
 		</fieldset>
 
