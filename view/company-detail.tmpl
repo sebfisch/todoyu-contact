@@ -64,8 +64,8 @@
 
 	{if allowed('contact', 'company:editAndDelete')}
 		<div class="clear actions">
-			{Button 'LLL:contact.company.edit' 'Todoyu.Ext.contact.Company.edit({$id});' 'buttonCompanyEdit' 'company-edit' 'LLL:contact.company.edit'}
-			{Button 'LLL:contact.company.delete' 'Todoyu.Ext.contact.Company.remove({$id});' 'buttonCompanyDelete' 'company-delete' 'LLL:contact.company.delete'}
+			{Button 'LLL:contact.company.edit' 'Todoyu.Ext.contact.Company.edit($id)' 'buttonCompanyEdit' 'company-edit' 'LLL:contact.company.edit'}
+			{Button 'LLL:contact.company.delete' 'Todoyu.Ext.contact.Company.remove($id)' 'buttonCompanyDelete' 'company-delete' 'LLL:contact.company.delete'}
 			{Button 'LLL:contact.company.close' 'Todoyu.Ext.contact.Company.showList(Todoyu.Ext.contact.PanelWidget.ContactSearch.getValue())' 'buttonCompanyClose' 'company-close' 'LLL:contact.company.close'}
 		</div>
 	{/if}
