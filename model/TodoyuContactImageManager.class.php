@@ -162,7 +162,9 @@ class TodoyuContactImageManager {
 	public static function renameStorageFolder($type, $old, $new) {
 		$storagePath	= self::getStorageDir($type);
 
-		rename($storagePath . '/' . $old, $storagePath . '/' . $new);
+		if( is_dir($storagePath) ) {
+			rename($storagePath . '/' . $old, $storagePath . '/' . $new);
+		}
 	}
 
 
