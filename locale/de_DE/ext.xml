@@ -24,6 +24,7 @@
 	<label index="person.delete">Person löschen</label>
 	<label index="person.delete.confirm">Diese Person löschen?</label>
 	<label index="person.details">Details der Person anzeigen</label>
+	<label index="person.close">Ansicht schliessen</label>
 	<label index="person.saved">Person gespeichert</label>
 	<label index="person.saved.error">Person konnte nicht gespeichert werden</label>
 	<label index="person.attr.id">Personen ID</label>
@@ -53,6 +54,7 @@
 	<label index="company.delete.confirm">Diese Firma löschen?</label>
 	<label index="company.delete.hasProjects">Eine Firma mit Projekten kann nicht gelöscht werden</label>
 	<label index="company.details">Zeige Firmendetails</label>
+	<label index="company.close">Ansicht schliessen</label>
 	<label index="company.saved.ok">Firma gespeichert</label>
 	<label index="company.saved.error">Firma konnte nicht gespeichert werden</label>
 	<label index="company.attr.id">Firmen ID</label>
