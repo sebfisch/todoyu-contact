@@ -439,7 +439,9 @@ class TodoyuContactRenderer {
 		}
 
 		$data['email']	= $person->getEmail();
-		
+
+		$data['hookedContent']	= implode('', TodoyuHookManager::callHook('contact', 'renderPersonDetailView', array('idPerson' => $idPerson)));
+
 		return render($tmpl, $data);
 	}
 
@@ -457,6 +459,8 @@ class TodoyuContactRenderer {
 		$tmpl		= 'ext/contact/view/company-detail.tmpl';
 		$company	= TodoyuCompanyManager::getCompany($idCompany);
 		$data		= $company->getTemplateData(true);
+
+		$data['hookedContent']	= implode('', TodoyuHookManager::callHook('contact', 'renderCompanyDetailView', array('idCompany' => $idCompany)));
 
 		return render($tmpl, $data);
 	}
