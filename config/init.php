@@ -184,4 +184,26 @@ Todoyu::$CONFIG['EXT']['contact']['contactimage'] = array(
 	)
 );
 
+
+/* -------------------------------------
+	Add contact module to profile
+   ------------------------------------- */
+if( TodoyuExtensions::isInstalled('profile') && allowed('contact', 'general:use') ) {
+	TodoyuProfileManager::addModule('contact', array(
+		'position'	=> 2,
+		'tabs'		=> 'TodoyuContactProfileRenderer::renderTabs',
+		'content'	=> 'TodoyuContactProfileRenderer::renderContent',
+		'label'		=> 'contact.profile.module',
+		'class'		=> 'contact'
+	));
+}
+
+	// Tabs for bookmark section in profile
+Todoyu::$CONFIG['EXT']['profile']['contactTabs'] = array(
+	array(
+		'id'			=> 'contact',
+		'label'			=> 'LLL:contact.profile.module'
+	)
+);
+
 ?>

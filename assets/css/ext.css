@@ -290,3 +290,15 @@ div.visitingCardContent table tr td.label {
 	background-color: #d5dee5;
 	height: 20px;
 }
+
+/* -------------------
+	Person Profile
+   ------------------- */
+
+#panelwidget-profilemodules li.contact {
+	background:url(../img/exticon.png) no-repeat 5px 3px;
+}
+
+#contact-tabs .tabkey-contact .icon {
+	background:url(../img/icons.png) no-repeat 0px 6px;
+}

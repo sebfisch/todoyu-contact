@@ -125,4 +125,5 @@
 	<label index="company.search.title">Companies</label>
 	<label index="company.search.mode">Find Companies</label>
 	<label index="other">Other Information</label>
+	<label index="profile.module">Personal Data</label>
 </labels>

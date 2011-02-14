@@ -77,6 +77,10 @@ Todoyu::$CONFIG['EXT']['contact']['assets'] = array(
 			'file'		=> 'ext/contact/assets/js/Upload.js',
 			'position'	=> 113
 		),
+		array(
+			'file'		=> 'ext/contact/assets/js/Profile.js',
+			'position'	=> 114
+		)
 	),
 	'css'	=> array(
 		array(
