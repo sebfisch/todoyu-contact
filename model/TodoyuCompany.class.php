@@ -107,6 +107,17 @@ class TodoyuCompany extends TodoyuBaseObject {
 
 
 	/**
+	 * Get all company address records
+	 *
+	 * @return	Array
+	 */
+	public function getAddresses() {
+		return TodoyuCompanyManager::getCompanyAddressRecords($this->getID());
+	}
+
+
+
+	/**
 	 * Loads the related foreign record data to the company
 	 */
 	public function loadForeignData() {
