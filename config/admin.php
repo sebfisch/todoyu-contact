@@ -32,11 +32,11 @@ TodoyuSysmanagerExtManager::addRecordConfig('contact', 'jobtype', array(
 	// Add contact info types to records area of sysadmin
 TodoyuSysmanagerExtManager::addRecordConfig('contact', 'contactinfotype', array(
 	'label'		=> 'LLL:contact.record.contactinfotype',
-	'list'		=> 'TodoyuContactInfoTypeManager::getRecords',
+	'list'		=> 'TodoyuContactContactInfoTypeManager::getRecords',
 	'form'		=> 'ext/contact/config/form/admin/contactinfotype.xml',
-	'object'	=> 'TodoyuContactInfoType',
-	'delete'	=> 'TodoyuContactInfoTypeManager::deleteContactTypeInfo',
-	'save'		=> 'TodoyuContactInfoTypeManager::saveContactInfoType',
+	'object'	=> 'TodoyuContactContactInfoType',
+	'delete'	=> 'TodoyuContactContactInfoTypeManager::deleteContactTypeInfo',
+	'save'		=> 'TodoyuContactContactInfoTypeManager::saveContactInfoType',
 	'table'		=> 'ext_contact_contactinfotype'
 ));
 
