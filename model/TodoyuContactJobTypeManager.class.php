@@ -246,7 +246,6 @@ class TodoyuContactJobTypeManager {
 		return $data;
 	}
 
-
 }
 
 ?>
