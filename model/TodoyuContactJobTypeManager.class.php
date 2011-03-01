@@ -40,7 +40,7 @@ class TodoyuContactJobTypeManager {
 	 * @return	TodoyuContactJobType
 	 */
 	public static function getJobType($idJobType) {
-		return TodoyuRecordManager::getRecord('TodoyuJobType', $idJobType);
+		return TodoyuRecordManager::getRecord('TodoyuContactJobType', $idJobType);
 	}
 
 

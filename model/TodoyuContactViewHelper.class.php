@@ -281,8 +281,6 @@ class TodoyuContactViewHelper {
 		$favoriteCountries			= array();
 		$favoriteCountrySortOrder	= array_flip($favoriteCountryIDs);
 
-//		TodoyuDebug::printInFireBug($countryOptions, '$countryOptions');
-
 		if( sizeof($favoriteCountryIDs) > 0 ) {
 			foreach($countryOptions as $countryOption) {
 				if( in_array($countryOption['value'], $favoriteCountryIDs) ) {

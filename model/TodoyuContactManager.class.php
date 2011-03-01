@@ -59,7 +59,6 @@ class TodoyuContactManager {
 		if( is_array($typeConfig) ) {
 			return $typeConfig['formXml'];
 		} else {
-//			TodoyuDebug::printInFirebug($contactType, 'Invalid contact tpye');
 			return false;
 		}
 	}

@@ -42,7 +42,7 @@ class TodoyuContactAddressManager {
 	public static function getAddress($idAddress) {
 		$idAddress	= intval($idAddress);
 
-		return TodoyuRecordManager::getRecord('TodoyuAddress', $idAddress);
+		return TodoyuRecordManager::getRecord('TodoyuContactAddress', $idAddress);
 	}
 
 
@@ -118,7 +118,7 @@ class TodoyuContactAddressManager {
 	protected static function removeFromCache($idAddress) {
 		$idAddress	= intval($idAddress);
 
-		TodoyuRecordManager::removeRecordCache('TodoyuAddress', $idAddress);
+		TodoyuRecordManager::removeRecordCache('TodoyuContactAddress', $idAddress);
 		TodoyuRecordManager::removeRecordQueryCache(self::TABLE, $idAddress);
 	}
 
