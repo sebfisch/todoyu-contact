@@ -99,7 +99,7 @@ function Dwoo_Plugin_personLabel(Dwoo $dwoo, $idPerson = 0, $idPrefix = '', $idR
 function Dwoo_Plugin_labelContactinfotype(Dwoo $dwoo, $idContactinfotype) {
 	$idContactinfotype = intval($idContactinfotype);
 
-	return TodoyuContactInfoManager::getContactInfoTypeName($idContactinfotype);
+	return TodoyuContactContactInfoManager::getContactInfoTypeName($idContactinfotype);
 }
 
 
