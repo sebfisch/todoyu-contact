@@ -614,7 +614,7 @@ class TodoyuContactPersonManager {
 			if( sizeof($data['contactinfo']) > 0 ) {
 				$infoIDs	= array();
 				foreach($data['contactinfo'] as $contactInfo) {
-					$infoIDs[] = TodoyuContactInfoManager::saveContactInfos($contactInfo);
+					$infoIDs[] = TodoyuContactContactInfoManager::saveContactInfos($contactInfo);
 				}
 
 				self::linkContactInfos($idPerson, $infoIDs);
@@ -968,7 +968,7 @@ class TodoyuContactPersonManager {
 	 * @return	Integer		Deleted records
 	 */
 	public static function deleteRemovedContactInfos($idPerson, array $currentContactInfoIDs) {
-		return TodoyuContactInfoManager::deleteLinkedContactInfos('ext_contact_mm_person_contactinfo', $idPerson, $currentContactInfoIDs, 'id_person');
+		return TodoyuContactContactInfoManager::deleteLinkedContactInfos('ext_contact_mm_person_contactinfo', $idPerson, $currentContactInfoIDs, 'id_person');
 	}
 
 

@@ -90,7 +90,7 @@ class TodoyuContactCompanyExportManager {
 			// Map & prepare contactinfo records of company
 		foreach( $company->contactinfo as $index => $contactinfo ) {
 			$prefix			= TodoyuLabelManager::getLabel('LLL:contact.contactinfo') . '_' . ($index + 1) . '_';
-			$contactinfoObj	= TodoyuContactInfoManager::getContactinfo($contactinfo['id']);
+			$contactinfoObj	= TodoyuContactContactInfoManager::getContactinfo($contactinfo['id']);
 
 			$exportData[$prefix . TodoyuLabelManager::getLabel('LLL:contact.contactinfo.attr.type')]	= $contactinfoObj->getTypeLabel();
 			$exportData[$prefix . TodoyuLabelManager::getLabel('LLL:contact.contactinfo.attr.info')]	= $contactinfo['info'];

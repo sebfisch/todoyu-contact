@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuContactInfoTypeManager {
+class TodoyuContactContactInfoTypeManager {
 
 	/**
 	 * @var	String		Default table for database requests
@@ -37,12 +37,12 @@ class TodoyuContactInfoTypeManager {
 	 * Get contact info type
 	 *
 	 * @param	Integer		$idContactInfoType
-	 * @return	TodoyuContactInfoType
+	 * @return	TodoyuContactContactInfoType
 	 */
 	public static function getContactInfoType($idContactInfoType) {
 		$idContactInfoType	= intval($idContactInfoType);
 
-		return TodoyuRecordManager::getRecord('TodoyuContactInfoType', $idContactInfoType);
+		return TodoyuRecordManager::getRecord('TodoyuContactContactInfoType', $idContactInfoType);
 	}
 
 
@@ -87,7 +87,7 @@ class TodoyuContactInfoTypeManager {
 
 
 	/**
-	 * Create new contactinfotype record with given data 
+	 * Create new contactinfotype record with given data
 	 *
 	 * @param	Array		$data
 	 * @return	Integer

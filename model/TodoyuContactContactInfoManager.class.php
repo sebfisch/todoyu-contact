@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuContactInfoManager {
+class TodoyuContactContactInfoManager {
 
 	/**
 	 * @var	String		Default table for database requests
@@ -37,12 +37,12 @@ class TodoyuContactInfoManager {
 	 * Get contactinfo object
 	 *
 	 * @param	Integer		$idContactInfo
-	 * @return	TodoyuContactInfo
+	 * @return	TodoyuContactContactInfo
 	 */
 	public static function getContactinfo($idContactInfo) {
 		$idContactInfo	= intval($idContactInfo);
 
-		return TodoyuRecordManager::getRecord('TodoyuContactInfo', $idContactInfo);
+		return TodoyuRecordManager::getRecord('TodoyuContactContactInfo', $idContactInfo);
 	}
 
 
@@ -137,7 +137,7 @@ class TodoyuContactInfoManager {
 	public static function removeFromCache($idContactInfo) {
 		$idContactInfo	= intval($idContactInfo);
 
-		TodoyuRecordManager::removeRecordCache('TodoyuContactInfo', $idContactInfo);
+		TodoyuRecordManager::removeRecordCache('TodoyuContactContactInfo', $idContactInfo);
 		TodoyuRecordManager::removeRecordQueryCache(self::TABLE, $idContactInfo);
 	}
 

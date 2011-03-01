@@ -219,7 +219,7 @@ class TodoyuContactCompanyManager {
 			if( sizeof($data['contactinfo']) > 0 ) {
 				$infoIDs	= array();
 				foreach($data['contactinfo'] as $contactInfo) {
-					$infoIDs[] = TodoyuContactInfoManager::saveContactInfos($contactInfo);
+					$infoIDs[] = TodoyuContactContactInfoManager::saveContactInfos($contactInfo);
 				}
 
 				self::linkContactInfos($idCompany, $infoIDs);
@@ -283,7 +283,7 @@ class TodoyuContactCompanyManager {
 	 * @return	Integer		Deleted records
 	 */
 	public static function deleteRemovedContactInfos($idCompany, array $currentContactInfoIDs) {
-		return TodoyuContactInfoManager::deleteLinkedContactInfos('ext_contact_mm_company_contactinfo', $idCompany, $currentContactInfoIDs, 'id_company');
+		return TodoyuContactContactInfoManager::deleteLinkedContactInfos('ext_contact_mm_company_contactinfo', $idCompany, $currentContactInfoIDs, 'id_company');
 	}
 
 
@@ -423,7 +423,7 @@ class TodoyuContactCompanyManager {
 	 * @return	void
 	 */
 	public static function deleteContactinfos($idCompany) {
-		TodoyuContactInfoManager::deleteLinkedContactInfos('ext_contact_mm_company_contactinfo', $idCompany, array(), 'id_company');
+		TodoyuContactContactInfoManager::deleteLinkedContactInfos('ext_contact_mm_company_contactinfo', $idCompany, array(), 'id_company');
 	}
 
 

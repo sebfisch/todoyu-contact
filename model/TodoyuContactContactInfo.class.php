@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuContactInfo extends TodoyuBaseObject {
+class TodoyuContactContactInfo extends TodoyuBaseObject {
 
 	/**
 	 * table of the record
@@ -50,7 +50,7 @@ class TodoyuContactInfo extends TodoyuBaseObject {
 	 *
 	 */
 	function getTypeLabel() {
-		$contactInfoType = new TodoyuContactInfoType($this->id_contactinfotype);
+		$contactInfoType = new TodoyuContactContactInfoType($this->id_contactinfotype);
 
 		return (strlen(trim($contactInfoType['title'])) > 0) ? TodoyuLabelManager::getLabel($contactInfoType['title']) : '';
 	}

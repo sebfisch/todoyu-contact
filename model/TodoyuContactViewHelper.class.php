@@ -199,7 +199,7 @@ class TodoyuContactViewHelper {
 
 		if( $idContactInfo !== 0 ) {
 			$idContactInfoType	= intval($record['id_contactinfotype']);
-			$contactInfoType	= TodoyuContactInfoTypeManager::getContactInfoType($idContactInfoType);
+			$contactInfoType	= TodoyuContactContactInfoTypeManager::getContactInfoType($idContactInfoType);
 
 			$label	= $contactInfoType->getTitle() . ': ' . $record['info'];
 		}
@@ -377,7 +377,7 @@ class TodoyuContactViewHelper {
 	 * @return	Array
 	 */
 	public static function getContactInfoTypeOptions(TodoyuFormElement $field) {
-		$types	= TodoyuContactInfoTypeManager::getContactInfoTypes(true);
+		$types	= TodoyuContactContactInfoTypeManager::getContactInfoTypes(true);
 		$reform	= array(
 			'id'	=> 'value',
 			'title'	=> 'label'
