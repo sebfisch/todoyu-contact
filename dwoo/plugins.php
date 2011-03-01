@@ -132,7 +132,7 @@ function Dwoo_Plugin_countryName(Dwoo $dwoo, $idCountry) {
  * @return	String
  */
 function Dwoo_Plugin_addressType_compile(Dwoo_Compiler $compiler, $idAddressType) {
-	return 'TodoyuAddressManager::getAddresstypeLabel(' . $idAddressType . ')';
+	return 'TodoyuContactAddressManager::getAddresstypeLabel(' . $idAddressType . ')';
 }
 
 
