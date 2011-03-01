@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuPersonManager {
+class TodoyuContactPersonManager {
 
 	/**
 	 * @var	String		Default table for database requests
@@ -64,10 +64,10 @@ class TodoyuPersonManager {
 	 * prevent double object initialisation
 	 *
 	 * @param	Integer		$idPerson
-	 * @return	TodoyuPerson
+	 * @return	TodoyuContactPerson
 	 */
 	public static function getPerson($idPerson) {
-		return TodoyuRecordManager::getRecord('TodoyuPerson', $idPerson);
+		return TodoyuRecordManager::getRecord('TodoyuContactPerson', $idPerson);
 	}
 
 
@@ -349,7 +349,7 @@ class TodoyuPersonManager {
 	 * @return	Boolean
 	 */
 	public static function hasAnyRole(array $roles, $idPerson = 0) {
-		$personRoles	= TodoyuPersonManager::getRoleIDs($idPerson);
+		$personRoles	= TodoyuContactPersonManager::getRoleIDs($idPerson);
 
 		return sizeof(array_intersect($roles, $personRoles)) > 0;
 	}
@@ -489,7 +489,7 @@ class TodoyuPersonManager {
 	 */
 	public static function getPreferredEmail($idPerson) {
 		$idPerson	= intval($idPerson);
-		$person		= TodoyuPersonManager::getPerson($idPerson);
+		$person		= TodoyuContactPersonManager::getPerson($idPerson);
 
 		$email		= $person->getEmail();
 
@@ -543,7 +543,7 @@ class TodoyuPersonManager {
 
 			// Limit results to allowed person records
 		if( ! allowed('contact', 'person:seeAllPersons') ) {
-			$where .= ' AND ' . TodoyuPersonRights::getAllowedToBeSeenPersonsWhereClause();
+			$where .= ' AND ' . TodoyuContactPersonRights::getAllowedToBeSeenPersonsWhereClause();
 		}
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order, $limit);
@@ -636,7 +636,7 @@ class TodoyuPersonManager {
 			if( is_array($data['address']) ) {
 				$addressIDs	= array();
 				foreach($data['address'] as $address) {
-					$addressIDs[] =  TodoyuAddressManager::saveAddress($address);
+					$addressIDs[] =  TodoyuContactAddressManager::saveAddress($address);
 				}
 
 				self::linkAddresses($idPerson, $addressIDs);
@@ -698,7 +698,7 @@ class TodoyuPersonManager {
 	public static function removeFromCache($idPerson) {
 		$idPerson		= intval($idPerson);
 
-		TodoyuRecordManager::removeRecordCache('TodoyuPerson', $idPerson);
+		TodoyuRecordManager::removeRecordCache('TodoyuContactPerson', $idPerson);
 		TodoyuRecordManager::removeRecordQueryCache(self::TABLE, $idPerson);
 	}
 
@@ -903,7 +903,7 @@ class TodoyuPersonManager {
 	 * Get main company (first linked) of the person
 	 *
 	 * @param	Integer		$idPerson
-	 * @return	TodoyuCompany
+	 * @return	TodoyuContactCompany
 	 */
 	public static function getPersonsMainCompany($idPerson) {
 		$idPerson = intval($idPerson);
@@ -918,7 +918,7 @@ class TodoyuPersonManager {
 
 		$idCompany	= Todoyu::db()->getFieldValue($field, $table, $where, null, null, $limit);
 
-		return TodoyuCompanyManager::getCompany($idCompany);
+		return TodoyuContactCompanyManager::getCompany($idCompany);
 	}
 
 
@@ -993,7 +993,7 @@ class TodoyuPersonManager {
 	 * @return	Integer
 	 */
 	public static function deleteRemovedAddresses($idPerson, array $currentAddressIDs) {
-		return TodoyuAddressManager::deleteLinkedAddresses('ext_contact_mm_person_address', $idPerson, $currentAddressIDs, 'id_person');
+		return TodoyuContactAddressManager::deleteLinkedAddresses('ext_contact_mm_person_address', $idPerson, $currentAddressIDs, 'id_person');
 	}
 
 
@@ -1051,7 +1051,7 @@ class TodoyuPersonManager {
 	}
 
 
-	
+
 	/**
 	 * Gets the preview image for the form
 	 *

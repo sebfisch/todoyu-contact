@@ -42,7 +42,7 @@ class TodoyuContactManager {
 	 * @return	Array
 	 */
 	public static function getListPersons($limit) {
-		return TodoyuPersonManager::searchPersons('', null, $limit);
+		return TodoyuContactPersonManager::searchPersons('', null, $limit);
 	}
 
 
@@ -157,7 +157,7 @@ class TodoyuContactManager {
 		$idCompany	= intval($data['id']);
 
 		if( $idCompany === 0 ) {
-			$idCompany = TodoyuCompanyManager::addCompany();
+			$idCompany = TodoyuContactCompanyManager::addCompany();
 		}
 
 			// Save own external fields
@@ -166,8 +166,8 @@ class TodoyuContactManager {
 			// Call save data hook
 		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idCompany);
 
-		TodoyuCompanyManager::updateCompany($idCompany, $data);
-		TodoyuCompanyManager::removeFromCache($idCompany);
+		TodoyuContactCompanyManager::updateCompany($idCompany, $data);
+		TodoyuContactCompanyManager::removeFromCache($idCompany);
 
 		return $idCompany;
 	}
@@ -191,9 +191,9 @@ class TodoyuContactManager {
 	public static function getPersonForeignRecordData(array $data, $idPerson) {
 		$idPerson	= intval($idPerson);
 
-		$data['company']	= TodoyuPersonManager::getPersonCompanyRecords($idPerson);
-		$data['contactinfo']= TodoyuPersonManager::getContactinfoRecords($idPerson);
-		$data['address']	= TodoyuPersonManager::getAddressRecords($idPerson);
+		$data['company']	= TodoyuContactPersonManager::getPersonCompanyRecords($idPerson);
+		$data['contactinfo']= TodoyuContactPersonManager::getContactinfoRecords($idPerson);
+		$data['address']	= TodoyuContactPersonManager::getAddressRecords($idPerson);
 
 		return $data;
 	}
@@ -231,7 +231,7 @@ class TodoyuContactManager {
 	 * @return	Array
 	 */
 	public static function getPersonListingData($size, $offset = 0, $searchWord = '') {
-		$persons= TodoyuPersonManager::searchPersons($searchWord, null, $size, $offset);
+		$persons= TodoyuContactPersonManager::searchPersons($searchWord, null, $size, $offset);
 		$data	= array(
 			'rows'	=> array(),
 			'total'	=> Todoyu::db()->getTotalFoundRows()
@@ -244,7 +244,7 @@ class TodoyuContactManager {
 				'lastname'	=> $person['lastname'],
 				'firstname'	=> $person['firstname'],
 				'email'		=> $person['email'],
-				'company'	=> TodoyuPersonManager::getPersonsMainCompany($person['id'])->getTitle(),
+				'company'	=> TodoyuContactPersonManager::getPersonsMainCompany($person['id'])->getTitle(),
 				'actions'	=> TodoyuContactRenderer::renderPersonActions($person['id'])
 			);
 		}
@@ -263,7 +263,7 @@ class TodoyuContactManager {
 	 * @return	Array
 	 */
 	public static function getCompanyListingData($size, $offset = 0, $searchWord = '') {
-		$companies	= TodoyuCompanyManager::searchCompany($searchWord, null, $size, $offset);
+		$companies	= TodoyuContactCompanyManager::searchCompany($searchWord, null, $size, $offset);
 
 		$data	= array(
 			'rows'	=> array(),
@@ -274,8 +274,8 @@ class TodoyuContactManager {
 			$data['rows'][] = array(
 				'icon'		=> '',
 				'title'		=> $company['title'],
-//				'persons'	=> TodoyuCompanyManager::getNumPersons($company['id']),
-				'address'	=> TodoyuCompanyManager::getCompanyAddress($company['id']),
+//				'persons'	=> TodoyuContactCompanyManager::getNumPersons($company['id']),
+				'address'	=> TodoyuContactCompanyManager::getCompanyAddress($company['id']),
 				'actions'	=> TodoyuContactRenderer::renderCompanyActions($company['id'])
 			);
 		}

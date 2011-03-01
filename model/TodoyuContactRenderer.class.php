@@ -104,7 +104,7 @@ class TodoyuContactRenderer {
 	 * @return	String
 	 */
 	public static function renderCompanyQuickCreateForm() {
-		$form	= TodoyuCompanyManager::getQuickCreateForm();
+		$form	= TodoyuContactCompanyManager::getQuickCreateForm();
 
 			// Preset (empty) form data
 		$formData	= $form->getFormData();
@@ -122,7 +122,7 @@ class TodoyuContactRenderer {
 	 * @return	String
 	 */
 	public static function renderPersonQuickCreateForm() {
-		$form	= TodoyuPersonManager::getQuickCreateForm();
+		$form	= TodoyuContactPersonManager::getQuickCreateForm();
 
 			// Preset (empty) form data
 		$formData	= $form->getFormData();
@@ -228,7 +228,7 @@ class TodoyuContactRenderer {
 
 		$form	= TodoyuFormManager::getForm($xmlPath, $idPerson);
 
-		$person	= TodoyuPersonManager::getPerson($idPerson);
+		$person	= TodoyuContactPersonManager::getPerson($idPerson);
 		$data	= $person->getTemplateData(true);
 			// Call hooked load data functions
 		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $idPerson);
@@ -262,7 +262,7 @@ class TodoyuContactRenderer {
 
 		$form	= TodoyuFormManager::getForm($xmlPath, $idPerson);
 
-		$person	= TodoyuPersonManager::getPerson($idPerson);
+		$person	= TodoyuContactPersonManager::getPerson($idPerson);
 		$data	= $person->getTemplateData(true);
 			// Call hooked load data functions
 		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $idPerson);
@@ -299,7 +299,7 @@ class TodoyuContactRenderer {
 
 		$form	= TodoyuFormManager::getForm($xmlPath, $idCompany);
 
-		$company	= TodoyuCompanyManager::getCompany($idCompany);
+		$company	= TodoyuContactCompanyManager::getCompany($idCompany);
 		$data	= $company->getTemplateData(true);
 			// Call hooked load data functions
 		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $idCompany);
@@ -334,7 +334,7 @@ class TodoyuContactRenderer {
 
 		$form	= TodoyuFormManager::getForm($xmlPath, $idCompany);
 
-		$company= TodoyuCompanyManager::getCompany($idCompany);
+		$company= TodoyuContactCompanyManager::getCompany($idCompany);
 		$data	= $company->getTemplateData(true);
 		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $idCompany);
 
@@ -396,7 +396,7 @@ class TodoyuContactRenderer {
 	 */
 	public static function renderPersonHeader($idPerson, $withDetails = null) {
 		$idPerson	= intval($idPerson);
-		$person		= TodoyuPersonManager::getPerson($idPerson);
+		$person		= TodoyuContactPersonManager::getPerson($idPerson);
 
 		$tmpl		= 'ext/contact/view/person-header.tmpl';
 
@@ -425,14 +425,14 @@ class TodoyuContactRenderer {
 	 */
 	public static function renderPersonInfo($idPerson) {
 		$idPerson	= intval($idPerson);
-		$person		= TodoyuPersonManager::getPerson($idPerson);
+		$person		= TodoyuContactPersonManager::getPerson($idPerson);
 
 		$tmpl	= 'ext/contact/view/person-detail.tmpl';
 		$data	= $person->getTemplateData(true);
 
 		$companyIDs = $person->getCompanyIDs();
 		foreach($companyIDs as $idCompany) {
-			$company		= TodoyuCompanyManager::getCompany($idCompany);
+			$company		= TodoyuContactCompanyManager::getCompany($idCompany);
 			$companyData	= $company->getTemplateData(true);
 
 			$data['companyData'][$idCompany] = $companyData['address'];
@@ -457,7 +457,7 @@ class TodoyuContactRenderer {
 		$idCompany = intval($idCompany);
 
 		$tmpl		= 'ext/contact/view/company-detail.tmpl';
-		$company	= TodoyuCompanyManager::getCompany($idCompany);
+		$company	= TodoyuContactCompanyManager::getCompany($idCompany);
 		$data		= $company->getTemplateData(true);
 
 		$data['hookedContent']	= implode('', TodoyuHookManager::callHook('contact', 'renderCompanyDetailView', array('idCompany' => $idCompany)));
@@ -507,7 +507,7 @@ class TodoyuContactRenderer {
 	 */
 	public static function renderContactImageUploadForm($idRecord, $recordType) {
 		$idRecord	= intval($idRecord);
-		
+
 				// Construct form object
 		$xmlPath	= 'ext/contact/config/form/uploadcontactimage.xml';
 		$form		= TodoyuFormManager::getForm($xmlPath);

@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuPerson extends TodoyuBaseObject {
+class TodoyuContactPerson extends TodoyuBaseObject {
 
 	/**
 	 * Initialize person
@@ -120,7 +120,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 	 * @return	Array
 	 */
 	public function getRoleIDs() {
-		return TodoyuPersonManager::getRoleIDs($this->id);
+		return TodoyuContactPersonManager::getRoleIDs($this->id);
 	}
 
 
@@ -139,7 +139,7 @@ class TodoyuPerson extends TodoyuBaseObject {
 				return $this->getFirstname() . ' ' . $this->getLastname();
 			}
 		} else {
-			return '';	
+			return '';
 		}
 	}
 
@@ -229,13 +229,13 @@ class TodoyuPerson extends TodoyuBaseObject {
 	 * Get main company
 	 *
 	 * @todo	There is not really a main company, we just take the first one
-	 * @return	TodoyuCompany
+	 * @return	TodoyuContactCompany
 	 */
 	public function getCompany() {
 		$companyIDs 	= $this->getCompanyIDs();
 		$firstCompanyID	= intval($companyIDs[0]);
 
-		return TodoyuCompanyManager::getCompany($firstCompanyID);
+		return TodoyuContactCompanyManager::getCompany($firstCompanyID);
 	}
 
 
@@ -274,11 +274,11 @@ class TodoyuPerson extends TodoyuBaseObject {
 	 * @return	Array
 	 */
 	public function getEmployers() {
-		$employers	= TodoyuPersonManager::getPersonCompanyRecords($this->getID());
+		$employers	= TodoyuContactPersonManager::getPersonCompanyRecords($this->getID());
 
 		foreach($employers as $index => $employer) {
-			$employers[$index]['workaddress'] = TodoyuAddressManager::getAddress($employer['id_workaddress']);
-			$employers[$index]['jobtype'] = TodoyuJobTypeManager::getJobType($employer['id_jobtype']);
+			$employers[$index]['workaddress'] = TodoyuContactAddressManager::getAddress($employer['id_workaddress']);
+			$employers[$index]['jobtype'] = TodoyuContactJobTypeManager::getJobType($employer['id_jobtype']);
 		}
 
 
@@ -291,9 +291,9 @@ class TodoyuPerson extends TodoyuBaseObject {
 	 */
 	public function loadForeignData() {
 		$this->data['company']		= $this->getEmployers();
-		$this->data['contactinfo']	= TodoyuPersonManager::getContactinfoRecords($this->getID());
-		$this->data['address']		= TodoyuPersonManager::getAddressRecords($this->getID());
-		$this->data['role']			= TodoyuPersonManager::getRoles($this->getID());
+		$this->data['contactinfo']	= TodoyuContactPersonManager::getContactinfoRecords($this->getID());
+		$this->data['address']		= TodoyuContactPersonManager::getAddressRecords($this->getID());
+		$this->data['role']			= TodoyuContactPersonManager::getRoles($this->getID());
 	}
 
 

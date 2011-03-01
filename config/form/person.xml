@@ -65,10 +65,10 @@
 		<fieldset name="image">
 			<legend>Image</legend>
 			<elements>
-				
+
 				<field type="comment" name="preview">
 					<comment type="function">
-						<function>TodoyuPersonManager::getPreviewImageForm</function>
+						<function>TodoyuContactPersonManager::getPreviewImageForm</function>
 					</comment>
 				</field>
 				<field type="button" name="upload">
@@ -81,7 +81,7 @@
 					<class>buttonRemoveContactImage</class>
 					<onclick>Todoyu.Ext.contact.Upload.removeImage(this.form, 'person')</onclick>
 				</field>
-				
+
 			</elements>
 		</fieldset>
 

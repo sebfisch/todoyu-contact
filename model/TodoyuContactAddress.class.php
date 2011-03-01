@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuAddress extends TodoyuBaseObject {
+class TodoyuContactAddress extends TodoyuBaseObject {
 
 	/**
 	 * constructor of the class
@@ -64,10 +64,10 @@ class TodoyuAddress extends TodoyuBaseObject {
 	/**
 	 * Get address holidayset
 	 *
-	 * @return	TodoyuHolidaySet
+	 * @return	TodoyuCalendarHolidaySet
 	 */
 	public function getHolidaySet() {
-		return TodoyuHolidaySetManager::getHolidaySet($this->get('id_holidayset'));
+		return TodoyuCalendarHolidaySetManager::getHolidaySet($this->get('id_holidayset'));
 	}
 
 

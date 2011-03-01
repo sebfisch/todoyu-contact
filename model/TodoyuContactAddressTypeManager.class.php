@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuAddressTypeManager {
+class TodoyuContactAddressTypeManager {
 
 	/**
 	 * Get all configured contact address types
@@ -52,7 +52,7 @@ class TodoyuAddressTypeManager {
 
 
 	/**
-	 * 
+	 *
 	 *
 	 * @static
 	 * @param	Integer	$idAddressType

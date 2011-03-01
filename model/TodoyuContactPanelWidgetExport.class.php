@@ -21,9 +21,9 @@
 
 
 /**
- * 
+ *
  */
-class TodoyuPanelWidgetContactExport extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
+class TodoyuContactPanelWidgetExport extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
 
 
 
@@ -91,7 +91,7 @@ class TodoyuPanelWidgetContactExport extends TodoyuPanelWidget implements Todoyu
 	public static function isAllowed() {
 		return allowed('contact', 'panelwidgets:contactexport');
 	}
-	
+
 }
 
 ?>

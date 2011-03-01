@@ -22,7 +22,7 @@
 /**
  * Export manager for companies
  */
-class TodoyuCompanyExportManager {
+class TodoyuContactCompanyExportManager {
 
 	/**
 	 * Exports companies as CSV file
@@ -31,7 +31,7 @@ class TodoyuCompanyExportManager {
 	 * @param	$searchWord
 	 */
 	public static function exportCSV($searchWord) {
-		$persons	= TodoyuCompanyManager::searchCompany($searchWord, null, '', '');
+		$persons	= TodoyuContactCompanyManager::searchCompany($searchWord, null, '', '');
 
 		$exportData	= self::prepareDataForExport($persons);
 
@@ -55,7 +55,7 @@ class TodoyuCompanyExportManager {
 		$exportData = array();
 
 		foreach($companies as $company) {
-			$companyObj	= TodoyuCompanyManager::getCompany($company['id']);
+			$companyObj	= TodoyuContactCompanyManager::getCompany($company['id']);
 
 			$companyObj->loadForeignData();
 			$exportData[]	= self::parseDataForExport($companyObj);
@@ -70,16 +70,16 @@ class TodoyuCompanyExportManager {
 	 * Parses company data for export
 	 *
 	 * @static
-	 * @param	TodoyuCompany	$company
+	 * @param	TodoyuContactCompany	$company
 	 * @return	Array
 	 */
-	protected static function parseDataForExport(TodoyuCompany $company) {
-		
+	protected static function parseDataForExport(TodoyuContactCompany $company) {
+
 		$exportData = array(
 			TodoyuLabelManager::getLabel('LLL:contact.company.attr.id')				=> $company->id,
 			TodoyuLabelManager::getLabel('LLL:core.date_create')					=> TodoyuTime::format($company->date_create),
 			TodoyuLabelManager::getLabel('LLL:core.date_update')					=> TodoyuTime::format($company->date_update),
-			TodoyuLabelManager::getLabel('LLL:core.id_person_create')				=> TodoyuPersonManager::getPerson($company->id_person_create)->getFullName(),
+			TodoyuLabelManager::getLabel('LLL:core.id_person_create')				=> TodoyuContactPersonManager::getPerson($company->id_person_create)->getFullName(),
 
 			TodoyuLabelManager::getLabel('LLL:contact.company.attr.title')			=> $company->title,
 			TodoyuLabelManager::getLabel('LLL:contact.company.attr.shortname')		=> $company->shortname,
@@ -100,9 +100,9 @@ class TodoyuCompanyExportManager {
 			// Map & prepare address records of company
 		foreach( $company->address as $index => $address) {
 			$prefix			= TodoyuLabelManager::getLabel('LLL:contact.address') . '_' . ($index + 1) . '_';
-			$addressObj		= TodoyuAddressManager::getAddress($address['id']);
+			$addressObj		= TodoyuContactAddressManager::getAddress($address['id']);
 
-			$exportData[$prefix . TodoyuLabelManager::getLabel('LLL:contact.address.attr.addresstype')]	= TodoyuAddressTypeManager::getAddressTypeLabel($address['id_addresstype']);
+			$exportData[$prefix . TodoyuLabelManager::getLabel('LLL:contact.address.attr.addresstype')]	= TodoyuContactAddressTypeManager::getAddressTypeLabel($address['id_addresstype']);
 			$exportData[$prefix . TodoyuLabelManager::getLabel('LLL:contact.address.attr.street')]		= $address['street'];
 			$exportData[$prefix . TodoyuLabelManager::getLabel('LLL:contact.address.attr.postbox')]		= $address['postbox'];
 			$exportData[$prefix . TodoyuLabelManager::getLabel('LLL:contact.address.attr.zip')]			= $address['zip'];

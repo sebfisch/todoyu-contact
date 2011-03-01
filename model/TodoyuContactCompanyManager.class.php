@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuCompanyManager {
+class TodoyuContactCompanyManager {
 
 	/**
 	 * @var	String		Default ext table for database requests
@@ -77,12 +77,12 @@ class TodoyuCompanyManager {
 	 * Get a company object
 	 *
 	 * @param	Integer				$idCompany
-	 * @return	TodoyuCompany
+	 * @return	TodoyuContactCompany
 	 */
 	public static function getCompany($idCompany) {
 		$idCompany	= intval($idCompany);
 
-		return TodoyuRecordManager::getRecord('TodoyuCompany', $idCompany);
+		return TodoyuRecordManager::getRecord('TodoyuContactCompany', $idCompany);
 	}
 
 
@@ -129,7 +129,7 @@ class TodoyuCompanyManager {
 		if( $idCompany === 0 ) {
 			$idCompany	= self::addCompany();
 		}
-		
+
 		if( $data['image_id'] != 0 ) {
 			TodoyuContactImageManager::renameStorageFolder('company', $data['image_id'], $idCompany);
 		}
@@ -240,7 +240,7 @@ class TodoyuCompanyManager {
 			if( is_array($data['address']) ) {
 				$addressIDs	= array();
 				foreach($data['address'] as $address) {
-					$addressIDs[] =  TodoyuAddressManager::saveAddress($address);
+					$addressIDs[] =  TodoyuContactAddressManager::saveAddress($address);
 				}
 
 				self::linkAddresses($idCompany, $addressIDs);
@@ -308,7 +308,7 @@ class TodoyuCompanyManager {
 	 * @return	Integer
 	 */
 	public static function deleteRemovedAddresses($idCompany, array $currentAddressIDs) {
-		return TodoyuAddressManager::deleteLinkedAddresses('ext_contact_mm_company_address', $idCompany, $currentAddressIDs, 'id_company');
+		return TodoyuContactAddressManager::deleteLinkedAddresses('ext_contact_mm_company_address', $idCompany, $currentAddressIDs, 'id_company');
 	}
 
 
@@ -478,7 +478,7 @@ class TodoyuCompanyManager {
 
 			// Limit results to allowed person records
 		if( ! TodoyuAuth::isAdmin() && ! allowed('contact', 'company:seeAllCompanies') ) {
-			$allowedWhere	= TodoyuCompanyRights::getAllowedToBeSeenCompaniesWhereClause();
+			$allowedWhere	= TodoyuContactCompanyRights::getAllowedToBeSeenCompaniesWhereClause();
 
 			$where .= ' AND ' . $allowedWhere;
 		}
@@ -519,7 +519,7 @@ class TodoyuCompanyManager {
 	public static function removeFromCache($idCompany) {
 		$idCompany	= intval($idCompany);
 
-		TodoyuRecordManager::removeRecordCache('TodoyuCompany', $idCompany);
+		TodoyuRecordManager::removeRecordCache('TodoyuContactCompany', $idCompany);
 		TodoyuRecordManager::removeRecordQueryCache(self::TABLE, $idCompany);
 	}
 

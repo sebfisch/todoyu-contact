@@ -9,7 +9,7 @@
 					<label>contact.company</label>
 					<config>
 						<acName>company</acName>
-						<acLabel>TodoyuCompanyManager::getLabel</acLabel>
+						<acLabel>TodoyuContactCompanyManager::getLabel</acLabel>
 						<options>
 							<onComplete>Todoyu.Ext.contact.Autocomplete.onCompanyAutocomplete</onComplete>
 							<onSelected>Todoyu.Ext.contact.Person.updateCompanyAddressRecords</onSelected>

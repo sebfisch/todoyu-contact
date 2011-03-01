@@ -18,7 +18,7 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-class TodoyuPersonQuickInfoManager {
+class TodoyuContactPersonQuickInfoManager {
 
 	/**
 	 * Add JS onload function to page (hooked into TodoyuPage::render())

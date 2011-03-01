@@ -35,21 +35,21 @@ class TodoyuContactQuickinfoManager {
 	public static function getQuickinfoPerson(TodoyuQuickinfo $quickinfo, $idPerson) {
 		$idPerson	= intval($idPerson);
 
-		$data	= TodoyuPersonManager::getPersonArray($idPerson);
+		$data	= TodoyuContactPersonManager::getPersonArray($idPerson);
 
 			// Get preferred or only phone
-		$phone		= TodoyuPersonManager::getPreferredPhone($idPerson);
+		$phone		= TodoyuContactPersonManager::getPreferredPhone($idPerson);
 		if( $phone === false ) {
-			$phones	= TodoyuPersonManager::getPhones($idPerson, false);
+			$phones	= TodoyuContactPersonManager::getPhones($idPerson, false);
 			if( count($phones) == 1) {
 				$phone	= $phones[0];
 			}
 		}
 
-		$email		= TodoyuPersonManager::getPreferredEmail($idPerson);
-		$fullName	= TodoyuPersonManager::getPerson($idPerson)->getFullName();
+		$email		= TodoyuContactPersonManager::getPreferredEmail($idPerson);
+		$fullName	= TodoyuContactPersonManager::getPerson($idPerson)->getFullName();
 
-		$linkedName	= '<a href="?ext=contact&controller=person&action=detail&person=' . $idPerson . '">' . TodoyuPersonManager::getLabel($idPerson) . '</a>';
+		$linkedName	= '<a href="?ext=contact&controller=person&action=detail&person=' . $idPerson . '">' . TodoyuContactPersonManager::getLabel($idPerson) . '</a>';
 		$quickinfo->addInfo('name', $linkedName, 0, false);
 
 		$quickinfo->addEmail('email', $email, $fullName);
@@ -62,7 +62,7 @@ class TodoyuContactQuickinfoManager {
 		if( Todoyu::person()->isAdmin() || Todoyu::person()->isInternal() ) {
 			if( $data['birthday'] !== '0000-00-00' ) {
 				$quickinfo->addInfo('birthday', $data['birthday']);
-			}		
+			}
 		}
 	}
 

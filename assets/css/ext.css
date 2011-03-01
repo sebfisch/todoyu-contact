@@ -40,11 +40,11 @@ span.wizardIcon.createNewCompany	{
 /* -----------------------------------
 	Create mode options in headlet
    ----------------------------------- */
-#headlet-quickcreate-content li.itemContactCompany a {
+#todoyuheadletquickcreate li.itemContactCompany a {
 	background:url(../img/icons.png) no-repeat 5px -238px;
 }
 
-#headlet-quickcreate-content li.itemContactPerson a {
+#todoyuheadletquickcreate li.itemContactPerson a {
 	background:url(../img/icons.png) no-repeat 5px -88px;
 }
 
@@ -68,12 +68,12 @@ span.wizardIcon.createNewCompany	{
 /* -----------------
 	Search
    ----------------- */
-#headlet-quicksearch-content form.searchmodeCompany a.mode,
-#headlet-quicksearch-content li.searchmodeCompany a {
+#todoyusearchheadletquicksearch form.searchmodeCompany a.mode,
+#todoyusearchheadletquicksearch li.searchmodeCompany a {
 	background:url(../img/icons.png) no-repeat 3px -148px !important;
 }
-#headlet-quicksearch-content form.searchmodePerson a.mode,
-#headlet-quicksearch-content li.searchmodePerson a {
+#todoyusearchheadletquicksearch form.searchmodePerson a.mode,
+#todoyusearchheadletquicksearch-modes li.searchmodePerson a {
 	background:url(../img/icons.png) no-repeat 3px 3px !important;
 }
 

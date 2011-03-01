@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuPersonFilter extends TodoyuFilterBase {
+class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 
 	/**
 	 * @var	String		Default table for database requests

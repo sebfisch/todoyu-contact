@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuAddressManager {
+class TodoyuContactAddressManager {
 
 	/**
 	 * @var	String		Ext DB table
@@ -37,7 +37,7 @@ class TodoyuAddressManager {
 	 * Return the requested Address object
 	 *
 	 * @param	Integer			$idAddress
-	 * @return	TodoyuAddress
+	 * @return	TodoyuContactAddress
 	 */
 	public static function getAddress($idAddress) {
 		$idAddress	= intval($idAddress);

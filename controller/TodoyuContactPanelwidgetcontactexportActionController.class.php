@@ -27,9 +27,9 @@ class TodoyuContactPanelwidgetcontactexportActionController extends TodoyuAction
 		$tab		= $params['tab'];
 
 		if( $tab == 'person' ) {
-			TodoyuPersonExportManager::exportCSV($searchword);
+			TodoyuContactPersonExportManager::exportCSV($searchword);
 		} else if( $tab == 'company' ) {
-			TodoyuCompanyExportManager::exportCSV($searchword);
+			TodoyuContactCompanyExportManager::exportCSV($searchword);
 		}
 	}
 }

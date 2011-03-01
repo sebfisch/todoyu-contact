@@ -95,7 +95,7 @@
 
 				<field type="comment" name="preview">
 					<comment type="function">
-						<function>TodoyuCompanyManager::getPreviewImageForm</function>
+						<function>TodoyuContactCompanyManager::getPreviewImageForm</function>
 					</comment>
 				</field>
 				<field type="button" name="upload">

@@ -19,40 +19,53 @@
 *****************************************************************************/
 
 /**
- * Controller for project autocomplete
+ * Person filter data source
  *
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuContactPanelwidgetStafflistActionController extends TodoyuActionController {
+class TodoyuContactPersonFilterDataSource {
 
 	/**
-	 * Check whether use of project area is allowed
+	 * Get autocomplete list for person
 	 *
-	 * @param	Array		$params
+	 * @param 	String		$input
+	 * @param	Array		$formData
+	 * @param	String		$name
+	 * @return	Array
 	 */
-	public function init(array $params) {
-		restrict('contact', 'general:area');
+	public static function autocompletePersons($input, array $formData = array(), $name = '') {
+		$data = array();
+
+		$fieldsToSearchIn = array(
+			'firstname',
+			'lastname',
+			'shortname'
+		);
+
+		$persons = TodoyuContactPersonManager::searchPersons($input, $fieldsToSearchIn);
+
+		foreach($persons as $person) {
+			$data[$person['id']] = TodoyuContactPersonManager::getLabel($person['id']);
+		}
+
+		return $data;
 	}
 
 
 
 	/**
-	 * Get person list for current filter
+	 * Get person filter definition label
 	 *
-	 * @param	Array		$params
-	 * @return	String
+	 * @param	Array	$definitions
+	 * @return	Array
 	 */
-	public function listAction(array $params) {
-		$filters	= json_decode($params['filters'], true);
+	public static function getLabel($definitions) {
+		$definitions['value_label'] = TodoyuContactPersonManager::getLabel($definitions['value']);
 
-		$widget	= TodoyuPanelWidgetManager::getPanelWidget('contact', 'StaffList');
-
-		$widget->saveFilters($filters);
-
-		return $widget->renderList();
+		return $definitions;
 	}
+
 
 }
-
 ?>

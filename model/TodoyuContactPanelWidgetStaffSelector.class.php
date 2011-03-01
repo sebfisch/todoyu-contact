@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
+class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
 
 	/**
 	 * Constructor (init widget)
@@ -101,7 +101,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 	 * @return	Array
 	 */
 	public function getStaffPersonOptions() {
-		$persons	= TodoyuJobTypeManager::getInternalPersonsWithJobType();
+		$persons	= TodoyuContactJobTypeManager::getInternalPersonsWithJobType();
 		$options	= array();
 
 		foreach($persons as $person) {
@@ -137,7 +137,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 	 * @return	String
 	 */
 	private function getJobTypes2PersonsJSON() {
-		$persons	= TodoyuPersonManager::getInternalPersons(true, true);
+		$persons	= TodoyuContactPersonManager::getInternalPersons(true, true);
 		$mapping	= array();
 
 		foreach($persons as $person) {
@@ -155,7 +155,7 @@ class TodoyuPanelWidgetStaffSelector extends TodoyuPanelWidget implements Todoyu
 	 * @return	Array
 	 */
 	private function getJobTypeOptions() {
-		$persons	= TodoyuJobTypeManager::getInternalPersonsWithJobType();
+		$persons	= TodoyuContactJobTypeManager::getInternalPersonsWithJobType();
 		$options	= array();
 
 		$jobTypes	= array(

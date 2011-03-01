@@ -56,7 +56,7 @@ function Dwoo_Plugin_isPersonID_compile(Dwoo_Compiler $dwoo, $idPerson) {
  */
 
 function Dwoo_Plugin_name_compile(Dwoo_Compiler $compiler, $idPerson) {
-	return 'TodoyuPersonManager::getPerson(' . $idPerson . ')->getFullName(true)';
+	return 'TodoyuContactPersonManager::getPerson(' . $idPerson . ')->getFullName(true)';
 }
 
 
@@ -78,7 +78,7 @@ function Dwoo_Plugin_personLabel(Dwoo $dwoo, $idPerson = 0, $idPrefix = '', $idR
 	$openingTag	= '<' . $tag . ' id="' . $htmlID . '" class="quickInfoPerson ' . $class . '">';
 	$closingTag	= '</' . $tag . '>';
 
-	$label	= TodoyuPersonManager::getLabel($idPerson);
+	$label	= TodoyuContactPersonManager::getLabel($idPerson);
 	$script	= TodoyuString::wrapScript('Todoyu.Ext.contact.QuickInfoPerson.add(\'' . $htmlID . '\');');
 
 	return $openingTag . $label . $closingTag . $script;
@@ -146,9 +146,9 @@ function Dwoo_Plugin_addressType_compile(Dwoo_Compiler $compiler, $idAddressType
  */
 function Dwoo_Plugin_salutationLabel(Dwoo $dwoo, $idPerson) {
 	$idPerson	= intval($idPerson);
-	
+
 	if( $idPerson > 0 ) {
-		return TodoyuPersonManager::getPerson($idPerson)->getSalutationLabel();
+		return TodoyuContactPersonManager::getPerson($idPerson)->getSalutationLabel();
 	}
 
 	return '';

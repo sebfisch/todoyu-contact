@@ -20,7 +20,7 @@
 
 
 /**
- * 
+ *
  */
 class TodoyuContactProfileRenderer {
 
@@ -75,7 +75,7 @@ class TodoyuContactProfileRenderer {
 
 		$form	= TodoyuFormManager::getForm($xmlPath, $idPerson);
 
-		$person	= TodoyuPersonManager::getPerson($idPerson);
+		$person	= TodoyuContactPersonManager::getPerson($idPerson);
 		$data	= $person->getTemplateData(true);
 			// Call hooked load data functions
 		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $idPerson);

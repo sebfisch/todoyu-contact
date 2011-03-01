@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuJobTypeManager {
+class TodoyuContactJobTypeManager {
 
 	/**
 	 * @var	String		Default table for database requests
@@ -37,7 +37,7 @@ class TodoyuJobTypeManager {
 	 * Get jobtype object
 	 *
 	 * @param	Integer		$idJobType
-	 * @return	TodoyuJobType
+	 * @return	TodoyuContactJobType
 	 */
 	public static function getJobType($idJobType) {
 		return TodoyuRecordManager::getRecord('TodoyuJobType', $idJobType);
@@ -91,7 +91,7 @@ class TodoyuJobTypeManager {
 	 * @return	Array
 	 */
 	public static function getRecords() {
-		$jobtypes	= TodoyuJobTypeManager::getAllJobTypes();
+		$jobtypes	= TodoyuContactJobTypeManager::getAllJobTypes();
 		$reform		= array(
 			'title'	=> 'label'
 		);
@@ -126,7 +126,7 @@ class TodoyuJobTypeManager {
 	 * @return	Array
 	 */
 	public static function getInternalPersonsWithJobType() {
-		$persons	= TodoyuPersonManager::getInternalPersons(true, false);
+		$persons	= TodoyuContactPersonManager::getInternalPersons(true, false);
 		$jobTypes	= self::getAllJobTypes();
 		$jobTypes	= TodoyuArray::useFieldAsIndex($jobTypes, 'id');
 

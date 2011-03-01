@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuCompany extends TodoyuBaseObject {
+class TodoyuContactCompany extends TodoyuBaseObject {
 
 	/**
 	 * Constructor
@@ -94,11 +94,11 @@ class TodoyuCompany extends TodoyuBaseObject {
 	 * @return	Array
 	 */
 	public function getEmplyeesRecords() {
-		$employees	= TodoyuCompanyManager::getCompanyPersonRecords($this->getID());
+		$employees	= TodoyuContactCompanyManager::getCompanyPersonRecords($this->getID());
 
 		foreach( $employees as $index => $employee ) {
-			$employees[$index]['workaddress']	= TodoyuAddressManager::getAddress($employee['id_workaddress']);
-			$employees[$index]['jobtype']		= TodoyuJobTypeManager::getJobType($employee['id_jobtype']);
+			$employees[$index]['workaddress']	= TodoyuContactAddressManager::getAddress($employee['id_workaddress']);
+			$employees[$index]['jobtype']		= TodoyuContactJobTypeManager::getJobType($employee['id_jobtype']);
 		}
 
 		return $employees;
@@ -112,7 +112,7 @@ class TodoyuCompany extends TodoyuBaseObject {
 	 * @return	Array
 	 */
 	public function getAddresses() {
-		return TodoyuCompanyManager::getCompanyAddressRecords($this->getID());
+		return TodoyuContactCompanyManager::getCompanyAddressRecords($this->getID());
 	}
 
 
@@ -122,8 +122,8 @@ class TodoyuCompany extends TodoyuBaseObject {
 	 */
 	public function loadForeignData() {
 		$this->data['person']		= $this->getEmplyeesRecords();
-		$this->data['contactinfo']	= TodoyuCompanyManager::getCompanyContactinfoRecords($this->getID());
-		$this->data['address']		= TodoyuCompanyManager::getCompanyAddressRecords($this->getID());
+		$this->data['contactinfo']	= TodoyuContactCompanyManager::getCompanyContactinfoRecords($this->getID());
+		$this->data['address']		= TodoyuContactCompanyManager::getCompanyAddressRecords($this->getID());
 	}
 
 

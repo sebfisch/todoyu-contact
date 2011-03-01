@@ -9,7 +9,7 @@
 					<label>contact.person</label>
 					<config>
 						<acName>person</acName>
-						<acLabel>TodoyuPersonManager::getLabel</acLabel>
+						<acLabel>TodoyuContactPersonManager::getLabel</acLabel>
 						<options>
 							<onComplete>Todoyu.Ext.contact.Autocomplete.onPersonAutocomplete</onComplete>
 						</options>

@@ -116,7 +116,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 		if( $form->isValid() ) {
 			$storageData= $form->getStorageData();
 
-			$idCompany	= TodoyuCompanyManager::saveCompany($storageData);
+			$idCompany	= TodoyuContactCompanyManager::saveCompany($storageData);
 
 			return $idCompany;
 		} else {
@@ -159,11 +159,11 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 		$idCompany	= intval($params['company']);
 
-		if( TodoyuCompanyManager::hasProjects($idCompany) ) {
+		if( TodoyuContactCompanyManager::hasProjects($idCompany) ) {
 			TodoyuHeader::sendTodoyuErrorHeader();
 			TodoyuNotification::notifyError('LLL:contact.company.delete.hasProjects');
 		} else {
-			TodoyuCompanyManager::deleteCompany($idCompany);
+			TodoyuContactCompanyManager::deleteCompany($idCompany);
 		}
 	}
 
@@ -276,7 +276,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 		if( $form->isValid() ) {
 			$storageData= $form->getStorageData();
 
-			$idCompany	= TodoyuCompanyManager::saveCompany($storageData);
+			$idCompany	= TodoyuContactCompanyManager::saveCompany($storageData);
 
 			TodoyuHeader::sendTodoyuHeader('idRecord', $idCompany);
 			TodoyuHeader::sendTodoyuHeader('recordLabel', $storageData['title']);

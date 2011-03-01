@@ -81,7 +81,7 @@
 
 				<field type="comment" name="preview">
 					<comment type="function">
-						<function>TodoyuPersonManager::getPreviewImageForm</function>
+						<function>TodoyuContactPersonManager::getPreviewImageForm</function>
 					</comment>
 				</field>
 				<field type="button" name="upload">

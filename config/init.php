@@ -22,11 +22,11 @@
 	Add autocompleters for contact data types
    --------------------------------------------- */
 	// Company
-TodoyuAutocompleter::addAutocompleter('company', 'TodoyuCompanyFilterDataSource::autocompleteCompanies', array('contact', 'general:use'));
+TodoyuAutocompleter::addAutocompleter('company', 'TodoyuContactCompanyFilterDataSource::autocompleteCompanies', array('contact', 'general:use'));
 	// Person
-TodoyuAutocompleter::addAutocompleter('person', 'TodoyuPersonFilterDataSource::autocompletePersons', array('contact', 'general:use'));
+TodoyuAutocompleter::addAutocompleter('person', 'TodoyuContactPersonFilterDataSource::autocompletePersons', array('contact', 'general:use'));
 	// Jobtype
-TodoyuAutocompleter::addAutocompleter('jobtype', 'TodoyuJobTypeManager::autocompleteJobtypes', array('contact', 'general:use'));
+TodoyuAutocompleter::addAutocompleter('jobtype', 'TodoyuContactJobTypeManager::autocompleteJobtypes', array('contact', 'general:use'));
 
 	// Add quickInfo callback for person labels
 TodoyuQuickinfoManager::addFunction('person', 'TodoyuContactQuickinfoManager::getQuickinfoPerson');
@@ -40,7 +40,7 @@ Todoyu::$CONFIG['EXT']['contact']['contactinfotypecategories'] = array(
 	array(	// Email
 		'index'	=> CONTACT_INFOTYPE_CATEGORY_EMAIL,
 		'label'	=> 'LLL:contact.record.contactinfotype.email'
-	),	
+	),
 	array(	// Phone
 		'index'	=> CONTACT_INFOTYPE_CATEGORY_PHONE,
 		'label'	=> 'LLL:contact.record.contactinfotype.phone'
@@ -61,7 +61,7 @@ Todoyu::$CONFIG['EXT']['contact']['addresstypes'] = array(
 		'index'	=> 1,
 		'label'	=> 'LLL:contact.address.attr.addresstype.1'
 	),
-		
+
 	array(	// Business address
 		'index'	=> 2,
 		'label'	=> 'LLL:contact.address.attr.addresstype.2'
@@ -103,7 +103,7 @@ Todoyu::$CONFIG['EXT']['contact']['defaultTypeTab'] = 'person';
 
 	// Load person foreign records data
 TodoyuFormHook::registerLoadData('ext/contact/config/form/person.xml', 'TodoyuContactManager::getPersonForeignRecordData');
-TodoyuFormHook::registerBuildForm('ext/contact/config/form/address.xml', 'TodoyuCompanyManager::hookAddTimezone');
+TodoyuFormHook::registerBuildForm('ext/contact/config/form/address.xml', 'TodoyuContactCompanyManager::hookAddTimezone');
 
 
 

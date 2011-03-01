@@ -36,7 +36,7 @@ class TodoyuContactViewHelper {
 	public static function getPersonLabel(TodoyuFormElement $field, array $data) {
 		$idPerson	= intval($data['id']);
 
-		return TodoyuPersonManager::getLabel($idPerson);
+		return TodoyuContactPersonManager::getLabel($idPerson);
 	}
 
 
@@ -49,12 +49,12 @@ class TodoyuContactViewHelper {
 	 */
 	public static function getPersonOptions(TodoyuFormElement $field) {
 		$options	= array();
-		$persons	= TodoyuPersonManager::getAllActivePersons();
+		$persons	= TodoyuContactPersonManager::getAllActivePersons();
 
 		foreach($persons as $person) {
 			$options[] = array(
 				'value'	=> $person['id'],
-				'label'	=> TodoyuPersonManager::getLabel($person['id'])
+				'label'	=> TodoyuContactPersonManager::getLabel($person['id'])
 			);
 		}
 
@@ -70,14 +70,14 @@ class TodoyuContactViewHelper {
 	 */
 	public static function getInternalPersonOptions(TodoyuFormElement $field) {
 		$options	= array();
-		$persons	= TodoyuPersonManager::getInternalPersons();
+		$persons	= TodoyuContactPersonManager::getInternalPersons();
 
 		if( sizeof($persons) > 0 ) {
 				// List internal persons
 			foreach($persons as $person) {
 				$options[] = array(
 					'value'	=> $person['id'],
-					'label'	=> TodoyuPersonManager::getLabel($person['id'])
+					'label'	=> TodoyuContactPersonManager::getLabel($person['id'])
 				);
 			}
 		} else {
@@ -104,7 +104,7 @@ class TodoyuContactViewHelper {
 	 */
 	public static function getPersonAddressLabel(TodoyuFormElement $formElement, array $valueArray) {
 		$idAddressType	= intval($valueArray['id_addresstype']);
-		$addressType	= TodoyuAddressTypeManager::getAddressType($idAddressType);
+		$addressType	= TodoyuContactAddressTypeManager::getAddressType($idAddressType);
 
 		return TodoyuString::getLabel($addressType['label']);
 	}
@@ -118,7 +118,7 @@ class TodoyuContactViewHelper {
 	 * @return	Array
 	 */
 	public static function getJobTypeOptions(TodoyuFormElement $field) {
-		$options	= TodoyuJobTypeManager::getJobTypeOptions();
+		$options	= TodoyuContactJobTypeManager::getJobTypeOptions();
 
 		if( count($options) == 0 ) {
 			$options[]	= array(
@@ -146,7 +146,7 @@ class TodoyuContactViewHelper {
 		$label		= '';
 
 		if( $idPerson !== 0 ) {
-			$label	= TodoyuPersonManager::getLabel($idPerson);
+			$label	= TodoyuContactPersonManager::getLabel($idPerson);
 		}
 
 		return $label;
@@ -166,7 +166,7 @@ class TodoyuContactViewHelper {
 		$label		= '';
 
 		if( $idAddress !== 0 ) {
-			$addressType	= TodoyuAddressManager::getAddresstypeLabel($record['id_addresstype']);
+			$addressType	= TodoyuContactAddressManager::getAddresstypeLabel($record['id_addresstype']);
 
 			if( ! empty($addressType) ) {
 				$label .= $addressType . ': ';
@@ -221,7 +221,7 @@ class TodoyuContactViewHelper {
 		$label		= '';
 
 		if( $idCompany !== 0 ) {
-			$company	= TodoyuCompanyManager::getCompany($idCompany);
+			$company	= TodoyuContactCompanyManager::getCompany($idCompany);
 
 			$label		= $company->getTitle();
 		}
@@ -277,7 +277,7 @@ class TodoyuContactViewHelper {
 	 */
 	public static function getCountryOptions(TodoyuFormElement $field) {
 		$countryOptions				= TodoyuStaticRecords::getCountryOptions();
-		$favoriteCountryIDs 		= TodoyuAddressManager::getMostUsedCountryIDs();
+		$favoriteCountryIDs 		= TodoyuContactAddressManager::getMostUsedCountryIDs();
 		$favoriteCountries			= array();
 		$favoriteCountrySortOrder	= array_flip($favoriteCountryIDs);
 
@@ -348,7 +348,7 @@ class TodoyuContactViewHelper {
 		$options	= array();
 
 		if( $idCompany !== 0 ) {
-			$addresses	= TodoyuCompanyManager::getCompanyAddressRecords($idCompany);
+			$addresses	= TodoyuContactCompanyManager::getCompanyAddressRecords($idCompany);
 
 			if( count($addresses) > 0 ) {
 				foreach($addresses as $address) {

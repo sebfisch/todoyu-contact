@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuCompanyRights {
+class TodoyuContactCompanyRights {
 
 	/**
 	 * Deny access
@@ -44,14 +44,14 @@ class TodoyuCompanyRights {
 	 * @return	String
 	 */
 	public static function getAllowedToBeSeenCompaniesWhereClause() {
-		$allowedCompanyIDs	= TodoyuCompanyManager::getInternalCompanyIDs();
+		$allowedCompanyIDs	= TodoyuContactCompanyManager::getInternalCompanyIDs();
 
 		if( TodoyuAuth::isAdmin() || allowed('contact', 'company:seeAllCompanies')) {
 			return ' 1';
 		}
 
 			// Get all companies the user belongs to
-		$person			= TodoyuPersonManager::getPerson(personid());
+		$person			= TodoyuContactPersonManager::getPerson(personid());
 		$ownCompanyIDs	= $person->getCompanyIDs();
 
 		$allowedCompanyIDs	= array_unique(array_merge($allowedCompanyIDs, $ownCompanyIDs));

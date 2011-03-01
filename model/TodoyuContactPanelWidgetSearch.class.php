@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	contact
  */
-class TodoyuPanelWidgetContactSearch extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
+class TodoyuContactPanelWidgetSearch extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
 
 	/**
 	 * Constructor of the class
@@ -48,7 +48,7 @@ class TodoyuPanelWidgetContactSearch extends TodoyuPanelWidget implements Todoyu
 
 	/**
 	 * Render content of contact search panel widget
-	 * 
+	 *
 	 * @return String
 	 */
 	public function renderContent() {

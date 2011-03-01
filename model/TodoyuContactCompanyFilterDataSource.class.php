@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuCompanyFilterDataSource {
+class TodoyuContactCompanyFilterDataSource {
 
 	/**
 	 * Get person filter definition label
@@ -33,7 +33,7 @@ class TodoyuCompanyFilterDataSource {
 	 * @return	Array
 	 */
 	public static function getLabel($definitions) {
-		$definitions['value_label'] = TodoyuCompanyManager::getLabel($definitions['value']);
+		$definitions['value_label'] = TodoyuContactCompanyManager::getLabel($definitions['value']);
 
 		return $definitions;
 	}
@@ -49,10 +49,10 @@ class TodoyuCompanyFilterDataSource {
 	 */
 	public static function autocompleteCompanies($input, array $formData = array(), $name = '') {
 		$result		= array();
-		$companies	= TodoyuCompanyManager::searchCompany($input);
+		$companies	= TodoyuContactCompanyManager::searchCompany($input);
 
 		foreach($companies as $companyData) {
-			$company	= TodoyuCompanyManager::getCompany($companyData['id']);
+			$company	= TodoyuContactCompanyManager::getCompany($companyData['id']);
 			$result[$companyData['id']] = $company->getTitle();
 		}
 
@@ -69,7 +69,7 @@ class TodoyuCompanyFilterDataSource {
 	 */
 	public static function getCompanyLabel($definitions) {
 		$idCompany	= intval($definitions['value']);
-		$company	= TodoyuCompanyManager::getCompany($idCompany);
+		$company	= TodoyuContactCompanyManager::getCompany($idCompany);
 
 		$definitions['value_label'] = $company->getTitle();
 

@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuCompanySearch implements TodoyuSearchEngineIf {
+class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 
 	/**
 	 * @var	String		Default table for database requests
@@ -47,7 +47,7 @@ class TodoyuCompanySearch implements TodoyuSearchEngineIf {
 
 		$addToWhere = ' AND deleted = 0';
 		if( ! allowed('contact', 'company:seeAllCompanies') ) {
-			$addToWhere	.= ' AND ' . TodoyuCompanyRights::getAllowedToBeSeenCompaniesWhereClause();
+			$addToWhere	.= ' AND ' . TodoyuContactCompanyRights::getAllowedToBeSeenCompaniesWhereClause();
 		}
 
 		return TodoyuSearch::searchTable($table, $fields, $find, $ignore, $limit, $addToWhere);

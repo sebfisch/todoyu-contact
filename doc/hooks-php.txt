@@ -20,13 +20,13 @@ Contact Extension - PHP Hooks
 --------------------------
 	personCSVExportParseData
 	@param	Array			$exportData
-	@param	TodoyuPerson	$person
+	@param	TodoyuContactPerson	$person
 	@return	Array
 	Evoked after person data is parsed for the export. Its possible to modify the exportData array. Has to give it back.
 
 	companyCSVExportParseData
 	@param	Array			$exportData
-	@param	TodoyuCompany	$person
+	@param	TodoyuContactCompany	$person
 	@return	Array
 	Evoked after company data is parsed for the export. Its possible to modify the exportData array. Has to give it back.
 

@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuPersonSearch implements TodoyuSearchEngineIf {
+class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 
 	/**
 	 * @var	String		Default table for database requests
@@ -47,7 +47,7 @@ class TodoyuPersonSearch implements TodoyuSearchEngineIf {
 
 		$addToWhere = ' AND deleted = 0';
 		if( ! allowed('contact', 'person:seeAllPersons') ) {
-			$addToWhere	.= ' AND ' . TodoyuPersonRights::getAllowedToBeSeenPersonsWhereClause();
+			$addToWhere	.= ' AND ' . TodoyuContactPersonRights::getAllowedToBeSeenPersonsWhereClause();
 		}
 
 		return TodoyuSearch::searchTable($table, $fields, $find, $ignore, $limit, $addToWhere);
@@ -85,7 +85,7 @@ class TodoyuPersonSearch implements TodoyuSearchEngineIf {
 
 			// Get comment details
 		foreach($personIDs as $idPerson) {
-			$label	= TodoyuPersonManager::getLabel($idPerson);
+			$label	= TodoyuContactPersonManager::getLabel($idPerson);
 
 			$suggestions[] = array(
 				'labelTitle'=> $label,

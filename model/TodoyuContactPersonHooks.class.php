@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuPersonHooks {
+class TodoyuContactPersonHooks {
 
 	/**
 	 * Extend task data attributes to implement person quickInfos
@@ -35,7 +35,7 @@ class TodoyuPersonHooks {
 	 */
 	public static function extendTaskDataAttributes(array $data, $idTask) {
 		$idTask		= intval($idTask);
-		$taskData	= TodoyuTaskManager::getTaskData($idTask);
+		$taskData	= TodoyuProjectTaskManager::getTaskData($idTask);
 
 		if( isset($data['person_assigned']) ) {
 				// person_assigned

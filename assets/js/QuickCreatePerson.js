@@ -68,7 +68,7 @@ Todoyu.Ext.contact.QuickCreatePerson = {
 		if( response.hasTodoyuError() ) {
 				// Saving person failed
 			Todoyu.notifyError('[LLL:contact.person.saved.error]');
-			Todoyu.Headlet.QuickCreate.updatePopupContent(response.responseText);
+			Todoyu.Headlets.QuickCreate.updatePopupContent(response.responseText);
 		} else {
 				// Saving succeeded
 			var idPerson	= response.getTodoyuHeader('idPerson');

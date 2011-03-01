@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuPanelWidgetStaffList extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
+class TodoyuContactPanelWidgetStaffList extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
 
 	/**
 	 * Initialize staff list PanelWidget
@@ -63,9 +63,9 @@ class TodoyuPanelWidgetStaffList extends TodoyuPanelWidget implements TodoyuPane
 	 */
 	private function getPersonIDs() {
 		$filters	= self::getFilters();
-		$filter		= new TodoyuPersonFilter($filters);
+		$filter		= new TodoyuContactPersonFilter($filters);
 		$limit		= intval(Todoyu::$CONFIG['EXT']['contact']['panelWidgetStaffList']['maxPersons']);
-		
+
 			// Get matching project IDs
 		$personIDs	= $filter->getPersonIDs('', $limit);
 
@@ -88,7 +88,7 @@ class TodoyuPanelWidgetStaffList extends TodoyuPanelWidget implements TodoyuPane
 						 p.lastname,
 						 p.shortname,
 						 p.salutation';
-			$tables	= 	TodoyuPersonManager::TABLE . ' p,
+			$tables	= 	TodoyuContactPersonManager::TABLE . ' p,
 						ext_contact_company c,
 						ext_contact_mm_company_person mm';
 			$where	= '		p.id			= mm.id_person

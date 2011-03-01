@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuPersonRights {
+class TodoyuContactPersonRights {
 
 	/**
 	 * Deny access
@@ -52,7 +52,7 @@ class TodoyuPersonRights {
 		}
 
 		if( allowed('contact', 'person::seeAllInternalPersons') ) {
-			if( TodoyuPersonManager::getPerson($idPerson)->isInternal() ) {
+			if( TodoyuContactPersonManager::getPerson($idPerson)->isInternal() ) {
 				return true;
 			}
 		}
@@ -76,13 +76,13 @@ class TodoyuPersonRights {
 		}
 
 		if( allowed('contact', 'person:seeAllInternalPersons') ) {
-			$personIDs	= TodoyuPersonManager::getInternalPersonIDs();
+			$personIDs	= TodoyuContactPersonManager::getInternalPersonIDs();
 		}
 
 			// Get all projects the current user is allowed to see
-		$projectIDs	= TodoyuProjectManager::getAvailableProjectsForPerson();
+		$projectIDs	= TodoyuProjectProjectManager::getAvailableProjectsForPerson();
 			// Get all persons marked "visible for externals" in any of their projects
-		$projectsPersonsIDs	= TodoyuProjectManager::getProjectsPersonsIDs($projectIDs, $withAccount);
+		$projectsPersonsIDs	= TodoyuProjectProjectManager::getProjectsPersonsIDs($projectIDs, $withAccount);
 
 		$personIDs	[]= personid();
 		$allowedPersonsIDs	= array_unique(array_merge($personIDs, $projectsPersonsIDs));
@@ -99,7 +99,7 @@ class TodoyuPersonRights {
 	 */
 	public static function getPersonIDsAllowedToBeSeen($withAccount = false) {
 		$fields	= 'id';
-		$table	= TodoyuPersonManager::TABLE;
+		$table	= TodoyuContactPersonManager::TABLE;
 		$where	= self::getAllowedToBeSeenPersonsWhereClause($withAccount);
 
 		return Todoyu::db()->getColumn($fields, $table, $where, '', '', '', 'id');

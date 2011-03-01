@@ -19,53 +19,22 @@
 *****************************************************************************/
 
 /**
- * Person filter data source
+ * JobType
  *
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuPersonFilterDataSource {
+class TodoyuContactJobType extends TodoyuBaseObject {
 
 	/**
-	 * Get autocomplete list for person
+	 * Constructor
 	 *
-	 * @param 	String		$input
-	 * @param	Array		$formData
-	 * @param	String		$name
-	 * @return	Array
+	 * @param	Integer		$idJobType
 	 */
-	public static function autocompletePersons($input, array $formData = array(), $name = '') {
-		$data = array();
-
-		$fieldsToSearchIn = array(
-			'firstname',
-			'lastname',
-			'shortname'
-		);
-
-		$persons = TodoyuPersonManager::searchPersons($input, $fieldsToSearchIn);
-
-		foreach($persons as $person) {
-			$data[$person['id']] = TodoyuPersonManager::getLabel($person['id']);
-		}
-
-		return $data;
+	function __construct($idJobType) {
+		parent::__construct($idJobType, 'ext_contact_jobtype');
 	}
-
-
-
-	/**
-	 * Get person filter definition label
-	 *
-	 * @param	Array	$definitions
-	 * @return	Array
-	 */
-	public static function getLabel($definitions) {
-		$definitions['value_label'] = TodoyuPersonManager::getLabel($definitions['value']);
-
-		return $definitions;
-	}
-
 
 }
+
 ?>
