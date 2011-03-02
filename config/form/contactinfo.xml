@@ -9,7 +9,7 @@
 			<elements>
 
 				<field type="select" name="id_contactinfotype">
-					<label>contact.contactinfo.attr.type</label>
+					<label>contact.ext.contactinfo.attr.type</label>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getContactInfoTypeOptions</function>
 					</source>
@@ -17,12 +17,12 @@
 				</field>
 
 				<field type="text" name="info">
-					<label>contact.contactinfo.attr.info</label>
+					<label>contact.ext.contactinfo.attr.info</label>
 					<required />
 				</field>
 
 				<field type="checkbox" name="preferred">
-					<label>form.is_preferred</label>
+					<label>core.form.is_preferred</label>
 				</field>
 
 			</elements>

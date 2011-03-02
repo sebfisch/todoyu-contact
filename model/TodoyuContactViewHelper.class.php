@@ -84,7 +84,7 @@ class TodoyuContactViewHelper {
 				// No internal persons / firm defined? inform about that
 			$options[] = array(
 				'value'		=> 0,
-				'label'		=> Label('contact.form.error.nointernalpersons'),
+				'label'		=> Label('contact.ext.form.error.nointernalpersons'),
 				'disabled'	=> true,
 				'classname'	=> 'error'
 			);
@@ -123,7 +123,7 @@ class TodoyuContactViewHelper {
 		if( count($options) == 0 ) {
 			$options[]	= array(
 				'value'		=> 'disabled',
-				'label'		=> 'LLL:contact.company.attr.person.jobtype.noJobtypes',
+				'label'		=> 'LLL:contact.ext.company.attr.person.jobtype.noJobtypes',
 				'disabled'	=> true,
 				'classname'	=> 'error'
 			);
@@ -358,7 +358,7 @@ class TodoyuContactViewHelper {
 			} else {
 				$options[]	= array(
 					'value'		=> 'disabled',
-					'label'		=> 'LLL:contact.company.noAddress',
+					'label'		=> 'LLL:contact.ext.company.noAddress',
 					'disabled'	=> true,
 					'classname'	=> 'error'
 				);

@@ -6,7 +6,7 @@
 			<elements>
 
 				<field type="textAC" name="id">
-					<label>contact.person</label>
+					<label>contact.ext.person</label>
 					<config>
 						<acName>person</acName>
 						<acLabel>TodoyuContactPersonManager::getLabel</acLabel>
@@ -19,7 +19,7 @@
 						<ext>contact</ext>
 						<controller>person</controller>
 						<action>addNewContactWizard</action>
-						<title>LLL:contact.person.create</title>
+						<title>LLL:contact.ext.person.create</title>
 						<width>700</width>
 						<displayCondition />
 					</wizard>
@@ -27,7 +27,7 @@
 				</field>
 
 				<field type="select" name="id_workaddress">
-					<label>contact.workaddress</label>
+					<label>contact.ext.workaddress</label>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getWorkaddressOptionsCompany</function>
 						<lazyInit/>
@@ -35,7 +35,7 @@
 				</field>
 
 				<field type="select" name="id_jobtype">
-					<label>contact.jobtype</label>
+					<label>contact.ext.jobtype</label>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getJobTypeOptions</function>
 						<lazyInit/>

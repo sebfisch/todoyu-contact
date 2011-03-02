@@ -6,7 +6,7 @@
 			<elements>
 
 				<field type="select" name="id">
-					<label>core.role</label>
+					<label>core.global.role</label>
 					<source type="function">
 						<function>TodoyuRoleViewHelper::getRoleOptions</function>
 					</source>

@@ -18,17 +18,17 @@
 			<elements>
 
 				<field type="upload" name="file">
-					<label>contact.contactimage.upload</label>
+					<label>contact.ext.contactimage.upload</label>
 					<onchange>Todoyu.Ext.contact.Upload.upload(this.form)</onchange>
 				</field>
 
 				<field type="button" name="cancel">
-					<text>LLL:core.cancel</text>
+					<text>LLL:core.global.cancel</text>
 					<class>buttonCancel cancel</class>
 					<hasIcon />
 					<onclick>Todoyu.Ext.contact.Upload.removeUploadForm()</onclick>
 				</field>
-				
+
 			</elements>
 		</fieldset>
 

@@ -10,7 +10,7 @@
 			<elements>
 
 				<field type="text" name="fulltext">
-					<label>panelwidget-stafflist.search</label>
+					<label>contact.panelwidget-stafflist.search</label>
 				</field>
 
 			</elements>

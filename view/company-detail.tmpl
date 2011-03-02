@@ -2,7 +2,7 @@
 	<h5>{$title}</h5>
 
 	<div class="left main-company-data">
-		<h3>{Label LLL:contact.company.maincompanydata}</h3>
+		<h3>{Label LLL:contact.ext.company.maincompanydata}</h3>
 		<dl class="nofloat">
 			<dd>{$title}</dd>
 		</dl>
@@ -13,7 +13,7 @@
 	</div>
 
 	<div class="clear contact-info">
-		<h3>{Label LLL:contact.contactinfo}</h3>
+		<h3>{Label LLL:contact.ext.contactinfo}</h3>
 		<dl>
 			{foreach $contactinfo numCi ciData}
 				<dt>{labelContactinfotype $ciData.id_contactinfotype}:</dt><dd>{htmlencode wordwrap($ciData.info 30 cut=false)}</dd>
@@ -27,7 +27,7 @@
 				<h3>{addressType $addressType.id_addresstype}</h3>
 				{$addressType.street}<br />
 				{if strlen($addressType.postbox)>0}
-					{Label contact.address.attr.postbox}: {htmlencode wordwrap($addressType.postbox 30 cut=true)}<br />
+					{Label contact.ext.address.attr.postbox}: {htmlencode wordwrap($addressType.postbox 30 cut=true)}<br />
 				{/if}
 				{$addressType.zip} {$addressType.city}<br />
 				{countryName $addressType.id_country}
@@ -36,7 +36,7 @@
 	</div>
 
 	<div class="clear employeePart">
-		<h3>{Label LLL:contact.company.attr.person}</h3>
+		<h3>{Label LLL:contact.ext.company.attr.person}</h3>
 		{foreach $person numEmployee pers}
 			<div class="{if $numEmployee%2}right{else}left{/if}">
 				<dl class="nofloat">
@@ -50,11 +50,11 @@
 
 	{if $date_enter > 0}
 		<div class="clear others">
-			<h3>{Label LLL:contact.other}</h3>
+			<h3>{Label LLL:contact.ext.other}</h3>
 			<dl>
-				<dt>{Label LLL:contact.company.attr.date_enter}:</dt><dd>{dateFormat $date_enter "date"}</dd>
+				<dt>{Label LLL:contact.ext.company.attr.date_enter}:</dt><dd>{dateFormat $date_enter "date"}</dd>
 				{if allowed('contact', 'company:seeComment')}
-					<dt>{Label LLL:contact.company.attr.comment}:</dt><dd>{$comment}</dd>
+					<dt>{Label LLL:contact.ext.company.attr.comment}:</dt><dd>{$comment}</dd>
 				{/if}
 			</dl>
 		</div>
@@ -64,9 +64,9 @@
 
 	{if allowed('contact', 'company:editAndDelete')}
 		<div class="clear actions">
-			{Button 'LLL:contact.company.edit' 'Todoyu.Ext.contact.Company.edit($id)' 'buttonCompanyEdit' 'company-edit' 'LLL:contact.company.edit'}
-			{Button 'LLL:contact.company.delete' 'Todoyu.Ext.contact.Company.remove($id)' 'buttonCompanyDelete' 'company-delete' 'LLL:contact.company.delete'}
-			{Button 'LLL:contact.company.close' 'Todoyu.Ext.contact.Company.showList(Todoyu.Ext.contact.PanelWidget.ContactSearch.getValue())' 'buttonCompanyClose' 'company-close' 'LLL:contact.company.close'}
+			{Button 'LLL:contact.ext.company.edit' 'Todoyu.Ext.contact.Company.edit($id)' 'buttonCompanyEdit' 'company-edit' 'LLL:contact.ext.ext.company.edit'}
+			{Button 'LLL:contact.ext.company.delete' 'Todoyu.Ext.contact.Company.remove($id)' 'buttonCompanyDelete' 'company-delete' 'LLL:contact.ext.ext.company.delete'}
+			{Button 'LLL:contact.ext.company.close' 'Todoyu.Ext.contact.Company.showList(Todoyu.Ext.contact.PanelWidget.ContactSearch.getValue())' 'buttonCompanyClose' 'company-close' 'LLL:contact.ext.ext.company.close'}
 		</div>
 	{/if}
 </div>

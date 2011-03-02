@@ -33,7 +33,7 @@ class TodoyuContactPanelWidgetSearch extends TodoyuPanelWidget implements Todoyu
 		parent::__construct(
 				'contact',										// ext key
 				'contactSearch',								// panel widget ID
-				'LLL:panelwidget-contactsearchinput.title',		// widget title text
+				'LLL:contact.panelwidget-contactsearchinput.title',		// widget title text
 				$config,										// widget config array
 				$params,										// widget parameters
 				$idArea

@@ -109,7 +109,7 @@ Todoyu.Ext.contact.Person =  {
 	 * @param	{Number}		idPerson
 	 */
 	remove: function(idPerson) {
-		if( confirm('[LLL:contact.person.delete.confirm]') ) {
+		if( confirm('[LLL:contact.ext.person.delete.confirm]') ) {
 			var url = Todoyu.getUrl('contact', 'person');
 			var options = {
 				'parameters': {
@@ -245,12 +245,12 @@ Todoyu.Ext.contact.Person =  {
 	 */
 	onSaved: function(response) {
 		if( response.hasTodoyuError() ) {
-			Todoyu.notifyError('[LLL:contact.person.saved.error]');
+			Todoyu.notifyError('[LLL:contact.ext.person.saved.error]');
 			$('contact-form-content').update(response.responseText);
 			var idPerson	= parseInt(response.request.parameters['person[id]'], 10);
 			this.initEditForm(idPerson);
 		} else {
-			Todoyu.notifySuccess('[LLL:contact.person.saved]');
+			Todoyu.notifySuccess('[LLL:contact.ext.person.saved]');
 
 			this.showList(this.ext.PanelWidget.ContactSearch.getValue());
 		}
@@ -342,11 +342,11 @@ Todoyu.Ext.contact.Person =  {
 		var error	= response.hasTodoyuError();
 
 		if( error ) {
-			Todoyu.notifyError('[LLL:contact.person.saved.error]');
+			Todoyu.notifyError('[LLL:contact.ext.person.saved.error]');
 
 			Todoyu.Popup.getContentElement('popup-' + target).update(response.responseText);
 		} else {
-			Todoyu.notifySuccess('[LLL:contact.person.saved]');
+			Todoyu.notifySuccess('[LLL:contact.ext.person.saved]');
 
 			var label		= response.getTodoyuHeader('recordLabel');
 
@@ -372,7 +372,7 @@ Todoyu.Ext.contact.Person =  {
 
 
 	/**
-	 * 
+	 *
 	 * @param form
 	 */
 	removeUnusedImages: function(form) {

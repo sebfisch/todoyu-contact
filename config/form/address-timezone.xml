@@ -6,7 +6,7 @@
 			<elements>
 
 				<field type="selectgrouped" name="id_timezone">
-					<label>contact.address.attr.timezone</label>
+					<label>contact.ext.address.attr.timezone</label>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getTimezoneOptionsGrouped</function>
 					</source>

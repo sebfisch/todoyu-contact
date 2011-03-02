@@ -131,7 +131,7 @@ class TodoyuContactJobTypeManager {
 		$jobTypes	= TodoyuArray::useFieldAsIndex($jobTypes, 'id');
 
 		foreach($persons as $index => $person) {
-			$persons[$index]['jobtype']	= $person['id_jobtype'] != 0 ? TodoyuString::getLabel($jobTypes[$person['id_jobtype']]['title']) : TodoyuLabelManager::getLabel('contact.noJobDefined');
+			$persons[$index]['jobtype']	= $person['id_jobtype'] != 0 ? TodoyuString::getLabel($jobTypes[$person['id_jobtype']]['title']) : TodoyuLabelManager::getLabel('contact.ext.noJobDefined');
 		}
 
 		return $persons;

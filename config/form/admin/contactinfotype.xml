@@ -10,7 +10,7 @@
 			<elements>
 
 				<field type="select" name="category">
-					<label>contact.record.contactinfotype.attr.category</label>
+					<label>contact.ext.record.contactinfotype.attr.category</label>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getContactInfoTypeCategoryOptions</function>
 					</source>
@@ -18,12 +18,12 @@
 				</field>
 
 				<field type="text" name="title">
-					<label>core.title</label>
+					<label>core.global.title</label>
 					<required />
 				</field>
 
 				<field type="text" name="key">
-					<label>contact.record.contactinfotype.attr.key</label>
+					<label>contact.ext.record.contactinfotype.attr.key</label>
 					<required />
 				</field>
 

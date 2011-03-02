@@ -67,7 +67,7 @@ Todoyu.Ext.contact.QuickCreatePerson = {
 	onSaved: function(response) {
 		if( response.hasTodoyuError() ) {
 				// Saving person failed
-			Todoyu.notifyError('[LLL:contact.person.saved.error]');
+			Todoyu.notifyError('[LLL:contact.ext.person.saved.error]');
 			Todoyu.CoreHeadlets.QuickCreate.updatePopupContent(response.responseText);
 		} else {
 				// Saving succeeded
@@ -75,7 +75,7 @@ Todoyu.Ext.contact.QuickCreatePerson = {
 			Todoyu.Hook.exec('contact.person.saved', idPerson);
 
 			Todoyu.Popup.close('quickcreate');
-			Todoyu.notifySuccess('[LLL:contact.person.saved]');
+			Todoyu.notifySuccess('[LLL:contact.ext.person.saved]');
 
 			if( Todoyu.getArea() == 'contact' ) {
 				Todoyu.Ext.contact.Person.showList();

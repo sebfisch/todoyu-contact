@@ -75,7 +75,7 @@ Todoyu.Ext.contact.Company =  {
 	 * @param	{Number}	idCompany
 	 */
 	remove: function(idCompany) {
-		if( confirm('[LLL:contact.company.delete.confirm]') ) {
+		if( confirm('[LLL:contact.ext.company.delete.confirm]') ) {
 			var url = Todoyu.getUrl('contact', 'company');
 			var options = {
 				'parameters': {
@@ -134,11 +134,11 @@ Todoyu.Ext.contact.Company =  {
 		var error	= response.hasTodoyuError();
 
 		if( error ) {
-			Todoyu.notifyError('[LLL:contact.company.saved.error]');
+			Todoyu.notifyError('[LLL:contact.ext.company.saved.error]');
 			$('contact-form-content').update(response.responseText);
 		} else {
 				// Notify (implement)
-			Todoyu.notifySuccess('[LLL:contact.company.saved.ok]');
+			Todoyu.notifySuccess('[LLL:contact.ext.company.saved.ok]');
 
 			this.showList(this.ext.PanelWidget.ContactSearch.getValue());
 		}
@@ -231,11 +231,11 @@ Todoyu.Ext.contact.Company =  {
 		var error	= response.hasTodoyuError();
 
 		if( error ) {
-			Todoyu.notifyError('[LLL:contact.company.saved.error]');
+			Todoyu.notifyError('[LLL:contact.ext.company.saved.error]');
 
 			Todoyu.Popup.getContentElement('popup-' + target).update(response.responseText);
 		} else {
-			Todoyu.notifySuccess('[LLL:contact.company.saved.ok]');
+			Todoyu.notifySuccess('[LLL:contact.ext.company.saved.ok]');
 
 			var label		= response.getTodoyuHeader('recordLabel');
 

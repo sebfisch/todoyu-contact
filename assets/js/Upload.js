@@ -94,7 +94,7 @@ Todoyu.Ext.contact.Upload = {
 
 	/**
 	 * Contact image upload finished handler
-	 * 
+	 *
 	 * @param	{String}	recordType		(person / company)
 	 * @param	{Number}	idContact
 	 * @param	{Number}	idReplace
@@ -106,7 +106,7 @@ Todoyu.Ext.contact.Upload = {
 		this.setReplaceIdToHiddenField(form, idReplace, recordType);
 
 		this.removeUploadForm();
-		Todoyu.notifySuccess('[LLL:contact.contactimage.upload.success]');
+		Todoyu.notifySuccess('[LLL:contact.ext.contactimage.upload.success]');
 	},
 
 
@@ -134,7 +134,7 @@ Todoyu.Ext.contact.Upload = {
 
 
 	/**
-	 * Sets the temporary id (folder-name) of the uploaded image to the hidden field 
+	 * Sets the temporary id (folder-name) of the uploaded image to the hidden field
 	 *
 	 * @param	{String}	form
 	 * @param	{Number}	idReplace
@@ -166,9 +166,9 @@ Todoyu.Ext.contact.Upload = {
 		var msg		= '';
 
 		if( error === 1 || error === 2 ) {
-			msg	= '[LLL:contact.contactimage.upload.maxFileSizeExceeded]';
+			msg	= '[LLL:contact.ext.contactimage.upload.maxFileSizeExceeded]';
 		} else {
-			msg	= '[LLL:contact.contactimage.upload.uploadFailed]';
+			msg	= '[LLL:contact.ext.contactimage.upload.uploadFailed]';
 		}
 
 		Todoyu.notifyError(msg.interpolate(info), 10);

@@ -34,7 +34,7 @@ class TodoyuContactPanelWidgetExport extends TodoyuPanelWidget implements Todoyu
 		parent::__construct(
 				'contact',										// ext key
 				'contactExport',								// panel widget ID
-				'LLL:panelwidget-contactexport.title',			// widget title text
+				'LLL:contact.panelwidget-contactexport.title',			// widget title text
 				$config,										// widget config array
 				$params,										// widget parameters
 				$idArea
@@ -57,8 +57,8 @@ class TodoyuContactPanelWidgetExport extends TodoyuPanelWidget implements Todoyu
 		$data	= array(
 			'id'			=> $this->getID(),
 			'contactType'	=> $contactType,
-			'instructionText'	=> TodoyuLabelManager::getLabel('LLL:panelwidget-contactexport.export.instruction'),
-			'buttonText'		=> TodoyuLabelManager::getLabel('LLL:panelwidget-contactexport.export.button')
+			'instructionText'	=> TodoyuLabelManager::getLabel('LLL:contact.panelwidget-contactexport.export.instruction'),
+			'buttonText'		=> TodoyuLabelManager::getLabel('LLL:contact.panelwidget-contactexport.export.button')
 		);
 
 		$content = render($tmpl, $data);

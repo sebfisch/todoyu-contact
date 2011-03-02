@@ -20,7 +20,7 @@
 Todoyu.Ext.contact.Profile = {
 
 	/**
-	 * 
+	 *
 	 * @param event
 	 * @param tabKey
 	 */
@@ -66,12 +66,12 @@ Todoyu.Ext.contact.Profile = {
 	 */
 	onSaved: function(response) {
 		if( response.hasTodoyuError() ) {
-			Todoyu.notifyError('[LLL:contact.person.saved.error]');
+			Todoyu.notifyError('[LLL:contact.ext.person.saved.error]');
 			$('contact-form-content').update(response.responseText);
 			var idPerson	= parseInt(response.request.parameters['person[id]'], 10);
 			this.initEditForm(idPerson);
 		} else {
-			Todoyu.notifySuccess('[LLL:contact.person.saved]');
+			Todoyu.notifySuccess('[LLL:contact.ext.person.saved]');
 			$('contact-form-content').update(response.responseText);
 		}
 	},

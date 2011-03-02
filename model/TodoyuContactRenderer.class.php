@@ -48,7 +48,7 @@ class TodoyuContactRenderer {
 		TodoyuFrontend::setActiveTab('contact');
 
 		TodoyuPage::init('ext/contact/view/ext.tmpl');
-		TodoyuPage::setTitle('LLL:contact.page.title');
+		TodoyuPage::setTitle('LLL:contact.ext.page.title');
 
 			// Save search word if provided
 		if( $searchWord !== '' ) {

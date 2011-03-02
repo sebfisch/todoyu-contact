@@ -14,25 +14,25 @@
 			<elements>
 
 				<field type="text" name="title">
-					<label>contact.company.attr.title</label>
+					<label>contact.ext.company.attr.title</label>
 					<required />
 				</field>
 
 				<field type="text" name="shortname">
-					<label>contact.company.attr.shortname</label>
+					<label>contact.ext.company.attr.shortname</label>
 				</field>
 
 				<field type="date" name="date_enter">
-					<label>contact.company.attr.date_enter</label>
+					<label>contact.ext.company.attr.date_enter</label>
 				</field>
 
 				<field type="checkbox" name="is_internal">
-					<label>contact.company.attr.is_internal</label>
+					<label>contact.ext.company.attr.is_internal</label>
 				</field>
 
 				<field type="databaseRelation" name="contactinfo">
-					<label>contact.contactinfo</label>
-					<addLabel>contact.contactinfo.new</addLabel>
+					<label>contact.ext.contactinfo</label>
+					<addLabel>contact.ext.contactinfo.new</addLabel>
 					<record>
 						<form>ext/contact/config/form/contactinfo.xml</form>
 						<url>
@@ -41,14 +41,14 @@
 						</url>
 						<label type="function">
 							<function>TodoyuContactViewHelper::getContactinfoLabel</function>
-							<noLabel>contact.contactinfo.new</noLabel>
+							<noLabel>contact.ext.contactinfo.new</noLabel>
 						</label>
 					</record>
 				</field>
 
 				<field type="databaseRelation" name="address">
-					<label>contact.address</label>
-					<addLabel>contact.address.new</addLabel>
+					<label>contact.ext.address</label>
+					<addLabel>contact.ext.address.new</addLabel>
 					<record>
 						<form>ext/contact/config/form/address.xml</form>
 						<url>
@@ -57,14 +57,14 @@
 						</url>
 						<label type="function">
 							<function>TodoyuContactViewHelper::getAddressLabel</function>
-							<noLabel>contact.address.new</noLabel>
+							<noLabel>contact.ext.address.new</noLabel>
 						</label>
 					</record>
 				</field>
 
 				<field type="databaseRelation" name="person">
-					<label>contact.company.attr.person</label>
-					<addLabel>contact.person.new</addLabel>
+					<label>contact.ext.company.attr.person</label>
+					<addLabel>contact.ext.person.new</addLabel>
 					<record>
 						<form>ext/contact/config/form/company-person.xml</form>
 						<url>
@@ -73,13 +73,13 @@
 						</url>
 						<label type="function">
 							<function>TodoyuContactViewHelper::getEmployeeLabel</function>
-							<noLabel>contact.company.attr.person.new</noLabel>
+							<noLabel>contact.ext.company.attr.person.new</noLabel>
 						</label>
 					</record>
 				</field>
 
 				<field type="textarea" name="comment">
-					<label>contact.company.attr.comment</label>
+					<label>contact.ext.company.attr.comment</label>
 					<rows>5</rows>
 					<restrict>
 						<allow ext="contact" right="company.:editComment" />
@@ -99,12 +99,12 @@
 					</comment>
 				</field>
 				<field type="button" name="upload">
-					<text>LLL:contact.company.attr.image.upload</text>
+					<text>LLL:contact.ext.company.attr.image.upload</text>
 					<class>buttonUploadContactImage</class>
 					<onclick>Todoyu.Ext.contact.Upload.showUploadForm(this.form, 'company')</onclick>
 				</field>
 				<field type="button" name="remove">
-					<text>LLL:contact.contactimage.upload.remove</text>
+					<text>LLL:contact.ext.contactimage.upload.remove</text>
 					<class>buttonRemoveContactImage</class>
 					<onclick>Todoyu.Ext.contact.Upload.removeImage(this.form, 'company')</onclick>
 				</field>

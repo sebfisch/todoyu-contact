@@ -27,7 +27,7 @@ Todoyu.Ext.contact.Autocomplete = {
 	 */
 	onRegionAutocomplete: function(response, autocompleter) {
 		if( response.getTodoyuHeader('acElements') == 0 ) {
-			Todoyu.notifyInfo('[LLL:contact.ac.region.notFoundInfo]');
+			Todoyu.notifyInfo('[LLL:contact.ext.ac.region.notFoundInfo]');
 		}
 	},
 
@@ -42,7 +42,7 @@ Todoyu.Ext.contact.Autocomplete = {
 	 */
 	onPersonAutocomplete: function(response, autocompleter) {
 		if( response.isEmptyAcResult() ) {
-			Todoyu.notifyInfo('[LLL:contact.ac.person.notFoundInfo]');
+			Todoyu.notifyInfo('[LLL:contact.ext.ac.person.notFoundInfo]');
 			return false;
 		}
 	},
@@ -58,7 +58,7 @@ Todoyu.Ext.contact.Autocomplete = {
 	 */
 	onCompanyAutocomplete: function(response, autocompleter) {
 		if( response.isEmptyAcResult() ) {
-			Todoyu.notifyInfo('[LLL:contact.ac.company.notFoundInfo]');
+			Todoyu.notifyInfo('[LLL:contact.ext.ac.company.notFoundInfo]');
 			return false;
 		}
 	}

@@ -59,13 +59,13 @@ Todoyu.Ext.contact.QuickCreateCompany = {
 	onSaved: function(response) {
 		if( response.hasTodoyuError() ) {
 			Todoyu.CoreHeadlets.QuickCreate.updatePopupContent(response.responseText);
-			Todoyu.notifyError('[LLL:contact.company.saved.error]');
+			Todoyu.notifyError('[LLL:contact.ext.company.saved.error]');
 		} else {
 			var idCompany	= response.getTodoyuHeader('idCompany');
 			Todoyu.Hook.exec('contact.company.saved', idCompany);
 
 			Todoyu.CoreHeadlets.QuickCreate.closePopup();
-			Todoyu.notifySuccess('[LLL:contact.company.saved.ok]');
+			Todoyu.notifySuccess('[LLL:contact.ext.company.saved.ok]');
 
 			if( Todoyu.getArea() == 'contact' ) {
 				Todoyu.Ext.contact.Company.showList();

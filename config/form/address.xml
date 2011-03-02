@@ -9,7 +9,7 @@
 			<elements>
 
 				<field type="select" name="id_addresstype">
-					<label>contact.address.attr.addresstype</label>
+					<label>contact.ext.address.attr.addresstype</label>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getAddressTypeOptions</function>
 					</source>
@@ -17,26 +17,26 @@
 				</field>
 
 				<field type="text" name="street">
-					<label>contact.address.attr.street</label>
+					<label>contact.ext.address.attr.street</label>
 					<required />
 				</field>
 
 				<field type="text" name="postbox">
-					<label>contact.address.attr.postbox</label>
+					<label>contact.ext.address.attr.postbox</label>
 				</field>
 
 				<field type="text" name="zip">
-					<label>contact.address.attr.zip</label>
+					<label>contact.ext.address.attr.zip</label>
 					<required />
 				</field>
 
 				<field type="text" name="city">
-					<label>contact.address.attr.city</label>
+					<label>contact.ext.address.attr.city</label>
 					<required />
 				</field>
 
 				<field type="select" name="id_country">
-					<label>contact.address.attr.country</label>
+					<label>contact.ext.address.attr.country</label>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getCountryOptions</function>
 					</source>
@@ -44,7 +44,7 @@
 				</field>
 
 				<field type="select" name="region">
-					<label>contact.address.attr.region</label>
+					<label>contact.ext.address.attr.region</label>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getRegionOptions</function>
 						<lazyInit/>
@@ -52,11 +52,11 @@
 				</field>
 
 				<field type="checkbox" name="is_preferred">
-					<label>form.is_preferred</label>
+					<label>core.form.is_preferred</label>
 				</field>
 
 				<field type="textarea" name="comment">
-					<label>contact.address.attr.comment</label>
+					<label>contact.ext.address.attr.comment</label>
 				</field>
 
 			</elements>

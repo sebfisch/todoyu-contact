@@ -39,7 +39,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidget implements
 		parent::__construct(
 			'contact',								// ext key
 			'staffselector',						// panel widget ID
-			'LLL:panelwidget-staffselector.title',	// widget title text
+			'LLL:contact.panelwidget-staffselector.title',	// widget title text
 			$config,								// widget config array
 			$params,								// widget parameters
 			$idArea									// area ID
@@ -108,7 +108,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidget implements
 			$classBase	= TodoyuBrowserInfo::isIE() ? 'enumColBG' : 'enumColOptionLeftIcon';
 			$options[] 	= array(
 				'value'	=> $person['id'],
-				'label'	=> $person['lastname'] . ' ' . $person['firstname'] . ' (' . ( ! empty($person['jobtype']) ? $person['jobtype'] : Label('panelwidget-staffselector.noFunction') ) . ')',
+				'label'	=> $person['lastname'] . ' ' . $person['firstname'] . ' (' . ( ! empty($person['jobtype']) ? $person['jobtype'] : Label('contact.panelwidget-staffselector.noFunction') ) . ')',
 				'class'	=> $classBase . TodoyuColors::getColorIndex($person['id'])
 			);
 		}
@@ -162,7 +162,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidget implements
 				// Select all staff option
 			array(
 				'id'	=> 0,
-				'label'	=> Label('panelwidget-staffselector.selectAllStaff'),
+				'label'	=> Label('contact.panelwidget-staffselector.selectAllStaff'),
 				'count'	=> 0
 			)
 		);

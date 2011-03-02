@@ -117,7 +117,7 @@ class TodoyuContactAddress extends TodoyuBaseObject {
 	 */
 	public function getRegionLabel() {
 		$region	= TodoyuStaticRecords::getRecord('country_zone', $this->data['region']);
-		return $region->data['id'] > 0 ? TodoyuStaticRecords::getLabel('country_zone', $region['iso_alpha3_country'] . '.' . $region['code']) : '';
+		return $region->data['id'] > 0 ? TodoyuStaticRecords::getLabel('core.static_country_zone', $region['iso_alpha3_country'] . '.' . $region['code']) : '';
 	}
 
 }

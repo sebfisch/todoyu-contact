@@ -40,7 +40,7 @@ class TodoyuContactPanelWidgetStaffList extends TodoyuPanelWidget implements Tod
 		parent::__construct(
 			'contact',								// ext key
 			'stafflist',							// panel widget ID
-			'LLL:panelwidget-stafflist.title',		// widget title text
+			'LLL:contact.panelwidget-stafflist.title',		// widget title text
 			$config,								// widget config array
 			$params,								// widget parameters
 			$idArea									// area ID
