@@ -52,7 +52,9 @@ class TodoyuContactQuickinfoManager {
 		$linkedName	= '<a href="?ext=contact&controller=person&action=detail&person=' . $idPerson . '">' . TodoyuContactPersonManager::getLabel($idPerson) . '</a>';
 		$quickinfo->addInfo('name', $linkedName, 0, false);
 
-		$quickinfo->addEmail('email', $email, $fullName);
+		if( ! empty($email) ) {
+			$quickinfo->addEmail('email', $email, $fullName);
+		}
 
 		if( $phone !== false ) {
 			$quickinfo->addInfo('phone', $phone['info']);

@@ -18,6 +18,12 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ * Manage person quickinfo
+ *
+ * @package		Todoyu
+ * @subpackage	Contact
+ */
 class TodoyuContactPersonQuickInfoManager {
 
 	/**

@@ -38,7 +38,7 @@ Todoyu.Ext.contact.QuickInfoPerson = {
 	 * Install quickinfo for events
 	 */
 	install: function() {
-		//Todoyu.QuickInfo.install('person', this.selector, this.getID.bind(this));
+//		Todoyu.QuickInfo.install('person', this.selector, this.getID.bind(this));
 	},
 
 
