@@ -193,7 +193,7 @@ if( TodoyuExtensions::isInstalled('profile') && allowed('contact', 'general:use'
 		'position'	=> 2,
 		'tabs'		=> 'TodoyuContactProfileRenderer::renderTabs',
 		'content'	=> 'TodoyuContactProfileRenderer::renderContent',
-		'label'		=> 'contact.profile.module',
+		'label'		=> 'contact.ext.profile.module',
 		'class'		=> 'contact'
 	));
 }

@@ -25,13 +25,6 @@ define('PATH_EXT_CONTACT', PATH_EXT . '/contact');
 require_once( PATH_EXT_CONTACT . '/config/constants.php' );
 require_once( PATH_EXT_CONTACT . '/dwoo/plugins.php');
 
-	// Register module locales
-//TodoyuLabelManager::register('contact', 'contact', 'ext.xml');
-//TodoyuLabelManager::register('panelwidget-contactsearchinput', 'contact', 'panelwidget-contactsearchinput.xml');
-//TodoyuLabelManager::register('panelwidget-staffselector', 'contact', 'panelwidget-staffselector.xml');
-//TodoyuLabelManager::register('panelwidget-stafflist', 'contact', 'panelwidget-stafflist.xml');
-//TodoyuLabelManager::register('panelwidget-contactexport', 'contact', 'panelwidget-contactexport.xml');
-
 // Implement person quickInfo class to various person labels
 TodoyuHookManager::registerHook('project', 'taskdataattributes', 'TodoyuContactPersonHooks::extendTaskDataAttributes', 10);
 
