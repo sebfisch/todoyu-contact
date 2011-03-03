@@ -66,7 +66,7 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_Fulltext($value, $negate = false) {
+	public function Filter_Fulltext($value, $negate = false) {
 		$value		= trim($value);
 		$valueParts	= TodoyuArray::trimExplode(' ', $value, true);
 		$queryParts	= false;
@@ -90,7 +90,7 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_Name($value, $negate = false) {
+	public function Filter_Name($value, $negate = false) {
 		$valueParts	= TodoyuArray::trimExplode(' ', $value, true);
 		$queryParts	= false;
 
@@ -117,7 +117,7 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 	 * @param 	String		$value
 	 * @param	Boolean		$negate
 	 */
-	public static function Filter_Company($value, $negate = false) {
+	public function Filter_Company($value, $negate = false) {
 		$valueParts	= TodoyuArray::trimExplode(' ', $value, true);
 		$queryParts	= false;
 
@@ -159,9 +159,9 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
-	public static function Filter_NameAndCompany($value, $negate = false) {
-		$filterName		= self::Filter_Name($value, $negate);
-		$filterCompany	= self::Filter_Company($value, $negate);
+	public function Filter_NameAndCompany($value, $negate = false) {
+		$filterName		= $this->Filter_Name($value, $negate);
+		$filterCompany	= $this->Filter_Company($value, $negate);
 
 		if( $filterName === false ) {
 			$filterName = array('tables'=>array());
