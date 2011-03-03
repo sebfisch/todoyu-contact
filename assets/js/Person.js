@@ -163,7 +163,10 @@ Todoyu.Ext.contact.Person =  {
 		var firstname	= $F('person-' + idPerson + '-field-firstname');
 
 		if( lastname.length >= 2 && firstname.length >= 2 ) {
-			$('person-' + idPerson + '-field-shortname').value = firstname.substr(0,2).toUpperCase() + lastname.substr(0,2).toUpperCase();
+			var firstnamePart	= firstname.trim().replace(' ', '').substr(0,2).toUpperCase();
+			var lastnamePart	= lastname.trim().replace(' ', '').substr(0,2).toUpperCase();
+
+			$('person-' + idPerson + '-field-shortname').value = firstnamePart + lastnamePart;
 		}
 	},
 

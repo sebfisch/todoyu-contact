@@ -16,18 +16,19 @@ contact 1.1.0 (requires core >= 2.1) - not released yet
 	* Feature: Export for contacts
 	* Changed: Changed staffselector, added div to allow nice slide
 	* Feature: Forms restyled
-   	* Feature: Added general person header stub (analog to e.g. project header)
-   	* Feature: Added stafflist panelwidget
-   	* Changed: Moved templates of contact panelwidgets into sub folder /view/panelwidgets/
-   	* Changed: Updated loading structure: (core: boot.php, init: request,) extensions: init.php
-   	* Feature: Added create - wizard for companies - auto - completer (person + project)
-   	* Feature: Changed locale format
+	* Feature: Added general person header stub (analog to e.g. project header)
+	* Feature: Added stafflist panelwidget
+	* Changed: Moved templates of contact panelwidgets into sub folder /view/panelwidgets/
+	* Changed: Updated loading structure: (core: boot.php, init: request,) extensions: init.php
+	* Feature: Added create - wizard for companies - auto - completer (person + project)
+	* Feature: Changed locale format
 
 
 contact 1.0.7 - not released yet
+	* Bugfix: Auto-generated person shortname can (not any longer) contain whitespace
 	* Feature: Added changelog
 	* Feature: Added (empty still) locale files for spanish (columbia) locales to come of extensions
- 	* Bugfix: Added deleted clause for quickinfo preferred phone number
+	* Bugfix: Added deleted clause for quickinfo preferred phone number
 	* Bugfix: Username is pre filled in the password forgot form if set in the login form
 	* Feature: Added italian translation
 
