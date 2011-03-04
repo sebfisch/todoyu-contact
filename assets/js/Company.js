@@ -275,7 +275,7 @@ Todoyu.Ext.contact.Company =  {
 						'action':	'removeimage',
 						'idImage':	idImage
 					}
-				}
+				};
 
 				Todoyu.send(url, options);
 			}

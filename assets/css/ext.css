@@ -125,8 +125,7 @@ span.wizardIcon.createNewCompany	{
 }
 #contact-details div.actions span.icon,
 .personListing td.actions span {
-	background-image:url(../img/icons.png);
-	background-repeat:no-repeat;
+	background:url(../img/icons.png) no-repeat;
 }
 .personListing td.actions span.info {
 	background-position:0 -356px;
@@ -248,17 +247,17 @@ div.visitingCardContent table tr td.label {
 #contact-details div.left {
 	float: left;
 	width: 49%;
-	padding: 10px 0px 10px 0;
+	padding:10px 0 10px 0;
 }
 #contact-details div.right {
 	float: right;
 	width: 49%;
-	padding: 10px 0px 10px 0;
+	padding:10px 0 10px 0;
 }
 
 #contact-details div.clear {
 	clear: both;
-	padding: 10px 0px 10px 0;
+	padding:10px 0 10px 0;
 	width: 100%;
 }
 
@@ -286,7 +285,7 @@ div.visitingCardContent table tr td.label {
 }
 
 #contact-details div.actions {
-	padding: 5px 0 5px 0px;
+	padding:5px 0 5px 0;
 	background-color: #d5dee5;
 	height: 20px;
 }
@@ -300,5 +299,5 @@ div.visitingCardContent table tr td.label {
 }
 
 #contact-tabs .tabkey-contact .icon {
-	background:url(../img/icons.png) no-repeat 0px 6px;
+	background:url(../img/icons.png) no-repeat 0 6px;
 }

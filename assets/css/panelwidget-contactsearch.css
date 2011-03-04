@@ -13,8 +13,7 @@
 }
 
 #panelwidget-contactSearch-content a.icon {
-	background-image:url('../../../../core/assets/img/icons.png');
-	background-repeat:no-repeat;
+	background:url('../../../../core/assets/img/icons.png') no-repeat;
 	margin-left:5px;
 	cursor:pointer;
 }

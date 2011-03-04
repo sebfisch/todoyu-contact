@@ -79,7 +79,7 @@ Todoyu.Ext.contact = {
 	changeType: function(type) {
 		Todoyu.Tabs.setActive('contact', type);
 
-		objName	= type.capitalize();
+		var objName = type.capitalize();
 
 		this[objName].showList(Todoyu.Ext.contact.PanelWidget.ContactSearch.getValue());
 	},
