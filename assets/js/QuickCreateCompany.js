@@ -58,19 +58,26 @@ Todoyu.Ext.contact.QuickCreateCompany = {
 	 */
 	onSaved: function(response) {
 		if( response.hasTodoyuError() ) {
-			Todoyu.CoreHeadlets.QuickCreate.updatePopupContent(response.responseText);
+			this.getQuickCreateHeadlet().updatePopupContent(response.responseText);
 			Todoyu.notifyError('[LLL:contact.ext.company.saved.error]');
 		} else {
 			var idCompany	= response.getTodoyuHeader('idCompany');
 			Todoyu.Hook.exec('contact.company.saved', idCompany);
 
-			Todoyu.CoreHeadlets.QuickCreate.closePopup();
+			this.getQuickCreateHeadlet().closePopup();
 			Todoyu.notifySuccess('[LLL:contact.ext.company.saved.ok]');
 
 			if( Todoyu.getArea() == 'contact' ) {
 				Todoyu.Ext.contact.Company.showList();
 			}
 		}
+	},
+
+	getQuickCreateHeadlet: function() {
+		return Todoyu.Headlets.getHeadlet('todoyuheadletquickcreate');
 	}
+
+
+
 
 };

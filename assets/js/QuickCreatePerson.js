@@ -68,13 +68,13 @@ Todoyu.Ext.contact.QuickCreatePerson = {
 		if( response.hasTodoyuError() ) {
 				// Saving person failed
 			Todoyu.notifyError('[LLL:contact.ext.person.saved.error]');
-			Todoyu.CoreHeadlets.QuickCreate.updatePopupContent(response.responseText);
+			Todoyu.Headlets.getHeadlet('todoyuheadletquickcreate').updatePopupContent(response.responseText);
 		} else {
 				// Saving succeeded
 			var idPerson	= response.getTodoyuHeader('idPerson');
 			Todoyu.Hook.exec('contact.person.saved', idPerson);
 
-			Todoyu.Popup.close('quickcreate');
+			Todoyu.Popups.close('quickcreate');
 			Todoyu.notifySuccess('[LLL:contact.ext.person.saved]');
 
 			if( Todoyu.getArea() == 'contact' ) {

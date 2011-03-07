@@ -347,7 +347,7 @@ Todoyu.Ext.contact.Person =  {
 		if( error ) {
 			Todoyu.notifyError('[LLL:contact.ext.person.saved.error]');
 
-			Todoyu.Popup.getContentElement('popup-' + target).update(response.responseText);
+			Todoyu.Popups.setContent('popup-' + target, response.responseText);
 		} else {
 			Todoyu.notifySuccess('[LLL:contact.ext.person.saved]');
 
@@ -356,7 +356,7 @@ Todoyu.Ext.contact.Person =  {
 			$(target).value = response.getTodoyuHeader('idRecord');
 			$(target + '-fulltext').value = label;
 
-			Todoyu.Popup.close('popup-' + target);
+			Todoyu.Popups.close('popup-' + target);
 		}
 	},
 
@@ -369,7 +369,7 @@ Todoyu.Ext.contact.Person =  {
 	 */
 	cancelWizard: function(form) {
 		this.removeUnusedImages(form);
-		Todoyu.Popup.getLastPopup().close();
+		Todoyu.Popups.closeLast();
 	},
 
 

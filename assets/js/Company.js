@@ -233,7 +233,7 @@ Todoyu.Ext.contact.Company =  {
 		if( error ) {
 			Todoyu.notifyError('[LLL:contact.ext.company.saved.error]');
 
-			Todoyu.Popup.getContentElement('popup-' + target).update(response.responseText);
+			Todoyu.Popups.setContent('popup-' + target, response.responseText);
 		} else {
 			Todoyu.notifySuccess('[LLL:contact.ext.company.saved.ok]');
 
@@ -242,7 +242,7 @@ Todoyu.Ext.contact.Company =  {
 			$(target).value = response.getTodoyuHeader('idRecord');
 			$(target + '-fulltext').value = label;
 
-			Todoyu.Popup.close('popup-' + target);
+			Todoyu.Popups.close('popup-' + target);
 		}
 	},
 
@@ -255,7 +255,7 @@ Todoyu.Ext.contact.Company =  {
 	 */
 	cancelWizard: function(form) {
 		this.removeUnusedImages(form);
-		Todoyu.Popup.getLastPopup().close();
+		Todoyu.Popups.closeLast();
 	},
 
 
