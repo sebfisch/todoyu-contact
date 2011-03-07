@@ -307,7 +307,7 @@ class TodoyuContactRenderer {
 		$form->setFormData($data);
 		$form->setRecordID($idCompany);
 
-		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Ext.contact.Company.cancelWizard();');
+		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Ext.contact.Company.cancelWizard(this.form);');
 		$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Ext.contact.Company.saveWizard(this.form, \''.$idTarget.'\');');
 
 		$tmpl	= 'ext/contact/view/form.tmpl';
