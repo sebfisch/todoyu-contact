@@ -8,9 +8,9 @@
 				<field type="textAC" name="id">
 					<label>contact.ext.person</label>
 					<config>
-						<acName>person</acName>
 						<acLabel>TodoyuContactPersonManager::getLabel</acLabel>
 						<options>
+							<acName>person</acName>
 							<onComplete>Todoyu.Ext.contact.Autocomplete.onPersonAutocomplete</onComplete>
 						</options>
 					</config>

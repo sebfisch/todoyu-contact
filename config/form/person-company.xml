@@ -8,9 +8,9 @@
 				<field type="textAC" name="id">
 					<label>contact.ext.company</label>
 					<config>
-						<acName>company</acName>
 						<acLabel>TodoyuContactCompanyManager::getLabel</acLabel>
 						<options>
+							<acName>company</acName>
 							<onComplete>Todoyu.Ext.contact.Autocomplete.onCompanyAutocomplete</onComplete>
 							<onSelected>Todoyu.Ext.contact.Person.updateCompanyAddressRecords</onSelected>
 							<referencedFieldName>id-workaddress</referencedFieldName>

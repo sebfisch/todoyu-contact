@@ -164,7 +164,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 		} else {
 			TodoyuHeader::sendTodoyuErrorHeader();
 
-			$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Ext.contact.Person.cancelWizard();');
+			$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Ext.contact.Person.cancelWizard(this.form);');
 			$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Ext.contact.Person.saveWizard(this.form, \''.$idTarget.'\');');
 
 			return $form->render();
