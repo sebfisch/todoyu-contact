@@ -281,7 +281,6 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 			$employers[$index]['jobtype'] = TodoyuContactJobTypeManager::getJobType($employer['id_jobtype']);
 		}
 
-
 		return $employers;
 	}
 

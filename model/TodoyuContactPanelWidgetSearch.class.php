@@ -65,6 +65,12 @@ class TodoyuContactPanelWidgetSearch extends TodoyuPanelWidget {
 	}
 
 
+
+	/**
+	 * Get stored search word from contact preferences
+	 *
+	 * @return	String
+	 */
 	private function getSearchWord() {
 		return TodoyuContactPreferences::getSearchWord();
 	}

@@ -228,7 +228,6 @@ class TodoyuContactCompanyManager {
 			unset($data['contactinfo']);
 		}
 
-
 			// Address
 		if( isset($data['address']) ) {
 			$addressIDs	= TodoyuArray::getColumn($data['address'], 'id');
@@ -248,7 +247,6 @@ class TodoyuContactCompanyManager {
 
 			unset($data['address']);
 		}
-
 
 			// Person
 		if( isset($data['person']) ) {
