@@ -20,9 +20,9 @@
 Todoyu.Ext.contact.Profile = {
 
 	/**
+	 * Ext shortcut
 	 *
-	 * @param event
-	 * @param tabKey
+	 * @var	{Object}	ext
 	 */
 	ext: Todoyu.Ext.contact,
 
@@ -31,8 +31,8 @@ Todoyu.Ext.contact.Profile = {
 	/**
 	 * Handles Tab events for the profile
 	 *
-	 * @param	event
-	 * @param	tabKey
+	 * @param	{Event}		event
+	 * @param	{String}	tabKey
 	 */
 	onTabClick: function(event, tabKey) {
 		// do nothing
@@ -43,7 +43,7 @@ Todoyu.Ext.contact.Profile = {
 	/**
 	 * Sends the save Request for the profile form
 	 *
-	 * @param	form
+	 * @param	{Element}	form
 	 */
 	save: function(form) {
 		$(form).request({

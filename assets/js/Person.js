@@ -376,7 +376,7 @@ Todoyu.Ext.contact.Person =  {
 
 	/**
 	 *
-	 * @param form
+	 * @param	{Element}	form
 	 */
 	removeUnusedImages: function(form) {
 		if( form.down('[name = person[id]]').getValue() == 0 ) {
