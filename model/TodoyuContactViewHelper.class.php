@@ -26,6 +26,8 @@
  */
 class TodoyuContactViewHelper {
 
+	private static $personOptions = null;
+
 	/**
 	 * Get label for a person in a form
 	 *
@@ -48,17 +50,18 @@ class TodoyuContactViewHelper {
 	 * @return	Array
 	 */
 	public static function getPersonOptions(TodoyuFormElement $field) {
-		$options	= array();
-		$persons	= TodoyuContactPersonManager::getAllActivePersons();
+		if( is_null(self::$personOptions) ) {
+			$persons	= TodoyuContactPersonManager::getAllActivePersons();
 
-		foreach($persons as $person) {
-			$options[] = array(
-				'value'	=> $person['id'],
-				'label'	=> TodoyuContactPersonManager::getLabel($person['id'])
-			);
+			foreach($persons as $person) {
+				self::$personOptions[] = array(
+					'value'	=> $person['id'],
+					'label'	=> TodoyuContactPersonManager::getLabel($person['id'])
+				);
+			}
 		}
 
-		return $options;
+		return self::$personOptions;
 	}
 
 
