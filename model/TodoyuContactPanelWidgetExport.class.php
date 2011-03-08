@@ -23,7 +23,7 @@
 /**
  *
  */
-class TodoyuContactPanelWidgetExport extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
+class TodoyuContactPanelWidgetExport extends TodoyuPanelWidget {
 
 
 
@@ -61,24 +61,7 @@ class TodoyuContactPanelWidgetExport extends TodoyuPanelWidget implements Todoyu
 			'buttonText'		=> TodoyuLabelManager::getLabel('LLL:contact.panelwidget-contactexport.export.button')
 		);
 
-		$content = render($tmpl, $data);
-
-		$this->setContent($content);
-
-		return $content;
-	}
-
-
-
-	/**
-	 * Renders the panel widget
-	 *
-	 * @return	String
-	 */
-	public function render() {
-		$this->renderContent();
-
-		return parent::render();
+		return render($tmpl, $data);
 	}
 
 

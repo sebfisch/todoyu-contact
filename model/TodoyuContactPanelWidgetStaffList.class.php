@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuContactPanelWidgetStaffList extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
+class TodoyuContactPanelWidgetStaffList extends TodoyuPanelWidget {
 
 	/**
 	 * Initialize staff list PanelWidget
@@ -183,24 +183,7 @@ class TodoyuContactPanelWidgetStaffList extends TodoyuPanelWidget implements Tod
 			'list'		=> $list
 		);
 
-		$content = render($tmpl, $data);
-
-		$this->setContent($content);
-
-		return $content;
-	}
-
-
-
-	/**
-	 * Render the whole panel widget
-	 *
-	 * @return	String
-	 */
-	public function render() {
-		$this->renderContent();
-
-		return parent::render();
+		return render($tmpl, $data);
 	}
 
 

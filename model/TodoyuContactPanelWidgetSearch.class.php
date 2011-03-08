@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	contact
  */
-class TodoyuContactPanelWidgetSearch extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
+class TodoyuContactPanelWidgetSearch extends TodoyuPanelWidget {
 
 	/**
 	 * Constructor of the class
@@ -61,29 +61,12 @@ class TodoyuContactPanelWidgetSearch extends TodoyuPanelWidget implements Todoyu
 			'contactType'	=> $contactType
 		);
 
-		$content = render($tmpl, $data);
-
-		$this->setContent($content);
-
-		return $content;
+		return render($tmpl, $data);
 	}
 
 
 	private function getSearchWord() {
 		return TodoyuContactPreferences::getSearchWord();
-	}
-
-
-
-	/**
-	 * Renders the panel widget
-	 *
-	 * @return	String
-	 */
-	public function render() {
-		$this->renderContent();
-
-		return parent::render();
 	}
 
 
