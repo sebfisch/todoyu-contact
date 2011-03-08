@@ -24,7 +24,7 @@ class TodoyuContactValidator {
 	 * Validate (value being) current person password
 	 *
 	 * @param	String				$value
-	 * @param 	Array				$validatorConfig
+	 * @param	Array				$validatorConfig
 	 * @param	TodoyuFormElement	$formElement
 	 * @param	Array				$formData
 	 * @return	Boolean

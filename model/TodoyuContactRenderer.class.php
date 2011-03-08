@@ -537,11 +537,12 @@ class TodoyuContactRenderer {
 
 
 	/**
-	 * @static
-	 * @param  $recordType
-	 * @param  $idContact
-	 * @param  $idReplace
-	 * @return String
+	 * Render upload iframe form after uploading finished
+	 *
+	 * @param	String		$recordType
+	 * @param	Integer		$idContact
+	 * @param	Integer		$idReplace
+	 * @return	String
 	 */
 	public static function renderUploadFormFinished($recordType, $idContact, $idReplace) {
 		$tmpl	= 'core/view/htmldoc.tmpl';
