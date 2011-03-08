@@ -556,8 +556,11 @@ class TodoyuContactRenderer {
 
 
 	/**
-	 * @static
-	 * @return void
+	 * Render content of upload frame after failed upload
+	 *
+	 * @param	Integer		$error
+	 * @param	String		$filename
+	 * @return	String
 	 */
 	public static function renderUploadframeContentFailed($error, $filename) {
 		$error		= intval($error);

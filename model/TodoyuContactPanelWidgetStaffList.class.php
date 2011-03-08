@@ -191,7 +191,6 @@ class TodoyuContactPanelWidgetStaffList extends TodoyuPanelWidget {
 	/**
 	 * Get active filters
 	 *
-	 * @param 	Integer	$idArea
 	 * @return	Array
 	 */
 	public static function getFilters() {

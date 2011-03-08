@@ -270,8 +270,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	/**
 	 * Output of an image
 	 *
-	 * @param  $params
-	 * @return void
+	 * @param	Array	$params
 	 */
 	public function renderimageAction(array $params) {
 		$idPerson	= $params['idImage'];

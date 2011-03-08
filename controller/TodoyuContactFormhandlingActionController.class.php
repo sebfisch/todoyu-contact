@@ -62,8 +62,10 @@ class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 
 
 	/**
+	 * Render contact image upload form
+	 *
 	 * @param	Array	$params
-	 * @return	void
+	 * @return	String
 	 */
 	public function contactimageuploadformAction(array $params) {
 		$idRecord	= intval($params['idRecord']);
@@ -75,8 +77,10 @@ class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 
 
 	/**
-	 * @param  $params
-	 * @return void
+	 * Upload contact image file
+	 *
+	 * @param	Array	$params
+	 * @return	String
 	 */
 	public function uploadcontactimageAction(array $params) {
 		$file		= TodoyuRequest::getUploadFile('file', 'uploadcontactimage');

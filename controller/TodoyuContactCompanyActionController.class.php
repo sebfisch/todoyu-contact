@@ -152,7 +152,6 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * Remove company record
 	 *
 	 * @param	Array		$params
-	 * @return	void
 	 */
 	public function removeAction(array $params) {
 		restrict('contact', 'person:editAndDelete');
@@ -311,8 +310,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	/**
 	 * Output of an image
 	 *
-	 * @param  $params
-	 * @return void
+	 * @param	Array	$params
 	 */
 	public function renderimageAction(array $params) {
 		$idPerson	= $params['idImage'];

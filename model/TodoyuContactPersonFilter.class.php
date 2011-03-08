@@ -114,8 +114,9 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 	/**
 	 * Get filter for linked companies
 	 *
-	 * @param 	String		$value
+	 * @param	String		$value
 	 * @param	Boolean		$negate
+	 * @return	Array
 	 */
 	public function Filter_Company($value, $negate = false) {
 		$valueParts	= TodoyuArray::trimExplode(' ', $value, true);

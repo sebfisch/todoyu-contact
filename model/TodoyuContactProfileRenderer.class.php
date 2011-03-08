@@ -20,14 +20,19 @@
 
 
 /**
+ * Contact profile renderer
  *
+ * @name 		Contact profile renderer
+ * @package		Todoyu
+ * @subpackage	Contact
  */
 class TodoyuContactProfileRenderer {
 
 	/**
-	 * @static
-	 * @param  $params
-	 * @return String
+	 * Render profile tabs
+	 *
+	 * @param	Array	$params
+	 * @return	String
 	 */
 	public static function renderTabs(array $params) {
 		$name		= 'contact';
@@ -48,9 +53,9 @@ class TodoyuContactProfileRenderer {
 
 
 	/**
-	 * @static
-	 * @param  $params
-	 * @return void
+	 * Render contact profile main content
+	 *
+	 * @param	Array	$params
 	 */
 	public static function renderContent(array $params) {
 		$tab	= $params['tab'];
@@ -66,8 +71,9 @@ class TodoyuContactProfileRenderer {
 
 
 	/**
-	 * @static
-	 * @return void
+	 * Render contact profile edit form
+	 *
+	 * @return	String
 	 */
 	public static function renderContentForm() {
 		$idPerson	= personid();

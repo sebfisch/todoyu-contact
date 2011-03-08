@@ -130,6 +130,7 @@ class TodoyuContactImageManager {
 	/**
 	 * Get path to storage directory
 	 *
+	 * @param	String	$type		e.g. 'person' / 'company'
 	 * @return	String
 	 */
 	public static function getStorageDir($type) {
@@ -185,8 +186,8 @@ class TodoyuContactImageManager {
 	 * Removes the Image from the file folder
 	 *
 	 * @static
-	 * @param  $idImage
-	 * @param  $type
+	 * @param	Integer		$idImage
+	 * @param	String		$type		e.g. 'person' / 'company'
 	 */
 	public static function removeImage($idImage, $type) {
 		$storageDir	= self::getStorageDir($type);
@@ -201,11 +202,10 @@ class TodoyuContactImageManager {
 
 
 	/**
-	 * Checks if the type of the uploaded file is in the allowed types
+	 * Check whether the type of the uploaded file is in the allowed types
 	 *
-	 * @static
-	 * @param  $type
-	 * @return bool
+	 * @param	String	$type	e.g. 'person' / 'company'
+	 * @return	Boolean
 	 */
 	public static function checkFileType($type)	{
 		$allowedTypes	= Todoyu::$CONFIG['EXT']['contact']['contactimage']['allowedTypes'];

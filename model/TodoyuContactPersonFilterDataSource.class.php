@@ -29,7 +29,7 @@ class TodoyuContactPersonFilterDataSource {
 	/**
 	 * Get autocomplete list for person
 	 *
-	 * @param 	String		$input
+	 * @param	String		$input
 	 * @param	Array		$formData
 	 * @param	String		$name
 	 * @return	Array

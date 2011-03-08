@@ -306,7 +306,7 @@ class TodoyuContactPersonManager {
 	/**
 	 * Get role IDs of a person
 	 *
-	 * @param 	Integer		$idPerson
+	 * @param	Integer		$idPerson
 	 * @return	Array
 	 */
 	public static function getRoleIDs($idPerson) {

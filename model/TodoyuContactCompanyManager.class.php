@@ -420,7 +420,6 @@ class TodoyuContactCompanyManager {
 	 * @todo	see comment in above function 'removeContactinfoLinks'
 	 *
 	 * @param	Integer		$idCompany
-	 * @return	void
 	 */
 	public static function deleteContactinfos($idCompany) {
 		TodoyuContactContactInfoManager::deleteLinkedContactInfos('ext_contact_mm_company_contactinfo', $idCompany, array(), 'id_company');

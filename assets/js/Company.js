@@ -261,8 +261,9 @@ Todoyu.Ext.contact.Company =  {
 
 
 	/**
+	 * Remove unused temporary image files
 	 *
-	 * @param form
+	 * @param	{Element}	form
 	 */
 	removeUnusedImages: function(form) {
 		if( form.down('[name = company[id]]').getValue() == 0 ) {
