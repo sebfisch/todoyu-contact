@@ -28,6 +28,11 @@ Todoyu.Ext.contact.Company =  {
 
 
 
+	/**
+	 * Open new company record for editing
+	 *
+	 * @method	add
+	 */
 	add: function() {
 		this.edit(0);
 	},
@@ -150,6 +155,7 @@ Todoyu.Ext.contact.Company =  {
 	 * Close company form, update list view
 	 *
 	 * @method	closeForm
+	 * @param	{Element}	form
 	 */
 	closeForm: function(form) {
 		this.removeUnusedImages(form);
@@ -263,6 +269,7 @@ Todoyu.Ext.contact.Company =  {
 	/**
 	 * Remove unused temporary image files
 	 *
+	 * @method	removeUnusedImages
 	 * @param	{Element}	form
 	 */
 	removeUnusedImages: function(form) {

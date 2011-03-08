@@ -83,7 +83,7 @@ class TodoyuContactImageManager {
 	 */
 	public static function renderImage($idImage, $type) {
 		$filepath	= PATH . '/ext/contact/assets/img/persondefault/user0' . rand(1, 6) . '.png';
-		
+
 		if( is_file( self::getStorageDir($type)  . '/' . $idImage . '/' . self::$destFileName) ) {
 			$filepath	=  self::getStorageDir($type)  . '/' . $idImage . '/' . self::$destFileName;
 		}
