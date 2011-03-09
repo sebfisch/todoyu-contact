@@ -119,7 +119,7 @@ function Dwoo_Plugin_countryName(Dwoo $dwoo, $idCountry) {
 	$idCountry = intval($idCountry);
 	$country	= TodoyuStaticRecords::getCountry($idCountry);
 
-	return TodoyuStaticRecords::getLabel('core.static_country', $country['iso_alpha3']);
+	return TodoyuStaticRecords::getLabel('country', $country['iso_alpha3']);
 }
 
 
