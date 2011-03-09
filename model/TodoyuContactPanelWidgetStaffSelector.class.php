@@ -166,25 +166,35 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 	 */
 	protected function searchGroups(array $searchWords) {
 		$searchFields	= array(
-			'title'
+			'jt.title'
 		);
 		$like	= Todoyu::db()->buildLikeQuery($searchWords, $searchFields);
 
-		$fields	= '	id,
-					title as label';
-		$table	= 'ext_contact_jobtype';
-		$where	= '		deleted	= 0'
+		$fields	= '	jt.id,
+					jt.title as label';
+		$table	= '	ext_contact_jobtype jt,
+					ext_contact_mm_company_person mmcp,
+					ext_contact_person p,
+					ext_contact_company c';
+		$where	= '		mmcp.id_jobtype	= jt.id'
+				. ' AND mmcp.id_person	= p.id'
+				. ' AND mmcp.id_company	= c.id'
+				. ' AND	jt.deleted		= 0'
+				. ' AND p.deleted		= 0'
+				. ' AND c.deleted		= 0'
+				. ' AND c.is_internal	= 1'
 				. '	AND	' . $like;
-		$order	= 'title';
+		$order	= 'jt.title';
+		$group	= 'jt.id';
 		$limit	= 10;
 
 		$selectedJobtypeIDs	= $this->getSelectedGroupIDs();
 
 		if( sizeof($selectedJobtypeIDs) > 0 ) {
-			$where .= ' AND id NOT IN(' . implode(',', $selectedJobtypeIDs) . ')';
+			$where .= ' AND jt.id NOT IN(' . implode(',', $selectedJobtypeIDs) . ')';
 		}
 
-		return Todoyu::db()->getArray($fields, $table, $where, '', $order, $limit);
+		return Todoyu::db()->getArray($fields, $table, $where, $group, $order, $limit);
 	}
 
 
