@@ -120,18 +120,8 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 			return $items;
 		}
 
-		$groups	= $this->searchGroups($this->getSearchWords());
 		$persons= $this->searchPersons($this->getSearchWords());
 
-		foreach($groups as $group) {
-			$jobTypePersons	= $this->getJobtypePersons($group['id']);
-			$items[] = array(
-				'id'	=> 'g' . $group['id'],
-				'label'	=> $group['label'] . ' (' . sizeof($jobTypePersons) . ')',
-				'title'	=> $group['label'] . ' (' . sizeof($jobTypePersons) . ')',
-				'class'	=> 'group'
-			);
-		}
 		foreach($persons as $person) {
 			$colorIndex	= TodoyuColors::getColorIndex($person['id']);
 			$items[] = array(
@@ -140,6 +130,20 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 				'title'	=> $person['label'],
 				'class'	=> 'person enumColBorLef' . $colorIndex
 			);
+		}
+
+		if( $this->isGroupSearchActive() ) {
+			$groups	= $this->searchGroups($this->getSearchWords());
+
+			foreach($groups as $group) {
+				$jobTypePersons	= $this->getJobtypePersons($group['id']);
+				$items[] = array(
+					'id'	=> 'g' . $group['id'],
+					'label'	=> $group['label'] . ' (' . sizeof($jobTypePersons) . ')',
+					'title'	=> $group['label'] . ' (' . sizeof($jobTypePersons) . ')',
+					'class'	=> 'group'
+				);
+			}
 		}
 
 		return $items;
@@ -378,6 +382,11 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 		$value		= implode(',', $selection);
 
 		TodoyuContactPreferences::savePref($this->selectionPref, $value, 0, true, AREA);
+	}
+
+
+	protected function isGroupSearchActive() {
+		return $this->config['group'] === true;
 	}
 
 }

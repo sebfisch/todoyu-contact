@@ -29,14 +29,13 @@ class TodoyuContactPanelWidgetSearch extends TodoyuPanelWidget {
 	/**
 	 * Constructor of the class
 	 */
-	function __construct(array $config, array $params = array(), $idArea = 0, $expanded = true) {
+	function __construct(array $config, array $params = array()) {
 		parent::__construct(
 				'contact',										// ext key
 				'contactSearch',								// panel widget ID
 				'LLL:contact.panelwidget-contactsearchinput.title',		// widget title text
 				$config,										// widget config array
-				$params,										// widget parameters
-				$idArea
+				$params										// widget parameters
 		);
 
 		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.contact.PanelWidget.ContactSearch.init.bind(Todoyu.Ext.contact.PanelWidget.ContactSearch)', 100);

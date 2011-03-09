@@ -34,7 +34,7 @@ class TodoyuContactPanelWidgetStaffList extends TodoyuPanelWidget {
 	 * @param	Integer		$idArea
 	 * @param	Boolean		$expanded
 	 */
-	public function __construct(array $config, array $params = array(), $idArea = 0) {
+	public function __construct(array $config, array $params = array()) {
 
 			// Construct PanelWidget (init basic configuration)
 		parent::__construct(
@@ -42,8 +42,7 @@ class TodoyuContactPanelWidgetStaffList extends TodoyuPanelWidget {
 			'stafflist',							// panel widget ID
 			'LLL:contact.panelwidget-stafflist.title',		// widget title text
 			$config,								// widget config array
-			$params,								// widget parameters
-			$idArea									// area ID
+			$params								// widget parameters
 		);
 
 		$this->addHasIconClass();
