@@ -20,22 +20,27 @@
 Todoyu.Ext.contact.QuickInfoPerson = {
 
 	/**
-	 * Ext shortcut
+	 * Reference to extension
 	 *
-	 * @var	{Object}	ext
+	 * @property	ext
+	 * @type		Object
 	 */
 	ext:		Todoyu.Ext.contact,
 
-
-
 	/**
-	 * Selector for event quickinfo
+	 * Selector (sizzle) for event quickinfo
+	 *
+	 * @property	selector
+	 * @type		String
 	 */
 	selector:	'.quickInfoPerson',
 
 
+
 	/**
 	 * Install quickinfo for events
+	 *
+	 * @method	install
 	 */
 	install: function() {
 //		Todoyu.QuickInfo.install('person', this.selector, this.getID.bind(this));

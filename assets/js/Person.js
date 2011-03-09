@@ -20,9 +20,10 @@
 Todoyu.Ext.contact.Person =  {
 
 	/**
-	 * Extension backlink
+	 * Reference to extension
 	 *
-	 * @var	{Object}	ext
+	 * @property	ext
+	 * @type		Object
 	 */
 	ext:	Todoyu.Ext.contact,
 
@@ -30,6 +31,8 @@ Todoyu.Ext.contact.Person =  {
 
 	/**
 	 * Add person (create and edit new person record)
+	 *
+	 * @method	add
 	 */
 	add: function() {
 		this.edit(0);

@@ -24,29 +24,42 @@
 Todoyu.Ext.contact.PanelWidget.StaffSelector = {
 
 	/**
-	 * Extension backlink
+	 * Reference to extension
 	 *
-	 * @var	{Object}	ext
+	 * @property	ext
+	 * @type		Object
 	 */
 	ext:			Todoyu.Ext.contact,
 
 	/**
 	 * Person list element
+	 *
+	 * @property	list
+	 * @type		Element
 	 */
 	list:			null,
 
 	/**
 	 * Jobtype element
+	 *
+	 * @property	jobType
+	 * @type		Element
 	 */
 	jobType:		null,
 
 	/**
 	 * Jobtype togglebox element
+	 *
+	 * @property	jobTypeToggle
+	 * @type		Element
 	 */
 	jobTypeToggle:	null,
 
 	/**
 	 * Jobtype to persons linking object
+	 *
+	 * @property	jobType2Persons
+	 * @type		Object
 	 */
 	jobType2Persons:	{},
 

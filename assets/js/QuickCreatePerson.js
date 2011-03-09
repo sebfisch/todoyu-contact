@@ -20,13 +20,20 @@
 Todoyu.Ext.contact.QuickCreatePerson = {
 
 	/**
-	 * Extension backlink
+	 * Reference to extension
 	 *
-	 * @var	{Object}	ext
+	 * @property	ext
+	 * @type		Object
 	 */
 	ext: Todoyu.Ext.contact,
 
+	/**
+	 * @property	person
+	 * @type		Object
+	 */
 	person: Todoyu.Ext.contact.Person,
+
+
 
 	/**
 	 * Evoked upon opening of person quick create wizard popup
