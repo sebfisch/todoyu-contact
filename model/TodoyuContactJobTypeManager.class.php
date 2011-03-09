@@ -246,6 +246,37 @@ class TodoyuContactJobTypeManager {
 		return $data;
 	}
 
+
+
+	/**
+	 * Get person IDs for a jobtype
+	 *
+	 * @param	Integer		$idJobtype
+	 * @param	Boolean		$onlyInternal
+	 * @return	Array
+	 */
+	public static function getPersonIDsWithJobtype($idJobtype, $onlyInternal = true) {
+		$idJobtype	= intval($idJobtype);
+
+		$fields		= '	mmcp.id_person';
+		$tables		= '	ext_contact_mm_company_person mmcp,
+						ext_contact_person p';
+		$where		= '		mmcp.id_jobtype	= ' . $idJobtype
+					. ' AND mmcp.id_person	= p.id'
+					. ' AND p.deleted		= 0';
+		$group		= '	mmcp.id_person';
+
+		if( $onlyInternal ) {
+			$tables	.= ', ext_contact_company c';
+			$where	.= ' AND mmcp.id_company= c.id'
+					. ' AND c.deleted		= 0'
+					. ' AND c.is_internal	= 1';
+		}
+		$field		= 'id_person';
+
+		return Todoyu::db()->getColumn($fields, $tables, $where, $group, '', '', $field);
+	}
+
 }
 
 ?>

@@ -19,47 +19,248 @@
 
 /**
  * Panel widget: staff selector
+ *
+ * @class
+ * @extends		Todoyu.PanelWidgetSearchList
  */
-
-Todoyu.Ext.contact.PanelWidget.StaffSelector = {
+Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSearchList, {
 
 	/**
-	 * Reference to extension
+	 * Selection element
+	 * @var	{Element}	selection
+	 */
+	selection: null,
+
+
+	timeoutSave: null,
+
+	/**
+	 * Constructor Initialize with search word
 	 *
-	 * @property	ext
-	 * @type		Object
+	 * @param	{Function}	$super
+	 * @param	{String}	search
+	 */
+	initialize: function($super, search) {
+		$super({
+			id:			'staffselector',
+			search:		search,
+			ext:		'contact',
+			controller:	'panelwidgetstaffselector',
+			action:		'list'
+		});
+
+		this.config.actionSelection	= 'save';
+
+		this.selection	= $('panelwidget-staffselector-selection');
+		this.selection.on('click', 'li', this.onSelectionClick.bind(this));
+
+		this.addAddIconsToList();
+		this.addRemoveIconsToList();
+	},
+
+
+
+	/**
+	 * Handler when clicked on item
+	 *
+	 * @param	{Event}		event
+	 * @param	{Element}	item
+	 */
+	onItemClick: function(event, item) {
+		this.addItemToSelection(item);
+		this.saveSelection();
+	},
+
+
+
+	/**
+	 * Add an item to the selection list
+	 *
+	 * @param	{Element}	item
+	 */
+	addItemToSelection: function(item) {
+			// Remove 'no items' label if no items are in selection
+		if( this.isSelectionEmpty() ) {
+			this.selection.update('');
+		}
+
+			// Move item to selection
+		this.selection.insert({
+			bottom: item
+		});
+
+			// Add remove button
+		this.addRemoveIconsToList([item]);
+
+			// Remove add button
+		item.down('span.add').remove();
+
+			// Highlight new item
+		new Effect.Highlight(item, {
+			duration: 2.0
+		});
+	},
+
+
+
+	/**
+	 * Handler when clicked on a selection item
+	 * Remove it from selection
+	 *
+	 * @param	{Event}		event
+	 * @param	{Element}	item
+	 */
+	onSelectionClick: function(event, item) {
+		new Effect.SlideUp(item, {
+			duration: 0.5,
+			afterFinish: function() {
+				item.remove();
+				this.addMessageIfSelectionEmpty();
+				this.saveSelection();
+			}.bind(this)
+		});
+	},
+
+
+
+	/**
+	 * When selection contains no item, add place holder label
+	 */
+	addMessageIfSelectionEmpty: function() {
+		if( this.isSelectionEmpty() ) {
+			this.selection.update('<p>[LLL:contact.panelwidget-staffselector.selection.empty]</p>');
+		}
+	},
+
+
+	/**
+	 * Check whether selection contains any items
+	 *
+	 * @return	{Boolean}
+	 */
+	isSelectionEmpty: function() {
+		return this.selection.down('li') === undefined;
+	},
+
+
+
+	/**
+	 * Save selected items
+	 */
+	saveSelection: function(noDelay) {
+		clearTimeout(this.timeoutSave);
+		if( noDelay !== true ) {
+			this.timeoutSave = this.saveSelection.bind(this, true).delay(1);
+			return ;
+		}
+
+		var items	= this.getSelectedItems();
+		var url		= Todoyu.getUrl(this.config.ext, this.config.controller);
+		var options	= {
+			parameters: {
+				action:		this.config.actionSelection,
+				selection:	items.join(',')
+			},
+			onComplete: this.onSelectionSaved.bind(this, items)
+		};
+
+		Todoyu.send(url, options);
+	},
+
+
+
+	/**
+	 * Handler when selection was saved
+	 * Fire change event to notify other about the change
+	 *
+	 * @param	{Array}			items
+	 * @param	{Ajax.Response}	response
+	 */
+	onSelectionSaved: function(items, response) {
+		Todoyu.PanelWidget.fire('staffselector', items);
+	},
+
+
+
+	/**
+	 * Get item IDs from selection list
+	 */
+	getSelectedItems: function() {
+		return this.selection.select('li').collect(function(item){
+			return item.id.split('-').last();
+		});
+	},
+
+
+
+	/**
+	 * Handler when list was updated
+	 */
+	onUpdated: function() {
+		this.addAddIconsToList();
+	},
+
+
+
+	/**
+	 * Add adding icons to all items in the search list
+	 */
+	addAddIconsToList: function() {
+		this.list.select('li a').each(function(item){
+			item.insert(new Element('span', {
+				'class': 'add'
+			}));
+		});
+	},
+
+
+
+	/**
+	 * Add removing icons to items. If no items are provided,
+	 * add to all in the selection list
+	 *
+	 * @param	{Array}	items
+	 */
+	addRemoveIconsToList: function(items) {
+		items	= items || this.selection.select('li');
+
+		items.each(function(item){
+			item.down('a').insert(new Element('span', {
+				'class': 'remove'
+			}));
+		});
+	}
+});
+
+
+
+
+Todoyu.Ext.contact.PanelWidget.StaffSelectorOLD = {
+
+	/**
+	 * Extension backlink
+	 *
+	 * @var	{Object}	ext
 	 */
 	ext:			Todoyu.Ext.contact,
 
 	/**
 	 * Person list element
-	 *
-	 * @property	list
-	 * @type		Element
 	 */
 	list:			null,
 
 	/**
 	 * Jobtype element
-	 *
-	 * @property	jobType
-	 * @type		Element
 	 */
 	jobType:		null,
 
 	/**
 	 * Jobtype togglebox element
-	 *
-	 * @property	jobTypeToggle
-	 * @type		Element
 	 */
 	jobTypeToggle:	null,
 
 	/**
 	 * Jobtype to persons linking object
-	 *
-	 * @property	jobType2Persons
-	 * @type		Object
 	 */
 	jobType2Persons:	{},
 

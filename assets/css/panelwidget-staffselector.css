@@ -1,40 +1,55 @@
 /* -----------------------------------------------------
 	Staff selector
    ----------------------------------------------------- */
-#panelwidget-staffselector .panelWidget .content,
-#panelwidget-staffselector .panelwidgetContent {
-	position:relative;
-}
-
 #panelwidget-staffselector h1 .title {
 	background:url(../img/icons.png) no-repeat 5px 6px;
 }
 
-#panelwidget-staffselector div.fLabel {
-	border-bottom:1px solid #CCC;
+#panelwidget-staffselector li.group a {
+	background:url(../../../sysmanager/assets/img/icons.png) no-repeat 2px -210px;
 }
 
-#panelwidget-staffselector option {
-	padding-left:15px;
+#panelwidget-staffselector li.person a {
+	background:url(../img/icons.png) no-repeat 2px 2px;
 }
 
-#panelwidget-staffselector-jobtype {
-	margin:0 0 8px 0;
+#panelwidget-staffselector li {
+	border-left:5px solid #FFF;
+	padding-left:2px;
 }
 
-#panelwidget-staffselector .toggleSelect {
-	position:absolute;
-	z-index:100;
-	right:0;
-	top:0;
-	margin-top:-4px;
+#panelwidget-staffselector-list li {
+	border-left-color:#FFF !important;
 }
 
-#panelwidget-staffselector div.jobTypeToggleLabel {
-	margin-top:5px;
+#panelwidget-staffselector .selection {
+	border:1px dotted #CCCCCC;
+	display:inline-block;
+	margin-top:3px;
+	padding:5px;
+	width:95%;
 }
 
-#panelwidget-staffselector-jobtypetoggle,
-#panelwidget-staffselector-content label {
-	vertical-align:top;
+#panelwidget-staffselector li a span {
+	display:none;
+}
+#panelwidget-staffselector li:hover a span {
+	float:right;
+	display:inline-block;
+	width:16px;
+	height:16px;
+	margin-right:40px;
+	background-image:url(../../../../core/assets/img/icons.png);
+	background-repeat:no-repeat;
+}
+
+#panelwidget-staffselector li a span.remove {
+	background-position:2px -358px;
+}
+#panelwidget-staffselector li a span.add {
+	background-position:2px -28px;
+}
+
+#panelwidget-staffselector h5 {
+	margin-bottom:2px;
 }

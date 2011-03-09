@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <labels>
-	<label index="toggle.multiselect.title">Toggle single/multi selection mode</label>
 	<label index="title">Staff</label>
-	<label index="selectAllStaff">Select All Staff</label>
-	<label index="byFunction">By Job Type:</label>
-	<label index="noFunction">No Job Type</label>
+	<label index="selection">Active selection</label>
+	<label index="selection.empty">Nothing selected. Click on the items from list above</label>
 </labels>

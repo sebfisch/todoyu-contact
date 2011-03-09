@@ -19,12 +19,28 @@
 *****************************************************************************/
 
 /**
- * Panel widget: Staff Selector
+ * Staff selector panel widget
  *
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidget implements TodoyuPanelWidgetIf {
+class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList {
+
+	/**
+	 * Preference name for selected items
+	 *
+	 * @var	String
+	 */
+	protected $selectionPref	= 'staffselector';
+
+	/**
+	 * Cached selection
+	 *
+	 * @var	Array
+	 */
+	protected $selection;
+
+
 
 	/**
 	 * Constructor (init widget)
@@ -48,11 +64,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidget implements
 			// Add classes
 		$this->addHasIconClass();
 
-			// Get job type <> person mapping
-		$jobTypes2PersonsJSON	= $this->getJobTypes2PersonsJSON();
-
-			// init widget JS (observers)
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.contact.PanelWidget.StaffSelector.init.bind(Todoyu.Ext.contact.PanelWidget.StaffSelector, ' . $jobTypes2PersonsJSON . ')', 100);
+		$this->setJsObject('Todoyu.Ext.contact.PanelWidget.StaffSelector');
 
 			// Generate person color CSS and graphic
 		TodoyuColors::generate();
@@ -61,188 +73,301 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidget implements
 
 
 	/**
-	 * Render panel content (staff selector)
+	 * Render content
 	 *
+	 * @param	Boolean		$listOnly		Render list items only
 	 * @return	String
 	 */
-	public function renderContent() {
-		$prefs		= self::getPrefs();
-		$tmpl	= 'ext/contact/view/panelwidgets/panelwidget-staffselector.tmpl';
+	public function renderContent($listOnly = false) {
+		$searchList	= parent::renderContent($listOnly);
+		$selection	= '';
 
-		$personOptions	= $this->getStaffPersonOptions();
-		$data	= array(
-				// Configs
-			'id'				=> $this->getID(),
-			'jobTypeMultiple'	=> $prefs['multiple'] === true,
-			'listSize'			=> $this->getListSize(sizeof($personOptions)),
-			'numColors'			=> sizeof(Todoyu::$CONFIG['COLORS']),
-			'colorizeOptions'	=> $this->config['colorizePersonOptions'],
+		if( $listOnly === false ) {
+			$selection	= $this->renderSelection();
+		}
 
-				// Selector options
-			'jobTypeOptions'	=> $this->getJobtypeOptions(),
-			'personOptions'		=> $personOptions,
-
-				// Preferences
-			'selectedJobTypes'	=> TodoyuArray::intval($prefs['jobtypes']),
-			'selectedPersons'	=> TodoyuArray::intval($prefs['persons']),
-		);
-
-		$content	= render($tmpl, $data);
-		$this->setContent($content);
-
-		return $content;
+		return $searchList . $selection;
 	}
 
 
 
 	/**
-	 * Get options config array of persons assigned to internal company (staff members)
+	 * Render selection box
+	 * Selected persons and groups
+	 *
+	 * @return	String
+	 */
+	protected function renderSelection() {
+		$tmpl	= 'ext/contact/view/panelwidgets/panelwidget-staffselector.tmpl';
+		$data	= array(
+			'items'	=> $this->getSelectedItems()
+		);
+
+		return render($tmpl, $data);
+	}
+
+
+
+	/**
+	 * Get items for search result list
 	 *
 	 * @return	Array
 	 */
-	public function getStaffPersonOptions() {
-		$persons	= TodoyuContactJobTypeManager::getInternalPersonsWithJobType();
-		$options	= array();
+	protected function getItems() {
+		$items	= array();
 
+		if( sizeof($this->getSearchWords()) === 0 ) {
+			return $items;
+		}
+
+		$groups	= $this->searchGroups($this->getSearchWords());
+		$persons= $this->searchPersons($this->getSearchWords());
+
+		foreach($groups as $group) {
+			$jobTypePersons	= $this->getJobtypePersons($group['id']);
+			$items[] = array(
+				'id'	=> 'g' . $group['id'],
+				'label'	=> $group['label'] . ' (' . sizeof($jobTypePersons) . ')',
+				'title'	=> $group['label'] . ' (' . sizeof($jobTypePersons) . ')',
+				'class'	=> 'group'
+			);
+		}
 		foreach($persons as $person) {
-			$classBase	= TodoyuBrowserInfo::isIE() ? 'enumColBG' : 'enumColOptionLeftIcon';
-			$options[] 	= array(
-				'value'	=> $person['id'],
-				'label'	=> $person['lastname'] . ' ' . $person['firstname'] . ' (' . ( ! empty($person['jobtype']) ? $person['jobtype'] : Label('contact.panelwidget-staffselector.noFunction') ) . ')',
-				'class'	=> $classBase . TodoyuColors::getColorIndex($person['id'])
+			$colorIndex	= TodoyuColors::getColorIndex($person['id']);
+			$items[] = array(
+				'id'	=> 'p' . $person['id'],
+				'label'	=> $person['label'],
+				'title'	=> $person['label'],
+				'class'	=> 'person enumColBorLef' . $colorIndex
 			);
 		}
 
-		return $options;
+		return $items;
 	}
 
 
 
 	/**
-	 * Render widget (get evoked)
-	 *
-	 * @return	String
-	 */
-	public function render() {
-		$this->renderContent();
-
-		return parent::render();
-	}
-
-
-
-	/**
-	 * Build the json code for mapping jobtypes and persons
-	 *
-	 * @return	String
-	 */
-	private function getJobTypes2PersonsJSON() {
-		$persons	= TodoyuContactPersonManager::getInternalPersons(true, true);
-		$mapping	= array();
-
-		foreach($persons as $person) {
-			$mapping[intval($person['id_jobtype'])][] = intval($person['id']);
-		}
-
-		return json_encode($mapping);
-	}
-
-
-
-	/**
-	 * Get job type options config array, listing only jobtypes being assigned labels including the amount of assigned persons
+	 * Get search words
 	 *
 	 * @return	Array
 	 */
-	private function getJobTypeOptions() {
-		$persons	= TodoyuContactJobTypeManager::getInternalPersonsWithJobType();
-		$options	= array();
+	protected function getSearchWords() {
+		return TodoyuString::trimExplode(' ', $this->getSearchText(), true);
+	}
 
-		$jobTypes	= array(
-				// Select all staff option
-			array(
-				'id'	=> 0,
-				'label'	=> Label('contact.panelwidget-staffselector.selectAllStaff'),
-				'count'	=> 0
-			)
+
+
+	/**
+	 * Search groups which match to search words
+	 *
+	 * @param	Array		$searchWords
+	 * @return	Array
+	 */
+	protected function searchGroups(array $searchWords) {
+		$searchFields	= array(
+			'title'
 		);
+		$like	= Todoyu::db()->buildLikeQuery($searchWords, $searchFields);
 
-			// Find all job types and the person count
-		foreach($persons as $person) {
-			if( array_key_exists($person['id_jobtype'], $jobTypes) ) {
-				$jobTypes[$person['id_jobtype']]['count']++;
-			} else {
-				$jobTypes[$person['id_jobtype']] = array(
-					'id'	=> $person['id_jobtype'],
-					'label'	=> $person['jobtype'],
-					'count'	=> 1
-				);
+		$fields	= '	id,
+					title as label';
+		$table	= 'ext_contact_jobtype';
+		$where	= '		deleted	= 0'
+				. '	AND	' . $like;
+		$order	= 'title';
+		$limit	= 10;
+
+		$selectedJobtypeIDs	= $this->getSelectedGroupIDs();
+
+		if( sizeof($selectedJobtypeIDs) > 0 ) {
+			$where .= ' AND id NOT IN(' . implode(',', $selectedJobtypeIDs) . ')';
+		}
+
+		return Todoyu::db()->getArray($fields, $table, $where, '', $order, $limit);
+	}
+
+
+
+	/**
+	 * Search persons which match the search words
+	 *
+	 * @param	Array	$searchWords
+	 * @return	Array
+	 */
+	protected function searchPersons(array $searchWords) {
+		$searchFieldsPerson	= array(
+			'p.username',
+			'p.email',
+			'p.firstname',
+			'p.lastname',
+			'p.shortname',
+			'p.title',
+			'p.comment'
+		);
+		$searchFieldsJobtype = array(
+			'jt.title'
+		);
+		$likePerson		= Todoyu::db()->buildLikeQuery($searchWords, $searchFieldsPerson);
+		$likeJobtypes	= Todoyu::db()->buildLikeQuery($searchWords, $searchFieldsJobtype);
+
+		$fields	= '	p.id,
+					CONCAT(p.lastname, \' \', p.firstname) as label';
+		$table	= '	ext_contact_person p,
+					ext_contact_mm_company_person mmcp,
+					ext_contact_company c,
+					ext_contact_jobtype jt';
+		$where	= '		p.id			= mmcp.id_person'
+				. ' AND mmcp.id_company	= c.id'
+				. ' AND mmcp.id_jobtype	= jt.id'
+				. ' AND c.is_internal	= 1'
+				. ' AND c.deleted		= 0'
+				. ' AND p.deleted 		= 0'
+				. ' AND jt.deleted		= 0'
+				. '	AND	('
+				. $likePerson
+				. ' OR '
+				. $likeJobtypes
+				. ')';
+		$order	= '	p.lastname,
+					p.firstname';
+		$limit	= 10;
+
+		$selectedPersons= $this->getSelectedPersonIDs();
+		if( sizeof($selectedPersons) > 0 ) {
+			$where .= ' AND p.id NOT IN(' . implode(',', $selectedPersons) . ')';
+		}
+
+		return Todoyu::db()->getArray($fields, $table, $where, '', $order, $limit);
+	}
+
+
+
+	/**
+	 * Get jobtype person IDs
+	 *
+	 * @param	Integer		$idJobtype
+	 * @return	Array
+	 */
+	protected function getJobtypePersons($idJobtype) {
+		return TodoyuContactJobTypeManager::getPersonIDsWithJobtype($idJobtype);
+	}
+
+
+
+
+	/**
+	 * Get selected persons. Based on selected persons and person with a selected jobtype
+	 *
+	 * @return	Array
+	 */
+	public function getSelectedPersons() {
+		$selection	= $this->getSelection();
+		$persons	= array();
+
+		foreach($selection as $item) {
+			switch(substr($item, 0, 1)) {
+				case 'p':
+					$persons[] = intval(substr($item, 1));
+					break;
+
+				case 'g':
+					$persons = array_merge($persons, $this->getJobtypePersons(substr($item, 1)));
+					break;
 			}
 		}
 
-			// Create options: label is Person name + job type
-		foreach($jobTypes as $jobType) {
-			$amount	= ( $jobType['id'] == 0 ) ? ' (' . sizeof($persons) . ')' : ( ( $jobType['count'] > 0 ) ? ' (' . $jobType['count'] . ')' : '' );
+		return array_unique($persons);
+	}
 
-			$options[] = array(
-				'value'	=> $jobType['id'],
-				'label'	=> $jobType['label'] . $amount
-			);
+
+
+	/**
+	 * Get items for selection list
+	 *
+	 * @return	Array
+	 */
+	public function getSelectedItems() {
+		$selection	= $this->getSelection();
+		$items		= array();
+
+		foreach($selection as $item) {
+			switch(substr($item, 0, 1)) {
+				case 'p':
+					$idPerson	= intval(substr($item, 1));
+					$person		= TodoyuContactPersonManager::getPerson($idPerson);
+					$colorIndex	= TodoyuColors::getColorIndex($person['id']);
+					$items[]	= array(
+						'id'	=> 'p' . $idPerson,
+						'label'	=> $person->getFullName(true),
+						'title'	=> $person->getFullName(true),
+						'class'	=> 'person enumColBorLef' . $colorIndex
+					);
+					break;
+
+				case 'g':
+					$idJobtype	= intval(substr($item, 1));
+					$jobType	= TodoyuContactJobTypeManager::getJobType($idJobtype);
+					$items[]	= array(
+						'id'	=> 'g' . $idJobtype,
+						'label'	=> $jobType->getTitle(),
+						'title'	=> $jobType->getTitle(),
+						'class'	=> 'group'
+					);
+					break;
+			}
 		}
 
-		return $options;
+		return $items;
+	}
+
+
+	public function getSelection() {
+		if( is_null($this->selection) ) {
+			$pref	= TodoyuContactPreferences::getPref($this->selectionPref, 0, AREA);
+
+			if( $pref === false || $pref === '' ) {
+				$this->selection = array();
+			} else {
+				$this->selection = explode(',', $pref);
+			}
+		}
+
+		return $this->selection;
+	}
+
+
+	protected function getSelectedGroupIDs() {
+		return $this->getSelectedTypeIDs('g');
+	}
+
+	protected function getSelectedPersonIDs() {
+		return $this->getSelectedTypeIDs('p');
+	}
+
+
+	protected function getSelectedTypeIDs($type) {
+		$items		= $this->getSelection();
+		$typeItems	= array();
+
+		foreach($items as $item) {
+			if( substr($item, 0, 1) === $type ) {
+				$typeItems[] = intval(substr($item, 1));
+			}
+		}
+
+		return $typeItems;
 	}
 
 
 
-	/**
-	 * Get display size of staff list (amount of visible entries w/o scrolling)
-	 *
-	 * @param	Integer		$numDisplayedPersons
-	 * @return	Integer
-	 */
-	private function getListSize($numDisplayedPersons) {
-		$numDisplayedPersons= intval($numDisplayedPersons);
-		$maxListSize		= intval(Todoyu::$CONFIG['contact']['panelWidgetStaffSelector']['maxListSize']);
-
-		return ( $numDisplayedPersons < $maxListSize ) ? $numDisplayedPersons : $maxListSize;
-	}
 
 
+	public function saveSelection(array $selection) {
+		$selection	= TodoyuArray::trim($selection, true);
+		$value		= implode(',', $selection);
 
-	/**
-	 * Get preferences of staff selector
-	 *
-	 * @return	Array
-	 */
-	public static function getPrefs() {
-		$prefs	= TodoyuContactPreferences::getPref('panelwidget-staffselector', 0, AREA, false);
-
-		return ( $prefs !== false ) ? json_decode($prefs, true) : array();
-	}
-
-
-
-	/**
-	 * Get selected staff members person's IDs
-	 *
-	 * @return	Array
-	 */
-	public static function getSelectedPersons() {
-		$prefs = self::getPrefs();
-
-		return TodoyuArray::assure($prefs['persons']);
-	}
-
-
-
-	/**
-	 * Check access rights to staff selector widget
-	 *
-	 * @return	Boolean
-	 */
-	public static function isAllowed() {
-		return allowed('contact', 'panelwidgets:staffSelector');
+		TodoyuContactPreferences::savePref($this->selectionPref, $value, 0, true, AREA);
 	}
 
 }
