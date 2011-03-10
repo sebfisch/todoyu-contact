@@ -31,8 +31,12 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 */
 	selection: null,
 
-
+	/**
+	 * Timeout for save request
+	 */
 	timeoutSave: null,
+
+
 
 	/**
 	 * Constructor Initialize with search word
@@ -50,9 +54,15 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 		});
 
 		this.config.actionSelection	= 'save';
-
+			// Save reference to selection list
 		this.selection	= $('panelwidget-staffselector-selection');
-		this.selection.on('click', 'li', this.onSelectionClick.bind(this));
+
+			// Observe selection list for disable and remove clicks
+		this.selection.on('click', 'li', this.onSelectionItemClick.bind(this));
+		this.selection.on('click', 'li span.remove', this.onRemoveClick.bind(this));
+
+			// Observe input for return clicks
+		this.input.on('keyup', this.onInputKeyUps.bind(this));
 
 		this.addAddIconsToList();
 		this.addRemoveIconsToList();
@@ -69,6 +79,48 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	onItemClick: function(event, item) {
 		this.addItemToSelection(item);
 		this.saveSelection();
+	},
+
+
+
+	/**
+	 * Handler for keyup event in search input
+	 * Handle return key press to add the hot element
+	 * to the selection
+	 *
+	 * @param	{Event}		event
+	 */
+	onInputKeyUps: function(event) {
+		if( event.keyCode === Event.KEY_RETURN ) {
+			var firstItem	= this.list.down('li');
+			if( firstItem !== undefined ) {
+				this.addItemToSelection(firstItem);
+				this.input.select();
+				this.saveSelection();
+				this.markFirstAsHot();
+			}
+
+			console.log('enter klicked');
+		}
+	},
+
+
+
+	/**
+	 * Mark first item in result list as hot
+	 * Hot means, when the user presses return,
+	 * this item will be added to the selection
+	 *
+	 * @method	markFirstAsHot
+	 */
+	markFirstAsHot: function() {
+		this.list.select('li').invoke('removeClassName', 'hot');
+
+		var first	= this.list.down('li');
+
+		if( first ) {
+			first.addClassName('hot');
+		}
 	},
 
 
@@ -97,7 +149,10 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 
 			// Highlight new item
 		new Effect.Highlight(item, {
-			duration: 2.0
+			duration: 2.0,
+			afterFinish: function() {
+				this.removeAttribute('style');
+			}.bind(item)
 		});
 	},
 
@@ -110,9 +165,28 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * @param	{Event}		event
 	 * @param	{Element}	item
 	 */
-	onSelectionClick: function(event, item) {
+	onSelectionItemClick: function(event, item) {
+		if( ! event.element().hasClassName('remove') ) {
+			item.toggleClassName('disabled');
+			this.saveSelection();
+		}
+	},
+
+
+
+	/**
+	 * Handler when clicked on remove icon
+	 *
+	 * @param	{Event}		event
+	 * @param	{Element}	removeIcon
+	 */
+	onRemoveClick: function(event, removeIcon) {
+		event.stop();
+
+		var item	= removeIcon.up('li');
+
 		new Effect.SlideUp(item, {
-			duration: 0.5,
+			duration: 0.3,
 			afterFinish: function() {
 				item.remove();
 				this.addMessageIfSelectionEmpty();
@@ -133,6 +207,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	},
 
 
+
 	/**
 	 * Check whether selection contains any items
 	 *
@@ -150,7 +225,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	saveSelection: function(noDelay) {
 		clearTimeout(this.timeoutSave);
 		if( noDelay !== true ) {
-			this.timeoutSave = this.saveSelection.bind(this, true).delay(1);
+			this.timeoutSave = this.saveSelection.bind(this, true).delay(0.5);
 			return ;
 		}
 
@@ -184,10 +259,14 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 
 	/**
 	 * Get item IDs from selection list
+	 * Disabled items are prefixed with a minus
 	 */
 	getSelectedItems: function() {
 		return this.selection.select('li').collect(function(item){
-			return item.id.split('-').last();
+			var itemKey	= item.id.split('-').last();
+			var prefix	= item.hasClassName('disabled') ? '-' : '';
+
+			return prefix + itemKey;
 		});
 	},
 
@@ -198,6 +277,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 */
 	onUpdated: function() {
 		this.addAddIconsToList();
+		this.markFirstAsHot();
 	},
 
 
@@ -231,307 +311,3 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 		});
 	}
 });
-
-
-
-
-Todoyu.Ext.contact.PanelWidget.StaffSelectorOLD = {
-
-	/**
-	 * Extension backlink
-	 *
-	 * @var	{Object}	ext
-	 */
-	ext:			Todoyu.Ext.contact,
-
-	/**
-	 * Person list element
-	 */
-	list:			null,
-
-	/**
-	 * Jobtype element
-	 */
-	jobType:		null,
-
-	/**
-	 * Jobtype togglebox element
-	 */
-	jobTypeToggle:	null,
-
-	/**
-	 * Jobtype to persons linking object
-	 */
-	jobType2Persons:	{},
-
-
-
-	/**
-	 * Initialize widget. Link elements and set jobtype mapping
-	 *
-	 * @method	init
-	 * @param	{Object}		jobType2Persons
-	 */
-	init: function(jobType2Persons) {
-		this.list			= $('panelwidget-staffselector-persons');
-		this.jobType		= $('panelwidget-staffselector-jobtype');
-		this.jobTypeToggle	= $('panelwidget-staffselector-jobtypetoggle-label');
-		this.jobType2Persons= jobType2Persons;
-
-		this.installObservers();
-	},
-
-
-
-	/**
-	 * Install observers
-	 *
-	 * @method	installObservers
-	 */
-	installObservers: function() {
-		this.list.observe('change', this.onSelectionChange.bindAsEventListener(this));
-		this.jobType.observe('change', this.onJobtypeSelected.bindAsEventListener(this));
-		this.jobTypeToggle.observe('click', this.onJobtypeToggleChange.bindAsEventListener(this));
-	},
-
-
-
-	/**
-	 * Handler of person selection changes
-	 *
-	 * @method	onSelectionChange
-	 * @param	{Event}		event
-	 */
-	onSelectionChange: function(event) {
-		this.selectAllJobtypes(false);
-		this.onUpdate();
-	},
-
-
-
-	/**
-	 * Handler of jobtype selection changes
-	 *
-	 * @method	onJobtypeSelected
-	 * @param	{Event}		event
-	 */
-	onJobtypeSelected: function(event) {
-		this.selectPersonsByJobtype();
-		this.onUpdate();
-	},
-
-
-
-	/**
-	 * Handler of jobtype toggler changes
-	 *
-	 * @method	onJobtypeToggleChange
-	 * @param	{Event}		event
-	 */
-	onJobtypeToggleChange: function(event) {
-		var toggler	= event.findElement('div').down('input');
-
-		if( ! toggler.checked ) {
-			this.jobType.multiple	= 'multiple';
-			this.jobType.size		= this.jobType.options.length;
-		} else {
-			this.jobType.multiple	= false;
-			this.jobType.size		= 1;
-		}
-
-		$(toggler.id + '-label').toggleClassName('expand');
-
-			// Fix for IE. Label click doesn't update input if input is hidden
-		if( Prototype.Browser.IE ) {
-			toggler.checked = !toggler.checked;
-		}
-
-		this.onUpdate();
-	},
-
-
-
-	/**
-	 * If widget has changed inform all listeners which persons are selected
-	 *
-	 * @method	onUpdate
-	 */
-	onUpdate: function() {
-		this.savePrefs();
-	},
-
-
-
-	/**
-	 * Select all/no jobTypes
-	 *
-	 * @method	selectAllJobtypes
-	 * @param	{Boolean}		select
-	 */
-	selectAllJobtypes: function(select) {
-		var selected = select === true;
-		this.jobType.select('option').each(function(option){
-			option.selected = selected;
-		});
-	},
-
-
-
-	/**
-	 * Select all/no persons
-	 *
-	 * @method	selectAllPersons
-	 * @param	{Boolean}			select
-	 */
-	selectAllPersons: function(select) {
-		var selected = select === true;
-		this.list.select('option').each(function(option){
-			option.selected = selected;
-		});
-	},
-
-
-
-	/**
-	 * Select (one or multiple) given persons
-	 *
-	 * @method	selectPersons
-	 * @param	{Array}			personIDs
-	 */
-	selectPersons: function(personIDs) {
-		this.list.select('option').each(function(option){
-			if( personIDs.include(option.value) ) {
-				option.selected = true;
-			}
-		});
-	},
-
-
-
-	/**
-	 * Select persons having selected job type assigned
-	 *
-	 * @method	selectPersonsByJobtype
-	 */
-	selectPersonsByJobtype: function() {
-		this.selectAllPersons(false);
-
-		var jobTypes	= this.getSelectedJobtypes();
-
-		if( jobTypes.first() == 0 ) {
-				// Select all employees
-			this.selectAllPersons(true);
-		} else {
-				// Select all employees with selected jobtypes
-			jobTypes.each(function(jobType){
-				var personIDs = this.getJobtypePersons(jobType);
-				this.selectPersons(personIDs);
-			}.bind(this));
-		}
-	},
-
-
-
-	/**
-	 * Get all persons which have the requested job type
-	 *
-	 * @method	getJobtypePersons
-	 * @param	{Number}		jobType
-	 * @return	Array
-	 */
-	getJobtypePersons: function(jobType) {
-		return this.jobType2Persons[jobType];
-	},
-
-
-
-	/**
-	 * Get IDs of currently selected persons
-	 *
-	 * @method	getSelectedPersons
-	 * @return	Array
-	 */
-	getSelectedPersons: function() {
-		return $F(this.list);
-	},
-
-
-
-	/**
-	 * Get selected jobtypes
-	 *
-	 * @method	getSelectedJobtypes
-	 * @return	Array
-	 */
-	getSelectedJobtypes: function() {
-		var jobTypes	= $F(this.jobType);
-
-		return Object.isArray(jobTypes) ? jobTypes : [jobTypes];
-	},
-
-
-
-	/**
-	 * Get number of select persons
-	 *
-	 * @method	getNumberOfSelectedPersons
-	 * @return	{Number}
-	 */
-	getNumberOfSelectedPersons: function() {
-		return this.getSelectedPersons().size();
-	},
-
-
-
-	/**
-	 * Check if any person is currently selected
-	 *
-	 * @method	isAnyPersonSelected
-	 * @return	{Boolean}
-	 */
-	isAnyPersonSelected: function() {
-		return this.getSelectedPersons().size() > 0;
-	},
-
-
-
-	/**
-	 * Check if jobtype is in multiselect mode
-	 *
-	 * @method	isMultiJobtypes
-	 * @return	{Boolean}
-	 */
-	isMultiJobtypes: function() {
-		return this.jobType.multiple;
-	},
-
-
-
-	/**
-	 * Store prefs
-	 *
-	 * @method	savePrefs
-	 */
-	savePrefs: function() {
-		var pref = Object.toJSON({
-			'multiple': this.isMultiJobtypes(),
-			'jobtypes': this.getSelectedJobtypes(),
-			'persons': this.getSelectedPersons()
-		});
-
-		Todoyu.Pref.save('contact', 'panelwidgetstaffselector', pref, 0, this.onPrefsSaved.bind(this));
-	},
-
-
-
-	/**
-	 * Handler being called after saving of prefs
-	 *
-	 * @method	onPrefsSaved
-	 * @param	{Ajax.Response}		response
-	 */
-	onPrefsSaved: function(response) {
-		Todoyu.PanelWidget.fire('staffselector', this.getSelectedPersons());
-	}
-
-};

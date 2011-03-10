@@ -100,7 +100,8 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 	protected function renderSelection() {
 		$tmpl	= 'ext/contact/view/panelwidgets/panelwidget-staffselector.tmpl';
 		$data	= array(
-			'items'	=> $this->getSelectedItems()
+			'items'	=> $this->getSelectedItems(),
+			'id'	=> $this->getID()
 		);
 
 		return render($tmpl, $data);
@@ -280,6 +281,11 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 		$persons	= array();
 
 		foreach($selection as $item) {
+				// Ignore item with dash (they are disabled)
+			if( substr($item, 0, 1) === '-' ) {
+				continue;
+			}
+
 			switch(substr($item, 0, 1)) {
 				case 'p':
 					$persons[] = intval(substr($item, 1));
@@ -306,6 +312,15 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 		$items		= array();
 
 		foreach($selection as $item) {
+				// Handle disabled items
+			$disabled	= false;
+			if( substr($item, 0, 1) === '-' ) {
+				$disabled 	= true;
+				$item		= substr($item, 1);
+			}
+			$disabledClass	= $disabled ? ' disabled' : '';
+
+				// Add item per type
 			switch(substr($item, 0, 1)) {
 				case 'p':
 					$idPerson	= intval(substr($item, 1));
@@ -315,7 +330,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 						'id'	=> 'p' . $idPerson,
 						'label'	=> $person->getFullName(true),
 						'title'	=> $person->getFullName(true),
-						'class'	=> 'person enumColBorLef' . $colorIndex
+						'class'	=> 'person enumColBorLef' . $colorIndex . $disabledClass
 					);
 					break;
 
@@ -326,7 +341,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 						'id'	=> 'g' . $idJobtype,
 						'label'	=> $jobType->getTitle(),
 						'title'	=> $jobType->getTitle(),
-						'class'	=> 'group'
+						'class'	=> 'group' . $disabledClass
 					);
 					break;
 			}
@@ -336,6 +351,12 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 	}
 
 
+
+	/**
+	 * Get active selection from preference
+	 *
+	 * @return	Array
+	 */
 	public function getSelection() {
 		if( is_null($this->selection) ) {
 			$pref	= TodoyuContactPreferences::getPref($this->selectionPref, 0, AREA);
@@ -351,20 +372,42 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 	}
 
 
+
+	/**
+	 * Get IDs of selected groups (jobtypes)
+	 *
+	 * @return	Array
+	 */
 	protected function getSelectedGroupIDs() {
 		return $this->getSelectedTypeIDs('g');
 	}
 
+
+
+	/**
+	 * Get IDs of selected persons
+	 *
+	 * @return	Array
+	 */
 	protected function getSelectedPersonIDs() {
 		return $this->getSelectedTypeIDs('p');
 	}
 
 
+
+	/**
+	 * Get IDs of selected items of a specific type
+	 * Type is marked with the first letter in the key
+	 *
+	 * @param	String		$type
+	 * @return	Array
+	 */
 	protected function getSelectedTypeIDs($type) {
 		$items		= $this->getSelection();
 		$typeItems	= array();
 
 		foreach($items as $item) {
+			$item = ltrim($item, '-');
 			if( substr($item, 0, 1) === $type ) {
 				$typeItems[] = intval(substr($item, 1));
 			}
@@ -375,8 +418,11 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 
 
 
-
-
+	/**
+	 * Save selected items in preference
+	 *
+	 * @param	Array	$selection
+	 */
 	public function saveSelection(array $selection) {
 		$selection	= TodoyuArray::trim($selection, true);
 		$value		= implode(',', $selection);
@@ -385,6 +431,12 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 	}
 
 
+
+	/**
+	 * Check whether group search is active in config
+	 *
+	 * @return	Boolean
+	 */
 	protected function isGroupSearchActive() {
 		return $this->config['group'] === true;
 	}

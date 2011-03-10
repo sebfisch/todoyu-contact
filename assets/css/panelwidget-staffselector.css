@@ -22,7 +22,15 @@
 	border-left-color:#FFF !important;
 }
 
-#panelwidget-staffselector .selection {
+#panelwidget-staffselector-list li.hot a {
+	font-weight:bold;
+}
+
+#panelwidget-staffselector h5 {
+	margin-bottom:2px;
+}
+
+#panelwidget-staffselector-selection {
 	border:1px dotted #CCCCCC;
 	display:inline-block;
 	margin-top:3px;
@@ -30,10 +38,17 @@
 	width:95%;
 }
 
-#panelwidget-staffselector li a span {
-	display:none;
+
+#panelwidget-staffselector-selection li:hover a {
+	color:#CCC;
 }
-#panelwidget-staffselector li:hover a span {
+
+#panelwidget-staffselector-selection li.disabled a {
+	color:#CCC;
+	font-weight:bold;
+}
+
+#panelwidget-staffselector li a span {
 	float:right;
 	display:inline-block;
 	width:16px;
@@ -50,6 +65,5 @@
 	background-position:2px -28px;
 }
 
-#panelwidget-staffselector h5 {
-	margin-bottom:2px;
-}
+
+
