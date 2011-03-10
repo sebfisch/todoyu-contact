@@ -17,10 +17,12 @@
  * This copyright notice MUST APPEAR in all copies of the script.
  *****************************************************************************/
 
-
+/**
+ * @module	Contact
+ */
 
 /**
- * class to upload profile images & company logos
+ * Class to upload profile images & company logos
  */
 Todoyu.Ext.contact.Upload = {
 

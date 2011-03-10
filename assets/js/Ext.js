@@ -17,6 +17,16 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ * @module	Contact
+ */
+
+/**
+ * Main contact object
+ *
+ * @class		Contact
+ * @namespace	Todoyu.Ext
+ */
 Todoyu.Ext.contact = {
 
 	/**

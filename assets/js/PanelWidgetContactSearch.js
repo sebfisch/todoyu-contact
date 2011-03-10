@@ -18,6 +18,10 @@
 *****************************************************************************/
 
 /**
+ * @module	Contact
+ */
+
+/**
  * PanelWidget contact search
  */
 Todoyu.Ext.contact.PanelWidget.ContactSearch = {
