@@ -121,18 +121,6 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 			return $items;
 		}
 
-		$persons= $this->searchPersons($this->getSearchWords());
-
-		foreach($persons as $person) {
-			$colorIndex	= TodoyuColors::getColorIndex($person['id']);
-			$items[] = array(
-				'id'	=> 'p' . $person['id'],
-				'label'	=> $person['label'],
-				'title'	=> $person['label'],
-				'class'	=> 'person enumColBorLef' . $colorIndex
-			);
-		}
-
 		if( $this->isGroupSearchActive() ) {
 			$groups	= $this->searchGroups($this->getSearchWords());
 
@@ -145,6 +133,19 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 					'class'	=> 'group'
 				);
 			}
+		}
+
+
+		$persons= $this->searchPersons($this->getSearchWords());
+
+		foreach($persons as $person) {
+			$colorIndex	= TodoyuColors::getColorIndex($person['id']);
+			$items[] = array(
+				'id'	=> 'p' . $person['id'],
+				'label'	=> $person['label'],
+				'title'	=> $person['label'],
+				'class'	=> 'person enumColBorLef' . $colorIndex
+			);
 		}
 
 		return $items;
