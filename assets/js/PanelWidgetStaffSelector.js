@@ -151,6 +151,9 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 			// Remove add button
 		item.down('span.add').remove();
 
+			// Sort items
+		this.sortSelection();
+
 			// Highlight new item
 		new Effect.Highlight(item, {
 			duration: 2.0,
@@ -158,6 +161,36 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 				this.removeAttribute('style');
 			}.bind(item)
 		});
+	},
+
+
+	/**
+	 * Sort selection items
+	 * First groups then persons by alphabet
+	 */
+	sortSelection: function() {
+		var nodes		= this.selection.select('li');
+		var hashPersons	= {};
+		var hashGroups	= {};
+
+		nodes.each(function(item){
+			var hash = item.hasClassName('person') ? hashPersons : hashGroups;
+			var label	= item.down('a').innerHTML.stripTags().trim();
+			hash[label] = item;
+		});
+
+		var sortedKeysPersons	= Object.keys(hashPersons).sort();
+		var sortedKeysGroups	= Object.keys(hashGroups).sort();
+
+		this.selection.update('');
+
+		sortedKeysGroups.each(function(key){
+			this.selection.insert(hashGroups[key]);
+		}, this);
+
+		sortedKeysPersons.each(function(key){
+			this.selection.insert(hashPersons[key]);
+		}, this);
 	},
 
 
