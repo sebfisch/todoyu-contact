@@ -229,17 +229,17 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 
 		$fields	= '	p.id,
 					CONCAT(p.lastname, \' \', p.firstname) as label';
-		$table	= '	ext_contact_person p,
-					ext_contact_mm_company_person mmcp,
-					ext_contact_company c,
-					ext_contact_jobtype jt';
-		$where	= '		p.id			= mmcp.id_person'
-				. ' AND mmcp.id_company	= c.id'
-				. ' AND mmcp.id_jobtype	= jt.id'
-				. ' AND c.is_internal	= 1'
+		$table	= '	ext_contact_person p
+						LEFT JOIN ext_contact_mm_company_person mmcp
+							ON p.id			= mmcp.id_person
+						LEFT JOIN ext_contact_company c
+							ON mmcp.id_company	= c.id
+						LEFT JOIN ext_contact_jobtype jt
+							ON mmcp.id_jobtype	= jt.id';
+		$where	= ' 	c.is_internal	= 1'
 				. ' AND c.deleted		= 0'
 				. ' AND p.deleted 		= 0'
-				. ' AND jt.deleted		= 0'
+				. ' AND (jt.deleted		= 0 OR jt.deleted IS NULL)'
 				. '	AND	('
 				. $likePerson
 				. ' OR '

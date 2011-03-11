@@ -26,6 +26,12 @@
  */
 class TodoyuContactPanelwidgetstaffselectorActionController extends TodoyuActionController {
 
+	/**
+	 * Get list of matching persons and groups
+	 *
+	 * @param	Array	$params
+	 * @return	String
+	 */
 	public function listAction(array $params) {
 		$search	= trim($params['search']);
 
@@ -48,8 +54,6 @@ class TodoyuContactPanelwidgetstaffselectorActionController extends TodoyuAction
 		 */
 		$selectorWidget->saveSelection($items);
 	}
-
-
 
 }
 
