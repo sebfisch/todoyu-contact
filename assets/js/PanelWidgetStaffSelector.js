@@ -45,6 +45,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	/**
 	 * Constructor Initialize with search word
 	 *
+	 * @method	initialize
 	 * @param	{Function}	$super
 	 * @param	{String}	search
 	 */
@@ -77,6 +78,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	/**
 	 * Handler when clicked on item
 	 *
+	 * @method	onItemClick
 	 * @param	{Event}		event
 	 * @param	{Element}	item
 	 */
@@ -92,6 +94,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * Handle return key press to add the hot element
 	 * to the selection
 	 *
+	 * @method	onInputKeyUps
 	 * @param	{Event}		event
 	 */
 	onInputKeyUps: function(event) {
@@ -132,6 +135,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	/**
 	 * Add an item to the selection list
 	 *
+	 * @method	addItemToSelection
 	 * @param	{Element}	item
 	 */
 	addItemToSelection: function(item) {
@@ -199,6 +203,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * Handler when clicked on a selection item
 	 * Remove it from selection
 	 *
+	 * @method	onSelectionItemClick
 	 * @param	{Event}		event
 	 * @param	{Element}	item
 	 */
@@ -214,6 +219,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	/**
 	 * Handler when clicked on remove icon
 	 *
+	 * @method	onRemoveClick
 	 * @param	{Event}		event
 	 * @param	{Element}	removeIcon
 	 */
@@ -236,6 +242,8 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 
 	/**
 	 * When selection contains no item, add place holder label
+	 *
+	 * @method	addMessageIfSelectionEmpty
 	 */
 	addMessageIfSelectionEmpty: function() {
 		if( this.isSelectionEmpty() ) {
@@ -248,6 +256,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	/**
 	 * Check whether selection contains any items
 	 *
+	 * @method	isSelectionEmpty
 	 * @return	{Boolean}
 	 */
 	isSelectionEmpty: function() {
@@ -258,6 +267,8 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 
 	/**
 	 * Save selected items
+	 *
+	 * @method	saveSelection
 	 */
 	saveSelection: function(noDelay) {
 		clearTimeout(this.timeoutSave);
@@ -285,6 +296,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * Handler when selection was saved
 	 * Fire change event to notify other about the change
 	 *
+	 * @method	onSelectionSaved
 	 * @param	{Array}			items
 	 * @param	{Ajax.Response}	response
 	 */
@@ -297,6 +309,9 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	/**
 	 * Get item IDs from selection list
 	 * Disabled items are prefixed with a minus
+	 *
+	 * @method	getSelectedItems
+	 * @return	{Array}				selected items' IDs
 	 */
 	getSelectedItems: function() {
 		return this.selection.select('li').collect(function(item){
@@ -311,6 +326,8 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 
 	/**
 	 * Handler when list was updated
+	 *
+	 * @method	onUpdated
 	 */
 	onUpdated: function() {
 		this.addAddIconsToList();
@@ -321,6 +338,8 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 
 	/**
 	 * Add adding icons to all items in the search list
+	 *
+	 * @method	addAddIconsToList
 	 */
 	addAddIconsToList: function() {
 		this.list.select('li a').each(function(item){
@@ -336,6 +355,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * Add removing icons to items. If no items are provided,
 	 * add to all in the selection list
 	 *
+	 * @method	addRemoveIconsToList
 	 * @param	{Array}	items
 	 */
 	addRemoveIconsToList: function(items) {
@@ -347,4 +367,5 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 			}));
 		});
 	}
+
 });

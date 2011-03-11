@@ -207,7 +207,7 @@ Todoyu.Ext.contact.PanelWidget.StaffList = {
 
 
 	/**
-	 * Check whether given project is listed in panelWidget's project list
+	 * Check whether given person is listed in panelWidget's person list
 	 *
 	 * @method	isPersonListed
 	 * @param	{Number}		idPerson
