@@ -241,24 +241,19 @@ div.visitingCardContent table tr td.label {
    ------------------- */
 
 #contact-details div.image img {
+	margin-top: 3px;
 	border: solid #d5dee5;
 	border-width: 4px 4px 21px 4px;
 }
 
-#contact-details div.left {
+#contact-details .left {
 	float: left;
-	width: 49%;
-	padding:10px 0 10px 0;
-}
-#contact-details div.right {
-	float: right;
-	width: 49%;
-	padding:10px 0 10px 0;
+	margin-right: 13px;
+	padding: 0 0 6px 0;
 }
 
 #contact-details div.clear {
 	clear: both;
-	padding:10px 0 10px 0;
 	width: 100%;
 }
 
@@ -286,9 +281,8 @@ div.visitingCardContent table tr td.label {
 }
 
 #contact-details div.actions {
-	padding:5px 0 5px 0;
-	background-color: #d5dee5;
-	height: 20px;
+	padding-top: 5px;
+	float: right;
 }
 
 /* -------------------
