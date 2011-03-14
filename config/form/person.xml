@@ -14,7 +14,7 @@
 			<legend>Main person data</legend>
 			<elements>
 
-				<field type="select" name="salutation">
+				<field type="radio" name="salutation">
 					<label>contact.ext.person.attr.salutation</label>
 					<source type="list">
 						<option>
@@ -26,7 +26,6 @@
 							<label>contact.ext.person.attr.salutation.f</label>
 						</option>
 					</source>
-					<noPleaseSelect />
 				</field>
 
 				<field type="text" name="lastname">
