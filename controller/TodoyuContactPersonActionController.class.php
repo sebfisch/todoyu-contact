@@ -211,7 +211,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 
 
 	/**
-	 * Show person info. If its an ajax call, just returns the main-content. Else it returns the whole rendered page.
+	 * Show person info. If its an AJAX call, just returns the main-content. Else it returns the whole rendered page.
 	 *
 	 * @param	Array		$params
 	 * @return	String
@@ -221,8 +221,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 
 		$idPerson	= intval($params['person']);
 
-
-		$content	= TodoyuContactRenderer::renderPersonInfo($idPerson);
+		$content	= TodoyuContactRenderer::renderPersonDetails($idPerson);
 
 		if( TodoyuRequest::isAjaxRequest() ) {
 			$tabs		= TodoyuContactRenderer::renderTabs('person');

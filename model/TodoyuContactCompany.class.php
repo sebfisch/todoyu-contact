@@ -93,7 +93,7 @@ class TodoyuContactCompany extends TodoyuBaseObject {
 	 *
 	 * @return	Array
 	 */
-	public function getEmplyeesRecords() {
+	public function getEmployeesRecords() {
 		$employees	= TodoyuContactCompanyManager::getCompanyPersonRecords($this->getID());
 
 		foreach( $employees as $index => $employee ) {
@@ -121,7 +121,7 @@ class TodoyuContactCompany extends TodoyuBaseObject {
 	 * Loads the related foreign record data to the company
 	 */
 	public function loadForeignData() {
-		$this->data['person']		= $this->getEmplyeesRecords();
+		$this->data['person']		= $this->getEmployeesRecords();
 		$this->data['contactinfo']	= TodoyuContactCompanyManager::getCompanyContactinfoRecords($this->getID());
 		$this->data['address']		= TodoyuContactCompanyManager::getCompanyAddressRecords($this->getID());
 	}

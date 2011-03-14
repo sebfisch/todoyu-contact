@@ -552,12 +552,14 @@ class TodoyuContactCompanyManager {
 	public static function getCompanyContactinfoRecords($idCompany) {
 		$idCompany	= intval($idCompany);
 
-		$fields	= '	c.*';
-		$tables	= '	ext_contact_contactinfo c,
+		$fields	= '	c.*, t.category infotype_category';
+		$tables	= '	ext_contact_contactinfotype t,
+					ext_contact_contactinfo c,
 					ext_contact_mm_company_contactinfo mm';
 		$where	= ' 	mm.id_contactinfo	= c.id
 					AND	mm.id_company		= ' . $idCompany .
-				  ' AND	c.deleted			= 0';
+				  ' AND	c.deleted			= 0' .
+				  ' AND t.id				= c.id_contactinfotype';
 
 		return Todoyu::db()->getArray($fields, $tables, $where);
 	}

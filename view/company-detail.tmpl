@@ -16,6 +16,7 @@
 		<h3>{Label LLL:contact.ext.contactinfo}</h3>
 		<dl>
 			{foreach $contactinfo numCi ciData}
+				{debug $ciData}
 				<dt>{labelContactinfotype $ciData.id_contactinfotype}:</dt><dd>{htmlencode wordwrap($ciData.info 30 cut=false)}</dd>
 			{/foreach}
 		</dl>

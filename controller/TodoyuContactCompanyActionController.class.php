@@ -181,7 +181,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 		$type		= 'company';
 
 		$tabs		= TodoyuContactRenderer::renderTabs('company');
-		$content	= TodoyuContactRenderer::renderInfoPopupContent($type, $idCompany);
+		$content	= TodoyuContactRenderer::renderDetailsContent($type, $idCompany);
 
 		$content	= TodoyuRenderer::renderContent($content, $tabs);
 

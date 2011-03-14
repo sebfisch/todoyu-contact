@@ -370,16 +370,14 @@ class TodoyuContactRenderer {
 	 * @param	Integer		$idRecord
 	 * @return	String
 	 */
-	public static function renderInfoPopupContent($type, $idRecord) {
+	public static function renderDetailsContent($type, $idRecord) {
 		switch($type) {
-				// Render person visiting card
 			case 'person':
-				$content	= self::renderPersonInfo($idRecord);
+				$content	= self::renderPersonDetails($idRecord);
 				break;
 
-				// Render company summary
 			case 'company':
-				$content	= self::renderCompanyInfo($idRecord);
+				$content	= self::renderCompanyDetails($idRecord);
 				break;
 		}
 
@@ -418,12 +416,12 @@ class TodoyuContactRenderer {
 
 
 	/**
-	 * Render person info (shown in info popup)
+	 * Render person details
 	 *
 	 * @param	Integer		$idPerson
 	 * @return	String
 	 */
-	public static function renderPersonInfo($idPerson) {
+	public static function renderPersonDetails($idPerson) {
 		$idPerson	= intval($idPerson);
 		$person		= TodoyuContactPersonManager::getPerson($idPerson);
 
@@ -453,7 +451,7 @@ class TodoyuContactRenderer {
 	 * @param	Integer	$idCompany
 	 * @return	String
 	 */
-	public static function renderCompanyInfo($idCompany) {
+	public static function renderCompanyDetails($idCompany) {
 		$idCompany = intval($idCompany);
 
 		$tmpl		= 'ext/contact/view/company-detail.tmpl';

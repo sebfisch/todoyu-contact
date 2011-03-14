@@ -114,7 +114,7 @@ class TodoyuContactCompanyExportManager {
 		}
 
 			// Map & prepare employee records of company
-		foreach( $company->getEmplyeesRecords() as $index => $person ) {
+		foreach( $company->getEmployeesRecords() as $index => $person ) {
 			$exportData[TodoyuLabelManager::getLabel('LLL:contact.ext.company.attr.person') . '_' . ($index + 1)]	= $person['firstname'] . ' ' . $person['lastname'];
 		}
 
