@@ -120,7 +120,7 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 				'iconClass'	=> intval($person['active']) === 1 ? 'login' : '',
 				'lastname'	=> $person['lastname'],
 				'firstname'	=> $person['firstname'],
-				'email'		=> $person['email'],
+				'email'		=> TodoyuContactPersonManager::getPreferredEmail($person['id']),
 				'company'	=> TodoyuContactPersonManager::getPersonsMainCompany($person['id'])->getTitle(),
 				'actions'	=> TodoyuContactRenderer::renderPersonActions($person['id'])
 			);

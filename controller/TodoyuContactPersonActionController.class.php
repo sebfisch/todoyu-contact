@@ -55,7 +55,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 
 
 	/**
-	 * Show person list
+	 * Show filtered persons list
 	 *
 	 * @param	Array		$params
 	 * @return	String

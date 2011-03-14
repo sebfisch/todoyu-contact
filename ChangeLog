@@ -25,6 +25,7 @@ contact 1.1.0 (requires core >= 2.1) - not released yet
 
 
 contact 1.0.7 - not released yet
+	* Bugfix: Show preferred email in person list item (from contactinfotype when no todoyu account given)
 	* Bugfix: Auto-generated person shortname can (not any longer) contain whitespace
 	* Feature: Added changelog
 	* Feature: Added (empty still) locale files for spanish (columbia) locales to come of extensions
