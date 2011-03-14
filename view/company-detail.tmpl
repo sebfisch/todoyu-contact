@@ -1,78 +1,97 @@
 <div id="contact-details" class="company">
-	<h5>{$title}</h5>
+	<h1 class="headerLine">
+		<span class="title">{$title}</span>
+		<span class="rgt"></span>
+	</h1>
 
-	{* ------------ Main company data (name, primary email, image, etc.) ------------ *}
-	<div class="left main-company-data">
-		<h3>{Label LLL:contact.ext.company.maincompanydata}</h3>
-		<dl class="nofloat">
-			<dd>{$title}</dd>
-		</dl>
-	</div>
-
-	<div class="right image">{companyImage $id}</div>
-
-	{* ------------ Dynamic contact info types (emails, phone numbers, etc.) ------------ *}
-	<div class="clear contact-info">
-		<h3>{Label LLL:contact.ext.contactinfo}</h3>
-		<dl>
-			{foreach $contactinfo numCi ciData}
-				{debug $ciData}
-				<dt>{labelContactinfotype $ciData.id_contactinfotype}:</dt><dd>{htmlencode wordwrap($ciData.info 30 cut=false)}</dd>
-			{/foreach}
-		</dl>
-	</div>
-
-	{* ------------ Addresses ------------ *}
-	<div class="clear addressPart">
-		{foreach $address numAddr addressType}
-			<div class="{if $numAddr%2}right{else}left{/if} address">
-				<h3>{addressType $addressType.id_addresstype}</h3>
-				{$addressType.street}<br />
-				{if strlen($addressType.postbox)>0}
-					{Label contact.ext.address.attr.postbox}: {htmlencode wordwrap($addressType.postbox 30 cut=true)}<br />
-				{/if}
-				{$addressType.zip} {$addressType.city}<br />
-				{countryName $addressType.id_country}
-			</div>
-		{/foreach}
-	</div>
-
-	{* ------------ Company employees with job type and work address ------------ *}
-	<div class="clear employeePart">
-		<h3>{Label LLL:contact.ext.company.attr.person}</h3>
-		{foreach $person numEmployee pers}
-			<div class="{if $numEmployee%2}right{else}left{/if}">
-				<dl class="nofloat">
-					<dd><a href="?ext=contact&amp;controller=person&amp;action=detail&amp;person={$pers.id}">{personLabel $pers.id 'employee' $id}</a></dd>
-					<dd>{$pers.jobtype.title}</dd>
-					{if $pers.id_workaddress > 0}<dd>{$pers.workaddress.street}, {$pers.workaddress.zip} {$pers.workaddress.city}, {countryName $pers.workaddress.id_country}</dd>{/if}
+	<div class="infoBoxOuter">
+		{* ------------ Main company data (name, primary email, image, etc.) ------------ *}
+		<div class="infoBox main-company-data">
+			<h4>{Label LLL:contact.ext.company.maincompanydata}</h4>
+			<div class="content overflow">
+				<div class="left image">{companyImage $id}</div>
+				<dl>
+					<dd>{$title}</dd>
 				</dl>
 			</div>
+		</div>
+	
+		{* ------------ Dynamic contact info types (emails, phone numbers, etc.) ------------ *}
+		{if $contactinfo}
+			<div class="infoBox contact-info">
+				<h4>{Label LLL:contact.ext.contactinfo}</h4>
+				<div class="content overflow">
+					<dl>
+						{foreach $contactinfo numCi ciData}
+							<dt>{labelContactinfotype $ciData.id_contactinfotype}:</dt>
+							<dd>
+								{if $ciData.infotype_category == constant(CONTACT_INFOTYPE_CATEGORY_EMAIL)}
+									<a href="mailto:{$title}%20%3C{$ciData.info}%3E">{htmlencode wordwrap($ciData.info 30 cut=false)}</a>
+								{else}
+									{htmlencode wordwrap($ciData.info 30 cut=false)}
+								{/if}
+							</dd>
+						{/foreach}
+					</dl>
+				</div>
+			</div>
+		{/if}
+		
+		{* ------------ Addresses ------------ *}
+		{foreach $address numAddr addressType}
+			<div class="infoBox addressPart">
+				<h4>{addressType $addressType.id_addresstype}</h4>
+				<div class="content overflow address">
+					{$addressType.street}
+					{if strlen($addressType.postbox)>0}
+						{Label contact.ext.address.attr.postbox}: {htmlencode wordwrap($addressType.postbox 30 cut=true)}<br />
+					{/if}
+					{$addressType.zip} {$addressType.city}<br />
+					{countryName $addressType.id_country}
+				</div>
+			</div>
 		{/foreach}
+	
+		{* ------------ Company employees with job type and work address ------------ *}
+		{foreach $person numEmployee pers}
+			<div class="infoBox employeePart">
+				<h4>{Label LLL:contact.ext.company.attr.person}</h4>
+				<div class="content overflow address">
+					<dl>
+						<dd><a href="?ext=contact&amp;controller=person&amp;action=detail&amp;person={$pers.id}">{personLabel $pers.id 'employee' $id}</a></dd>
+						<dd>{$pers.jobtype.title}</dd>
+						{if $pers.id_workaddress > 0}<dd>{$pers.workaddress.street}, {$pers.workaddress.zip} {$pers.workaddress.city}, {countryName $pers.workaddress.id_country}</dd>{/if}
+					</dl>
+				</div>
+			</div>
+		{/foreach}
+	
+		{* ------------ Additional infos (date of entry) ------------ *}
+		{if $date_enter > 0}
+			<div class="infoBox others">
+				<h4>{Label LLL:contact.ext.other}</h4>
+				<div class="content overflow address">
+					<dl>
+						<dt>{Label LLL:contact.ext.company.attr.date_enter}:</dt><dd>{dateFormat $date_enter "date"}</dd>
+						{if allowed('contact', 'company:seeComment')}
+							<dt>{Label LLL:contact.ext.company.attr.comment}:</dt><dd>{$comment|default:"-"}</dd>
+						{/if}
+					</dl>
+				</div>
+			</div>
+		{/if}
+	
+		{* ------------ Hooked content ------------ *}
+		{$hookedContent}
+	
+		{* ------------ Actions panel (edit, delete, close) ------------ *}
+		{if allowed('contact', 'company:editAndDelete')}
+			<div class="actions">
+				{Button 'LLL:contact.ext.company.edit' 'Todoyu.Ext.contact.Company.edit($id)' 'buttonCompanyEdit' 'company-edit' 'LLL:contact.ext.company.edit'}
+				{Button 'LLL:contact.ext.company.delete' 'Todoyu.Ext.contact.Company.remove($id)' 'buttonCompanyDelete' 'company-delete' 'LLL:contact.ext.company.delete'}
+				{Button 'LLL:contact.ext.company.close' 'Todoyu.Ext.contact.Company.showList(Todoyu.Ext.contact.PanelWidget.ContactSearch.getValue())' 'cancel' 'company-close' 'LLL:contact.ext.company.close'}
+			</div>
+			<div class="clear"></div>
+		{/if}
 	</div>
-
-	{* ------------ Additional infos (date of entry) ------------ *}
-	{if $date_enter > 0}
-		<div class="clear others">
-			<h3>{Label LLL:contact.ext.other}</h3>
-			<dl>
-				<dt>{Label LLL:contact.ext.company.attr.date_enter}:</dt><dd>{dateFormat $date_enter "date"}</dd>
-				{if allowed('contact', 'company:seeComment')}
-					<dt>{Label LLL:contact.ext.company.attr.comment}:</dt><dd>{$comment|default:"-"}</dd>
-				{/if}
-			</dl>
-		</div>
-	{/if}
-
-	{* ------------ Hooked content ------------ *}
-	{$hookedContent}
-
-	{* ------------ Actions panel (edit, delete, close) ------------ *}
-	{if allowed('contact', 'company:editAndDelete')}
-		<div class="clear actions">
-			{Button 'LLL:contact.ext.company.edit' 'Todoyu.Ext.contact.Company.edit($id)' 'buttonCompanyEdit' 'company-edit' 'LLL:contact.ext.company.edit'}
-			{Button 'LLL:contact.ext.company.delete' 'Todoyu.Ext.contact.Company.remove($id)' 'buttonCompanyDelete' 'company-delete' 'LLL:contact.ext.company.delete'}
-			{Button 'LLL:contact.ext.company.close' 'Todoyu.Ext.contact.Company.showList(Todoyu.Ext.contact.PanelWidget.ContactSearch.getValue())' 'cancel' 'company-close' 'LLL:contact.ext.company.close'}
-		</div>
-	{/if}
 </div>

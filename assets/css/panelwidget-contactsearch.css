@@ -2,6 +2,10 @@
 	background:url(../../../../core/assets/img/icons.png) no-repeat 8px -444px;
 }
 
+#panelwidget-contactSearch fieldset {
+	padding-top: 5px;
+}
+
 #panelwidget-contactSearch label {
 	float:left;
 	padding:2px 5px 2px 0;

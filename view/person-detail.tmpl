@@ -13,7 +13,7 @@
 				<dl>
 					<dd>{salutationLabel $id}</dd>
 					<dd>{$fullname}</dd>
-					<dd>{$email}</dd>
+					<dd><a href="mailto:{$firstname}%20{$lastname}%20%3C{$email}%3E">{$email}</a></dd>
 				</dl>
 			</div>
 		</div>
@@ -24,7 +24,14 @@
 			<div class="content overflow">
 				<dl>
 					{foreach $contactinfo numCi ciData}
-						<dt>{labelContactinfotype $ciData.id_contactinfotype}:</dt><dd>{htmlencode wordwrap($ciData.info 30 cut=false)}</dd>
+						<dt>{labelContactinfotype $ciData.id_contactinfotype}:</dt>
+						<dd>
+							{if $ciData.info == $email}
+								<a href="mailto:{$firstname}%20{$lastname}%20%3C{$ciData.info}%3E">{htmlencode wordwrap($ciData.info 30 cut=false)}</a>
+							{else}
+								{htmlencode wordwrap($ciData.info 30 cut=false)}
+							{/if}
+						</dd>
 					{/foreach}
 				</dl>
 			</div>
