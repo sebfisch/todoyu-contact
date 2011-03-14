@@ -29,7 +29,7 @@ TodoyuAutocompleter::addAutocompleter('person', 'TodoyuContactPersonFilterDataSo
 TodoyuAutocompleter::addAutocompleter('jobtype', 'TodoyuContactJobTypeManager::autocompleteJobtypes', array('contact', 'general:use'));
 
 	// Add quickInfo callback for person labels
-TodoyuQuickinfoManager::addFunction('person', 'TodoyuContactQuickinfoManager::getQuickinfoPerson');
+TodoyuQuickinfoManager::addFunction('person', 'TodoyuContactPersonQuickinfoManager::addPersonInfos');
 
 
 

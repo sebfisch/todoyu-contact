@@ -27,6 +27,50 @@
 class TodoyuContactPersonQuickInfoManager {
 
 	/**
+	 * Add items to person quickinfo
+	 *
+	 * @param	TodoyuQuickinfo		$quickinfo
+	 * @param	Integer				$idPerson
+	 */
+	public static function addPersonInfos(TodoyuQuickinfo $quickinfo, $idPerson) {
+		$idPerson	= intval($idPerson);
+
+		$data	= TodoyuContactPersonManager::getPersonArray($idPerson);
+
+			// Get preferred or only phone
+		$phone		= TodoyuContactPersonManager::getPreferredPhone($idPerson);
+		if( $phone === false ) {
+			$phones	= TodoyuContactPersonManager::getPhones($idPerson, false);
+			if( count($phones) == 1) {
+				$phone	= $phones[0];
+			}
+		}
+
+		$email		= TodoyuContactPersonManager::getPreferredEmail($idPerson);
+		$fullName	= TodoyuContactPersonManager::getPerson($idPerson)->getFullName();
+
+		$linkedName	= '<a href="?ext=contact&controller=person&action=detail&person=' . $idPerson . '">' . TodoyuContactPersonManager::getLabel($idPerson) . '</a>';
+		$quickinfo->addInfo('name', $linkedName, 0, false);
+
+		if( ! empty($email) ) {
+			$quickinfo->addEmail('email', $email, $fullName);
+		}
+
+		if( $phone !== false ) {
+			$quickinfo->addInfo('phone', $phone['info']);
+		}
+
+			// Add birthday information for internal persons
+		if( Todoyu::person()->isAdmin() || Todoyu::person()->isInternal() ) {
+			if( $data['birthday'] !== '0000-00-00' ) {
+				$quickinfo->addInfo('birthday', $data['birthday']);
+			}
+		}
+	}
+
+
+
+	/**
 	 * Add JS onload function to page (hooked into TodoyuPage::render())
 	 */
 	public static function addJSonloadFunction() {
