@@ -113,7 +113,6 @@ class TodoyuContactManager {
 	 * @return	String
 	 */
 	public static function getCountryLabel($form, $option) {
-
 		return $option[ 'name_' . TodoyuLabelManager::getLocale() ];
 	}
 
@@ -129,7 +128,7 @@ class TodoyuContactManager {
 	 * @param	Mixed	$selectedValue	Integer / null
 	 * @return	Array	options array
 	 */
-	public static function buildOptionsArray( $res, $valueField, $labelField, $selectedIndex = null, $selectedValue = null ) {
+	public static function buildOptionsArray($res, $valueField, $labelField, $selectedIndex = null, $selectedValue = null ) {
 		$options	= array();
 		foreach($res as $index => $data) {
 			$options[]	= array(
@@ -160,7 +159,7 @@ class TodoyuContactManager {
 		}
 
 			// Save own external fields
-		$data	= self::saveCompanyForeignRecords($data, $idCompany);
+		$data	= TodoyuContactCompanyManager::saveCompanyForeignRecords($data, $idCompany);
 
 			// Call save data hook
 		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idCompany);
