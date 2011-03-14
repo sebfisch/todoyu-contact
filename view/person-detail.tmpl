@@ -41,7 +41,7 @@
 	{* ------------ Employer companies with assigned job types ------------ *}
 	{foreach $company comp}
 		<div class="clear employer">
-			<h3><a href="{link 'contact' 'company' '&action=detail&company=$comp.id'}">{Label LLL:contact.ext.person.attr.company}: {$comp.title}</a></h3>
+			<h3><a href="?ext=contact&amp;controller=company&amp;action=detail&amp;company={$comp.id}">{Label LLL:contact.ext.person.attr.company}: {$comp.title}</a></h3>
 			<dl>
 				<dt>{Label LLL:contact.ext.jobtype}:</dt><dd>{$comp.jobtype.title|default:"-"}</dd>
 				{if $comp.id_workaddress > 0}

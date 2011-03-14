@@ -42,7 +42,7 @@
 		{foreach $person numEmployee pers}
 			<div class="{if $numEmployee%2}right{else}left{/if}">
 				<dl class="nofloat">
-					<dd><a href="{link 'contact' 'person' '&action=detail&person=$pers.id'}">{personLabel $pers.id 'employee' $id}</a></dd>
+					<dd><a href="?ext=contact&amp;controller=person&amp;action=detail&amp;person={$pers.id}">{personLabel $pers.id 'employee' $id}</a></dd>
 					<dd>{$pers.jobtype.title}</dd>
 					{if $pers.id_workaddress > 0}<dd>{$pers.workaddress.street}, {$pers.workaddress.zip} {$pers.workaddress.city}, {countryName $pers.workaddress.id_country}</dd>{/if}
 				</dl>
