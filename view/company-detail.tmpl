@@ -1,6 +1,7 @@
 <div id="contact-details" class="company">
 	<h5>{$title}</h5>
 
+	{* ------------ Main company data (name, primary email, image, etc.) ------------ *}
 	<div class="left main-company-data">
 		<h3>{Label LLL:contact.ext.company.maincompanydata}</h3>
 		<dl class="nofloat">
@@ -8,10 +9,9 @@
 		</dl>
 	</div>
 
-	<div class="right image">
-		{companyImage $id}
-	</div>
+	<div class="right image">{companyImage $id}</div>
 
+	{* ------------ Dynamic contact info types (emails, phone numbers, etc.) ------------ *}
 	<div class="clear contact-info">
 		<h3>{Label LLL:contact.ext.contactinfo}</h3>
 		<dl>
@@ -21,6 +21,7 @@
 		</dl>
 	</div>
 
+	{* ------------ Addresses ------------ *}
 	<div class="clear addressPart">
 		{foreach $address numAddr addressType}
 			<div class="{if $numAddr%2}right{else}left{/if} address">
@@ -35,6 +36,7 @@
 		{/foreach}
 	</div>
 
+	{* ------------ Company employees with job type and work address ------------ *}
 	<div class="clear employeePart">
 		<h3>{Label LLL:contact.ext.company.attr.person}</h3>
 		{foreach $person numEmployee pers}
@@ -48,6 +50,7 @@
 		{/foreach}
 	</div>
 
+	{* ------------ Additional infos (date of entry) ------------ *}
 	{if $date_enter > 0}
 		<div class="clear others">
 			<h3>{Label LLL:contact.ext.other}</h3>
@@ -60,8 +63,10 @@
 		</div>
 	{/if}
 
+	{* ------------ Hooked content ------------ *}
 	{$hookedContent}
 
+	{* ------------ Actions panel (edit, delete, close) ------------ *}
 	{if allowed('contact', 'company:editAndDelete')}
 		<div class="clear actions">
 			{Button 'LLL:contact.ext.company.edit' 'Todoyu.Ext.contact.Company.edit($id)' 'buttonCompanyEdit' 'company-edit' 'LLL:contact.ext.company.edit'}

@@ -102,7 +102,7 @@ Todoyu::$CONFIG['EXT']['contact']['defaultTypeTab'] = 'person';
 
 
 	// Load person foreign records data
-TodoyuFormHook::registerLoadData('ext/contact/config/form/person.xml', 'TodoyuContactManager::getPersonForeignRecordData');
+TodoyuFormHook::registerLoadData('ext/contact/config/form/person.xml', 'TodoyuContactPersonManager::getForeignRecordData');
 TodoyuFormHook::registerBuildForm('ext/contact/config/form/address.xml', 'TodoyuContactCompanyManager::hookAddTimezone');
 
 
@@ -114,7 +114,7 @@ TodoyuFormHook::registerBuildForm('ext/contact/config/form/address.xml', 'Todoyu
 Todoyu::$CONFIG['EXT']['contact']['listing']['person'] = array(
 'name'		=> 'person',
 'update'	=> 'contact/person/listing',
-'dataFunc'	=> 'TodoyuContactManager::getPersonListingData',
+'dataFunc'	=> 'TodoyuContactPersonSearch::getPersonListingData',
 'size'		=> Todoyu::$CONFIG['LIST']['size'],
 'columns'	=> array(
 	'icon'		=> '',
@@ -136,7 +136,7 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['person'] = array(
 Todoyu::$CONFIG['EXT']['contact']['listing']['company'] = array(
 'name'		=> 'company',
 'update'	=> 'contact/company/listing',
-'dataFunc'	=> 'TodoyuContactManager::getCompanyListingData',
+'dataFunc'	=> 'TodoyuContactCompanySearch::getCompanyListingData',
 'size'		=> Todoyu::$CONFIG['LIST']['size'],
 'columns'	=> array(
 	'icon'		=> '',

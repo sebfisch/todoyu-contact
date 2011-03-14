@@ -94,6 +94,37 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 
 		return $suggestions;
 	}
+
+
+
+		/**
+	 * Get listing data for companies
+	 *
+	 * @param	Integer		$size
+	 * @param	Integer		$offset
+	 * @param	Integer		$searchWord
+	 * @return	Array
+	 */
+	public static function getCompanyListingData($size, $offset = 0, $searchWord = '') {
+		$companies	= TodoyuContactCompanyManager::searchCompany($searchWord, null, $size, $offset);
+
+		$data	= array(
+			'rows'	=> array(),
+			'total'	=> Todoyu::db()->getTotalFoundRows()
+		);
+
+		foreach($companies as $company) {
+			$data['rows'][] = array(
+				'icon'		=> '',
+				'title'		=> $company['title'],
+				'address'	=> TodoyuContactCompanyManager::getCompanyAddress($company['id']),
+				'actions'	=> TodoyuContactRenderer::renderCompanyActions($company['id'])
+			);
+		}
+
+		return $data;
+	}
+
 }
 
 ?>

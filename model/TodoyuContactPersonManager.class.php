@@ -85,6 +85,26 @@ class TodoyuContactPersonManager {
 
 
 	/**
+	 * Form hook to load persons foreign record data
+	 * Load: company, contactinfo, address
+	 *
+	 * @param	Array		$data
+	 * @param	Integer		$idPerson
+	 * @return	Array
+	 */
+	public static function getForeignRecordData(array $data, $idPerson) {
+		$idPerson	= intval($idPerson);
+
+		$data['company']	= TodoyuContactPersonManager::getPersonCompanyRecords($idPerson);
+		$data['contactinfo']= TodoyuContactPersonManager::getContactinfoRecords($idPerson);
+		$data['address']	= TodoyuContactPersonManager::getAddressRecords($idPerson);
+
+		return $data;
+	}
+
+
+
+	/**
 	 * Get all active persons
 	 *
 	 * @param	Array		$fields			By default, all fields are selected. You can provide a field list instead
@@ -547,6 +567,18 @@ class TodoyuContactPersonManager {
 		}
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order, $limit);
+	}
+
+
+
+	/**
+	 * Get list of all persons within given amount limit (unconditional search)
+	 *
+	 * @param	Integer		$limit
+	 * @return	Array
+	 */
+	public static function getList($limit) {
+		return self::searchPersons('', null, $limit);
 	}
 
 

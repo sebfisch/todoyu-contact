@@ -1,6 +1,7 @@
 <div id="contact-details" class="person">
 	<h5>{$fullname}</h5>
 
+	{* ------------ Main person data (name, primary email, image, etc.) ------------ *}
 	<div class="left main-person-data">
 		<h3>{Label LLL:contact.ext.person.mainpersondata}</h3>
 		<dl class="nofloat">
@@ -10,10 +11,9 @@
 		</dl>
 	</div>
 
-	<div class="right image">
-		{personImage $id}
-	</div>
+	<div class="right image">{personImage $id}</div>
 
+	{* ------------ Dynamic contact info types (emails, phone numbers, etc.) ------------ *}
 	<div class="clear contact-info">
 		<h3>{Label LLL:contact.ext.contactinfo}</h3>
 		<dl>
@@ -23,6 +23,7 @@
 		</dl>
 	</div>
 
+	{* ------------ Addresses ------------ *}
 	<div class="clear addressPart">
 		{foreach $address numAddr addressType}
 			<div class="{if $numAddr%2}right{else}left{/if} address">
@@ -37,11 +38,12 @@
 		{/foreach}
 	</div>
 
+	{* ------------ Employer companies with assigned job types ------------ *}
 	{foreach $company comp}
 		<div class="clear employer">
 			<h3><a href="{link 'contact' 'company' '&action=detail&company=$comp.id'}">{Label LLL:contact.ext.person.attr.company}: {$comp.title}</a></h3>
 			<dl>
-				<dt>{Label LLL:contact.ext.jobtype}:</dt><dd>{$comp.jobtype.title}</dd>
+				<dt>{Label LLL:contact.ext.jobtype}:</dt><dd>{$comp.jobtype.title|default:"-"}</dd>
 				{if $comp.id_workaddress > 0}
 					<dt>{Label LLL:contact.ext.workaddress}:</dt><dd>{$comp.workaddress.street}, {$comp.workaddress.zip} {$comp.workaddress.city}, {countryName $comp.workaddress.id_country}</dd>
 				{/if}
@@ -49,6 +51,7 @@
 		</div>
 	{/foreach}
 
+	{* ------------ todoyu account ------------ *}
 	{if $active}
 	<div class="clear userinformations">
 		<h3>{Label LLL:contact.ext.person.userinformation}</h3>
@@ -70,11 +73,10 @@
 			<dt>{Label LLL:contact.ext.person.attr.is_admin}:</dt>
 			<dd>{if $is_admin}{Label LLL:core.global.yes}{else}{Label LLL:core.global.no}{/if}</dd>
 		</dl>
-
-
 	</div>
 	{/if}
 
+	{* ------------ Additional infos (birthday, comment) ------------ *}
 	{if $birthday != '0000-00-00'}
 		<div class="clear others">
 			<h3>{Label LLL:contact.ext.other}</h3>
@@ -87,8 +89,10 @@
 		</div>
 	{/if}
 
+	{* ------------ Hooked content ------------ *}
 	{$hookedContent}
 
+	{* ------------ Actions panel (edit, delete, close) ------------ *}
 	{if allowed('contact', 'person:editAndDelete')}
 		<div class="clear actions">
 			{Button 'LLL:contact.ext.person.edit' 'Todoyu.Ext.contact.Person.edit($id)' 'buttonPersonEdit' 'person-edit' 'LLL:contact.ext.person.edit'}

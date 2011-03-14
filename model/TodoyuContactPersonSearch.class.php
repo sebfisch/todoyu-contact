@@ -97,6 +97,38 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 
 		return $suggestions;
 	}
+
+
+
+	/**
+	 * Get listing data for persons. Keys: [total,rows]
+	 *
+	 * @param	Integer		$size
+	 * @param	Integer		$offset
+	 * @return	Array
+	 */
+	public static function getPersonListingData($size, $offset = 0, $searchWord = '') {
+		$persons= TodoyuContactPersonManager::searchPersons($searchWord, null, $size, $offset);
+		$data	= array(
+			'rows'	=> array(),
+			'total'	=> Todoyu::db()->getTotalFoundRows()
+		);
+
+		foreach($persons as $person) {
+			$data['rows'][] = array(
+				'icon'		=> '',
+				'iconClass'	=> intval($person['active']) === 1 ? 'login' : '',
+				'lastname'	=> $person['lastname'],
+				'firstname'	=> $person['firstname'],
+				'email'		=> $person['email'],
+				'company'	=> TodoyuContactPersonManager::getPersonsMainCompany($person['id'])->getTitle(),
+				'actions'	=> TodoyuContactRenderer::renderPersonActions($person['id'])
+			);
+		}
+
+		return $data;
+	}
+
 }
 
 ?>

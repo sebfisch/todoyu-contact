@@ -138,10 +138,8 @@ class TodoyuContactCompanyManager {
 
 			// Save own external fields
 		$data	= self::saveCompanyForeignRecords($data, $idCompany);
-
 			// Update company data with basic field data
 		self::updateCompany($idCompany, $data);
-
 			// Remove company record from cache
 		self::removeFromCache($idCompany);
 

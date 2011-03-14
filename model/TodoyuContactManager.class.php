@@ -19,8 +19,7 @@
 *****************************************************************************/
 
 /**
- * Manager class Todoyufor the contact module
- *
+ * Manager class Todoyu for the contact module
  */
 class TodoyuContactManager {
 
@@ -36,31 +35,15 @@ class TodoyuContactManager {
 
 
 	/**
-	 * Get list of all persons within given amount limit (unconditional search)
-	 *
-	 * @param	Integer		$limit
-	 * @return	Array
-	 */
-	public static function getListPersons($limit) {
-		return TodoyuContactPersonManager::searchPersons('', null, $limit);
-	}
-
-
-
-	/**
 	 * Get contact type from XML
 	 *
 	 * @param	String	$contactType
-	 * @return	String
+	 * @return	Boolean|String
 	 */
 	public static function getContactTypeFromXml($contactType) {
 		$typeConfig	= Todoyu::$CONFIG['EXT']['contact']['contacttypes'][$contactType];
 
-		if( is_array($typeConfig) ) {
-			return $typeConfig['formXml'];
-		} else {
-			return false;
-		}
+		return is_array($typeConfig) ? $typeConfig['formXml'] : false;
 	}
 
 
@@ -106,19 +89,6 @@ class TodoyuContactManager {
 
 
 	/**
-	 * Get country label
-	 *
-	 * @param	TodoyuForm		$form
-	 * @param	Array			$option
-	 * @return	String
-	 */
-	public static function getCountryLabel($form, $option) {
-		return $option[ 'name_' . TodoyuLabelManager::getLocale() ];
-	}
-
-
-
-	/**
 	 * Render options array (value, label, selected-state of all options)
 	 *
 	 * @param	Array	$res
@@ -140,60 +110,6 @@ class TodoyuContactManager {
 		}
 
 		return $options;
-	}
-
-
-
-	/**
-	 * Saves company
-	 *
-	 * @param	Array		$data
-	 * @return	Integer
-	 */
-	public function saveCompany(array $data) {
-		$xmlPath	= 'ext/contact/config/form/company.xml';
-		$idCompany	= intval($data['id']);
-
-		if( $idCompany === 0 ) {
-			$idCompany = TodoyuContactCompanyManager::addCompany();
-		}
-
-			// Save own external fields
-		$data	= TodoyuContactCompanyManager::saveCompanyForeignRecords($data, $idCompany);
-
-			// Call save data hook
-		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idCompany);
-
-		TodoyuContactCompanyManager::updateCompany($idCompany, $data);
-		TodoyuContactCompanyManager::removeFromCache($idCompany);
-
-		return $idCompany;
-	}
-
-
-
-
-
-
-
-
-
-	/**
-	 * Form hook to load persons foreign record data
-	 * Load: company, contactinfo, address
-	 *
-	 * @param	Array		$data
-	 * @param	Integer		$idPerson
-	 * @return	Array
-	 */
-	public static function getPersonForeignRecordData(array $data, $idPerson) {
-		$idPerson	= intval($idPerson);
-
-		$data['company']	= TodoyuContactPersonManager::getPersonCompanyRecords($idPerson);
-		$data['contactinfo']= TodoyuContactPersonManager::getContactinfoRecords($idPerson);
-		$data['address']	= TodoyuContactPersonManager::getAddressRecords($idPerson);
-
-		return $data;
 	}
 
 
@@ -221,64 +137,14 @@ class TodoyuContactManager {
 
 
 	/**
-	 * Get listing data for persons
-	 * Keys: [total,rows]
+	 * Get country label
 	 *
-	 * @param	Integer		$size
-	 * @param	Integer		$offset
-	 * @return	Array
+	 * @param	TodoyuForm		$form
+	 * @param	Array			$option
+	 * @return	String
 	 */
-	public static function getPersonListingData($size, $offset = 0, $searchWord = '') {
-		$persons= TodoyuContactPersonManager::searchPersons($searchWord, null, $size, $offset);
-		$data	= array(
-			'rows'	=> array(),
-			'total'	=> Todoyu::db()->getTotalFoundRows()
-		);
-
-		foreach($persons as $person) {
-			$data['rows'][] = array(
-				'icon'		=> '',
-				'iconClass'	=> intval($person['active']) === 1 ? 'login' : '',
-				'lastname'	=> $person['lastname'],
-				'firstname'	=> $person['firstname'],
-				'email'		=> $person['email'],
-				'company'	=> TodoyuContactPersonManager::getPersonsMainCompany($person['id'])->getTitle(),
-				'actions'	=> TodoyuContactRenderer::renderPersonActions($person['id'])
-			);
-		}
-
-		return $data;
-	}
-
-
-
-	/**
-	 * Get listing data for companies
-	 *
-	 * @param	Integer		$size
-	 * @param	Integer		$offset
-	 * @param	Integer		$searchWord
-	 * @return	Array
-	 */
-	public static function getCompanyListingData($size, $offset = 0, $searchWord = '') {
-		$companies	= TodoyuContactCompanyManager::searchCompany($searchWord, null, $size, $offset);
-
-		$data	= array(
-			'rows'	=> array(),
-			'total'	=> Todoyu::db()->getTotalFoundRows()
-		);
-
-		foreach($companies as $company) {
-			$data['rows'][] = array(
-				'icon'		=> '',
-				'title'		=> $company['title'],
-//				'persons'	=> TodoyuContactCompanyManager::getNumPersons($company['id']),
-				'address'	=> TodoyuContactCompanyManager::getCompanyAddress($company['id']),
-				'actions'	=> TodoyuContactRenderer::renderCompanyActions($company['id'])
-			);
-		}
-
-		return $data;
+	public static function getCountryLabel($form, $option) {
+		return $option[ 'name_' . TodoyuLabelManager::getLocale() ];
 	}
 
 }

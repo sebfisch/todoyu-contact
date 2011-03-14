@@ -123,6 +123,6 @@
 	<label index="person.search.mode">Suche Personen</label>
 	<label index="company.search.title">Firmen</label>
 	<label index="company.search.mode">Suche Firmen</label>
-	<label index="other">Weiter Informationen</label>
+	<label index="other">Weitere Informationen</label>
 	<label index="profile.module">Personen Daten</label>
 </labels>
