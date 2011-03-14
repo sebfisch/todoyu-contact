@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuContactPanelWidgetStaffList extends TodoyuPanelWidget {
+class TodoyuContactPanelWidgetStaffList extends TodoyuPanelWidgetSearchList {
 
 	/**
 	 * Initialize staff list PanelWidget
@@ -47,28 +47,63 @@ class TodoyuContactPanelWidgetStaffList extends TodoyuPanelWidget {
 
 		$this->addHasIconClass();
 
-		$filterJSON	= json_encode(self::getFilters());
-
-			// Init widget JS (observers)
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.contact.PanelWidget.StaffList.init.bind(Todoyu.Ext.contact.PanelWidget.StaffList, ' . $filterJSON . ')', 100);
+		$this->setJsObject('Todoyu.Ext.contact.PanelWidget.StaffList');
 	}
 
 
 
 	/**
-	 * Get person IDs which match to current filters
+	 * Get list items (persons)
 	 *
 	 * @return	Array
 	 */
-	private function getPersonIDs() {
-		$filters	= self::getFilters();
+	protected function getItems() {
+		$persons	= $this->getListedPersons();
+		$items		= array();
+
+		foreach($persons as $person) {
+			$items[] = array(
+				'id'	=> $person['id'],
+				'label'	=> $person['lastname'] . ' ' . $person['firstname'],
+				'title'	=> $person['lastname'] . ' ' . $person['firstname'] . ' (ID: ' . $person['id'] . ')'
+			);
+		}
+
+		return $items;
+	}
+
+
+
+	/**
+	 * Get person IDs which match the filter
+	 *
+	 * @return	Array
+	 */
+	protected function getPersonIDs() {
+		$filters	= array(
+			array(
+				'filter'	=> 'fulltext',
+				'value'		=> $this->getSearchText()
+			),
+			array(
+				'filter'	=> 'isInternal',
+				'value'		=> true
+			)
+		);
 		$filter		= new TodoyuContactPersonFilter($filters);
-		$limit		= intval(Todoyu::$CONFIG['EXT']['contact']['panelWidgetStaffList']['maxPersons']);
 
-			// Get matching project IDs
-		$personIDs	= $filter->getPersonIDs('', $limit);
+		return $filter->getPersonIDs($this->getLimit());
+	}
 
-		return $personIDs;
+
+
+	/**
+	 * Get list size limit
+	 *
+	 * @return	Integer
+	 */
+	protected function getLimit() {
+		return intval($this->config['max']);
 	}
 
 
@@ -87,7 +122,7 @@ class TodoyuContactPanelWidgetStaffList extends TodoyuPanelWidget {
 						 p.lastname,
 						 p.shortname,
 						 p.salutation';
-			$tables	= 	TodoyuContactPersonManager::TABLE . ' p,
+			$tables	= '	ext_contact_person p,
 						ext_contact_company c,
 						ext_contact_mm_company_person mm';
 			$where	= '		p.id			= mm.id_person
@@ -95,8 +130,7 @@ class TodoyuContactPanelWidgetStaffList extends TodoyuPanelWidget {
 						AND	c.is_internal	= 1
 						AND	p.deleted		= 0
 						AND p.id			IN (' . implode(',', $personIDs) . ')';
-			$order	= '	CHAR_LENGTH(p.salutation) DESC,
-						p.lastname,
+			$order	= '	p.lastname,
 						p.firstname';
 
 			$persons= Todoyu::db()->getArray($fields, $tables, $where, '', $order);
@@ -105,124 +139,6 @@ class TodoyuContactPanelWidgetStaffList extends TodoyuPanelWidget {
 		}
 
 		return $persons;
-	}
-
-
-
-	/**
-	 * Get value of the full-text filter
-	 *
-	 * @return	String
-	 */
-	public static function getSearchText() {
-		$filters	= self::getFilters();
-		$fulltext	= '';
-
-		foreach($filters as $filter) {
-			if( $filter['filter'] === 'fulltext' ) {
-				$fulltext = $filter['value'];
-			}
-		}
-
-		return $fulltext;
-	}
-
-
-
-	/**
-	 * Render filter form
-	 *
-	 * @return	String
-	 */
-	public static function renderFilter() {
-		$xmlPath= 'ext/contact/config/form/panelwidget-stafflist.xml';
-		$form	= TodoyuFormManager::getForm($xmlPath);
-		$data	= array(
-			'fulltext'	=> self::getSearchText()
-		);
-
-		$form->setFormData($data);
-		$form->setUseRecordID(false);
-
-		return $form->render();
-	}
-
-
-
-	/**
-	 * Render staff list
-	 *
-	 * @return	String
-	 */
-	public function renderList() {
-		$tmpl	= 'ext/contact/view/panelwidgets/panelwidget-stafflist-list.tmpl';
-		$data	= array(
-			'id'		=> $this->getID(),
-			'persons'	=> $this->getListedPersons()
-		);
-
-		return render($tmpl, $data);
-	}
-
-
-
-	/**
-	 * Render the panel widget content
-	 *
-	 * @return	String
-	 */
-	public function renderContent() {
-		$filter	= self::renderFilter();
-		$list	= $this->renderList();
-
-		$tmpl	= 'ext/contact/view/panelwidgets/panelwidget-stafflist.tmpl';
-		$data	= array(
-			'id'		=> $this->getID(),
-			'filter'	=> $filter,
-			'list'		=> $list
-		);
-
-		return render($tmpl, $data);
-	}
-
-
-
-	/**
-	 * Get active filters
-	 *
-	 * @return	Array
-	 */
-	public static function getFilters() {
-		$filters = TodoyuContactPreferences::getPref('panelwidget-stafflist-filter', 0, AREA);
-
-		if( $filters === false || $filters === '' ) {
-			return array();
-		} else {
-			return json_decode($filters, true);
-		}
-	}
-
-
-
-	/**
-
-	 *
-	 * @param	Array		$activeFilters
-	 * @param	Integer		$idArea
-	 */
-	public function saveFilters(array $filters) {
-		$filterConfig = array();
-
-		foreach($filters as $name => $value) {
-			$filterConfig[] = array(
-				'filter'=> $name,
-				'value'	=> $value
-			);
-		}
-
-		$filterPref	= json_encode($filterConfig);
-
-		TodoyuContactPreferences::savePref('panelwidget-stafflist-filter', $filterPref, 0, true, AREA);
 	}
 
 

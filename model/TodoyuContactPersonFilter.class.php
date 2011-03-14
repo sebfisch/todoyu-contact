@@ -72,7 +72,13 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 		$queryParts	= false;
 
 		if( sizeof($valueParts) > 0 ) {
-			$fields		= array('username', 'lastname', 'firstname', 'shortname', 'email');
+			$fields		= array(
+				self::TABLE . '.username',
+				self::TABLE . '.lastname',
+				self::TABLE . '.firstname',
+				self::TABLE . '.shortname',
+				self::TABLE . '.email'
+			);
 			$queryParts	= array(
 				'where'		=> Todoyu::db()->buildLikeQuery($valueParts, $fields),
 			);
@@ -184,6 +190,35 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 			'tables'=> $tables,
 			'where'	=> $where,
 			'join'	=> $join
+		);
+	}
+
+
+
+	/**
+	 * Filter internal persons
+	 * Persons which are employee in an internal company
+	 *
+	 * @param	Mixed		$value
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public function Filter_isInternal($value, $negate = false) {
+		$tables	= array(
+			'ext_contact_mm_company_person',
+			'ext_contact_company'
+		);
+		$where	= '		ext_contact_company.deleted 	= 0'
+				. ' AND	ext_contact_company.is_internal	= 1';
+		$joins	= array(
+			'ext_contact_person.id = ext_contact_mm_company_person.id_person',
+			'ext_contact_mm_company_person.id_company = ext_contact_company.id'
+		);
+
+		return array(
+			'tables'=> $tables,
+			'where'	=> $where,
+			'join'	=> $joins
 		);
 	}
 

@@ -21,200 +21,39 @@
  * @module	Contact
  */
 
-Todoyu.Ext.contact.PanelWidget.StaffList = {
+/**
+ * Staff list panel widget
+ */
+Todoyu.Ext.contact.PanelWidget.StaffList = Class.create(Todoyu.PanelWidgetSearchList, {
 
 	/**
-	 * Reference to extension
+	 * Initialize
 	 *
-	 * @property	ext
-	 * @type		Object
+	 * @param	{Function}	$super
+	 * @param	{String}	search
 	 */
-	ext: Todoyu.Ext.contact,
-
-	/**
- 	 * @property	fulltextTimeout
-	 * @type		Object
-	 */
-	fulltextTimeout: null,
-
-	/**
- 	 * @property	filters
-	 * @type		Object
-	 */
-	filters: {},
-
-
-
-	/**
-	 * Initialize panelWidget
-	 *
-	 * @method	init
-	 * @param	{Object}		filters		Filter hash. Because of JSON, an (empty) array means no data
-	 */
-	init: function(filters) {
-			// If filters are given as parameters, add them to internal storage
-		if( typeof(filters) === 'object' && ! Object.isArray(filters) ) {
-			$H(filters).each(function(pair){
-				this.applyFilter(pair.key, pair.value, false);
-			}, this);
-		}
-
-		this.observeFulltext();
-		this.observePersons();
+	initialize: function($super, search) {
+		$super({
+			id:			'stafflist',
+			search:		search,
+			ext:		'contact',
+			controller:	'panelwidgetstafflist',
+			action:		'list'
+		});
 	},
 
 
 
 	/**
-	 * Install keyup event observer on full-text search input field
+	 * Handler when clicked on item
 	 *
-	 * @method	observeFulltext
-	 */
-	observeFulltext: function() {
-		$('panelwidget-stafflist-field-fulltext').observe('keyup', this.onFulltextKeyup.bindAsEventListener(this));
-	},
-
-
-
-	/**
-	 * Install click event observer on items of persons list
-	 *
-	 * @method	observePersons
-	 */
-	observePersons: function() {
-		$('panelwidget-stafflist-list').observe('click', this.onPersonClick.bindAsEventListener(this));
-	},
-
-
-
-	/**
-	 * Handler for keyup events of full-text search input field
-	 *
-	 * @method	onFulltextKeyup
 	 * @param	{Event}		event
+	 * @param	{Element}	item
 	 */
-	onFulltextKeyup: function(event) {
-		this.clearTimeout();
-		this.applyFilter('fulltext', this.getFulltext());
+	onItemClick: function(event, item) {
+		var idPerson	= item.id.split('-').last();
 
-		this.startTimeout();
-	},
-
-
-
-	/**
-	 * Click event handler for person: save pref, execute callbacks
-	 *
-	 * @method	onPersonClick
-	 * @param	{Event}			event
-	 */
-	onPersonClick: function(event) {
-		var listElement = event.findElement('li');
-
-		if( Object.isElement(listElement) ) {
-			var idPerson = listElement.id.split('-').last();
-
-			this.ext.savePref('panelwidgetstafflist', idPerson);
-			Todoyu.Hook.exec('panelwidget.stafflist.onPersonClick', idPerson);
-		}
-	},
-
-
-
-	/**
-	 * Clear (full-text) timeout
-	 *
-	 * @method	clearTimeout
-	 */
-	clearTimeout: function() {
-		clearTimeout(this.fulltextTimeout);
-	},
-
-
-
-	/**
-	 * Install full-text timeout
-	 *
-	 * @method	startTimeout
-	 */
-	startTimeout: function() {
-		this.fulltextTimeout = this.update.bind(this).delay(0.3);
-	},
-
-
-
-	/**
-	 * Get full-text input field value
-	 *
-	 * @method	getFulltext
-	 */
-	getFulltext: function() {
-		return $F('panelwidget-stafflist-field-fulltext');
-	},
-
-
-
-	/**
-	 * Apply filter to staff list panelwidget
-	 *
-	 * @method	applyFilter
-	 * @param	{String}		name
-	 * @param	{String}		value
-	 * @param	{Boolean}		update
-	 */
-	applyFilter: function(name, value, update) {
-		this.filters[name] = value;
-
-		if( update === true ) {
-			this.clearTimeout();
-			this.update();
-		}
-	},
-
-
-
-	/**
-	 * Refresh staff list panelWidget
-	 *
-	 * @method	update
-	 */
-	update: function() {
-		var url		= Todoyu.getUrl('contact', 'panelwidgetstafflist');
-		var options	= {
-			'parameters': {
-				'action':	'list',
-				'filters':	Object.toJSON(this.filters)
-			},
-			'onComplete':	this.onUpdated.bind(this)
-		};
-		var target	= 'panelwidget-stafflist-list';
-
-		Todoyu.Ui.replace(target, url, options);
-	},
-
-
-
-	/**
-	 * Handler to be evoked after refresh of project list panelWidget
-	 *
-	 * @method	onUpdated
-	 * @param	{Ajax.Response}		response
-	 */
-	onUpdated: function(response) {
-		this.observePersons();
-	},
-
-
-
-	/**
-	 * Check whether given person is listed in panelWidget's person list
-	 *
-	 * @method	isPersonListed
-	 * @param	{Number}		idPerson
-	 * @return  {Boolean}
-	 */
-	isPersonListed: function(idPerson) {
-		return Todoyu.exists('panelwidget-stafflist-person-' + idPerson);
+		Todoyu.Hook.exec('panelwidget.stafflist.onPersonClick', idPerson);
 	}
 
-};
+});

@@ -44,11 +44,13 @@ class TodoyuContactPanelwidgetStafflistActionController extends TodoyuActionCont
 	 * @return	String
 	 */
 	public function listAction(array $params) {
-		$filters	= json_decode($params['filters'], true);
-
+		$search	= trim($params['search']);
+		/**
+		 * @var	TodoyuContactPanelWidgetStaffList	$widget
+		 */
 		$widget	= TodoyuPanelWidgetManager::getPanelWidget('contact', 'StaffList');
 
-		$widget->saveFilters($filters);
+		$widget->saveSearchText($search);
 
 		return $widget->renderList();
 	}

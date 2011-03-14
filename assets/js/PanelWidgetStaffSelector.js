@@ -366,6 +366,19 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 				'class': 'remove'
 			}));
 		});
+	},
+
+
+	isAnyPersonSelected: function() {
+		return this.getSelectedItems().size() > 0;
+	},
+
+	getSelectedPersons: function() {
+		var items	= this.getSelectedItems();
+
+		return this.getSelectedItems().findAll(function(item){
+			return item.substr(0, 1) !== '-';
+		});
 	}
 
 });
