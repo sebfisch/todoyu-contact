@@ -54,7 +54,7 @@ class TodoyuContactRenderer {
 		if( $searchWord !== '' ) {
 			TodoyuContactPreferences::saveSearchWord($searchWord);
 		} else {
-			$searchWord	= TodoyuContactPreferences::getSearchWord();
+//			$searchWord	= TodoyuContactPreferences::getSearchWord();
 		}
 
 		$panelWidgets 	= self::renderPanelWidgets();
@@ -436,8 +436,7 @@ class TodoyuContactRenderer {
 			$data['companyData'][$idCompany] = $companyData['address'];
 		}
 
-		$data['email']	= $person->getEmail();
-
+		$data['email']			= $person->getEmail();
 		$data['hookedContent']	= implode('', TodoyuHookManager::callHook('contact', 'renderPersonDetailView', array('idPerson' => $idPerson)));
 
 		return render($tmpl, $data);
