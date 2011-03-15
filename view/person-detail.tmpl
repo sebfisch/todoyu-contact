@@ -26,7 +26,7 @@
 					{foreach $contactinfo numCi ciData}
 						<dt>{labelContactinfotype $ciData.id_contactinfotype}:</dt>
 						<dd>
-							{if $ciData.info == $email}
+							{if $ciData.infotype_category == constant(CONTACT_INFOTYPE_CATEGORY_EMAIL)}
 								<a href="mailto:{$firstname}%20{$lastname}%20%3C{$ciData.info}%3E">{htmlencode wordwrap($ciData.info 30 cut=false)}</a>
 							{else}
 								{htmlencode wordwrap($ciData.info 30 cut=false)}
@@ -78,7 +78,13 @@
 					<dt>{Label LLL:contact.ext.person.attr.username}:</dt>
 					<dd>{$username|default:"-"}</dd>
 					<dt>{Label LLL:contact.ext.person.attr.email}:</dt>
-					<dd>{$email|default:"-"}</dd>
+					<dd>
+						{if $email}
+						<a href="mailto:{$firstname}%20{$lastname}%20%3C{$ciData.info}%3E">{$email}</a>
+						{else}
+						-
+						{/if}
+					</dd>
 					<dt>{Label LLL:core.global.roles}:</dt>
 					<dd>
 						<dl class="nofloat">
