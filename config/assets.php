@@ -25,85 +25,85 @@
 Todoyu::$CONFIG['EXT']['contact']['assets'] = array(
 	'js'	=> array(
 		array(
-			'file'		=> 'ext/contact/assets/js/Ext.js',
+			'file'		=> 'ext/contact/asset/js/Ext.js',
 			'position'	=> 100
 		),
 			// Add creation engines to quick create headlet
 		array(
-			'file'		=> 'ext/contact/assets/js/QuickCreateCompany.js',
+			'file'		=> 'ext/contact/asset/js/QuickCreateCompany.js',
 			'position'	=> 100
 		),
 		array(
-			'file'		=> 'ext/contact/assets/js/Autocomplete.js',
+			'file'		=> 'ext/contact/asset/js/Autocomplete.js',
 			'position'	=> 101
 		),
 		array(
-			'file'		=> 'ext/contact/assets/js/Person.js',
+			'file'		=> 'ext/contact/asset/js/Person.js',
 			'position'	=> 105
 		),
 		array(
-			'file'		=> 'ext/contact/assets/js/Company.js',
+			'file'		=> 'ext/contact/asset/js/Company.js',
 			'position'	=> 106
 		),
 		array(
-			'file'		=> 'ext/contact/assets/js/QuickCreatePerson.js',
+			'file'		=> 'ext/contact/asset/js/QuickCreatePerson.js',
 			'position'	=> 110
 		),
 		array(
-			'file' 		=> 'ext/contact/assets/js/QuickInfoPerson.js',
+			'file' 		=> 'ext/contact/asset/js/QuickInfoPerson.js',
 			'position' 	=> 200
 		),
 		array(
-			'file'		=> 'ext/contact/assets/js/PanelWidgetContactSearch.js',
+			'file'		=> 'ext/contact/asset/js/PanelWidgetContactSearch.js',
 			'position'	=> 101
 		),
 		array(
-			'file'		=> 'ext/contact/assets/js/PanelWidgetStaffSelector.js',
+			'file'		=> 'ext/contact/asset/js/PanelWidgetStaffSelector.js',
 			'position'	=> 110
 		),
 		array(
-			'file'		=> 'ext/contact/assets/js/PanelWidgetStaffList.js',
+			'file'		=> 'ext/contact/asset/js/PanelWidgetStaffList.js',
 			'position'	=> 110
 		),
 		array(
-			'file'		=> 'ext/contact/assets/js/Address.js',
+			'file'		=> 'ext/contact/asset/js/Address.js',
 			'position'	=> 111
 		),
 		array(
-			'file'		=> 'ext/contact/assets/js/PanelWidgetContactExport.js',
+			'file'		=> 'ext/contact/asset/js/PanelWidgetContactExport.js',
 			'position'	=> 112
 		),
 		array(
-			'file'		=> 'ext/contact/assets/js/Upload.js',
+			'file'		=> 'ext/contact/asset/js/Upload.js',
 			'position'	=> 113
 		),
 		array(
-			'file'		=> 'ext/contact/assets/js/Profile.js',
+			'file'		=> 'ext/contact/asset/js/Profile.js',
 			'position'	=> 114
 		)
 	),
 	'css'	=> array(
 		array(
-			'file' 		=> 'ext/contact/assets/css/quickinfo.css',
+			'file' 		=> 'ext/contact/asset/css/quickinfo.css',
 			'position'	=> 100
 		),
 		array(
-			'file'		=> 'ext/contact/assets/css/ext.css',
+			'file'		=> 'ext/contact/asset/css/ext.css',
 			'position'	=> 100
 		),
 		array(
-			'file'	=> 'ext/contact/assets/css/panelwidget-contactsearch.css'
+			'file'	=> 'ext/contact/asset/css/panelwidget-contactsearch.css'
 		),
 		array(
-			'file'		=> 'ext/contact/assets/css/panelwidget-staffselector.css',
+			'file'		=> 'ext/contact/asset/css/panelwidget-staffselector.css',
 			'position'	=> 110
 		),
 		array(
-			'file'		=> 'ext/contact/assets/css/panelwidget-stafflist.css',
+			'file'		=> 'ext/contact/asset/css/panelwidget-stafflist.css',
 			'position'	=> 110
 		),
 		array(
-			'file'		=> 'ext/contact/assets/css/panelwidget-contactexport.css',
+			'file'		=> 'ext/contact/asset/css/panelwidget-contactexport.css',
 			'position'	=> 111
 		)
 	)

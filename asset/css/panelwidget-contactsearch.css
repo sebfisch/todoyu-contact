@@ -1,5 +1,5 @@
 #panelwidget-contactSearch h1 .title {
-	background:url('../../../../core/assets/img/icons.png') no-repeat 8px -444px;
+	background:url('../../../../core/asset/img/icons.png') no-repeat 8px -444px;
 }
 
 #panelwidget-contactSearch fieldset {
@@ -17,7 +17,7 @@
 }
 
 #panelwidget-contactSearch-content a.icon {
-	background:url('../../../../core/assets/img/icons.png') no-repeat;
+	background:url('../../../../core/asset/img/icons.png') no-repeat;
 	margin-left:5px;
 	cursor:pointer;
 }

@@ -6,7 +6,7 @@
 }
 
 #panelwidget-staffselector li.group a {
-	background:url(../../../sysmanager/assets/img/icons.png) no-repeat 2px -210px;
+	background:url(../../../sysmanager/asset/img/icons.png) no-repeat 2px -210px;
 }
 
 #panelwidget-staffselector li.person a {
@@ -54,7 +54,7 @@
 	width:16px;
 	height:16px;
 	margin-right:40px;
-	background-image:url(../../../../core/assets/img/icons.png);
+	background-image:url(../../../../core/asset/img/icons.png);
 	background-repeat:no-repeat;
 }
 
