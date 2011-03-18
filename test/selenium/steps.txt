@@ -2,7 +2,7 @@ todoyu selenium testsuite steps: contact extension
 --------------------------------------------------
 
 * contact area
-	use main tab, go to area, main tab activated?
+	use main tab, go to area, main tab activated, page title set?
 * contactsearch panelwidget
 	elements present
 	toggle expand/collapse incl. pref
