@@ -32,7 +32,7 @@ class TodoyuContactPanelWidgetSearch extends TodoyuPanelWidget {
 	function __construct(array $config, array $params = array()) {
 		parent::__construct(
 				'contact',										// ext key
-				'contactSearch',								// panel widget ID
+				'contactsearch',								// panel widget ID
 				'LLL:contact.panelwidget-contactsearchinput.title',		// widget title text
 				$config,										// widget config array
 				$params										// widget parameters
@@ -84,7 +84,7 @@ class TodoyuContactPanelWidgetSearch extends TodoyuPanelWidget {
 	 */
 	public static function isAllowed() {
 		return true;
-//		return allowed('contact', 'panelwidgets:contactSearch');
+//		return allowed('contact', 'panelwidgets:contactsearch');
 	}
 
 }

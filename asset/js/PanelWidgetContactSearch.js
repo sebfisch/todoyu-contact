@@ -40,7 +40,7 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 	 * @property	id
 	 * @type		String
 	 */
-	id:		'contactSearch',
+	id:		'contactsearch',
 
 	/**
 	 * Element reference for search input

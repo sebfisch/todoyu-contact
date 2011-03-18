@@ -1,40 +1,40 @@
-#panelwidget-contactSearch h1 .title {
+#panelwidget-contactsearch h1 .title {
 	background:url('../../../../core/asset/img/icons.png') no-repeat 8px -444px;
 }
 
-#panelwidget-contactSearch fieldset {
+#panelwidget-contactsearch fieldset {
 	padding-top: 5px;
 }
 
-#panelwidget-contactSearch label {
+#panelwidget-contactsearch label {
 	float:left;
 	padding:2px 5px 2px 0;
 }
 
-#panelwidget-contactSearch-sword {
+#panelwidget-contactsearch-sword {
 	width:170px;
 	float:left;
 }
 
-#panelwidget-contactSearch-content a.icon {
+#panelwidget-contactsearch-content a.icon {
 	background:url('../../../../core/asset/img/icons.png') no-repeat;
 	margin-left:5px;
 	cursor:pointer;
 }
 
-#panelwidget-contactSearch-content a.searchIcon {
+#panelwidget-contactsearch-content a.searchIcon {
 	background-position:2px -447px;
 }
 
-#panelwidget-contactSearch-content a.clearIcon {
+#panelwidget-contactsearch-content a.clearIcon {
 	background-position:2px -358px;
 }
 
-#panelwidget-contactSearch-content button .showAll {
+#panelwidget-contactsearch-content button .showAll {
 	background-position:6px -870px;
 }
 
-#panelwidget-contactSearch-content button .hideAll {
+#panelwidget-contactsearch-content button .hideAll {
 	background-position:6px -840px;
 }
 
