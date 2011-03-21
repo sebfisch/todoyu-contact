@@ -60,7 +60,7 @@ class TodoyuContactContactInfoTypeManager {
 
 		if( $parseLabels ) {
 			foreach($types as $index => $type) {
-				$types[$index]['title'] = TodoyuString::getLabel($type['title']);
+				$types[$index]['title'] = Label($type['title']);
 			}
 		}
 

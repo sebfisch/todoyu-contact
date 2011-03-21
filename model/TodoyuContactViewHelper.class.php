@@ -109,7 +109,7 @@ class TodoyuContactViewHelper {
 		$idAddressType	= intval($valueArray['id_addresstype']);
 		$addressType	= TodoyuContactAddressTypeManager::getAddressType($idAddressType);
 
-		return TodoyuString::getLabel($addressType['label']);
+		return Label($addressType['label']);
 	}
 
 

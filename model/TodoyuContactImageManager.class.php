@@ -65,9 +65,10 @@ class TodoyuContactImageManager {
 			'idImage'		=> $idImage
 		);
 
-		$dimension	= TodoyuContactImageManager::getDimension();
+//		$dimension	= TodoyuContactImageManager::getDimension();
+		$imgSrc	= TodoyuString::buildUrl($params, NOW);
 
-		return TodoyuString::getImgTag(TodoyuString::buildUrl($params, NOW));
+		return TodoyuString::getImgTag($imgSrc);
 	}
 
 

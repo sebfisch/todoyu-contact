@@ -58,7 +58,7 @@ class TodoyuContactContactInfoManager {
 
 		$label = Todoyu::db()->getFieldValue('title', 'ext_contact_contactinfotype', 'id = ' . $idContactInfoType);
 
-		return TodoyuString::getLabel($label);
+		return Label($label);
 	}
 
 
