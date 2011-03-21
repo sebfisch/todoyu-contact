@@ -231,7 +231,9 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 		new Effect.SlideUp(item, {
 			duration: 0.3,
 			afterFinish: function() {
-				item.remove();
+				if( item.parentNode ) {
+					item.remove();
+				}
 				this.addMessageIfSelectionEmpty();
 				this.saveSelection();
 			}.bind(this)
@@ -369,10 +371,20 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	},
 
 
+
+	/**
+	 * Check whether any item is selected or not
+	 */
 	isAnyPersonSelected: function() {
 		return this.getSelectedItems().size() > 0;
 	},
 
+
+
+	/**
+	 * Get all selected elements (persons)
+	 * Gets also group and other types
+	 */
 	getSelectedPersons: function() {
 		var items	= this.getSelectedItems();
 
