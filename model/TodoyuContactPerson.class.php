@@ -325,7 +325,7 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	public function getSalutationLabel() {
 		$salutation = $this->salutation == 'w' ? 'f' : $this->salutation;
 
-		return TodoyuLabelManager::getLabel('LLL:contact.ext.person.attr.salutation.'.$salutation);
+		return Label('contact.ext.person.attr.salutation.'.$salutation);
 	}
 
 }

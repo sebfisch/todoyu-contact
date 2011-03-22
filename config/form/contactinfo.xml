@@ -21,7 +21,7 @@
 					<required />
 				</field>
 
-				<field type="checkbox" name="preferred">
+				<field type="checkbox" name="is_preferred">
 					<label>core.form.is_preferred</label>
 				</field>
 

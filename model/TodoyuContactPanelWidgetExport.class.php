@@ -56,8 +56,8 @@ class TodoyuContactPanelWidgetExport extends TodoyuPanelWidget {
 		$data	= array(
 			'id'			=> $this->getID(),
 			'contactType'	=> $contactType,
-			'instructionText'	=> TodoyuLabelManager::getLabel('LLL:contact.panelwidget-contactexport.export.instruction'),
-			'buttonText'		=> TodoyuLabelManager::getLabel('LLL:contact.panelwidget-contactexport.export.button')
+			'instructionText'	=> Label('contact.panelwidget-contactexport.export.instruction'),
+			'buttonText'		=> Label('contact.panelwidget-contactexport.export.button')
 		);
 
 		return render($tmpl, $data);

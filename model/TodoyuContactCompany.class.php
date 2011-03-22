@@ -118,6 +118,17 @@ class TodoyuContactCompany extends TodoyuBaseObject {
 
 
 	/**
+	 * Check whether company is internal
+	 *
+	 * @return	Boolean
+	 */
+	public function isInternal() {
+		return intval($this->get('is_internal')) === 1;
+	}
+
+
+
+	/**
 	 * Loads the related foreign record data to the company
 	 */
 	public function loadForeignData() {

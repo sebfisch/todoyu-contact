@@ -439,10 +439,10 @@ class TodoyuContactPersonManager {
 				  ' AND	mm.id_contactinfo	= ci.id
 				  	AND	ci.id_contactinfotype = cit.id';
 		$order	= '	ci.id_contactinfotype ASC,
-					ci.preferred DESC';
+					ci.is_preferred DESC';
 
 		if( $onlyPreferred ) {
-			$where .= ' AND ci.preferred = 1';
+			$where .= ' AND ci.is_preferred = 1';
 		}
 
 		if( ! is_null($category) ) {
@@ -476,8 +476,11 @@ class TodoyuContactPersonManager {
 				. ' AND	mm.id_contactinfo		= ci.id'
 				. ' AND	cit.category			= 2'
 				. ' AND	ci.id_contactinfotype 	= cit.id'
-				. ( $preferredOnly ? ' AND	ci.preferred = 1' : '')
 				. ' AND ci.deleted				= 0';
+
+		if( $preferredOnly ) {
+			$where .= ' AND	ci.is_preferred = 1';
+		}
 
 		if( $preferredOnly ) {
 			return	Todoyu::db()->getRecordByQuery($fields, $tables, $where);

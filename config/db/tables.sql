@@ -83,7 +83,7 @@ CREATE TABLE `ext_contact_contactinfo` (
 	`deleted` tinyint(1) NOT NULL DEFAULT '0',
 	`id_contactinfotype` tinytext NOT NULL,
 	`info` tinytext NOT NULL,
-	`preferred` tinyint(1) unsigned NOT NULL DEFAULT '0',
+	`is_preferred` tinyint(1) unsigned NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
