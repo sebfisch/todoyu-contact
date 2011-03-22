@@ -108,7 +108,8 @@
 				<h4>{Label LLL:contact.ext.other}</h4>
 				<div class="content overflow">
 					<dl>
-						<dt>{Label LLL:contact.ext.person.attr.birthday}:</dt><dd>{$birthday}</dd>
+						<dt>{Label LLL:contact.ext.person.attr.birthday}:</dt>
+						<dd>{formatSqlDate $birthday}</dd>
 						{if allowed('contact', 'person:seeComment')}
 							<dt>{Label LLL:contact.ext.person.attr.comment}:</dt><dd>{$comment|default:"-"}</dd>
 						{/if}
