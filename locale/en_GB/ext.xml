@@ -42,7 +42,7 @@
 	<label index="person.attr.username">Username</label>
 	<label index="person.attr.password">Password</label>
 	<label index="person.attr.password.hasPassword">Only fill in to set a new password or to change the current one. Leave empty to keep the current password.</label>
-	<label index="person.attr.email">E-mail</label>
+	<label index="person.attr.email">Email</label>
 	<label index="person.attr.is_admin">Is Admin</label>
 	<label index="person.attr.role.new">New Role</label>
 	<label index="person.attr.image.upload">Upload a profile picture</label>
@@ -75,8 +75,8 @@
 	<label index="contactinfo.new">New Contact Info</label>
 	<label index="contactinfo.attr.type">Contact Info Type</label>
 	<label index="contactinfo.attr.info">Information</label>
-	<label index="contactinfo.type.email_business">Business E-mail</label>
-	<label index="contactinfo.type.email_private">Private E-mail</label>
+	<label index="contactinfo.type.email_business">Business Email</label>
+	<label index="contactinfo.type.email_private">Private Email</label>
 	<label index="contactinfo.type.tel_private">Personal Phone</label>
 	<label index="contactinfo.type.tel_business">Business Phone</label>
 	<label index="contactinfo.type.tel_exchange">Exchange Phone</label>
@@ -106,7 +106,7 @@
 	<label index="record.contactinfotype">Contact Information Type</label>
 	<label index="record.contactinfotype.attr.category">Category</label>
 	<label index="record.contactinfotype.attr.key">Key</label>
-	<label index="record.contactinfotype.email">E-mail Address</label>
+	<label index="record.contactinfotype.email">Email Address</label>
 	<label index="record.contactinfotype.phone">Phone number (or Fax, Mobile)</label>
 	<label index="record.contactinfotype.other">Other</label>
 	<label index="password.newPersonHasPassword">Enter a password for a new person</label>
