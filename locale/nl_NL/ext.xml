@@ -31,7 +31,7 @@
 	<label index="person.attr.birthday">Verjaardag</label>
 	<label index="person.attr.company">Werkgever</label>
 	<label index="person.attr.company.new">Nieuwe werkgever</label>
-	<label index="person.attr.active">Inloggen inschakelen</label>
+	<label index="person.attr.is_active">Inloggen inschakelen</label>
 	<label index="person.attr.username">Gebruikersnaam</label>
 	<label index="person.attr.password">Wachtwoord</label>
 	<label index="person.attr.password.hasPassword">Alleen invullen om een nieuw wachtwoord in te stellen of de huidige te wijzigen. Als het veld leeg is blijft het huidige wachtwoord geldig.</label>

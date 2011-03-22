@@ -12,7 +12,7 @@ CREATE TABLE `ext_contact_person` (
 	`password` varchar(40) NOT NULL,
 	`email` varchar(100) NOT NULL,
 	`is_admin` tinyint(1) NOT NULL DEFAULT '0',
-	`active` tinyint(1) NOT NULL DEFAULT '0',
+	`is_active` tinyint(1) NOT NULL DEFAULT '0',
 	`firstname` varchar(64) NOT NULL,
 	`lastname` varchar(64) NOT NULL,
 	`shortname` varchar(11) NOT NULL,

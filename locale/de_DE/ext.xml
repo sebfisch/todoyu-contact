@@ -38,7 +38,7 @@
 	<label index="person.attr.birthday">Geburtstag</label>
 	<label index="person.attr.company">Arbeitgeber</label>
 	<label index="person.attr.company.new">Neuer Arbeitgeber</label>
-	<label index="person.attr.active">Zugang aktivieren</label>
+	<label index="person.attr.is_active">Zugang aktivieren</label>
 	<label index="person.attr.username">Benutzername</label>
 	<label index="person.attr.password">Passwort</label>
 	<label index="person.attr.password.hasPassword">Nur ausfüllen um das aktuelle Passwort zu ändern</label>

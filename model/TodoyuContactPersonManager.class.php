@@ -118,7 +118,7 @@ class TodoyuContactPersonManager {
 		$order	= 'lastname, firstname';
 
 		if( $showInactive !== true ) {
-			$where .= ' AND active	= 1';
+			$where .= ' AND is_active	= 1';
 		}
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
@@ -135,7 +135,7 @@ class TodoyuContactPersonManager {
 		$fields	= '*';
 		$table	= self::TABLE;
 		$where	= '		deleted		= 0'
-				. ' AND active		= 1'
+				. ' AND is_active	= 1'
 				. ' AND username	!= \'\''
 				. ' AND password	!= \'\'';
 		$order	= 'lastname, firstname';
@@ -165,7 +165,7 @@ class TodoyuContactPersonManager {
 		$table	= self::TABLE;
 		$where	= '		`username`	= ' . Todoyu::db()->quote($username, true) .
 				  ' AND	`password`	= ' . Todoyu::db()->quote($password, true) .
-				  ' AND	`active`	= 1
+				  ' AND	`is_active`	= 1
 					AND	`deleted`	= 0';
 
 		return Todoyu::db()->hasResult($field, $table, $where);
@@ -206,9 +206,9 @@ class TodoyuContactPersonManager {
 	public static function getPersonIDByUsername($username) {
 		$fields	= 'id';
 		$table	= self::TABLE;
-		$where	= '		username= ' . Todoyu::db()->quote($username, true)
-				. ' AND active	= 1'
-				. ' AND deleted	= 0';
+		$where	= '		username	= ' . Todoyu::db()->quote($username, true)
+				. ' AND is_active	= 1'
+				. ' AND deleted		= 0';
 		$limit	= '1';
 
 		$row	= Todoyu::db()->doSelectRow($fields, $table, $where, '', '', $limit);

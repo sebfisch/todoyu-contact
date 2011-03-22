@@ -38,7 +38,7 @@
 	<label index="person.attr.birthday">Birthday</label>
 	<label index="person.attr.company">Employer</label>
 	<label index="person.attr.company.new">New Employer</label>
-	<label index="person.attr.active">Enable Login</label>
+	<label index="person.attr.is_active">Enable Login</label>
 	<label index="person.attr.username">Username</label>
 	<label index="person.attr.password">Password</label>
 	<label index="person.attr.password.hasPassword">Only fill in to set a new password or to change the current one. Leave empty to keep the current password.</label>

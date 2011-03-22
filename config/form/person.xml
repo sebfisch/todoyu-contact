@@ -147,8 +147,8 @@
 			</restrict>
 			<elements>
 
-				<field type="checkbox" name="active">
-					<label>contact.ext.person.attr.active</label>
+				<field type="checkbox" name="is_active">
+					<label>contact.ext.person.attr.is_active</label>
 				</field>
 
 				<fieldset name="loginfields">
@@ -188,7 +188,7 @@
 									<allowEmpty />
 								</email>
 								<requiredIfNotEmpty>
-									<fields>username,active</fields>
+									<fields>username,is_active</fields>
 								</requiredIfNotEmpty>
 							</validate>
 							<required>

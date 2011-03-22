@@ -117,7 +117,7 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 		foreach($persons as $person) {
 			$data['rows'][] = array(
 				'icon'		=> '',
-				'iconClass'	=> intval($person['active']) === 1 ? 'login' : '',
+				'iconClass'	=> intval($person['is_active']) === 1 ? 'login' : '',
 				'lastname'	=> $person['lastname'],
 				'firstname'	=> $person['firstname'],
 				'email'		=> TodoyuContactPersonManager::getPreferredEmail($person['id']),

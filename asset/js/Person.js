@@ -89,7 +89,7 @@ Todoyu.Ext.contact.Person =  {
 
 		this.showLoginFields(idPerson);
 
-		$('person-' + idPerson + '-field-active').observe('change', this.showLoginFields.bind(this, idPerson));
+		$('person-' + idPerson + '-field-is-active').observe('change', this.showLoginFields.bind(this, idPerson));
 	},
 
 
@@ -102,7 +102,7 @@ Todoyu.Ext.contact.Person =  {
 	 * @param	{Event}		event
 	 */
 	showLoginFields: function(idPerson, event) {
-		var field	= $('person-' + idPerson + '-field-active');
+		var field	= $('person-' + idPerson + '-field-is-active');
 
 		$('person-' + idPerson + '-fieldset-loginfields')[field.checked ? 'show' : 'hide']();
 	},

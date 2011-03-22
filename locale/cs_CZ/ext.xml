@@ -31,7 +31,7 @@
 	<label index="person.attr.birthday">Narozeniny</label>
 	<label index="person.attr.company">Společnost</label>
 	<label index="person.attr.company.new">Nová společnost</label>
-	<label index="person.attr.active">Povolit přihlášení</label>
+	<label index="person.attr.is_active">Povolit přihlášení</label>
 	<label index="person.attr.username">Uživatelské jménu</label>
 	<label index="person.attr.password">Heslo</label>
 	<label index="person.attr.password.hasPassword">Vyplňte v případě nového hesla nebo změny hesla. Nevypňujte v případě že nechcete heslo změnit.</label>

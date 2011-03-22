@@ -31,7 +31,7 @@
 	<label index="person.attr.birthday">誕生日</label>
 	<label index="person.attr.company">雇用者</label>
 	<label index="person.attr.company.new">新規雇用者</label>
-	<label index="person.attr.active">ログインを有効にする</label>
+	<label index="person.attr.is_active">ログインを有効にする</label>
 	<label index="person.attr.username">ユーザ名</label>
 	<label index="person.attr.password">パスワード</label>
 	<label index="person.attr.password.hasPassword">新しいパスワードを設定するか、現在のパスワードを変更してください。現在のパスワードを変更しない場合は空のままにしてください。</label>

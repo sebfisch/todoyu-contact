@@ -88,7 +88,7 @@ class TodoyuContactPersonExportManager {
 			TodoyuLabelManager::getLabel('LLL:contact.ext.person.attr.username')	=> $person->username,
 			TodoyuLabelManager::getLabel('LLL:contact.ext.person.attr.email')		=> $person->email,
 			TodoyuLabelManager::getLabel('LLL:contact.ext.person.attr.is_admin')	=> $person->is_admin ? TodoyuLabelManager::getLabel('LLL:core.global.yes') : TodoyuLabelManager::getLabel('LLL:core.no'),
-			TodoyuLabelManager::getLabel('LLL:contact.ext.person.attr.active')		=> $person->active ? TodoyuLabelManager::getLabel('LLL:core.global.yes') : TodoyuLabelManager::getLabel('LLL:core.no'),
+			TodoyuLabelManager::getLabel('LLL:contact.ext.person.attr.is_active')	=> $person->is_active ? TodoyuLabelManager::getLabel('LLL:core.global.yes') : TodoyuLabelManager::getLabel('LLL:core.no'),
 			TodoyuLabelManager::getLabel('LLL:contact.ext.person.attr.birthday')	=> TodoyuTime::format($person->getBirthday(), 'date'),
 
 		);

@@ -31,7 +31,7 @@
 	<label index="person.attr.birthday">День рождения</label>
 	<label index="person.attr.company">Работодатель</label>
 	<label index="person.attr.company.new">Новый работодатель</label>
-	<label index="person.attr.active">Разрешить вход</label>
+	<label index="person.attr.is_active">Разрешить вход</label>
 	<label index="person.attr.username">Логин</label>
 	<label index="person.attr.password">Пароль</label>
 	<label index="person.attr.password.hasPassword">Введите только для изменения или установки нового пароля. Оставьте пустым, чтобы сохранить текущий пароль.</label>

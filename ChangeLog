@@ -1,6 +1,7 @@
 todoyu contact extension changelog
 
 contact 1.1.0 (requires core >= 2.1) - not released yet
+	* Changed: DB rename ext_contact_person.active => is_active
 	* Bugfix: Removed display of email in person quickinfo when not available
 	* Feature: Added personal data form to profile
 	* Feature: Added comment field for person and company

@@ -31,7 +31,7 @@
 	<label index="person.attr.birthday">Anniversaire</label>
 	<label index="person.attr.company">Employeur</label>
 	<label index="person.attr.company.new">Nouvel employeur</label>
-	<label index="person.attr.active">Activer la connexion</label>
+	<label index="person.attr.is_active">Activer la connexion</label>
 	<label index="person.attr.username">Nom d'utilisateur</label>
 	<label index="person.attr.password">Mot de passe</label>
 	<label index="person.attr.password.hasPassword">Veuillez remplir uniquement pour définir un nouveau mot de passe ou changer celui actuellement utilisé. Sinon, laissez le champ vide pour garder le mot de passe actuel.</label>

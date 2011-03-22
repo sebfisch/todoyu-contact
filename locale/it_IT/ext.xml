@@ -31,7 +31,7 @@
 	<label index="person.attr.birthday">Compleatto</label>
 	<label index="person.attr.company">Datore di lavoro</label>
 	<label index="person.attr.company.new">Nuovo datore di lavoro</label>
-	<label index="person.attr.active">Abilita accesso</label>
+	<label index="person.attr.is_active">Abilita accesso</label>
 	<label index="person.attr.username">Nome utente</label>
 	<label index="person.attr.password">Password</label>
 	<label index="person.attr.password.hasPassword">Compilare questo campo solo per creare una nuova password o per aggiornare quella attuale. Lasciare vuoto per mantenere la password attuale.</label>
