@@ -816,6 +816,8 @@ class TodoyuContactPersonManager {
 
 			if( sizeof($middleMonths) > 0 ) {
 				$middleWhere = 'MONTH(birthday)	IN(' . implode(',', $middleMonths) . ') OR ';
+			} else {
+				$middleWhere = '';
 			}
 
 			$rangeWhere	= '(' . $middleWhere . '
@@ -826,6 +828,9 @@ class TodoyuContactPersonManager {
 
 			// Allowed months
 		$rangeWhere .= ' AND MONTH(birthday)	IN(' . implode(',', $monthsRange) . ')';
+
+			// Minimum 1 year old (say 51 to we definitively don't miss first birthdays =)
+		$minDate	= NOW - TodoyuTime::SECONDS_WEEK * 51;
 
 		$fields	= '	id,
 					email,
@@ -840,9 +845,10 @@ class TodoyuContactPersonManager {
 					MONTH(birthday) > MONTH(FROM_UNIXTIME(' . NOW . ')) 	as beforemonth';
 
 		$table	= self::TABLE;
-		$where	= '		deleted						= 0
-					AND UNIX_TIMESTAMP(birthday)	> 0
-					AND	(' . $rangeWhere . ')';
+		$where	= '		deleted						= 0'
+				. ' AND UNIX_TIMESTAMP(birthday)	> 0'
+				. ' AND UNIX_TIMESTAMP(birthday)	< ' . $minDate
+				. '	AND	(' . $rangeWhere . ')';
 		$order	= 'incurrentyear DESC, beforemonth, MONTH(birthday), DAY(birthday)';
 
 		$birthdayPersons	= Todoyu::db()->getArray($fields, $table, $where, '', $order);
