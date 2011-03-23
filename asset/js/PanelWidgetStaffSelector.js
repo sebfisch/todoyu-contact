@@ -106,8 +106,6 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 				this.saveSelection();
 				this.markFirstAsHot();
 			}
-
-			console.log('enter klicked');
 		}
 	},
 
