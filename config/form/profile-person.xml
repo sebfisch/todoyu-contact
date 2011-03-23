@@ -134,22 +134,6 @@
 					</record>
 				</field>
 
-				<field type="databaseRelation" name="company">
-					<label>contact.ext.person.attr.company</label>
-					<addLabel>contact.ext.company.new</addLabel>
-					<record>
-						<form>ext/contact/config/form/person-company.xml</form>
-						<url>
-							<ext>contact</ext>
-							<controller>person</controller>
-						</url>
-						<label type="function">
-							<function>TodoyuContactViewHelper::getCompanyLabel</function>
-							<noLabel>contact.ext.person.attr.company.new</noLabel>
-						</label>
-					</record>
-				</field>
-
 			</elements>
 		</fieldset>
 

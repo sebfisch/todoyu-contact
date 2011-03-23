@@ -30,7 +30,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * Initialisation for action controller
 	 */
 	public function init() {
-		restrict('contact', 'general:area');
+		restrict('contact', 'general:use');
 	}
 
 
@@ -42,9 +42,9 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function editAction(array $params) {
-		restrict('contact', 'person:editAndDelete');
-
 		$idPerson	= intval($params['person']);
+
+		TodoyuContactPersonRights::restrictEdit($idPerson);
 
 		$tabs	= TodoyuContactRenderer::renderTabs('person', true);
 		$content= TodoyuContactRenderer::renderPersonEditForm($idPerson);
@@ -62,7 +62,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 */
 	public function listAction(array $params) {
 		restrict('contact', 'general:area');
-
+		
 		TodoyuContactPreferences::saveActiveTab('person');
 
 		$sword	= trim($params['sword']);
@@ -86,7 +86,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 */
 	public function listingAction(array $params) {
 		restrict('contact', 'general:area');
-
+		
 		$offset	= intval($params['offset']);
 
 		return TodoyuListingRenderer::render('contact', 'person', $offset);
@@ -101,11 +101,15 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function saveAction(array $params) {
-		restrict('contact', 'person:editAndDelete');
-
 		$xmlPath	= 'ext/contact/config/form/person.xml';
 		$data		= $params['person'];
 		$idPerson	= intval($data['id']);
+
+		if( $idPerson === 0 ) {
+			TodoyuContactPersonRights::restrictAdd();
+		} else {
+			TodoyuContactPersonRights::restrictEdit($idPerson);
+		}
 
 		$form 		= TodoyuFormManager::getForm($xmlPath, $idPerson);
 
@@ -138,11 +142,15 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public static function saveWizardAction(array $params) {
-		restrict('contact', 'person:editAndDelete');
-
 		$xmlPath	= 'ext/contact/config/form/person.xml';
 		$data		= $params['person'];
 		$idPerson	= intval($data['id']);
+
+		if( $idPerson === 0 ) {
+			TodoyuContactPersonRights::restrictAdd();
+		} else {
+			TodoyuContactPersonRights::restrictEdit($idPerson);
+		}
 
 		$form 		= TodoyuFormManager::getForm($xmlPath, $idPerson);
 
@@ -180,17 +188,17 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function addSubformAction(array $params) {
-		restrict('contact', 'person:editAndDelete');
-
 		$xmlPath	= 'ext/contact/config/form/person.xml';
 
 		$formName	= $params['form'];
 		$fieldName	= $params['field'];
 
 		$index		= intval($params['index']);
-		$idRecord	= intval($params['record']);
+		$idPerson	= intval($params['record']);
 
-		return TodoyuFormManager::renderSubFormRecord($xmlPath, $fieldName, $formName, $index, $idRecord);
+		TodoyuContactPersonRights::restrictEdit($idPerson);
+
+		return TodoyuFormManager::renderSubFormRecord($xmlPath, $fieldName, $formName, $index, $idPerson);
 	}
 
 
@@ -201,9 +209,9 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @param	Array		$params
 	 */
 	public function removeAction(array $params) {
-		restrict('contact', 'person:editAndDelete');
-
 		$idPerson	= intval($params['person']);
+
+		TodoyuContactPersonRights::restrictDelete($idPerson);
 
 		TodoyuContactPersonManager::deletePerson($idPerson);
 	}
@@ -217,9 +225,9 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function detailAction(array $params) {
-		restrict('contact', 'general:area');
-
 		$idPerson	= intval($params['person']);
+
+		TodoyuContactPersonRights::restrictSee($idPerson);
 
 		$content	= TodoyuContactRenderer::renderPersonDetails($idPerson);
 
@@ -236,13 +244,12 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	/**
 	 * Content for the person-wizard popUp
 	 *
-	 * @todo Move restriction to displayCondition in form
 	 *
 	 * @param	Array	$params
 	 * @return	String
 	 */
 	public function addNewContactWizardAction(array $params) {
-		restrict('contact', 'person:editAndDelete');
+		TodoyuContactPersonRights::restrictAdd();
 
 		$content= TodoyuString::wrapScript('Todoyu.Ext.contact.Person.onEdit(0);');
 		$content.= TodoyuContactRenderer::renderPersonEditFormWizard(0, $params['idField']);
@@ -259,9 +266,11 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function loadimageAction(array $params) {
-		$idImage	= $params['idImage'];
+		$idPerson	= $params['idImage'];
 
-		return TodoyuContactImageManager::getImage($idImage, 'person');
+		TodoyuContactPersonRights::restrictSee($idPerson);
+
+		return TodoyuContactImageManager::getImage($idPerson, 'person');
 	}
 
 
@@ -274,6 +283,8 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	public function renderimageAction(array $params) {
 		$idPerson	= $params['idImage'];
 
+		TodoyuContactPersonRights::restrictSee($idPerson);
+
 		TodoyuContactImageManager::renderImage($idPerson, 'person');
 	}
 
@@ -285,9 +296,11 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @param	$params
 	 */
 	public function removeimageAction(array $params) {
-		$idImage	= $params['idImage'];
+		$idPerson	= $params['idImage'];
 
-		TodoyuContactImageManager::removeImage($idImage, 'person');
+		TodoyuContactPersonRights::restrictEdit($idPerson);
+
+		TodoyuContactImageManager::removeImage($idPerson, 'person');
 	}
 
 }

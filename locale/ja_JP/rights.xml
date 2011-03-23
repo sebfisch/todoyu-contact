@@ -5,11 +5,11 @@
 	<label index="general.area">連絡先エリアを使用</label>
 	<label index="person">個人情報</label>
 	<label index="person.add">個人情報の追加</label>
-	<label index="person.editAndDelete">個人情報の編集と削除</label>
+	<label index="person.editAndDeleteAll">個人情報の編集と削除</label>
 	<label index="person.enableLogin">個人情報のログインアカウントを作成</label>
 	<label index="company">企業情報</label>
 	<label index="company.add">企業情報の追加</label>
-	<label index="company.editAndDelete">企業情報の編集と削除</label>
+	<label index="company.editAndDeleteAll">企業情報の編集と削除</label>
 	<label index="panelwidgets">パネルウィジェット</label>
 	<label index="panelwidgets.staffSelector">スタッフ選択</label>
 </labels>

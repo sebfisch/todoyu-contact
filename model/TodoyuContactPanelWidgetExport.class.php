@@ -71,7 +71,7 @@ class TodoyuContactPanelWidgetExport extends TodoyuPanelWidget {
 	 * @return	Boolean
 	 */
 	public static function isAllowed() {
-		return allowed('contact', 'panelwidgets:contactexport');
+		return allowed('contact', 'panelwidgets:export');
 	}
 
 }

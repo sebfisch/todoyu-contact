@@ -42,9 +42,9 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function editAction(array $params) {
-		restrict('contact', 'person:editAndDelete');
-
 		$idCompany	= intval($params['company']);
+
+		TodoyuContactCompanyRights::restrictEdit($idCompany);
 
 		$tabs	= TodoyuContactRenderer::renderTabs('company', true);
 		$content= TodoyuContactRenderer::renderCompanyEditForm($idCompany);
@@ -101,11 +101,15 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @return	String		Form HTML or company ID
 	 */
 	public function saveAction(array $params) {
-		restrict('contact', 'person:editAndDelete');
-
 		$xmlPath	= 'ext/contact/config/form/company.xml';
 		$data		= $params['company'];
 		$idCompany	= intval($data['id']);
+
+		if( $idCompany === 0 ) {
+			TodoyuContactCompanyRights::restrictAdd();
+		} else {
+			TodoyuContactCompanyRights::restrictEdit($idCompany);
+		}
 
 		$form 		= TodoyuFormManager::getForm($xmlPath, $idCompany);
 
@@ -135,16 +139,16 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function addSubformAction(array $params) {
-		restrict('contact', 'person:editAndDelete');
-
 		$formName	= $params['form'];
 		$fieldName	= $params['field'];
 
 		$index		= intval($params['index']);
-		$idRecord	= intval($params['record']);
+		$idCompany	= intval($params['record']);
 		$xmlPath	= 'ext/contact/config/form/company.xml';
 
-		return TodoyuFormManager::renderSubFormRecord($xmlPath, $fieldName, $formName, $index, $idRecord);
+		TodoyuContactCompanyRights::restrictEdit($idCompany);
+
+		return TodoyuFormManager::renderSubFormRecord($xmlPath, $fieldName, $formName, $index, $idCompany);
 	}
 
 
@@ -155,9 +159,9 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @param	Array		$params
 	 */
 	public function removeAction(array $params) {
-		restrict('contact', 'person:editAndDelete');
-
 		$idCompany	= intval($params['company']);
+
+		TodoyuContactCompanyRights::restrictDelete($idCompany);
 
 		if( TodoyuContactCompanyManager::hasProjects($idCompany) ) {
 			TodoyuHeader::sendTodoyuErrorHeader();
@@ -179,6 +183,9 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 		restrict('contact', 'general:area');
 
 		$idCompany	= intval($params['company']);
+
+		TodoyuContactCompanyRights::restrictSee($idCompany);
+		
 		$type		= 'company';
 
 		$tabs		= TodoyuContactRenderer::renderTabs('company');
@@ -201,6 +208,8 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 		$tmpl		= 'core/view/form/FormElement_Select_Options.tmpl';
 
 		$idCompany	= intval($params['idCompany']);
+
+		TodoyuContactCompanyRights::restrictSee($idCompany);
 
 		$data		= array(
 				'options'	=> TodoyuContactViewHelper::getWorkaddressOptions($idCompany),
@@ -236,13 +245,11 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	/**
 	 * Content for the company-wizard popUp
 	 *
-	 * @todo Move restriction to displayCondition in form
-	 *
 	 * @param	Array	$params
 	 * @return	String
 	 */
 	public function addNewContactWizardAction(array $params) {
-		restrict('contact', 'company:editAndDelete');
+		TodoyuContactCompanyRights::restrictAdd();
 
 		$content = TodoyuString::wrapScript('Todoyu.Ext.contact.Company.onEdit(0);');
 		$content.= TodoyuContactRenderer::renderCompanyEditFormWizard(0, $params['idField']);
@@ -259,11 +266,15 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public static function saveWizardAction(array $params) {
-		restrict('contact', 'company:editAndDelete');
-
 		$xmlPath	= 'ext/contact/config/form/company.xml';
 		$data		= $params['company'];
 		$idCompany	= intval($data['id']);
+
+		if( $idCompany === 0 ) {
+			TodoyuContactCompanyRights::restrictAdd();
+		} else {
+			TodoyuContactCompanyRights::restrictEdit($idCompany);
+		}
 
 		$form 		= TodoyuFormManager::getForm($xmlPath, $idCompany);
 
@@ -301,9 +312,11 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function loadimageAction(array $params) {
-		$idImage	= $params['idImage'];
+		$idCompany	= $params['idImage'];
 
-		return TodoyuContactImageManager::getImage($idImage, 'company');
+		TodoyuContactCompanyRights::restrictSee($idCompany);
+
+		return TodoyuContactImageManager::getImage($idCompany, 'company');
 	}
 
 
@@ -314,9 +327,11 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 */
 	public function renderimageAction(array $params) {
-		$idPerson	= $params['idImage'];
+		$idCompany	= $params['idImage'];
 
-		TodoyuContactImageManager::renderImage($idPerson, 'company');
+		TodoyuContactCompanyRights::restrictSee($idCompany);
+
+		TodoyuContactImageManager::renderImage($idCompany, 'company');
 	}
 
 
@@ -327,9 +342,11 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @param	$params
 	 */
 	public function removeimageAction(array $params) {
-		$idImage	= $params['idImage'];
+		$idCompany	= $params['idImage'];
+		
+		TodoyuContactCompanyRights::restrictSee($idCompany);
 
-		TodoyuContactImageManager::removeImage($idImage, 'company');
+		TodoyuContactImageManager::removeImage($idCompany, 'company');
 	}
 
 }

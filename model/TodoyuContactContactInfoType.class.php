@@ -62,6 +62,18 @@ class TodoyuContactContactInfoType extends TodoyuBaseObject {
 
 
 	/**
+	 * Checks if the contactinfotype is public or not
+	 *
+	 * @return	Boolean
+	 */
+	public function isPublic() {
+		TodoyuDebug::printInFirebug($this->data);
+		return intval($this->data['is_public']) === 1;
+	}
+
+
+
+	/**
 	 * Gets the lable for the formElement databaserelation
 	 *
 	 * @param	TodoyuFormElement_DatabaseRelation	$formElement

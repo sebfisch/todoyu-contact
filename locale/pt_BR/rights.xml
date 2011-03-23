@@ -5,11 +5,11 @@
 	<label index="general.area">Utilizar Área de Contatos</label>
 	<label index="person">Contato</label>
 	<label index="person.add">Adicionar Contatos</label>
-	<label index="person.editAndDelete">Editar e Excluir Contatos</label>
+	<label index="person.editAndDeleteAll">Editar e Excluir Contatos</label>
 	<label index="person.enableLogin">Criar Login para contatos</label>
 	<label index="company">Empresas</label>
 	<label index="company.add">Adicionar Empresas</label>
-	<label index="company.editAndDelete">Editar e Excluir Empresas</label>
+	<label index="company.editAndDeleteAll">Editar e Excluir Empresas</label>
 	<label index="panelwidgets">Painel de widgets</label>
 	<label index="panelwidgets.staffSelector">Seletor de Participantes</label>
 </labels>

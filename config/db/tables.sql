@@ -102,6 +102,7 @@ CREATE TABLE `ext_contact_contactinfotype` (
 	`category` smallint(5) unsigned NOT NULL,
 	`key` varchar(20) NOT NULL,
 	`title` varchar(48) NOT NULL,
+	`is_public` tinyint(1) NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 

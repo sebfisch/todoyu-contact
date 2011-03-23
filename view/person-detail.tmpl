@@ -24,14 +24,16 @@
 			<div class="content overflow">
 				<dl>
 					{foreach $contactinfo numCi ciData}
-						<dt>{labelContactinfotype $ciData.id_contactinfotype}:</dt>
-						<dd>
-							{if $ciData.infotype_category == constant(CONTACT_INFOTYPE_CATEGORY_EMAIL)}
-								<a href="mailto:{$firstname}%20{$lastname}%20%3C{$ciData.info}%3E">{htmlencode wordwrap($ciData.info 30 cut=false)}</a>
-							{else}
-								{htmlencode wordwrap($ciData.info 30 cut=false)}
-							{/if}
-						</dd>
+						{if isContactinfotypeSeeAllowed('person', $id, $ciData.id_contactinfotype)}
+							<dt>{labelContactinfotype $ciData.id_contactinfotype}:</dt>
+							<dd>
+								{if $ciData.infotype_category == constant(CONTACT_INFOTYPE_CATEGORY_EMAIL)}
+									<a href="mailto:{$firstname}%20{$lastname}%20%3C{$ciData.info}%3E">{htmlencode wordwrap($ciData.info 30 cut=false)}</a>
+								{else}
+									{htmlencode wordwrap($ciData.info 30 cut=false)}
+								{/if}
+							</dd>
+						{/if}
 					{/foreach}
 				</dl>
 			</div>
@@ -41,36 +43,38 @@
 		{if $address}
 			<div class="infoBox addressPart">
 			{foreach $address numAddr addressType}
-				<h4>{addressType $addressType.id_addresstype}</h4>
-				<div class="content overflow address">
-					{$addressType.street}<br />
-					{if strlen($addressType.postbox)>0}
-						{Label contact.ext.address.attr.postbox}: {htmlencode wordwrap($addressType.postbox 30 cut=true)}<br />
-					{/if}
-					{$addressType.zip} {$addressType.city}<br />
-					{countryName $addressType.id_country}
-				</div>
+				{if (isAddressTypeSeeAllowed('person', $id, $addressType.id_addresstype))}
+					<h4>{addressType $addressType.id_addresstype}</h4>
+					<div class="content overflow address">
+						{$addressType.street}<br />
+						{if strlen($addressType.postbox)>0}
+							{Label contact.ext.address.attr.postbox}: {htmlencode wordwrap($addressType.postbox 30 cut=true)}<br />
+						{/if}
+						{$addressType.zip} {$addressType.city}<br />
+						{countryName $addressType.id_country}
+					</div>
+				{/if}
 			{/foreach}
 			</div>
 		{/if}
 	
 		{* ------------ Employer companies with assigned job types ------------ *}
 		{foreach $company comp}
-			<div class="infoBox employer">
-				<h4><a href="?ext=contact&controller=company&action=detail&company={$comp.id}">{Label LLL:contact.ext.person.attr.company}: {$comp.title}</a></h4>
-				<div class="content overflow">
-					<dl>
-						<dt>{Label LLL:contact.ext.jobtype}:</dt><dd>{$comp.jobtype.title|default:"-"}</dd>
-						{if $comp.id_workaddress > 0}
-							<dt>{Label LLL:contact.ext.workaddress}:</dt><dd>{$comp.workaddress.street}, {$comp.workaddress.zip} {$comp.workaddress.city}, {countryName $comp.workaddress.id_country}</dd>
-						{/if}
-					</dl>
+			{if isCompanySeeAllowed($comp.id)}
+				<div class="infoBox employer">
+					<h4><a href="?ext=contact&controller=company&action=detail&company={$comp.id}">{Label LLL:contact.ext.person.attr.company}: {$comp.title}</a></h4>
+					<div class="content overflow">
+						<dl>
+							<dt>{Label LLL:contact.ext.jobtype}:</dt><dd>{$comp.jobtype.title|default:"-"}</dd>
+								<dt>{Label LLL:contact.ext.workaddress}:</dt><dd>{$comp.workaddress.street}, {$comp.workaddress.zip} {$comp.workaddress.city}, {countryName $comp.workaddress.id_country}</dd>
+						</dl>
+					</div>
 				</div>
-			</div>
+			{/if}
 		{/foreach}
 	
 		{* ------------ todoyu account ------------ *}
-		{if $is_active}
+		{if $is_active && allowed('contact', 'person:enableLogin')}
 		<div class="infoBox userinformations">
 			<h4>{Label LLL:contact.ext.person.userinformation}</h4>
 			<div class="content overflow">
@@ -103,32 +107,38 @@
 		{/if}
 	
 		{* ------------ Additional infos (birthday, comment) ------------ *}
-		{if $birthday != '0000-00-00'}
-			<div class="infoBox others">
-				<h4>{Label LLL:contact.ext.other}</h4>
-				<div class="content overflow">
-					<dl>
+
+		<div class="infoBox others">
+			<h4>{Label LLL:contact.ext.other}</h4>
+			<div class="content overflow">
+				<dl>
+					{if $birthday != '0000-00-00' && isInternal()}
 						<dt>{Label LLL:contact.ext.person.attr.birthday}:</dt>
 						<dd>{formatSqlDate $birthday}</dd>
-						{if allowed('contact', 'person:seeComment')}
-							<dt>{Label LLL:contact.ext.person.attr.comment}:</dt><dd>{$comment|default:"-"}</dd>
-						{/if}
-					</dl>
-				</div>
+					{/if}
+					{if allowed('contact', 'person:seeComment')}
+						<dt>{Label LLL:contact.ext.person.attr.comment}:</dt><dd>{$comment|default:"-"}</dd>
+					{/if}
+				</dl>
 			</div>
-		{/if}
+		</div>
+
 	
 		{* ------------ Hooked content ------------ *}
 		{$hookedContent}
 	
 		{* ------------ Actions panel (edit, delete, close) ------------ *}
-		{if allowed('contact', 'person:editAndDelete')}
-			<div class="actions">
+
+		<div class="actions">
+			{if isPersonEditAllowed($id)}
 				{Button 'LLL:contact.ext.person.edit' 'Todoyu.Ext.contact.Person.edit($id)' 'buttonPersonEdit' 'person-edit' 'LLL:contact.ext.person.edit'}
+			{/if}
+			{if isPersonDeleteAllowed($id)}
 				{Button 'LLL:contact.ext.person.delete' 'Todoyu.Ext.contact.Person.remove($id)' 'buttonPersonDelete' 'person-delete' 'LLL:contact.ext.person.delete'}
-				{Button 'LLL:contact.ext.person.close' 'Todoyu.Ext.contact.Person.showList(Todoyu.Ext.contact.PanelWidget.ContactSearch.getValue())' 'cancel' 'person-close' 'LLL:contact.ext.person.close'}
-			</div>
-			<div class="clear"></div>
-		{/if}
+			{/if}
+			{Button 'LLL:contact.ext.person.close' 'Todoyu.Ext.contact.Person.showList(Todoyu.Ext.contact.PanelWidget.ContactSearch.getValue())' 'cancel' 'person-close' 'LLL:contact.ext.person.close'}
+		</div>
+		<div class="clear"></div>
+
 	</div>
 </div>

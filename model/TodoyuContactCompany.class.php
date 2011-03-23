@@ -107,6 +107,25 @@ class TodoyuContactCompany extends TodoyuBaseObject {
 
 
 	/**
+	 * Get the ids of all persons which are employees of this company
+	 *
+	 * @return array
+	 */
+	public function getEmployeeIds() {
+		$employeeIDs	= array();
+		
+		$employees		= TodoyuContactCompanyManager::getCompanyPersonRecords($this->getID());
+
+		foreach($employees as $employee) {
+			$employeeIDs[] = $employee['id'];
+		}
+
+		return $employeeIDs;
+	}
+
+
+
+	/**
 	 * Get all company address records
 	 *
 	 * @return	Array

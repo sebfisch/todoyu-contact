@@ -27,6 +27,15 @@
 class TodoyuContactPanelwidgetstaffselectorActionController extends TodoyuActionController {
 
 	/**
+	 * @param	Array	$params
+	 */
+	public function init(array $params) {
+		restrict('contact', 'panelwidgets:staffSelector');
+	}
+
+
+	
+	/**
 	 * Get list of matching persons and groups
 	 *
 	 * @param	Array	$params
@@ -45,6 +54,10 @@ class TodoyuContactPanelwidgetstaffselectorActionController extends TodoyuAction
 	}
 
 
+
+	/**
+	 * @param	Array	$params
+	 */
 	public function saveAction(array $params) {
 		$items	= TodoyuString::trimExplode(',', $params['selection'], true);
 

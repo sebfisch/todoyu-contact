@@ -39,6 +39,94 @@ class TodoyuContactCompanyRights {
 
 
 	/**
+	 * Checks if see given company is allowed for current person
+	 *
+	 * @static
+	 * @param	Integer		$idCompany
+	 * @return	Boolean
+	 */
+	public static function isSeeAllowed($idCompany) {
+		$idCompany	= intval($idCompany);
+
+		if( TodoyuAuth::isAdmin() || allowed('contact', 'company:seeAllCompanies') ) {
+			return true;
+		}
+
+		return in_array($idCompany, self::getCompanyIDsAllowedToBeSeen());
+	}
+
+
+
+	/**
+	 * Checks if edit given company is allowed for current person
+	 *
+	 * @static
+	 * @param	Integer		$idCompany
+	 * @return	Boolean
+	 */
+	public static function isEditAllowed($idCompany) {
+		$idCompany	= intval($idCompany);
+
+		if( ! self::isSeeAllowed($idCompany) ) {
+			return false;
+		}
+
+		if( TodoyuAuth::isAdmin() || allowed('contact', 'company:editAndDeleteAll')) {
+			return true;
+		}
+
+		if( allowed('contact', 'company:editOwn') ) {
+			$person				= TodoyuContactPersonManager::getPerson(personid());
+			$personsCompanies	= $person->getCompanyIDs();
+
+			return in_array($idCompany, $personsCompanies);
+		}
+
+		return false;
+	}
+
+
+
+	/**
+	 * Checks if delete given company is allowed for current person
+	 *
+	 * @static
+	 * @param	Integer		$idCompany
+	 * @return	Boolean
+	 */
+	public static function isDeleteAllowed($idCompany) {
+		$idCompany	= intval($idCompany);
+
+		if(TodoyuAuth::isAdmin() ) {
+			return true;
+		}
+
+		if( ! self::isSeeAllowed($idCompany) ) {
+			return false;
+		}
+
+		return allowed('contact', 'company:editAndDeleteAll');
+	}
+
+
+
+	/**
+	 * Returns all company ids which are allowed to see for the current person
+	 *
+	 * @static
+	 * @return	Array
+	 */
+	public static function getCompanyIDsAllowedToBeSeen() {
+		$fields	= 'id';
+		$table	= TodoyuContactCompanyManager::TABLE;
+		$where	= self::getAllowedToBeSeenCompaniesWhereClause();
+
+		return Todoyu::db()->getColumn($fields, $table, $where, '', '', '', 'id');
+	}
+
+
+
+	/**
 	 * Get WHERE clause for all companies the current user is allowed to see
 	 *
 	 * @return	String
@@ -46,7 +134,7 @@ class TodoyuContactCompanyRights {
 	public static function getAllowedToBeSeenCompaniesWhereClause() {
 		$allowedCompanyIDs	= TodoyuContactCompanyManager::getInternalCompanyIDs();
 
-		if( TodoyuAuth::isAdmin() || allowed('contact', 'company:seeAllCompanies')) {
+		if( TodoyuAuth::isAdmin() || allowed('contact', 'company:seeAllCompanies') ) {
 			return ' 1';
 		}
 
@@ -59,5 +147,59 @@ class TodoyuContactCompanyRights {
 		return ' id IN ( ' . TodoyuArray::intImplode($allowedCompanyIDs, ',') . ')';;
 	}
 
+
+
+	/**
+	 * Restrict access to persons who are allowed to see the given company
+	 *
+	 * @static
+	 * @param	$idCompany
+	 */
+	public static function restrictSee($idCompany) {
+		if( ! self::isSeeAllowed($idCompany) ) {
+			self::deny('company:see');
+		}
+	}
+
+
+	/**
+	 * Restrict access to persons who are allowed to add a new company
+	 *
+	 * @return void
+	 */
+	public static function restrictAdd() {
+		if( ! allowed('contact', 'company:add') ) {
+			self::deny('company:add');
+		}
+	}
+
+	
+
+	/**
+	 * Restrict access to persons who are allowed to edit the given company
+	 *
+	 * @static
+	 * @param	$idCompany
+	 */
+	public static function restrictEdit($idCompany) {
+		if( ! self::isEditAllowed($idCompany) ) {
+			self::deny('company:edit');
+		}
+	}
+
+
+
+	/**
+	 * Restrict access to persons who are allowed to delete the given company
+	 *
+	 * @static
+	 * @param  $idCompany
+	 * @return void
+	 */
+	public static function restrictDelete($idCompany) {
+		if( ! self::isDeleteAllowed($idCompany) ) {
+			self::deny('company:delete');
+		}
+	}
 }
 ?>

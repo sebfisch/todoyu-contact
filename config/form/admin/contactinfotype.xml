@@ -27,6 +27,10 @@
 					<required />
 				</field>
 
+				<field type="checkbox" name="is_public">
+					<label>contact.ext.record.contactinfotype.attr.is_public</label>
+				</field>
+
 			</elements>
 		</fieldset>
 

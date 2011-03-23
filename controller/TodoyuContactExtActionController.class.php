@@ -27,14 +27,21 @@
 class TodoyuContactExtActionController extends TodoyuActionController {
 
 	/**
+	 * Initialisation for action controller
+	 */
+	public function init() {
+		restrict('contact', 'general:area');
+	}
+
+
+
+	/**
 	 * Default action: setup and render contact page view 
 	 * 
 	 * @param	Array	$params
 	 * @return	String
 	 */
 	public function defaultAction(array $params) {
-		restrict('contact', 'general:use');
-
 			// Get record id from param
 		$idRecord		= intval($params['id']);
 		$searchWord		= trim($params['sword']);
@@ -49,6 +56,7 @@ class TodoyuContactExtActionController extends TodoyuActionController {
 		}
 
 		if( $idRecord !== 0 ) {
+			TodoyuContactRights::restrictRecordEdit($type, $idRecord);
 			$content	= TodoyuContactRenderer::renderContactEdit($type, $idRecord);
 		} else {
 			$content	= TodoyuContactRenderer::renderContactList($type, $searchWord);

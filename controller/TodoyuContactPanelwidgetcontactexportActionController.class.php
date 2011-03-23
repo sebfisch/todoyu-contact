@@ -22,6 +22,20 @@
 
 class TodoyuContactPanelwidgetcontactexportActionController extends TodoyuActionController {
 
+	/**
+	 * Initialisation for action controller
+	 */
+	public function init() {
+		TodoyuContactRights::restrictExport();
+	}
+
+
+
+	/**
+	 * Export action for contact
+	 *
+	 * @param	Array		$params
+	 */
 	public function exportAction(array $params) {
 		$searchword	= $params['searchword'];
 		$tab		= $params['tab'];

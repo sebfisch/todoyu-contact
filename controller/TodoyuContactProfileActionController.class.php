@@ -25,6 +25,15 @@
 class TodoyuContactProfileActionController  extends TodoyuActionController {
 
 	/**
+	 * @param	Array	$params
+	 */
+	public function init(array $params) {
+		restrict('contact', 'general:profile');
+	}
+
+
+
+	/**
 	 * Handler for the save profile action
 	 *
 	 * @param	Array	$params
@@ -34,6 +43,8 @@ class TodoyuContactProfileActionController  extends TodoyuActionController {
 		$xmlPath	= 'ext/contact/config/form/profile-person.xml';
 		$data		= $params['person'];
 		$idPerson	= personid();
+
+		TodoyuContactPersonRights::restrictEdit($idPerson);
 
 		$form 		= TodoyuFormManager::getForm($xmlPath, $idPerson);
 

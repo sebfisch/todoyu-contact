@@ -222,7 +222,6 @@ class TodoyuContactRenderer {
 	 * @return	String
 	 */
 	public static function renderPersonEditForm($idPerson) {
-		restrict('contact', 'person:editAndDelete');
 		$idPerson	= intval($idPerson);
 		$xmlPath	= 'ext/contact/config/form/person.xml';
 
@@ -255,8 +254,6 @@ class TodoyuContactRenderer {
 	 * @return	String
 	 */
 	public static function renderPersonEditFormWizard($idPerson, $idTarget) {
-		restrict('contact', 'person:editAndDelete');
-
 		$idPerson	= intval($idPerson);
 		$xmlPath	= 'ext/contact/config/form/person.xml';
 
@@ -292,8 +289,6 @@ class TodoyuContactRenderer {
 	 * @return	String
 	 */
 	public static function renderCompanyEditFormWizard($idCompany, $idTarget) {
-		restrict('contact', 'company:editAndDelete');
-
 		$idCompany	= intval($idCompany);
 		$xmlPath	= 'ext/contact/config/form/company.xml';
 
@@ -328,7 +323,6 @@ class TodoyuContactRenderer {
 	 * @return	String
 	 */
 	public static function renderCompanyEditForm($idCompany) {
-		restrict('contact', 'company:editAndDelete');
 		$idCompany	= intval($idCompany);
 		$xmlPath	= 'ext/contact/config/form/company.xml';
 

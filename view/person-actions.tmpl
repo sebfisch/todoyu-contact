@@ -1,7 +1,7 @@
 <span title="{Label contact.ext.person.details}" class="icon info" onclick="Todoyu.Ext.contact.Person.show({$id})"></span>
-{restrict 'contact' 'person:editAndDelete'}
+{if isPersonEditAllowed($id)}
 	<span title="{Label contact.ext.person.edit}" class="icon edit" onclick="Todoyu.Ext.contact.Person.edit({$id})"></span>
-{/restrict}
-{restrict 'contact' 'person:editAndDelete'}
+{/if}
+{if isPersonDeleteAllowed($id)}
 	<span title="{Label contact.ext.person.delete}" class="icon delete" onclick="Todoyu.Ext.contact.Person.remove({$id})"></span>
-{/restrict}
+{/if}

@@ -180,4 +180,149 @@ function Dwoo_Plugin_companyImage_compile(Dwoo_Compiler $compiler, $idCompany) {
 	return 'TodoyuContactImageManager::getImage(' . $idCompany . ', \'company\')';
 }
 
+
+
+/**
+ * Checks if current person is allowed to edit given company
+ *
+ * @param	Dwoo		$dwoo
+ * @param	Integer		$idCompany
+ * @return	Boolean
+ */
+function Dwoo_Plugin_isCompanyEditAllowed(Dwoo $dwoo, $idCompany) {
+	$idCompany	= intval($idCompany);
+	return TodoyuContactCompanyRights::isEditAllowed($idCompany);
+}
+
+
+
+/**
+ * Checks if current person is allowed to see given company
+ *
+ * @param	Dwoo		$dwoo
+ * @param	Integer		$idCompany
+ * @return	Boolean
+ */
+function Dwoo_Plugin_isCompanySeeAllowed(Dwoo $dwoo, $idCompany) {
+	$idCompany	= intval($idCompany);
+	return TodoyuContactCompanyRights::isSeeAllowed($idCompany );
+}
+
+
+
+/**
+ * Checks if current person is allowed to delete given company
+ *
+ * @param	Dwoo		$dwoo
+ * @param	Integer		$idCompany
+ * @return	Boolean
+ */
+function Dwoo_Plugin_isCompanyDeleteAllowed(Dwoo $dwoo, $idCompany) {
+	$idCompany	= intval($idCompany);
+	return TodoyuContactCompanyRights::isDeleteAllowed($idCompany);
+}
+
+
+
+/**
+ * Checks if current person is allowed to edit given persons
+ *
+ * @param	Dwoo_Compiler	$compiler
+ * @param	Integer			$idCompany
+ * @return	Boolean
+ */
+function Dwoo_Plugin_isPersonEditAllowed(Dwoo $dwoo, $idPerson) {
+	$idPerson	= intval($idPerson);
+	return TodoyuContactPersonRights::isEditAllowed($idPerson);
+}
+
+
+
+/**
+ * Checks if current person is allowed to see given person
+ *
+ * @param	Dwoo		$dwoo
+ * @param	Integer		$idCompany
+ * @return	Boolean
+ */
+function Dwoo_Plugin_isPersonSeeAllowed(Dwoo $dwoo, $idPerson) {
+	$idPerson	= intval($idPerson);
+	return TodoyuContactPersonRights::isSeeAllowed($idPerson);
+}
+
+
+
+/**
+ * Checks if current person is allowed to delete given person
+ *
+ * @param	Dwoo		$dwoo
+ * @param	Integer		$idCompany
+ * @return	Boolean
+ */
+function Dwoo_Plugin_isPersonDeleteAllowed(Dwoo $dwoo, $idPerson) {
+	$idPerson	= intval($idPerson);
+	return TodoyuContactPersonRights::isDeleteAllowed($idPerson);
+}
+
+
+
+/**
+ * Checks if current Person is internal
+ *
+ * @param	Dwoo		$dwoo
+ * @param	Integer		$idPerson
+ * @return	Boolean
+ */
+function Dwoo_Plugin_isInternal(Dwoo $dwoo) {
+	return TodoyuContactPersonManager::getPerson(personid())->isInternal();
+}
+
+
+
+/**
+ * Checks if current person has access to the addresstype of current record (company / person)
+ *
+ * @param	Dwoo		$dwoo
+ * @param	String		$type
+ * @param	Integer		$idRecord
+ * @param	Integer		$idAddressType
+ * @return	Boolean
+ */
+function Dwoo_Plugin_isAddressTypeSeeAllowed(Dwoo $dwoo, $type, $idRecord, $idAddressType) {
+	$idRecord		= intval($idRecord);
+	$idAddressType	= intval($idAddressType);
+	
+	if($type === 'person') {
+		return TodoyuContactRights::isAddresstypeOfPersonSeeAllowed($idRecord, $idAddressType);
+	} else if($type === 'company') {
+		return TodoyuContactRights::isAddresstypeOfCompanySeeAllowed($idRecord, $idAddressType);
+	}
+
+	return false;
+}
+
+
+
+/**
+ * Checks if current person has access to the contactinfotype of current record (company / person)
+ *
+ * @param	Dwoo		$dwoo
+ * @param	String		$type
+ * @param	Integer		$idRecord
+ * @param	Integer		$idAddressType
+ * @return	Boolean
+ */
+function Dwoo_Plugin_isContactinfotypeSeeAllowed(Dwoo $dwoo, $type, $idRecord, $idAddressType) {
+	$idRecord		= intval($idRecord);
+	$idAddressType	= intval($idAddressType);
+
+	if($type === 'person') {
+		return TodoyuContactRights::isContactinfotypeOfPersonSeeAllowed($idRecord, $idAddressType);
+	} else if($type === 'company') {
+		return TodoyuContactRights::isContactinfotypeOfCompanySeeAllowed($idRecord, $idAddressType);
+	}
+
+	return false;
+}
+
 ?>

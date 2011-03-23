@@ -27,19 +27,30 @@
 class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 
 	/**
+	 * Initialisation for action controller
+	 */
+	public function init() {
+		restrict('contact', 'general:use');
+	}
+
+	/**
 	 * Get additional sub form
-	 * 
+	 *
 	 * @param	Array	$params
 	 * @return	String
 	 */
 	public function addSubformAction(array $params) {
-		restrict('contact', 'general:use');
-
 		$formName	= $params['form'];
 		$fieldName	= $params['field'];
 		$xmlPath	= TodoyuContactManager::getContactTypeFromXml($formName);
 		$index		= intval($params['index']);
 		$idRecord	= intval($params['record']);
+
+		if( $idRecord === 0 ) {
+			TodoyuContactRights::restrictRecordAdd($formName);
+		} else {
+			TodoyuContactRights::restrictRecordEdit($formName, $idRecord);
+		}
 
 			// Construct form object
 		$form 	= TodoyuFormManager::getForm($xmlPath, $index);
@@ -71,6 +82,12 @@ class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 		$idRecord	= intval($params['idRecord']);
 		$recordType	= $params['recordType'];
 
+		if($idRecord > 0) {
+			TodoyuContactRights::restrictRecordEdit($recordType, $idRecord);
+		} else {
+			TodoyuContactRights::restrictRecordAdd($recordType);
+		}
+
 		return TodoyuContactRenderer::renderContactImageUploadForm($idRecord, $recordType);
 	}
 
@@ -88,6 +105,12 @@ class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 		$data		= $params['uploadcontactimage'];
 		$idContact	= intval($data['idContact']);
 		$recordType	= $data['recordType'];
+
+		if($idContact > 0) {
+			TodoyuContactRights::restrictRecordEdit($recordType, $idContact);
+		} else {
+			TodoyuContactRights::restrictRecordAdd($recordType);
+		}
 
 			// check against the file mime type
 		if( $error === UPLOAD_ERR_OK && !TodoyuContactImageManager::checkFileType($file['type']) ) {
@@ -111,14 +134,20 @@ class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 
 	/**
 	 * Removes Image form file-system
-	 *
+	 * 
 	 * @param	Array	$params
 	 */
 	public function removeimageAction(array $params) {
-		$idImage	= $params['idRecord'];
+		$idRecord	= $params['idRecord'];
 		$recordType	= $params['recordType'];
 
-		TodoyuContactImageManager::removeImage($idImage, $recordType);
+		if($idRecord > 0) {
+			TodoyuContactRights::restrictRecordEdit($recordType, $idRecord);
+		} else {
+			TodoyuContactRights::restrictRecordAdd($recordType);
+		}
+
+		TodoyuContactImageManager::removeImage($idRecord, $recordType);
 	}
 
 }

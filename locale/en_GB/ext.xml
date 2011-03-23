@@ -108,6 +108,7 @@
 	<label index="record.contactinfotype">Contact Information Type</label>
 	<label index="record.contactinfotype.attr.category">Category</label>
 	<label index="record.contactinfotype.attr.key">Key</label>
+	<label index="record.contactinfotype.attr.is_public">Is public</label>
 	<label index="record.contactinfotype.email">Email Address</label>
 	<label index="record.contactinfotype.phone">Phone number (or Fax, Mobile)</label>
 	<label index="record.contactinfotype.other">Other</label>

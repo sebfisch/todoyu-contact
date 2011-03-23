@@ -63,6 +63,65 @@ class TodoyuContactPersonRights {
 
 
 	/**
+	 * Checks if edit of given person is allowed to current user
+	 *
+	 * @static
+	 * @param	Integer	$idPerson
+	 * @return	Boolean
+	 */
+	public static function isEditAllowed($idPerson) {
+		$idPerson	= intval($idPerson);
+
+		// cannot edit person if see of the person is not allowed
+		if( ! self::isSeeAllowed($idPerson) ) {
+			return false;
+		}
+
+		// can edit if is admin or is allowed to edit all person or if its the person itself
+		if( TodoyuAuth::isAdmin() || allowed('contact', 'person:editAndDeleteAll') || personid() == $idPerson ) {
+			return true;
+		}
+
+		return false;
+	}
+
+
+
+	/**
+	 * Checks if deleting given person is allowed to user
+	 *
+	 * @static
+	 * @param	Integer	$idPerson
+	 * @return	Boolean
+	 */
+	public static function isDeleteAllowed($idPerson) {
+		$idPerson	= intval($idPerson);
+
+		if( ! self::isSeeAllowed($idPerson) ) {
+			return false;
+		}
+
+		return TodoyuAuth::isAdmin() || allowed('contact', 'person:editAndDeleteAll');
+	}
+
+
+
+	/**
+	 * Get IDs of all persons the current (non-admin) user is allowed to see
+	 *
+	 * @return Array
+	 */
+	public static function getPersonIDsAllowedToBeSeen($withAccount = false) {
+		$fields	= 'id';
+		$table	= TodoyuContactPersonManager::TABLE;
+		$where	= self::getAllowedToBeSeenPersonsWhereClause($withAccount);
+
+		return Todoyu::db()->getColumn($fields, $table, $where, '', '', '', 'id');
+	}
+
+
+
+	/**
 	 * Get WHERE clause for all persons the current user is allowed to see
 	 *
 	 * @param	Boolean		$withAccount	only persons with a todoyu account
@@ -83,9 +142,15 @@ class TodoyuContactPersonRights {
 		$projectIDs	= TodoyuProjectProjectManager::getAvailableProjectsForPerson();
 			// Get all persons marked "visible for externals" in any of their projects
 		$projectsPersonsIDs	= TodoyuProjectProjectManager::getProjectsPersonsIDs($projectIDs, $withAccount);
+			// Get all persons which are employees of current persons employer
+		$companies	= TodoyuContactPersonManager::getPersonCompanyRecords(personid());
+
+		foreach($companies as $company) {
+			$companyPersonIDs	= TodoyuContactCompanyManager::getCompany($company['id'])->getEmployeeIds();
+		}
 
 		$personIDs	[]= personid();
-		$allowedPersonsIDs	= array_unique(array_merge($personIDs, $projectsPersonsIDs));
+		$allowedPersonsIDs	= array_unique(array_merge(array_merge($personIDs, $projectsPersonsIDs), $companyPersonIDs));
 
 		return ' id IN ( ' . TodoyuArray::intImplode($allowedPersonsIDs, ',') . ')';
 	}
@@ -93,30 +158,56 @@ class TodoyuContactPersonRights {
 
 
 	/**
-	 * Get IDs of all persons the current (non-admin) user is allowed to see
+	 * Restrict access to persons who are allowed to see the given person
 	 *
-	 * @return Array
+	 * @static
+	 * @param	Integer		$idPerson
 	 */
-	public static function getPersonIDsAllowedToBeSeen($withAccount = false) {
-		$fields	= 'id';
-		$table	= TodoyuContactPersonManager::TABLE;
-		$where	= self::getAllowedToBeSeenPersonsWhereClause($withAccount);
+	public static function restrictSee($idPerson) {
+		if( ! self::isSeeAllowed($idPerson) ) {
+			self::deny('person:see');
+		}
+	}
 
-		return Todoyu::db()->getColumn($fields, $table, $where, '', '', '', 'id');
+
+	
+	/**
+	 * Restrict access to persons who are allowed to add a new person
+	 *
+	 * @static
+	 */
+	public static function restrictAdd() {
+		if( ! allowed('contact', 'person:add') ) {
+			self::deny('person:add');
+		}
 	}
 
 
 
-//	/**
-//	 * Restrict access to persons who are allowed to see the given person
-//	 *
-//	 * @param	Integer		$idPerson
-//	 */
-//	public static function restrictSee($idPerson) {
-//		if( ! self::isSeeAllowed($idPerson) ) {
-//			self::deny('person:see');
-//		}
-//	}
+	/**
+	 * Restrict access to persons who are allowed to edit given person
+	 *
+	 * @static
+	 * @param	Integer	$idPerson
+	 */
+	public static function restrictEdit($idPerson) {
+		if( ! self::isEditAllowed($idPerson) ) {
+			self::deny('person:edit');
+		}
+	}
 
+
+
+	/**
+	 * Restrict access to persons who are allowed to delete given person
+	 *
+	 * @static
+	 * @param	Integer	$idPerson
+	 */
+	public static function restrictDelete($idPerson) {
+		if( ! self::isDeleteAllowed($idPerson) ) {
+			self::deny('person:delete');
+		}
+	}
 }
 ?>

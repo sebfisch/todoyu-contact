@@ -203,9 +203,6 @@
 
 						<field type="databaseRelation" name="role">
 							<label>core.global.roles</label>
-							<restrict>
-								<allow ext="contact" right="person:setRole" />
-							</restrict>
 							<addLabel>core.global.role.new</addLabel>
 							<record>
 								<form>ext/contact/config/form/person-role.xml</form>
