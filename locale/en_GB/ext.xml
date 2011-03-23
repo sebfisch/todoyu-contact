@@ -22,6 +22,7 @@
 	<label index="person.create">Add New Person</label>
 	<label index="person.edit">Edit Person</label>
 	<label index="person.delete">Delete Person</label>
+	<label index="person.delete.ok">Person was successfully deleted</label>
 	<label index="person.delete.confirm">Are you sure you want to delete?</label>
 	<label index="person.details">Show Person Details</label>
 	<label index="person.close">Close view</label>
@@ -53,6 +54,7 @@
 	<label index="company.edit">Edit Company</label>
 	<label index="company.delete">Delete Company</label>
 	<label index="company.delete.confirm">Do you really want to remove this company record?</label>
+	<label index="company.delete.ok">Company was successfully deleted deleted</label>
 	<label index="company.delete.hasProjects">Can't remove a company record with projects attached</label>
 	<label index="company.details">Show Company Details</label>
 	<label index="company.close">Close view</label>

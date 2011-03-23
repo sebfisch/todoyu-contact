@@ -108,8 +108,12 @@ Todoyu.Ext.contact.Company =  {
 	 * @param	{Ajax.Response}	response
 	 */
 	onRemoved: function(response) {
-		if( ! response.hasTodoyuError() ) {
-			this.showList(this.ext.PanelWidget.ContactSearch.getValue());
+		if( response.hasTodoyuError() ) {
+			var msg	= response.getTodoyuHeader('errormessage');
+			Todoyu.notifyError(msg);
+		} else {
+			Todoyu.notifySuccess('[LLL:contact.ext.company.delete.ok]');
+			this.showList();
 		}
 	},
 
@@ -123,11 +127,11 @@ Todoyu.Ext.contact.Company =  {
 	 */
 	save: function(form) {
 		$(form).request ({
-				parameters: {
-					action:	'save'
-				},
-				onComplete: this.onSaved.bind(this)
-			});
+			parameters: {
+				action:	'save'
+			},
+			onComplete: this.onSaved.bind(this)
+		});
 
 		return false;
 	},
@@ -164,7 +168,7 @@ Todoyu.Ext.contact.Company =  {
 	 */
 	closeForm: function(form) {
 		this.removeUnusedImages(form);
-		this.showList(this.ext.PanelWidget.ContactSearch.getValue());
+		this.showList();
 	},
 
 
@@ -176,6 +180,10 @@ Todoyu.Ext.contact.Company =  {
 	 * @param	{String}		sword		(search word)
 	 */
 	showList: function(sword) {
+		if( sword === undefined ) {
+			sword = this.ext.PanelWidget.ContactSearch.getValue();
+		}
+
 		var url = Todoyu.getUrl('contact', 'company');
 		var options = {
 			parameters: {

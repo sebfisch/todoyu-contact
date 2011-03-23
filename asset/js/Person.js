@@ -140,7 +140,9 @@ Todoyu.Ext.contact.Person =  {
 	 * @param	{Ajax.Response}		response
 	 */
 	onRemoved: function(idPerson, response) {
-		this.showList(this.ext.PanelWidget.ContactSearch.getValue());
+		Todoyu.notifySuccess('[LLL:contact.ext.person.delete.ok]');
+
+		this.showList();
 	},
 
 
@@ -262,7 +264,7 @@ Todoyu.Ext.contact.Person =  {
 		} else {
 			Todoyu.notifySuccess('[LLL:contact.ext.person.saved]');
 
-			this.showList(this.ext.PanelWidget.ContactSearch.getValue());
+			this.showList();
 		}
 	},
 
@@ -274,7 +276,7 @@ Todoyu.Ext.contact.Person =  {
 	 */
 	closeForm: function(form) {
 		this.removeUnusedImages(form);
-		this.showList(this.ext.PanelWidget.ContactSearch.getValue());
+		this.showList();
 	},
 
 
@@ -286,6 +288,10 @@ Todoyu.Ext.contact.Person =  {
 	 * @param	{String}		sword		(search word)
 	 */
 	showList: function(sword) {
+		if( sword === undefined ) {
+			sword = this.ext.PanelWidget.ContactSearch.getValue();
+		}
+
 		var url = Todoyu.getUrl('contact', 'person');
 		var options = {
 			parameters: {
