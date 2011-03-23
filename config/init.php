@@ -112,43 +112,43 @@ TodoyuFormHook::registerBuildForm('ext/contact/config/form/address.xml', 'Todoyu
    --------------------------------------- */
 	// Person
 Todoyu::$CONFIG['EXT']['contact']['listing']['person'] = array(
-'name'		=> 'person',
-'update'	=> 'contact/person/listing',
-'dataFunc'	=> 'TodoyuContactPersonSearch::getPersonListingData',
-'size'		=> Todoyu::$CONFIG['LIST']['size'],
-'columns'	=> array(
-	'icon'		=> '',
-	'lastname'	=> 'LLL:contact.ext.person.attr.lastname',
-	'firstname'	=> 'LLL:contact.ext.person.attr.firstname',
-	'email'		=> 'LLL:contact.ext.person.attr.email',
-	'company'	=> 'LLL:contact.ext.company',
-	'actions'	=> '',
-),
-'truncate'	=> array(
-	'lastname'	=> 17,
-	'firstname'	=> 17,
-	'email'		=> 16,
-	'company'	=> 22
-)
+	'name'		=> 'person',
+	'update'	=> 'contact/person/listing',
+	'dataFunc'	=> 'TodoyuContactPersonSearch::getPersonListingData',
+	'size'		=> Todoyu::$CONFIG['LIST']['size'],
+	'columns'	=> array(
+		'icon'		=> '',
+		'lastname'	=> 'LLL:contact.ext.person.attr.lastname',
+		'firstname'	=> 'LLL:contact.ext.person.attr.firstname',
+		'email'		=> 'LLL:contact.ext.person.attr.email',
+		'company'	=> 'LLL:contact.ext.company',
+		'actions'	=> '',
+	),
+	'truncate'	=> array(
+		'lastname'	=> 18,
+		'firstname'	=> 18,
+		'email'		=> 20,
+		'company'	=> 25
+	)
 );
 
 	// Company
 Todoyu::$CONFIG['EXT']['contact']['listing']['company'] = array(
-'name'		=> 'company',
-'update'	=> 'contact/company/listing',
-'dataFunc'	=> 'TodoyuContactCompanySearch::getCompanyListingData',
-'size'		=> Todoyu::$CONFIG['LIST']['size'],
-'columns'	=> array(
-	'icon'		=> '',
-	'title'		=> 'LLL:contact.ext.company.attr.title',
-//	'persons'	=> 'LLL:contact.ext.company.employees',
-	'address'	=> 'LLL:contact.ext.address',
-	'actions'	=> ''
-),
-'truncate'	=> array(
-	'title'		=> 30,
-	'address'	=> 45
-)
+	'name'		=> 'company',
+	'update'	=> 'contact/company/listing',
+	'dataFunc'	=> 'TodoyuContactCompanySearch::getCompanyListingData',
+	'size'		=> Todoyu::$CONFIG['LIST']['size'],
+	'columns'	=> array(
+		'icon'		=> '',
+		'title'		=> 'LLL:contact.ext.company.attr.title',
+	//	'persons'	=> 'LLL:contact.ext.company.employees',
+		'address'	=> 'LLL:contact.ext.address',
+		'actions'	=> ''
+	),
+	'truncate'	=> array(
+		'title'		=> 45,
+		'address'	=> 50
+	)
 );
 
 
