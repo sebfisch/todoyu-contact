@@ -37,7 +37,7 @@ Todoyu.Ext.contact.Upload = {
 
 		this.addUploadForm(idRecord, recordType);
 
-		$$('button.buttonUploadContactImage')[0].hide();
+		$$('button.uploadContactImage')[0].hide();
 	},
 
 
@@ -49,7 +49,7 @@ Todoyu.Ext.contact.Upload = {
 		if( Object.isElement( $('contactimage-uploadform') ) ) {
 			$('contactimage-uploadform').remove();
 		}
-		$$('button.buttonUploadContactImage').first().show();
+		$$('button.uploadContactImage').first().show();
 	},
 
 
@@ -69,7 +69,7 @@ Todoyu.Ext.contact.Upload = {
 				'recordType':	recordType
 			}
 		};
-		var target	= $$('button.buttonUploadContactImage')[0].id;
+		var target	= $$('button.uploadContactImage')[0].id;
 		Todoyu.Ui.append(target, url, options);
 	},
 
