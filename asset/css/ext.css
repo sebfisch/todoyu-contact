@@ -289,6 +289,14 @@ div.visitingCardContent table tr td.label {
 	text-decoration:underline !important;
 }
 
+button.uploadContactImage .icon {
+	background:url(../img/icons.png) no-repeat 0 -448px;
+}
+button.removeContactImage .icon {
+	background:url(../img/icons.png) no-repeat 0 -478px;
+}
+
+
 /* -------------------
 	Person Profile
    ------------------- */
