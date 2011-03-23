@@ -829,7 +829,7 @@ class TodoyuContactPersonManager {
 			// Allowed months
 		$rangeWhere .= ' AND MONTH(birthday)	IN(' . implode(',', $monthsRange) . ')';
 
-			// Minimum 1 year old (say 51 to we definitively don't miss first birthdays =)
+			// Minimum 1 year old (say 51 so we definitively don't miss first birthdays =)
 		$minDate	= NOW - TodoyuTime::SECONDS_WEEK * 51;
 
 		$fields	= '	id,

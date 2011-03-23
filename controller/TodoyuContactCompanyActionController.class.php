@@ -67,7 +67,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 		$sword	= trim($params['sword']);
 
-			// Save searchword
+			// Save search-word
 		TodoyuContactPreferences::saveSearchWord($sword);
 
 		$tabs	= TodoyuContactRenderer::renderTabs('company');
@@ -130,6 +130,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 	/**
 	 * Add a sub form record to company form
+	 *
 	 * @param	Array		$params
 	 * @return	String
 	 */
@@ -268,7 +269,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 		$idTarget = $params['idTarget'];
 
-		// Set form data
+			// Set form data
 		$form->setFormData($data);
 
 			// Validate, render
@@ -330,6 +331,6 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 		TodoyuContactImageManager::removeImage($idImage, 'company');
 	}
-}
 
+}
 ?>
