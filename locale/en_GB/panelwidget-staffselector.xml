@@ -2,5 +2,5 @@
 <labels>
 	<label index="title">Staff</label>
 	<label index="selection">Active selection</label>
-	<label index="selection.empty">Nothing selected. Click on the items from list above</label>
+	<label index="selection.empty">Nothing selected. Use search to add new persons and groups</label>
 </labels>

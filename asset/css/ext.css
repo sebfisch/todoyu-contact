@@ -285,6 +285,10 @@ div.visitingCardContent table tr td.label {
 	float: right;
 }
 
+#contact-details .content a {
+	text-decoration:underline !important;
+}
+
 /* -------------------
 	Person Profile
    ------------------- */
