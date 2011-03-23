@@ -9,7 +9,7 @@
 	<label index="person.seeAllPersons">See All Persons</label>
 	<label index="person.add">Add Persons</label>
 	<label index="person.editAndDeleteAll">Edit and delete all persons</label>
-	<label index="person.enableLogin">Create login account for persons</label>
+	<label index="person.enableLogin">Create login account</label>
 	<label index="person.seeComment">See person comments</label>
 	<label index="person.editComment">Edit person comments</label>
 	<label index="company">Companies</label>
