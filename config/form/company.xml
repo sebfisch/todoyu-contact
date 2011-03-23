@@ -100,12 +100,12 @@
 				</field>
 				<field type="button" name="upload">
 					<text>LLL:contact.ext.company.attr.image.upload</text>
-					<class>buttonUploadContactImage</class>
+					<class>uploadContactImage</class>
 					<onclick>Todoyu.Ext.contact.Upload.showUploadForm(this.form, 'company')</onclick>
 				</field>
 				<field type="button" name="remove">
 					<text>LLL:contact.ext.contactimage.upload.remove</text>
-					<class>buttonRemoveContactImage</class>
+					<class>removeContactImage</class>
 					<onclick>Todoyu.Ext.contact.Upload.removeImage(this.form, 'company')</onclick>
 				</field>
 			</elements>
