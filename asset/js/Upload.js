@@ -63,8 +63,8 @@ Todoyu.Ext.contact.Upload = {
 	addUploadForm: function(idRecord, recordType) {
 		var url		= Todoyu.getUrl('contact', 'formhandling');
 		var options	= {
-			'parameters': {
-				'action':		'contactimageuploadform',
+			parameters: {
+				action:		'contactimageuploadform',
 				'idRecord':		idRecord,
 				'recordType':	recordType
 			}
@@ -123,8 +123,8 @@ Todoyu.Ext.contact.Upload = {
 	refreshPreviewImage: function(form, idImage, recordType) {
 		var url		= Todoyu.getUrl('contact', recordType);
 		var options	= {
-			'parameters': {
-				'action':		'loadimage',
+			parameters: {
+				action:		'loadimage',
 				'idImage':		idImage
 			}
 		};
@@ -189,12 +189,12 @@ Todoyu.Ext.contact.Upload = {
 		var idImage = this.getImageId(form, recordType);
 
 		var options = {
-			'parameters': {
-				'action':		'removeimage',
+			parameters: {
+				action:		'removeimage',
 				'idRecord':		idImage,
 				'recordType':	recordType
 			},
-			'onComplete': this.refreshPreviewImage.bind(this, form, idImage, recordType)
+			onComplete: this.refreshPreviewImage.bind(this, form, idImage, recordType)
 		};
 
 		Todoyu.send(url, options);

@@ -53,11 +53,11 @@ Todoyu.Ext.contact.Person =  {
 	edit: function(idPerson) {
 		var url = Todoyu.getUrl('contact', 'person');
 		var options = {
-			'parameters': {
-				'action':	'edit',
+			parameters: {
+				action:	'edit',
 				'person':	idPerson
 			},
-			'onComplete': this.onEdit.bind(this, idPerson)
+			onComplete: this.onEdit.bind(this, idPerson)
 		};
 
 		this.ext.updateContent(url, options);
@@ -119,11 +119,11 @@ Todoyu.Ext.contact.Person =  {
 		if( confirm('[LLL:contact.ext.person.delete.confirm]') ) {
 			var url = Todoyu.getUrl('contact', 'person');
 			var options = {
-				'parameters': {
-					'action':	'remove',
+				parameters: {
+					action:	'remove',
 					'person':	idPerson
 				},
-				'onComplete': this.onRemoved.bind(this, idPerson)
+				onComplete: this.onRemoved.bind(this, idPerson)
 			};
 
 			Todoyu.send(url, options);
@@ -198,11 +198,11 @@ Todoyu.Ext.contact.Person =  {
 		if( Todoyu.exists(idAddressList) ) {
 			var url = Todoyu.getUrl('contact', 'company');
 			var options = {
-				'parameters': {
-					'action':		'getCompanyAddressOptions',
+				parameters: {
+					action:		'getCompanyAddressOptions',
 					'idCompany':	selectedValue
 				},
-				'onComplete': this.onUpdateCompanyAddressRecords.bind(this, $(idAddressList))
+				onComplete: this.onUpdateCompanyAddressRecords.bind(this, $(idAddressList))
 			};
 
 			Todoyu.Ui.update(idAddressList, url, options);
@@ -236,10 +236,10 @@ Todoyu.Ext.contact.Person =  {
 	 */
 	save: function(form) {
 		$(form).request({
-			'parameters': {
-				'action':	'save'
+			parameters: {
+				action:	'save'
 			},
-			'onComplete': this.onSaved.bind(this)
+			onComplete: this.onSaved.bind(this)
 		});
 
 		return false;
@@ -288,8 +288,8 @@ Todoyu.Ext.contact.Person =  {
 	showList: function(sword) {
 		var url = Todoyu.getUrl('contact', 'person');
 		var options = {
-			'parameters': {
-				'action':	'list',
+			parameters: {
+				action:	'list',
 				'sword':	sword
 			}
 		};
@@ -308,8 +308,8 @@ Todoyu.Ext.contact.Person =  {
 	show: function(idPerson) {
 		var url		= Todoyu.getUrl('contact', 'person');
 		var options	= {
-			'parameters': {
-				'action':	'detail',
+			parameters: {
+				action:	'detail',
 				'person':	idPerson
 			}
 		};
@@ -329,11 +329,11 @@ Todoyu.Ext.contact.Person =  {
 	 */
 	saveWizard: function(form, target) {
 		$(form).request ({
-			'parameters': {
-				'action':	'saveWizard',
+			parameters: {
+				action:	'saveWizard',
 				'idTarget': target
 			},
-			'onComplete': this.onSavedWizard.bind( this, target)
+			onComplete: this.onSavedWizard.bind( this, target)
 		});
 
 		return false;
@@ -392,8 +392,8 @@ Todoyu.Ext.contact.Person =  {
 				var url		= Todoyu.getUrl('contact', 'person');
 
 				var options = {
-					'parameters': {
-						'action':	'removeimage',
+					parameters: {
+						action:	'removeimage',
 						'idImage':	idImage
 					}
 				};

@@ -53,11 +53,11 @@ Todoyu.Ext.contact.Company =  {
 	edit: function(idCompany) {
 		var url = Todoyu.getUrl('contact', 'company');
 		var options = {
-			'parameters': {
+			parameters: {
 				'company':	idCompany,
-				'action':	'edit'
+				action:	'edit'
 			},
-			'onComplete': this.onEdit.bind(this, idCompany)
+			onComplete: this.onEdit.bind(this, idCompany)
 		};
 
 		this.ext.updateContent(url, options);
@@ -88,11 +88,11 @@ Todoyu.Ext.contact.Company =  {
 		if( confirm('[LLL:contact.ext.company.delete.confirm]') ) {
 			var url = Todoyu.getUrl('contact', 'company');
 			var options = {
-				'parameters': {
-					'action':	'remove',
+				parameters: {
+					action:	'remove',
 					'company':	idCompany
 				},
-				'onComplete': this.onRemoved.bind(this)
+				onComplete: this.onRemoved.bind(this)
 			};
 
 			Todoyu.send(url, options);
@@ -123,10 +123,10 @@ Todoyu.Ext.contact.Company =  {
 	 */
 	save: function(form) {
 		$(form).request ({
-				'parameters': {
-					'action':	'save'
+				parameters: {
+					action:	'save'
 				},
-				'onComplete': this.onSaved.bind(this)
+				onComplete: this.onSaved.bind(this)
 			});
 
 		return false;
@@ -178,8 +178,8 @@ Todoyu.Ext.contact.Company =  {
 	showList: function(sword) {
 		var url = Todoyu.getUrl('contact', 'company');
 		var options = {
-			'parameters': {
-				'action':	'list',
+			parameters: {
+				action:	'list',
 				'sword':	sword
 			}
 		};
@@ -198,8 +198,8 @@ Todoyu.Ext.contact.Company =  {
 	show: function(idCompany) {
 		var url		= Todoyu.getUrl('contact', 'company');
 		var options	= {
-			'parameters': {
-				'action':	'detail',
+			parameters: {
+				action:	'detail',
 				'company':	idCompany
 			}
 		};
@@ -219,11 +219,11 @@ Todoyu.Ext.contact.Company =  {
 	 */
 	saveWizard: function(form, target) {
 		$(form).request ({
-			'parameters': {
-				'action':	'saveWizard',
+			parameters: {
+				action:	'saveWizard',
 				'idTarget': target
 			},
-			'onComplete': this.onSavedWizard.bind( this, target)
+			onComplete: this.onSavedWizard.bind( this, target)
 		});
 
 		return false;
@@ -284,8 +284,8 @@ Todoyu.Ext.contact.Company =  {
 				var url		= Todoyu.getUrl('contact', 'company');
 
 				var options = {
-					'parameters': {
-						'action':	'removeimage',
+					parameters: {
+						action:	'removeimage',
 						'idImage':	idImage
 					}
 				};

@@ -44,9 +44,9 @@ Todoyu.Ext.contact.QuickCreateCompany = {
 	save: function(form) {
 		$(form).request ({
 				'parameters':	{
-					'action':	'save'
+					action:	'save'
 				},
-				'onComplete':	this.onSaved.bind(this)
+				onComplete:	this.onSaved.bind(this)
 			});
 
 		return false;

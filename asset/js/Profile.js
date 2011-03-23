@@ -52,10 +52,10 @@ Todoyu.Ext.contact.Profile = {
 	 */
 	save: function(form) {
 		$(form).request({
-			'parameters': {
-				'action':	'save'
+			parameters: {
+				action:	'save'
 			},
-			'onComplete': this.onSaved.bind(this)
+			onComplete: this.onSaved.bind(this)
 		});
 
 		return false;

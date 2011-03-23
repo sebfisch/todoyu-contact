@@ -45,11 +45,11 @@ Todoyu.Ext.contact.Address = {
 		if( $(idTarget) ) {
 			var url = Todoyu.getUrl('contact', 'company');
 			var options = {
-					'parameters': {
-						'action':		'getRegionOptions',
+					parameters: {
+						action:		'getRegionOptions',
 						'idCountry':	selectedValue
 					},
-					'onComplete': this.onUpdateCompanyAddressRecords.bind(this, idTarget)
+					onComplete: this.onUpdateCompanyAddressRecords.bind(this, idTarget)
 			};
 
 			Todoyu.Ui.update(idTarget, url, options);
