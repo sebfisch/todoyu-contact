@@ -36,17 +36,23 @@ class TodoyuContactExtActionController extends TodoyuActionController {
 
 
 	/**
-	 * Default action: setup and render contact page view 
-	 * 
+	 * Default action: setup and render contact page view
+	 *
 	 * @param	Array	$params
 	 * @return	String
 	 */
 	public function defaultAction(array $params) {
 			// Get record id from param
-		$idRecord		= intval($params['id']);
-		$searchWord		= trim($params['sword']);
+		$idRecord	= intval($params['id']);
+		$type		= isset($params['tab']) ? $params['tab'] : $params['type'];
 
-		$type	= isset($params['tab']) ? $params['tab'] : $params['type'];
+			// Save search word if provided
+		if( is_null($params['sword']) ) {
+			$searchWord	= TodoyuContactPreferences::getSearchWord();
+		} else {
+			$searchWord	= trim($params['sword']);
+			TodoyuContactPreferences::saveSearchWord($searchWord);
+		}
 
 			// Get type from parameter or preferences
 		if( empty($type) ) {

@@ -120,7 +120,7 @@ class TodoyuContactPreferences {
 	 * @param	String		$searchWord
 	 */
 	public static function saveSearchWord($searchWord) {
-		self::savePref('searchword', $searchWord, 0, true);
+		self::savePref('searchword', trim($searchWord), 0, true);
 	}
 
 
