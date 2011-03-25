@@ -117,9 +117,14 @@ function Dwoo_Plugin_labelContactinfotype(Dwoo $dwoo, $idContactinfotype) {
  */
 function Dwoo_Plugin_countryName(Dwoo $dwoo, $idCountry) {
 	$idCountry = intval($idCountry);
-	$country	= TodoyuStaticRecords::getCountry($idCountry);
 
-	return TodoyuStaticRecords::getLabel('country', $country['iso_alpha3']);
+	if( $idCountry > 0 ) {
+		$country	= TodoyuStaticRecords::getCountry($idCountry);
+
+		return TodoyuStaticRecords::getLabel('country', $country['iso_alpha3']);
+	} else {
+		return '';
+	}
 }
 
 
@@ -291,7 +296,7 @@ function Dwoo_Plugin_isInternal(Dwoo $dwoo) {
 function Dwoo_Plugin_isAddressTypeSeeAllowed(Dwoo $dwoo, $type, $idRecord, $idAddressType) {
 	$idRecord		= intval($idRecord);
 	$idAddressType	= intval($idAddressType);
-	
+
 	if($type === 'person') {
 		return TodoyuContactRights::isAddresstypeOfPersonSeeAllowed($idRecord, $idAddressType);
 	} else if($type === 'company') {

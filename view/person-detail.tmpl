@@ -3,7 +3,7 @@
 		<span class="title">{$fullname}</span>
 		<span class="rgt"></span>
 	</h1>
-	
+
 	<div class="infoBoxOuter">
 		{* ------------ Main person data (name, primary email, image, etc.) ------------ *}
 		<div class="infoBox main-person-data">
@@ -38,7 +38,7 @@
 				</dl>
 			</div>
 		</div>
-	
+
 		{* ------------ Addresses ------------ *}
 		{if $address}
 			<div class="infoBox addressPart">
@@ -57,7 +57,7 @@
 			{/foreach}
 			</div>
 		{/if}
-	
+
 		{* ------------ Employer companies with assigned job types ------------ *}
 		{foreach $company comp}
 			{if isCompanySeeAllowed($comp.id)}
@@ -65,14 +65,22 @@
 					<h4><a href="?ext=contact&controller=company&action=detail&company={$comp.id}">{Label LLL:contact.ext.person.attr.company}: {$comp.title}</a></h4>
 					<div class="content overflow">
 						<dl>
-							<dt>{Label LLL:contact.ext.jobtype}:</dt><dd>{$comp.jobtype.title|default:"-"}</dd>
-								<dt>{Label LLL:contact.ext.workaddress}:</dt><dd>{$comp.workaddress.street}, {$comp.workaddress.zip} {$comp.workaddress.city}, {countryName $comp.workaddress.id_country}</dd>
+							<dt>{Label LLL:contact.ext.jobtype}:</dt>
+								<dd>{$comp.jobtype.title|default:"-"}</dd>
+							<dt>{Label LLL:contact.ext.workaddress}:</dt>
+								<dd>
+									{if $comp.workaddress.street}
+										{$comp.workaddress.street}, {$comp.workaddress.zip} {$comp.workaddress.city}, {countryName $comp.workaddress.id_country}
+									{else}
+										---
+									{/if}
+								</dd>
 						</dl>
 					</div>
 				</div>
 			{/if}
 		{/foreach}
-	
+
 		{* ------------ todoyu account ------------ *}
 		{if $is_active && allowed('contact', 'person:enableLogin')}
 		<div class="infoBox userinformations">
@@ -105,7 +113,7 @@
 			</div>
 		</div>
 		{/if}
-	
+
 		{* ------------ Additional infos (birthday, comment) ------------ *}
 
 		<div class="infoBox others">
@@ -123,10 +131,10 @@
 			</div>
 		</div>
 
-	
+
 		{* ------------ Hooked content ------------ *}
 		{$hookedContent}
-	
+
 		{* ------------ Actions panel (edit, delete, close) ------------ *}
 
 		<div class="actions">
