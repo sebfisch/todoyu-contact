@@ -37,22 +37,15 @@ class TodoyuContactPersonHooks {
 		$idTask		= intval($idTask);
 		$taskData	= TodoyuProjectTaskManager::getTaskData($idTask);
 
-		if( isset($data['person_assigned']) ) {
-				// person_assigned
-			$htmlID	= 'task_personassigned-' . $idTask . '-' . $taskData['id_person_assigned'];
+		$personTypes	= array('create', 'owner', 'assigned');
+		foreach($personTypes as $type) {
+			if( isset($data['person_' . $type]) ) {
+				$htmlID	= 'task_person' . $type . '-' . $idTask . '-' . $taskData['id_person_' . $type];
 
-			$data['person_assigned']['id'] 		 = $htmlID;
-			$data['person_assigned']['wrap'][1]	.= TodoyuString::wrapScript('Todoyu.Ext.contact.QuickInfoPerson.add(\'' .  $htmlID . '\');');
-			$data['person_assigned']['className'] .= ' quickInfoPerson';
-		}
-
-		if( isset($data['person_owner']) ) {
-				// person owner
-			$htmlID	= 'task_personowner-' . $idTask . '-' . $taskData['id_person_owner'];
-
-			$data['person_owner']['id']			= $htmlID;
-			$data['person_owner']['wrap'][1]	.= TodoyuString::wrapScript('Todoyu.Ext.contact.QuickInfoPerson.add(\'' .  $htmlID . '\');');
-			$data['person_owner']['className'] 	.= ' quickInfoPerson';
+				$data['person_' . $type]['id']			= $htmlID;
+				$data['person_' . $type]['wrap'][1]		.= TodoyuString::wrapScript('Todoyu.Ext.contact.QuickInfoPerson.add(\'' .  $htmlID . '\');');
+				$data['person_' . $type]['className'] 	.= ' quickInfoPerson';
+			}
 		}
 
 		return $data;
