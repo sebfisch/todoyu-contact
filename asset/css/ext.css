@@ -68,13 +68,17 @@ span.wizardIcon.createNewCompany	{
 /* -----------------
 	Search
    ----------------- */
-#todoyusearchheadletquicksearch form.searchmodeCompany a.mode,
 #todoyusearchheadletquicksearch li.searchmodeCompany a {
 	background:url(../img/icons.png) no-repeat 3px -148px !important;
 }
-#todoyusearchheadletquicksearch form.searchmodePerson a.mode,
+#todoyusearchheadletquicksearch form.searchmodeCompany a.mode {
+	background:url(../img/icons.png) no-repeat 3px -534px !important;
+}
 #todoyusearchheadletquicksearch-modes li.searchmodePerson a {
 	background:url(../img/icons.png) no-repeat 3px 3px !important;
+}
+#todoyusearchheadletquicksearch form.searchmodePerson a.mode {
+	background:url(../img/icons.png) no-repeat 3px -504px !important;
 }
 
 
