@@ -47,12 +47,34 @@ class TodoyuContactContactInfo extends TodoyuBaseObject {
 
 
 	/**
+	 * Get contact info type ID
 	 *
+	 * @return	Integer
+	 */
+	public function getContactInfoTypeID() {
+		return intval($this->get('id_contactinfotype'));
+	}
+
+
+
+	/**
+	 * Get contact info type
+	 *
+	 * @return	TodoyuContactContactInfoType
+	 */
+	public function getContactInfoType() {
+		return 	TodoyuContactContactInfoTypeManager::getContactInfoType($this->getContactInfoTypeID());
+	}
+
+
+
+	/**
+	 * Get type title
+	 *
+	 * @return	String
 	 */
 	function getTypeLabel() {
-		$contactInfoType = new TodoyuContactContactInfoType($this->id_contactinfotype);
-
-		return (strlen(trim($contactInfoType['title'])) > 0) ? TodoyuLabelManager::getLabel($contactInfoType['title']) : '';
+		return $this->getContactInfoType()->getTitle();
 	}
 }
 
