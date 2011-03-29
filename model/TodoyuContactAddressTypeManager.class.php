@@ -60,7 +60,8 @@ class TodoyuContactAddressTypeManager {
 	 */
 	public static function getAddressTypeLabel($idAddressType) {
 		$addressType = self::getAddressType($idAddressType);
-		return TodoyuLabelManager::getLabel($addressType['label']);
+
+		return Label($addressType['label']);
 	}
 
 }
