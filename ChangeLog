@@ -1,6 +1,8 @@
 todoyu contact extension changelog
 
 contact 1.1.0 (requires core >= 2.1) - not released yet
+	* Bugfix: Mailing options of internal users did not list email-addresses
+	* Bugfix: Person label with email showed braces also around non-existing emails
 	* Feature: More rights for the whole module
 	* Bugfix: Added rights check in controller to avoid direct url access
  	* Bugfix: Fixed birthday in person quickinfo and detail view to be formatted by date format of locale

@@ -69,9 +69,13 @@ class TodoyuContactViewHelper {
 	/**
 	 * Get options array with all persons being employees of internal company
 	 *
+	 * @param	TodoyuFormElement	$field
+	 * @param	Boolean				$showEmail
+	 * @param	Boolean				$lastNameFirst
+	 * @param	Boolean				$personsWithEmailOnly
 	 * @return	Array
 	 */
-	public static function getInternalPersonOptions(TodoyuFormElement $field) {
+	public static function getInternalPersonOptions(TodoyuFormElement $field, $showEmail = false, $lastNameFirst = true) {
 		$options	= array();
 		$persons	= TodoyuContactPersonManager::getInternalPersons();
 
@@ -80,7 +84,7 @@ class TodoyuContactViewHelper {
 			foreach($persons as $person) {
 				$options[] = array(
 					'value'	=> $person['id'],
-					'label'	=> TodoyuContactPersonManager::getLabel($person['id'])
+					'label'	=> TodoyuContactPersonManager::getLabel($person['id'], $showEmail, $lastNameFirst)
 				);
 			}
 		} else {
