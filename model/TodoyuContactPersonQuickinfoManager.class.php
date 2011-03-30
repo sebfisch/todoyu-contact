@@ -46,13 +46,25 @@ class TodoyuContactPersonQuickInfoManager {
 			}
 		}
 
-		$email		= TodoyuContactPersonManager::getPreferredEmail($idPerson);
-		$fullName	= TodoyuContactPersonManager::getPerson($idPerson)->getFullName();
+			// Add person label, linked to contacts detail view if allowed to be seen
+		$personLabel	= TodoyuContactPersonManager::getLabel($idPerson);
+		if( allowed('contact', 'general.area') ) {
+			$linkParams	= array(
+				'ext'		=> 'contact',
+				'controller'=> 'person',
+				'action'	=> 'detail',
+				'person'	=> $idPerson,
+			);
+			$personLabelLinked	= TodoyuString::wrapTodoyuLink($personLabel, 'contact', $linkParams);
+			$quickinfo->addInfo('name', $personLabelLinked, 0, false);
+		} else {
+			$quickinfo->addInfo('name', $personLabel, 0, false);
+		}
 
-		$linkedName	= '<a href="?ext=contact&controller=person&action=detail&person=' . $idPerson . '">' . TodoyuContactPersonManager::getLabel($idPerson) . '</a>';
-		$quickinfo->addInfo('name', $linkedName, 0, false);
-
+		$email	= TodoyuContactPersonManager::getPreferredEmail($idPerson);
 		if( ! empty($email) ) {
+			$fullName	= TodoyuContactPersonManager::getPerson($idPerson)->getFullName();
+
 			$quickinfo->addEmail('email', $email, $fullName);
 		}
 
