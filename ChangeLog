@@ -1,6 +1,7 @@
 todoyu contact extension changelog
 
 contact 1.1.0 (requires core >= 2.1) - not released yet
+	* Bugfix: Birthdays in years before 1970 were not listed in birthdays list in appointment tab in portal
 	* Bugfix: Mailing options of internal users did not list email-addresses
 	* Bugfix: Person label with email showed braces also around non-existing emails
 	* Feature: More rights for the whole module
