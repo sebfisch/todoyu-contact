@@ -158,10 +158,18 @@
 							<label>contact.ext.person.attr.username</label>
 							<validate>
 								<unique>
+									<allow>
+										<fieldEquals>
+											<field>is_active</field>
+												<value>0</value>
+											</fieldEquals>
+									</allow>
 									<table>ext_contact_person</table>
-									<allowEmpty />
 								</unique>
 							</validate>
+							<requiredIfNotEmpty>
+								<fields>is_active</fields>
+							</requiredIfNotEmpty>
 							<required>
 								<noCheck />
 							</required>
@@ -172,9 +180,17 @@
 							<type>password</type>
 							<validate>
 								<goodPassword>
-									<allowEmpty />
+									<allow>
+										<fieldEquals>
+											<field>is_active</field>
+												<value>0</value>
+											</fieldEquals>
+									</allow>
 								</goodPassword>
 							</validate>
+							<requiredIfNotEmpty>
+								<fields>is_active</fields>
+							</requiredIfNotEmpty>
 							<required>
 								<noCheck />
 							</required>
@@ -185,7 +201,12 @@
 							<label>contact.ext.person.attr.email</label>
 							<validate>
 								<email>
-									<allowEmpty />
+									<allow>
+										<fieldEquals>
+											<field>is_active</field>
+												<value>0</value>
+											</fieldEquals>
+									</allow>
 								</email>
 								<requiredIfNotEmpty>
 									<fields>username,is_active</fields>
@@ -217,13 +238,11 @@
 							</record>
 							<validate>
 								<requiredIfNotEmpty>
-									<fields>username</fields>
+									<fields>username,is_active</fields>
 									<except>is_admin</except>
 								</requiredIfNotEmpty>
 							</validate>
-							<required>
-								<noCheck />
-							</required>
+							<required/>
 						</field>
 					</elements>
 				</fieldset>
