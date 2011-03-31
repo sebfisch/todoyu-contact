@@ -796,7 +796,7 @@ class TodoyuContactPersonManager {
 		if( $monthStart !== $monthEnd && $monthDiff === 1 && $yearDiff === 0 ) {
 			$monthsRange= array($monthStart, $monthEnd);
 			$rangeWhere = '((MONTH(birthday)	= ' . $monthStart . ' AND DAY(birthday)	>= ' . $dayStart . ') OR
-							(MONTH(birthday)	= ' . $monthEnd . ' AND DAY(birthday)		<= ' . $dayEnd . '))';
+							(MONTH(birthday)	= ' . $monthEnd . ' AND DAY(birthday)	<= ' . $dayEnd . '))';
 		} else {
 				// Range crosses the year border (ex: nov-feb)
 			if( $monthEnd < $monthStart ) {
@@ -846,7 +846,7 @@ class TodoyuContactPersonManager {
 
 		$table	= self::TABLE;
 		$where	= '		deleted						= 0'
-				. ' AND UNIX_TIMESTAMP(birthday)	> 0'
+				. ' AND ( UNIX_TIMESTAMP(birthday)	> 0 OR YEAR(birthday) != 1970 ) '	// Note: years before 1970 convert to timestamp of 0 (overflow)
 				. ' AND UNIX_TIMESTAMP(birthday)	< ' . $minDate
 				. '	AND	(' . $rangeWhere . ')';
 		$order	= 'incurrentyear DESC, beforemonth, MONTH(birthday), DAY(birthday)';
