@@ -180,17 +180,9 @@
 							<type>password</type>
 							<validate>
 								<goodPassword>
-									<allow>
-										<fieldEquals>
-											<field>is_active</field>
-												<value>0</value>
-											</fieldEquals>
-									</allow>
+									<allowEmpty />
 								</goodPassword>
 							</validate>
-							<requiredIfNotEmpty>
-								<fields>is_active</fields>
-							</requiredIfNotEmpty>
 							<required>
 								<noCheck />
 							</required>
