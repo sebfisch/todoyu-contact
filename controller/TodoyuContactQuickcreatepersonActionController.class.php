@@ -73,6 +73,7 @@ class TodoyuContactQuickCreatePersonActionController extends TodoyuActionControl
 
 			return $idPerson;
 		} else {
+			TodoyuHeader::sendTodoyuHeader('idRecord', 0);
 			TodoyuHeader::sendTodoyuErrorHeader();
 
 			return $form->render();

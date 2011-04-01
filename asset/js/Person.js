@@ -85,9 +85,20 @@ Todoyu.Ext.contact.Person =  {
 	 * @param	{Number}		idPerson
 	 */
 	initEditForm: function(idPerson) {
-		this.observeFieldsForShortname(idPerson);
-
+		this.initObservers(idPerson);
 		this.showLoginFields(idPerson);
+	},
+
+
+
+	/**
+	 * Initialize observers
+	 *
+	 * @method	initObservers
+	 * @param	{Number}			idPerson
+	 */
+	initObservers: function(idPerson) {
+		this.observeFieldsForShortname(idPerson);
 
 		$('person-' + idPerson + '-field-is-active').observe('change', this.showLoginFields.bind(this, idPerson));
 	},
@@ -184,13 +195,12 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Updates working location selector with options of chosen company
 	 *
-	 * @method	updateCompanyAdressRecords
+	 * @method	updateCompanyAddressRecords
 	 * @param	{Object}	inputField
-	 * @param	{Object}	selectedListElement
-	 * @param	{String}	baseID
-	 * @param	{Mixed}	selectedValue
-	 * @param	{Object}	list
-	 * @param	{Object}	parent
+	 * @param	{String}	idField
+	 * @param	{String}	selectedValue
+	 * @param	{String}	selectedText
+	 * @param	{Object}	autocompleter
 	 */
 	updateCompanyAddressRecords: function(inputField, idField, selectedValue, selectedText, autocompleter) {
 		var refFieldName	= autocompleter.options['referencedFieldName'].replace('_', '-');
@@ -217,7 +227,7 @@ Todoyu.Ext.contact.Person =  {
 	 * Highlights the referenced selector of company address after updating the company-autocompleter
 	 *
 	 * @method	onUpdateCompanyAddressRecords
-	 * @param	{String}	idTarget
+	 * @param	{String}	addressList
 	 */
 	onUpdateCompanyAddressRecords: function(addressList) {
 		new Effect.Highlight($(addressList), {
@@ -259,6 +269,7 @@ Todoyu.Ext.contact.Person =  {
 		if( response.hasTodoyuError() ) {
 			Todoyu.notifyError('[LLL:contact.ext.person.saved.error]');
 			$('contact-form-content').update(response.responseText);
+
 			var idPerson	= parseInt(response.request.parameters['person[id]'], 10);
 			this.initEditForm(idPerson);
 		} else {

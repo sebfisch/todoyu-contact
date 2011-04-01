@@ -76,13 +76,16 @@ Todoyu.Ext.contact.QuickCreatePerson = {
 	 * @param	{Ajax.Response}		response
 	 */
 	onSaved: function(response) {
+		var idPerson	= response.getTodoyuHeader('idRecord');
+
 		if( response.hasTodoyuError() ) {
 				// Saving person failed
 			Todoyu.notifyError('[LLL:contact.ext.person.saved.error]');
 			Todoyu.Headlets.getHeadlet('todoyuheadletquickcreate').updatePopupContent(response.responseText);
+
+			this.person.onEdit(idPerson);
 		} else {
 				// Saving succeeded
-			var idPerson	= response.getTodoyuHeader('idPerson');
 			Todoyu.Hook.exec('contact.person.saved', idPerson);
 
 			Todoyu.Popups.close('quickcreate');
