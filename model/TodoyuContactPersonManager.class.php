@@ -617,7 +617,7 @@ class TodoyuContactPersonManager {
 	 */
 	public static function getLabel($idPerson, $showEmail = false, $lastnameFirst = true) {
 		$idPerson	= intval($idPerson);
-		$label	= '';
+		$label		= '';
 
 		if( $idPerson !== 0 ) {
 			$label	= self::getPerson($idPerson)->getLabel($showEmail, $lastnameFirst);
