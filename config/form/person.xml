@@ -140,6 +140,7 @@
 		</fieldset>
 
 
+
 		<fieldset name="account">
 			<legend>Login account</legend>
 			<restrict>
