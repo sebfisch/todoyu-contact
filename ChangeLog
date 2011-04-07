@@ -1,37 +1,36 @@
 todoyu contact extension changelog
 
-contact 1.1.0 (requires core >= 2.1) - not released yet
-	* Bugfix: Birthdays in years before 1970 were not listed in birthdays list in appointment tab in portal
-	* Bugfix: Mailing options of internal users did not list email-addresses
-	* Bugfix: Person label with email showed braces also around non-existing emails
+contact 1.1.0 - beta release
+	* Changed: Requires core 2.1
+	* Changed: Structure for 2.1
+	* Changed: All classes are prefixed with extension name
+	* Feature: Implementation / documentation of contact export hooks
+	* Feature: Export for contacts
+	* Feature: Improved staff selector - Autocompleter, disable. Much smaller now
+	* Feature: Added general person header stub (analog to e.g. project header)
+	* Feature: Added stafflist panelwidget
+	* Feature: Added create - wizard for companies - auto - completer (person + project)
 	* Feature: More rights for the whole module
-	* Bugfix: Added rights check in controller to avoid direct url access
- 	* Bugfix: Fixed birthday in person quickinfo and detail view to be formatted by date format of locale
-	* Changed: DB rename ext_contact_person.active => is_active
-	* Bugfix: Removed display of email in person quickinfo when not available
 	* Feature: Added personal data form to profile
 	* Feature: Added comment field for person and company
 	* Feature: Better detail-view for person and company
 	* Feature: Profile images for person and company
 	* Feature: Cleanup (topical order and readability) of extension config (init.php) file
 	* Feature: Readability of ext init file
-	* Bugfix: Locale preferences problems in contact
 	* Changed: Adapted contact ext controller parameter naming to be consistent with changed general sub items navigation (was named "type" instead of "tab")
 	* Changed: Used new TodoyuTabManager
-	* Bugfix: Added missing ID labels for company & person
-	* Feature: Implementation / documentation of contact export hooks
-	* Feature: Export for contacts
-	* Changed: Changed staffselector, added div to allow nice slide
-	* Feature: Forms restyled
-	* Feature: Added general person header stub (analog to e.g. project header)
-	* Feature: Added stafflist panelwidget
+	* Changed: DB rename ext_contact_person.active => is_active
 	* Changed: Moved templates of contact panelwidgets into sub folder /view/panelwidgets/
-	* Changed: Updated loading structure: (core: boot.php, init: request,) extensions: init.php
-	* Feature: Added create - wizard for companies - auto - completer (person + project)
-	* Feature: Changed locale format
+	* Bugfix: Added missing ID labels for company & person
+	* Bugfix: Birthdays in years before 1970 were not listed in birthdays list in appointment tab in portal
+	* Bugfix: Mailing options of internal users did not list email-addresses
+	* Bugfix: Person label with email showed braces also around non-existing emails
+	* Bugfix: Locale preferences problems in contact
+	* Bugfix: Removed display of email in person quickinfo when not available
+	* Bugfix: Added rights check in controller to avoid direct url access
+ 	* Bugfix: Fixed birthday in person quickinfo and detail view to be formatted by date format of locale
 
-
-contact 1.0.7 - not released yet
+  contact 1.0.7 - not released yet
 	* Bugfix: Show preferred email in person list item (from contactinfotype when no todoyu account given)
 	* Bugfix: Auto-generated person shortname can (not any longer) contain whitespace
 	* Feature: Added changelog
