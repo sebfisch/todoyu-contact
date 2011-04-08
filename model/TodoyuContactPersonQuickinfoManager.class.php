@@ -48,7 +48,7 @@ class TodoyuContactPersonQuickInfoManager {
 
 			// Add person label, linked to contacts detail view if allowed to be seen
 		$personLabel	= TodoyuContactPersonManager::getLabel($idPerson);
-		if( allowed('contact', 'general.area') ) {
+		if( allowed('contact', 'general:area') ) {
 			$linkParams	= array(
 				'ext'		=> 'contact',
 				'controller'=> 'person',
