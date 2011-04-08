@@ -245,6 +245,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 				. ' OR '
 				. $likeJobtypes
 				. ')';
+		$group	= '	p.id';
 		$order	= '	p.lastname,
 					p.firstname';
 		$limit	= 10;
@@ -254,7 +255,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 			$where .= ' AND p.id NOT IN(' . implode(',', $selectedPersons) . ')';
 		}
 
-		return Todoyu::db()->getArray($fields, $table, $where, '', $order, $limit);
+		return Todoyu::db()->getArray($fields, $table, $where, $group, $order, $limit);
 	}
 
 
