@@ -129,7 +129,7 @@ class TodoyuContactRights {
 	 */
 	public static function isContactinfotypeSeeAllowed($idContactInfoType) {
 		$idContactInfoType	= intval($idContactInfoType);
-		
+
 		if( TodoyuAuth::isAdmin() ) {
 			return true;
 		}
@@ -137,7 +137,7 @@ class TodoyuContactRights {
 		if( allowed('contact', 'relation:seeAllContactinfotypes') ) {
 			return true;
 		}
-		TodoyuDebug::printInFirebug(TodoyuContactContactInfoTypeManager::getContactInfoType($idContactInfoType)->isPublic(), $idContactInfoType);
+
 		return TodoyuContactContactInfoTypeManager::getContactInfoType($idContactInfoType)->isPublic();
 	}
 
@@ -177,7 +177,7 @@ class TodoyuContactRights {
 		$idAddresstype		= intval($idAddresstype);
 
 		$employers	= TodoyuContactPersonManager::getPerson(personid())->getCompanyIDs();
-		
+
 
 		if( TodoyuAuth::isAdmin() || in_array($idCompany, $employers) ) {
 			return true;
@@ -187,7 +187,7 @@ class TodoyuContactRights {
 	}
 
 
-	
+
 	/**
 	 * Check if see of address type is allowed for current person
 	 *

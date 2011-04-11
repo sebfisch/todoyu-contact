@@ -67,7 +67,6 @@ class TodoyuContactContactInfoType extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isPublic() {
-		TodoyuDebug::printInFirebug($this->data);
 		return intval($this->data['is_public']) === 1;
 	}
 
