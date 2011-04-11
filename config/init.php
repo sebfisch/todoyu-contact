@@ -206,4 +206,31 @@ Todoyu::$CONFIG['EXT']['profile']['contactTabs'] = array(
 	)
 );
 
+
+TodoyuCreateWizardManager::addWizard('person', array(
+	'ext'		=> 'contact',
+	'controller'=> 'person',
+	'action'	=> 'createWizard',
+	'title'		=> 'contact.ext.person.create',
+	'restrict'	=> array(
+		array(
+			'contact',
+			'contact:modify'
+		)
+	)
+));
+
+TodoyuCreateWizardManager::addWizard('company', array(
+	'ext'		=> 'contact',
+	'controller'=> 'company',
+	'action'	=> 'createWizard',
+	'title'		=> 'contact.ext.create.company.label',
+	'restrict'	=> array(
+		array(
+			'contact',
+			'contact:modify'
+		)
+	)
+));
+
 ?>

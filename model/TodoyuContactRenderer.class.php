@@ -243,10 +243,10 @@ class TodoyuContactRenderer {
 	 * Render person edit form for popup (different save and cancel handling than conventional)
 	 *
 	 * @param	Integer	$idPerson
-	 * @param	String	$idTarget		HTML Id of the input field
+	 * @param	String	$fieldName		HTML Id of the input field
 	 * @return	String
 	 */
-	public static function renderPersonEditFormWizard($idPerson, $idTarget) {
+	public static function renderPersonCreateWizard($idPerson, $fieldName) {
 		$idPerson	= intval($idPerson);
 		$xmlPath	= 'ext/contact/config/form/person.xml';
 
@@ -261,7 +261,7 @@ class TodoyuContactRenderer {
 		$form->setRecordID($idPerson);
 
 		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Ext.contact.Person.cancelWizard(this.form);');
-		$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Ext.contact.Person.saveWizard(this.form, \''.$idTarget.'\');');
+		$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Ext.contact.Person.saveWizard(this.form, \''.$fieldName.'\');');
 
 		$tmpl	= 'ext/contact/view/form.tmpl';
 		$data	= array(
@@ -269,7 +269,10 @@ class TodoyuContactRenderer {
 			'formhtml'		=> $form->render()
 		);
 
-		return render($tmpl, $data);
+		$content	= render($tmpl, $data);
+		$content	.= TodoyuString::wrapScript('Todoyu.Ext.contact.Person.onEdit(' . $idPerson. ')');
+
+		return $content;
 	}
 
 
@@ -281,7 +284,7 @@ class TodoyuContactRenderer {
 	 * @param	String	$idTarget		HTML Id of the input field
 	 * @return	String
 	 */
-	public static function renderCompanyEditFormWizard($idCompany, $idTarget) {
+	public static function renderCompanyCreateWizard($idCompany, $idTarget) {
 		$idCompany	= intval($idCompany);
 		$xmlPath	= 'ext/contact/config/form/company.xml';
 
@@ -304,7 +307,10 @@ class TodoyuContactRenderer {
 			'formhtml'		=> $form->render()
 		);
 
-		return render($tmpl, $data);
+		$content	= render($tmpl, $data);
+		$content	.= TodoyuString::wrapScript('Todoyu.Ext.contact.Company.onEdit(' . $idCompany. ')');
+
+		return $content;
 	}
 
 

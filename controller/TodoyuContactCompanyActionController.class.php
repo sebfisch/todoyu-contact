@@ -185,7 +185,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 		$idCompany	= intval($params['company']);
 
 		TodoyuContactCompanyRights::restrictSee($idCompany);
-		
+
 		$type		= 'company';
 
 		$tabs		= TodoyuContactRenderer::renderTabs('company');
@@ -248,13 +248,13 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 * @return	String
 	 */
-	public function addNewContactWizardAction(array $params) {
+	public function createWizardAction(array $params) {
 		TodoyuContactCompanyRights::restrictAdd();
 
-		$content = TodoyuString::wrapScript('Todoyu.Ext.contact.Company.onEdit(0);');
-		$content.= TodoyuContactRenderer::renderCompanyEditFormWizard(0, $params['idField']);
+		$idCompany	= intval($params['record']);
+		$fieldName	= trim($params['field']);
 
-		return $content;
+		return TodoyuContactRenderer::renderCompanyCreateWizard(0, $fieldName);
 	}
 
 
@@ -265,7 +265,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 * @return	String
 	 */
-	public static function saveWizardAction(array $params) {
+	public static function saveCreateWizardAction(array $params) {
 		$xmlPath	= 'ext/contact/config/form/company.xml';
 		$data		= $params['company'];
 		$idCompany	= intval($data['id']);
@@ -278,7 +278,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 		$form 		= TodoyuFormManager::getForm($xmlPath, $idCompany);
 
-		$idTarget = $params['idTarget'];
+		$fieldName = $params['field'];
 
 			// Set form data
 		$form->setFormData($data);
@@ -289,15 +289,15 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 			$idCompany	= TodoyuContactCompanyManager::saveCompany($storageData);
 
-			TodoyuHeader::sendTodoyuHeader('idRecord', $idCompany);
-			TodoyuHeader::sendTodoyuHeader('recordLabel', $storageData['title']);
+			TodoyuHeader::sendTodoyuHeader('record', $idCompany);
+			TodoyuHeader::sendTodoyuHeader('label', $storageData['title']);
 
 			return $idCompany;
 		} else {
 			TodoyuHeader::sendTodoyuErrorHeader();
 
-			$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Ext.contact.Company.cancelWizard(this.form);');
-			$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Ext.contact.Company.saveWizard(this.form, \''.$idTarget.'\');');
+			$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Ext.contact.Company.cancelWizard(this.form)');
+			$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Ext.contact.Company.saveWizard(this.form, \'' . $fieldName . '\')');
 
 			return $form->render();
 		}
@@ -343,7 +343,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 */
 	public function removeimageAction(array $params) {
 		$idCompany	= $params['idImage'];
-		
+
 		TodoyuContactCompanyRights::restrictSee($idCompany);
 
 		TodoyuContactImageManager::removeImage($idCompany, 'company');

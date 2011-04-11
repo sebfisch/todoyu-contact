@@ -62,7 +62,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 */
 	public function listAction(array $params) {
 		restrict('contact', 'general:area');
-		
+
 		TodoyuContactPreferences::saveActiveTab('person');
 
 		$sword	= trim($params['sword']);
@@ -86,7 +86,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 */
 	public function listingAction(array $params) {
 		restrict('contact', 'general:area');
-		
+
 		$offset	= intval($params['offset']);
 
 		return TodoyuListingRenderer::render('contact', 'person', $offset);
@@ -248,13 +248,13 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 * @return	String
 	 */
-	public function addNewContactWizardAction(array $params) {
+	public function createWizardAction(array $params) {
 		TodoyuContactPersonRights::restrictAdd();
 
-		$content= TodoyuString::wrapScript('Todoyu.Ext.contact.Person.onEdit(0);');
-		$content.= TodoyuContactRenderer::renderPersonEditFormWizard(0, $params['idField']);
+		$field		= trim($params['field']);
+		$idRecord	= intval($params['record']);
 
-		return $content;
+		return TodoyuContactRenderer::renderPersonCreateWizard(0, $field);
 	}
 
 

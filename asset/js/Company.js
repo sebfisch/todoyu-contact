@@ -221,17 +221,17 @@ Todoyu.Ext.contact.Company =  {
 	 * Save person record from wizard
 	 *
 	 * @method	saveWizard
-	 * @param	{Object}		form
-	 * @param	{String}		target
+	 * @param	{Form}		form
+	 * @param	{String}	fieldName
 	 * @return	{Boolean}
 	 */
-	saveWizard: function(form, target) {
+	saveWizard: function(form, fieldName) {
 		$(form).request ({
 			parameters: {
-				action:	'saveWizard',
-				'idTarget': target
+				action:	'saveCreateWizard',
+				field: 	fieldName
 			},
-			onComplete: this.onSavedWizard.bind( this, target)
+			onComplete: this.onSavedWizard.bind( this, fieldName)
 		});
 
 		return false;
@@ -243,25 +243,23 @@ Todoyu.Ext.contact.Company =  {
 	 * Handler evoked upon onComplete of saving from wizard. Check and notify success / error, update display
 	 *
 	 * @method	onSavedWizard
-	 * @param	{String}			target
+	 * @param	{String}			fieldName
 	 * @param	{Ajax.Response}		response
 	 */
-	onSavedWizard: function(target, response) {
+	onSavedWizard: function(fieldName, response) {
 		var error	= response.hasTodoyuError();
 
 		if( error ) {
 			Todoyu.notifyError('[LLL:contact.ext.company.saved.error]');
 
-			Todoyu.Popups.setContent('popup-' + target, response.responseText);
+			Todoyu.Popups.setContent('popup-' + fieldName, response.responseText);
 		} else {
 			Todoyu.notifySuccess('[LLL:contact.ext.company.saved.ok]');
 
-			var label		= response.getTodoyuHeader('recordLabel');
+			$(fieldName).value				= response.getTodoyuHeader('record');
+			$(fieldName + '-fulltext').value= response.getTodoyuHeader('label');;
 
-			$(target).value = response.getTodoyuHeader('idRecord');
-			$(target + '-fulltext').value = label;
-
-			Todoyu.Popups.close('popup-' + target);
+			Todoyu.Popups.close('popup-' + fieldName);
 		}
 	},
 
