@@ -483,7 +483,7 @@ class TodoyuContactPersonManager {
 		}
 
 		if( $preferredOnly ) {
-			return	Todoyu::db()->getRecordByQuery($fields, $tables, $where);
+			return Todoyu::db()->getRecordByQuery($fields, $tables, $where);
 		} else {
 			return Todoyu::db()->getArray($fields, $tables, $where);
 		}
@@ -498,7 +498,7 @@ class TodoyuContactPersonManager {
 	 * @return	String
 	 */
 	public static function getPreferredPhone($idPerson) {
-		return	self::getPhones($idPerson, true);
+		return self::getPhones($idPerson, true);
 	}
 
 
