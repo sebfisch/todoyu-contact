@@ -6,7 +6,7 @@
 		<attribute name="target">upload-iframe-contactimage</attribute>
 	</attributes>
 	<hiddenFields>
-		<field name="MAX_FILE_SIZE" value="100000000" noWrap="true" noStorage="true" />
+		<field name="MAX_FILE_SIZE" value="512000" noWrap="true" noStorage="true" />
 		<field name="idContact" />
 		<field name="recordType" />
 	</hiddenFields>

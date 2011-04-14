@@ -62,11 +62,12 @@ class TodoyuContactImageManager {
 			'ext'			=> 'contact',
 			'controller'	=> $type,
 			'action'		=> 'renderimage',
-			'idImage'		=> $idImage
+			'idImage'		=> $idImage,
+			'hash'			=> time()
 		);
 
 //		$dimension	= TodoyuContactImageManager::getDimension();
-		$imgSrc	= TodoyuString::buildUrl($params, NOW);
+		$imgSrc	= TodoyuString::buildUrl($params);
 
 		return TodoyuString::getImgTag($imgSrc);
 	}
