@@ -38,14 +38,19 @@
 	width:95%;
 }
 
-
-#panelwidget-staffselector-selection li:hover a {
-	color:#CCC;
+#panelwidget-staffselector-selection li.disabled {
+	opacity:.50;
+	filter:alpha(opacity=50);
+	-ms-filter:'alpha(opacity=50)';
+	-khtml-opacity:.50;
+	-moz-opacity:.50;
 }
-
-#panelwidget-staffselector-selection li.disabled a {
-	color:#CCC;
-	font-weight:bold;
+#panelwidget-staffselector-selection li.disabled:hover {
+	opacity:1;
+	filter:alpha(opacity=100);
+	-ms-filter:'alpha(opacity=100)';
+	-khtml-opacity:1;
+	-moz-opacity:1;
 }
 
 #panelwidget-staffselector li a span {
