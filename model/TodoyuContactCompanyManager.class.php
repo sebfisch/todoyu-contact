@@ -614,9 +614,8 @@ class TodoyuContactCompanyManager {
 	 *
 	 * @param	Integer		$idCompany
 	 * @return	String
-	 * @todo	refactor: rename to getCompanyAddressLabel
 	 */
-	public static function getCompanyAddress($idCompany) {
+	public static function getCompanyAddressLabel($idCompany) {
 		$idCompany	= intval($idCompany);
 
 		$addresses	= self::getCompanyAddressRecords($idCompany);

@@ -78,9 +78,9 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 			$where	= '	c.id IN(' . implode(',', $companyIDs) . ')';
 			$order	= '	c.title ASC';
 
-			$companys	= Todoyu::db()->getArray($fields, $table, $where, '', $order);
+			$companies	= Todoyu::db()->getArray($fields, $table, $where, '', $order);
 
-			foreach($companys as $company) {
+			foreach($companies as $company) {
 				$label	= $company['title'] . ($company['shortname'] !== '' ? ' (' . $company['shortname'] . ')' : '');
 
 				$suggestions[] = array(
@@ -117,7 +117,7 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 			$data['rows'][] = array(
 				'icon'		=> '',
 				'title'		=> $company['title'],
-				'address'	=> TodoyuContactCompanyManager::getCompanyAddress($company['id']),
+				'address'	=> TodoyuContactCompanyManager::getCompanyAddressLabel($company['id']),
 				'actions'	=> TodoyuContactRenderer::renderCompanyActions($company['id'])
 			);
 		}
