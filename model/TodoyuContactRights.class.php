@@ -18,14 +18,18 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-
-
+/**
+ * Contact rights
+ *
+ * @package		Todoyu
+ * @subpackage	Contact
+ */
 class TodoyuContactRights {
 
 	/**
-	 * @static
-	 * @param  $right
-	 * @return void
+	 * Deny access because if given right is not given
+	 *
+	 * @param	String	$right
 	 */
 	private static function deny($right) {
 		deny('contact', $right);

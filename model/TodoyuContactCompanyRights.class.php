@@ -193,9 +193,7 @@ class TodoyuContactCompanyRights {
 	/**
 	 * Restrict access to persons who are allowed to delete the given company
 	 *
-	 * @static
-	 * @param  $idCompany
-	 * @return void
+	 * @param	Integer		$idCompany
 	 */
 	public static function restrictDelete($idCompany) {
 		if( ! self::isDeleteAllowed($idCompany) ) {

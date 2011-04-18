@@ -18,17 +18,17 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-
-
 /**
- *
+ * @package		Todoyu
+ * @subpackage	Contact
  */
 class TodoyuContactPanelWidgetExport extends TodoyuPanelWidget {
 
-
-
 	/**
 	 * Constructor of the class
+	 *
+	 * @param	Array	$config
+	 * @param	Array	$params
 	 */
 	function __construct(array $config, array $params = array()) {
 		parent::__construct(

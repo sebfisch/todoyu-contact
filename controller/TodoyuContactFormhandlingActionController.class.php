@@ -82,7 +82,7 @@ class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 		$idRecord	= intval($params['idRecord']);
 		$recordType	= $params['recordType'];
 
-		if($idRecord > 0) {
+		if( $idRecord > 0 ) {
 			TodoyuContactRights::restrictRecordEdit($recordType, $idRecord);
 		} else {
 			TodoyuContactRights::restrictRecordAdd($recordType);
@@ -106,7 +106,7 @@ class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 		$idContact	= intval($data['idContact']);
 		$recordType	= $data['recordType'];
 
-		if($idContact > 0) {
+		if( $idContact > 0 ) {
 			TodoyuContactRights::restrictRecordEdit($recordType, $idContact);
 		} else {
 			TodoyuContactRights::restrictRecordAdd($recordType);
@@ -141,7 +141,7 @@ class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 		$idRecord	= $params['idRecord'];
 		$recordType	= $params['recordType'];
 
-		if($idRecord > 0) {
+		if( $idRecord > 0 ) {
 			TodoyuContactRights::restrictRecordEdit($recordType, $idRecord);
 		} else {
 			TodoyuContactRights::restrictRecordAdd($recordType);

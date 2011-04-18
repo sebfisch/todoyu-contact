@@ -297,9 +297,9 @@ function Dwoo_Plugin_isAddressTypeSeeAllowed(Dwoo $dwoo, $type, $idRecord, $idAd
 	$idRecord		= intval($idRecord);
 	$idAddressType	= intval($idAddressType);
 
-	if($type === 'person') {
+	if( $type === 'person' ) {
 		return TodoyuContactRights::isAddresstypeOfPersonSeeAllowed($idRecord, $idAddressType);
-	} else if($type === 'company') {
+	} else if( $type === 'company' ) {
 		return TodoyuContactRights::isAddresstypeOfCompanySeeAllowed($idRecord, $idAddressType);
 	}
 
@@ -321,9 +321,9 @@ function Dwoo_Plugin_isContactinfotypeSeeAllowed(Dwoo $dwoo, $type, $idRecord, $
 	$idRecord		= intval($idRecord);
 	$idAddressType	= intval($idAddressType);
 
-	if($type === 'person') {
+	if( $type === 'person' ) {
 		return TodoyuContactRights::isContactinfotypeOfPersonSeeAllowed($idRecord, $idAddressType);
-	} else if($type === 'company') {
+	} else if( $type === 'company' ) {
 		return TodoyuContactRights::isContactinfotypeOfCompanySeeAllowed($idRecord, $idAddressType);
 	}
 
