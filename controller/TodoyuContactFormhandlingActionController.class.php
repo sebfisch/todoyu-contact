@@ -63,7 +63,6 @@ class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 		$form->setFormData($formData);
 		$form->setRecordID($idRecord);
 
-
 		$field			= $form->getField($fieldName);
 		$form['name']	= $formName;
 

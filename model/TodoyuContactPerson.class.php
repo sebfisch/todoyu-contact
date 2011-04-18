@@ -50,6 +50,7 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 		 $label	= $this->getFullName($lastnameFirst);
 
 		if( $showTitle === true) {
+			/** @var	TodoyuRole		$role  */
 			$role	= TodoyuRoleManager::getRole($idRole);
 
 			$label	.= ', ' . $role->getTitle();
