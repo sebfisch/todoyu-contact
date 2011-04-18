@@ -103,7 +103,7 @@ class TodoyuContactCompanyManager {
 	 * Get all company records
 	 *
 	 * @param	Array		$fields			Custom field list (instead of *)
-	 * @param	String		$where			Extra where clause
+	 * @param	String		$where			Extra WHERE clause
 	 * @return	Array
 	 */
 	public static function getAllCompanies(array $fields = array(), $where = '') {
