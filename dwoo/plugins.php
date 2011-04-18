@@ -105,31 +105,6 @@ function Dwoo_Plugin_labelContactinfotype(Dwoo $dwoo, $idContactinfotype) {
 
 
 /**
- * Get name of country
- *
- * @package		Todoyu
- * @subpackage	Template
- *
- * @todo	check	- relocate into core?
- * @param	Dwoo		$dwoo
- * @param	Integer		$idCountry
- * @return	String
- */
-function Dwoo_Plugin_countryName(Dwoo $dwoo, $idCountry) {
-	$idCountry = intval($idCountry);
-
-	if( $idCountry > 0 ) {
-		$country	= TodoyuStaticRecords::getCountry($idCountry);
-
-		return TodoyuStaticRecords::getLabel('country', $country['iso_alpha3']);
-	} else {
-		return '';
-	}
-}
-
-
-
-/**
  * Returns the label of the address type with given id
  *
  * @param	Dwoo_Compiler	$compiler
