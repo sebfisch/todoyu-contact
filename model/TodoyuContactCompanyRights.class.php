@@ -96,8 +96,9 @@ class TodoyuContactCompanyRights {
 	 */
 	public static function isDeleteAllowed($idCompany) {
 		$idCompany	= intval($idCompany);
+		$hasProjects= TodoyuContactCompanyManager::hasProjects($idCompany);
 
-		if(TodoyuAuth::isAdmin() ) {
+		if( TodoyuAuth::isAdmin() && ! $hasProjects ) {
 			return true;
 		}
 
@@ -105,7 +106,7 @@ class TodoyuContactCompanyRights {
 			return false;
 		}
 
-		return allowed('contact', 'company:editAndDeleteAll');
+		return allowed('contact', 'company:editAndDeleteAll') && ! $hasProjects;
 	}
 
 
