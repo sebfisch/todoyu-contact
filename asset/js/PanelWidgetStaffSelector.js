@@ -177,7 +177,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 
 		nodes.each(function(item){
 			var hash = item.hasClassName('person') ? hashPersons : hashGroups;
-			var label	= item.down('a').innerHTML.stripTags().trim();
+			var label	= item.down('a').innerHTML.stripTags().strip();
 			hash[label] = item;
 		});
 
