@@ -162,6 +162,17 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 
 
 	/**
+	 * Check whether the user has an email address for his account
+	 *
+	 * @return	Boolean
+	 */
+	public function hasEmail() {
+		return trim($this->getEmail()) !== '';
+	}
+
+
+
+	/**
 	 * Get current person's shortname
 	 *
 	 * @return	String
