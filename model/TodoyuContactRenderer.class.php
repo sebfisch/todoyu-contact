@@ -36,7 +36,6 @@ class TodoyuContactRenderer {
 	/**
 	 * Renders the contact page. The content is given from controller
 	 *
-	 * @static
 	 * @param	String	$type
 	 * @param	Integer	$idRecord
 	 * @param	String	$searchWord
@@ -44,7 +43,7 @@ class TodoyuContactRenderer {
 	 * @return	String
 	 */
 	public static function renderContactPage($type, $idRecord, $searchWord, $content = '') {
-					// Set active tab
+			// Set active tab
 		TodoyuFrontend::setActiveTab('contact');
 
 		TodoyuPage::init('ext/contact/view/ext.tmpl');
@@ -492,8 +491,9 @@ class TodoyuContactRenderer {
 
 
 	/**
-	 * @static
-	 * @return String
+	 * @param	Integer		$idRecord
+	 * @param	String		$recordType
+	 * @return	String
 	 */
 	public static function renderContactImageUploadForm($idRecord, $recordType) {
 		$idRecord	= intval($idRecord);

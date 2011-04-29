@@ -38,11 +38,11 @@ class TodoyuContactPanelWidgetStaffList extends TodoyuPanelWidgetSearchList {
 
 			// Construct PanelWidget (init basic configuration)
 		parent::__construct(
-			'contact',								// ext key
-			'stafflist',							// panel widget ID
-			'LLL:contact.panelwidget-stafflist.title',		// widget title text
-			$config,								// widget config array
-			$params								// widget parameters
+			'contact',									// ext key
+			'stafflist',								// panel widget ID
+			'LLL:contact.panelwidget-stafflist.title',	// widget title text
+			$config,									// widget config array
+			$params										// widget parameters
 		);
 
 		$this->addHasIconClass();

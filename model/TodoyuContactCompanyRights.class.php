@@ -41,7 +41,6 @@ class TodoyuContactCompanyRights {
 	/**
 	 * Checks if see given company is allowed for current person
 	 *
-	 * @static
 	 * @param	Integer		$idCompany
 	 * @return	Boolean
 	 */
@@ -60,7 +59,6 @@ class TodoyuContactCompanyRights {
 	/**
 	 * Checks if edit given company is allowed for current person
 	 *
-	 * @static
 	 * @param	Integer		$idCompany
 	 * @return	Boolean
 	 */
@@ -88,9 +86,8 @@ class TodoyuContactCompanyRights {
 
 
 	/**
-	 * Checks if delete given company is allowed for current person
+	 * Checks whether deletion of given company is allowed for current person
 	 *
-	 * @static
 	 * @param	Integer		$idCompany
 	 * @return	Boolean
 	 */
@@ -112,9 +109,8 @@ class TodoyuContactCompanyRights {
 
 
 	/**
-	 * Returns all company ids which are allowed to see for the current person
+	 * Returns all company IDs which are allowed to be seen by the current person
 	 *
-	 * @static
 	 * @return	Array
 	 */
 	public static function getCompanyIDsAllowedToBeSeen() {
@@ -153,7 +149,6 @@ class TodoyuContactCompanyRights {
 	/**
 	 * Restrict access to persons who are allowed to see the given company
 	 *
-	 * @static
 	 * @param	$idCompany
 	 */
 	public static function restrictSee($idCompany) {
@@ -179,7 +174,6 @@ class TodoyuContactCompanyRights {
 	/**
 	 * Restrict access to persons who are allowed to edit the given company
 	 *
-	 * @static
 	 * @param	$idCompany
 	 */
 	public static function restrictEdit($idCompany) {

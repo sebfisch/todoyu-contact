@@ -27,8 +27,7 @@ class TodoyuContactCompanyExportManager {
 	/**
 	 * Exports companies as CSV file
 	 *
-	 * @static
-	 * @param	$searchWord
+	 * @param	String	$searchWord
 	 */
 	public static function exportCSV($searchWord) {
 		$persons	= TodoyuContactCompanyManager::searchCompany($searchWord, null, '', '');
@@ -47,7 +46,6 @@ class TodoyuContactCompanyExportManager {
 	/**
 	 * Prepares the given companies to be exported
 	 *
-	 * @static
 	 * @param	Array	$companies
 	 * @return	Array
 	 */
@@ -69,7 +67,6 @@ class TodoyuContactCompanyExportManager {
 	/**
 	 * Parses company data for export
 	 *
-	 * @static
 	 * @param	TodoyuContactCompany	$company
 	 * @return	Array
 	 */

@@ -65,19 +65,18 @@ class TodoyuContactPersonRights {
 	/**
 	 * Checks if edit of given person is allowed to current user
 	 *
-	 * @static
 	 * @param	Integer	$idPerson
 	 * @return	Boolean
 	 */
 	public static function isEditAllowed($idPerson) {
 		$idPerson	= intval($idPerson);
 
-		// cannot edit person if see of the person is not allowed
+			// Cannot edit person if see of the person is not allowed
 		if( ! self::isSeeAllowed($idPerson) ) {
 			return false;
 		}
 
-		// can edit if is admin or is allowed to edit all person or if its the person itself
+			// Can edit if is admin or is allowed to edit all person or if its the person itself
 		if( TodoyuAuth::isAdmin() || allowed('contact', 'person:editAndDeleteAll') || personid() == $idPerson ) {
 			return true;
 		}
@@ -90,7 +89,6 @@ class TodoyuContactPersonRights {
 	/**
 	 * Checks if deleting given person is allowed to user
 	 *
-	 * @static
 	 * @param	Integer	$idPerson
 	 * @return	Boolean
 	 */
@@ -160,7 +158,6 @@ class TodoyuContactPersonRights {
 	/**
 	 * Restrict access to persons who are allowed to see the given person
 	 *
-	 * @static
 	 * @param	Integer		$idPerson
 	 */
 	public static function restrictSee($idPerson) {
@@ -173,8 +170,6 @@ class TodoyuContactPersonRights {
 	
 	/**
 	 * Restrict access to persons who are allowed to add a new person
-	 *
-	 * @static
 	 */
 	public static function restrictAdd() {
 		if( ! allowed('contact', 'person:add') ) {
@@ -187,7 +182,6 @@ class TodoyuContactPersonRights {
 	/**
 	 * Restrict access to persons who are allowed to edit given person
 	 *
-	 * @static
 	 * @param	Integer	$idPerson
 	 */
 	public static function restrictEdit($idPerson) {
@@ -201,7 +195,6 @@ class TodoyuContactPersonRights {
 	/**
 	 * Restrict access to persons who are allowed to delete given person
 	 *
-	 * @static
 	 * @param	Integer	$idPerson
 	 */
 	public static function restrictDelete($idPerson) {

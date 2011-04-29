@@ -52,9 +52,6 @@ class TodoyuContactAddressTypeManager {
 
 
 	/**
-	 *
-	 *
-	 * @static
 	 * @param	Integer	$idAddressType
 	 * @return	String
 	 */

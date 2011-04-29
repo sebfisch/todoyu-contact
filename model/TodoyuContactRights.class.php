@@ -38,9 +38,8 @@ class TodoyuContactRights {
 
 
 	/**
-	 * Restricts add of contact record
+	 * Restricts adding of contact record
 	 *
-	 * @static
 	 * @param	String		$record
 	 */
 	public static function restrictRecordAdd($record) {
@@ -57,10 +56,10 @@ class TodoyuContactRights {
 
 
 	/**
-	 * Restricts edit of contact record
+	 * Restricts editing of contact record
 	 *
-	 * @static
 	 * @param	String		$record
+	 * @param	Integer		$idRecord
 	 */
 	public static function restrictRecordEdit($record, $idRecord) {
 		$idRecord	= intval($idRecord);
@@ -80,37 +79,35 @@ class TodoyuContactRights {
 
 
 	/**
-	 * Check if see of contact info type of given person is allowed for current person
+	 * Check whether seeing of contact info type of given person is allowed for current person
 	 *
-	 * @static
 	 * @param	Integer		$idPerson
-	 * @param	Integer		$idContactinfotype
+	 * @param	Integer		$idContactinfoType
 	 * @return	Boolean
 	 */
-	public static function isContactinfotypeOfPersonSeeAllowed($idPerson, $idContactinfotype) {
+	public static function isContactinfotypeOfPersonSeeAllowed($idPerson, $idContactinfoType) {
 		$idPerson			= intval($idPerson);
-		$idContactinfotype	= intval($idContactinfotype);
+		$idContactinfoType	= intval($idContactinfoType);
 
 		if( TodoyuAuth::isAdmin() || $idPerson === personid() ) {
 			return true;
 		}
 
-		return self::isContactinfotypeSeeAllowed($idContactinfotype);
+		return self::isContactinfotypeSeeAllowed($idContactinfoType);
 	}
 
 
 
 	/**
-	 * Check if see of contact info type of given company is allowed for current person
+	 * Check whether seeing of contact info type of given company is allowed for current person
 	 *
-	 * @static
 	 * @param	Integer		$idCompany
-	 * @param	Integer		$idContactinfotype
+	 * @param	Integer		$idContactinfoType
 	 * @return	Boolean
 	 */
-	public static function isContactinfotypeOfCompanySeeAllowed($idCompany, $idContactinfotype) {
+	public static function isContactinfotypeOfCompanySeeAllowed($idCompany, $idContactinfoType) {
 		$idCompany			= intval($idCompany);
-		$idContactinfotype	= intval($idContactinfotype);
+		$idContactinfoType	= intval($idContactinfoType);
 
 		$employers	= TodoyuContactPersonManager::getPerson(personid())->getCompanyIDs();
 
@@ -118,15 +115,14 @@ class TodoyuContactRights {
 			return true;
 		}
 
-		return self::isContactinfotypeSeeAllowed($idContactinfotype);
+		return self::isContactinfotypeSeeAllowed($idContactinfoType);
 	}
 
 
 
 	/**
-	 * Check if see of contact info type is allowed for current person
+	 * Check whether seeing of given contact info type is allowed for current person
 	 *
-	 * @static
 	 * @param	Integer		$idPerson
 	 * @param	Integer		$idContactInfoType
 	 * @return	Boolean
@@ -148,37 +144,35 @@ class TodoyuContactRights {
 
 
 	/**
-	 * Checks if see of address type of given person is allowed for current person
+	 * Checks whether seeing of address type of given person is allowed for current person
 	 *
-	 * @static
 	 * @param	Integer		$idPerson
-	 * @param	Integer		$idAddresstype
+	 * @param	Integer		$idAddressType
 	 * @return	Boolean
 	 */
-	public static function isAddresstypeOfPersonSeeAllowed($idPerson, $idAddresstype) {
+	public static function isAddresstypeOfPersonSeeAllowed($idPerson, $idAddressType) {
 		$idPerson			= intval($idPerson);
-		$idAddresstype		= intval($idAddresstype);
+		$idAddressType		= intval($idAddressType);
 
 		if( TodoyuAuth::isAdmin() || $idPerson === personid() ) {
 			return true;
 		}
 
-		return self::isAddresstypeSeeAllowed($idAddresstype);
+		return self::isAddresstypeSeeAllowed($idAddressType);
 	}
 
 
 
 	/**
-	 * Checks if see of address type of given company is allowed for current person
+	 * Checks whether seeing of address type of given company is allowed for current person
 	 *
-	 * @static
 	 * @param	Integer		$idPerson
-	 * @param	Integer		$idAddresstype
+	 * @param	Integer		$idAddressType
 	 * @return	Boolean
 	 */
-	public static function isAddresstypeOfCompanySeeAllowed($idCompany, $idAddresstype) {
-		$idCompany			= intval($idCompany);
-		$idAddresstype		= intval($idAddresstype);
+	public static function isAddresstypeOfCompanySeeAllowed($idCompany, $idAddressType) {
+		$idCompany		= intval($idCompany);
+		$idAddressType	= intval($idAddressType);
 
 		$employers	= TodoyuContactPersonManager::getPerson(personid())->getCompanyIDs();
 
@@ -187,15 +181,14 @@ class TodoyuContactRights {
 			return true;
 		}
 
-		return self::isAddresstypeSeeAllowed($idAddresstype);
+		return self::isAddresstypeSeeAllowed($idAddressType);
 	}
 
 
 
 	/**
-	 * Check if see of address type is allowed for current person
+	 * Check whether seeing of address type is allowed for current person
 	 *
-	 * @static
 	 * @param	Integer		$idAddressType
 	 * @return	Boolean
 	 */
@@ -225,8 +218,6 @@ class TodoyuContactRights {
 
 	/**
 	 * Restricts usage of contact export
-	 *
-	 * @static
 	 */
 	public static function restrictExport() {
 		if( ! allowed('contact', 'panelwidgets:export') ) {

@@ -32,11 +32,11 @@ class TodoyuContactPanelWidgetExport extends TodoyuPanelWidget {
 	 */
 	function __construct(array $config, array $params = array()) {
 		parent::__construct(
-				'contact',										// ext key
-				'contactexport',								// panel widget ID
-				'LLL:contact.panelwidget-contactexport.title',			// widget title text
-				$config,										// widget config array
-				$params										// widget parameters
+			'contact',										// ext key
+			'contactexport',								// panel widget ID
+			'LLL:contact.panelwidget-contactexport.title',	// widget title text
+			$config,										// widget config array
+			$params											// widget parameters
 		);
 
 		$this->addHasIconClass();

@@ -680,7 +680,6 @@ class TodoyuContactCompanyManager {
 	/**
 	 * Gets the preview image for the form
 	 *
-	 * @static
 	 * @param	FormElement_Comment	$formElement
 	 * @return	String
 	 */

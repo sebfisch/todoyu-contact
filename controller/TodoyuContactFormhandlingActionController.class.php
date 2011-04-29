@@ -111,7 +111,7 @@ class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 			TodoyuContactRights::restrictRecordAdd($recordType);
 		}
 
-			// check against the file mime type
+			// Check against the file mime type
 		if( $error === UPLOAD_ERR_OK && !TodoyuContactImageManager::checkFileType($file['type']) ) {
 			$error	= UPLOAD_ERR_EXTENSION;
 		}

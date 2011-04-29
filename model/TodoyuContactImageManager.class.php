@@ -52,9 +52,8 @@ class TodoyuContactImageManager {
 	/**
 	 * Returns the person-image tag.
 	 *
-	 * @static
-	 * @param	Integer	$idImage
-	 * @param	String	$type
+	 * @param	Integer		$idImage
+	 * @param	String		$type
 	 * @return	String
 	 */
 	public static function getImage($idImage, $type) {
@@ -76,23 +75,21 @@ class TodoyuContactImageManager {
 
 	/**
 	 * Renders the Image. Needed because the files folder is .htaccess protected.
+	 * If no picture of an user is found, one of randomly 7 images is taken
 	 *
-	 * If now picture of an user is found, one of randomly 7 images is taken
-	 *
-	 * @static
-	 * @param	Integer	$idPerson
-	 * @param	String	$type
+	 * @param	Integer		$idPerson
+	 * @param	String		$type
 	 */
 	public static function renderImage($idImage, $type) {
-		$filepath	= PATH . '/ext/contact/asset/img/persondefault/user0' . rand(1, 6) . '.png';
+		$filePath	= PATH . '/ext/contact/asset/img/persondefault/user0' . rand(1, 6) . '.png';
 
 		if( is_file( self::getStorageDir($type)  . '/' . $idImage . '/' . self::$destFileName) ) {
-			$filepath	=  self::getStorageDir($type)  . '/' . $idImage . '/' . self::$destFileName;
+			$filePath	=  self::getStorageDir($type)  . '/' . $idImage . '/' . self::$destFileName;
 		}
 
 		header('Content-Type: image/png');
-		header('Content-Disposition: inline; filename="'.basename($filepath).'"');
-		echo file_get_contents($filepath);
+		header('Content-Disposition: inline; filename="' . basename($filePath) . '"');
+		echo file_get_contents($filePath);
 		exit();
 	}
 
@@ -144,12 +141,11 @@ class TodoyuContactImageManager {
 	/**
 	 * Gets the web-path to the image
 	 *
-	 * @static
 	 * @param	String	$type
 	 * @return	String
 	 */
 	public static function getWebDir($type) {
-		return TodoyuFileManager::pathWeb(Todoyu::$CONFIG['EXT']['contact']['contactimage']['path'.$type]);
+		return TodoyuFileManager::pathWeb(Todoyu::$CONFIG['EXT']['contact']['contactimage']['path' . $type]);
 	}
 
 
@@ -157,7 +153,6 @@ class TodoyuContactImageManager {
 	/**
 	 * Rename storage folder.
 	 *
-	 * @static
 	 * @param	String	$type (person/company)
 	 * @param	String	$old
 	 * @param	Integer	$new
@@ -175,7 +170,6 @@ class TodoyuContactImageManager {
 	/**
 	 * Returns the dimension of a picture (set in contact/config/init.php)
 	 *
-	 * @static
 	 * @return	Array
 	 */
 	protected static function getDimension() {
@@ -187,7 +181,6 @@ class TodoyuContactImageManager {
 	/**
 	 * Removes the Image from the file folder
 	 *
-	 * @static
 	 * @param	Integer		$idImage
 	 * @param	String		$type		e.g. 'person' / 'company'
 	 */
