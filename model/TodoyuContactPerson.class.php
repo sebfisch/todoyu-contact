@@ -195,12 +195,20 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 
 
 	/**
-	 * Get person language
+	 * Get person locale preference
+	 * Use system as fallback if not disabled by parameter
 	 *
+	 * @param	Boolean		$system			Use system locale when user locale not set yet
 	 * @return	String
 	 */
-	public function getLocale() {
-		return TodoyuContactPreferences::getLocale();
+	public function getLocale($system = true) {
+		$locale	= TodoyuContactPreferences::getLocale();
+
+		if( $locale === false && $system ) {
+			$locale	= Todoyu::getLocale();
+		}
+
+		return $locale;
 	}
 
 
