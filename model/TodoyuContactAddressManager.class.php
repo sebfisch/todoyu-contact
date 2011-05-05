@@ -218,6 +218,25 @@ class TodoyuContactAddressManager {
 		return TodoyuDbHelper::deleteOtherMmRecords($mmTable, 'ext_contact_address', $idRecord, $currentAddressIDs, $fieldRecord, $fieldInfo);
 	}
 
+
+
+	/**
+	 * Load data hook for address forms
+	 *
+	 * @param	Array		$data
+	 * @param	Integer		$idAddress
+	 * @param	Array		$params
+	 * @return	Array
+	 */
+	public static function hookAddressLoadFormData(array $data, $idAddress, array $params = array()) {
+		if( $idAddress === 0 ) {
+			$timezone			= Todoyu::$CONFIG['SYSTEM']['timezone'];
+			$data['id_timezone']= TodoyuStaticRecords::getTimezoneID($timezone);
+		}
+
+		return $data;
+	}
+
 }
 
 ?>

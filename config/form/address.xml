@@ -59,6 +59,13 @@
 					<label>contact.ext.address.attr.comment</label>
 				</field>
 
+				<field type="selectgrouped" name="id_timezone">
+					<label>contact.ext.address.attr.timezone</label>
+					<source type="function">
+						<function>TodoyuContactViewHelper::getTimezoneOptionsGrouped</function>
+					</source>
+				</field>
+
 			</elements>
 		</fieldset>
 	</fieldsets>
