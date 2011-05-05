@@ -102,7 +102,7 @@ Todoyu::$CONFIG['EXT']['contact']['defaultTypeTab'] = 'person';
 
 
 	// Load person foreign records data
-TodoyuFormHook::registerLoadData('ext/contact/config/form/person.xml', 'TodoyuContactPersonManager::getForeignRecordData');
+TodoyuFormHook::registerLoadData('ext/contact/config/form/person.xml', 'TodoyuContactPersonManager::hookPersonLoadFormData');
 TodoyuFormHook::registerBuildForm('ext/contact/config/form/address.xml', 'TodoyuContactCompanyManager::hookAddTimezone');
 
 

@@ -92,8 +92,13 @@ class TodoyuContactPersonManager {
 	 * @param	Integer		$idPerson
 	 * @return	Array
 	 */
-	public static function getForeignRecordData(array $data, $idPerson) {
+	public static function hookPersonLoadFormData(array $data, $idPerson) {
 		$idPerson	= intval($idPerson);
+
+			// Set salutation for new persons
+		if( ! isset($data['salutation']) ) {
+			$data['salutation'] = 'm';
+		}
 
 		$data['company']	= TodoyuContactPersonManager::getPersonCompanyRecords($idPerson);
 		$data['contactinfo']= TodoyuContactPersonManager::getContactinfoRecords($idPerson);
