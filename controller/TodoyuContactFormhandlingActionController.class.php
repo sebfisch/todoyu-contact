@@ -123,7 +123,7 @@ class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 			return TodoyuContactRenderer::renderUploadFormFinished($recordType, $idContact, $idReplace);
 		} else {
 				// Notify upload failure
-			Todoyu::log('File upload failed: ' . $file['name'] . ' (ERROR:' . $error . ')', TodoyuLogger::LEVEL_ERROR);
+			TodoyuLogger::logError('File upload failed: ' . $file['name'] . ' (ERROR:' . $error . ')');
 
 			return TodoyuContactRenderer::renderUploadframeContentFailed($file['error'], $file['name']);
 		}
@@ -133,7 +133,7 @@ class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 
 	/**
 	 * Removes Image form file-system
-	 * 
+	 *
 	 * @param	Array	$params
 	 */
 	public function removeimageAction(array $params) {
