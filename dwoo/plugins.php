@@ -45,6 +45,21 @@ function Dwoo_Plugin_isPersonID_compile(Dwoo_Compiler $dwoo, $idPerson) {
 
 
 /**
+ * Get person ID
+ *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
+ * @param	Dwoo_Compiler 	$dwoo
+ * @return	Boolean
+ */
+function Dwoo_Plugin_personid_compile(Dwoo_Compiler $dwoo) {
+	return 'Todoyu::personid()';
+}
+
+
+
+/**
  * Get the name to given person ID
  *
  * @package		Todoyu
