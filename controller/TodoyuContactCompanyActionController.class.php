@@ -30,7 +30,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * Initialisation for action controller
 	 */
 	public function init() {
-		restrict('contact', 'general:use');
+		Todoyu::restrict('contact', 'general:use');
 	}
 
 
@@ -61,7 +61,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function listAction(array $params) {
-		restrict('contact', 'general:area');
+		Todoyu::restrict('contact', 'general:area');
 
 		TodoyuContactPreferences::saveActiveTab('company');
 
@@ -85,7 +85,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function listingAction(array $params) {
-		restrict('contact', 'general:area');
+		Todoyu::restrict('contact', 'general:area');
 
 		$offset	= intval($params['offset']);
 
@@ -165,7 +165,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 		if( TodoyuContactCompanyManager::hasProjects($idCompany) ) {
 			TodoyuHeader::sendTodoyuErrorHeader();
-			TodoyuHeader::sendTodoyuHeader('errormessage', Label('contact.ext.company.delete.hasProjects'));
+			TodoyuHeader::sendTodoyuHeader('errormessage', Todoyu::Label('contact.ext.company.delete.hasProjects'));
 		} else {
 			TodoyuContactCompanyManager::deleteCompany($idCompany);
 		}
@@ -180,7 +180,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function detailAction(array $params) {
-		restrict('contact', 'general:area');
+		Todoyu::restrict('contact', 'general:area');
 
 		$idCompany	= intval($params['company']);
 
@@ -216,7 +216,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 				'value'		=> array()
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -237,7 +237,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 			'value'		=> array()
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 

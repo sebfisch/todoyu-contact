@@ -43,7 +43,7 @@ class TodoyuContactContactInfoType extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getTitle() {
-		return Label($this->get('title'));
+		return Todoyu::Label($this->get('title'));
 	}
 
 
@@ -56,7 +56,7 @@ class TodoyuContactContactInfoType extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getLabelForFormElementSelect($form, $option) {
-		return Label($option['title']);
+		return Todoyu::Label($option['title']);
 	}
 
 

@@ -46,7 +46,7 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 		$fields	= array('email', 'firstname', 'lastname');
 
 		$addToWhere = ' AND deleted = 0';
-		if( ! allowed('contact', 'person:seeAllPersons') ) {
+		if( ! Todoyu::allowed('contact', 'person:seeAllPersons') ) {
 			$addToWhere	.= ' AND ' . TodoyuContactPersonRights::getAllowedToBeSeenPersonsWhereClause();
 		}
 

@@ -30,7 +30,7 @@ class TodoyuContactPreferenceActionController extends TodoyuActionController {
 	 * Controller init
 	 */
 	public function init() {
-		restrict('contact', 'general:use');
+		Todoyu::restrict('contact', 'general:use');
 	}
 
 

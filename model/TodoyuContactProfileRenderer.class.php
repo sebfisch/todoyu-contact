@@ -76,7 +76,7 @@ class TodoyuContactProfileRenderer {
 	 * @return	String
 	 */
 	public static function renderContentForm() {
-		$idPerson	= personid();
+		$idPerson	= Todoyu::personid();
 		$xmlPath	= 'ext/contact/config/form/profile-person.xml';
 
 		$form	= TodoyuFormManager::getForm($xmlPath, $idPerson);
@@ -95,7 +95,7 @@ class TodoyuContactProfileRenderer {
 			'formhtml'	=> $form->render()
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 }
 

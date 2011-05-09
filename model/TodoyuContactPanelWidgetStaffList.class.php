@@ -149,7 +149,7 @@ class TodoyuContactPanelWidgetStaffList extends TodoyuPanelWidgetSearchList {
 	 * @return	Boolean
 	 */
 	public static function isAllowed() {
-		return allowed('contact', 'general:use');
+		return Todoyu::allowed('contact', 'general:use');
 	}
 
 }

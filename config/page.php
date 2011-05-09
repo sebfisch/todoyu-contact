@@ -19,11 +19,11 @@
 *****************************************************************************/
 
 	// Add main menu area entry for contact
-if( /*(Todoyu::person()->isInternal() || TodoyuAuth::isAdmin()) &&*/ allowed('contact', 'general:area') ) {
+if( /*(Todoyu::person()->isInternal() || TodoyuAuth::isAdmin()) &&*/ Todoyu::allowed('contact', 'general:area') ) {
 	TodoyuFrontend::addMenuEntry('contact', 'LLL:contact.ext.page.title', '?ext=contact', 40);
 
 		// Add sub menu entries
-	if( allowed('contact', 'general:area') ) {
+	if( Todoyu::allowed('contact', 'general:area') ) {
 		$subTabsConfig	= Todoyu::$CONFIG['EXT']['contact']['tabs'];
 		TodoyuFrontend::addSubMenuEntriesFromTabsConf('contact', 'contact', $subTabsConfig);
 	}

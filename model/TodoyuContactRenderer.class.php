@@ -186,7 +186,7 @@ class TodoyuContactRenderer {
 	 * @return	String
 	 */
 	public static function renderPersonList($sword = '', $offset = 0) {
-		restrict('contact', 'general:area');
+		Todoyu::restrict('contact', 'general:area');
 
 		return TodoyuListingRenderer::render('contact', 'person', $offset, $sword);
 	}
@@ -200,7 +200,7 @@ class TodoyuContactRenderer {
 	 * @return	String
 	 */
 	public static function renderCompanyList($sword = '') {
-		restrict('contact', 'general:area');
+		Todoyu::restrict('contact', 'general:area');
 
 		return TodoyuListingRenderer::render('contact', 'company');
 	}
@@ -233,7 +233,7 @@ class TodoyuContactRenderer {
 			'formhtml'	=> $form->render()
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -268,7 +268,7 @@ class TodoyuContactRenderer {
 			'formhtml'		=> $form->render()
 		);
 
-		$content	= render($tmpl, $data);
+		$content	= Todoyu::render($tmpl, $data);
 		$content	.= TodoyuString::wrapScript('Todoyu.Ext.contact.Person.onEdit(' . $idPerson. ')');
 
 		return $content;
@@ -306,7 +306,7 @@ class TodoyuContactRenderer {
 			'formhtml'		=> $form->render()
 		);
 
-		$content	= render($tmpl, $data);
+		$content	= Todoyu::render($tmpl, $data);
 		$content	.= TodoyuString::wrapScript('Todoyu.Ext.contact.Company.onEdit(' . $idCompany. ')');
 
 		return $content;
@@ -339,7 +339,7 @@ class TodoyuContactRenderer {
 			'formhtml'		=> $form->render()
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -402,7 +402,7 @@ class TodoyuContactRenderer {
 //			$data['details'] = self::renderPersonDetails($idPerson);
 		}
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -431,7 +431,7 @@ class TodoyuContactRenderer {
 		$data['email']			= $person->getEmail();
 		$data['hookedContent']	= implode('', TodoyuHookManager::callHook('contact', 'renderPersonDetailView', array('idPerson' => $idPerson)));
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -451,7 +451,7 @@ class TodoyuContactRenderer {
 
 		$data['hookedContent']	= implode('', TodoyuHookManager::callHook('contact', 'renderCompanyDetailView', array('idCompany' => $idCompany)));
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -468,7 +468,7 @@ class TodoyuContactRenderer {
 			'id'	=> intval($idPerson)
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -485,7 +485,7 @@ class TodoyuContactRenderer {
 			'id'	=> intval($idCompany)
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -521,7 +521,7 @@ class TodoyuContactRenderer {
 		);
 
 			// Render form wrapped via dwoo template
-		return render('ext/contact/view/contactimageuploadform.tmpl', $data);
+		return Todoyu::render('ext/contact/view/contactimageuploadform.tmpl', $data);
 	}
 
 
@@ -541,7 +541,7 @@ class TodoyuContactRenderer {
 			'content'	=> TodoyuString::wrapScript('window.parent.Todoyu.Ext.contact.Upload.uploadFinished(\'' . $recordType . '\', ' . $idContact . ', \'' .$idReplace . '\');')
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -563,7 +563,7 @@ class TodoyuContactRenderer {
 			'content'	=> TodoyuString::wrapScript('window.parent.Todoyu.Ext.contact.Upload.uploadFailed(' . $error . ', \'' . $filename . '\', \'' . $maxFileSize . '\');')
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 }

@@ -104,7 +104,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 			'id'	=> $this->getID()
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 

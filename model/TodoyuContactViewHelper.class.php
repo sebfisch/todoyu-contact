@@ -91,7 +91,7 @@ class TodoyuContactViewHelper {
 				// No internal persons / firm defined? inform about that
 			$options[] = array(
 				'value'		=> 0,
-				'label'		=> Label('contact.ext.form.error.nointernalpersons'),
+				'label'		=> Todoyu::Label('contact.ext.form.error.nointernalpersons'),
 				'disabled'	=> true,
 				'classname'	=> 'error'
 			);
@@ -113,7 +113,7 @@ class TodoyuContactViewHelper {
 		$idAddressType	= intval($valueArray['id_addresstype']);
 		$addressType	= TodoyuContactAddressTypeManager::getAddressType($idAddressType);
 
-		return Label($addressType['label']);
+		return Todoyu::Label($addressType['label']);
 	}
 
 

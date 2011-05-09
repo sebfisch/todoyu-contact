@@ -39,7 +39,7 @@
  * @return	Boolean
  */
 function Dwoo_Plugin_isPersonID_compile(Dwoo_Compiler $dwoo, $idPerson) {
-	return 'personid() === intval(' . $idPerson . ')';
+	return 'Todoyu::personid() === intval(' . $idPerson . ')';
 }
 
 
@@ -254,7 +254,7 @@ function Dwoo_Plugin_isPersonDeleteAllowed(Dwoo $dwoo, $idPerson) {
  * @return	Boolean
  */
 function Dwoo_Plugin_isInternal(Dwoo $dwoo) {
-	return TodoyuContactPersonManager::getPerson(personid())->isInternal();
+	return TodoyuContactPersonManager::getPerson(Todoyu::personid())->isInternal();
 }
 
 

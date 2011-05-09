@@ -30,7 +30,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * Initialisation for action controller
 	 */
 	public function init() {
-		restrict('contact', 'general:use');
+		Todoyu::restrict('contact', 'general:use');
 	}
 
 
@@ -61,7 +61,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function listAction(array $params) {
-		restrict('contact', 'general:area');
+		Todoyu::restrict('contact', 'general:area');
 
 		TodoyuContactPreferences::saveActiveTab('person');
 
@@ -85,7 +85,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function listingAction(array $params) {
-		restrict('contact', 'general:area');
+		Todoyu::restrict('contact', 'general:area');
 
 		$offset	= intval($params['offset']);
 

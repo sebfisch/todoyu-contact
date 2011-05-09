@@ -188,7 +188,7 @@ Todoyu::$CONFIG['EXT']['contact']['contactimage'] = array(
 /* -------------------------------------
 	Add contact module to profile
    ------------------------------------- */
-if( TodoyuExtensions::isInstalled('profile') && allowed('contact', 'general:use') ) {
+if( TodoyuExtensions::isInstalled('profile') && Todoyu::allowed('contact', 'general:use') ) {
 	TodoyuProfileManager::addModule('contact', array(
 		'position'	=> 2,
 		'tabs'		=> 'TodoyuContactProfileRenderer::renderTabs',

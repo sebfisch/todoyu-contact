@@ -472,7 +472,7 @@ class TodoyuContactCompanyManager {
 		}
 
 			// Limit results to allowed person records
-		if( ! TodoyuAuth::isAdmin() && ! allowed('contact', 'company:seeAllCompanies') ) {
+		if( ! TodoyuAuth::isAdmin() && ! Todoyu::allowed('contact', 'company:seeAllCompanies') ) {
 			$allowedWhere	= TodoyuContactCompanyRights::getAllowedToBeSeenCompaniesWhereClause();
 
 			$where .= ' AND ' . $allowedWhere;

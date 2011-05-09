@@ -60,7 +60,7 @@ class TodoyuContactPanelWidgetSearch extends TodoyuPanelWidget {
 			'contactType'	=> $contactType
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -84,7 +84,7 @@ class TodoyuContactPanelWidgetSearch extends TodoyuPanelWidget {
 	 */
 	public static function isAllowed() {
 		return true;
-//		return allowed('contact', 'panelwidgets:contactsearch');
+//		return Todoyu::allowed('contact', 'panelwidgets:contactsearch');
 	}
 
 }

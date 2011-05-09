@@ -47,7 +47,7 @@ class TodoyuContactCompanyRights {
 	public static function isSeeAllowed($idCompany) {
 		$idCompany	= intval($idCompany);
 
-		if( TodoyuAuth::isAdmin() || allowed('contact', 'company:seeAllCompanies') ) {
+		if( TodoyuAuth::isAdmin() || Todoyu::allowed('contact', 'company:seeAllCompanies') ) {
 			return true;
 		}
 
@@ -69,12 +69,12 @@ class TodoyuContactCompanyRights {
 			return false;
 		}
 
-		if( TodoyuAuth::isAdmin() || allowed('contact', 'company:editAndDeleteAll')) {
+		if( TodoyuAuth::isAdmin() || Todoyu::allowed('contact', 'company:editAndDeleteAll')) {
 			return true;
 		}
 
-		if( allowed('contact', 'company:editOwn') ) {
-			$person				= TodoyuContactPersonManager::getPerson(personid());
+		if( Todoyu::allowed('contact', 'company:editOwn') ) {
+			$person				= TodoyuContactPersonManager::getPerson(Todoyu::personid());
 			$personsCompanies	= $person->getCompanyIDs();
 
 			return in_array($idCompany, $personsCompanies);
@@ -103,7 +103,7 @@ class TodoyuContactCompanyRights {
 			return false;
 		}
 
-		return allowed('contact', 'company:editAndDeleteAll') && ! $hasProjects;
+		return Todoyu::allowed('contact', 'company:editAndDeleteAll') && ! $hasProjects;
 	}
 
 
@@ -131,12 +131,12 @@ class TodoyuContactCompanyRights {
 	public static function getAllowedToBeSeenCompaniesWhereClause() {
 		$allowedCompanyIDs	= TodoyuContactCompanyManager::getInternalCompanyIDs();
 
-		if( TodoyuAuth::isAdmin() || allowed('contact', 'company:seeAllCompanies') ) {
+		if( TodoyuAuth::isAdmin() || Todoyu::allowed('contact', 'company:seeAllCompanies') ) {
 			return ' 1';
 		}
 
 			// Get all companies the user belongs to
-		$person			= TodoyuContactPersonManager::getPerson(personid());
+		$person			= TodoyuContactPersonManager::getPerson(Todoyu::personid());
 		$ownCompanyIDs	= $person->getCompanyIDs();
 
 		$allowedCompanyIDs	= array_unique(array_merge($allowedCompanyIDs, $ownCompanyIDs));
@@ -164,12 +164,12 @@ class TodoyuContactCompanyRights {
 	 * @return void
 	 */
 	public static function restrictAdd() {
-		if( ! allowed('contact', 'company:add') ) {
+		if( ! Todoyu::allowed('contact', 'company:add') ) {
 			self::deny('company:add');
 		}
 	}
 
-	
+
 
 	/**
 	 * Restrict access to persons who are allowed to edit the given company

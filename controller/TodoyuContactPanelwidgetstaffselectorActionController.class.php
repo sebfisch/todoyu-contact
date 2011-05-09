@@ -30,11 +30,11 @@ class TodoyuContactPanelwidgetstaffselectorActionController extends TodoyuAction
 	 * @param	Array	$params
 	 */
 	public function init(array $params) {
-		restrict('contact', 'panelwidgets:staffSelector');
+		Todoyu::restrict('contact', 'panelwidgets:staffSelector');
 	}
 
 
-	
+
 	/**
 	 * Get list of matching persons and groups
 	 *

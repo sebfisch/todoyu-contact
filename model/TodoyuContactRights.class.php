@@ -32,7 +32,7 @@ class TodoyuContactRights {
 	 * @param	String	$right
 	 */
 	private static function deny($right) {
-		deny('contact', $right);
+		Todoyu::deny('contact', $right);
 	}
 
 
@@ -89,7 +89,7 @@ class TodoyuContactRights {
 		$idPerson			= intval($idPerson);
 		$idContactinfoType	= intval($idContactinfoType);
 
-		if( TodoyuAuth::isAdmin() || $idPerson === personid() ) {
+		if( TodoyuAuth::isAdmin() || $idPerson === Todoyu::personid() ) {
 			return true;
 		}
 
@@ -109,7 +109,7 @@ class TodoyuContactRights {
 		$idCompany			= intval($idCompany);
 		$idContactinfoType	= intval($idContactinfoType);
 
-		$employers	= TodoyuContactPersonManager::getPerson(personid())->getCompanyIDs();
+		$employers	= TodoyuContactPersonManager::getPerson(Todoyu::personid())->getCompanyIDs();
 
 		if( TodoyuAuth::isAdmin() || in_array($idCompany, $employers) ) {
 			return true;
@@ -134,7 +134,7 @@ class TodoyuContactRights {
 			return true;
 		}
 
-		if( allowed('contact', 'relation:seeAllContactinfotypes') ) {
+		if( Todoyu::allowed('contact', 'relation:seeAllContactinfotypes') ) {
 			return true;
 		}
 
@@ -154,7 +154,7 @@ class TodoyuContactRights {
 		$idPerson			= intval($idPerson);
 		$idAddressType		= intval($idAddressType);
 
-		if( TodoyuAuth::isAdmin() || $idPerson === personid() ) {
+		if( TodoyuAuth::isAdmin() || $idPerson === Todoyu::personid() ) {
 			return true;
 		}
 
@@ -174,7 +174,7 @@ class TodoyuContactRights {
 		$idCompany		= intval($idCompany);
 		$idAddressType	= intval($idAddressType);
 
-		$employers	= TodoyuContactPersonManager::getPerson(personid())->getCompanyIDs();
+		$employers	= TodoyuContactPersonManager::getPerson(Todoyu::personid())->getCompanyIDs();
 
 
 		if( TodoyuAuth::isAdmin() || in_array($idCompany, $employers) ) {
@@ -201,13 +201,13 @@ class TodoyuContactRights {
 
 		switch($idAddressType) {
 			case 1:
-				return allowed('contact', 'relation:seeHomeAddress');
+				return Todoyu::allowed('contact', 'relation:seeHomeAddress');
 				break;
 			case 2:
-				return allowed('contact', 'relation:seeBusinessAddress');
+				return Todoyu::allowed('contact', 'relation:seeBusinessAddress');
 				break;
 			case 3:
-				return allowed('contact', 'relation:seeBillingAddress');
+				return Todoyu::allowed('contact', 'relation:seeBillingAddress');
 				break;
 		}
 
@@ -220,7 +220,7 @@ class TodoyuContactRights {
 	 * Restricts usage of contact export
 	 */
 	public static function restrictExport() {
-		if( ! allowed('contact', 'panelwidgets:export') ) {
+		if( ! Todoyu::allowed('contact', 'panelwidgets:export') ) {
 			self::deny('panelwidgets:export');
 		}
 	}

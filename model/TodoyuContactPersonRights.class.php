@@ -47,11 +47,11 @@ class TodoyuContactPersonRights {
 	public static function isSeeAllowed($idPerson) {
 		$idPerson	= intval($idPerson);
 
-		if( TodoyuAuth::isAdmin() || allowed('contact', 'person:seeAllPersons') ) {
+		if( TodoyuAuth::isAdmin() || Todoyu::allowed('contact', 'person:seeAllPersons') ) {
 			return true;
 		}
 
-		if( allowed('contact', 'person::seeAllInternalPersons') ) {
+		if( Todoyu::allowed('contact', 'person::seeAllInternalPersons') ) {
 			if( TodoyuContactPersonManager::getPerson($idPerson)->isInternal() ) {
 				return true;
 			}
@@ -77,7 +77,7 @@ class TodoyuContactPersonRights {
 		}
 
 			// Can edit if is admin or is allowed to edit all person or if its the person itself
-		if( TodoyuAuth::isAdmin() || allowed('contact', 'person:editAndDeleteAll') || personid() == $idPerson ) {
+		if( TodoyuAuth::isAdmin() || Todoyu::allowed('contact', 'person:editAndDeleteAll') || Todoyu::personid() == $idPerson ) {
 			return true;
 		}
 
@@ -99,7 +99,7 @@ class TodoyuContactPersonRights {
 			return false;
 		}
 
-		return TodoyuAuth::isAdmin() || allowed('contact', 'person:editAndDeleteAll');
+		return TodoyuAuth::isAdmin() || Todoyu::allowed('contact', 'person:editAndDeleteAll');
 	}
 
 
@@ -128,11 +128,11 @@ class TodoyuContactPersonRights {
 	public static function getAllowedToBeSeenPersonsWhereClause($withAccount = false) {
 		$personIDs	= array();
 
-		if( TodoyuAuth::isAdmin() || allowed('contact', 'person:seeAllPersons')) {
+		if( TodoyuAuth::isAdmin() || Todoyu::allowed('contact', 'person:seeAllPersons')) {
 			return ' 1';
 		}
 
-		if( allowed('contact', 'person:seeAllInternalPersons') ) {
+		if( Todoyu::allowed('contact', 'person:seeAllInternalPersons') ) {
 			$personIDs	= TodoyuContactPersonManager::getInternalPersonIDs();
 		}
 
@@ -141,13 +141,13 @@ class TodoyuContactPersonRights {
 			// Get all persons marked "visible for externals" in any of their projects
 		$projectsPersonsIDs	= TodoyuProjectProjectManager::getProjectsPersonsIDs($projectIDs, $withAccount);
 			// Get all persons which are employees of current persons employer
-		$companies	= TodoyuContactPersonManager::getPersonCompanyRecords(personid());
+		$companies	= TodoyuContactPersonManager::getPersonCompanyRecords(Todoyu::personid());
 
 		foreach($companies as $company) {
 			$companyPersonIDs	= TodoyuContactCompanyManager::getCompany($company['id'])->getEmployeeIds();
 		}
 
-		$personIDs	[]= personid();
+		$personIDs	[]= Todoyu::personid();
 		$allowedPersonsIDs	= array_unique(array_merge(array_merge($personIDs, $projectsPersonsIDs), $companyPersonIDs));
 
 		return ' id IN ( ' . TodoyuArray::intImplode($allowedPersonsIDs, ',') . ')';
@@ -167,12 +167,12 @@ class TodoyuContactPersonRights {
 	}
 
 
-	
+
 	/**
 	 * Restrict access to persons who are allowed to add a new person
 	 */
 	public static function restrictAdd() {
-		if( ! allowed('contact', 'person:add') ) {
+		if( ! Todoyu::allowed('contact', 'person:add') ) {
 			self::deny('person:add');
 		}
 	}

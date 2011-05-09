@@ -19,11 +19,11 @@
 *****************************************************************************/
 
 	// Add quick create types
-if( allowed('contact', 'person:add') ) {
+if( Todoyu::allowed('contact', 'person:add') ) {
 	TodoyuQuickCreateManager::addEngine('contact', 'person', 'contact.ext.create.person.label', 50, array('contact'));
 }
 
-if( allowed('contact', 'company:add') ) {
+if( Todoyu::allowed('contact', 'company:add') ) {
 	TodoyuQuickCreateManager::addEngine('contact', 'company', 'contact.ext.create.company.label', 60);
 }
 

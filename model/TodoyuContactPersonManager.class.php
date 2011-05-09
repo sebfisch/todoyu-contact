@@ -335,7 +335,7 @@ class TodoyuContactPersonManager {
 	 * @return	Array
 	 */
 	public static function getRoleIDs($idPerson) {
-		$idPerson	= personid($idPerson);
+		$idPerson	= Todoyu::personid($idPerson);
 
 		$field	= 'id_role';
 		$table	= 'ext_contact_mm_person_role';
@@ -570,7 +570,7 @@ class TodoyuContactPersonManager {
 		}
 
 			// Limit results to allowed person records
-		if( ! allowed('contact', 'person:seeAllPersons') ) {
+		if( ! Todoyu::allowed('contact', 'person:seeAllPersons') ) {
 			$where .= ' AND ' . TodoyuContactPersonRights::getAllowedToBeSeenPersonsWhereClause();
 		}
 

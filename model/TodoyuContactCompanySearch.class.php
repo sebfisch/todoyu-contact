@@ -46,7 +46,7 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 		$fields	= array('title', 'shortname');
 
 		$addToWhere = ' AND deleted = 0';
-		if( ! allowed('contact', 'company:seeAllCompanies') ) {
+		if( ! Todoyu::allowed('contact', 'company:seeAllCompanies') ) {
 			$addToWhere	.= ' AND ' . TodoyuContactCompanyRights::getAllowedToBeSeenCompaniesWhereClause();
 		}
 

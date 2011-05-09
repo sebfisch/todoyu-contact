@@ -58,7 +58,7 @@ class TodoyuContactContactInfoManager {
 
 		$label = Todoyu::db()->getFieldValue('title', 'ext_contact_contactinfotype', 'id = ' . $idContactInfoType);
 
-		return Label($label);
+		return Todoyu::Label($label);
 	}
 
 
@@ -120,7 +120,7 @@ class TodoyuContactContactInfoManager {
 	protected static function createNewContactInfoRecord() {
 		$insertArray = array(
 			'date_create'		=> NOW,
-			'id_person_create'	=> personid(),
+			'id_person_create'	=> Todoyu::personid(),
 			'deleted'			=> 0
 		);
 

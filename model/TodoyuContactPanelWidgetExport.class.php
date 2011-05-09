@@ -56,11 +56,11 @@ class TodoyuContactPanelWidgetExport extends TodoyuPanelWidget {
 		$data	= array(
 			'id'			=> $this->getID(),
 			'contactType'	=> $contactType,
-			'instructionText'	=> Label('contact.panelwidget-contactexport.export.instruction'),
-			'buttonText'		=> Label('contact.panelwidget-contactexport.export.button')
+			'instructionText'	=> Todoyu::Label('contact.panelwidget-contactexport.export.instruction'),
+			'buttonText'		=> Todoyu::Label('contact.panelwidget-contactexport.export.button')
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -71,7 +71,7 @@ class TodoyuContactPanelWidgetExport extends TodoyuPanelWidget {
 	 * @return	Boolean
 	 */
 	public static function isAllowed() {
-		return allowed('contact', 'panelwidgets:export');
+		return Todoyu::allowed('contact', 'panelwidgets:export');
 	}
 
 }
