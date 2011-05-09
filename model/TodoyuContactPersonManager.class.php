@@ -224,6 +224,20 @@ class TodoyuContactPersonManager {
 
 
 	/**
+	 * Get person by username
+	 *
+	 * @param	String		$username
+	 * @return	TodoyuContactPerson
+	 */
+	public static function getPersonByUsername($username) {
+		$idPerson	= self::getPersonIDByUsername($username);
+
+		return self::getPerson($idPerson);
+	}
+
+
+
+	/**
 	 * Add a new person
 	 *
 	 * @param	Array		$data
