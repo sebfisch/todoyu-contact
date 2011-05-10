@@ -85,11 +85,11 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 
 			// Get comment details
 		foreach($personIDs as $idPerson) {
-			$label	= TodoyuContactPersonManager::getLabel($idPerson);
+			$person	= TodoyuContactPersonManager::getPerson($idPerson);
 
 			$suggestions[] = array(
-				'labelTitle'=> $label,
-				'labelInfo'	=> $label,
+				'labelTitle'=> $person->getSalutationLabel() . ' ' . $person->getFullName(),
+				'labelInfo'	=> $person->getCompany()->getLabel(),
 				'title'		=> '',
 				'onclick'	=> 'location.href=\'?ext=contact&amp;controller=person&amp;action=detail&amp;person=' . $idPerson . '\''
 			);
@@ -120,7 +120,7 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 				'iconClass'	=> intval($person['is_active']) === 1 ? 'login' : '',
 				'lastname'	=> $person['lastname'],
 				'firstname'	=> $person['firstname'],
-				'email'		=> TodoyuContactPersonManager::getPreferredEmail($person['id']),
+				'email'		=> TodoyuContactContactInfoManager::getPreferredEmail($person['id']),
 				'company'	=> TodoyuContactPersonManager::getPersonsMainCompany($person['id'])->getTitle(),
 				'actions'	=> TodoyuContactRenderer::renderPersonActions($person['id'])
 			);

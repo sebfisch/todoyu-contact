@@ -34,51 +34,43 @@ class TodoyuContactPersonQuickInfoManager {
 	 */
 	public static function addPersonInfos(TodoyuQuickinfo $quickinfo, $idPerson) {
 		$idPerson	= intval($idPerson);
+		$person		= TodoyuContactPersonManager::getPerson($idPerson);
 
-		$data	= TodoyuContactPersonManager::getPersonArray($idPerson);
+			// Name (with link)
+		if( Todoyu::allowed('contact', 'general:area') ) {
+			$link	= TodoyuContactPersonManager::getDetailLink($idPerson);
+			$quickinfo->addInfo('name', $link, 10, false);
+		} else {
+			$quickinfo->addInfo('name', $person->getLabel(), 10, false);
+		}
+
+			// Email
+		$email	= $person->getEmails(true);
+		if( $email !== false ) {
+			$quickinfo->addEmail('email', $email['info'], $person->getFullName(), 100);
+		}
 
 			// Get preferred or only phone
-		$phone		= TodoyuContactPersonManager::getPreferredPhone($idPerson);
-		if( $phone === false ) {
-			$phones	= TodoyuContactPersonManager::getPhones($idPerson, false);
-			if( count($phones) == 1) {
-				$phone	= $phones[0];
-			}
-		}
-
-			// Add person label, linked to contacts detail view if allowed to be seen
-		$personLabel	= TodoyuContactPersonManager::getLabel($idPerson);
-		if( Todoyu::allowed('contact', 'general:area') ) {
-			$linkParams	= array(
-				'ext'		=> 'contact',
-				'controller'=> 'person',
-				'action'	=> 'detail',
-				'person'	=> $idPerson,
-			);
-			$personLabelLinked	= TodoyuString::wrapTodoyuLink($personLabel, 'contact', $linkParams);
-			$quickinfo->addInfo('name', $personLabelLinked, 0, false);
-		} else {
-			$quickinfo->addInfo('name', $personLabel, 0, false);
-		}
-
-		$email	= TodoyuContactPersonManager::getPreferredEmail($idPerson);
-		if( ! empty($email) ) {
-			$fullName	= TodoyuContactPersonManager::getPerson($idPerson)->getFullName();
-
-			$quickinfo->addEmail('email', $email, $fullName);
-		}
-
+		$phone = $person->getPhones(true);
 		if( $phone !== false ) {
-			$quickinfo->addInfo('phone', $phone['info']);
+			$quickinfo->addInfo('phone', $phone['info'], 150);
 		}
 
-			// Add birthday information for internal persons
-		if( Todoyu::person()->isAdmin() || Todoyu::person()->isInternal() ) {
-			if( $data['birthday'] !== '0000-00-00' ) {
-				$birthday	= TodoyuTime::formatSqlDate($data['birthday']);
-				$quickinfo->addInfo('birthday', $birthday);
-			}
+			// Comment
+		$comment	= $person->getComment();
+		if( $comment !== '' ) {
+			$quickinfo->addInfo('comment', TodoyuString::crop($comment, 100), 200);
 		}
+
+
+		// Commented out. Is this really useful information?
+//			// Add birthday information for internal persons
+//		if( Todoyu::person()->isAdmin() || Todoyu::person()->isInternal() ) {
+//			if( $data['birthday'] !== '0000-00-00' ) {
+//				$birthday	= TodoyuTime::formatSqlDate($data['birthday']);
+//				$quickinfo->addInfo('birthday', $birthday);
+//			}
+//		}
 	}
 
 

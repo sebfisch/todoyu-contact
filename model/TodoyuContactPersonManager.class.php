@@ -438,131 +438,6 @@ class TodoyuContactPersonManager {
 
 
 	/**
-	 * Get contact infos of given person
-	 *
-	 * @param	Integer		$idPerson
-	 * @param	String		$type
-	 * @param	Boolean		$onlyPreferred
-	 * @return	Array
-	 */
-	public static function getContactInfos($idPerson, $category = null, $type = null, $onlyPreferred = false) {
-		$idPerson	= intval($idPerson);
-
-		$fields	= '	ci.*,
-					cit.key,
-					cit.title';
-		$tables	= '	ext_contact_contactinfo ci,
-					ext_contact_contactinfotype cit,
-					ext_contact_mm_person_contactinfo mm';
-		$where	= '		mm.id_person			= ' . $idPerson .
-				  ' AND	mm.id_contactinfo	= ci.id
-				  	AND	ci.id_contactinfotype = cit.id';
-		$order	= '	ci.id_contactinfotype ASC,
-					ci.is_preferred DESC';
-
-		if( $onlyPreferred ) {
-			$where .= ' AND ci.is_preferred = 1';
-		}
-
-		if( ! is_null($category) ) {
-			$where .= ' AND cit.category = ' . intval($category);
-		}
-
-		if( ! is_null($type) ) {
-			$where .= ' AND cit.key LIKE \'%' . Todoyu::db()->escape($type) . '%\'';
-		}
-
-		return Todoyu::db()->getArray($fields, $tables, $where, '', $order);
-	}
-
-
-
-	/**
-	 * Get all phone numbers, or only preferred one, of given person
-	 *
-	 * @param	Integer		$idPerson
-	 * @return	String
-	 */
-	public static function getPhones($idPerson, $preferredOnly = false) {
-		$idPerson	= intval($idPerson);
-
-		$fields	= '	ci.info,
-					cit.title';
-		$tables	= '	ext_contact_contactinfo ci,
-					ext_contact_contactinfotype cit,
-					ext_contact_mm_person_contactinfo mm';
-		$where	= '		mm.id_person			= ' . $idPerson
-				. ' AND	mm.id_contactinfo		= ci.id'
-				. ' AND	cit.category			= 2'
-				. ' AND	ci.id_contactinfotype 	= cit.id'
-				. ' AND ci.deleted				= 0';
-
-		if( $preferredOnly ) {
-			$where .= ' AND	ci.is_preferred = 1';
-		}
-
-		if( $preferredOnly ) {
-			return Todoyu::db()->getRecordByQuery($fields, $tables, $where);
-		} else {
-			return Todoyu::db()->getArray($fields, $tables, $where);
-		}
-	}
-
-
-
-	/**
-	 * Get preferred phone number of given person
-	 *
-	 * @param	Integer		$idPerson
-	 * @return	String
-	 */
-	public static function getPreferredPhone($idPerson) {
-		return self::getPhones($idPerson, true);
-	}
-
-
-
-	/**
-	 * Get preferred email of a person
-	 * First check system email, than check "contactinfo" records. Look for preferred emails
-	 *
-	 * @param	Integer		$idPerson
-	 * @return	String
-	 */
-	public static function getPreferredEmail($idPerson) {
-		$idPerson	= intval($idPerson);
-		$person		= TodoyuContactPersonManager::getPerson($idPerson);
-
-		$email		= $person->getEmail();
-
-		if( empty($email) ) {
-			$contactEmails	= self::getContactInfos($idPerson, CONTACT_INFOTYPE_CATEGORY_EMAIL);
-
-			if( sizeof($contactEmails) > 0 ) {
-				$email = $contactEmails[0]['info'];
-			}
-		}
-
-		return $email;
-	}
-
-
-
-	/**
-	 * Get all contact infos marked as being preferred
-	 *
-	 * @param	Integer		$idPerson
-	 * @param	Integer		$category
-	 * @param	String		$type
-	 * @return	Array
-	 */
-	public static function getPreferredContactInfos($idPerson, $category = null, $type = null) {
-		return self::getContactInfos($idPerson, $category, $type, true);
-	}
-
-
-
-	/**
 	 * Search for person
 	 *
 	 * @param	Array	$searchFieldsArray
@@ -1123,5 +998,30 @@ class TodoyuContactPersonManager {
 	public static function getPreviewImageForm(TodoyuFormElement_Comment $formElement) {
 		return TodoyuContactImageManager::renderImageForm($formElement, 'person');
 	}
+
+
+
+
+	/**
+	 * Get link to detail view of a person
+	 *
+	 * @param	Integer		$idPerson
+	 * @return	String
+	 */
+	public static function getDetailLink($idPerson) {
+		$idPerson	= intval($idPerson);
+		$person		= self::getPerson($idPerson);
+
+		$linkParams	= array(
+			'ext'		=> 'contact',
+			'controller'=> 'person',
+			'action'	=> 'detail',
+			'person'	=> $idPerson,
+		);
+
+		return TodoyuString::wrapTodoyuLink($person->getLabel(), 'contact', $linkParams);
+	}
+
+
 }
 ?>

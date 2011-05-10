@@ -158,6 +158,83 @@ class TodoyuContactContactInfoManager {
 		return TodoyuDbHelper::deleteOtherMmRecords($mmTable, 'ext_contact_contactinfo', $idRecord, $currentContactInfoIDs, $fieldRecord, $fieldInfo);
 	}
 
+
+
+	/**
+	 * Get contact infos of given person
+	 *
+	 * @param	Integer		$idPerson
+	 * @param	String		$type
+	 * @param	Boolean		$onlyPreferred
+	 * @return	Array
+	 */
+	public static function getContactInfos($idPerson, $category = null, $type = null, $onlyPreferred = false) {
+		$idPerson	= intval($idPerson);
+
+		$fields	= '	ci.*,
+					cit.key,
+					cit.title';
+		$tables	= '	ext_contact_contactinfo ci,
+					ext_contact_contactinfotype cit,
+					ext_contact_mm_person_contactinfo mm';
+		$where	= '		mm.id_person			= ' . $idPerson .
+				  ' AND	mm.id_contactinfo	= ci.id
+				  	AND	ci.id_contactinfotype = cit.id';
+		$order	= '	ci.is_preferred DESC,
+					ci.id_contactinfotype ASC';
+
+		if( $onlyPreferred ) {
+			$where .= ' AND ci.is_preferred = 1';
+		}
+
+		if( ! is_null($category) ) {
+			$where .= ' AND cit.category = ' . intval($category);
+		}
+
+		if( ! is_null($type) ) {
+			$where .= ' AND cit.key LIKE \'%' . Todoyu::db()->escape($type) . '%\'';
+		}
+
+		return Todoyu::db()->getArray($fields, $tables, $where, '', $order);
+	}
+
+
+	public static function getEmails($idPerson, $type = null, $onlyPreferred = false) {
+		return self::getContactInfos($idPerson, CONTACT_INFOTYPE_CATEGORY_EMAIL, $type, $onlyPreferred);
+	}
+
+
+	public static function getPhones($idPerson, $type = null, $onlyPreferred = false) {
+		return self::getContactInfos($idPerson, CONTACT_INFOTYPE_CATEGORY_PHONE, $type, $onlyPreferred);
+	}
+
+
+	/**
+	 * Get preferred email of a person
+	 * First check system email, than check "contactinfo" records. Look for preferred emails
+	 *
+	 * @param	Integer		$idPerson
+	 * @return	String
+	 */
+	public static function getPreferredEmail($idPerson) {
+		$idPerson	= intval($idPerson);
+		$person		= TodoyuContactPersonManager::getPerson($idPerson);
+
+		$email		= $person->getEmails(true);
+
+		$email		= $person->getEmail();
+
+		if( empty($email) ) {
+			$contactEmails	= TodoyuContactContactInfoManager::getContactInfos($idPerson, CONTACT_INFOTYPE_CATEGORY_EMAIL);
+
+			if( sizeof($contactEmails) > 0 ) {
+				$email = $contactEmails[0]['info'];
+			}
+		}
+
+		return $email;
+	}
+
 }
 
 ?>

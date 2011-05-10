@@ -195,6 +195,17 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 
 
 	/**
+	 * Get person comment
+	 *
+	 * @return	String
+	 */
+	public function getComment() {
+		return $this->get('comment');
+	}
+
+
+
+	/**
 	 * Get person locale preference
 	 * Use system as fallback if not disabled by parameter
 	 *
@@ -352,5 +363,59 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 		return Todoyu::Label('contact.ext.person.attr.salutation.'.$salutation);
 	}
 
+
+
+	/**
+	 * Get phone contact infos
+	 *
+	 * @param	Boolean		$preferred
+	 * @return	Array|Boolean
+	 */
+	public function getPhones($preferred = false) {
+		$phones	= TodoyuContactContactInfoManager::getPhones($this->getID(), null, $preferred);
+
+		if( sizeof($phones) > 0 ) {
+			if( $preferred ) {
+				return $phones[0];
+			} else {
+				return $phones;
+			}
+		} else {
+			return false;
+		}
+	}
+
+
+
+	/**
+	 * Get emails
+	 *
+	 * @param	Boolean		$preferred		Get only one preferred email
+	 * @return 	Array|Boolean
+	 */
+	public function getEmails($preferred = false) {
+		if( $preferred ) {
+			$email = $this->getEmail();
+
+			if( ! empty($email) ) {
+				return array(
+					'label'	=> Todoyu::Label('contact.ext.person.attr.email'),
+					'info'	=> $email
+				);
+			}
+		}
+
+		$emails	= TodoyuContactContactInfoManager::getEmails($this->getID(), null, $preferred);
+
+		if( sizeof($emails) > 0 ) {
+			if( $preferred ) {
+				return $emails[0];
+			} else {
+				return $emails;
+			}
+		} else {
+			return false;
+		}
+	}
 }
 ?>
