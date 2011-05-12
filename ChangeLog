@@ -1,7 +1,14 @@
 todoyu contact extension changelog
 
 contact 1.1.0 - beta release
-	* Changed: Requires core 2.1
+	* Feature: Added salutation and company to person search
+	* Feature: Added comment to person quickinfo
+	* Feature: Added person id plugin (dwoo)
+	* Changed: Moved timezone directly to address form
+	* Feature: Set default salutation to m (male) for new person records
+	* Bugfix: If no user locale is set, english was selected as first element, but system locale could be different
+	* Bugfix: company deletion right check- companies that have projects assigned are NOT allowed to be deleted
+ 	* Changed: Requires core 2.1
 	* Changed: Structure for 2.1
 	* Changed: All classes are prefixed with extension name
 	* Feature: Implementation / documentation of contact export hooks
@@ -30,7 +37,8 @@ contact 1.1.0 - beta release
 	* Bugfix: Added rights check in controller to avoid direct url access
  	* Bugfix: Fixed birthday in person quickinfo and detail view to be formatted by date format of locale
 
-  contact 1.0.7 - not released yet
+
+contact 1.0.7 - not released yet
 	* Bugfix: Show preferred email in person list item (from contactinfotype when no todoyu account given)
 	* Bugfix: Auto-generated person shortname can (not any longer) contain whitespace
 	* Feature: Added changelog
@@ -84,6 +92,7 @@ contact 1.0.0 to 1.0.6 - 1.0.6 released 2011-01-17
 	* Changed: Removed manual requiring of auto-loaded config files
 	* Feature: Added russian translation
 	* Feature: Added method for getting address label to address manager
+
 
 contact 0.0.1 to 1.0.0 - 1.0.0 released on 2010-05-10
 	* Bugfix: Fixed js-bug in person wizard (onEdit wasn't called)
