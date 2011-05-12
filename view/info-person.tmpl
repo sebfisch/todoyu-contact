@@ -18,7 +18,7 @@
 				<td>{htmlencode $shortname}</td>
 			</tr>
 		{/if}
-		<tr class="even"><td colspan="2"><br/></td></tr>
+		<tr class="even"><td colspan="2"><br /></td></tr>
 		{if $birthday != '0000-00-00'}
 			<tr class="odd">
 				<td class="label">{Label contact.ext.person.attr.birthdate}:</td>
@@ -26,55 +26,55 @@
 			</tr>
 		{/if}
 		<tr class="even">
-			<td colspan="2"><br/></td>
+			<td colspan="2"><br /></td>
 		</tr>
 		<tr class="odd">
 			<td class="label">{Label contact.ext.person.attr.company}:</td>
 			<td>
-				{htmlencode wordwrap($company[0][title] 30 cut=true)}<br/><br/>
+				{htmlencode wordwrap($company[0][title] 30 cut=true)}<br /><br/>
 				{foreach $companyData[$company[0][id]] companyAddress}
-					{htmlencode wordwrap($companyAddress.street 30 cut=true)}<br/>
-					{htmlencode wordwrap($companyAddress.zip 30 cut=true)} {htmlencode wordwrap($companyAddressData.city 30 cut=true)}<br/>
-					{htmlencode wordwrap($companyAddress.label_country 30 cut=true)}<br/>
+					{htmlencode wordwrap($companyAddress.street 30 cut=true)}<br />
+					{htmlencode wordwrap($companyAddress.zip 30 cut=true)} {htmlencode wordwrap($companyAddressData.city 30 cut=true)}<br />
+					{htmlencode wordwrap($companyAddress.label_country 30 cut=true)}<br />
 
 					{if strlen($companyAddress.postbox)>0}
-						{Label contact.ext.postbox}: {htmlencode wordwrap($companyAddress.postbox 30 cut=true)}<br/>
+						{Label contact.ext.postbox}: {htmlencode wordwrap($companyAddress.postbox 30 cut=true)}<br />
 					{/if}
-					<br/>
+					<br />
 				{/foreach}
 			</td>
 		</tr>
-		<tr class="even"><td colspan="2"><br/></td></tr>
+		<tr class="even"><td colspan="2"><br /></td></tr>
 		<tr class="odd">
 			<td class="label">{Label contact.ext.person.attr.email}:</td>
 			<td>
 			{if $email !== ''}
-				<a href="mailto:{$email}">{htmlencode wordwrap($email 30 cut=true)}</a><br/>
+				<a href="mailto:{$email}">{htmlencode wordwrap($email 30 cut=true)}</a><br />
 			{/if}
 			{foreach $contactinfo numCi ciData}
 				{if strstr($ciData.info, '@') !== false}
-					<a href="mailto:{$ciData.info}">{htmlencode wordwrap($ciData.info 30 cut=true)}</a><br/>
+					<a href="mailto:{$ciData.info}">{htmlencode wordwrap($ciData.info 30 cut=true)}</a><br />
 				{/if}
 			{/foreach}
 			</td>
 		</tr>
 		{if strlen($address[0][street])>0 || strlen($address[0][city])>0}
 			<tr class="even">
-				<td colspan="2"><br/></td>
+				<td colspan="2"><br /></td>
 			</tr>
 			<tr class="odd">
 				<td class="label">{Label contact.ext.address}:</td>
 				<td>
-					{htmlencode wordwrap($address[0][street] 30 cut=true)}<br/>
-					{$address[0][zip]|truncate:8} {htmlencode wordwrap($address[0][city] 30 cut=true)}<br/>
-					{countryName $address[0][id_country]}<br/>
+					{htmlencode wordwrap($address[0][street] 30 cut=true)}<br />
+					{$address[0][zip]|truncate:8} {htmlencode wordwrap($address[0][city] 30 cut=true)}<br />
+					{countryName $address[0][id_country]}<br />
 					{if strlen($address[0][postbox])>0}
 						{Label contact.ext.address.attr.postbox}: {htmlencode wordwrap($address[0][postbox] 30 cut=true)}
 					{/if}
 				</td>
 			</tr>
 		{/if}
-		<tr class="even"><td colspan="2"><br/></td></tr>
+		<tr class="even"><td colspan="2"><br /></td></tr>
 		{foreach $contactinfo numCi ciData}
 			<tr class="{cycle values="even,odd"}">
 				<td class="label">{labelContactinfotype $ciData.id_contactinfotype}:</td>
