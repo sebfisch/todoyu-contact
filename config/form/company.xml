@@ -10,7 +10,7 @@
 	</hiddenFields>
 	<fieldsets>
 		<fieldset name="main">
-			<legend>Main company data</legend>
+			<legend>contact.form.legend.company.basics</legend>
 			<elements>
 
 				<field type="text" name="title">
@@ -90,7 +90,7 @@
 		</fieldset>
 
 		<fieldset name="image">
-			<legend>Logo</legend>
+			<legend>contact.form.legend.company.logo</legend>
 			<elements>
 
 				<field type="comment" name="preview">
@@ -104,7 +104,7 @@
 					<onclick>Todoyu.Ext.contact.Upload.showUploadForm(this.form, 'company')</onclick>
 				</field>
 				<field type="button" name="remove">
-					<text>LLL:contact.ext.contactimage.upload.remove</text>
+					<text>LLL:contact.ext.company.removeLogo</text>
 					<class>removeContactImage</class>
 					<onclick>Todoyu.Ext.contact.Upload.removeImage(this.form, 'company')</onclick>
 				</field>

@@ -18,7 +18,7 @@
 	<label index="contactimage.upload.success">Upload of image was successful</label>
 	<label index="contactimage.upload.maxFileSizeExceeded">The file '#{filename}' has exceeded the maximum allowed filesize (#{maxFileSize}Bytes) to upload</label>
 	<label index="contactimage.upload.maxLengthFileNameExceeded">The file '#{filename}' has exceeded the maximum allowed length (#{maxLengthFileName}) of its name to upload</label>
-	<label index="contactimage.upload.remove">Remove contact image</label>
+	<label index="contactimage.upload.remove">Remove profile picture</label>
 	<label index="person.create">Add New Person</label>
 	<label index="person.edit">Edit Person</label>
 	<label index="person.delete">Delete Person</label>
@@ -40,7 +40,7 @@
 	<label index="person.attr.company">Employer</label>
 	<label index="person.attr.company.new">New Employer</label>
 	<label index="person.attr.is_active">Enable Login</label>
-	<label index="person.attr.username">Username</label>
+	<label index="person.attr.username">User Name</label>
 	<label index="person.attr.password">Password</label>
 	<label index="person.attr.password.hasPassword">Only fill in to set a new password or to change the current one. Leave empty to keep the current password.</label>
 	<label index="person.attr.email">Email</label>
@@ -72,7 +72,8 @@
 	<label index="company.employees">Employees</label>
 	<label index="company.attr.image.upload">Upload a company logo</label>
 	<label index="company.attr.comment">Comment</label>
-	<label index="company.maincompanydata">Main company data</label>
+	<label index="company.maincompanydata">Main Company Data</label>
+	<label index="company.removeLogo">Remove company logo</label>
 	<label index="contactinfo">Contact Information</label>
 	<label index="contactinfo.new">New Contact Info</label>
 	<label index="contactinfo.attr.type">Contact Info Type</label>
@@ -119,7 +120,7 @@
 	<label index="password.upper">Password needs uppercase</label>
 	<label index="password.lower">Password needs lowercase</label>
 	<label index="password.special">Password needs special signs</label>
-	<label index="password.usernameUnique">Username has to be unique</label>
+	<label index="password.usernameUnique">User name has to be unique</label>
 	<label index="ac.region.notFoundInfo">No region of this name was found. Did you select the correct country?</label>
 	<label index="ac.person.notFoundInfo">No person of this name was found.</label>
 	<label index="ac.company.notFoundInfo">No company of this name was found.</label>

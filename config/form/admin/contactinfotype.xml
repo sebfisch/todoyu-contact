@@ -6,7 +6,7 @@
 	<fieldsets>
 
 		<fieldset name="main">
-			<legend>Main contactinfotype data</legend>
+			<legend>contact.form.legend.admin.contactinfotype.record</legend>
 			<elements>
 
 				<field type="select" name="category">

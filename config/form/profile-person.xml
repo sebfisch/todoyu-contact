@@ -10,21 +10,8 @@
 		</hiddenFields>
 	<fieldsets>
 
-		<fieldset name="user">
-			<legend>User data</legend>
-			<elements>
-				<field type="text" name="email">
-					<label>contact.ext.person.attr.email</label>
-					<validate>
-						<email />
-					</validate>
-					<required />
-				</field>
-			</elements>
-		</fieldset>
-
 		<fieldset name="main">
-			<legend>Main person data</legend>
+			<legend>contact.form.legend.profile.basics</legend>
 			<elements>
 
 				<field type="radio" name="salutation">
@@ -74,8 +61,21 @@
 			</elements>
 		</fieldset>
 
+	<fieldset name="user">
+			<legend>contact.form.legend.profile.userdata</legend>
+			<elements>
+				<field type="text" name="email">
+					<label>contact.ext.person.attr.email</label>
+					<validate>
+						<email />
+					</validate>
+					<required />
+				</field>
+			</elements>
+		</fieldset>
+
 		<fieldset name="image">
-			<legend>Image</legend>
+			<legend>contact.form.legend.profile.picture</legend>
 			<elements>
 
 				<field type="comment" name="preview">
@@ -98,7 +98,7 @@
 		</fieldset>
 
 		<fieldset name="relations">
-			<legend>Person relations</legend>
+			<legend>contact.form.legend.profile.furtherInformation</legend>
 			<elements>
 
 				<field type="databaseRelation" name="contactinfo">

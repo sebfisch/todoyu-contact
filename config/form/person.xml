@@ -11,7 +11,7 @@
 	<fieldsets>
 
 		<fieldset name="main">
-			<legend>Main person data</legend>
+			<legend>contact.form.legend.person.basics</legend>
 			<elements>
 
 				<field type="radio" name="salutation">
@@ -62,7 +62,7 @@
 		</fieldset>
 
 		<fieldset name="image">
-			<legend>Image</legend>
+			<legend>contact.form.legend.person.picture</legend>
 			<elements>
 
 				<field type="comment" name="preview">
@@ -85,7 +85,7 @@
 		</fieldset>
 
 		<fieldset name="relations">
-			<legend>Person relations</legend>
+			<legend>contact.form.legend.person.furtherInformation</legend>
 			<elements>
 
 				<field type="databaseRelation" name="contactinfo">
@@ -142,7 +142,7 @@
 
 
 		<fieldset name="account">
-			<legend>Login account</legend>
+			<legend>contact.form.legend.person.login</legend>
 			<restrict>
 				<allow ext="contact" right="person:enableLogin" />
 			</restrict>

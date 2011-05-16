@@ -6,7 +6,7 @@
 	<fieldsets>
 
 		<fieldset name="main">
-			<legend>Main jobtype data</legend>
+			<legend>contact.form.legend.admin.jobtype.record</legend>
 			<elements>
 
 				<field type="text" name="title">
