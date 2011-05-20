@@ -173,7 +173,7 @@ Todoyu.Ext.contact.Upload = {
 			msg	= '[LLL:contact.ext.contactimage.upload.uploadFailed]';
 		}
 
-		Todoyu.notifyError(msg.interpolate(info), 10);
+		Todoyu.notifyError(msg.interpolate(info));
 	},
 
 
