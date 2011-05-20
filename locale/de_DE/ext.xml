@@ -9,7 +9,7 @@
 	<label index="company">Firma</label>
 	<label index="companys">Firmen</label>
 	<label index="workaddress">Arbeitsadresse</label>
-	<label index="jobtype">Beschäftigungsart</label>
+	<label index="jobtype">Stellenbezeichnung</label>
 	<label index="person.new">Neue Person</label>
 	<label index="company.new">Neue Firma</label>
 	<label index="create.person.label">Neue Person</label>
@@ -48,7 +48,6 @@
 	<label index="person.attr.role.new">Neue Rolle</label>
 	<label index="person.attr.image.upload">Profilbild hochladen</label>
 	<label index="person.attr.comment">Kommentar</label>
-	<label index="person.header.noneselected">Keine Person gewählt.</label>
 	<label index="person.mainpersondata">Personen Daten</label>
 	<label index="person.userinformation">Benutzerinformationen</label>
 	<label index="company.edit">Firma bearbeiten</label>
@@ -67,13 +66,13 @@
 	<label index="company.attr.is_internal">Ist intern</label>
 	<label index="company.attr.person">Angestellte</label>
 	<label index="company.attr.person.new">Neuer Angestellter</label>
-	<label index="company.attr.person.jobtype.noJobtypes">Keine Beschäftigungsarten verfügbar</label>
+	<label index="company.attr.person.jobtype.noJobtypes">Keine Stellenbezeichnung verfügbar</label>
 	<label index="company.noAddress">Keine Adressen verfügbar</label>
 	<label index="company.employees">Angestellte</label>
 	<label index="company.attr.image.upload">Firmenlogo hochladen</label>
 	<label index="company.attr.comment">Kommentar</label>
 	<label index="company.maincompanydata">Allgemeine Information</label>
-	<label index="company.removeLogo">Firmen-Logo entfernen</label>
+	<label index="company.removeLogo">Firmenlogo entfernen</label>
 	<label index="contactinfo">Kontaktinformation</label>
 	<label index="contactinfo.new">Neue Kontaktinformation</label>
 	<label index="contactinfo.attr.type">Informationstyp</label>
@@ -105,7 +104,7 @@
 	<label index="address.attr.country">Land</label>
 	<label index="address.attr.comment">Kommentar</label>
 	<label index="address.attr.timezone">Zeitzone</label>
-	<label index="record.jobtype">Beschäftigungsart</label>
+	<label index="record.jobtype">Stellenbezeichnung</label>
 	<label index="record.contactinfotype">Kontaktinformationstyp</label>
 	<label index="record.contactinfotype.attr.category">Kategorie</label>
 	<label index="record.contactinfotype.attr.key">Schlüssel</label>

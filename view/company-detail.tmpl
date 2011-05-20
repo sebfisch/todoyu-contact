@@ -50,7 +50,8 @@
 							{Label contact.ext.address.attr.postbox}: {htmlencode wordwrap($addressType.postbox 30 cut=true)}<br />
 						{/if}
 						{$addressType.zip} {$addressType.city}<br />
-						{countryName $addressType.id_country}
+						{countryName $addressType.id_country} <br />
+						{$addressType.comment}
 					</div>
 				</div>
 			{/if}

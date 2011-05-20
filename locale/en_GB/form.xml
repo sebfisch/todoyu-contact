@@ -7,7 +7,7 @@
 	<label index="legend.person.basics">Basic Person Information [DONE]</label>
 	<label index="legend.person.picture">Profile picture [DONE]</label>
 	<label index="legend.person.furtherInformation">Further information about the person [DONE]</label>
-	<label index="legend.person.login">Login account [DONE]</label>
+	<label index="legend.person.login">User Account [DONE]</label>
 	<label index="legend.company.basics">Main company information [DONE]</label>
 	<label index="legend.company.logo">Company Logo [DONE]</label>
 	<label index="legend.admin.jobtype.record">Job Type [DONE]</label>
