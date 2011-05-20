@@ -48,6 +48,7 @@
 	<label index="person.attr.role.new">Neue Rolle</label>
 	<label index="person.attr.image.upload">Profilbild hochladen</label>
 	<label index="person.attr.comment">Kommentar</label>
+	<label index="person.header.noneselected">Keine Person gewählt.</label>
 	<label index="person.mainpersondata">Personen Daten</label>
 	<label index="person.userinformation">Benutzerinformationen</label>
 	<label index="company.edit">Firma bearbeiten</label>
@@ -72,6 +73,7 @@
 	<label index="company.attr.image.upload">Firmenlogo hochladen</label>
 	<label index="company.attr.comment">Kommentar</label>
 	<label index="company.maincompanydata">Allgemeine Information</label>
+	<label index="company.removeLogo">Firmen-Logo entfernen</label>
 	<label index="contactinfo">Kontaktinformation</label>
 	<label index="contactinfo.new">Neue Kontaktinformation</label>
 	<label index="contactinfo.attr.type">Informationstyp</label>
