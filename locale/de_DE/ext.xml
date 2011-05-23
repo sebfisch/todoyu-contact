@@ -48,6 +48,7 @@
 	<label index="person.attr.role.new">Neue Rolle</label>
 	<label index="person.attr.image.upload">Profilbild hochladen</label>
 	<label index="person.attr.comment">Kommentar</label>
+	<label index="person.header.noneselected">Keine Person ausgewählt</label>
 	<label index="person.mainpersondata">Personen Daten</label>
 	<label index="person.userinformation">Benutzerinformationen</label>
 	<label index="company.edit">Firma bearbeiten</label>
