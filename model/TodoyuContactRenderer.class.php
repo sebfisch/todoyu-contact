@@ -180,9 +180,8 @@ class TodoyuContactRenderer {
 	/**
 	 * Render person list
 	 *
-	 * @param	String	$sword
-	 * @param	Integer	$size
-	 * @param	Integer	$offset
+	 * @param	String		$sword
+	 * @param	Integer		$offset
 	 * @return	String
 	 */
 	public static function renderPersonList($sword = '', $offset = 0) {
@@ -382,6 +381,7 @@ class TodoyuContactRenderer {
 	 * Render general person header
 	 *
 	 * @param	Integer		$idPerson
+	 * @param	Boolean		$withDetails
 	 * @return	String
 	 */
 	public static function renderPersonHeader($idPerson, $withDetails = null) {

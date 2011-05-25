@@ -323,6 +323,7 @@ class TodoyuContactPersonManager {
 	/**
 	 * Update current persons password
 	 *
+	 * @param	Integer		$idPerson
 	 * @param	String		$password
 	 * @param	Boolean		$alreadyHashed		Is password already a md5 hash?
 	 * @return	Boolean		Updated
@@ -441,8 +442,10 @@ class TodoyuContactPersonManager {
 	/**
 	 * Search for person
 	 *
-	 * @param	Array	$searchFieldsArray
-	 * @param	String	$search
+	 * @param	String		$sword
+	 * @param	Array		$searchFields
+	 * @param	Integer		$size
+	 * @param	Integer		$offset
 	 * @return	Array
 	 */
 	public static function searchPersons($sword = '', array $searchFields = null, $size = 100, $offset = 0) {
@@ -482,10 +485,10 @@ class TodoyuContactPersonManager {
 
 
 	/**
-	 * Database relation function
+	 * Get label of database relation
 	 *
-	 * @param	String		$field
-	 * @param	TodoyuBaseObject	$record
+	 * @param	TodoyuFormElement		$field
+	 * @param	Array					$record
 	 * @return	String
 	 */
 	public static function getDatabaseRelationLabel(TodoyuFormElement $field, array $record) {
@@ -924,7 +927,7 @@ class TodoyuContactPersonManager {
 	/**
 	 * Delete all company addresses which are no longer active
 	 *
-	 * @param	String		$idCompany
+	 * @param	Integer		$idPerson
 	 * @param	Array		$currentAddressIDs	Active addresses which will not be deleted
 	 * @return	Integer
 	 */
@@ -993,7 +996,7 @@ class TodoyuContactPersonManager {
 	/**
 	 * Gets the preview image for the form
 	 *
-	 * @param	FormElement_Comment	$formElement
+	 * @param	TodoyuFormElement_Comment	$formElement
 	 * @return	String
 	 */
 	public static function getPreviewImageForm(TodoyuFormElement_Comment $formElement) {

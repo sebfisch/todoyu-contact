@@ -107,7 +107,8 @@ class TodoyuContactPersonRights {
 	/**
 	 * Get IDs of all persons the current (non-admin) user is allowed to see
 	 *
-	 * @return Array
+	 * @param	Boolean	$withAccount
+	 * @return	Array
 	 */
 	public static function getPersonIDsAllowedToBeSeen($withAccount = false) {
 		$fields	= 'id';

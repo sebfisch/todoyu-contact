@@ -337,9 +337,9 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 
 	/**
-	 * Remove the given Image
+	 * Remove given contact image
 	 *
-	 * @param	$params
+	 * @param	Array	$params
 	 */
 	public function removeimageAction(array $params) {
 		$idCompany	= $params['idImage'];

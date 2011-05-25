@@ -186,7 +186,8 @@ class TodoyuContactAddressManager {
 	/**
 	 * Get label of given address
 	 *
-	 * @return String
+	 * @param	Integer	$idAddress
+	 * @return	String
 	 */
 	public static function getLabel($idAddress) {
 		$idAddress	= intval($idAddress);

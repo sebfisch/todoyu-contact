@@ -34,11 +34,11 @@
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param	Dwoo_Compiler 	$dwoo
+ * @param	Dwoo_Compiler 	$compiler
  * @param	Integer			$idPerson
  * @return	Boolean
  */
-function Dwoo_Plugin_isPersonID_compile(Dwoo_Compiler $dwoo, $idPerson) {
+function Dwoo_Plugin_isPersonID_compile(Dwoo_Compiler $compiler, $idPerson) {
 	return 'Todoyu::personid() === intval(' . $idPerson . ')';
 }
 
@@ -50,10 +50,10 @@ function Dwoo_Plugin_isPersonID_compile(Dwoo_Compiler $dwoo, $idPerson) {
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param	Dwoo_Compiler 	$dwoo
+ * @param	Dwoo_Compiler 	$compiler
  * @return	Boolean
  */
-function Dwoo_Plugin_personid_compile(Dwoo_Compiler $dwoo) {
+function Dwoo_Plugin_personid_compile(Dwoo_Compiler $compiler) {
 	return 'Todoyu::personid()';
 }
 
@@ -168,7 +168,7 @@ function Dwoo_Plugin_personImage_compile(Dwoo_Compiler $compiler, $idPerson) {
  * Renders image of given company
  *
  * @param	Dwoo_Compiler	$compiler
- * @param	Integer			$idPerson
+ * @param	Integer			$idCompany
  * @return	String
  */
 function Dwoo_Plugin_companyImage_compile(Dwoo_Compiler $compiler, $idCompany) {
@@ -222,8 +222,8 @@ function Dwoo_Plugin_isCompanyDeleteAllowed(Dwoo $dwoo, $idCompany) {
 /**
  * Checks if current person is allowed to edit given persons
  *
- * @param	Dwoo_Compiler	$compiler
- * @param	Integer			$idCompany
+ * @param	Dwoo		$dwoo
+ * @param	Integer		$idPerson
  * @return	Boolean
  */
 function Dwoo_Plugin_isPersonEditAllowed(Dwoo $dwoo, $idPerson) {
@@ -237,7 +237,7 @@ function Dwoo_Plugin_isPersonEditAllowed(Dwoo $dwoo, $idPerson) {
  * Checks if current person is allowed to see given person
  *
  * @param	Dwoo		$dwoo
- * @param	Integer		$idCompany
+ * @param	Integer		$idPerson
  * @return	Boolean
  */
 function Dwoo_Plugin_isPersonSeeAllowed(Dwoo $dwoo, $idPerson) {
@@ -251,7 +251,7 @@ function Dwoo_Plugin_isPersonSeeAllowed(Dwoo $dwoo, $idPerson) {
  * Checks if current person is allowed to delete given person
  *
  * @param	Dwoo		$dwoo
- * @param	Integer		$idCompany
+ * @param	Integer		$idPerson
  * @return	Boolean
  */
 function Dwoo_Plugin_isPersonDeleteAllowed(Dwoo $dwoo, $idPerson) {
@@ -265,7 +265,6 @@ function Dwoo_Plugin_isPersonDeleteAllowed(Dwoo $dwoo, $idPerson) {
  * Checks if current Person is internal
  *
  * @param	Dwoo		$dwoo
- * @param	Integer		$idPerson
  * @return	Boolean
  */
 function Dwoo_Plugin_isInternal(Dwoo $dwoo) {

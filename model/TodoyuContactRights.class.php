@@ -123,7 +123,6 @@ class TodoyuContactRights {
 	/**
 	 * Check whether seeing of given contact info type is allowed for current person
 	 *
-	 * @param	Integer		$idPerson
 	 * @param	Integer		$idContactInfoType
 	 * @return	Boolean
 	 */
@@ -166,7 +165,7 @@ class TodoyuContactRights {
 	/**
 	 * Checks whether seeing of address type of given company is allowed for current person
 	 *
-	 * @param	Integer		$idPerson
+	 * @param	Integer		$idCompany
 	 * @param	Integer		$idAddressType
 	 * @return	Boolean
 	 */

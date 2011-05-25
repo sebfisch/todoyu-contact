@@ -95,27 +95,28 @@ class TodoyuContactImageManager {
 
 
 
-		/**
-	 * Store a file as
+	/**
+	 * Store a file
 	 * - Add file to storage folder
 	 * - Update the contact record
 	 *
 	 * @param	String		$path
 	 * @param	String		$name
 	 * @param	String		$mime
-	 *
-
+	 * @param	Integer		$idContact
+	 * @param	String		$recordType
 	 * @return	Integer
 	 */
 	public static function store($path, $name, $mime, $idContact, $recordType) {
 		$idContact	= intval($idContact);
-		$new		= false;
 
 		$storageDir	= self::getStorageDir($recordType);
 
 		if( $idContact == 0 ) {
 			$idContact	= md5(NOW);
 			$new		= true;
+		} else {
+			$new	= false;
 		}
 
 		$dimension	= self::getDimension();

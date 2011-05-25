@@ -164,6 +164,7 @@ class TodoyuContactContactInfoManager {
 	 * Get contact infos of given person
 	 *
 	 * @param	Integer		$idPerson
+	 * @param	Integer		$category
 	 * @param	String		$type
 	 * @param	Boolean		$onlyPreferred
 	 * @return	Array
@@ -199,14 +200,33 @@ class TodoyuContactContactInfoManager {
 	}
 
 
+
+	/**
+	 * Get email addresses of given types of given person
+	 *
+	 * @param	Integer			$idPerson
+	 * @param	String|Null		$type
+	 * @param	Boolean|Null	$onlyPreferred
+	 * @return	Array
+	 */
 	public static function getEmails($idPerson, $type = null, $onlyPreferred = false) {
 		return self::getContactInfos($idPerson, CONTACT_INFOTYPE_CATEGORY_EMAIL, $type, $onlyPreferred);
 	}
 
 
+
+	/**
+	 * Get phone numbers of given types of given person
+	 *
+	 * @param	Integer			$idPerson
+	 * @param	String|Null		$type
+	 * @param	Boolean|Null	$onlyPreferred
+	 * @return	Array
+	 */
 	public static function getPhones($idPerson, $type = null, $onlyPreferred = false) {
 		return self::getContactInfos($idPerson, CONTACT_INFOTYPE_CATEGORY_PHONE, $type, $onlyPreferred);
 	}
+
 
 
 	/**

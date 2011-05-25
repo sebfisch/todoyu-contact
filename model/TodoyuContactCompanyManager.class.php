@@ -178,7 +178,7 @@ class TodoyuContactCompanyManager {
 	/**
 	 * Delete a company in the database (set deleted flag to 1)
 	 *
-	 * @param	Integer		$idPerson
+	 * @param	Integer		$idCompany
 	 */
 	public static function deleteCompany($idCompany) {
 		$idCompany	= intval($idCompany);
@@ -669,7 +669,7 @@ class TodoyuContactCompanyManager {
 	/**
 	 * Gets the preview image for the form
 	 *
-	 * @param	FormElement_Comment	$formElement
+	 * @param	TodoyuFormElement_Comment		$formElement
 	 * @return	String
 	 */
 	public static function getPreviewImageForm(TodoyuFormElement_Comment $formElement) {

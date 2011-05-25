@@ -97,12 +97,12 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 
 
 
-		/**
+	/**
 	 * Get listing data for companies
 	 *
 	 * @param	Integer		$size
 	 * @param	Integer		$offset
-	 * @param	Integer		$searchWord
+	 * @param	String		$searchWord
 	 * @return	Array
 	 */
 	public static function getCompanyListingData($size, $offset = 0, $searchWord = '') {

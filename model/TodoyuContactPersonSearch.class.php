@@ -105,6 +105,7 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 	 *
 	 * @param	Integer		$size
 	 * @param	Integer		$offset
+	 * @param	String		$searchWord
 	 * @return	Array
 	 */
 	public static function getPersonListingData($size, $offset = 0, $searchWord = '') {
