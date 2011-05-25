@@ -27,9 +27,9 @@
 class TodoyuContactContactInfoType extends TodoyuBaseObject {
 
 	/**
-	 * constructor of the class
+	 * Constructor of the class
 	 *
-	 * @param	Integer	$contactInfoTypeID
+	 * @param	Integer		$idContactInfoType
 	 */
 	public function __construct($idContactInfoType) {
 		parent::__construct($idContactInfoType, 'ext_contact_contactinfotype');
@@ -73,12 +73,12 @@ class TodoyuContactContactInfoType extends TodoyuBaseObject {
 
 
 	/**
-	 * Gets the lable for the formElement databaserelation
+	 * Gets the label for the formElement databaserelation
 	 *
-	 * @todo	TodoyuBaseObject is abstract, what is the real type?
-	 * @param	TodoyuFormElement_DatabaseRelation	$formElement
-	 * @param	TodoyuBaseObject					$record
+	 * @param	TodoyuFormElement_DatabaseRelation		$formElement
+	 * @param	Array									$data
 	 * @return	String
+	 * @todo	TodoyuBaseObject is abstract, what is the real type?
 	 */
 	public static function getLabelForDatabaseRelation($formElement, $data) {
 		$idContactInfoType	= intval($data['id_contactinfotype']);

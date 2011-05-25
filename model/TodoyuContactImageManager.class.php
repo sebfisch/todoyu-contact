@@ -77,7 +77,7 @@ class TodoyuContactImageManager {
 	 * Renders the Image. Needed because the files folder is .htaccess protected.
 	 * If no picture of an user is found, one of randomly 7 images is taken
 	 *
-	 * @param	Integer		$idPerson
+	 * @param	Integer		$idImage
 	 * @param	String		$type
 	 */
 	public static function renderImage($idImage, $type) {

@@ -43,8 +43,9 @@ class TodoyuContactCompanyFilterDataSource {
 	/**
 	 * Get company autocompletion data
 	 *
-	 * @param	String	$search
-	 * @param	Array	$conf
+	 * @param	String	$input
+	 * @param	Array	$formData
+	 * @param	String	$name
 	 * @return	Array
 	 */
 	public static function autocompleteCompanies($input, array $formData = array(), $name = '') {

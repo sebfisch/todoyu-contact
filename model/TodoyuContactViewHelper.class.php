@@ -72,7 +72,6 @@ class TodoyuContactViewHelper {
 	 * @param	TodoyuFormElement	$field
 	 * @param	Boolean				$showEmail
 	 * @param	Boolean				$lastNameFirst
-	 * @param	Boolean				$personsWithEmailOnly
 	 * @return	Array
 	 */
 	public static function getInternalPersonOptions(TodoyuFormElement $field, $showEmail = false, $lastNameFirst = true) {
