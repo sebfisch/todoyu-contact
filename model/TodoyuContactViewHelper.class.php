@@ -399,6 +399,7 @@ class TodoyuContactViewHelper {
 	 * Get selector options config array for regions in address form
 	 *
 	 * @param	TodoyuFormElement	$field
+	 * @return	Array
 	 */
 	public static function getRegionOptions(TodoyuFormElement $field) {
 		$country	= $field->getForm()->getField('id_country')->getValue();

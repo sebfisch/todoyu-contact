@@ -56,6 +56,7 @@ class TodoyuContactProfileRenderer {
 	 * Render contact profile main content
 	 *
 	 * @param	Array	$params
+	 * @return	String
 	 */
 	public static function renderContent(array $params) {
 		$tab	= $params['tab'];

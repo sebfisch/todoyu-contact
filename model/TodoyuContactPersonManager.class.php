@@ -37,6 +37,7 @@ class TodoyuContactPersonManager {
 	 * Get form object for person quick creation
 	 *
 	 * @param	Integer		$idPerson
+	 * @return	TodoyuForm
 	 */
 	public static function getQuickCreateForm($idPerson = 0) {
 		$idPerson	= intval($idPerson);

@@ -170,7 +170,8 @@ class TodoyuContactJobTypeManager {
 	/**
 	 * Save job type
 	 *
-	 * @param	Array	$jobTypeData
+	 * @param	Array	$data		Data of job type
+	 * @return	Integer
 	 */
 	public static function saveJobtype(array $data) {
 		$idJobtype	= intval($data['id']);
@@ -220,6 +221,7 @@ class TodoyuContactJobTypeManager {
 	 * Remove job type
 	 *
 	 * @param	Integer	$idJobtype
+	 * @return	Boolean
 	 */
 	public static function deleteJobtype($idJobtype) {
 		$idJobtype	= intval($idJobtype);
