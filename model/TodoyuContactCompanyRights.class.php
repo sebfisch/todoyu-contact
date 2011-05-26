@@ -141,7 +141,7 @@ class TodoyuContactCompanyRights {
 
 		$allowedCompanyIDs	= array_unique(array_merge($allowedCompanyIDs, $ownCompanyIDs));
 
-		return ' id IN ( ' . TodoyuArray::intImplode($allowedCompanyIDs, ',') . ')';;
+		return ' id IN ( ' . TodoyuArray::intImplode($allowedCompanyIDs, ',') . ')';
 	}
 
 

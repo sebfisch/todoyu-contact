@@ -240,13 +240,10 @@ class TodoyuContactContactInfoManager {
 		$idPerson	= intval($idPerson);
 		$person		= TodoyuContactPersonManager::getPerson($idPerson);
 
-		$email		= $person->getEmails(true);
-
 		$email		= $person->getEmail();
 
 		if( empty($email) ) {
-			$contactEmails	= TodoyuContactContactInfoManager::getContactInfos($idPerson, CONTACT_INFOTYPE_CATEGORY_EMAIL);
-
+			$contactEmails	= self::getContactInfos($idPerson, CONTACT_INFOTYPE_CATEGORY_EMAIL);
 			if( sizeof($contactEmails) > 0 ) {
 				$email = $contactEmails[0]['info'];
 			}

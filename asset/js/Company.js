@@ -257,7 +257,7 @@ Todoyu.Ext.contact.Company =  {
 			Todoyu.notifySuccess('[LLL:contact.ext.company.saved.ok]');
 
 			$(fieldName).value				= response.getTodoyuHeader('record');
-			$(fieldName + '-fulltext').value= response.getTodoyuHeader('label');;
+			$(fieldName + '-fulltext').value= response.getTodoyuHeader('label');
 
 			Todoyu.Popups.close('popup-' + fieldName);
 		}

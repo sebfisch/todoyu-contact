@@ -388,34 +388,19 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 
 
 	/**
-	 * Get emails
+	 * Get email addresses of person
 	 *
-	 * @param	Boolean		$preferred		Get only one preferred email
+	 * @param	Boolean			$preferred		Get only one preferred email
 	 * @return 	Array|Boolean
 	 */
 	public function getEmails($preferred = false) {
 		if( $preferred ) {
-			$email = $this->getEmail();
-
-			if( ! empty($email) ) {
-				return array(
-					'label'	=> Todoyu::Label('contact.ext.person.attr.email'),
-					'info'	=> $email
-				);
-			}
+			return	TodoyuContactContactInfoManager::getPreferredEmail($this->getID());
 		}
 
 		$emails	= TodoyuContactContactInfoManager::getEmails($this->getID(), null, $preferred);
 
-		if( sizeof($emails) > 0 ) {
-			if( $preferred ) {
-				return $emails[0];
-			} else {
-				return $emails;
-			}
-		} else {
-			return false;
-		}
+		return $emails;
 	}
 }
 ?>
