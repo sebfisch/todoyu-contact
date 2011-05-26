@@ -18,7 +18,7 @@
 	<label index="contactimage.upload.success">Bild wurde erfolgreich hochgeladen</label>
 	<label index="contactimage.upload.maxFileSizeExceeded">Die Datei '#{filename}' hat die maximal zulässige Grösse für Uploads (#{maxFileSize}Bytes) überschritten</label>
 	<label index="contactimage.upload.uploadFailed">Das Hochladen der Datei '#{filename}' ist fehlgeschlagen</label>
-	<label index="contactimage.upload.remove">Bild entfernen</label>
+	<label index="contactimage.upload.remove">Profilbild entfernen</label>
 	<label index="person.create">Neue Person hinzufügen</label>
 	<label index="person.edit">Person bearbeiten</label>
 	<label index="person.delete">Person löschen</label>
