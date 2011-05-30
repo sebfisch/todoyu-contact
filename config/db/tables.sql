@@ -61,8 +61,8 @@ CREATE TABLE `ext_contact_address` (
 	`id_timezone` smallint(3) NOT NULL DEFAULT '0',
 	`street` varchar(128) NOT NULL,
 	`postbox` varchar(32) NOT NULL,
-	`city` varchar(48) NOT NULL,
-	`region` varchar(32) NOT NULL,
+	`city` varchar(64) NOT NULL,
+	`region` varchar(64) NOT NULL,
 	`zip` varchar(10) NOT NULL,
 	`comment` varchar(255) NOT NULL,
 	`is_preferred` tinyint(1) NOT NULL DEFAULT '0',
@@ -100,8 +100,8 @@ CREATE TABLE `ext_contact_contactinfotype` (
 	`id_person_create` int(10) unsigned NOT NULL,
 	`deleted` tinyint(1) NOT NULL DEFAULT '0',
 	`category` smallint(5) unsigned NOT NULL,
-	`key` varchar(20) NOT NULL,
-	`title` varchar(48) NOT NULL,
+	`key` varchar(32) NOT NULL,
+	`title` varchar(64) NOT NULL,
 	`is_public` tinyint(1) NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
@@ -118,7 +118,7 @@ CREATE TABLE `ext_contact_jobtype` (
 	`date_update` int(11) NOT NULL,
 	`id_person_create` int(10) unsigned NOT NULL,
 	`deleted` tinyint(1) NOT NULL DEFAULT '0',
-	`title` varchar(48) NOT NULL,
+	`title` varchar(64) NOT NULL,
 	PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
