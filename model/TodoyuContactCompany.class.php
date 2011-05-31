@@ -112,15 +112,18 @@ class TodoyuContactCompany extends TodoyuBaseObject {
 	 * @return array
 	 */
 	public function getEmployeeIds() {
-		$employeeIDs	= array();
-		
-		$employees		= TodoyuContactCompanyManager::getCompanyPersonRecords($this->getID());
+		$idCompany	= intval($this->getID());
 
-		foreach($employees as $employee) {
-			$employeeIDs[] = $employee['id'];
-		}
+		$fields	= 	'	p.id';
+		$tables	= 	'	ext_contact_person p,
+						ext_contact_mm_company_person mm';
+		$where	= 	'		mm.id_person	= p.id
+						AND	mm.id_company	= ' . $idCompany .
+				  	' AND	p.deleted		= 0';
+		$order		= 'mm.id';
+		$indexField	= 'id';
 
-		return $employeeIDs;
+		return array_keys(Todoyu::db()->getArray($fields, $tables, $where, '', $order, '', $indexField));
 	}
 
 
