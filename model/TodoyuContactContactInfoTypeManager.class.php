@@ -75,13 +75,14 @@ class TodoyuContactContactInfoTypeManager {
 	 * @return	Array
 	 */
 	public static function getRecords() {
-		$contactInfoTypes = self::getContactInfoTypes(true);
-		$reform		= array(
+		$contactInfoTypes	= self::getContactInfoTypes(true);
+
+		$reformConfig		= array(
 			'id'	=> 'id',
 			'title'	=> 'label'
 		);
 
-		return TodoyuArray::reform($contactInfoTypes, $reform);
+		return TodoyuArray::reform($contactInfoTypes, $reformConfig);
 	}
 
 

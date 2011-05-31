@@ -91,12 +91,12 @@ class TodoyuContactJobTypeManager {
 	 * @return	Array
 	 */
 	public static function getRecords() {
-		$jobtypes	= TodoyuContactJobTypeManager::getAllJobTypes();
-		$reform		= array(
+		$jobTypes		= TodoyuContactJobTypeManager::getAllJobTypes();
+		$reformConfig	= array(
 			'title'	=> 'label'
 		);
 
-		return TodoyuArray::reform($jobtypes, $reform, true);
+		return TodoyuArray::reform($jobTypes, $reformConfig, true);
 	}
 
 
@@ -107,13 +107,12 @@ class TodoyuContactJobTypeManager {
 	 * @return	Array
 	 */
 	public static function getJobTypeOptions() {
-		$jobTypes	= self::getJobTypes();
-		$reform		= array(
+		$jobTypes		= self::getJobTypes();
+		$reformConfig	= array(
 			'id'	=> 'value',
 			'title'	=> 'label'
 		);
-
-		$options	= TodoyuArray::reform($jobTypes, $reform);
+		$options	= TodoyuArray::reform($jobTypes, $reformConfig);
 
 		return TodoyuArray::sortByLabel($options, 'label');
 	}

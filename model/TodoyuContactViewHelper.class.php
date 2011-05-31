@@ -245,11 +245,11 @@ class TodoyuContactViewHelper {
 	 */
 	public static function getContactInfoTypeCategoryOptions(TodoyuFormElement $field) {
 		$categoriesConf	= TodoyuContactManager::getContactinfotypeCategories();
-		$reform		= array(
+		$reformConfig	= array(
 			'index'	=> 'value',
 			'label'	=> 'label'
 		);
-		$options		= TodoyuArray::reform($categoriesConf, $reform);
+		$options		= TodoyuArray::reform($categoriesConf, $reformConfig);
 
 		return $options;
 	}
@@ -264,11 +264,11 @@ class TodoyuContactViewHelper {
 	 */
 	public static function getAddressTypeOptions(TodoyuFormElement $field) {
 		$addressTypesConf	= TodoyuContactManager::getAddressTypes();
-		$reform		= array(
+		$reformConfig		= array(
 			'index'	=> 'value',
 			'label'	=> 'label'
 		);
-		$options		= TodoyuArray::reform($addressTypesConf, $reform);
+		$options		= TodoyuArray::reform($addressTypesConf, $reformConfig);
 
 		return $options;
 	}
@@ -384,12 +384,13 @@ class TodoyuContactViewHelper {
 	 */
 	public static function getContactInfoTypeOptions(TodoyuFormElement $field) {
 		$types	= TodoyuContactContactInfoTypeManager::getContactInfoTypes(true);
-		$reform	= array(
+
+		$reformConfig	= array(
 			'id'	=> 'value',
 			'title'	=> 'label'
 		);
 
-		return TodoyuArray::reform($types, $reform);
+		return TodoyuArray::reform($types, $reformConfig);
 	}
 
 
