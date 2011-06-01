@@ -47,7 +47,7 @@ class TodoyuContactPersonQuickInfoManager {
 			// Email
 		$email	= $person->getEmails(true);
 		if( $email !== false ) {
-			$quickinfo->addEmail('email', $email['info'], $person->getFullName(), 100);
+			$quickinfo->addEmail('email', $email, $person->getFullName(), 100);
 		}
 
 			// Get preferred or only phone
