@@ -71,6 +71,8 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 
 		this.addAddIconsToList();
 		this.addRemoveIconsToList();
+
+		this.markFirstAsHot();
 	},
 
 
