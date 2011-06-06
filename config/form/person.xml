@@ -30,7 +30,7 @@
 
 				<field type="text" name="lastname">
 					<label>contact.ext.person.attr.lastname</label>
-					<required/>
+					<required />
 				</field>
 
 				<field type="text" name="firstname">
@@ -235,7 +235,7 @@
 									<except>is_admin</except>
 								</requiredIfNotEmpty>
 							</validate>
-							<!--<required/>-->
+							<!--<required />-->
 						</field>
 					</elements>
 				</fieldset>

@@ -24,7 +24,7 @@
 					<label>contact.ext.workaddress</label>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getWorkaddressOptionsPerson</function>
-						<lazyInit/>
+						<lazyInit />
 					</source>
 				</field>
 
@@ -32,7 +32,7 @@
 					<label>contact.ext.jobtype</label>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getJobTypeOptions</function>
-						<lazyInit/>
+						<lazyInit />
 					</source>
 				</field>
 

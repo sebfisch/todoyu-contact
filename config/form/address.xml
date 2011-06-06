@@ -47,7 +47,7 @@
 					<label>contact.ext.address.attr.region</label>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getRegionOptions</function>
-						<lazyInit/>
+						<lazyInit />
 					</source>
 				</field>
 
