@@ -180,13 +180,12 @@ function Dwoo_Plugin_companyImage_compile(Dwoo_Compiler $compiler, $idCompany) {
 /**
  * Checks if current person is allowed to edit given company
  *
- * @param	Dwoo		$dwoo
- * @param	Integer		$idCompany
- * @return	Boolean
+ * @param	Dwoo_Compiler	$compiler
+ * @param	Integer			$idCompany
+ * @return	String
  */
-function Dwoo_Plugin_isCompanyEditAllowed(Dwoo $dwoo, $idCompany) {
-	$idCompany	= intval($idCompany);
-	return TodoyuContactCompanyRights::isEditAllowed($idCompany);
+function Dwoo_Plugin_isCompanyEditAllowed_compile(Dwoo_Compiler $compiler, $idCompany) {
+	return 'TodoyuContactCompanyRights::isEditAllowed(' . $idCompany . ')';
 }
 
 
@@ -194,13 +193,12 @@ function Dwoo_Plugin_isCompanyEditAllowed(Dwoo $dwoo, $idCompany) {
 /**
  * Checks if current person is allowed to see given company
  *
- * @param	Dwoo		$dwoo
- * @param	Integer		$idCompany
- * @return	Boolean
+ * @param	Dwoo_Compiler	$compiler
+ * @param	Integer			$idCompany
+ * @return	String
  */
-function Dwoo_Plugin_isCompanySeeAllowed(Dwoo $dwoo, $idCompany) {
-	$idCompany	= intval($idCompany);
-	return TodoyuContactCompanyRights::isSeeAllowed($idCompany );
+function Dwoo_Plugin_isCompanySeeAllowed_compile(Dwoo_Compiler $compiler, $idCompany) {
+	return 'TodoyuContactCompanyRights::isSeeAllowed(' . $idCompany . ')';
 }
 
 
@@ -208,13 +206,12 @@ function Dwoo_Plugin_isCompanySeeAllowed(Dwoo $dwoo, $idCompany) {
 /**
  * Checks if current person is allowed to delete given company
  *
- * @param	Dwoo		$dwoo
- * @param	Integer		$idCompany
- * @return	Boolean
+ * @param	Dwoo_Compiler	$compiler
+ * @param	Integer			$idCompany
+ * @return	String
  */
-function Dwoo_Plugin_isCompanyDeleteAllowed(Dwoo $dwoo, $idCompany) {
-	$idCompany	= intval($idCompany);
-	return TodoyuContactCompanyRights::isDeleteAllowed($idCompany);
+function Dwoo_Plugin_isCompanyDeleteAllowed_compile(Dwoo_Compiler $compiler, $idCompany) {
+	return 'TodoyuContactCompanyRights::isDeleteAllowed(' . $idCompany . ')';
 }
 
 
@@ -222,13 +219,12 @@ function Dwoo_Plugin_isCompanyDeleteAllowed(Dwoo $dwoo, $idCompany) {
 /**
  * Checks if current person is allowed to edit given persons
  *
- * @param	Dwoo		$dwoo
- * @param	Integer		$idPerson
- * @return	Boolean
+ * @param	Dwoo_Compiler	$compiler
+ * @param	Integer			$idPerson
+ * @return	String
  */
-function Dwoo_Plugin_isPersonEditAllowed(Dwoo $dwoo, $idPerson) {
-	$idPerson	= intval($idPerson);
-	return TodoyuContactPersonRights::isEditAllowed($idPerson);
+function Dwoo_Plugin_isPersonEditAllowed_compile(Dwoo_Compiler $compiler, $idPerson) {
+	return 'TodoyuContactPersonRights::isEditAllowed(' . $idPerson . ')';
 }
 
 
@@ -236,13 +232,12 @@ function Dwoo_Plugin_isPersonEditAllowed(Dwoo $dwoo, $idPerson) {
 /**
  * Checks if current person is allowed to see given person
  *
- * @param	Dwoo		$dwoo
- * @param	Integer		$idPerson
- * @return	Boolean
+ * @param	Dwoo_Compiler	$compiler
+ * @param	Integer			$idPerson
+ * @return	String
  */
-function Dwoo_Plugin_isPersonSeeAllowed(Dwoo $dwoo, $idPerson) {
-	$idPerson	= intval($idPerson);
-	return TodoyuContactPersonRights::isSeeAllowed($idPerson);
+function Dwoo_Plugin_isPersonSeeAllowed_compile(Dwoo_Compiler $compiler, $idPerson) {
+	return 'TodoyuContactPersonRights::isSeeAllowed(' . $idPerson . ')';
 }
 
 
@@ -250,13 +245,12 @@ function Dwoo_Plugin_isPersonSeeAllowed(Dwoo $dwoo, $idPerson) {
 /**
  * Checks if current person is allowed to delete given person
  *
- * @param	Dwoo		$dwoo
- * @param	Integer		$idPerson
- * @return	Boolean
+ * @param	Dwoo_Compiler		$compiler
+ * @param	Integer				$idPerson
+ * @return	String
  */
-function Dwoo_Plugin_isPersonDeleteAllowed(Dwoo $dwoo, $idPerson) {
-	$idPerson	= intval($idPerson);
-	return TodoyuContactPersonRights::isDeleteAllowed($idPerson);
+function Dwoo_Plugin_isPersonDeleteAllowed_compile(Dwoo_Compiler $compiler, $idPerson) {
+	return 'TodoyuContactPersonRights::isDeleteAllowed(' . $idPerson . ')';
 }
 
 
@@ -264,11 +258,11 @@ function Dwoo_Plugin_isPersonDeleteAllowed(Dwoo $dwoo, $idPerson) {
 /**
  * Checks if current Person is internal
  *
- * @param	Dwoo		$dwoo
- * @return	Boolean
+ * @param	Dwoo_Compiler	$compiler
+ * @return	String
  */
-function Dwoo_Plugin_isInternal(Dwoo $dwoo) {
-	return TodoyuContactPersonManager::getPerson(Todoyu::personid())->isInternal();
+function Dwoo_Plugin_isInternal_compile(Dwoo_Compiler $compiler) {
+	return 'TodoyuAuth::isInternal()';
 }
 
 
