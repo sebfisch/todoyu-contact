@@ -81,11 +81,11 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 			$companies	= Todoyu::db()->getArray($fields, $table, $where, '', $order);
 
 			foreach($companies as $company) {
-				$label	= $company['title'] . ($company['shortname'] !== '' ? ' (' . $company['shortname'] . ')' : '');
+				$phones	= TodoyuContactCompanyManager::getPhones($company['id']);
 
 				$suggestions[] = array(
-					'labelTitle'=> $label,
-					'labelInfo'	=> $label,
+					'labelTitle'=> TodoyuString::wrap($company['title'], '<span class="keyword">|</span>') . (isset($phones[0]) ? ' | ' .$phones[0]['info'] : ''),
+					'labelInfo'	=> '',
 					'title'		=> '',
 					'onclick'	=> 'location.href=\'?ext=contact&amp;controller=company&amp;action=detail&amp;company=' . $company['id'] . '\''
 				);

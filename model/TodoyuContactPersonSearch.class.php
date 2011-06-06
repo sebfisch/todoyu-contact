@@ -86,9 +86,9 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 			// Get comment details
 		foreach($personIDs as $idPerson) {
 			$person	= TodoyuContactPersonManager::getPerson($idPerson);
-
+			$phone = $person->getPhones(true);
 			$suggestions[] = array(
-				'labelTitle'=> $person->getSalutationLabel() . ' ' . $person->getFullName(),
+				'labelTitle'=> TodoyuString::wrap($person->getFullName(), '<span class="keyword">|</span>') . ( $person->getEmail() ? ' | ' . $person->getEmail() : '') . (isset($phone['info']) ? ' | ' . $phone['info'] : ''),
 				'labelInfo'	=> $person->getCompany()->getLabel(),
 				'title'		=> '',
 				'onclick'	=> 'location.href=\'?ext=contact&amp;controller=person&amp;action=detail&amp;person=' . $idPerson . '\''

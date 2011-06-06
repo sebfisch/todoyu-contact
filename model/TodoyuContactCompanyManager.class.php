@@ -675,6 +675,32 @@ class TodoyuContactCompanyManager {
 	public static function getPreviewImageForm(TodoyuFormElement_Comment $formElement) {
 		return TodoyuContactImageManager::renderImageForm($formElement, 'company');
 	}
+
+
+
+	/**
+	 * @static
+	 * @param  $idCompany
+	 * @return void
+	 */
+	public static function getPhones($idCompany) {
+		$idCompany	= intval($idCompany);
+
+		$fields	= '	c.*';
+		$tables	=  'ext_contact_contactinfo c,
+					ext_contact_mm_company_contactinfo mm,
+					ext_contact_contactinfotype t';
+		$where	= ' 	mm.id_contactinfo	= c.id
+					AND	mm.id_company		= ' . $idCompany .
+				  ' AND	c.deleted			= 0' .
+				  ' AND t.id = c.id_contactinfotype' .
+				  ' AND t.category	= ' . CONTACT_INFOTYPE_CATEGORY_PHONE;
+		$orderBy	= 'is_preferred DESC';
+
+		return Todoyu::db()->getArray($fields, $tables, $where, '', $orderBy);
+
+
+	}
 }
 
 ?>
