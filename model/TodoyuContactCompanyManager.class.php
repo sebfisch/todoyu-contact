@@ -418,7 +418,7 @@ class TodoyuContactCompanyManager {
 	 * @param	Integer		$idCompany
 	 */
 	public static function deleteContactinfos($idCompany) {
-		TodoyuContactContactInfoManager::deleteLinkedContactInfos('ext_contact_mm_company_contactinfo', $idCompany, array(), 'id_company');
+		TodoyuContactContactInfoManagerCompany::deleteContactinfos($idCompany);
 	}
 
 

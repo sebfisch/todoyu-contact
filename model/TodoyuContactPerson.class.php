@@ -57,9 +57,9 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 		}
 
 		 if( $showEmail === true ) {
-			$email	= $this->getEmail();
+			$email	= $this->getEmail(true);
 
-			if( ! empty($email) ) {
+			if( $email !== false ) {
 		 		$label	.= ' (' . $this->getEmail() . ')';
 			}
 		 }
@@ -153,10 +153,32 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	/**
 	 * Get contact email address
 	 *
+	 * @param	Boolean		$checkContactInfo
+	 * @return	String|Boolean
+	 */
+	public function getEmail($checkContactInfo = true) {
+		$email	= $this->getAccountEmail();
+
+		if( $email === '' && $checkContactInfo ) {
+			$preferredEmails	= TodoyuContactContactInfoManagerPerson::getEmails($this->getID());
+
+			if( sizeof($preferredEmails) > 0 ) {
+				$email	= trim($preferredEmails[0]['info']);
+			}
+		}
+
+		return $email === '' ? false : $email;
+	}
+
+
+
+	/**
+	 * Get email of user account
+	 *
 	 * @return	String
 	 */
-	public function getEmail() {
-		return $this->get('email');
+	public function getAccountEmail() {
+		return trim($this->get('email'));
 	}
 
 
@@ -166,9 +188,33 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	 *
 	 * @return	Boolean
 	 */
-	public function hasEmail() {
-		return trim($this->getEmail()) !== '';
+	public function hasEmail($checkContactInfo = false) {
+		return trim($this->getEmail($checkContactInfo)) !== '';
 	}
+
+
+
+	/**
+	 * Check whether person has an account email address
+	 *
+	 * @return	Boolean
+	 */
+	public function hasAccountEmail() {
+		return trim($this->getAccountEmail()) !== '';
+	}
+
+
+
+	/**
+	 * Check whether persons account is active
+	 *
+	 * @return	Boolean
+	 */
+	public function isActive() {
+		return intval($this->get('is_active')) === 1;
+	}
+
+
 
 
 
@@ -368,39 +414,49 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	/**
 	 * Get phone contact infos
 	 *
-	 * @param	Boolean		$preferred
-	 * @return	Array|Boolean
+	 * @return	Array
 	 */
-	public function getPhones($preferred = false) {
-		$phones	= TodoyuContactContactInfoManager::getPhones($this->getID(), null, $preferred);
+	public function getPhones() {
+		return TodoyuContactContactInfoManagerPerson::getPhones($this->getID());
+	}
+
+
+	public function getPhone() {
+		$phones	= $this->getPhones();
 
 		if( sizeof($phones) > 0 ) {
-			if( $preferred ) {
-				return $phones[0];
-			} else {
-				return $phones;
-			}
+			return $phones[0]['info'];
 		} else {
 			return false;
 		}
 	}
 
 
+	public function getContactEmails() {
+
+	}
+
+
 
 	/**
-	 * Get email addresses of person
+	 * Get main company (first linked) of the person
 	 *
-	 * @param	Boolean			$preferred		Get only one preferred email
-	 * @return 	Array|Boolean
+	 * @return	TodoyuContactCompany
 	 */
-	public function getEmails($preferred = false) {
-		if( $preferred ) {
-			return	TodoyuContactContactInfoManager::getPreferredEmail($this->getID());
-		}
+	public function getMainCompany() {
 
-		$emails	= TodoyuContactContactInfoManager::getEmails($this->getID(), null, $preferred);
+		$field	= 'id_company';
+		$table	= ' ext_contact_mm_company_person mm,
+					ext_contact_company c';
+		$where	= '		mm.id_company	= c.id
+					AND c.deleted		= 0
+					AND mm.id_person	= ' . $this->getID();
+		$limit	= 1;
 
-		return $emails;
+		$idCompany	= Todoyu::db()->getFieldValue($field, $table, $where, null, null, $limit);
+
+		return TodoyuContactCompanyManager::getCompany($idCompany);
 	}
+
 }
 ?>

@@ -32,6 +32,21 @@ class TodoyuContactContactInfoManager {
 	const TABLE = 'ext_contact_contactinfo';
 
 
+	/*
+	 * Config for person and company
+	 */
+	private static $mmConfig	= array(
+		'person'	=> array(
+			'table'	=> 'ext_contact_mm_person_contactinfo',
+			'field'	=> 'id_person'
+		),
+		'company'	=> array(
+			'table'	=> 'ext_contact_mm_company_contactinfo',
+			'field'	=> 'id_company'
+		)
+	);
+
+
 
 	/**
 	 * Get contactinfo object
@@ -73,12 +88,12 @@ class TodoyuContactContactInfoManager {
 		$idContactinfo	= intval($data['id']);
 
 		if( $idContactinfo === 0 ) {
-			$idContactinfo = self::addContactinfo();
+			$idContactinfo = self::add();
 		}
 
 		// Add form save handler here
 
-		self::updateContactinfo($idContactinfo, $data);
+		self::update($idContactinfo, $data);
 
 		self::removeFromCache($idContactinfo);
 
@@ -93,7 +108,7 @@ class TodoyuContactContactInfoManager {
 	 * @param	Array		$data
 	 * @return	Integer
 	 */
-	public static function addContactinfo(array $data = array()) {
+	public static function add(array $data = array()) {
 		return TodoyuRecordManager::addRecord(self::TABLE, $data);
 	}
 
@@ -106,26 +121,12 @@ class TodoyuContactContactInfoManager {
 	 * @param	Array		$data
 	 * @return	Boolean
 	 */
-	public static function updateContactinfo($idContactinfo, array $data) {
+	public static function update($idContactinfo, array $data) {
 		return TodoyuRecordManager::updateRecord(self::TABLE, $idContactinfo, $data);
 	}
 
 
 
-	/**
-	 * Creates a new contact info record in table ext_contact_contactinfo
-	 *
-	 * @return	Integer
-	 */
-	protected static function createNewContactInfoRecord() {
-		$insertArray = array(
-			'date_create'		=> NOW,
-			'id_person_create'	=> Todoyu::personid(),
-			'deleted'			=> 0
-		);
-
-		return Todoyu::db()->doInsert(self::TABLE, $insertArray);
-	}
 
 
 
@@ -161,26 +162,33 @@ class TodoyuContactContactInfoManager {
 
 
 	/**
-	 * Get contact infos of given person
+	 * Get contact infos of given element (person or company)
 	 *
-	 * @param	Integer		$idPerson
-	 * @param	Integer		$category
-	 * @param	String		$type
-	 * @param	Boolean		$onlyPreferred
+	 * @param	String			$key
+	 * @param	Integer			$idElement
+	 * @param	Integer|Boolean	$category
+	 * @param	String|Boolean	$type
+	 * @param	Boolean			$onlyPreferred
 	 * @return	Array
 	 */
-	public static function getContactInfos($idPerson, $category = null, $type = null, $onlyPreferred = false) {
-		$idPerson	= intval($idPerson);
+	public static function getContactInfos($key, $idElement, $category = 0, $type = false, $onlyPreferred = false) {
+		$idElement	= intval($idElement);
+		$category	= intval($category);
+
+		if( ! array_key_exists($key, self::$mmConfig) ) {
+			TodoyuLogger::logError('Key for contact info type missing or invalid');
+			return array();
+		}
 
 		$fields	= '	ci.*,
 					cit.key,
 					cit.title';
 		$tables	= '	ext_contact_contactinfo ci,
 					ext_contact_contactinfotype cit,
-					ext_contact_mm_person_contactinfo mm';
-		$where	= '		mm.id_person			= ' . $idPerson .
-				  ' AND	mm.id_contactinfo	= ci.id
-				  	AND	ci.id_contactinfotype = cit.id';
+					' . self::$mmConfig[$key]['table'] . ' mm';
+		$where	= '		mm.' . self::$mmConfig[$key]['field'] . ' 	= ' . $idElement .
+				  ' AND	mm.id_contactinfo							= ci.id
+				  	AND	ci.id_contactinfotype 						= cit.id';
 		$order	= '	ci.is_preferred DESC,
 					ci.id_contactinfotype ASC';
 
@@ -188,68 +196,15 @@ class TodoyuContactContactInfoManager {
 			$where .= ' AND ci.is_preferred = 1';
 		}
 
-		if( ! is_null($category) ) {
-			$where .= ' AND cit.category = ' . intval($category);
+		if( $category !== 0 ) {
+			$where .= ' AND cit.category = ' . $category;
 		}
 
-		if( ! is_null($type) ) {
+		if( $type !== false ) {
 			$where .= ' AND cit.key LIKE \'%' . Todoyu::db()->escape($type) . '%\'';
 		}
 
 		return Todoyu::db()->getArray($fields, $tables, $where, '', $order);
-	}
-
-
-
-	/**
-	 * Get email addresses of given types of given person
-	 *
-	 * @param	Integer			$idPerson
-	 * @param	String|Null		$type
-	 * @param	Boolean|Null	$onlyPreferred
-	 * @return	Array
-	 */
-	public static function getEmails($idPerson, $type = null, $onlyPreferred = false) {
-		return self::getContactInfos($idPerson, CONTACT_INFOTYPE_CATEGORY_EMAIL, $type, $onlyPreferred);
-	}
-
-
-
-	/**
-	 * Get phone numbers of given types of given person
-	 *
-	 * @param	Integer			$idPerson
-	 * @param	String|Null		$type
-	 * @param	Boolean|Null	$onlyPreferred
-	 * @return	Array
-	 */
-	public static function getPhones($idPerson, $type = null, $onlyPreferred = false) {
-		return self::getContactInfos($idPerson, CONTACT_INFOTYPE_CATEGORY_PHONE, $type, $onlyPreferred);
-	}
-
-
-
-	/**
-	 * Get preferred email of a person
-	 * First check system email, than check "contactinfo" records. Look for preferred emails
-	 *
-	 * @param	Integer		$idPerson
-	 * @return	String
-	 */
-	public static function getPreferredEmail($idPerson) {
-		$idPerson	= intval($idPerson);
-		$person		= TodoyuContactPersonManager::getPerson($idPerson);
-
-		$email		= $person->getEmail();
-
-		if( empty($email) ) {
-			$contactEmails	= self::getContactInfos($idPerson, CONTACT_INFOTYPE_CATEGORY_EMAIL);
-			if( sizeof($contactEmails) > 0 ) {
-				$email = $contactEmails[0]['info'];
-			}
-		}
-
-		return $email;
 	}
 
 }

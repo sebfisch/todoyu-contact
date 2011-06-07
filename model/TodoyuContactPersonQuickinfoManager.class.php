@@ -45,13 +45,13 @@ class TodoyuContactPersonQuickInfoManager {
 		}
 
 			// Email
-		$email	= $person->getEmails(true);
+		$email	= $person->getEmail(true);
 		if( $email !== false ) {
 			$quickinfo->addEmail('email', $email, $person->getFullName(), 100);
 		}
 
 			// Get preferred or only phone
-		$phone = $person->getPhones(true);
+		$phone = $person->getPhone();
 		if( $phone !== false ) {
 			$quickinfo->addInfo('phone', $phone['info'], 150);
 		}

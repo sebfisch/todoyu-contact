@@ -418,9 +418,14 @@ class TodoyuContactPersonManager {
 	 * @return	Array
 	 */
 	public static function getInternalPersons($getJobType = false, $getWorkAddress = false) {
-		$fields	=	'	p.*'
-					. ($getJobType		=== true ? ', mm.id_jobtype' : '')
-					. ($getWorkAddress	=== true ? ', mm.id_workaddress' : '');
+		$fields	=	'p.*';
+
+		if( $getJobType ) {
+			$fields	.= ', mm.id_jobtype';
+		}
+		if( $getWorkAddress ) {
+			$fields .= ', mm.id_workaddress';
+		}
 
 		$table	= 	self::TABLE . ' p,
 					ext_contact_company c,
@@ -432,9 +437,7 @@ class TodoyuContactPersonManager {
 		$order	= '	p.lastname,
 					p.firstname';
 
-		$persons= Todoyu::db()->getIndexedArray('id', $fields, $table, $where, '', $order);
-
-		return $persons;
+		return Todoyu::db()->getIndexedArray('id', $fields, $table, $where, '', $order);
 	}
 
 
@@ -834,30 +837,6 @@ class TodoyuContactPersonManager {
 				  ' AND c.deleted 		= 0 ';
 
 		return Todoyu::db()->getArray($fields, $tables, $where);
-	}
-
-
-
-	/**
-	 * Get main company (first linked) of the person
-	 *
-	 * @param	Integer		$idPerson
-	 * @return	TodoyuContactCompany
-	 */
-	public static function getPersonsMainCompany($idPerson) {
-		$idPerson = intval($idPerson);
-
-		$field	= 'id_company';
-		$table	= ' ext_contact_mm_company_person mm,
-					ext_contact_company c';
-		$where	= '		mm.id_company	= c.id
-					AND c.deleted		= 0
-					AND mm.id_person	= ' . $idPerson;
-		$limit	= 1;
-
-		$idCompany	= Todoyu::db()->getFieldValue($field, $table, $where, null, null, $limit);
-
-		return TodoyuContactCompanyManager::getCompany($idCompany);
 	}
 
 

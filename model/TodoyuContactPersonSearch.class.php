@@ -86,9 +86,10 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 			// Get comment details
 		foreach($personIDs as $idPerson) {
 			$person	= TodoyuContactPersonManager::getPerson($idPerson);
-			$phone = $person->getPhones(true);
+			$phone	= $person->getPhone();
+			$email	= $person->getEmail(true);
 			$suggestions[] = array(
-				'labelTitle'=> TodoyuString::wrap($person->getFullName(), '<span class="keyword">|</span>') . ( $person->getEmail() ? ' | ' . $person->getEmail() : '') . (isset($phone['info']) ? ' | ' . $phone['info'] : ''),
+				'labelTitle'=> TodoyuString::wrap($person->getFullName(), '<span class="keyword">|</span>') . ( $email ? ' | ' . $email : '') . ($phone ? ' | ' . $phone : ''),
 				'labelInfo'	=> $person->getCompany()->getLabel(),
 				'title'		=> '',
 				'onclick'	=> 'location.href=\'?ext=contact&amp;controller=person&amp;action=detail&amp;person=' . $idPerson . '\''
@@ -115,15 +116,17 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 			'total'	=> Todoyu::db()->getTotalFoundRows()
 		);
 
-		foreach($persons as $person) {
+		foreach($persons as $personData) {
+			$person	= TodoyuContactPersonManager::getPerson($personData['id']);
+
 			$data['rows'][] = array(
 				'icon'		=> '',
-				'iconClass'	=> intval($person['is_active']) === 1 ? 'login' : '',
-				'lastname'	=> $person['lastname'],
-				'firstname'	=> $person['firstname'],
-				'email'		=> TodoyuContactContactInfoManager::getPreferredEmail($person['id']),
-				'company'	=> TodoyuContactPersonManager::getPersonsMainCompany($person['id'])->getTitle(),
-				'actions'	=> TodoyuContactRenderer::renderPersonActions($person['id'])
+				'iconClass'	=> $person->isActive() ? 'login' : '',
+				'lastname'	=> $person->get('lastname'),
+				'firstname'	=> $person->get('firstname'),
+				'email'		=> $person->getEmail(true),
+				'company'	=> $person->getMainCompany()->getTitle(),
+				'actions'	=> TodoyuContactRenderer::renderPersonActions($personData['id'])
 			);
 		}
 
