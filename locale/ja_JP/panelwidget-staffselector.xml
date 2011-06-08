@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <labels>
-	<label index="toggle.multiselect.title">単一/複数セクションモードの切り替え</label>
 	<label index="title">スタッフ</label>
-	<label index="selectAllStaff">全てのスタッフを選択</label>
-	<label index="byFunction">職種:</label>
-	<label index="noFunction">職種がありません</label>
+	<label index="selection">選択された対象</label>
+	<label index="selection.empty">選択されたものはありません。検索を使って個人やグループを追加してください。</label>
 </labels>
