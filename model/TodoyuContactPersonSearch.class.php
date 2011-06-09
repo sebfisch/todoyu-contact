@@ -88,10 +88,12 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 			$person	= TodoyuContactPersonManager::getPerson($idPerson);
 			$phone	= $person->getPhone();
 			$email	= $person->getEmail(true);
+			$labelTitle = TodoyuString::wrap($person->getFullName(), '<span class="keyword">|</span>') . ($email
+					? ' | ' . $email : '') . ($phone ? ' | ' . $phone : '');
 			$suggestions[] = array(
-				'labelTitle'=> TodoyuString::wrap($person->getFullName(), '<span class="keyword">|</span>') . ( $email ? ' | ' . $email : '') . ($phone ? ' | ' . $phone : ''),
+				'labelTitle'=> $labelTitle,
 				'labelInfo'	=> $person->getCompany()->getLabel(),
-				'title'		=> '',
+				'title'		=> strip_tags($labelTitle),
 				'onclick'	=> 'location.href=\'?ext=contact&amp;controller=person&amp;action=detail&amp;person=' . $idPerson . '\''
 			);
 		}

@@ -83,10 +83,12 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 			foreach($companies as $company) {
 				$phones	= TodoyuContactCompanyManager::getPhones($company['id']);
 
+				$labelTitle = TodoyuString::wrap($company['title'], '<span class="keyword">|</span>') . (isset($phones[0])
+						? ' | ' . $phones[0]['info'] : '');
 				$suggestions[] = array(
-					'labelTitle'=> TodoyuString::wrap($company['title'], '<span class="keyword">|</span>') . (isset($phones[0]) ? ' | ' .$phones[0]['info'] : ''),
+					'labelTitle'=> $labelTitle,
 					'labelInfo'	=> '',
-					'title'		=> '',
+					'title'		=> strip_tags($labelTitle),
 					'onclick'	=> 'location.href=\'?ext=contact&amp;controller=company&amp;action=detail&amp;company=' . $company['id'] . '\''
 				);
 			}
