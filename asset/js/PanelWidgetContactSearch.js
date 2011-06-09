@@ -106,8 +106,8 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 	 * @method	installObservers
 	 */
 	installObservers: function() {
-		this.input.observe('keyup', this.onKeyup.bindAsEventListener(this));
-		this.form.observe('submit', this.onFormSubmit.bindAsEventListener(this))
+		this.input.on('keyup', this.onKeyup.bind(this));
+		this.form.on('submit', this.onFormSubmit.bind(this))
 	},
 
 

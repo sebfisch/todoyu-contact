@@ -100,7 +100,7 @@ Todoyu.Ext.contact.Person =  {
 	initObservers: function(idPerson) {
 		this.observeFieldsForShortname(idPerson);
 
-		$('person-' + idPerson + '-field-is-active').observe('change', this.showLoginFields.bind(this, idPerson));
+		$('person-' + idPerson + '-field-is-active').on('change', this.showLoginFields.bind(this, idPerson));
 	},
 
 
@@ -165,8 +165,8 @@ Todoyu.Ext.contact.Person =  {
 	 * @param	{Number}		idPerson
 	 */
 	observeFieldsForShortname: function(idPerson) {
-		$('person-' + idPerson + '-field-lastname').observe('keyup', this.generateShortName.bindAsEventListener(this, idPerson));
-		$('person-' + idPerson + '-field-firstname').observe('keyup', this.generateShortName.bindAsEventListener(this, idPerson));
+		$('person-' + idPerson + '-field-lastname').on('keyup', 'input', this.generateShortName.bind(this, idPerson));
+		$('person-' + idPerson + '-field-firstname').on('keyup', 'input', this.generateShortName.bind(this, idPerson));
 	},
 
 
@@ -178,7 +178,7 @@ Todoyu.Ext.contact.Person =  {
 	 * @param	{Event}		event
 	 * @param	{Number}	idPerson
 	 */
-	generateShortName: function(event, idPerson) {
+	generateShortName: function(idPerson, event, element) {
 		var lastname	= $F('person-' + idPerson + '-field-lastname');
 		var firstname	= $F('person-' + idPerson + '-field-firstname');
 
