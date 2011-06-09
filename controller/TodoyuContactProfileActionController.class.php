@@ -59,11 +59,13 @@ class TodoyuContactProfileActionController  extends TodoyuActionController {
 
 			TodoyuHeader::sendTodoyuHeader('idRecord', $idPerson);
 			TodoyuHeader::sendTodoyuHeader('recordLabel', $storageData['lastname'].' '.$storageData['firstname']);
+
+			return TodoyuContactProfileRenderer::renderPersonForm($idPerson);
 		} else {
 			TodoyuHeader::sendTodoyuErrorHeader();
-		}
 
-		return $form->render();
+			return $form->render();
+		}
 	}
 }
 

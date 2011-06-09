@@ -275,6 +275,8 @@ class TodoyuContactPersonManager {
 	 * @return	Boolean
 	 */
 	public static function updatePerson($idPerson, array $data) {
+		TodoyuRecordManager::removeRecordCache('TodoyuContactPerson', $idPerson);
+
 		return TodoyuRecordManager::updateRecord(self::TABLE, $idPerson, $data);
 	}
 

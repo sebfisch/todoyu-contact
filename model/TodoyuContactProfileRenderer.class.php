@@ -64,7 +64,7 @@ class TodoyuContactProfileRenderer {
 		switch($tab) {
 			case 'contact':
 			default:
-				return self::renderContentForm();
+				return self::renderContentFormPage();
 				break;
 		}
 	}
@@ -76,8 +76,29 @@ class TodoyuContactProfileRenderer {
 	 *
 	 * @return	String
 	 */
-	public static function renderContentForm() {
+	public static function renderContentFormPage() {
 		$idPerson	= Todoyu::personid();
+		$person		= TodoyuContactPersonManager::getPerson($idPerson);
+
+		$tmpl	= 'ext/contact/view/form.tmpl';
+		$data	= array(
+			'header'	=> $person->getLabel(),
+			'formhtml'	=> self::renderPersonForm($idPerson)
+		);
+
+		return Todoyu::render($tmpl, $data);
+	}
+
+
+
+	/**
+	 * Render form for person
+	 *
+	 * @param	Integer		$idPerson
+	 * @return	String
+	 */
+	public static function renderPersonForm($idPerson) {
+		$idPerson	= intval($idPerson);
 		$xmlPath	= 'ext/contact/config/form/profile-person.xml';
 
 		$form	= TodoyuFormManager::getForm($xmlPath, $idPerson);
@@ -90,13 +111,7 @@ class TodoyuContactProfileRenderer {
 		$form->setFormData($data);
 		$form->setRecordID($idPerson);
 
-		$tmpl	= 'ext/contact/view/form.tmpl';
-		$data	= array(
-			'header'	=> $person->getLabel(),
-			'formhtml'	=> $form->render()
-		);
-
-		return Todoyu::render($tmpl, $data);
+		return $form->render();
 	}
 }
 
