@@ -888,7 +888,7 @@ class TodoyuContactPersonManager {
 	 * @return	Integer		Deleted records
 	 */
 	public static function deleteRemovedContactInfos($idPerson, array $currentContactInfoIDs) {
-		return TodoyuContactContactInfoManager::deleteLinkedContactInfos('ext_contact_mm_person_contactinfo', $idPerson, $currentContactInfoIDs, 'id_person');
+		return TodoyuContactContactInfoManager::deleteLinkedContactInfos('person', $idPerson, $currentContactInfoIDs, 'id_person');
 	}
 
 

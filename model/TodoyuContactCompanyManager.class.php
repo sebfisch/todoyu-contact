@@ -279,13 +279,13 @@ class TodoyuContactCompanyManager {
 	 * @return	Integer		Deleted records
 	 */
 	public static function deleteRemovedContactInfos($idCompany, array $currentContactInfoIDs) {
-		return TodoyuContactContactInfoManager::deleteLinkedContactInfos('ext_contact_mm_company_contactinfo', $idCompany, $currentContactInfoIDs, 'id_company');
+		return TodoyuContactContactInfoManager::deleteLinkedContactInfos('company', $idCompany, $currentContactInfoIDs, 'id_company');
 	}
 
 
 
 	/**
-	 * Link contactinfos to company
+	 * Link contact infos to company
 	 *
 	 * @param	Integer		$idCompany
 	 * @param	Array		$contactInfoIDs
@@ -418,7 +418,7 @@ class TodoyuContactCompanyManager {
 	 * @param	Integer		$idCompany
 	 */
 	public static function deleteContactinfos($idCompany) {
-		TodoyuContactContactInfoManagerCompany::deleteContactinfos($idCompany);
+		TodoyuContactContactInfoManagerCompany::deleteContactInfos($idCompany);
 	}
 
 

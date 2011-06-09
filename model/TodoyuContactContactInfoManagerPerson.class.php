@@ -24,7 +24,18 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuContactContactInfoManagerPerson {
+class TodoyuContactContactInfoManagerPerson extends TodoyuContactContactInfoManager {
+
+	/**
+	 * Delete all linked contact info records of given person
+	 *
+	 * @todo	see comment in above function 'removeContactinfoLinks'
+	 * @param	Integer		$idPerson
+	 */
+	public static function deleteContactInfos($idPerson) {
+		self::deleteLinkedContactInfos('company', $idPerson, array(), 'id_person');
+	}
+
 
 
 	/**
@@ -36,7 +47,7 @@ class TodoyuContactContactInfoManagerPerson {
 	 * @return	Array
 	 */
 	public static function getEmails($idPerson, $type = false, $onlyPreferred = false) {
-		return TodoyuContactContactInfoManager::getContactInfos('person', $idPerson, CONTACT_INFOTYPE_CATEGORY_EMAIL, $type, $onlyPreferred);
+		return self::getContactInfos('person', $idPerson, CONTACT_INFOTYPE_CATEGORY_EMAIL, $type, $onlyPreferred);
 	}
 
 
@@ -50,7 +61,7 @@ class TodoyuContactContactInfoManagerPerson {
 	 * @return	Array
 	 */
 	public static function getPhones($idPerson, $type = false, $onlyPreferred = false) {
-		return TodoyuContactContactInfoManager::getContactInfos('person', $idPerson, CONTACT_INFOTYPE_CATEGORY_PHONE, $type, $onlyPreferred);
+		return self::getContactInfos('person', $idPerson, CONTACT_INFOTYPE_CATEGORY_PHONE, $type, $onlyPreferred);
 	}
 
 
@@ -69,7 +80,7 @@ class TodoyuContactContactInfoManagerPerson {
 		$email		= $person->getEmail();
 
 		if( empty($email) ) {
-			$contactEmails	= TodoyuContactContactInfoManager::getContactInfos('person', $idPerson, CONTACT_INFOTYPE_CATEGORY_EMAIL);
+			$contactEmails	= self::getContactInfos('person', $idPerson, CONTACT_INFOTYPE_CATEGORY_EMAIL);
 			if( sizeof($contactEmails) > 0 ) {
 				$email = $contactEmails[0]['info'];
 			}

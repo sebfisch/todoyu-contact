@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuContactContactInfoManagerCompany {
+class TodoyuContactContactInfoManagerCompany extends TodoyuContactContactInfoManager {
 
 	/**
 	 * Delete all linked contact info records of given company
@@ -33,8 +33,61 @@ class TodoyuContactContactInfoManagerCompany {
 	 *
 	 * @param	Integer		$idCompany
 	 */
-	public static function deleteContactinfos($idCompany) {
-		TodoyuContactContactInfoManager::deleteLinkedContactInfos('ext_contact_mm_company_contactinfo', $idCompany, array(), 'id_company');
+	public static function deleteContactInfos($idCompany) {
+		self::deleteLinkedContactInfos('company', $idCompany, array(), 'id_company');
+	}
+
+
+
+	/**
+	 * Get email addresses of given types of given person
+	 *
+	 * @param	Integer			$idPerson
+	 * @param	String|Boolean	$type
+	 * @param	Boolean			$onlyPreferred
+	 * @return	Array
+	 */
+	public static function getEmails($idPerson, $type = false, $onlyPreferred = false) {
+		return self::getContactInfos('company', $idPerson, CONTACT_INFOTYPE_CATEGORY_EMAIL, $type, $onlyPreferred);
+	}
+
+
+
+	/**
+	 * Get phone numbers of given types of given person
+	 *
+	 * @param	Integer			$idPerson
+	 * @param	String|Boolean	$type
+	 * @param	Boolean			$onlyPreferred
+	 * @return	Array
+	 */
+	public static function getPhones($idPerson, $type = false, $onlyPreferred = false) {
+		return self::getContactInfos('company', $idPerson, CONTACT_INFOTYPE_CATEGORY_PHONE, $type, $onlyPreferred);
+	}
+
+
+
+	/**
+	 * Get preferred email of a person
+	 * First check system email, than check "contactinfo" records. Look for preferred emails
+	 *
+	 * @param	Integer		$idPerson
+	 * @return	String
+	 */
+	public static function getPreferredEmail($idPerson) {
+		$idPerson	= intval($idPerson);
+		$person		= TodoyuContactPersonManager::getPerson($idPerson);
+
+		$email		= $person->getEmail();
+
+		if( empty($email) ) {
+			$contactEmails	= self::getContactInfos('company', $idPerson, CONTACT_INFOTYPE_CATEGORY_EMAIL);
+			if( sizeof($contactEmails) > 0 ) {
+				$email = $contactEmails[0]['info'];
+			}
+		}
+
+		return $email;
 	}
 
 }
