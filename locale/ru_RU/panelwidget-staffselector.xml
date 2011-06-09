@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <labels>
-	<label index="toggle.multiselect.title">Переключить выбор: один/много элементов</label>
 	<label index="title">Работники</label>
-	<label index="selectAllStaff">Выбрать всех работников</label>
-	<label index="byFunction">По типу работы:</label>
-	<label index="noFunction">Нет типа работы</label>
+	<label index="selection">Активная выборка</label>
+	<label index="selection.empty">Ничего не выбрано. Используйте поиск для добавления групп или людей.</label>
 </labels>
