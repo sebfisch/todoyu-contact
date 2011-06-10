@@ -186,6 +186,7 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	/**
 	 * Check whether the user has an email address for his account
 	 *
+	 * @param	Boolean
 	 * @return	Boolean
 	 */
 	public function hasEmail($checkContactInfo = false) {

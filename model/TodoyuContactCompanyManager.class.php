@@ -680,8 +680,8 @@ class TodoyuContactCompanyManager {
 
 	/**
 	 * @static
-	 * @param  $idCompany
-	 * @return void
+	 * @param	Integer		$idCompany
+	 * @return	Array
 	 */
 	public static function getPhones($idCompany) {
 		$idCompany	= intval($idCompany);
