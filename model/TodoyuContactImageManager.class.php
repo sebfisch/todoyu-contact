@@ -203,7 +203,7 @@ class TodoyuContactImageManager {
 	 * @param	String	$type	e.g. 'person' / 'company'
 	 * @return	Boolean
 	 */
-	public static function checkFileType($type)	{
+	public static function checkFileType($type) {
 		$allowedTypes	= Todoyu::$CONFIG['EXT']['contact']['contactimage']['allowedTypes'];
 
 		if( !in_array($type, $allowedTypes) ) {

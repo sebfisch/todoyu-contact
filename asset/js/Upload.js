@@ -143,7 +143,7 @@ Todoyu.Ext.contact.Upload = {
 	 * @param	{String}	recordType		(person / company)
 	 */
 	setReplaceIdToHiddenField: function(form, idReplace, recordType) {
-		var field = $(form).down('[name = ' + recordType +'[image_id]]');
+		var field = $(form).down('[name = ' + recordType + '[image_id]]');
 		field.setValue(idReplace);
 	},
 
@@ -209,7 +209,7 @@ Todoyu.Ext.contact.Upload = {
 	 * @param	{String}	recordType
 	 */
 	getImageId: function(form, recordType) {
-		var field = $(form).down('[name = ' + recordType +'[image_id]]');
+		var field = $(form).down('[name = ' + recordType + '[image_id]]');
 
 		if( field && field.getValue() ) {
 			return field.getValue()
