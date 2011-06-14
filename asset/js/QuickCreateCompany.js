@@ -77,11 +77,16 @@ Todoyu.Ext.contact.QuickCreateCompany = {
 		}
 	},
 
+
+
+	/**
+	 * Get quickcreate headlet
+	 *
+	 * @method	getQuickCreateHeadlet
+	 * @return	{Todoyu.Headlet}
+	 */
 	getQuickCreateHeadlet: function() {
 		return Todoyu.Headlets.getHeadlet('todoyuheadletquickcreate');
 	}
-
-
-
 
 };
