@@ -53,7 +53,7 @@ class TodoyuContactPersonQuickInfoManager {
 			// Get preferred or only phone
 		$phone = $person->getPhone();
 		if( $phone !== false ) {
-			$quickinfo->addInfo('phone', $phone['info'], 150);
+			$quickinfo->addInfo('phone', $phone, 150);
 		}
 
 			// Comment
