@@ -96,12 +96,12 @@
 		{* ------------ Actions panel (edit, delete, close) ------------ *}
 		<div class="actions">
 			{if isCompanyEditAllowed($id)}
-				{Button 'LLL:contact.ext.company.edit' 'Todoyu.Ext.contact.Company.edit($id)' 'buttonCompanyEdit' 'company-edit' 'LLL:contact.ext.company.edit'}
+				{Button label='contact.ext.company.edit' onclick='Todoyu.Ext.contact.Company.edit($id)' class='buttonCompanyEdit' id='company-edit' title='LLL:contact.ext.company.edit'}
 			{/if}
 			{if isCompanyDeleteAllowed($id)}
-				{Button 'LLL:contact.ext.company.delete' 'Todoyu.Ext.contact.Company.remove($id)' 'buttonCompanyDelete' 'company-delete' 'LLL:contact.ext.company.delete'}
+				{Button label='contact.ext.company.delete' onclick='Todoyu.Ext.contact.Company.remove($id)' class='buttonCompanyDelete' id='company-delete' title='LLL:contact.ext.company.delete'}
 			{/if}
-			{Button 'LLL:contact.ext.company.close' 'Todoyu.Ext.contact.Company.showList(Todoyu.Ext.contact.PanelWidget.ContactSearch.getValue())' 'cancel' 'company-close' 'LLL:contact.ext.company.close'}
+			{Button label='contact.ext.company.close' onclick='Todoyu.Ext.contact.Company.showList(Todoyu.Ext.contact.PanelWidget.ContactSearch.getValue())' class='cancel' id='company-close' title='LLL:contact.ext.company.close'}
 		</div>
 		<div class="clear"></div>
 

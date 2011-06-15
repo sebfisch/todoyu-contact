@@ -139,12 +139,12 @@
 
 		<div class="actions">
 			{if isPersonEditAllowed($id)}
-				{Button 'LLL:contact.ext.person.edit' 'Todoyu.Ext.contact.Person.edit($id)' 'buttonPersonEdit' 'person-edit' 'LLL:contact.ext.person.edit'}
+				{Button label='contact.ext.person.edit' onclick='Todoyu.Ext.contact.Person.edit($id)' class='buttonPersonEdit' id='person-edit' title='LLL:contact.ext.person.edit'}
 			{/if}
 			{if isPersonDeleteAllowed($id)}
-				{Button 'LLL:contact.ext.person.delete' 'Todoyu.Ext.contact.Person.remove($id)' 'buttonPersonDelete' 'person-delete' 'LLL:contact.ext.person.delete'}
+				{Button label='contact.ext.person.delete' onclick='Todoyu.Ext.contact.Person.remove($id)' class='buttonPersonDelete' id='person-delete' title='LLL:contact.ext.person.delete'}
 			{/if}
-			{Button 'LLL:contact.ext.person.close' 'Todoyu.Ext.contact.Person.showList(Todoyu.Ext.contact.PanelWidget.ContactSearch.getValue())' 'cancel' 'person-close' 'LLL:contact.ext.person.close'}
+			{Button label='contact.ext.person.close' onclick='Todoyu.Ext.contact.Person.showList(Todoyu.Ext.contact.PanelWidget.ContactSearch.getValue())' class='cancel' id='person-close' title='LLL:contact.ext.person.close'}
 		</div>
 		<div class="clear"></div>
 
