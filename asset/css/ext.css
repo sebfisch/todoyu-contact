@@ -147,10 +147,10 @@ span.wizardIcon.createWizardCompany	{
 }
 
 
+
 /* -------------------------
 	Tabs
    -------------------------*/
-
 #contact-tabs .tabkey-person .icon {
 	background:url(../img/icons.png) no-repeat 0 6px;
 }
@@ -165,7 +165,6 @@ span.wizardIcon.createWizardCompany	{
 /* -------------------------
 	Company list
    -------------------------*/
-
 .companyListing th,
 .companyListing td {
 	vertical-align:middle;
@@ -218,6 +217,8 @@ span.wizardIcon.createWizardCompany	{
 	background-position:0 -209px;
 }
 
+
+
 /* ---------------------
 	Visiting card
    -------------------- */
@@ -243,7 +244,6 @@ div.visitingCardContent table tr td.label {
 /* -------------------
 	Person Details
    ------------------- */
-
 #contact-details div.image img {
 	margin-top:3px;
 	border:solid #d5dee5;
@@ -304,7 +304,6 @@ button.removeContactImage .icon {
 /* -------------------
 	Person Profile
    ------------------- */
-
 #panelwidget-profilemodules li.contact {
 	background:url(../img/exticon.png) no-repeat 5px 3px;
 }
