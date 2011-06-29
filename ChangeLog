@@ -1,6 +1,9 @@
 todoyu contact extension changelog
 
-contact 1.1.0 - beta release
+contact 1.1.1 - not released yet
+	* Bugfix: #178 TodoyuContactPersonRights::getAllowedToBeSeenPersonsWhereClause() created an invalid where statement
+
+contact 1.1.0 - released 2011-06-17
 	* Feature: Added salutation and company to person search
 	* Feature: Added comment to person quickinfo
 	* Feature: Added person id plugin (dwoo)
@@ -38,7 +41,7 @@ contact 1.1.0 - beta release
  	* Bugfix: Fixed birthday in person quickinfo and detail view to be formatted by date format of locale
 
 
-contact 1.0.7 - not released yet
+contact 1.0.7
 	* Bugfix: Show preferred email in person list item (from contactinfotype when no todoyu account given)
 	* Bugfix: Auto-generated person shortname can (not any longer) contain whitespace
 	* Feature: Added changelog

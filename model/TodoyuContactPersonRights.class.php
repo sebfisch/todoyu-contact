@@ -138,18 +138,21 @@ class TodoyuContactPersonRights {
 		}
 
 			// Get all projects the current user is allowed to see
-		$projectIDs	= TodoyuProjectProjectManager::getAvailableProjectsForPerson();
+		$projectIDs			= TodoyuProjectProjectManager::getAvailableProjectsForPerson();
 			// Get all persons marked "visible for externals" in any of their projects
 		$projectsPersonsIDs	= TodoyuProjectProjectManager::getProjectsPersonsIDs($projectIDs, $withAccount);
 			// Get all persons which are employees of current persons employer
-		$companies	= TodoyuContactPersonManager::getPersonCompanyRecords(Todoyu::personid());
+		$companies			= TodoyuContactPersonManager::getPersonCompanyRecords(Todoyu::personid());
+		$companyPersonIDs	= array();
 
-		foreach($companies as $company) {
-			$companyPersonIDs	= TodoyuContactCompanyManager::getCompany($company['id'])->getEmployeeIds();
+		foreach($companies as $companyData) {
+			$company			= TodoyuContactCompanyManager::getCompany($companyData['id']);
+			$employeeIDs		= $company->getEmployeeIds();
+			$companyPersonIDs	= array_merge($companyPersonIDs, $employeeIDs);
 		}
 
-		$personIDs	[]= Todoyu::personid();
-		$allowedPersonsIDs	= array_unique(array_merge(array_merge($personIDs, $projectsPersonsIDs), $companyPersonIDs));
+		$personIDs[]		= Todoyu::personid();
+		$allowedPersonsIDs	= array_unique(array_merge($personIDs, $projectsPersonsIDs, $companyPersonIDs));
 
 		return ' id IN ( ' . TodoyuArray::intImplode($allowedPersonsIDs, ',') . ')';
 	}
