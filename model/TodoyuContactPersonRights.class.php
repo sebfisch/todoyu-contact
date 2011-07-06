@@ -154,7 +154,7 @@ class TodoyuContactPersonRights {
 		$personIDs[]		= Todoyu::personid();
 		$allowedPersonsIDs	= array_unique(array_merge($personIDs, $projectsPersonsIDs, $companyPersonIDs));
 
-		return ' id IN ( ' . TodoyuArray::intImplode($allowedPersonsIDs, ',') . ')';
+		return (sizeof($allowedPersonsIDs) > 0) ? ' id IN ( ' . TodoyuArray::intImplode($allowedPersonsIDs, ',') . ')' : ' 1=0 ';
 	}
 
 
