@@ -23,7 +23,7 @@
 				</field>
 
 				<field type="button" name="cancel">
-					<text>LLL:core.global.cancel</text>
+					<text>core.global.cancel</text>
 					<class>buttonCancel cancel</class>
 					<hasIcon />
 					<onclick>Todoyu.Ext.contact.Upload.removeUploadForm()</onclick>

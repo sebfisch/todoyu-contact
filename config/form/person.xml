@@ -71,12 +71,12 @@
 					</comment>
 				</field>
 				<field type="button" name="upload">
-					<text>LLL:contact.ext.person.attr.image.upload</text>
+					<text>contact.ext.person.attr.image.upload</text>
 					<class>uploadContactImage</class>
 					<onclick>Todoyu.Ext.contact.Upload.showUploadForm(this.form, 'person')</onclick>
 				</field>
 				<field type="button" name="remove">
-					<text>LLL:contact.ext.contactimage.upload.remove</text>
+					<text>contact.ext.contactimage.upload.remove</text>
 					<class>removeContactImage</class>
 					<onclick>Todoyu.Ext.contact.Upload.removeImage(this.form, 'person')</onclick>
 				</field>
@@ -187,7 +187,7 @@
 							<required>
 								<noCheck />
 							</required>
-							<textAfterField>LLL:contact.ext.person.attr.password.hasPassword</textAfterField>
+							<textAfterField>contact.ext.person.attr.password.hasPassword</textAfterField>
 						</field>
 
 						<field type="text" name="email">
