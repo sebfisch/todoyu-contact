@@ -108,11 +108,13 @@ Todoyu.Ext.contact.Company =  {
 	 * @param	{Ajax.Response}	response
 	 */
 	onRemoved: function(response) {
+		var notificationIdentifier	= 'contact.company.removed';
+
 		if( response.hasTodoyuError() ) {
-			var msg	= response.getTodoyuHeader('errormessage');
-			Todoyu.notifyError(msg);
+			var message	= response.getTodoyuHeader('errormessage');
+			Todoyu.notifyError(message, notificationIdentifier);
 		} else {
-			Todoyu.notifySuccess('[LLL:contact.ext.company.delete.ok]');
+			Todoyu.notifySuccess('[LLL:contact.ext.company.delete.ok]', notificationIdentifier);
 			this.showList();
 		}
 	},
@@ -145,14 +147,15 @@ Todoyu.Ext.contact.Company =  {
 	 * @param	{Ajax.Response}		response
 	 */
 	onSaved: function(response) {
-		var error	= response.hasTodoyuError();
+		var error					= response.hasTodoyuError();
+		var notificationIdentifier	= 'contact.company.saved';
 
 		if( error ) {
-			Todoyu.notifyError('[LLL:contact.ext.company.saved.error]');
+			Todoyu.notifyError('[LLL:contact.ext.company.saved.error]', notificationIdentifier);
 			$('contact-form-content').update(response.responseText);
 		} else {
 				// Notify (implement)
-			Todoyu.notifySuccess('[LLL:contact.ext.company.saved.ok]');
+			Todoyu.notifySuccess('[LLL:contact.ext.company.saved.ok]', notificationIdentifier);
 
 			this.showList(this.ext.PanelWidget.ContactSearch.getValue());
 		}
@@ -247,14 +250,15 @@ Todoyu.Ext.contact.Company =  {
 	 * @param	{Ajax.Response}		response
 	 */
 	onSavedWizard: function(fieldName, response) {
-		var error	= response.hasTodoyuError();
+		var error					= response.hasTodoyuError();
+		var notificationIdentifier	= 'contact.company.saved';
 
 		if( error ) {
-			Todoyu.notifyError('[LLL:contact.ext.company.saved.error]');
+			Todoyu.notifyError('[LLL:contact.ext.company.saved.error]', notificationIdentifier);
 
 			Todoyu.Popups.setContent('popup-' + fieldName, response.responseText);
 		} else {
-			Todoyu.notifySuccess('[LLL:contact.ext.company.saved.ok]');
+			Todoyu.notifySuccess('[LLL:contact.ext.company.saved.ok]', notificationIdentifier);
 
 			$(fieldName).value				= response.getTodoyuHeader('record');
 			$(fieldName + '-fulltext').value= response.getTodoyuHeader('label');

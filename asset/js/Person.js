@@ -266,14 +266,16 @@ Todoyu.Ext.contact.Person =  {
 	 * @param	{Array}		response
 	 */
 	onSaved: function(response) {
+		var notificationIdentifier	= 'contact.person.saved';
+
 		if( response.hasTodoyuError() ) {
-			Todoyu.notifyError('[LLL:contact.ext.person.saved.error]');
+			Todoyu.notifyError('[LLL:contact.ext.person.saved.error]', notificationIdentifier);
 			$('contact-form-content').update(response.responseText);
 
 			var idPerson	= parseInt(response.request.parameters['person[id]'], 10);
 			this.initEditForm(idPerson);
 		} else {
-			Todoyu.notifySuccess('[LLL:contact.ext.person.saved]');
+			Todoyu.notifySuccess('[LLL:contact.ext.person.saved]', notificationIdentifier);
 
 			this.showList();
 		}
@@ -366,14 +368,15 @@ Todoyu.Ext.contact.Person =  {
 	 * @param	{Ajax.Response}		response
 	 */
 	onSavedWizard: function(target, response) {
-		var error	= response.hasTodoyuError();
+		var error					= response.hasTodoyuError();
+		var notificationIdentifier	= 'contact.person.saved';
 
 		if( error ) {
-			Todoyu.notifyError('[LLL:contact.ext.person.saved.error]');
+			Todoyu.notifyError('[LLL:contact.ext.person.saved.error]', notificationIdentifier);
 
 			Todoyu.Popups.setContent('popup-' + target, response.responseText);
 		} else {
-			Todoyu.notifySuccess('[LLL:contact.ext.person.saved]');
+			Todoyu.notifySuccess('[LLL:contact.ext.person.saved]', notificationIdentifier);
 
 			var label		= response.getTodoyuHeader('recordLabel');
 

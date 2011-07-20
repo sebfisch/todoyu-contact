@@ -70,13 +70,15 @@ Todoyu.Ext.contact.Profile = {
 	 * @param	{Array}		response
 	 */
 	onSaved: function(response) {
+		var notificationIdentifier	= 'contact.profile.person.saved';
+
 		if( response.hasTodoyuError() ) {
-			Todoyu.notifyError('[LLL:contact.ext.person.saved.error]');
+			Todoyu.notifyError('[LLL:contact.ext.person.saved.error]', notificationIdentifier);
 			$('contact-form-content').update(response.responseText);
 			var idPerson	= parseInt(response.request.parameters['person[id]'], 10);
 			this.initEditForm(idPerson);
 		} else {
-			Todoyu.notifySuccess('[LLL:contact.ext.person.saved]');
+			Todoyu.notifySuccess('[LLL:contact.ext.person.saved]', notificationIdentifier);
 			$('contact-form-content').update(response.responseText);
 		}
 	},

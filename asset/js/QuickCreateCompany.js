@@ -61,15 +61,17 @@ Todoyu.Ext.contact.QuickCreateCompany = {
 	 * @param	{Ajax.Response}		response
 	 */
 	onSaved: function(response) {
+		var notificationIdentifier	= 'contact.quickcreatecompany.saved';
+
 		if( response.hasTodoyuError() ) {
 			this.getQuickCreateHeadlet().updatePopupContent(response.responseText);
-			Todoyu.notifyError('[LLL:contact.ext.company.saved.error]');
+			Todoyu.notifyError('[LLL:contact.ext.company.saved.error]', notificationIdentifier);
 		} else {
 			var idCompany	= response.getTodoyuHeader('idCompany');
 			Todoyu.Hook.exec('contact.company.saved', idCompany);
 
 			this.getQuickCreateHeadlet().closePopup();
-			Todoyu.notifySuccess('[LLL:contact.ext.company.saved.ok]');
+			Todoyu.notifySuccess('[LLL:contact.ext.company.saved.ok]', notificationIdentifier);
 
 			if( Todoyu.getArea() == 'contact' ) {
 				Todoyu.Ext.contact.Company.showList();
