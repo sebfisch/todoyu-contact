@@ -393,6 +393,7 @@ Todoyu.Ext.contact.Person =  {
 	 * Cancel handling for wizard: close popup
 	 *
 	 * @method	cancelWizard
+	 * @param	{Element}		form
 	 */
 	cancelWizard: function(form) {
 		this.removeUnusedImages(form);
@@ -402,7 +403,7 @@ Todoyu.Ext.contact.Person =  {
 
 
 	/**
-	 *
+	 * @method	removeUnusedImages
 	 * @param	{Element}	form
 	 */
 	removeUnusedImages: function(form) {

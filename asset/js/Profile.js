@@ -36,6 +36,7 @@ Todoyu.Ext.contact.Profile = {
 	/**
 	 * Handles Tab events for the profile
 	 *
+	 * @method	onTabClick
 	 * @param	{Event}		event
 	 * @param	{String}	tabKey
 	 */
@@ -48,6 +49,7 @@ Todoyu.Ext.contact.Profile = {
 	/**
 	 * Sends the save Request for the profile form
 	 *
+	 * @method	save
 	 * @param	{Element}	form
 	 */
 	save: function(form) {

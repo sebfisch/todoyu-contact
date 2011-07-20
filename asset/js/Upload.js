@@ -29,6 +29,7 @@ Todoyu.Ext.contact.Upload = {
 	/**
 	 * Shows upload form on button click
 	 *
+	 * @method	showUploadForm
 	 * @param	{String}	form
 	 * @param	{String}	recordType		(person / company)
 	 */
@@ -44,6 +45,8 @@ Todoyu.Ext.contact.Upload = {
 
 	/**
 	 * Remove upload form and unhide button making it shown
+	 *
+	 * @method	removeUploadForm
 	 */
 	removeUploadForm: function() {
 		if( Object.isElement( $('contactimage-uploadform') ) ) {
@@ -57,6 +60,7 @@ Todoyu.Ext.contact.Upload = {
 	/**
 	 * Add upload form for contact images
 	 *
+	 * @method	addUploadForm
 	 * @param	{Number}	idRecord
 	 * @param	{String}	recordType	(person / company)
 	 */
@@ -78,6 +82,7 @@ Todoyu.Ext.contact.Upload = {
 	/**
 	 * Upload contact image
 	 *
+	 * @method	upload
 	 * @param	{String}	form
 	 * @todo	clean up
 	 */
@@ -97,6 +102,7 @@ Todoyu.Ext.contact.Upload = {
 	/**
 	 * Contact image upload finished handler
 	 *
+	 * @method	uploadFinished
 	 * @param	{String}	recordType		(person / company)
 	 * @param	{Number}	idContact
 	 * @param	{Number}	idReplace
@@ -116,6 +122,7 @@ Todoyu.Ext.contact.Upload = {
 	/**
 	 * Refreshes the preview image in the form
 	 *
+	 * @method	refreshPreviewImage
 	 * @param	{String}	form
 	 * @param	{Number}	idImage
 	 * @param	{String}	recordType		(person / company)
@@ -138,6 +145,7 @@ Todoyu.Ext.contact.Upload = {
 	/**
 	 * Sets the temporary id (folder-name) of the uploaded image to the hidden field
 	 *
+	 * @method	setReplaceIdToHiddenField
 	 * @param	{String}	form
 	 * @param	{Number}	idReplace
 	 * @param	{String}	recordType		(person / company)
@@ -181,6 +189,7 @@ Todoyu.Ext.contact.Upload = {
 	/**
 	 * Send Request to remove image of current user
 	 *
+	 * @method	removeImage
 	 * @param	{String}	form
 	 * @param	{String}	recordType
 	 */
@@ -203,8 +212,9 @@ Todoyu.Ext.contact.Upload = {
 
 
 	/**
-	 * Returns the id of the image.
+	 * Returns the ID of the image.
 	 *
+	 * @method	getImageId
 	 * @param	{String}	form
 	 * @param	{String}	recordType
 	 */

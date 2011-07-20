@@ -169,8 +169,9 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 
 
 	/**
-	 * Sort selection items
-	 * First groups then persons by alphabet
+	 * Sort selection items (first groups then persons by alphabet)
+	 *
+	 * @method	sortSelect
 	 */
 	sortSelection: function() {
 		var nodes		= this.selection.select('li');
@@ -374,6 +375,8 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 
 	/**
 	 * Check whether any item is selected or not
+	 *
+	 * @method	isAnyPersonSelected
 	 */
 	isAnyPersonSelected: function() {
 		return this.getSelectedItems().size() > 0;
@@ -382,8 +385,9 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 
 
 	/**
-	 * Get all selected elements (persons)
-	 * Gets also group and other types
+	 * Get all selected elements (persons). Gets also group and other types
+	 *
+	 * @method	getSelectedPersons
 	 */
 	getSelectedPersons: function() {
 		var items	= this.getSelectedItems();

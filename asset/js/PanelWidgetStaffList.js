@@ -29,6 +29,7 @@ Todoyu.Ext.contact.PanelWidget.StaffList = Class.create(Todoyu.PanelWidgetSearch
 	/**
 	 * Initialize
 	 *
+	 * @method	initialize
 	 * @param	{Function}	$super
 	 * @param	{String}	search
 	 */
@@ -47,6 +48,7 @@ Todoyu.Ext.contact.PanelWidget.StaffList = Class.create(Todoyu.PanelWidgetSearch
 	/**
 	 * Handler when clicked on item
 	 *
+	 * @method	onItemClick
 	 * @param	{Event}		event
 	 * @param	{Element}	item
 	 */

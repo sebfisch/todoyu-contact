@@ -26,6 +26,7 @@ Todoyu.Ext.contact.Autocomplete = {
 	/**
 	 * Handler when parent task field is autocompleted
 	 *
+	 * @method	onRegionAutocomplete
 	 * @param	{Ajax.Response}			response
 	 * @param	{Todoyu.Autocompleter}	autocompleter
 	 */
