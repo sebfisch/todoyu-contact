@@ -168,6 +168,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	},
 
 
+
 	/**
 	 * Sort selection items (first groups then persons by alphabet)
 	 *

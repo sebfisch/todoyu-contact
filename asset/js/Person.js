@@ -282,6 +282,7 @@ Todoyu.Ext.contact.Person =  {
 	},
 
 
+
 	/**
 	 * Close form by reloading the persons list
 	 *
