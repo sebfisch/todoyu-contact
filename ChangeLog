@@ -1,7 +1,8 @@
 todoyu contact extension changelog
 
-contact 1.1.1 - ???
+contact 1.1.1 - not released yet
 	* Bugfix: #178 TodoyuContactPersonRights::getAllowedToBeSeenPersonsWhereClause() created an invalid where statement
+
 
 contact 1.1.0 - 2011-06-17
 	* Feature: Added salutation and company to person search
