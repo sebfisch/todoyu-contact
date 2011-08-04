@@ -82,7 +82,7 @@
 					<label>contact.ext.company.attr.comment</label>
 					<rows>5</rows>
 					<restrict>
-						<allow ext="contact" right="company.:editComment" />
+						<allow ext="contact" right="company:editComment" />
 					</restrict>
 				</field>
 

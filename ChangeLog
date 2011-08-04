@@ -1,5 +1,9 @@
 todoyu contact extension changelog
 
+contact 1.1.2 - ???
+	* Bugfix: #187 Surplus point in rights path for comments field in company form
+	
+
 contact 1.1.1 - 2011-07-25
 	* Bugfix: #178 TodoyuContactPersonRights::getAllowedToBeSeenPersonsWhereClause() created an invalid where statement
 
