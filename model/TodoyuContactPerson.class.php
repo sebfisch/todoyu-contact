@@ -62,9 +62,9 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 			if( $email !== false ) {
 		 		$label	.= ' (' . $this->getEmail() . ')';
 			}
-		 }
+		}
 
-		 return $label;
+		return $label;
 	}
 
 
