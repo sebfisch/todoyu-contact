@@ -85,7 +85,6 @@ class TodoyuContactAddress extends TodoyuBaseObject {
 
 	/**
 	 * Load foreign data
-	 *
 	 */
 	protected function loadForeignData() {
 		$this->data['country']	= $this->getCountry()->getTemplateData();
