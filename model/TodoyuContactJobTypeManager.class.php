@@ -91,7 +91,7 @@ class TodoyuContactJobTypeManager {
 	 * @return	Array
 	 */
 	public static function getRecords() {
-		$jobTypes		= TodoyuContactJobTypeManager::getAllJobTypes();
+		$jobTypes		= self::getAllJobTypes();
 		$reformConfig	= array(
 			'title'	=> 'label'
 		);
