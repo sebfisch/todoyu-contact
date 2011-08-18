@@ -33,7 +33,7 @@ class TodoyuContactContactInfoManagerPerson extends TodoyuContactContactInfoMana
 	 * @param	Integer		$idPerson
 	 */
 	public static function deleteContactInfos($idPerson) {
-		self::deleteLinkedContactInfos('company', $idPerson, array(), 'id_person');
+		self::deleteLinkedContactInfos('person', $idPerson, array(), 'id_person');
 	}
 
 
