@@ -57,7 +57,7 @@ class TodoyuContactJobTypeManager {
 
 
 	/**
-	 * Get job types
+	 * Get jobtypes
 	 *
 	 * @param	Array	$typeIDs	optional
 	 * @return	Array
@@ -102,7 +102,7 @@ class TodoyuContactJobTypeManager {
 
 
 	/**
-	 * Get job type options
+	 * Get jobtype options
 	 *
 	 * @return	Array
 	 */
@@ -120,7 +120,7 @@ class TodoyuContactJobTypeManager {
 
 
 	/**
-	 * Get internal persons with job type
+	 * Get internal persons with jobtype
 	 *
 	 * @return	Array
 	 */
@@ -141,7 +141,7 @@ class TodoyuContactJobTypeManager {
 
 
 	/**
-	 * Search in job types
+	 * Search in jobtypes
 	 *
 	 * @param	String		$search
 	 * @return	Array
@@ -167,9 +167,9 @@ class TodoyuContactJobTypeManager {
 
 
 	/**
-	 * Save job type
+	 * Save jobtype
 	 *
-	 * @param	Array	$data		Data of job type
+	 * @param	Array	$data		Data of jobtype
 	 * @return	Integer
 	 */
 	public static function saveJobtype(array $data) {
@@ -204,7 +204,7 @@ class TodoyuContactJobTypeManager {
 
 
 	/**
-	 * Update jobtype
+	 * Update jobtype record
 	 *
 	 * @param	Integer		$idJobtype
 	 * @param	Array		$data
@@ -217,7 +217,7 @@ class TodoyuContactJobTypeManager {
 
 
 	/**
-	 * Remove job type
+	 * Remove jobtype record
 	 *
 	 * @param	Integer	$idJobtype
 	 * @return	Boolean
@@ -231,7 +231,7 @@ class TodoyuContactJobTypeManager {
 
 
 	/**
-	 * Get autocomplete list for person
+	 * Get autocomplete list for jobtype
 	 *
 	 * @param	String		$input
 	 * @param	Array		$formData
