@@ -2,7 +2,8 @@ todoyu contact extension changelog
 
 contact 1.1.2 - ???
 	* Bugfix: #187 Surplus point in rights path for comments field in company form
-	* Changed: #204 Removed unused methods from TodoyuContactContactInfoType
+	* Change: #204 Removed unused methods from TodoyuContactContactInfoType
+	* Change: Highlight already selected items when result of staff selector is empty
 	
 
 contact 1.1.1 - 2011-07-25

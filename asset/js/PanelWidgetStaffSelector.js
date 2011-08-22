@@ -332,10 +332,48 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * Handler when list was updated
 	 *
 	 * @method	onUpdated
+	 * @param	{Ajax.Response}	response
 	 */
-	onUpdated: function() {
+	onUpdated: function(response) {
 		this.addAddIconsToList();
 		this.markFirstAsHot();
+	},
+
+
+
+	/**
+	 * Handler on an empty result
+	 *
+	 * @method	onEmptyResult
+	 * @param	{Function}			$super
+	 * @param	{Ajax.Response}		response
+	 */
+	onEmptyResult: function($super, response) {
+		if( this.getSearchText().strip() !== '' ) {
+			this.highlightSelectedItems(this.getSearchText());
+		}
+	},
+
+
+
+	/**
+	 * Highlight all already selected items which match the current search word
+	 *
+	 * @method	highlightSelectedItems
+	 * @param	{String}	search
+	 */
+	highlightSelectedItems: function(search) {
+		var pattern	= new RegExp(search, 'i');
+		var matches = this.selection.select('li').findAll(function(li){
+			var name = li.down('a').innerHTML.stripTags().strip();
+			return pattern.test(name);
+		});
+
+		matches.each(function(li){
+			li.highlight({
+				duration:3.0
+			});
+		});
 	},
 
 
