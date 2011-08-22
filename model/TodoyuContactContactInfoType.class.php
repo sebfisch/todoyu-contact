@@ -49,42 +49,12 @@ class TodoyuContactContactInfoType extends TodoyuBaseObject {
 
 
 	/**
-	 * Gets the label for the selector (of all available contact types) option
-	 *
-	 * @param	TodoyuForm	$form
-	 * @param	Array	$option
-	 * @return	String
-	 */
-	public function getLabelForFormElementSelect($form, $option) {
-		return Todoyu::Label($option['title']);
-	}
-
-
-
-	/**
 	 * Checks if the contactinfotype is public or not
 	 *
 	 * @return	Boolean
 	 */
 	public function isPublic() {
 		return intval($this->data['is_public']) === 1;
-	}
-
-
-
-	/**
-	 * Gets the label for the formElement databaserelation
-	 *
-	 * @param	TodoyuFormElement_DatabaseRelation		$formElement
-	 * @param	Array									$data
-	 * @return	String
-	 * @todo	TodoyuBaseObject is abstract, what is the real type?
-	 */
-	public static function getLabelForDatabaseRelation($formElement, $data) {
-		$idContactInfoType	= intval($data['id_contactinfotype']);
-		$contactInfoType	= TodoyuContactContactInfoTypeManager::getContactInfoType($idContactInfoType);
-
-		return $contactInfoType->getTitle();
 	}
 
 }
