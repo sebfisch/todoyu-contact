@@ -1,6 +1,7 @@
 todoyu contact extension changelog
 
 contact 1.1.2 - ???
+	* Bugfix: default salutation label failure if none stored
 	* Bugfix: #187 Surplus point in rights path for comments field in company form
 	* Change: #204 Removed unused methods from TodoyuContactContactInfoType
 	* Change: Highlight already selected items when result of staff selector is empty
