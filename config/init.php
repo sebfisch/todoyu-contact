@@ -105,7 +105,8 @@ Todoyu::$CONFIG['EXT']['contact']['defaultTypeTab'] = 'person';
 TodoyuFormHook::registerLoadData('ext/contact/config/form/person.xml', 'TodoyuContactPersonManager::hookPersonLoadFormData');
 TodoyuFormHook::registerLoadData('ext/contact/config/form/address.xml', 'TodoyuContactAddressManager::hookAddressLoadFormData');
 
-
+// Implement person quickInfo class to various person labels
+TodoyuHookManager::registerHook('project', 'taskdataattributes', 'TodoyuContactPersonHooks::extendTaskDataAttributes', 10);
 
 /* ----------------------------------------
 	Configure contact data types listings

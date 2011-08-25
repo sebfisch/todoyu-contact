@@ -25,7 +25,4 @@ define('PATH_EXT_CONTACT', PATH_EXT . '/contact');
 require_once( PATH_EXT_CONTACT . '/config/constants.php' );
 require_once( PATH_EXT_CONTACT . '/dwoo/plugins.php');
 
-// Implement person quickInfo class to various person labels
-TodoyuHookManager::registerHook('project', 'taskdataattributes', 'TodoyuContactPersonHooks::extendTaskDataAttributes', 10);
-
 ?>
