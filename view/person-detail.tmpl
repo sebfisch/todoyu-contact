@@ -89,6 +89,10 @@
 				<dl>
 					<dt>{Label LLL:contact.ext.person.attr.username}:</dt>
 					<dd>{$username|default:"-"}</dd>
+					{if ! empty($shortname)}
+						<dt>{Label LLL:contact.ext.person.attr.shortname}:</dt>
+						<dd>{$shortname}</dd>
+					{/if}
 					<dt>{Label LLL:contact.ext.person.attr.email}:</dt>
 					<dd>
 						{if $email}

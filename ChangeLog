@@ -1,6 +1,7 @@
 todoyu contact extension changelog
 
 contact 1.1.2 - ???
+	* Add: person shortname in user information section of person details
 	* Bugfix: default salutation label failure if none stored
 	* Bugfix: #187 Surplus point in rights path for comments field in company form
 	* Change: #207 Check access rights for contact infos in quick info for person
