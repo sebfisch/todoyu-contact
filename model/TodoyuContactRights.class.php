@@ -129,10 +129,6 @@ class TodoyuContactRights {
 	public static function isContactinfotypeSeeAllowed($idContactInfoType) {
 		$idContactInfoType	= intval($idContactInfoType);
 
-		if( TodoyuAuth::isAdmin() ) {
-			return true;
-		}
-
 		if( Todoyu::allowed('contact', 'relation:seeAllContactinfotypes') ) {
 			return true;
 		}
