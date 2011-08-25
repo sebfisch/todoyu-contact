@@ -44,24 +44,26 @@ class TodoyuContactPersonQuickInfoManager {
 			$quickinfo->addInfo('name', $person->getLabel(), 10, false);
 		}
 
-			// Email
-		$email	= $person->getEmail(true);
-		if( $email !== false ) {
-			$quickinfo->addEmail('email', $email, $person->getFullName(), 100);
-		}
+			// Restrict contact infos
+		if( Todoyu::allowed('contact', 'relation:seeAllContactinfotypes') ) {
+				// Email
+			$email	= $person->getEmail(true);
+			if( $email !== false ) {
+				$quickinfo->addEmail('email', $email, $person->getFullName(), 100);
+			}
 
-			// Get preferred or only phone
-		$phone = $person->getPhone();
-		if( $phone !== false ) {
-			$quickinfo->addInfo('phone', $phone, 150);
-		}
+				// Get preferred or only phone
+			$phone = $person->getPhone();
+			if( $phone !== false ) {
+				$quickinfo->addInfo('phone', $phone, 150);
+			}
 
-			// Comment
-		$comment	= $person->getComment();
-		if( $comment !== '' ) {
-			$quickinfo->addInfo('comment', TodoyuString::crop($comment, 100), 200);
+				// Comment
+			$comment	= $person->getComment();
+			if( $comment !== '' ) {
+				$quickinfo->addInfo('comment', TodoyuString::crop($comment, 100), 200);
+			}
 		}
-
 
 		// Commented out. Is this really useful information?
 //			// Add birthday information for internal persons
