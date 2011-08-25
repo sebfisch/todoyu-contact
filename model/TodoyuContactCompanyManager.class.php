@@ -138,6 +138,11 @@ class TodoyuContactCompanyManager {
 
 			// Save own external fields
 		$data	= self::saveCompanyForeignRecords($data, $idCompany);
+
+		    // Call hooked save functions
+		$xmlPath	= 'ext/contact/config/form/company.xml';
+        $data		= TodoyuFormHook::callSaveData($xmlPath, $data, $idCompany);
+
 			// Update company data with basic field data
 		self::updateCompany($idCompany, $data);
 			// Remove company record from cache

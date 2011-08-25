@@ -81,7 +81,7 @@ CREATE TABLE `ext_contact_contactinfo` (
 	`date_update` int(10) unsigned NOT NULL,
 	`id_person_create` int(10) unsigned NOT NULL,
 	`deleted` tinyint(1) NOT NULL DEFAULT '0',
-	`id_contactinfotype` tinytext NOT NULL,
+	`id_contactinfotype` smallint(5) unsigned NOT NULL DEFAULT '0'
 	`info` tinytext NOT NULL,
 	`is_preferred` tinyint(1) unsigned NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`)
