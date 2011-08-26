@@ -92,7 +92,7 @@ class TodoyuContactViewHelper {
 				'value'		=> 0,
 				'label'		=> Todoyu::Label('contact.ext.form.error.nointernalpersons'),
 				'disabled'	=> true,
-				'classname'	=> 'error'
+				'class'		=> 'error'
 			);
 		}
 
@@ -131,7 +131,7 @@ class TodoyuContactViewHelper {
 				'value'		=> 'disabled',
 				'label'		=> 'LLL:contact.ext.company.attr.person.jobtype.noJobtypes',
 				'disabled'	=> true,
-				'classname'	=> 'error'
+				'class'		=> 'error'
 			);
 		}
 
@@ -366,7 +366,7 @@ class TodoyuContactViewHelper {
 					'value'		=> 'disabled',
 					'label'		=> 'LLL:contact.ext.company.noAddress',
 					'disabled'	=> true,
-					'classname'	=> 'error'
+					'class'		=> 'error'
 				);
 			}
 		}
