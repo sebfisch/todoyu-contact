@@ -449,7 +449,7 @@ class TodoyuContactRenderer {
 		$company	= TodoyuContactCompanyManager::getCompany($idCompany);
 		$data		= $company->getTemplateData(true);
 
-		$data['hookedContent']	= implode('', TodoyuHookManager::callHookDataModifier('contact', 'company.renderDetail', array(), array('idCompany' => $idCompany)));
+		$data['hookedContent']	= implode('', TodoyuHookManager::callHook('contact', 'company.renderDetail', array($idCompany)));
 
 		return Todoyu::render($tmpl, $data);
 	}
