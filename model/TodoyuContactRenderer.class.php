@@ -429,7 +429,7 @@ class TodoyuContactRenderer {
 		}
 
 		$data['email']			= $person->getEmail();
-		$data['hookedContent']	= implode('', TodoyuHookManager::callHookDataModifier('contact', 'person.renderDetail', array(), array('idPerson' => $idPerson)));
+		$data['hookedContent']	= implode('', TodoyuHookManager::callHook('contact', 'person.renderDetail', array($idPerson)));
 
 		return Todoyu::render($tmpl, $data);
 	}
