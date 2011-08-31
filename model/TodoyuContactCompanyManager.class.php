@@ -160,7 +160,11 @@ class TodoyuContactCompanyManager {
 	 * @return	Integer
 	 */
 	public static function addCompany(array $data = array()) {
-		return TodoyuRecordManager::addRecord(self::TABLE, $data);
+		$idCompany = TodoyuRecordManager::addRecord(self::TABLE, $data);
+
+		TodoyuHookManager::callHook('contact', 'company.add', array($idCompany));
+
+		return $idCompany;
 	}
 
 
@@ -170,12 +174,13 @@ class TodoyuContactCompanyManager {
 	 *
 	 * @param	Integer		$idCompany
 	 * @param	Array		$data
-	 * @return	Integer
 	 */
 	public static function updateCompany($idCompany, array $data) {
-		$idCompany			= intval($idCompany);
+		$idCompany	= intval($idCompany);
 
-		return TodoyuRecordManager::updateRecord(self::TABLE, $idCompany, $data);
+		TodoyuRecordManager::updateRecord(self::TABLE, $idCompany, $data);
+
+		TodoyuHookManager::callHook('contact', 'company.update', array($idCompany, $data));
 	}
 
 
@@ -193,6 +198,8 @@ class TodoyuContactCompanyManager {
 		);
 
 		self::updateCompany($idCompany, $data);
+
+		TodoyuHookManager::callHook('contact', 'company.delete', array($idCompany));
 	}
 
 

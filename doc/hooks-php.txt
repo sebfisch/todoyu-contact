@@ -3,35 +3,65 @@ Contact Extension - PHP Hooks
 
 
 
-1.	Event Hooks		Evoked via TodoyuHookManager::callHook($ext, $name, Array $params)
----------------
-	renderPersonDetailView
+Event Hooks
+***************************************
+
+#contact.company.add
+	Company was added
+	@param	Integer		$idCompany
+
+
+#contact.company.update
+	Company was updated
+	@param	Integer		$idCompany
+	@param	Array		$data
+
+
+#contact.company.delete
+	Company was deleted
+	@param	Integer		$idCompany
+
+
+#contact.person.add
+	Person was added
+	@param	Integer		$idPerson
+
+
+#contact.person.delete
+	Person was deleted
+	@param	Integer		$idPerson
+
+
+#contact.person.update
+	Person was updated
+	@param	Integer		$idPerson
+	@param	Array		$data
+
+
+
+
+
+Data modification
+***************************************
+
+#contact.person.renderDetail
+	Person detail is rendered. Add additional content to the data array. Will be attached at the end
 	@param	Integer	idPerson
-	@return	String
-	Evoked before person-detail view is rendered. Content is attached at the end
 
-	renderCompanyDetailView
+
+#contact.company.renderDetail
+	Company detail is rendered. Add additional content to the data array. Will be attached at the end
 	@param	Integer	idCompany
-	@return	String
-	Evoked before company-detail view is rendered. Content is attached at the end
 
 
-2. Event Data Modification
---------------------------
-	personCSVExportParseData
-	@param	Array			$exportData
+#contact.personCSVExportParseData
+	Modify parsed export data before writing to output file
+	@param	Array				$exportData
 	@param	TodoyuContactPerson	$person
 	@return	Array
-	Evoked after person data is parsed for the export. Its possible to modify the exportData array. Has to give it back.
 
-	companyCSVExportParseData
-	@param	Array			$exportData
+#contact.companyCSVExportParseData
+	Modify parsed export data before writing to output file
+	@param	Array					$exportData
 	@param	TodoyuContactCompany	$person
 	@return	Array
-	Evoked after company data is parsed for the export. Its possible to modify the exportData array. Has to give it back.
-
-
-
-3. Form Hooks (Build Form, Load Data, Save Data)
-------------------------------------------------
-	@see	all forms in ext/contact/config/form

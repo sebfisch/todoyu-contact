@@ -391,7 +391,7 @@ class TodoyuContactRenderer {
 		$tmpl		= 'ext/contact/view/person-header.tmpl';
 
 		$data	= $person->getTemplateData();
-		$data	= TodoyuHookManager::callHookDataModifier('person', 'renderPersonHeader', $data);
+		$data	= TodoyuHookManager::callHookDataModifier('contact', 'person.renderHeader', $data);
 
 			// If not forced, check preference
 		if( is_null($withDetails) ) {
@@ -429,7 +429,7 @@ class TodoyuContactRenderer {
 		}
 
 		$data['email']			= $person->getEmail();
-		$data['hookedContent']	= implode('', TodoyuHookManager::callHook('contact', 'renderPersonDetailView', array('idPerson' => $idPerson)));
+		$data['hookedContent']	= implode('', TodoyuHookManager::callHookDataModifier('contact', 'person.renderDetail', array(), array('idPerson' => $idPerson)));
 
 		return Todoyu::render($tmpl, $data);
 	}
@@ -449,7 +449,7 @@ class TodoyuContactRenderer {
 		$company	= TodoyuContactCompanyManager::getCompany($idCompany);
 		$data		= $company->getTemplateData(true);
 
-		$data['hookedContent']	= implode('', TodoyuHookManager::callHook('contact', 'renderCompanyDetailView', array('idCompany' => $idCompany)));
+		$data['hookedContent']	= implode('', TodoyuHookManager::callHookDataModifier('contact', 'company.renderDetail', array(), array('idCompany' => $idCompany)));
 
 		return Todoyu::render($tmpl, $data);
 	}

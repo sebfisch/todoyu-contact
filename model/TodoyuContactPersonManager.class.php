@@ -245,7 +245,11 @@ class TodoyuContactPersonManager {
 	 * @return	Integer
 	 */
 	public static function addPerson(array $data = array()) {
-		return TodoyuRecordManager::addRecord(self::TABLE, $data);
+		$idPerson = TodoyuRecordManager::addRecord(self::TABLE, $data);
+
+		TodoyuHookManager::callHook('contact', 'person.add', array($idPerson));
+
+		return $idPerson;
 	}
 
 
@@ -263,6 +267,8 @@ class TodoyuContactPersonManager {
 		);
 
 		self::updatePerson($idPerson, $data);
+
+		TodoyuHookManager::callHook('contact', 'person.delete', array($idPerson));
 	}
 
 
@@ -272,12 +278,13 @@ class TodoyuContactPersonManager {
 	 *
 	 * @param	Integer		$idPerson
 	 * @param	Array		$data
-	 * @return	Boolean
 	 */
 	public static function updatePerson($idPerson, array $data) {
 		TodoyuRecordManager::removeRecordCache('TodoyuContactPerson', $idPerson);
 
-		return TodoyuRecordManager::updateRecord(self::TABLE, $idPerson, $data);
+		TodoyuRecordManager::updateRecord(self::TABLE, $idPerson, $data);
+
+		TodoyuHookManager::callHook('contact', 'person.update', array($idPerson, $data));
 	}
 
 
