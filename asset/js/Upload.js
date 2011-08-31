@@ -38,7 +38,7 @@ Todoyu.Ext.contact.Upload = {
 
 		this.addUploadForm(idRecord, recordType);
 
-		$$('button.uploadContactImage')[0].hide();
+		$('contact-form-content').select('button.uploadContactImage')[0].hide();
 	},
 
 
