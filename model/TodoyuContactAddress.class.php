@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Address Record
+ * Address object
  *
  * @package		Todoyu
  * @subpackage	Contact

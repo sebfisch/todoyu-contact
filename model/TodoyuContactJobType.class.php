@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * JobType
+ * JobType object
  *
  * @package		Todoyu
  * @subpackage	Contact

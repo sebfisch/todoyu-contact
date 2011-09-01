@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Contact Information
+ * Contact information object
  *
  * @package		Todoyu
  * @subpackage	Contact

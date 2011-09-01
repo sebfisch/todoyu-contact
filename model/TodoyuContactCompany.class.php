@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Company
+ * Company object
  *
  * @package		Todoyu
  * @subpackage	Contact
