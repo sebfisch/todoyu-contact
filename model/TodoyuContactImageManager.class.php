@@ -18,9 +18,11 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-
 /**
- * Handler for the contact - images
+ * Handler for contact (person / company) images
+ *
+ * @package		Todoyu
+ * @subpackage	Contact
  */
 class TodoyuContactImageManager {
 

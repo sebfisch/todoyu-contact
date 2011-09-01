@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Object class Todoyufor contactinfo types
+ * Object class for Todoyu contactinfo types
  *
  * @package		Todoyu
  * @subpackage	Contact

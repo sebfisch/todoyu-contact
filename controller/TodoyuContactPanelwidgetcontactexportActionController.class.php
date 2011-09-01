@@ -18,8 +18,12 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-
-
+/**
+ * Contact panelwidget: export
+ *
+ * @package		Todoyu
+ * @subpackage	Comment
+ */
 class TodoyuContactPanelwidgetcontactexportActionController extends TodoyuActionController {
 
 	/**
@@ -37,15 +41,16 @@ class TodoyuContactPanelwidgetcontactexportActionController extends TodoyuAction
 	 * @param	Array		$params
 	 */
 	public function exportAction(array $params) {
-		$searchword	= $params['searchword'];
+		$searchWord	= $params['searchword'];
 		$tab		= $params['tab'];
 
 		if( $tab == 'person' ) {
-			TodoyuContactPersonExportManager::exportCSV($searchword);
+			TodoyuContactPersonExportManager::exportCSV($searchWord);
 		} else if( $tab == 'company' ) {
-			TodoyuContactCompanyExportManager::exportCSV($searchword);
+			TodoyuContactCompanyExportManager::exportCSV($searchWord);
 		}
 	}
+
 }
 
 ?>

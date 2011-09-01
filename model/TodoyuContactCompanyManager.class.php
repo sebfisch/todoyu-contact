@@ -27,7 +27,9 @@
 class TodoyuContactCompanyManager {
 
 	/**
-	 * @var	String		Default ext table for database requests
+	 * Default ext table for database requests
+	 *
+	 * @var	String
 	 */
 	const TABLE = 'ext_contact_company';
 

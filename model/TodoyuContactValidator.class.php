@@ -18,6 +18,12 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ * Contact validator
+ *
+ * @package		Todoyu
+ * @subpackage	Contact
+ */
 class TodoyuContactValidator {
 
 	/**

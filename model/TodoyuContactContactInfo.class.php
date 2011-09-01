@@ -27,7 +27,7 @@
 class TodoyuContactContactInfo extends TodoyuBaseObject {
 
 	/**
-	 * table of the record
+	 * Table of the record
 	 *
 	 * @var string
 	 */

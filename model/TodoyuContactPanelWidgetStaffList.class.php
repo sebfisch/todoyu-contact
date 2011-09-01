@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Panel widget for project tree
+ * Panel widget for staff list
  *
  * @package		Todoyu
  * @subpackage	Contact

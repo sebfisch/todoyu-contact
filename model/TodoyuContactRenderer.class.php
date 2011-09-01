@@ -27,7 +27,9 @@
 class TodoyuContactRenderer {
 
 	/**
-	 * @var	String		Extension key
+	 * Extension key
+	 *
+	 * @var	String
 	 */
 	const EXTKEY = 'contact';
 

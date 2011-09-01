@@ -26,7 +26,14 @@
  */
 class TodoyuContactViewHelper {
 
+	/**
+	 * Person options (value: ID, label)
+	 *
+	 * @var null|Array
+	 */
 	private static $personOptions = null;
+
+
 
 	/**
 	 * Get label for a person in a form

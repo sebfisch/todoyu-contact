@@ -18,9 +18,11 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-
 /**
  * Handles the profile actions for the contact extension
+ *
+ * @package		Todoyu
+ * @subpackage	Contact
  */
 class TodoyuContactProfileActionController  extends TodoyuActionController {
 

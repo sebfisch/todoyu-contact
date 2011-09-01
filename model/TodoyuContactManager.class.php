@@ -20,6 +20,9 @@
 
 /**
  * Manager class Todoyu for the contact module
+ *
+ * @package		Todoyu
+ * @subpackage	Contact
  */
 class TodoyuContactManager {
 

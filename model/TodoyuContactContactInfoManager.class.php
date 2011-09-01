@@ -27,13 +27,17 @@
 class TodoyuContactContactInfoManager {
 
 	/**
-	 * @var	String		Default table for database requests
+	 * Default table for database requests
+	 *
+	 * @var	String
 	 */
 	const TABLE = 'ext_contact_contactinfo';
 
 
 	/*
 	 * Config for person and company
+	 *
+	 * @var	Array
 	 */
 	private static $mmConfig	= array(
 		'person'	=> array(

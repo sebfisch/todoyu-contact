@@ -27,7 +27,9 @@
 class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 
 	/**
-	 * @var	String		Default table for database requests
+	 * Default table for database requests
+	 *
+	 * @var	String
 	 */
 	const TABLE = 'ext_contact_company';
 
