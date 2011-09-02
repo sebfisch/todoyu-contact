@@ -57,7 +57,10 @@ class TodoyuContactPersonQuickInfoManager {
 			if( $phone !== false ) {
 				$quickinfo->addInfo('phone', $phone, 150);
 			}
-
+		}
+		
+			// Restrict 
+		if( Todoyu::allowed('contact', 'person:seeComment') ) {
 				// Comment
 			$comment	= $person->getComment();
 			if( $comment !== '' ) {

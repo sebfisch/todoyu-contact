@@ -88,8 +88,10 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 			// Get comment details
 		foreach($personIDs as $idPerson) {
 			$person	= TodoyuContactPersonManager::getPerson($idPerson);
-			$phone	= $person->getPhone();
-			$email	= $person->getEmail(true);
+			if ( Todoyu::allowed('contact', 'relation:seeAllContactinfotypes') ) {
+				$phone	= $person->getPhone();
+				$email	= $person->getEmail(true);
+			}
 			$labelTitle = TodoyuString::wrap($person->getFullName(), '<span class="keyword">|</span>') . ($email
 					? ' | ' . $email : '') . ($phone ? ' | ' . $phone : '');
 			$suggestions[] = array(
@@ -123,12 +125,14 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 		foreach($persons as $personData) {
 			$person	= TodoyuContactPersonManager::getPerson($personData['id']);
 
+			$email	= Todoyu::allowed('contact', 'relation:seeAllContactinfotypes') ? $person->getEmail(true) : false;
+
 			$data['rows'][] = array(
 				'icon'		=> '',
 				'iconClass'	=> $person->isActive() ? 'login' : '',
-				'lastname'	=> $person->get('lastname'),
-				'firstname'	=> $person->get('firstname'),
-				'email'		=> $person->getEmail(true),
+				'lastname'	=> $person->getLastname(),
+				'firstname'	=> $person->getFirstname(),
+				'email'		=> $email,
 				'company'	=> $person->getMainCompany()->getTitle(),
 				'actions'	=> TodoyuContactRenderer::renderPersonActions($personData['id'])
 			);
