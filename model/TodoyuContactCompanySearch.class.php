@@ -118,15 +118,29 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 		);
 
 		foreach($companies as $company) {
-			$data['rows'][] = array(
-				'icon'		=> '',
-				'title'		=> $company['title'],
-				'address'	=> TodoyuContactCompanyManager::getCompanyAddressLabel($company['id']),
-				'actions'	=> TodoyuContactRenderer::renderCompanyActions($company['id'])
-			);
+			$data['rows'][] = self::getCompanyRowData($company['id']);
 		}
 
 		return $data;
+	}
+
+
+
+	/**
+	 * Get row data for given company
+	 *
+	 * @param	Integer		$idCompany
+	 * @return	Array
+	 */
+	public static function getCompanyRowData($idCompany) {
+		$idCompany	= intval($idCompany);
+
+		return array(
+			'icon'		=> '',
+			'title'		=> TodoyuContactCompanyManager::getCompany($idCompany)->getTitle(),
+			'address'	=> TodoyuContactCompanyManager::getCompanyAddressLabel($idCompany),
+			'actions'	=> TodoyuContactRenderer::renderCompanyActions($idCompany)
+		);
 	}
 
 }

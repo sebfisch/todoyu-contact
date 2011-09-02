@@ -32,9 +32,9 @@ class TodoyuContactCompanyExportManager {
 	 * @param	String	$searchWord
 	 */
 	public static function exportCSV($searchWord) {
-		$persons	= TodoyuContactCompanyManager::searchCompany($searchWord, null, '', '');
+		$companies	= TodoyuContactCompanyManager::searchCompany($searchWord, null, '', '');
 
-		$exportData	= self::prepareDataForExport($persons);
+		$exportData	= self::prepareDataForExport($companies);
 
 		$export = new TodoyuExportCSV($exportData);
 
@@ -51,14 +51,16 @@ class TodoyuContactCompanyExportManager {
 	 * @param	Array	$companies
 	 * @return	Array
 	 */
-	protected static function prepareDataForExport(array $companies) {
+	public static function prepareDataForExport(array $companies) {
 		$exportData = array();
 
 		foreach($companies as $company) {
-			$companyObj	= TodoyuContactCompanyManager::getCompany($company['id']);
+			if( intval($company['id']) !== 0 ) {
+				$companyObj	= TodoyuContactCompanyManager::getCompany($company['id']);
 
-			$companyObj->loadForeignData();
-			$exportData[]	= self::parseDataForExport($companyObj);
+				$companyObj->loadForeignData();
+				$exportData[]	= self::parseDataForExport($companyObj);
+			}
 		}
 
 		return $exportData;
@@ -72,8 +74,7 @@ class TodoyuContactCompanyExportManager {
 	 * @param	TodoyuContactCompany	$company
 	 * @return	Array
 	 */
-	protected static function parseDataForExport(TodoyuContactCompany $company) {
-
+	public static function parseDataForExport(TodoyuContactCompany $company) {
 		$exportData = array(
 			Todoyu::Label('contact.ext.company.attr.id')				=> $company->getID(),
 			Todoyu::Label('core.global.date_create')					=> TodoyuTime::format($company->date_create),
@@ -121,6 +122,7 @@ class TodoyuContactCompanyExportManager {
 
 		return $exportData;
 	}
+
 }
 
 ?>
