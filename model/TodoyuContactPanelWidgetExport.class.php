@@ -34,7 +34,7 @@ class TodoyuContactPanelWidgetExport extends TodoyuPanelWidget {
 		parent::__construct(
 			'contact',										// ext key
 			'contactexport',								// panel widget ID
-			'LLL:contact.panelwidget-contactexport.title',	// widget title text
+			'contact.panelwidget-contactexport.title',	// widget title text
 			$config,										// widget config array
 			$params											// widget parameters
 		);

@@ -49,7 +49,7 @@ class TodoyuContactRenderer {
 		TodoyuFrontend::setActiveTab('contact');
 
 		TodoyuPage::init('ext/contact/view/ext.tmpl');
-		TodoyuPage::setTitle('LLL:contact.ext.page.title');
+		TodoyuPage::setTitle('contact.ext.page.title');
 
 		$panelWidgets 	= self::renderPanelWidgets();
 		$tabs 			= self::renderTabs($type);

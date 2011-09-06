@@ -54,7 +54,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 		parent::__construct(
 			'contact',										// ext key
 			'staffselector',								// panel widget ID
-			'LLL:contact.panelwidget-staffselector.title',	// widget title text
+			'contact.panelwidget-staffselector.title',	// widget title text
 			$config,										// widget config array
 			$params,										// widget parameters
 			$idArea											// area ID

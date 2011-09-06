@@ -39,15 +39,15 @@ TodoyuQuickinfoManager::addFunction('person', 'TodoyuContactPersonQuickinfoManag
 Todoyu::$CONFIG['EXT']['contact']['contactinfotypecategories'] = array(
 	array(	// Email
 		'index'	=> CONTACT_INFOTYPE_CATEGORY_EMAIL,
-		'label'	=> 'LLL:contact.ext.record.contactinfotype.email'
+		'label'	=> 'contact.ext.record.contactinfotype.email'
 	),
 	array(	// Phone
 		'index'	=> CONTACT_INFOTYPE_CATEGORY_PHONE,
-		'label'	=> 'LLL:contact.ext.record.contactinfotype.phone'
+		'label'	=> 'contact.ext.record.contactinfotype.phone'
 	),
 	array(	// Other
 		'index'	=> CONTACT_INFOTYPE_CATEGORY_OTHER,
-		'label'	=> 'LLL:contact.ext.record.contactinfotype.other'
+		'label'	=> 'contact.ext.record.contactinfotype.other'
 	),
 );
 
@@ -59,16 +59,16 @@ Todoyu::$CONFIG['EXT']['contact']['contactinfotypecategories'] = array(
 Todoyu::$CONFIG['EXT']['contact']['addresstypes'] = array(
 	array(	// Home address
 		'index'	=> 1,
-		'label'	=> 'LLL:contact.ext.address.attr.addresstype.1'
+		'label'	=> 'contact.ext.address.attr.addresstype.1'
 	),
 
 	array(	// Business address
 		'index'	=> 2,
-		'label'	=> 'LLL:contact.ext.address.attr.addresstype.2'
+		'label'	=> 'contact.ext.address.attr.addresstype.2'
 	),
 	array(	// Billing address
 		'index'	=> 3,
-		'label'	=> 'LLL:contact.ext.address.attr.addresstype.3'
+		'label'	=> 'contact.ext.address.attr.addresstype.3'
 	)
 );
 
@@ -83,14 +83,14 @@ Todoyu::$CONFIG['EXT']['contact']['tabs'] = array(
 	'person'	=> array(
 		'key'		=> 'person',
 		'id'		=> 'person',
-		'label'		=> 'LLL:contact.ext.persons',
+		'label'		=> 'contact.ext.persons',
 		'require'	=> 'contact.general:area',
 		'position'	=> 105
 	),
 	'company'	=> array(
 		'key'		=> 'company',
 		'id'		=> 'company',
-		'label'		=> 'LLL:contact.ext.companys',
+		'label'		=> 'contact.ext.companys',
 		'require'	=> 'contact.general:area',
 		'position'	=> 110
 	)
@@ -119,10 +119,10 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['person'] = array(
 	'size'		=> Todoyu::$CONFIG['LIST']['size'],
 	'columns'	=> array(
 		'icon'		=> '',
-		'lastname'	=> 'LLL:contact.ext.person.attr.lastname',
-		'firstname'	=> 'LLL:contact.ext.person.attr.firstname',
-		'email'		=> 'LLL:contact.ext.person.attr.email',
-		'company'	=> 'LLL:contact.ext.company',
+		'lastname'	=> 'contact.ext.person.attr.lastname',
+		'firstname'	=> 'contact.ext.person.attr.firstname',
+		'email'		=> 'contact.ext.person.attr.email',
+		'company'	=> 'contact.ext.company',
 		'actions'	=> '',
 	),
 	'truncate'	=> array(
@@ -141,9 +141,9 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['company'] = array(
 	'size'		=> Todoyu::$CONFIG['LIST']['size'],
 	'columns'	=> array(
 		'icon'		=> '',
-		'title'		=> 'LLL:contact.ext.company.attr.title',
-	//	'persons'	=> 'LLL:contact.ext.company.employees',
-		'address'	=> 'LLL:contact.ext.address',
+		'title'		=> 'contact.ext.company.attr.title',
+	//	'persons'	=> 'contact.ext.company.employees',
+		'address'	=> 'contact.ext.address',
 		'actions'	=> ''
 	),
 	'truncate'	=> array(
@@ -203,7 +203,7 @@ if( TodoyuExtensions::isInstalled('profile') && Todoyu::allowed('contact', 'gene
 Todoyu::$CONFIG['EXT']['profile']['contactTabs'] = array(
 	array(
 		'id'			=> 'contact',
-		'label'			=> 'LLL:contact.ext.profile.module'
+		'label'			=> 'contact.ext.profile.module'
 	)
 );
 
