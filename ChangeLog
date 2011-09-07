@@ -3,6 +3,7 @@ todoyu contact extension changelog
 contact 1.1.2 - not released yet
 	* Bugfix: default salutation label failure if none stored
 	* Bugfix: #187 Surplus point in rights path for comments field in company form
+	* Bugfix: Js error when person has not the right to edit accounts of users
 	* Added: dedicated icon for users with todoyu account in contact listing
 	* Added: person shortname in user information section of person details
 	* Added: Missing label for contact.ext.noJobDefined

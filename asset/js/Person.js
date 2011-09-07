@@ -100,7 +100,9 @@ Todoyu.Ext.contact.Person =  {
 	initObservers: function(idPerson) {
 		this.observeFieldsForShortname(idPerson);
 
-		$('person-' + idPerson + '-field-is-active').on('change', this.showLoginFields.bind(this, idPerson));
+		if( this.canSeeAccountFields(idPerson) ) {
+			$('person-' + idPerson + '-field-is-active').on('change', this.showLoginFields.bind(this, idPerson));
+		}
 	},
 
 
@@ -113,9 +115,21 @@ Todoyu.Ext.contact.Person =  {
 	 * @param	{Event}		event
 	 */
 	showLoginFields: function(idPerson, event) {
-		var field	= $('person-' + idPerson + '-field-is-active');
+		if( this.canSeeAccountFields(idPerson) ) {
+			$('person-' + idPerson + '-fieldset-loginfields')[field.checked ? 'show' : 'hide']();
+		}
+	},
 
-		$('person-' + idPerson + '-fieldset-loginfields')[field.checked ? 'show' : 'hide']();
+
+
+	/**
+	 * Check whether accounts fields
+	 *
+	 * @param	{Number}	idPerson
+	 * @return	{Boolean}
+	 */
+	canSeeAccountFields: function(idPerson) {
+		return Todoyu.exists('person-' + idPerson + '-field-is-active');
 	},
 
 
