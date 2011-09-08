@@ -116,7 +116,11 @@ Todoyu.Ext.contact.Person =  {
 	 */
 	showLoginFields: function(idPerson, event) {
 		if( this.canSeeAccountFields(idPerson) ) {
-			$('person-' + idPerson + '-fieldset-loginfields')[field.checked ? 'show' : 'hide']();
+			if( $('person-' + idPerson + '-field-is-active').checked ) {
+				$('person-' + idPerson + '-fieldset-loginfields').show();
+			} else {
+				$('person-' + idPerson + '-fieldset-loginfields').hide();
+			}
 		}
 	},
 
