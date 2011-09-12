@@ -138,7 +138,7 @@ class TodoyuContactPersonRights {
 		}
 
 			// Get all projects the current user is allowed to see
-		$projectIDs			= TodoyuProjectProjectManager::getAvailableProjectsForPerson();
+		$projectIDs	= TodoyuProjectProjectManager::getAvailableProjectsForPerson();
 		if( sizeof($projectIDs) > 0 ) {
 				// Get all persons marked "visible for externals" in any of their projects
 			$projectsPersonsIDs	= TodoyuProjectProjectManager::getProjectsPersonsIDs($projectIDs, $withAccount);
