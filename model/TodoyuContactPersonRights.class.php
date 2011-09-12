@@ -139,8 +139,13 @@ class TodoyuContactPersonRights {
 
 			// Get all projects the current user is allowed to see
 		$projectIDs			= TodoyuProjectProjectManager::getAvailableProjectsForPerson();
-			// Get all persons marked "visible for externals" in any of their projects
-		$projectsPersonsIDs	= TodoyuProjectProjectManager::getProjectsPersonsIDs($projectIDs, $withAccount);
+		if( sizeof($projectIDs) > 0 ) {
+				// Get all persons marked "visible for externals" in any of their projects
+			$projectsPersonsIDs	= TodoyuProjectProjectManager::getProjectsPersonsIDs($projectIDs, $withAccount);
+		} else {
+			$projectsPersonsIDs	= array();
+		}
+
 			// Get all persons which are employees of current persons employer
 		$companies			= TodoyuContactPersonManager::getPersonCompanyRecords(Todoyu::personid());
 		$companyPersonIDs	= array();
