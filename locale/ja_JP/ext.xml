@@ -28,7 +28,7 @@
 	<label index="person.close">閉じる</label>
 	<label index="person.saved">個人情報を保存</label>
 	<label index="person.saved.error">個人情報の保存に失敗しました</label>
-	<label index="person.attr.id">個人 ID </label>
+	<label index="person.attr.id">個人 ID</label>
 	<label index="person.attr.salutation">敬称</label>
 	<label index="person.attr.salutation.m">Mr</label>
 	<label index="person.attr.salutation.f">Ms</label>
