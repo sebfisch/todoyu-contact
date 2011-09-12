@@ -10,7 +10,7 @@
 	<label index="companys">Companies</label>
 	<label index="workaddress">Place Of Work</label>
 	<label index="jobtype">Job Type</label>
-	<label index="noJobDefined">No Job Defined</label> 
+	<label index="noJobDefined">No Job Defined</label>
 	<label index="person.new">New Person</label>
 	<label index="company.new">New Company</label>
 	<label index="create.person.label">New Person</label>
