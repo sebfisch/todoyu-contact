@@ -30,7 +30,7 @@ Todoyu.Ext.contact.PanelWidget.StaffList = Class.create(Todoyu.PanelWidgetSearch
 	 * Initialize
 	 *
 	 * @method	initialize
-	 * @param	{Function}	$super
+	 * @param	{Function}	$super		Parent constructor: Todoyu.PanelWidgetSearchList.initialize
 	 * @param	{String}	search
 	 */
 	initialize: function($super, search) {

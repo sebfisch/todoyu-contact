@@ -46,7 +46,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * Constructor Initialize with search word
 	 *
 	 * @method	initialize
-	 * @param	{Function}	$super
+	 * @param	{Function}	$super		Parent constructor: Todoyu.PanelWidgetSearchList.initialize
 	 * @param	{String}	search
 	 */
 	initialize: function($super, search) {
@@ -345,7 +345,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * Handler on an empty result
 	 *
 	 * @method	onEmptyResult
-	 * @param	{Function}			$super
+	 * @param	{Function}			$super		Todoyu.PanelWidgetSearchList.onEmptyResult
 	 * @param	{Ajax.Response}		response
 	 */
 	onEmptyResult: function($super, response) {
