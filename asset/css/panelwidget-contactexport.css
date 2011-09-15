@@ -4,7 +4,8 @@
 
 #panelwidget-contactexport #export-person .icon,
 #panelwidget-contactexport #export-company .icon {
-	background:transparent url('../../../../core/asset/img/icons.png') 1px -1598px no-repeat;
+	background:transparent url('../../../../core/asset/img/icons.png') 5px -1598px no-repeat;
+	width:22px;
 }
 
 #panelwidget-contactexport p.instructiontext {
