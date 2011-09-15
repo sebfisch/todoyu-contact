@@ -1,6 +1,6 @@
 todoyu contact extension changelog
 
-contact 1.1.2 - not released yet
+contact 1.1.2 - 2011-09-15
 	* Changed: Changed exticon (looked almost identic to profile)
 	* Bugfix: default salutation label failure if none stored
 	* Bugfix: #187 Surplus point in rights path for comments field in company form
@@ -63,7 +63,6 @@ contact 1.1.0 - 2011-06-17
 contact 1.0.7
 	* Bugfix: Show preferred email in person list item (from contactinfotype when no todoyu account given)
 	* Bugfix: Auto-generated person shortname can (not any longer) contain whitespace
-	* Feature: Added changelog
 	* Feature: Added (empty still) locale files for spanish (columbia) locales to come of extensions
 	* Bugfix: Added deleted clause for quickinfo preferred phone number
 	* Bugfix: Username is pre filled in the password forgot form if set in the login form
