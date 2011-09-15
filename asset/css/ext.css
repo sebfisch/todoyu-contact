@@ -139,13 +139,13 @@ span.wizardIcon.createWizardCompany	{
 }
 #contact-details div.actions .buttonPersonEdit span.icon,
 .personListing td.actions span.edit {
-	background-position:5px -28px;
-	width:21px;
+	background-position:6px -27px;
+	width:22px;
 }
 #contact-details div.actions button.buttonPersonDelete span.icon,
 .personListing td.actions span.delete {
-	background-position:5px -58px;
-	width:21px;
+	background-position:6px -57px;
+	width:22px;
 }
 #contact-details div.actions button.cancel span.icon {
 	background:url(../../../../core/asset/img/icons.png) no-repeat 3px -357px;
@@ -215,12 +215,13 @@ span.wizardIcon.createWizardCompany	{
 }
 #contact-details div.actions .buttonCompanyEdit span.icon,
 .companyListing td.actions span.edit {
-	background-position:4px -179px;
-	width:21px;
+	background-position:6px -178px;
+	width:22px;
 }
 #contact-details.company div.actions .buttonCompanyDelete span.icon,
 .companyListing td.actions span.delete {
-	background-position:0 -209px;
+	background-position:6px -208px;
+	width:22px;
 }
 
 
