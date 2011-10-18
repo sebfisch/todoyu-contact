@@ -1,5 +1,8 @@
 todoyu contact extension changelog
 
+contact 1.1.3 - not released yet
+	* Translation: Polish
+
 contact 1.1.2 - 2011-09-15
 	* Changed: Changed exticon (looked almost identic to profile)
 	* Bugfix: default salutation label failure if none stored
