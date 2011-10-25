@@ -120,7 +120,7 @@ function Dwoo_Plugin_labelContactinfotype(Dwoo $dwoo, $idContactinfotype) {
 
 
 /**
- * Returns the label of the address type with given id
+ * Returns the label of the address type with given ID
  *
  * @param	Dwoo_Compiler	$compiler
  * @param	Integer			$idAddressType

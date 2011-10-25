@@ -42,7 +42,7 @@ class TodoyuContactExtActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function defaultAction(array $params) {
-			// Get record id from param
+			// Get record ID from param
 		$idRecord	= intval($params['id']);
 		$type		= isset($params['tab']) ? $params['tab'] : $params['type'];
 

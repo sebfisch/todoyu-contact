@@ -51,7 +51,7 @@ class TodoyuContactAddressManager {
 
 	/**
 	 * Save the address record to table ext_contact_address
-	 * returns the id of the saved record
+	 * returns the ID of the saved record
 	 *
 	 * @param	Array	$data
 	 * @return	Integer

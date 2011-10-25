@@ -498,7 +498,7 @@ class TodoyuContactCompanyManager {
 
 
 	/**
-	 * Alias method for searchCompany, returns a flatten array of ids
+	 * Alias method for searchCompany, returns a flatten array of IDs
 	 *
 	 * @param	String	$sword
 	 * @param	Array	$searchFields
