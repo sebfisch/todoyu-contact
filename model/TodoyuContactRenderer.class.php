@@ -557,7 +557,7 @@ class TodoyuContactRenderer {
 	 */
 	public static function renderUploadframeContentFailed($error, $filename) {
 		$error		= intval($error);
-		$maxFileSize= intval(Todoyu::$CONFIG['EXT']['contact']['contactimage']['max_file_size']);
+		$maxFileSize= TodoyuString::formatSize(TodoyuNumeric::intval(Todoyu::$CONFIG['EXT']['contact']['contactimage']['max_file_size']));
 
 		$tmpl	= 'core/view/htmldoc.tmpl';
 		$data	= array(
