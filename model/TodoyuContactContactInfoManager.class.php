@@ -192,7 +192,8 @@ class TodoyuContactContactInfoManager {
 					' . self::$mmConfig[$key]['table'] . ' mm';
 		$where	= '		mm.' . self::$mmConfig[$key]['field'] . ' 	= ' . $idElement .
 				  ' AND	mm.id_contactinfo							= ci.id
-				  	AND	ci.id_contactinfotype 						= cit.id';
+				  	AND	ci.id_contactinfotype 						= cit.id
+				  	AND ci.deleted = 0';
 		$order	= '	ci.is_preferred DESC,
 					ci.id_contactinfotype ASC';
 
