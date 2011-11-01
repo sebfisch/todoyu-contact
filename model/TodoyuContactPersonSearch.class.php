@@ -129,7 +129,7 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 
 			$data['rows'][] = array(
 				'icon'		=> '',
-				'iconClass'	=> $person->isActive() ? 'login' : '',
+				'iconClass'	=> ($person->isActive() ? 'login' : '') . ($person->isAdmin() ? ' admin' : ''),
 				'lastname'	=> $person->getLastname(),
 				'firstname'	=> $person->getFirstname(),
 				'email'		=> $email,
