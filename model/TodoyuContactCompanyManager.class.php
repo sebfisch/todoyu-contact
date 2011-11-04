@@ -693,7 +693,6 @@ class TodoyuContactCompanyManager {
 
 
 	/**
-	 * @static
 	 * @param	Integer		$idCompany
 	 * @return	Array
 	 */
