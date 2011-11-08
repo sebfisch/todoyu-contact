@@ -172,7 +172,7 @@ div.visitingCardContent table tr td.label {
 .companyListing td.actions span.icon {
 	cursor:pointer;
 	display:inline-block;
-	width: 25px;
+	width:25px;
 }
 .personListing td.login span.icon {
     background-position:2px -568px;
