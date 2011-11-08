@@ -56,7 +56,7 @@ class TodoyuContactPanelWidgetSearch extends TodoyuPanelWidget {
 	public function renderContent() {
 		$contactType = TodoyuContactPreferences::getActiveTab();
 
-		$tmpl	= 'ext/contact/view/panelwidgets/panelwidget-contactsearch.tmpl';
+		$tmpl	= 'ext/contact/view/panelwidget/contactsearch.tmpl';
 		$data	= array(
 			'id'			=> $this->getID(),
 			'sword'			=> $this->getSearchWord(),

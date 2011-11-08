@@ -97,7 +97,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 	 * @return	String
 	 */
 	protected function renderSelection() {
-		$tmpl	= 'ext/contact/view/panelwidgets/panelwidget-staffselector.tmpl';
+		$tmpl	= 'ext/contact/view/panelwidget/staffselector.tmpl';
 		$data	= array(
 			'items'	=> $this->getSelectedItems(),
 			'id'	=> $this->getID()

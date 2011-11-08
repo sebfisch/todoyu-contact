@@ -1,6 +1,7 @@
 todoyu contact extension changelog
 
 contact 1.1.3 - not released yet
+	* Changed: Clean-up panel widgets
 	* Bugfix: Fixed Problem with deleted contact information. (Were still displayed in Person - Listing)
 	* Bugfix: formatted file size for error message
 	* Translation: Polish

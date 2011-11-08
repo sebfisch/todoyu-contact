@@ -52,7 +52,7 @@ class TodoyuContactPanelWidgetExport extends TodoyuPanelWidget {
 	public function renderContent() {
 		$contactType = TodoyuContactPreferences::getActiveTab();
 
-		$tmpl	= 'ext/contact/view/panelwidgets/panelwidget-contactexport.tmpl';
+		$tmpl	= 'ext/contact/view/panelwidget/contactexport.tmpl';
 		$data	= array(
 			'id'			=> $this->getID(),
 			'contactType'	=> $contactType,
