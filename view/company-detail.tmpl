@@ -10,9 +10,7 @@
 			<h4>{Label LLL:contact.ext.company.maincompanydata}</h4>
 			<div class="content overflow">
 				<div class="left image">{companyImage $id}</div>
-				<dl>
-					<dd>{$title}</dd>
-				</dl>
+				<p>{$title}</p>
 			</div>
 		</div>
 	
@@ -21,20 +19,22 @@
 			<div class="infoBox contact-info">
 				<h4>{Label LLL:contact.ext.contactinfo}</h4>
 				<div class="content overflow">
-					<dl>
+					<table class="list fixedTable">
 						{foreach $contactinfo numCi ciData}
 							{if isContactinfotypeSeeAllowed('company', $id, $ciData.id_contactinfotype)}
-								<dt>{labelContactinfotype $ciData.id_contactinfotype}:</dt>
-								<dd>
-									{if $ciData.infotype_category == constant(CONTACT_INFOTYPE_CATEGORY_EMAIL)}
-										<a href="mailto:{$title}%20%3C{$ciData.info}%3E">{htmlencode wordwrap($ciData.info 30 cut=false)}</a>
-									{else}
-										{htmlencode wordwrap($ciData.info 30 cut=false)}
-									{/if}
-								</dd>
+								<tr>
+									<th>{labelContactinfotype $ciData.id_contactinfotype}:</th>
+									<td>
+										{if $ciData.infotype_category == constant(CONTACT_INFOTYPE_CATEGORY_EMAIL)}
+											<a href="mailto:{$title}%20%3C{$ciData.info}%3E">{htmlencode wordwrap($ciData.info 30 cut=false)}</a>
+										{else}
+											{htmlencode wordwrap($ciData.info 30 cut=false)}
+										{/if}
+									</td>
+								</tr>
 							{/if}
 						{/foreach}
-					</dl>
+					</table>
 				</div>
 			</div>
 		{/if}
@@ -63,11 +63,13 @@
 				<div class="infoBox employeePart">
 					<h4>{Label LLL:contact.ext.company.attr.person}</h4>
 					<div class="content overflow address">
-						<dl>
-							<dd><a href="?ext=contact&amp;controller=person&amp;action=detail&amp;person={$pers.id}">{personLabel $pers.id 'employee' $id}</a></dd>
-							<dd>{$pers.jobtype.title}</dd>
-							{if $pers.id_workaddress > 0}<dd>{$pers.workaddress.street}, {$pers.workaddress.zip} {$pers.workaddress.city}, {countryName $pers.workaddress.id_country}</dd>{/if}
-						</dl>
+						<table class="list fixedTable">
+							<tr>
+								<th><a href="?ext=contact&amp;controller=person&amp;action=detail&amp;person={$pers.id}">{personLabel $pers.id 'employee' $id}</a></th>
+								<td>{$pers.jobtype.title}</td>
+								{if $pers.id_workaddress > 0}<td>{$pers.workaddress.street}, {$pers.workaddress.zip} {$pers.workaddress.city}, {countryName $pers.workaddress.id_country}</td>{/if}
+							</tr>
+						</table>
 					</div>
 				</div>
 			{/if}
@@ -78,14 +80,20 @@
 		<div class="infoBox others">
 			<h4>{Label LLL:contact.ext.other}</h4>
 				<div class="content overflow address">
-				<dl>
+				<table class="list fixedTable">
 					{if $date_enter > 0 && isInternal()}
-						<dt>{Label LLL:contact.ext.company.attr.date_enter}:</dt><dd>{dateFormat $date_enter "date"}</dd>
+						<tr>
+							<th>{Label LLL:contact.ext.company.attr.date_enter}:</th>
+							<td>{dateFormat $date_enter "date"}</td>
+						</tr>
 					{/if}
 					{if allowed('contact', 'company:seeComment')}
-						<dt>{Label LLL:contact.ext.company.attr.comment}:</dt><dd>{$comment|default:"-"}</dd>
+						<tr>
+							<th>{Label LLL:contact.ext.company.attr.comment}:</th>
+							<td>{$comment|default:"-"}</td>
+						</tr>
 					{/if}
-				</dl>
+				</table>
 			</div>
 		</div>
 

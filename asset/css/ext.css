@@ -86,64 +86,20 @@ span.wizardIcon.createWizardCompany	{
 /* -------------------------
 	Person list
    ------------------------- */
-.personListing th,
-.personListing td {
-	vertical-align:middle;
-}
-
-
-
-	/* Column widths */
-.personListing th.icon {
-	width:15px;
-}
-.personListing th.firstname,
-.personListing th.lastname,
-.personListing th.email {
-	width:118px;
-}
-.personListing th.company {
-	width:145px;
-}
-
-.personListing th.actions {
-	width:80px;
-}
-
-.personListing td {
-	vertical-align:middle;
-}
-
 	/* Column configs */
-.personListing span.icon {
-	background:url(../img/icons.png) no-repeat 2px 2px;
-}
-.personListing td.login span.icon {
-	background:url(../img/icons.png) no-repeat 2px -568px;
-}
-.personListing td.icon.person {
-	background:url(../img/icons.png) no-repeat 6px -116px;
-}
 
-#contact-details div.actions span.icon,
-.personListing td.actions span.icon {
+#contact-details div.actions span.icon {
 	cursor:pointer;
 	margin-right:5px;
 }
-#contact-details div.actions span.icon,
-.personListing td.actions span {
+#contact-details div.actions span.icon {
 	background:url(../img/icons.png) no-repeat;
 }
-.personListing td.actions span.info {
-	background-position:0 -356px;
-}
-#contact-details div.actions .buttonPersonEdit span.icon,
-.personListing td.actions span.edit {
+#contact-details div.actions .buttonPersonEdit span.icon {
 	background-position:6px -27px;
 	width:22px;
 }
-#contact-details div.actions button.buttonPersonDelete span.icon,
-.personListing td.actions span.delete {
+#contact-details div.actions button.buttonPersonDelete span.icon {
 	background-position:6px -57px;
 	width:22px;
 }
@@ -164,62 +120,14 @@ span.wizardIcon.createWizardCompany	{
 	background:url(../img/icons.png) no-repeat 0 -146px;
 }
 
-
-
-
 /* -------------------------
 	Company list
    -------------------------*/
-.companyListing th,
-.companyListing td {
-	vertical-align:middle;
-}
-
-.companyListing th.icon {
-	width:15px;
-}
-
-.companyListing th.title {
-	width:260px;
-}
-
-/*
-.companyListing th.persons {
-	width:65px;
-}
-*/
-
-.companyListing th.address {
-	width:270px;
-}
-
-.companyListing th.actions {
-	width:80px;
-}
-
-	/* Column configs */
-.companyListing td.icon {
-	background:url(../img/icons.png) no-repeat 6px -144px;
-}
-
-.companyListing td.actions span.icon {
-	cursor:pointer;
-	margin-right:5px;
-}
-
-.companyListing td.actions span {
-	background-image:url(../img/icons.png);
-}
-.companyListing td.actions span.info {
-	background-position:0 -356px;
-}
-#contact-details div.actions .buttonCompanyEdit span.icon,
-.companyListing td.actions span.edit {
+#contact-details div.actions .buttonCompanyEdit span.icon {
 	background-position:6px -178px;
 	width:22px;
 }
-#contact-details.company div.actions .buttonCompanyDelete span.icon,
-.companyListing td.actions span.delete {
+#contact-details.company div.actions .buttonCompanyDelete span.icon {
 	background-position:6px -208px;
 	width:22px;
 }
@@ -247,6 +155,50 @@ div.visitingCardContent table tr td.label {
 	background:url(../img/icons.png) no-repeat 0 6px;
 }
 
+/* -------------------
+	Person and Company Listing
+   ------------------- */
+.personListing span.icon,
+.companyListing span.icon {
+    background-image:url(../img/icons.png);
+	background-repeat:no-repeat;
+	background-position:2px 2px;
+}
+.personListing td.actions span.actions,
+.companyListing td.actions span.actions {
+	float:right;
+}
+.personListing td.actions span.icon,
+.companyListing td.actions span.icon {
+	cursor:pointer;
+	display:inline-block;
+	width: 25px;
+}
+.personListing td.login span.icon {
+    background-position:2px -568px;
+}
+.personListing td.actions span.info {
+	background-position:5px -356px;
+}
+.personListing td.actions span.edit {
+	background-position:5px -26px;
+}
+.personListing td.actions span.delete {
+	background-position:5px -57px;
+}
+
+.companyListing span.icon {
+	background-position:2px -149px;
+}
+.companyListing td.actions span.info {
+	background-position:5px -356px;
+}
+.companyListing td.actions span.edit {
+	background-position:5px -178px;
+}
+.companyListing td.actions span.delete {
+	background-position:5px -208px;
+}
 
 /* -------------------
 	Person Details
@@ -270,25 +222,6 @@ div.visitingCardContent table tr td.label {
 
 #contact-details h3 {
 	margin-bottom:5px;
-}
-
-#contact-details dt,
-#contact-details dd {
-	float:left;
-	line-height:15px;
-}
-
-#contact-details dt {
-	width:20%;
-}
-
-#contact-details dd {
-	width:80%;
-}
-
-#contact-details dl.noflaot dd,
-#contact-details dl.noflaot dt {
-	float:none;
 }
 
 #contact-details div.actions {

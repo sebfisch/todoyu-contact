@@ -1,7 +1,6 @@
 <div id="contact-details" class="person">
 	<h1 class="headerLine">
 		<span class="title">{$fullname}</span>
-		<span class="rgt"></span>
 	</h1>
 
 	<div class="infoBoxOuter">
@@ -10,11 +9,11 @@
 			<h4>{Label LLL:contact.ext.person.mainpersondata}</h4>
 			<div class="content overflow">
 				<div class="left image">{personImage $id}</div>
-				<dl>
-					<dd>{salutationLabel $id}</dd>
-					<dd>{$fullname}</dd>
-					<dd><a href="mailto:{$firstname}%20{$lastname}%20%3C{$email}%3E">{$email}</a></dd>
-				</dl>
+				<p>
+					{salutationLabel $id}<br />
+					{$fullname}<br />
+					<a href="mailto:{$firstname}%20{$lastname}%20%3C{$email}%3E">{$email}</a>
+				</p>
 			</div>
 		</div>
 
@@ -22,20 +21,22 @@
 		<div class="infoBox contact-info">
 			<h4>{Label LLL:contact.ext.contactinfo}</h4>
 			<div class="content overflow">
-				<dl>
+				<table class="list fixedTable">
 					{foreach $contactinfo numCi ciData}
 						{if isContactinfotypeSeeAllowed('person', $id, $ciData.id_contactinfotype)}
-							<dt>{labelContactinfotype $ciData.id_contactinfotype}:</dt>
-							<dd>
-								{if $ciData.infotype_category == constant(CONTACT_INFOTYPE_CATEGORY_EMAIL)}
-									<a href="mailto:{$firstname}%20{$lastname}%20%3C{$ciData.info}%3E">{htmlencode wordwrap($ciData.info 30 cut=false)}</a>
-								{else}
-									{htmlencode wordwrap($ciData.info 30 cut=false)}
-								{/if}
-							</dd>
+							<tr>
+								<th>{labelContactinfotype $ciData.id_contactinfotype}:</th>
+								<td>
+									{if $ciData.infotype_category == constant(CONTACT_INFOTYPE_CATEGORY_EMAIL)}
+										<a href="mailto:{$firstname}%20{$lastname}%20%3C{$ciData.info}%3E">{htmlencode wordwrap($ciData.info 30 cut=false)}</a>
+									{else}
+										{htmlencode wordwrap($ciData.info 30 cut=false)}
+									{/if}
+								</td>
+							</tr>
 						{/if}
 					{/foreach}
-				</dl>
+				</table>
 			</div>
 		</div>
 
@@ -64,18 +65,22 @@
 				<div class="infoBox employer">
 					<h4><a href="?ext=contact&controller=company&action=detail&company={$comp.id}">{Label LLL:contact.ext.person.attr.company}: {$comp.title}</a></h4>
 					<div class="content overflow">
-						<dl>
-							<dt>{Label LLL:contact.ext.jobtype}:</dt>
-								<dd>{$comp.jobtype.title|default:"-"}</dd>
-							<dt>{Label LLL:contact.ext.workaddress}:</dt>
-								<dd>
+						<table class="list fixedTable">
+							<tr>
+								<th>{Label LLL:contact.ext.jobtype}:</dt>
+								<td>{$comp.jobtype.title|default:"-"}</td>
+							</tr>
+							<tr>
+								<th>{Label LLL:contact.ext.workaddress}:</th>
+								<td>
 									{if $comp.workaddress.street}
 										{$comp.workaddress.street}, {$comp.workaddress.zip} {$comp.workaddress.city}, {countryName $comp.workaddress.id_country}
 									{else}
 										-
 									{/if}
-								</dd>
-						</dl>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 			{/if}
@@ -86,34 +91,44 @@
 		<div class="infoBox userinformations">
 			<h4>{Label LLL:contact.ext.person.userinformation}</h4>
 			<div class="content overflow">
-				<dl>
-					<dt>{Label LLL:contact.ext.person.attr.username}:</dt>
-					<dd>{$username|default:"-"}</dd>
+				<table class="list fixedTable">
+					<tr>
+						<th>{Label LLL:contact.ext.person.attr.username}:</th>
+						<td>{$username|default:"-"}</td>
+					</tr>
 					{if ! empty($shortname)}
-						<dt>{Label LLL:contact.ext.person.attr.shortname}:</dt>
-						<dd>{$shortname}</dd>
+						<tr>
+							<th>{Label LLL:contact.ext.person.attr.shortname}:</th>
+							<td>{$shortname}</td>
+						</tr>
 					{/if}
-					<dt>{Label LLL:contact.ext.person.attr.email}:</dt>
-					<dd>
-						{if $email}
-						<a href="mailto:{$firstname}%20{$lastname}%20%3C{$email}%3E">{$email}</a>
-						{else}
-						-
-						{/if}
-					</dd>
-					<dt>{Label LLL:core.global.roles}:</dt>
-					<dd>
-						<dl class="nofloat">
-							{foreach $role roleItem}
-								<dd>{$roleItem.title}</dd>
+					<tr>
+						<th>{Label LLL:contact.ext.person.attr.email}:</th>
+						<td>
+							{if $email}
+							<a href="mailto:{$firstname}%20{$lastname}%20%3C{$email}%3E">{$email}</a>
 							{else}
-								-
-							{/foreach}
-						</dl>
-					</dd>
-					<dt>{Label LLL:contact.ext.person.attr.is_admin}:</dt>
-					<dd>{if $is_admin}{Label LLL:core.global.yes}{else}{Label LLL:core.global.no}{/if}</dd>
-				</dl>
+							-
+							{/if}
+						</td>
+					</tr>
+					<tr>
+						<th>{Label LLL:core.global.roles}:</th>
+						<td>
+							<dl class="nofloat">
+								{foreach $role roleItem}
+									<dd>{$roleItem.title}</dd>
+								{else}
+									-
+								{/foreach}
+							</dl>
+						</td>
+					</tr>
+					<tr>
+						<th>{Label LLL:contact.ext.person.attr.is_admin}:</th>
+						<td>{if $is_admin}{Label LLL:core.global.yes}{else}{Label LLL:core.global.no}{/if}</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 		{/if}
@@ -123,15 +138,21 @@
 		<div class="infoBox others">
 			<h4>{Label LLL:contact.ext.other}</h4>
 			<div class="content overflow">
-				<dl>
+				<table class="list fixedTable">
 					{if $birthday != '0000-00-00' && isInternal()}
-						<dt>{Label LLL:contact.ext.person.attr.birthday}:</dt>
-						<dd>{formatSqlDate $birthday}</dd>
+					<tr>
+						<th>{Label LLL:contact.ext.person.attr.birthday}:</th>
+						<td>{formatSqlDate $birthday}</td>
+					</tr>
 					{/if}
+					
 					{if allowed('contact', 'person:seeComment')}
-						<dt>{Label LLL:contact.ext.person.attr.comment}:</dt><dd>{$comment|default:"-"}</dd>
+					<tr>
+						<th>{Label LLL:contact.ext.person.attr.comment}:</th>
+						<td>{$comment|default:"-"}</td>
+					</tr>
 					{/if}
-				</dl>
+				</table>
 			</div>
 		</div>
 
