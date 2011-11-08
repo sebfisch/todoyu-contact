@@ -19,7 +19,7 @@
 			<div class="infoBox contact-info">
 				<h4>{Label LLL:contact.ext.contactinfo}</h4>
 				<div class="content overflow">
-					<table class="list fixedTable">
+					<table class="list autoWidthTable">
 						{foreach $contactinfo numCi ciData}
 							{if isContactinfotypeSeeAllowed('company', $id, $ciData.id_contactinfotype)}
 								<tr>
@@ -63,7 +63,7 @@
 				<div class="infoBox employeePart">
 					<h4>{Label LLL:contact.ext.company.attr.person}</h4>
 					<div class="content overflow address">
-						<table class="list fixedTable">
+						<table class="list autoWidthTable">
 							<tr>
 								<th><a href="?ext=contact&amp;controller=person&amp;action=detail&amp;person={$pers.id}">{personLabel $pers.id 'employee' $id}</a></th>
 								<td>{$pers.jobtype.title}</td>
@@ -80,7 +80,7 @@
 		<div class="infoBox others">
 			<h4>{Label LLL:contact.ext.other}</h4>
 				<div class="content overflow address">
-				<table class="list fixedTable">
+				<table class="list autoWidthTable">
 					{if $date_enter > 0 && isInternal()}
 						<tr>
 							<th>{Label LLL:contact.ext.company.attr.date_enter}:</th>

@@ -21,7 +21,7 @@
 		<div class="infoBox contact-info">
 			<h4>{Label LLL:contact.ext.contactinfo}</h4>
 			<div class="content overflow">
-				<table class="list fixedTable">
+				<table class="list autoWidthTable">
 					{foreach $contactinfo numCi ciData}
 						{if isContactinfotypeSeeAllowed('person', $id, $ciData.id_contactinfotype)}
 							<tr>
@@ -65,7 +65,7 @@
 				<div class="infoBox employer">
 					<h4><a href="?ext=contact&controller=company&action=detail&company={$comp.id}">{Label LLL:contact.ext.person.attr.company}: {$comp.title}</a></h4>
 					<div class="content overflow">
-						<table class="list fixedTable">
+						<table class="list autoWidthTable">
 							<tr>
 								<th>{Label LLL:contact.ext.jobtype}:</dt>
 								<td>{$comp.jobtype.title|default:"-"}</td>
@@ -91,7 +91,7 @@
 		<div class="infoBox userinformations">
 			<h4>{Label LLL:contact.ext.person.userinformation}</h4>
 			<div class="content overflow">
-				<table class="list fixedTable">
+				<table class="list autoWidthTable">
 					<tr>
 						<th>{Label LLL:contact.ext.person.attr.username}:</th>
 						<td>{$username|default:"-"}</td>
@@ -138,7 +138,7 @@
 		<div class="infoBox others">
 			<h4>{Label LLL:contact.ext.other}</h4>
 			<div class="content overflow">
-				<table class="list fixedTable">
+				<table class="list autoWidthTable">
 					{if $birthday != '0000-00-00' && isInternal()}
 					<tr>
 						<th>{Label LLL:contact.ext.person.attr.birthday}:</th>
