@@ -216,7 +216,7 @@ TodoyuCreateWizardManager::addWizard('person', array(
 	'restrict'	=> array(
 		array(
 			'contact',
-			'contact:modify'
+			'person:add'
 		)
 	)
 ));
@@ -229,7 +229,7 @@ TodoyuCreateWizardManager::addWizard('company', array(
 	'restrict'	=> array(
 		array(
 			'contact',
-			'contact:modify'
+			'company:add'
 		)
 	)
 ));
