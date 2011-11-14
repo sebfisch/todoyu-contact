@@ -1,6 +1,7 @@
 todoyu contact extension changelog
 
 contact 1.1.3 - not released yet
+	* Bugfix: Image upload caused js error in quick create popup
 	* Bugfix: Apply search filter to initial load of company listing
 	* Bugfix: Fixed rights in wizard
 	* Bugfix: Fixed Problem with deleted contact information. (Were still displayed in Person - Listing)
