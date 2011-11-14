@@ -114,7 +114,7 @@ Todoyu.Ext.contact.Upload = {
 		this.setReplaceIdToHiddenField(form, idReplace, recordType);
 
 		this.removeUploadForm();
-		Todoyu.notifySuccess('[LLL:contact.ext.contactimage.upload.success]');
+		Todoyu.notifySuccess('[LLL:contact.ext.contactimage.upload.success]', 'contact.upload');
 	},
 
 
@@ -181,7 +181,7 @@ Todoyu.Ext.contact.Upload = {
 			msg	= '[LLL:contact.ext.contactimage.upload.uploadFailed]';
 		}
 
-		Todoyu.notifyError(msg.interpolate(info));
+		Todoyu.notifyError(msg.interpolate(info), 'contact.upload');
 	},
 
 
