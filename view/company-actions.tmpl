@@ -12,5 +12,5 @@
 {if isCompanyDeleteAllowed($id)}
 	<span title="{Label contact.ext.company.delete}" class="icon delete" onclick="Todoyu.Ext.contact.Company.remove({$id})"></span>
 {else}
-	<span title="{Label contact.ext.company.delete}" class="icon delete disabled"></span>
+	<span title="{Label contact.ext.company.delete} - {Label contact.ext.company.delete.hasProjects}" class="icon delete disabled"></span>
 {/if}

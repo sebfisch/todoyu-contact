@@ -2,13 +2,13 @@ todoyu contact extension changelog
 
 contact 1.1.3 - not released yet
 	* Bugfix: Fixed rights in wizard
-	* Changed: Clean-up panel widgets
 	* Bugfix: Fixed Problem with deleted contact information. (Were still displayed in Person - Listing)
 	* Bugfix: formatted file size for error message
+	* Changed: Clean-up panel widgets
 	* Translation: Polish
+	
 
 contact 1.1.2 - 2011-09-15
-	* Changed: Changed exticon (looked almost identic to profile)
 	* Bugfix: default salutation label failure if none stored
 	* Bugfix: #187 Surplus point in rights path for comments field in company form
 	* Bugfix: Js error when person has not the right to edit accounts of users
@@ -17,6 +17,7 @@ contact 1.1.2 - 2011-09-15
 	* Added: Missing label for contact.ext.noJobDefined
 	* Added: Missing save hook in TodoyuContactCompanyManager::saveCompany
 	* Added: Hooks: company.add, company.update, company.delete, person.add, person.update, person.delete
+	* Changed: Changed exticon (looked almost identic to profile)
 	* Changed: Hooks: person.renderDetail, company.renderDetail
 	* Changed: #207 Check access rights for contact infos in quick info for person
 	* Changed: #204 Removed unused methods from TodoyuContactContactInfoType
