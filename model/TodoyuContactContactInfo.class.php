@@ -27,21 +27,12 @@
 class TodoyuContactContactInfo extends TodoyuBaseObject {
 
 	/**
-	 * Table of the record
-	 *
-	 * @var string
-	 */
-	private $table = 'ext_contact_contactinfo';
-
-
-
-	/**
 	 * constructor of the class
 	 *
 	 * @param	Integer		$idContactInfo
 	 */
 	function __construct($idContactInfo) {
-		parent::__construct($idContactInfo, $this->table);
+		parent::__construct($idContactInfo, 'ext_contact_contactinfo');
 	}
 
 
