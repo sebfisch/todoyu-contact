@@ -94,7 +94,7 @@ contact 1.0.0 to 1.0.6 - 1.0.6 released 2011-01-17
 	* Bugfix: Birthdays of current day are not visible
 	* Bugfix: Admin and internal checks
 	* Bugfix: Fixed birthday selection and order in portal. Limited to 8 weeks.
-	* Feature: Added indexes to tables to improve sql performance
+	* Feature: Added indexes to tables to improve SQL performance
 	* Feature: Added getUsername() to person
 	* Feature: Added country, and address template data loader functions
 	* Bugfix: Added check to prevent loading deleted addresses

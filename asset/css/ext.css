@@ -160,7 +160,7 @@ div.visitingCardContent table tr td.label {
    ------------------- */
 .personListing span.icon,
 .companyListing span.icon {
-    background-image:url(../img/icons.png);
+	background-image:url(../img/icons.png);
 	background-repeat:no-repeat;
 	background-position:2px 2px;
 }
@@ -175,7 +175,7 @@ div.visitingCardContent table tr td.label {
 	width:25px;
 }
 .personListing td.login span.icon {
-    background-position:2px -568px;
+	background-position:2px -568px;
 }
 .personListing td.actions span.info {
 	background-position:5px -356px;
