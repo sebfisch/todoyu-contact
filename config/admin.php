@@ -21,6 +21,7 @@
 	// Add job types to records area of sysadmin
 TodoyuSysmanagerExtManager::addRecordConfig('contact', 'jobtype', array(
 	'label'		=> 'contact.ext.record.jobtype',
+	'desc'		=> 'contact.ext.record.jobtype.desc',
 	'list'		=> 'TodoyuContactJobTypeManager::getRecords',
 	'form'		=> 'ext/contact/config/form/admin/jobtype.xml',
 	'object'	=> 'TodoyuContactJobType',
@@ -32,6 +33,7 @@ TodoyuSysmanagerExtManager::addRecordConfig('contact', 'jobtype', array(
 	// Add contact info types to records area of sysadmin
 TodoyuSysmanagerExtManager::addRecordConfig('contact', 'contactinfotype', array(
 	'label'		=> 'contact.ext.record.contactinfotype',
+	'desc'		=> 'contact.ext.record.contactinfotype.desc',
 	'list'		=> 'TodoyuContactContactInfoTypeManager::getRecords',
 	'form'		=> 'ext/contact/config/form/admin/contactinfotype.xml',
 	'object'	=> 'TodoyuContactContactInfoType',

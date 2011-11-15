@@ -107,7 +107,9 @@
 	<label index="address.attr.comment">Kommentar</label>
 	<label index="address.attr.timezone">Zeitzone</label>
 	<label index="record.jobtype">Stellenbezeichnung</label>
+	<label index="record.jobtype.desc">Stellenbezeichnungen für Mitarbeiter</label>
 	<label index="record.contactinfotype">Kontaktinformationstyp</label>
+	<label index="record.contactinfotype.desc">Gruppen von Kontaktinformationen</label>
 	<label index="record.contactinfotype.attr.category">Kategorie</label>
 	<label index="record.contactinfotype.attr.key">Schlüssel</label>
 	<label index="record.contactinfotype.attr.is_public">Ist öffentlich</label>
