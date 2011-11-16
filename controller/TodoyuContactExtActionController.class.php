@@ -62,8 +62,7 @@ class TodoyuContactExtActionController extends TodoyuActionController {
 		}
 
 		if( $idRecord !== 0 ) {
-			TodoyuContactRights::restrictRecordEdit($type, $idRecord);
-			$content	= TodoyuContactRenderer::renderContactEdit($type, $idRecord);
+			$content	= TodoyuContactRenderer::renderDetailsContent($type, $idRecord);
 		} else {
 			$content	= TodoyuContactRenderer::renderContactList($type, $searchWord);
 		}

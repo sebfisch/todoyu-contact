@@ -7,6 +7,7 @@ contact 1.1.3 - not released yet
 	* Bugfix: Fixed Problem with deleted contact information. (Were still displayed in Person - Listing)
 	* Bugfix: formatted file size for error message
 	* Changed: Clean-up panel widgets
+	* Changed: Deeplink shows detail instead of edit form
 	* Translation: Polish
 	
 
