@@ -365,6 +365,8 @@ class TodoyuContactRenderer {
 	 * @return	String
 	 */
 	public static function renderDetailsContent($type, $idRecord) {
+		$content = '';
+
 		switch($type) {
 			case 'person':
 				$content	= self::renderPersonDetails($idRecord);
