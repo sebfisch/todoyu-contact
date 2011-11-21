@@ -64,7 +64,7 @@ class TodoyuContactImageManager {
 			'controller'	=> $type,
 			'action'		=> 'renderimage',
 			'idImage'		=> $idImage,
-			'hash'			=> time()
+			'hash'			=> NOW
 		);
 
 //		$dimension	= TodoyuContactImageManager::getDimension();
