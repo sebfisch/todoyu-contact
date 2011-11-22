@@ -16,7 +16,7 @@
 					<required />
 				</field>
 
-				<field type="text" name="street">
+				<field type="textarea" name="street">
 					<label>contact.ext.address.attr.street</label>
 					<required />
 				</field>

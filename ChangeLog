@@ -1,5 +1,9 @@
 todoyu contact extension changelog
 
+contact 1.1.4 - not released yet
+	* Changed: Changed street to textarea.
+
+
 contact 1.1.3 - 2011-11-17
 	* Bugfix: Image upload caused JS error in quick create popup
 	* Bugfix: Apply search filter to initial load of company listing
