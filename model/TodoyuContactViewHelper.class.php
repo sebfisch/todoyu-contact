@@ -325,6 +325,7 @@ class TodoyuContactViewHelper {
 	 *
 	 * @param	TodoyuFormElement	$field
 	 * @return	Array
+	 * @todo	Change parent to parentRecordID when requiring core 2.1.4
 	 */
 	public static function getWorkaddressOptionsCompany(TodoyuFormElement $field) {
 		$idCompany = intval($field->getForm()->getVar('parent'));
