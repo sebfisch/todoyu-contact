@@ -1,6 +1,7 @@
 todoyu contact extension changelog
 
 contact 1.1.4 - not released yet
+	* Bugfix: Fixed physically deletion of records.
 	* Changed: Changed street to textarea.
 
 

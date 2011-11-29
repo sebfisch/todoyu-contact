@@ -206,7 +206,7 @@ class TodoyuContactJobTypeManager {
 	public static function deleteJobtype($idJobtype) {
 		$idJobtype	= intval($idJobtype);
 
-		return Todoyu::db()->deleteRecord(self::TABLE, $idJobtype);
+		return TodoyuRecordManager::deleteRecord(self::TABLE, $idJobtype);
 	}
 
 
