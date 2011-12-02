@@ -33,7 +33,6 @@ class TodoyuContactPanelWidgetStaffList extends TodoyuPanelWidgetSearchList {
 	 * @param	Array		$params
 	 */
 	public function __construct(array $config, array $params = array()) {
-			// Construct PanelWidget (init basic configuration)
 		parent::__construct(
 			'contact',									// ext key
 			'stafflist',								// panel widget ID
