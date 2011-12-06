@@ -23,6 +23,6 @@ define('EXTID_CONTACT', 106);
 define('PATH_EXT_CONTACT', PATH_EXT . '/contact');
 
 require_once( PATH_EXT_CONTACT . '/config/constants.php' );
-require_once( PATH_EXT_CONTACT . '/dwoo/plugins.php');
+require_once( PATH_EXT_CONTACT . '/dwoo/plugins.php' );
 
 ?>

@@ -1,6 +1,7 @@
 todoyu contact extension changelog
 
 contact 1.1.4 - not released yet
+	* Changed: Renamed contact panelwidget search pref. ("searchword" => "panelwidgetcontactsearch-searchword")
 	* Bugfix: Fixed physically deletion of records.
 	* Changed: Changed street to textarea.
 
@@ -51,7 +52,7 @@ contact 1.1.0 - 2011-06-17
  	* Bugfix: Fixed birthday in person quickinfo and detail view to be formatted by date format of locale
  	* Feature: Added salutation and company to person search
 	* Feature: Added comment to person quickinfo
-	* Feature: Added person id plugin (dwoo)
+	* Feature: Added person ID plugin (dwoo)
  	* Feature: Set default salutation to m (male) for new person records
  	* Feature: Implementation / documentation of contact export hooks
 	* Feature: Export for contacts
@@ -120,7 +121,7 @@ contact 1.0.0 to 1.0.6 - 1.0.6 released 2011-01-17
 	* Changed: Made contact area right available to non-internal usergroups
 	* Changed: Record email is only required for person if active and username is available
 	* Changed: Removed right of changing person roles from any non-admin person
-	* Changed: Added missing context record id (project) in project persons quick info mockup
+	* Changed: Added missing context record ID (project) in project persons quick info mockup
 	* Changed: Reduced address parts comma separation to available parts
 	* Changed: Moved company function to own datasource class (instead in person)
 	* Changed: Removed manual requiring of auto-loaded config files

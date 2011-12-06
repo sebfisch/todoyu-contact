@@ -143,7 +143,7 @@ Todoyu.Ext.contact.Upload = {
 
 
 	/**
-	 * Sets the temporary id (folder-name) of the uploaded image to the hidden field
+	 * Sets the temporary ID (folder-name) of the uploaded image to the hidden field
 	 *
 	 * @method	setReplaceIdToHiddenField
 	 * @param	{String}	form

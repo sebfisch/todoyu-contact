@@ -123,7 +123,7 @@ class TodoyuContactPreferences {
 	 * @param	String		$searchWord
 	 */
 	public static function saveSearchWord($searchWord) {
-		self::savePref('searchword', trim($searchWord), 0, true);
+		self::savePref('panelwidgetcontactsearch-searchword', trim($searchWord), 0, true);
 	}
 
 
@@ -134,7 +134,7 @@ class TodoyuContactPreferences {
 	 * @return	String
 	 */
 	public static function getSearchWord() {
-		return self::getPref('searchword');
+		return self::getPref('panelwidgetcontactsearch-searchword');
 	}
 
 
