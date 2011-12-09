@@ -38,10 +38,12 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 	/**
 	 * Init filter object
 	 *
-	 * @param	Array	$activeFilters		Active filters for request
+	 * @param	Array		$activeFilters
+	 * @param	String		$conjunction
+	 * @param	Array		$sorting
 	 */
-	public function __construct(array $activeFilters = array()) {
-		parent::__construct('PERSON', self::TABLE, $activeFilters);
+	public function __construct(array $activeFilters = array(), $conjunction = 'AND', array $sorting = array()) {
+		parent::__construct('PERSON', self::TABLE, $activeFilters, $conjunction, $sorting);
 	}
 
 
@@ -53,10 +55,10 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 	 * @return	Array
 	 */
 	public function getPersonIDs($limit = 100) {
-		$order	= self::TABLE . '.lastname, ' . self::TABLE . '.firstname';
-		$limit	= intval($limit);
+		$sortingFallback	= self::TABLE . '.lastname, ' . self::TABLE . '.firstname';
+		$limit				= intval($limit);
 
-		return parent::getItemIDs($order, $limit);
+		return parent::getItemIDs($sortingFallback, $limit);
 	}
 
 
