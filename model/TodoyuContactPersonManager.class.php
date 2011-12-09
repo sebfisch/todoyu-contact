@@ -394,6 +394,27 @@ class TodoyuContactPersonManager {
 
 
 	/**
+	 * Get labels of given person's roles
+	 *
+	 * @param	Integer		$idPerson
+	 * @return	Array
+	 */
+	public static function getPersonRoleLabels($idPerson = 0) {
+		$idPerson	= Todoyu::personid($idPerson);
+		$person		= TodoyuContactPersonManager::getPerson($idPerson);
+
+		$roleIDs= $person->getRoleIDs();
+		$roles	= array();
+		foreach($roleIDs as $idRole) {
+			$roles[]= TodoyuRoleManager::getRole($idRole)->getTitle();
+		}
+
+		return $roles;
+	}
+
+
+
+	/**
 	 * Check whether the given person belongs to any of the given roles
 	 *
 	 * @param	Array		$roles
