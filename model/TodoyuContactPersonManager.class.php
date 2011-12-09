@@ -394,16 +394,15 @@ class TodoyuContactPersonManager {
 
 
 	/**
-	 * Get labels of given person's roles
+	 * Get labels of person's roles
 	 *
-	 * @param	Integer		$idPerson
+	 * @param	$idPerson
 	 * @return	Array
 	 */
 	public static function getPersonRoleLabels($idPerson = 0) {
 		$idPerson	= Todoyu::personid($idPerson);
-		$person		= TodoyuContactPersonManager::getPerson($idPerson);
+		$roleIDs	= self::getPerson($idPerson)->getRoleIDs();
 
-		$roleIDs= $person->getRoleIDs();
 		$roles	= array();
 		foreach($roleIDs as $idRole) {
 			$roles[]= TodoyuRoleManager::getRole($idRole)->getTitle();
@@ -1036,7 +1035,6 @@ class TodoyuContactPersonManager {
 
 		return TodoyuString::wrapTodoyuLink($person->getLabel(), 'contact', $linkParams);
 	}
-
 
 }
 ?>
