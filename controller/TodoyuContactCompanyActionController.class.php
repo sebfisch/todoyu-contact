@@ -227,11 +227,10 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @param	Array		$params
 	 * @return	String
 	 */
-	public function getRegionOptionsAction(array $params) {
+	public function regionOptionsAction(array $params) {
+		$idCountry	= intval($params['country']);
+
 		$tmpl	= 'core/view/form/FormElement_Select_Options.tmpl';
-
-		$idCountry	= intval($params['idCountry']);
-
 		$data	= array(
 			'options'	=> TodoyuStaticRecords::getCountryZoneOptions($idCountry),
 			'value'		=> array()

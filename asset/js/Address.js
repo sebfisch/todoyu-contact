@@ -38,21 +38,21 @@ Todoyu.Ext.contact.Address = {
 	 * @param	{String}	fieldNameToReplace
 	 */
 	onChangeCountry: function(inputField, referencedFieldName, fieldNameToReplace) {
-		var selectedValue		= inputField.value;
-		var idInputFieldArr		= inputField.id.split('-').without('fulltext');
-		var idTarget = idInputFieldArr.join('-').replace(fieldNameToReplace, referencedFieldName);
+		var idCountry		= $F(inputField);
+		var idInputFieldArr	= inputField.id.split('-').without('fulltext');
+		var idFieldRegion 	= idInputFieldArr.join('-').replace(fieldNameToReplace, referencedFieldName);
 
-		if( $(idTarget) ) {
-			var url = Todoyu.getUrl('contact', 'company');
+		if( $(idFieldRegion) ) {
+			var url 	= Todoyu.getUrl('contact', 'company');
 			var options = {
-					parameters: {
-						action:		'getRegionOptions',
-						'idCountry':	selectedValue
-					},
-					onComplete: this.onUpdateCompanyAddressRecords.bind(this, idTarget)
+				parameters: {
+					action:		'regionOptions',
+					country:	idCountry
+				},
+				onComplete: this.onUpdateCompanyAddressRecords.bind(this, idFieldRegion)
 			};
 
-			Todoyu.Ui.update(idTarget, url, options);
+			Todoyu.Ui.update(idFieldRegion, url, options);
 		}
 	},
 
@@ -67,12 +67,8 @@ Todoyu.Ext.contact.Address = {
 	 * @param	{Ajax.Response}		response
 	 */
 	onUpdateCompanyAddressRecords: function(idTarget, response) {
-		$(idTarget).innerHTML = response.responseText;
-
-		new Effect.Highlight($(idTarget), {
-			'startcolor':	'#fffe98',
-			'endcolor':		'#ffffff',
-			'duration':		2.0
+		new Effect.Highlight(idTarget, {
+			duration: 2.0
 		});
 	}
 
