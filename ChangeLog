@@ -1,6 +1,6 @@
 todoyu contact extension changelog
 
-contact 1.1.4 - not released yet
+contact 1.1.4 - 2011-12-13
 	* Bugfix: Population of region field in contact for IE
 	* Bugfix: Fixed physically deletion of records.
 	* Changed: Changed street to textarea.
