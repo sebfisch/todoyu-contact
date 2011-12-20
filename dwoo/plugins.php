@@ -87,16 +87,18 @@ function Dwoo_Plugin_name_compile(Dwoo_Compiler $compiler, $idPerson) {
  * @param	String			$class
  * @return	String
  */
-function Dwoo_Plugin_personLabel(Dwoo $dwoo, $idPerson = 0, $idPrefix = '', $idRecord = 0, $tag = 'span', $class = '') {
+function Dwoo_Plugin_personLabel(Dwoo $dwoo, $idPerson = 0, $idPrefix = 'person', $idRecord = 0, $tag = 'span', $class = '') {
 	$htmlID		= $idPrefix . '-' . $idRecord . '-' . $idPerson;
+	$personLabel= TodoyuContactPersonManager::getLabel($idPerson);
+	$attributes	= array(
+		'id'	=> $htmlID,
+		'class'	=> trim('quickInfoPerson ' . $class)
+	);
 
-	$openingTag	= '<' . $tag . ' id="' . $htmlID . '" class="quickInfoPerson ' . $class . '">';
-	$closingTag	= '</' . $tag . '>';
+	$personTag		= TodoyuString::buildHtmlTag($tag, $attributes, $personLabel);
+	$quickInfoScript= TodoyuString::wrapScript('Todoyu.Ext.contact.QuickInfoPerson.add(\'' . $htmlID . '\');');
 
-	$label	= TodoyuContactPersonManager::getLabel($idPerson);
-	$script	= TodoyuString::wrapScript('Todoyu.Ext.contact.QuickInfoPerson.add(\'' . $htmlID . '\');');
-
-	return $openingTag . $label . $closingTag . $script;
+	return $personTag . $quickInfoScript;
 }
 
 
