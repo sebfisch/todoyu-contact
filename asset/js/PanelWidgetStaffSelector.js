@@ -101,14 +101,39 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 */
 	onInputKeyUps: function(event) {
 		if( event.keyCode === Event.KEY_RETURN ) {
+				// Add "hot" item to selection
 			var firstItem	= this.list.down('li');
 			if( firstItem !== undefined ) {
 				this.addItemToSelection(firstItem);
 				this.input.select();
 				this.saveSelection();
 				this.markFirstAsHot();
+			} else {
+					// Activate first highlighted item from selection
+				var firstHighlighted = this.getFirstHighlighted();
+				if( firstHighlighted ) {
+					firstHighlighted.toggleClassName('disabled');
+					this.saveSelection();
+				}
 			}
 		}
+	},
+
+
+
+	/**
+	 * Get first highlighted (if any) item from persons selection
+	 *
+	 * @method	getFirstHighlighted
+	 * @return	{Element|Boolean}
+	 */
+	getFirstHighlighted: function() {
+		var highlighted = this.selection.select('li.disabled').collect(function(item) {
+    		return item.style.backgroundColor !== '' ? item : null;
+		});
+		highlighted = highlighted.compact();
+
+		return ( highlighted.size() > 0 ) ? highlighted.first() : false;
 	},
 
 

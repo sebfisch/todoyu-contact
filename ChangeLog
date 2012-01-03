@@ -1,7 +1,7 @@
 todoyu contact extension changelog
 
 contact 1.2.0 - not released yet
-	*
+	* Added: Disabled person items in staffselector can be selected on [Enter] when highlighted
 
 contact 1.1.4 - 2011-12-13
 	* Bugfix: Population of region field in contact for IE
