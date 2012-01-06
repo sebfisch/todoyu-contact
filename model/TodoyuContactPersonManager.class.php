@@ -80,6 +80,7 @@ class TodoyuContactPersonManager {
 	 *
 	 * @param	Integer		$idPerson
 	 * @return	Array
+	 * @deprecated
 	 */
 	public static function getPersonArray($idPerson) {
 		return TodoyuRecordManager::getRecordData(self::TABLE, $idPerson);
@@ -701,68 +702,48 @@ class TodoyuContactPersonManager {
 	 * - date: date of the birthday in this view (this year)
 	 * - age: new age on this birthday
 	 *
-	 * @param	Integer		$dateStart
-	 * @param	Integer		$dateEnd
+	 * @param	TodoyuDayRange	$range
 	 * @return	Array
 	 */
-	public static function getBirthdayPersons($dateStart, $dateEnd) {
-		$dateStart	= intval($dateStart);
-		$dateEnd	= intval($dateEnd);
+	public static function getBirthdayPersons(TodoyuDayRange $range) {
+		$dateStart	= $range->getStart();
+		$dateEnd	= $range->getEnd();
 
 		$monthStart	= date('n', $dateStart);
 		$monthEnd	= date('n', $dateEnd);
-		$yearStart	= date('Y', $dateStart);
-		$yearEnd	= date('Y', $dateEnd);
 		$dayStart	= date('j', $dateStart);
 		$dayEnd		= date('j', $dateEnd);
 
-			// Range spans over just one month
-		if( $monthStart === $monthEnd ) {
-			$monthsRange= array($monthStart);
-			$rangeWhere	= 'DAY(birthday)		BETWEEN ' . $dayStart . ' AND ' . $dayEnd;
-		} else {
-			$monthDiff	= abs($monthEnd - $monthStart);
-			$yearDiff	= abs($yearEnd - $yearStart);
-		}
-			// Range spans over more than one and maximum 2 month
-		if( $monthStart !== $monthEnd && $monthDiff === 1 && $yearDiff === 0 ) {
-			$monthsRange= array($monthStart, $monthEnd);
-			$rangeWhere = '((MONTH(birthday)	= ' . $monthStart . ' AND DAY(birthday)	>= ' . $dayStart . ') OR
-							(MONTH(birthday)	= ' . $monthEnd . ' AND DAY(birthday)	<= ' . $dayEnd . '))';
-		} else {
-				// Range crosses the year border (ex: nov-feb)
-			if( $monthEnd < $monthStart ) {
-				$monthsRange= array();
-				$mEnd	= $monthEnd + 12;
 
-				for($m=$monthStart; $m <= $mEnd; $m++) {
-					$month			= $m % 12;
-					$monthsRange[]	= $month === 0 ? 12 : $month;
+		if( $range->isInOneDay() ) { // One day range
+			$rangeWhere	= 'MONTH(birthday) = ' . $monthStart . ' AND DAY(birthday) = ' . $dayStart;
+		} elseif( $range->isInOneMonth() ) { // One month range
+			$rangeWhere = 'MONTH(birthday) = ' . $monthStart . ' AND DAY(birthday) BETWEEN ' . $dayStart . ' AND ' . $dayEnd;
+		} else { // all the rest
+			if( $monthEnd < $monthStart ) { // Range overlaps two years
+				$months			= array();
+				$shiftedMonthEnd= $monthEnd + 12;
+
+				for($monthCounter = $monthStart; $monthCounter <= $shiftedMonthEnd; $monthCounter++) {
+					$month		= $monthCounter % 12;
+					$months[]	= $month === 0 ? 12 : $month;
 				}
 			} else {
-				$monthsRange = range($monthStart, $monthEnd);
+				$months = range($monthStart, $monthEnd);
 			}
+				// Fetch first and last month for day checks
+			$firstMonth	= array_shift($months);
+			$lastMonth	= array_pop($months);
 
-				// If there are months between to border months
-			$middleMonths	= array_slice($monthsRange, 1, -1);
+			$rangeWhere	= '		MONTH(birthday) = ' . $firstMonth . ' AND DAY(birthday)	>= ' . $dayStart
+						. ' OR	MONTH(birthday)	= ' . $lastMonth .  ' AND DAY(birthday)	<= ' . $dayEnd;
 
-			if( sizeof($middleMonths) > 0 ) {
-				$middleWhere = 'MONTH(birthday)	IN(' . implode(',', $middleMonths) . ') OR ';
-			} else {
-				$middleWhere = '';
+				// All months between
+			if( sizeof($months) > 0 ) {
+				$rangeWhere .= ' OR MONTH(birthday) IN(' . implode(',', $months) . ')';
 			}
-
-			$rangeWhere	= '(' . $middleWhere . '
-							(MONTH(birthday) = ' . $monthStart . ' AND DAY(birthday)	>= ' . $dayStart . ') OR
-							(MONTH(birthday) = ' . $monthEnd . ' AND DAY(birthday)		<= ' . $dayEnd . ')
-						   )';
 		}
 
-			// Allowed months
-		$rangeWhere .= ' AND MONTH(birthday)	IN(' . implode(',', $monthsRange) . ')';
-
-			// Minimum 1 year old (say 51 so we definitively don't miss first birthdays =)
-		$minDate	= NOW - TodoyuTime::SECONDS_WEEK * 51;
 
 		$fields	= '	id,
 					email,
@@ -771,19 +752,15 @@ class TodoyuContactPersonManager {
 					shortname,
 					salutation,
 					title,
-					birthday,
-					MONTH(birthday) >= MONTH(FROM_UNIXTIME(' . NOW . '))	as incurrentyear,
-					YEAR(birthday)								as birthyear,
-					MONTH(birthday) > MONTH(FROM_UNIXTIME(' . NOW . ')) 	as beforemonth';
-
-		$table	= self::TABLE;
-		$where	= '		deleted						= 0'
-				. ' AND ( UNIX_TIMESTAMP(birthday)	> 0 OR YEAR(birthday) != 1970 ) '	// Note: years before 1970 convert to timestamp of 0 (overflow)
-				. ' AND UNIX_TIMESTAMP(birthday)	< ' . $minDate
+					birthday';
+		$where	= '		deleted	= 0'
 				. '	AND	(' . $rangeWhere . ')';
-		$order	= 'incurrentyear DESC, beforemonth, MONTH(birthday), DAY(birthday)';
+		$order	= '	IF(MONTH(birthday) >= ' . $monthStart . ',1,0) DESC,
+					IF(MONTH(birthday) > ' . $monthStart . ',1,0) ASC,
+					MONTH(birthday) ASC,
+					DAY(birthday) ASC';
 
-		$birthdayPersons	= Todoyu::db()->getArray($fields, $table, $where, '', $order);
+		$birthdayPersons	= Todoyu::db()->getArray($fields, self::TABLE, $where, '', $order);
 
 			// Enrich data with date and age of persons
 		$birthdayPersons	= self::addBirthdayPersonsDateAndAge($birthdayPersons, $dateStart, $dateEnd);
@@ -810,9 +787,9 @@ class TodoyuContactPersonManager {
 			if( $birthday < $dateStart ) {
 				$birthday = mktime(0, 0, 0, $dateParts[1], $dateParts[2], date('Y', $dateEnd));
 
-				$birthdayPersons[$index]['age']	= floor(date('Y', $dateStart) - intval($birthdayPerson['birthyear']) + 1);
+				$birthdayPersons[$index]['age']	= floor(date('Y', $dateStart) - date('Y', strtotime($birthdayPerson['birthday'])) + 1);
 			} else {
-				$birthdayPersons[$index]['age']	= floor(date('Y', $dateStart) - intval($birthdayPerson['birthyear']));
+				$birthdayPersons[$index]['age']	= floor(date('Y', $dateStart) - date('Y', strtotime($birthdayPerson['birthday'])));
 			}
 
 				// Set date of the upcoming birthday
