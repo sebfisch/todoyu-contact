@@ -44,7 +44,7 @@ class TodoyuContactPersonHooks {
 
 				$data['person_' . $type]['id']			= $htmlID;
 				$data['person_' . $type]['wrap'][1]		.= TodoyuString::wrapScript('Todoyu.Ext.contact.QuickInfoPerson.add(\'' .  $htmlID . '\');');
-				$data['person_' . $type]['className'] 	.= ' quickInfoPerson';
+				$data['person_' . $type]['className']	.= ' quickInfoPerson';
 			}
 		}
 

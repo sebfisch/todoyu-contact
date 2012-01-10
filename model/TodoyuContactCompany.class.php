@@ -114,12 +114,12 @@ class TodoyuContactCompany extends TodoyuBaseObject {
 	public function getEmployeeIds() {
 		$idCompany	= intval($this->getID());
 
-		$fields	= 	'	p.id';
-		$tables	= 	'	ext_contact_person p,
+		$fields	=	'	p.id';
+		$tables	=	'	ext_contact_person p,
 						ext_contact_mm_company_person mm';
-		$where	= 	'		mm.id_person	= p.id
+		$where	=	'		mm.id_person	= p.id
 						AND	mm.id_company	= ' . $idCompany .
-				  	' AND	p.deleted		= 0';
+					' AND	p.deleted		= 0';
 		$order		= 'mm.id';
 		$indexField	= 'id';
 

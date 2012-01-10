@@ -106,7 +106,7 @@ class TodoyuContactManager {
 		foreach($res as $index => $data) {
 			$options[]	= array(
 				'value'		=> $data[ $valueField ],
-				'label' 	=> $data[ $labelField ],
+				'label'		=> $data[ $labelField ],
 				'selected'	=> ( (! is_null($selectedIndex) && $index == $selectedIndex)  || (! is_null($selectedValue) && $data[ $valueField ] == $selectedValue) ) ? 'selected' : '',
 				'disabled'	=> $data[ $valueField ] == -1 ? '1' : '',
 			);

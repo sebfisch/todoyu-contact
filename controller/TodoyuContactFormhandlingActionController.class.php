@@ -53,7 +53,7 @@ class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 		}
 
 			// Construct form object
-		$form 	= TodoyuFormManager::getForm($xmlPath, $index);
+		$form	= TodoyuFormManager::getForm($xmlPath, $index);
 
 			// Load (/preset) form data
 		$formData	= $form->getFormData();

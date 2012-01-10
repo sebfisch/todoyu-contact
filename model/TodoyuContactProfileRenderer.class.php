@@ -22,7 +22,7 @@
 /**
  * Contact profile renderer
  *
- * @name 		Contact profile renderer
+ * @name		Contact profile renderer
  * @package		Todoyu
  * @subpackage	Contact
  */

@@ -51,8 +51,8 @@ class TodoyuContactRenderer {
 		TodoyuPage::init('ext/contact/view/ext.tmpl');
 		TodoyuPage::setTitle('contact.ext.page.title');
 
-		$panelWidgets 	= self::renderPanelWidgets();
-		$tabs 			= self::renderTabs($type);
+		$panelWidgets	= self::renderPanelWidgets();
+		$tabs			= self::renderTabs($type);
 
 		TodoyuPage::set('panelWidgets', $panelWidgets);
 		TodoyuPage::set('tabs', $tabs);

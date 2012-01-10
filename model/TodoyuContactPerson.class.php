@@ -60,7 +60,7 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 			$email	= $this->getEmail(true);
 
 			if( $email !== false ) {
-		 		$label	.= ' (' . $this->getEmail() . ')';
+				$label	.= ' (' . $this->getEmail() . ')';
 			}
 		}
 
@@ -314,7 +314,7 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	 * @return	TodoyuContactCompany
 	 */
 	public function getCompany() {
-		$companyIDs 	= $this->getCompanyIDs();
+		$companyIDs		= $this->getCompanyIDs();
 		$firstCompanyID	= intval($companyIDs[0]);
 
 		return TodoyuContactCompanyManager::getCompany($firstCompanyID);

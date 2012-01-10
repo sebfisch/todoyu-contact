@@ -234,9 +234,9 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 							ON mmcp.id_company	= c.id
 						LEFT JOIN ext_contact_jobtype jt
 							ON mmcp.id_jobtype	= jt.id';
-		$where	= ' 	c.is_internal	= 1'
+		$where	= '		c.is_internal	= 1'
 				. ' AND c.deleted		= 0'
-				. ' AND p.deleted 		= 0'
+				. ' AND p.deleted		= 0'
 				. ' AND (jt.deleted		= 0 OR jt.deleted IS NULL)'
 				. '	AND	('
 				. $likePerson
@@ -315,7 +315,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 				// Handle disabled items
 			$disabled	= false;
 			if( substr($item, 0, 1) === '-' ) {
-				$disabled 	= true;
+				$disabled	= true;
 				$item		= substr($item, 1);
 			}
 			$disabledClass	= $disabled ? ' disabled' : '';

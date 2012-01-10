@@ -34,7 +34,7 @@
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param	Dwoo_Compiler 	$compiler
+ * @param	Dwoo_Compiler	$compiler
  * @param	Integer			$idPerson
  * @return	Boolean
  */
@@ -50,7 +50,7 @@ function Dwoo_Plugin_isPersonID_compile(Dwoo_Compiler $compiler, $idPerson) {
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param	Dwoo_Compiler 	$compiler
+ * @param	Dwoo_Compiler	$compiler
  * @return	Boolean
  */
 function Dwoo_Plugin_personid_compile(Dwoo_Compiler $compiler) {
@@ -65,7 +65,7 @@ function Dwoo_Plugin_personid_compile(Dwoo_Compiler $compiler) {
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param	Dwoo_Compiler 	$compiler
+ * @param	Dwoo_Compiler	$compiler
  * @param	Integer			$idPerson
  * @return	String
  */
@@ -79,7 +79,7 @@ function Dwoo_Plugin_name_compile(Dwoo_Compiler $compiler, $idPerson) {
 /**
  * Returns a wrapped label tag of a person, evoking person-info tooltip on rollOver
  *
- * @param	Dwoo 			$dwoo
+ * @param	Dwoo			$dwoo
  * @param	Integer			$idPerson
  * @param	String			$idPrefix	descriptive string: 'ext'_'recordtype'
  * @param	Integer			$idRecord	record containing the person ID, e.g. task, comment, etc.

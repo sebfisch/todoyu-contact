@@ -474,7 +474,7 @@ class TodoyuContactCompanyManager {
 	public static function searchCompany($sWord, array $searchFields = null, $size = 100, $offset = 0) {
 		$fields	= 'SQL_CALC_FOUND_ROWS *';
 		$where	= ' deleted = 0';
-		$table 	= self::TABLE;
+		$table	= self::TABLE;
 		$order	= 'title';
 		$limit	= ($size != '') ? intval($offset) . ',' . intval($size) : '';
 
@@ -570,7 +570,7 @@ class TodoyuContactCompanyManager {
 		$tables	= '	ext_contact_contactinfotype t,
 					ext_contact_contactinfo c,
 					ext_contact_mm_company_contactinfo mm';
-		$where	= ' 	mm.id_contactinfo	= c.id
+		$where	= '		mm.id_contactinfo	= c.id
 					AND	mm.id_company		= ' . $idCompany .
 				  ' AND	c.deleted			= 0' .
 				  ' AND t.id				= c.id_contactinfotype';
@@ -637,7 +637,7 @@ class TodoyuContactCompanyManager {
 
 		if( sizeof($addresses) > 0 ) {
 			$address = $addresses[0];
-			$label	= 	  ($address['street'] !== '' ? $address['street'] . ', ' : '')
+			$label	=	  ($address['street'] !== '' ? $address['street'] . ', ' : '')
 						. ($address['zip']	!== '' ? $address['zip'] . ' ' : '')
 						. $address['city'];
 		}
@@ -703,7 +703,7 @@ class TodoyuContactCompanyManager {
 		$tables	=  'ext_contact_contactinfo c,
 					ext_contact_mm_company_contactinfo mm,
 					ext_contact_contactinfotype t';
-		$where	= ' 	mm.id_contactinfo	= c.id
+		$where	= '		mm.id_contactinfo	= c.id
 					AND	mm.id_company		= ' . $idCompany .
 				  ' AND	c.deleted			= 0' .
 				  ' AND t.id = c.id_contactinfotype' .

@@ -111,7 +111,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 			TodoyuContactCompanyRights::restrictEdit($idCompany);
 		}
 
-		$form 		= TodoyuFormManager::getForm($xmlPath, $idCompany);
+		$form		= TodoyuFormManager::getForm($xmlPath, $idCompany);
 
 			// Set form data
 		$form->setFormData($data);
@@ -275,7 +275,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 			TodoyuContactCompanyRights::restrictEdit($idCompany);
 		}
 
-		$form 		= TodoyuFormManager::getForm($xmlPath, $idCompany);
+		$form		= TodoyuFormManager::getForm($xmlPath, $idCompany);
 
 		$fieldName = $params['field'];
 

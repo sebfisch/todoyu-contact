@@ -111,7 +111,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 			TodoyuContactPersonRights::restrictEdit($idPerson);
 		}
 
-		$form 	= TodoyuFormManager::getForm($xmlPath, $idPerson);
+		$form	= TodoyuFormManager::getForm($xmlPath, $idPerson);
 
 			// Set form data
 		$form->setFormData($data);
@@ -152,7 +152,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 			TodoyuContactPersonRights::restrictEdit($idPerson);
 		}
 
-		$form 		= TodoyuFormManager::getForm($xmlPath, $idPerson);
+		$form		= TodoyuFormManager::getForm($xmlPath, $idPerson);
 
 		$idTarget = $params['idTarget'];
 

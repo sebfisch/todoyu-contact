@@ -54,7 +54,7 @@ class TodoyuContactContactInfo extends TodoyuBaseObject {
 	 * @return	TodoyuContactContactInfoType
 	 */
 	public function getContactInfoType() {
-		return 	TodoyuContactContactInfoTypeManager::getContactInfoType($this->getContactInfoTypeID());
+		return TodoyuContactContactInfoTypeManager::getContactInfoType($this->getContactInfoTypeID());
 	}
 
 

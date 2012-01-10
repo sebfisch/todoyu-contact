@@ -66,7 +66,7 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 	/**
 	 * Full-text filter for all textual person data
 	 *
-	 * @param	String	 	$value
+	 * @param	String		$value
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
@@ -212,7 +212,7 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 			'ext_contact_mm_company_person',
 			'ext_contact_company'
 		);
-		$where	= '		ext_contact_company.deleted 	= 0'
+		$where	= '		ext_contact_company.deleted		= 0'
 				. ' AND	ext_contact_company.is_internal	= 1';
 		$joins	= array(
 			'ext_contact_person.id = ext_contact_mm_company_person.id_person',

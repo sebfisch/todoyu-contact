@@ -31,7 +31,7 @@ contact 1.1.2 - 2011-09-15
 	* Added: Missing label for contact.ext.noJobDefined
 	* Added: Missing save hook in TodoyuContactCompanyManager::saveCompany
 	* Added: Hooks: company.add, company.update, company.delete, person.add, person.update, person.delete
-	* Changed: Changed exticon (looked almost identic to profile)
+	* Changed: Changed exticon (looked almost identical to profile)
 	* Changed: Hooks: person.renderDetail, company.renderDetail
 	* Changed: #207 Check access rights for contact infos in quick info for person
 	* Changed: #204 Removed unused methods from TodoyuContactContactInfoType

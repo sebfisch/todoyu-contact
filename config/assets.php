@@ -50,8 +50,8 @@ Todoyu::$CONFIG['EXT']['contact']['assets'] = array(
 			'position'	=> 110
 		),
 		array(
-			'file' 		=> 'ext/contact/asset/js/QuickInfoPerson.js',
-			'position' 	=> 200
+			'file'		=> 'ext/contact/asset/js/QuickInfoPerson.js',
+			'position'	=> 200
 		),
 		array(
 			'file'		=> 'ext/contact/asset/js/PanelWidgetContactSearch.js',
@@ -84,7 +84,7 @@ Todoyu::$CONFIG['EXT']['contact']['assets'] = array(
 	),
 	'css'	=> array(
 		array(
-			'file' 		=> 'ext/contact/asset/css/quickinfo.css',
+			'file'		=> 'ext/contact/asset/css/quickinfo.css',
 			'position'	=> 100
 		),
 		array(

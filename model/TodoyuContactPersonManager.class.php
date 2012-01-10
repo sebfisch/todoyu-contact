@@ -222,7 +222,7 @@ class TodoyuContactPersonManager {
 
 		$row	= Todoyu::db()->doSelectRow($fields, $table, $where, '', '', $limit);
 
-		return 	intval($row['id']);
+		return intval($row['id']);
 	}
 
 
@@ -323,7 +323,7 @@ class TodoyuContactPersonManager {
 			// Call internal save function
 		$data	= self::savePersonForeignRecords($data, $idPerson);
 			// Call hooked save functions
-		$data 	= TodoyuFormHook::callSaveData($xmlPath, $data, $idPerson);
+		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idPerson);
 
 		self::updatePerson($idPerson, $data);
 
@@ -459,7 +459,7 @@ class TodoyuContactPersonManager {
 			$fields .= ', mm.id_workaddress';
 		}
 
-		$table	= 	self::TABLE . ' p,
+		$table	=	self::TABLE . ' p,
 					ext_contact_company c,
 					ext_contact_mm_company_person mm';
 		$where	= '		p.id			= mm.id_person
@@ -793,7 +793,7 @@ class TodoyuContactPersonManager {
 			}
 
 				// Set date of the upcoming birthday
-			$birthdayPersons[$index]['date'] 	= $birthday;
+			$birthdayPersons[$index]['date']	= $birthday;
 		}
 
 		return $birthdayPersons;
@@ -812,7 +812,7 @@ class TodoyuContactPersonManager {
 		$cacheKey	= 'personcolors:' . md5(serialize($personIDs));
 
 		if( ! TodoyuCache::isIn($cacheKey) ) {
-			$colors 			= array();
+			$colors	= array();
 
 				// Enumerate persons by system specific color to resp. list position
 			foreach($personIDs as $idPerson) {
@@ -842,7 +842,7 @@ class TodoyuContactPersonManager {
 					ext_contact_mm_company_person mm';
 		$where	= '		mm.id_company	= c.id
 					AND	mm.id_person	= ' . $idPerson .
-				  ' AND c.deleted 		= 0 ';
+				  ' AND c.deleted		= 0 ';
 
 		return Todoyu::db()->getArray($fields, $tables, $where);
 	}
@@ -948,7 +948,7 @@ class TodoyuContactPersonManager {
 		$fields	= '	a.*';
 		$tables	= '	ext_contact_address a,
 					ext_contact_mm_person_address mm';
-		$where	= ' 	a.deleted		= 0'
+		$where	= '		a.deleted		= 0'
 				. ' AND mm.id_address	= a.id'
 				. ' AND	mm.id_person	= ' . $idPerson;
 
@@ -970,7 +970,7 @@ class TodoyuContactPersonManager {
 		$tables	= '	ext_contact_contactinfotype t,
 					ext_contact_contactinfo c,
 					ext_contact_mm_person_contactinfo mm';
-		$where	= ' 	mm.id_contactinfo	= c.id
+		$where	= '		mm.id_contactinfo	= c.id
 					AND	mm.id_person		= ' . $idPerson .
 				  ' AND c.deleted			= 0' .
 				  ' AND t.id				= c.id_contactinfotype';

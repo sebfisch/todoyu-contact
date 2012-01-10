@@ -290,7 +290,7 @@ class TodoyuContactViewHelper {
 	 */
 	public static function getCountryOptions(TodoyuFormElement $field) {
 		$countryOptions				= TodoyuStaticRecords::getCountryOptions();
-		$favoriteCountryIDs 		= TodoyuContactAddressManager::getMostUsedCountryIDs();
+		$favoriteCountryIDs			= TodoyuContactAddressManager::getMostUsedCountryIDs();
 		$favoriteCountries			= array();
 		$favoriteCountrySortOrder	= array_flip($favoriteCountryIDs);
 

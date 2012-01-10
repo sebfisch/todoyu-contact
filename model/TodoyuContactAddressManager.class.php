@@ -143,7 +143,7 @@ class TodoyuContactAddressManager {
 		$tables		= '	ext_contact_mm_company_address,
 						ext_contact_address ';
 		$where		= '		ext_contact_mm_company_address.id_company	= ' . $idCompany .
-					  ' AND	ext_contact_address.id 						= ext_contact_mm_company_address.id_address';
+					  ' AND	ext_contact_address.id						= ext_contact_mm_company_address.id_address';
 		$orderBy	= 'city';
 		$groupBy	= $limit	= '';
 		$indexField	= 'addrId';
@@ -214,7 +214,7 @@ class TodoyuContactAddressManager {
 	 * @param	Integer		$idRecord
 	 * @param	Array		$currentAddressIDs
 	 * @param	String		$fieldRecord
-	 * @param	String 		$fieldInfo
+	 * @param	String		$fieldInfo
 	 * @return	Integer							Amount of deleted records
 	 */
 	public static function deleteLinkedAddresses($mmTable, $idRecord, array $currentAddressIDs,  $fieldRecord, $fieldInfo = 'id_address') {

@@ -24,17 +24,17 @@
 
 Todoyu::$CONFIG['EXT']['contact']['info'] = array(
 	'title'			=> 'Contact',
-	'description' 	=> 'Maintain Your Contacts',
-	'author' 		=> array(
+	'description'	=> 'Maintain Your Contacts',
+	'author'		=> array(
 		'name'		=> 'todoyu Core Developer Team',
 		'email'		=> 'team@todoyu.com',
 		'company'	=> 'snowflake productions GmbH, Zurich'
 	),
-	'state' 		=> 'stable',
-	'version' 		=> '1.2.0dev',
-	'constraints' 	=> array(
+	'state'			=> 'stable',
+	'version'		=> '1.2.0dev',
+	'constraints'	=> array(
 		'core'		=> '2.2.0dev',
-		'depends' 	=> array(),
+		'depends'	=> array(),
 		'conflicts' => array(),
 		'system'	=> true
 	),
