@@ -679,13 +679,12 @@ class TodoyuContactPersonManager {
 	 * @return	Array
 	 */
 	public static function getWorkaddressIDsOfPersons(array $personIDs) {
-		$personIDs	= TodoyuArray::intval($personIDs, true, true);
 		$addressIDs	= array();
 
 		if( sizeof($personIDs) > 0) {
 			$field	= 'id_workaddress';
 			$table	= 'ext_contact_mm_company_person';
-			$where	= '		id_person IN (' . implode(',', $personIDs) . ') '
+			$where	= Todoyu::db()->buildInArrayQuery($personIDs, 'id_person')
 					. ' AND id_workaddress != 0';
 
 			$addressIDs	= Todoyu::db()->getColumn($field, $table, $where);

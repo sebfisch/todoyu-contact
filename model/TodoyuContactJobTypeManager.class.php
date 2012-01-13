@@ -70,8 +70,7 @@ class TodoyuContactJobTypeManager {
 
 		$where	= 'deleted = 0';
 		if( count($typeIDs) > 0 ) {
-			$typeIDs	= TodoyuArray::intval($typeIDs);
-			$where		.= ' AND id IN (' . TodoyuArray::intImplode($typeIDs, ',') . ') ';
+			$where		.= ' AND ' . Todoyu::db()->buildInArrayQuery($typeIDs);
 		}
 
 //		$order	= 'title';

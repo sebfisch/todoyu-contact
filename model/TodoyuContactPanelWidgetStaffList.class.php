@@ -125,7 +125,7 @@ class TodoyuContactPanelWidgetStaffList extends TodoyuPanelWidgetSearchList {
 						AND	mm.id_company	= c.id
 						AND	c.is_internal	= 1
 						AND	p.deleted		= 0
-						AND p.id			IN (' . implode(',', $personIDs) . ')';
+						AND ' . Todoyu::db()->buildInArrayQuery($personIDs, 'p.id');
 			$order	= '	p.lastname,
 						p.firstname';
 

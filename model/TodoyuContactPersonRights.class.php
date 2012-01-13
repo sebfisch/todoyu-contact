@@ -160,9 +160,7 @@ class TodoyuContactPersonRights {
 		$allowedPersonsIDs	= array_unique(array_merge($personIDs, $projectsPersonsIDs, $companyPersonIDs));
 
 		if( sizeof($allowedPersonsIDs) > 0 ) {
-			$idList	= TodoyuArray::intImplode($allowedPersonsIDs, ',');
-
-			return ' id IN ( ' . $idList . ')';
+			return Todoyu::db()->buildInArrayQuery($allowedPersonsIDs);
 		} else {
 			return ' 0';
 		}
