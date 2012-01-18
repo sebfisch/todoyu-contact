@@ -360,19 +360,19 @@ class TodoyuContactPersonManager {
 	 * Get role IDs of a person
 	 *
 	 * @param	Integer		$idPerson
-	 * @return	Array
+	 * @return	Integer[]
 	 */
 	public static function getRoleIDs($idPerson) {
 		$idPerson	= Todoyu::personid($idPerson);
 
-		$field	= 'r.id';
-		$tables	= 'ext_contact_mm_person_role mm,
-				   system_role r';
-		$where	= '		mm.id_person	= ' . $idPerson
-				. ' AND	r.id			= mm.id_role'
-				. ' AND	r.deleted		= 0';
+		$field	= 'mm.id_role';
+		$tables	= ' ext_contact_mm_person_role mm,
+					system_role r';
+		$where	= 'mm.id_person		= ' . $idPerson
+				. ' AND r.id		= mm.id_role'
+				. ' AND r.deleted	= 0';
 
-		return Todoyu::db()->getColumn($field, $tables, $where);
+		return TodoyuArray::flatten(Todoyu::db()->getArray($field, $tables, $where));
 	}
 
 
@@ -387,13 +387,13 @@ class TodoyuContactPersonManager {
 		$idPerson	= intval($idPerson);
 
 		$fields	= '	r.*';
-		$table	= '	ext_contact_mm_person_role mm,
+		$tables	= '	ext_contact_mm_person_role mm,
 					system_role r';
-		$where	= '		id_person	= ' . $idPerson
-				. ' AND	mm.id_role	= r.id'
+		$where	= '		mm.id_person= ' . $idPerson
+				. ' AND	r.id	    = mm.id_role'
 				. ' AND r.deleted	= 0';
 
-		return Todoyu::db()->getArray($fields, $table, $where);
+		return Todoyu::db()->getArray($fields, $tables, $where);
 	}
 
 
