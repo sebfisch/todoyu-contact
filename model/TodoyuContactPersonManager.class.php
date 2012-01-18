@@ -366,7 +366,8 @@ class TodoyuContactPersonManager {
 		$idPerson	= Todoyu::personid($idPerson);
 
 		$field	= 'r.id';
-		$tables	= 'ext_contact_mm_person_role mm, system_role role';
+		$tables	= 'ext_contact_mm_person_role mm,
+				   system_role r';
 		$where	= '		mm.id_person	= ' . $idPerson
 				. ' AND	r.id			= mm.id_role'
 				. ' AND	r.deleted		= 0';
