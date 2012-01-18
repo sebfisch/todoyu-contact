@@ -10,7 +10,6 @@ contact 1.1.4 - 2011-12-13
 	* Changed: Changed street to textarea.
 	* Changed: Renamed contact panelwidget search pref. ("searchword" => "panelwidgetcontactsearch-searchword")
 
-
 contact 1.1.3 - 2011-11-17
 	* Bugfix: Image upload caused JS error in quick create popup
 	* Bugfix: Apply search filter to initial load of company listing
@@ -20,7 +19,6 @@ contact 1.1.3 - 2011-11-17
 	* Changed: Clean-up panel widgets
 	* Changed: Deeplink shows detail instead of edit form
 	* Translation: Polish
-	
 
 contact 1.1.2 - 2011-09-15
 	* Bugfix: default salutation label failure if none stored
@@ -38,11 +36,8 @@ contact 1.1.2 - 2011-09-15
 	* Changed: Highlight already selected items when result of staff selector is empty
 	* Changed: ext_contact_contactinfo.id_contactinfotype is now a smallint instead of tinytext
 
-	
-
 contact 1.1.1 - 2011-07-25
 	* Bugfix: #178 TodoyuContactPersonRights::getAllowedToBeSeenPersonsWhereClause() created an invalid where statement
-
 
 contact 1.1.0 - 2011-06-17
 	* Bugfix: If no user locale is set, english was selected as first element, but system locale could be different
@@ -81,15 +76,13 @@ contact 1.1.0 - 2011-06-17
 	* Changed: DB rename ext_contact_person.active => is_active
 	* Changed: Moved templates of contact panelwidgets into sub folder /view/panelwidgets/
 
-
 contact 1.0.7
-	* Bugfix: Show preferred email in person list item (from contactinfotype when no todoyu account given)
+	* Bugfix: Show preferred email in person list item (from contact info type when no todoyu account given)
 	* Bugfix: Auto-generated person shortname can (not any longer) contain whitespace
 	* Bugfix: Added deleted clause for quickinfo preferred phone number
 	* Bugfix: Username is pre filled in the password forgot form if set in the login form
 	* Feature: Added (empty still) locale files for spanish (columbia) locales to come of extensions
 	* Translation: Italian
-
 
 contact 1.0.0 to 1.0.6 - 1.0.6 released 2011-01-17
 	* Bugfix: Missing labels for contactinfo
@@ -119,7 +112,7 @@ contact 1.0.0 to 1.0.6 - 1.0.6 released 2011-01-17
 	* Feature: Email link of person quickinfo added onclick to also send person name with email
 	* Feature: Added task search filter: project customer company
 	* Feature: Sort Jobtypes by label
-	* Feature: Fullname in Person template data
+	* Feature: Full-name in Person template data
 	* Feature: Added hooks documentation
 	* Feature: Added method for getting address label to address manager
 	* Changed: Incremented year in copyright notice to 2011
@@ -128,14 +121,13 @@ contact 1.0.0 to 1.0.6 - 1.0.6 released 2011-01-17
 	* Changed: Removed right of changing person roles from any non-admin person
 	* Changed: Added missing context record ID (project) in project persons quick info mockup
 	* Changed: Reduced address parts comma separation to available parts
-	* Changed: Moved company function to own datasource class (instead in person)
+	* Changed: Moved company function to own data source class (instead in person)
 	* Changed: Removed manual requiring of auto-loaded config files
 	* Translation: Russian
 	* Translation: Serbian
 	* Translation: Japanese
 	* Translation: Czech
 	* Translation: Dutch
-
 
 contact 0.0.1 to 1.0.0 - 1.0.0 released on 2010-05-10
 	* Bugfix: Fixed JS bug in person wizard (onEdit wasn't called)
@@ -182,7 +174,7 @@ contact 0.0.1 to 1.0.0 - 1.0.0 released on 2010-05-10
 	* Feature: Added categorization (email / phone / other) to dynamic quickinfotypes
 	* Feature: User quickinfo
 	* Feature: Added quick search for person, company
-	* Feature: Dynamic contactinfotypes editable
+	* Feature: Dynamic contact info types editable
 	* Feature: Added create - person wizard for autocompleter
 	* Feature: Added info pop-up for companies in contact-module
 	* Feature: Unused contact functions removed
