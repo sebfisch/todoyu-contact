@@ -365,11 +365,13 @@ class TodoyuContactPersonManager {
 	public static function getRoleIDs($idPerson) {
 		$idPerson	= Todoyu::personid($idPerson);
 
-		$field	= 'id_role';
-		$table	= 'ext_contact_mm_person_role';
-		$where	= 'id_person = ' . $idPerson;
+		$field	= 'r.id';
+		$tables	= 'ext_contact_mm_person_role mm, system_role role';
+		$where	= '		mm.id_person	= ' . $idPerson
+				. ' AND	r.id			= mm.id_role'
+				. ' AND	r.deleted		= 0';
 
-		return Todoyu::db()->getColumn($field, $table, $where);
+		return Todoyu::db()->getColumn($field, $tables, $where);
 	}
 
 
@@ -386,8 +388,9 @@ class TodoyuContactPersonManager {
 		$fields	= '	r.*';
 		$table	= '	ext_contact_mm_person_role mm,
 					system_role r';
-		$where	= '		id_person	= ' . $idPerson .
-				  ' AND	mm.id_role	= r.id';
+		$where	= '		id_person	= ' . $idPerson
+				. ' AND	mm.id_role	= r.id'
+				. ' AND r.deleted	= 0';
 
 		return Todoyu::db()->getArray($fields, $table, $where);
 	}
