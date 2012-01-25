@@ -372,7 +372,7 @@ class TodoyuContactPersonManager {
 				. ' AND r.id		= mm.id_role'
 				. ' AND r.deleted	= 0';
 
-		return TodoyuArray::flatten(Todoyu::db()->getArray($field, $tables, $where));
+		return Todoyu::db()->getColumn($field, $tables, $where, '', '', '', 'id_role');
 	}
 
 

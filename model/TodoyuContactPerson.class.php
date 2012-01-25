@@ -70,6 +70,28 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 
 
 	/**
+	 * Get last name
+	 *
+	 * @return	String
+	 */
+	public function getLastName() {
+		return $this->get('lastname');
+	}
+
+
+
+	/**
+	 * Get first name
+	 *
+	 * @return	String
+	 */
+	public function getFirstName() {
+		return $this->get('firstname');
+	}
+
+
+
+	/**
 	 * Check whether person is an admin
 	 *
 	 * @return	Boolean
@@ -125,7 +147,38 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	 * @return	Array
 	 */
 	public function getRoleIDs() {
-		return TodoyuContactPersonManager::getRoleIDs($this->id);
+		if( !$this->isInCache('roleids') ) {
+			$roleIDs	= TodoyuContactPersonManager::getRoleIDs($this->getID());
+
+			$this->addToCache('roleids', $roleIDs);
+		}
+
+		return $this->getCacheItem('roleids');
+	}
+
+
+
+	/**
+	 * Check whether user is assigned to role
+	 *
+	 * @param	Integer		$idRole
+	 * @return	Boolean
+	 */
+	public function hasRole($idRole) {
+		$idRole	= intval($idRole);
+
+		return in_array($idRole, $this->getRoleIDs());
+	}
+
+
+	/**
+	 * Check whether the user is assigned to any of the roles
+	 *
+	 * @param	Array	$roleIDs
+	 * @return	Boolean
+	 */
+	public function hasAnyRole(array $roleIDs) {
+		return sizeof(array_intersect($roleIDs, $this->getRoleIDs())) > 0;
 	}
 
 
