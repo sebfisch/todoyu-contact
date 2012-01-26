@@ -55,7 +55,7 @@ Todoyu.Ext.contact.Person =  {
 		var options = {
 			parameters: {
 				action:	'edit',
-				'person':	idPerson
+				person:	idPerson
 			},
 			onComplete: this.onEdit.bind(this, idPerson)
 		};
@@ -150,7 +150,7 @@ Todoyu.Ext.contact.Person =  {
 			var options = {
 				parameters: {
 					action:	'remove',
-					'person':	idPerson
+					person:	idPerson
 				},
 				onComplete: this.onRemoved.bind(this, idPerson)
 			};
@@ -230,7 +230,7 @@ Todoyu.Ext.contact.Person =  {
 			var options = {
 				parameters: {
 					action:		'getCompanyAddressOptions',
-					'idCompany':	selectedValue
+					idCompany:	selectedValue
 				},
 				onComplete: this.onUpdateCompanyAddressRecords.bind(this, $(idAddressList))
 			};
@@ -249,9 +249,9 @@ Todoyu.Ext.contact.Person =  {
 	 */
 	onUpdateCompanyAddressRecords: function(addressList) {
 		new Effect.Highlight($(addressList), {
-			'startcolor':	'#fffe98',
-			'endcolor':		'#ffffff',
-			'duration':		2.0
+			startcolor:	'#fffe98',
+			endcolor:	'#ffffff',
+			duration:	2.0
 		});
 	},
 
@@ -328,7 +328,7 @@ Todoyu.Ext.contact.Person =  {
 		var options = {
 			parameters: {
 				action:	'list',
-				'sword':	sword
+				sword:	sword
 			}
 		};
 
@@ -348,7 +348,7 @@ Todoyu.Ext.contact.Person =  {
 		var options	= {
 			parameters: {
 				action:	'detail',
-				'person':	idPerson
+				person:	idPerson
 			}
 		};
 
@@ -368,8 +368,8 @@ Todoyu.Ext.contact.Person =  {
 	saveWizard: function(form, target) {
 		$(form).request ({
 			parameters: {
-				action:	'saveWizard',
-				'idTarget': target
+				action:		'saveWizard',
+				idTarget:	target
 			},
 			onComplete: this.onSavedWizard.bind( this, target)
 		});
@@ -433,8 +433,8 @@ Todoyu.Ext.contact.Person =  {
 
 				var options = {
 					parameters: {
-						action:	'removeimage',
-						'idImage':	idImage
+						action:		'removeimage',
+						idImage:	idImage
 					}
 				};
 

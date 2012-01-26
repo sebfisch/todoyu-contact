@@ -69,8 +69,8 @@ Todoyu.Ext.contact.Upload = {
 		var options	= {
 			parameters: {
 				action:		'contactimageuploadform',
-				'idRecord':		idRecord,
-				'recordType':	recordType
+				idRecord:	idRecord,
+				recordType:	recordType
 			}
 		};
 		var target	= $$('button.uploadContactImage')[0].id;
@@ -132,7 +132,7 @@ Todoyu.Ext.contact.Upload = {
 		var options	= {
 			parameters: {
 				action:		'loadimage',
-				'idImage':		idImage
+				idImage:	idImage
 			}
 		};
 		var target	= form.down('div.fieldnamePreview img');
@@ -169,8 +169,8 @@ Todoyu.Ext.contact.Upload = {
 		this.removeUploadForm();
 
 		var info	= {
-			'filename': 	filename,
-			'maxFileSize':	maxFileSize
+			filename: 		filename,
+			maxFileSize:	maxFileSize
 		};
 
 		var msg		= '';
@@ -200,8 +200,8 @@ Todoyu.Ext.contact.Upload = {
 		var options = {
 			parameters: {
 				action:		'removeimage',
-				'idRecord':		idImage,
-				'recordType':	recordType
+				idRecord:	idImage,
+				recordType:	recordType
 			},
 			onComplete: this.refreshPreviewImage.bind(this, form, idImage, recordType)
 		};
