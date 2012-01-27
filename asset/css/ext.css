@@ -253,3 +253,8 @@ button.removeContactImage .icon {
 #contact-tabs .tabkey-contact .icon {
 	background:url(../img/icons.png) no-repeat 0 6px;
 }
+
+
+.fElement.typeRecords.recordsStaff .recordIcon {
+	background:url(../img/icons.png) no-repeat 2px 2px;
+}

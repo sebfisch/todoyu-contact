@@ -210,50 +210,9 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 	 * @return	Array
 	 */
 	protected function searchPersons(array $searchWords) {
-		$searchFieldsPerson	= array(
-			'p.username',
-			'p.email',
-			'p.firstname',
-			'p.lastname',
-			'p.shortname',
-			'p.title',
-			'p.comment'
-		);
-		$searchFieldsJobtype = array(
-			'jt.title'
-		);
-		$likePerson		= Todoyu::db()->buildLikeQuery($searchWords, $searchFieldsPerson);
-		$likeJobtypes	= Todoyu::db()->buildLikeQuery($searchWords, $searchFieldsJobtype);
-
-		$fields	= '	p.id,
-					CONCAT(p.lastname, \' \', p.firstname) as label';
-		$table	= '	ext_contact_person p
-						LEFT JOIN ext_contact_mm_company_person mmcp
-							ON p.id			= mmcp.id_person
-						LEFT JOIN ext_contact_company c
-							ON mmcp.id_company	= c.id
-						LEFT JOIN ext_contact_jobtype jt
-							ON mmcp.id_jobtype	= jt.id';
-		$where	= '		c.is_internal	= 1'
-				. ' AND c.deleted		= 0'
-				. ' AND p.deleted		= 0'
-				. ' AND (jt.deleted		= 0 OR jt.deleted IS NULL)'
-				. '	AND	('
-				. $likePerson
-				. ' OR '
-				. $likeJobtypes
-				. ')';
-		$group	= '	p.id';
-		$order	= '	p.lastname,
-					p.firstname';
-		$limit	= 10;
-
 		$selectedPersons= $this->getSelectedPersonIDs();
-		if( sizeof($selectedPersons) > 0 ) {
-			$where .= ' AND p.id NOT IN(' . implode(',', $selectedPersons) . ')';
-		}
 
-		return Todoyu::db()->getArray($fields, $table, $where, $group, $order, $limit);
+		return TodoyuContactPersonManager::searchStaff($searchWords, $selectedPersons, 10);
 	}
 
 

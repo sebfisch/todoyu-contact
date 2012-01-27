@@ -303,6 +303,30 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 		TodoyuContactImageManager::removeImage($idPerson, 'person');
 	}
 
+
+	/**
+	 * @param array $params
+	 * @return string
+	 */
+	public function staffListAction(array $params) {
+		$search		= trim($params['search']);
+		$searchWords= TodoyuArray::trimExplode(' ', $search, true);
+		$ignore		= TodoyuArray::intExplode(',', $params['ignore']);
+		$result		= TodoyuContactPersonManager::searchStaff($searchWords, $ignore);
+		$items		= array();
+
+		foreach($result as $person) {
+			$items[] = array(
+				'id'	=> $person['id'],
+				'label'	=> $person['label']
+			);
+		}
+
+		TodoyuHeader::sendTypeJSON();
+
+		return json_encode($items);
+	}
+
 }
 
 ?>

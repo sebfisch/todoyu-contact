@@ -512,6 +512,71 @@ class TodoyuContactPersonManager {
 
 
 	/**
+	 * Search persons which match the search words
+	 *
+	 * @param	Array		$searchWords
+	 * @param	Integer[]	$ignoreUserIDs
+	 * @param	Integer		$limit
+	 * @return	Array
+	 */
+	public static function searchStaff(array $searchWords, array $ignoreUserIDs = array(), $limit = 10) {
+		$ignoreUserIDs	= TodoyuArray::intval($ignoreUserIDs, true, true);
+
+		if( sizeof($searchWords) === 0 ) {
+			return array();
+		}
+
+		$searchFieldsPerson	= array(
+			'p.username',
+			'p.email',
+			'p.firstname',
+			'p.lastname',
+			'p.shortname',
+			'p.title',
+			'p.comment'
+		);
+		$searchFieldsJobtype = array(
+			'jt.title'
+		);
+		$likePerson		= Todoyu::db()->buildLikeQuery($searchWords, $searchFieldsPerson);
+		$likeJobtypes	= Todoyu::db()->buildLikeQuery($searchWords, $searchFieldsJobtype);
+
+		$fields	= '	p.id,
+					p.firstname,
+					p.lastname,
+					p.username,
+					CONCAT(p.lastname, \' \', p.firstname) as label';
+		$table	= '	ext_contact_person p
+						LEFT JOIN ext_contact_mm_company_person mmcp
+							ON p.id			= mmcp.id_person
+						LEFT JOIN ext_contact_company c
+							ON mmcp.id_company	= c.id
+						LEFT JOIN ext_contact_jobtype jt
+							ON mmcp.id_jobtype	= jt.id';
+		$where	= '		c.is_internal	= 1'
+				. ' AND c.deleted		= 0'
+				. ' AND p.deleted		= 0'
+				. ' AND (jt.deleted		= 0 OR jt.deleted IS NULL)'
+				. '	AND	('
+				. $likePerson
+				. ' OR '
+				. $likeJobtypes
+				. ')';
+		$group	= '	p.id';
+		$order	= '	p.lastname,
+					p.firstname';
+		$limit	= intval($limit);
+
+		if( sizeof($ignoreUserIDs) > 0 ) {
+			$where .= ' AND p.id NOT IN(' . implode(',', $ignoreUserIDs) . ')';
+		}
+
+		return Todoyu::db()->getArray($fields, $table, $where, $group, $order, $limit);
+	}
+
+
+
+	/**
 	 * Get list of all persons within given amount limit (unconditional search)
 	 *
 	 * @param	Integer		$limit

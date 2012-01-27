@@ -238,4 +238,10 @@ TodoyuCreateWizardManager::addWizard('company', array(
 	)
 ));
 
+
+Todoyu::$CONFIG['FORM']['TYPES']['recordsStaff'] = array(
+	'class'		=> 'TodoyuContactFormElement_RecordsStaff',
+	'template'	=> 'core/view/form/FormElement_Records.tmpl'
+);
+
 ?>
