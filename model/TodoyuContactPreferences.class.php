@@ -96,7 +96,7 @@ class TodoyuContactPreferences {
 	public static function getActiveTab() {
 		$tab	= self::getPref('tab');
 
-		if( $tab === false ) {
+		if( !$tab ) {
 			$tabs	= TodoyuTabManager::getAllowedTabs(Todoyu::$CONFIG['EXT']['contact']['tabs']);
 			$tab	= $tabs[0]['id'];
 		}

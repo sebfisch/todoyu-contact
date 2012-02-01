@@ -49,17 +49,17 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	public function getLabel($showEmail = false, $lastnameFirst = true, $showTitle = false, $idRole = 0) {
 		 $label	= $this->getFullName($lastnameFirst);
 
-		if( $showTitle === true) {
+		if( $showTitle ) {
 			/** @var	TodoyuRole		$role  */
 			$role	= TodoyuRoleManager::getRole($idRole);
 
 			$label	.= ', ' . $role->getTitle();
 		}
 
-		 if( $showEmail === true ) {
+		 if( $showEmail ) {
 			$email	= $this->getEmail(true);
 
-			if( $email !== false ) {
+			if( $email ) {
 				$label	.= ' (' . $this->getEmail() . ')';
 			}
 		}
@@ -136,7 +136,7 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isExternal() {
-		return $this->isInternal() === false;
+		return !$this->isInternal();
 	}
 
 
@@ -315,7 +315,7 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	public function getLocale($system = true) {
 		$locale	= TodoyuContactPreferences::getLocale();
 
-		if( $locale === false && $system ) {
+		if( !$locale && $system ) {
 			$locale	= Todoyu::getLocale();
 		}
 
@@ -333,7 +333,7 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 		$field	= '	mm.id_company';
 		$table	= '	ext_contact_mm_company_person mm,
 					ext_contact_company c';
-		$where	= '		mm.id_person	= ' . $this->id . '
+		$where	= '		mm.id_person	= ' . $this->getID() . '
 					AND	mm.id_company	= c.id
 					AND	c.deleted		= 0';
 

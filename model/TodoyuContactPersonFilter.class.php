@@ -174,17 +174,21 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 		$filterName		= $this->Filter_Name($value, $negate);
 		$filterCompany	= $this->Filter_Company($value, $negate);
 
-		if( $filterName === false ) {
-			$filterName = array('tables'=>array());
+		if( !$filterName ) {
+			$filterName = array(
+				'tables'=>array()
+			);
 		}
-		if( $filterCompany === false ) {
-			$filterCompany = array('tables'=>array());
+		if( !$filterCompany ) {
+			$filterCompany = array(
+				'tables' => array()
+			);
 		}
 
 		$tables	= TodoyuArray::mergeUnique($filterName['tables'], $filterCompany['tables']);
-		$join	= array_unique((array)$filterName['join'], (array)$filterCompany['join']);
+		$join	= TodoyuArray::mergeUnique($filterName['join'], $filterCompany['join']);
 
-		if( array_key_exists('where', $filterName) && array_key_exists('where', $filterCompany) ) {
+		if( isset($filterName['where']) && isset($filterCompany['where']) ) {
 			$where = '((' . $filterName['where'] . ') OR (' . $filterCompany['where'] . '))';
 		} else {
 			$where = $filterName['where'] . $filterCompany['where'];

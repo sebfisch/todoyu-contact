@@ -403,9 +403,9 @@ class TodoyuContactRenderer {
 			$withDetails = TodoyuContactPreferences::isPersonDetailsExpanded($idPerson);
 		}
 
-		if( $withDetails === true ) {
+//		if( $withDetails ) {
 //			$data['details'] = self::renderPersonDetails($idPerson);
-		}
+//		}
 
 		return Todoyu::render($tmpl, $data);
 	}

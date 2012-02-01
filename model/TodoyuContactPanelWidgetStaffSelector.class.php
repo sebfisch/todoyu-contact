@@ -80,7 +80,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 		$searchList	= parent::renderContent($listOnly);
 		$selection	= '';
 
-		if( $listOnly === false ) {
+		if( !$listOnly ) {
 			$selection	= $this->renderSelection();
 		}
 
@@ -318,13 +318,8 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 	 */
 	public function getSelection() {
 		if( is_null($this->selection) ) {
-			$pref	= TodoyuContactPreferences::getPref($this->selectionPref, 0, AREA);
-
-			if( $pref === false || $pref === '' ) {
-				$this->selection = array();
-			} else {
-				$this->selection = explode(',', $pref);
-			}
+			$pref			= TodoyuContactPreferences::getPref($this->selectionPref, 0, AREA);
+			$this->selection= TodoyuArray::trimExplode(',', $pref);
 		}
 
 		return $this->selection;
