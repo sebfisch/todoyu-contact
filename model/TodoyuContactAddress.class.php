@@ -38,14 +38,47 @@ class TodoyuContactAddress extends TodoyuBaseObject {
 
 
 	/**
+	 * Get address type ID
+	 *
+	 * @return	Integer
+	 */
+	public function getAddressTypeID() {
+		return $this->getInt('id_addresstype');
+	}
+
+
+
+	/**
+	 * Get timezone ID
+	 *
+	 * @return	Integer
+	 */
+	public function getTimezoneID() {
+		return $this->getInt('id_timezone');
+	}
+
+
+
+	/**
 	 * Get timezone of address
 	 *
-	 * @return	String
+	 * @return	String|Boolean
 	 */
 	public function getTimezone() {
-		$timezone	= TodoyuStaticRecords::getTimezone($this->get('id_timezone'));
+		$timezone	= TodoyuStaticRecords::getTimezone($this->getTimezoneID());
 
 		return is_array($timezone) ? $timezone['timezone'] : false;
+	}
+
+
+
+	/**
+	 * Get country ID
+	 *
+	 * @return	Integer
+	 */
+	public function getCountryID() {
+		return $this->getInt('id_country');
 	}
 
 
@@ -56,18 +89,130 @@ class TodoyuContactAddress extends TodoyuBaseObject {
 	 * @return	TodoyuCountry
 	 */
 	public function getCountry() {
-		return TodoyuCountryManager::getCountry($this->get('id_country'));
+		return TodoyuCountryManager::getCountry($this->getCountryID());
 	}
 
 
 
 	/**
-	 * Get address holidayset
+	 * Get holiday set ID
+	 *
+	 * @return	Integer
+	 */
+	public function getHolidaySetID() {
+		return $this->getInt('id_holidayset');
+	}
+
+
+
+	/**
+	 * Get holidayset
 	 *
 	 * @return	TodoyuCalendarHolidaySet
 	 */
 	public function getHolidaySet() {
-		return TodoyuCalendarHolidaySetManager::getHolidaySet($this->get('id_holidayset'));
+		return TodoyuCalendarHolidaySetManager::getHolidaySet($this->getHolidaySetID());
+	}
+
+
+
+	/**
+	 * Get street
+	 *
+	 * @return	String
+	 */
+	public function getStreet() {
+		return $this->get('street');
+	}
+
+
+
+	/**
+	 * Get postbox
+	 *
+	 * @return	String
+	 */
+	public function getPostbox() {
+		return $this->get('postbox');
+	}
+
+
+
+	/**
+	 * Get city
+	 *
+	 * @return	String
+	 */
+	public function getCity() {
+		return $this->get('city');
+	}
+
+
+
+	/**
+	 * Get region ID
+	 *
+	 * @return	Integer
+	 */
+	public function getRegionID() {
+		return $this->getInt('region');
+	}
+
+
+
+	/**
+	 * Get region data
+	 *
+	 * @return	Array
+	 */
+	public function getRegion() {
+		return TodoyuStaticRecords::getRecord('country_zone', $this->getRegionID());
+	}
+
+
+
+	/**
+	 * Get label for region
+	 *
+	 * @return	String
+	 */
+	public function getRegionLabel() {
+		$region	= $this->getRegion();
+
+		return $region['id'] > 0 ? TodoyuStaticRecords::getLabel('core.static_country_zone', $region['iso_alpha3_country'] . '.' . $region['code']) : '';
+	}
+
+
+
+	/**
+	 * Get zip
+	 *
+	 * @return	String
+	 */
+	public function getZip() {
+		return $this->get('zip');
+	}
+
+
+
+	/**
+	 * Get comment
+	 *
+	 * @return	String
+	 */
+	public function getComment() {
+		return $this->get('comment');
+	}
+
+
+
+	/**
+	 * Check whether address is marked as preferred
+	 *
+	 * @return	Boolean
+	 */
+	public function isPreferred() {
+		return $this->getInt('is_preferred') === 1;
 	}
 
 
@@ -85,6 +230,7 @@ class TodoyuContactAddress extends TodoyuBaseObject {
 
 	/**
 	 * Load foreign data
+	 *
 	 */
 	protected function loadForeignData() {
 		$this->data['country']	= $this->getCountry()->getTemplateData();
@@ -105,18 +251,6 @@ class TodoyuContactAddress extends TodoyuBaseObject {
 		}
 
 		return parent::getTemplateData();
-	}
-
-
-
-	/**
-	 * Returns the label of the selected region of the address
-	 *
-	 * @return	String
-	 */
-	public function getRegionLabel() {
-		$region	= TodoyuStaticRecords::getRecord('country_zone', $this->data['region']);
-		return $region->data['id'] > 0 ? TodoyuStaticRecords::getLabel('core.static_country_zone', $region['iso_alpha3_country'] . '.' . $region['code']) : '';
 	}
 
 }

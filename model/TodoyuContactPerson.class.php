@@ -119,10 +119,18 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isInternal() {
-		if( ! isset($this->cache['isInternal']) ) {
+		if( !isset($this->cache['isInternal']) ) {
 			$companies	= $this->getCompanies();
-			$internals	= TodoyuArray::getColumn($companies, 'is_internal');
-			$this->cache['isInternal'] = array_sum($internals) > 0;
+			$isInternal	= false;
+
+			foreach($companies as $company) {
+				if( $company->isInternal() ) {
+					$isInternal = true;
+					break;
+				}
+			}
+
+			$this->cache['isInternal'] = $isInternal;
 		}
 
 		return $this->cache['isInternal'];
@@ -345,17 +353,19 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	/**
 	 * Get all companies of the person
 	 *
-	 * @return	Array
+	 * @return	TodoyuContactCompany[]
 	 */
 	public function getCompanies() {
-		$fields	= '	*';
+		$fields	= '	c.id';
 		$table	= '	ext_contact_mm_company_person mm,
 					ext_contact_company c';
-		$where	= '	mm.id_person	= ' . $this->id . ' AND
+		$where	= '	mm.id_person	= ' . $this->getID() . ' AND
 					mm.id_company	= c.id AND
 					c.deleted		= 0';
 
-		return Todoyu::db()->getArray($fields, $table, $where);
+		$companyIDs	= Todoyu::db()->getColumn($fields, $table, $where, '', '', '', 'id');
+
+		return TodoyuRecordManager::getRecordList('TodoyuContactCompany', $companyIDs);
 	}
 
 

@@ -131,10 +131,20 @@ class TodoyuContactCompany extends TodoyuBaseObject {
 	/**
 	 * Get all company address records
 	 *
-	 * @return	Array
+	 * @return	TodoyuContactAddress[]
 	 */
 	public function getAddresses() {
-		return TodoyuContactCompanyManager::getCompanyAddressRecords($this->getID());
+		$fields	= '	a.id';
+		$tables	= '	ext_contact_address a,
+					ext_contact_mm_company_address mm';
+		$where	= '		mm.id_address	= a.id'
+				. ' AND	mm.id_company	= ' . $this->getID()
+				. ' AND	a.deleted		= 0';
+		$order	= ' a.is_preferred DESC';
+
+		$addressIDs	= Todoyu::db()->getColumn($fields, $tables, $where, '', $order, '', 'id');
+
+		return TodoyuRecordManager::getRecordList('TodoyuContactAddress', $addressIDs);
 	}
 
 
