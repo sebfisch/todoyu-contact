@@ -5,6 +5,7 @@ contact 1.2.0 - not released yet
 	* Bugfix: Fixed method to fetch persons with birthdays in a range
 	* Added: Disabled person items in staffselector can be selected on [Enter] when highlighted
 	* Changed: TodoyuContactCompany::getAddresses() return now a list of address objects
+	* Changed: TodoyuContactPerson::getCompanies() return now a list of company objects
 
 contact 1.1.4 - 2011-12-13
 	* Bugfix: Population of region field in contact for IE
