@@ -330,7 +330,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * @param	{Ajax.Response}	response
 	 */
 	onSelectionSaved: function(items, response) {
-		Todoyu.PanelWidget.fire('staffselector', items);
+		Todoyu.PanelWidget.fire('staffselector', response.responseJSON);
 	},
 
 

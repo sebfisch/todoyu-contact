@@ -233,7 +233,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 	/**
 	 * Get selected persons. Based on selected persons and person with a selected jobtype
 	 *
-	 * @return	Array
+	 * @return	Integer[]
 	 */
 	public function getSelectedPersons() {
 		$selection	= $this->getSelection();
@@ -256,7 +256,9 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 			}
 		}
 
-		return array_unique($persons);
+		$persons	= array_unique($persons);
+
+		return TodoyuArray::intval($persons);
 	}
 
 

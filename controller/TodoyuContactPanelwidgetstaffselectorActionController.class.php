@@ -56,6 +56,8 @@ class TodoyuContactPanelwidgetstaffselectorActionController extends TodoyuAction
 
 
 	/**
+	 * Save selected persons
+	 *
 	 * @param	Array	$params
 	 */
 	public function saveAction(array $params) {
@@ -66,6 +68,14 @@ class TodoyuContactPanelwidgetstaffselectorActionController extends TodoyuAction
 		 * @var	TodoyuContactPanelWidgetStaffSelector	$selectorWidget
 		 */
 		$selectorWidget->saveSelection($items);
+
+			// Send back current selection
+		TodoyuHeader::sendTypeJSON();
+
+		echo json_encode(array(
+			'items'		=> $items,
+			'persons'	=> $selectorWidget->getSelectedPersons()
+		));
 	}
 
 }
