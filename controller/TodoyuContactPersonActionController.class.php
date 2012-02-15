@@ -71,7 +71,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 		TodoyuContactPreferences::saveSearchWord($sword);
 
 		$tabs	= TodoyuContactRenderer::renderTabs('person');
-		$content= TodoyuListingRenderer::render('contact', 'person', 0, $sword);
+		$content= TodoyuListingRenderer::render('contact', 'person', 0, false, array('sword' => $sword));
 
 		return TodoyuRenderer::renderContent($content, $tabs);
 	}
@@ -89,7 +89,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 
 		$offset	= intval($params['offset']);
 
-		return TodoyuListingRenderer::render('contact', 'person', $offset);
+		return TodoyuListingRenderer::render('contact', 'person', $offset, false);
 	}
 
 

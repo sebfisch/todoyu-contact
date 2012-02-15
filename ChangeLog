@@ -1,6 +1,7 @@
 todoyu contact extension changelog
 
 contact 1.2.0 - not released yet
+	* Changed: Adapted changes to core-change from r8715
 	* Bugfix: Person form did still list deleted assigned roles
 	* Bugfix: Fixed method to fetch persons with birthdays in a range
 	* Added: Disabled person items in staffselector can be selected on [Enter] when highlighted

@@ -109,8 +109,8 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 	 * @param	String		$searchWord
 	 * @return	Array
 	 */
-	public static function getCompanyListingData($size, $offset = 0, $searchWord = '') {
-		$companies	= TodoyuContactCompanyManager::searchCompany($searchWord, null, $size, $offset);
+	public static function getCompanyListingData($size, $offset = 0, array $params) {
+		$companies	= TodoyuContactCompanyManager::searchCompany($params['sword'], null, $size, $offset);
 
 		$data	= array(
 			'rows'	=> array(),

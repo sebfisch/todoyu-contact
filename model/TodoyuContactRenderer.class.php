@@ -189,7 +189,7 @@ class TodoyuContactRenderer {
 	public static function renderPersonList($searchWord = '', $offset = 0) {
 		Todoyu::restrict('contact', 'general:area');
 
-		return TodoyuListingRenderer::render('contact', 'person', $offset, $searchWord);
+		return TodoyuListingRenderer::render('contact', 'person', $offset, false, array('sword' => $searchWord));
 	}
 
 
@@ -204,7 +204,7 @@ class TodoyuContactRenderer {
 	public static function renderCompanyList($searchWord = '', $offset = 0) {
 		Todoyu::restrict('contact', 'general:area');
 
-		return TodoyuListingRenderer::render('contact', 'company', $offset, $searchWord);
+		return TodoyuListingRenderer::render('contact', 'company', $offset, false, array('sword' => $searchWord));
 	}
 
 
