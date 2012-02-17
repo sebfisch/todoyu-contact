@@ -452,6 +452,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * Get all selected elements (persons). Gets also group and other types
 	 *
 	 * @method	getSelectedPersons
+	 * @return	{Array}
 	 */
 	getSelectedPersons: function() {
 		var items	= this.getSelectedItems();
