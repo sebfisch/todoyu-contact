@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <labels>
-	<label index="toggle.multiselect.title">Пребаци између појединачног и вишеструког избора</label>
 	<label index="title">Особље</label>
-	<label index="selectAllStaff">Изабери цело особље</label>
-	<label index="byFunction">По запошљењу:</label>
-	<label index="noFunction">Без запошљења</label>
+	<label index="selection">Активно изабрато</label>
+	<label index="selection.empty">Ништа није изабрато. Користи претрагу за додавање особа и групе. </label>
 </labels>
