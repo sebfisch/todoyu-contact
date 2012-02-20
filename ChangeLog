@@ -8,6 +8,7 @@ contact 1.2.0 - not released yet
 	* Changed: TodoyuContactCompany::getAddresses() return now a list of address objects
 	* Changed: TodoyuContactPerson::getCompanies() return now a list of company objects
 	* Changed: StaffSelector panelwidget return the selected items and the selected persons as json on the save request (given as parameter in panel widget event)
+	* Changed: Use normal taskdata hook to add contact task attributes (instead of taskdataattributes hook which will get removed)
 
 contact 1.1.4 - 2011-12-13
 	* Bugfix: Population of region field in contact for IE
