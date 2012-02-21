@@ -434,6 +434,32 @@ class TodoyuContactPersonManager {
 
 
 	/**
+	 * Check whether given person has given right
+	 *
+	 * @param	String	$extKey
+	 * @param	String	$right
+	 * @param	Integer	$idPerson
+	 * @return	Boolean
+	 */
+	public static function isAllowed($extKey, $right, $idPerson = 0) {
+		$idPerson	= Todoyu::personid($idPerson);
+		$person		= self::getPerson($idPerson);
+
+		if( $person->isAdmin() ) {
+			return true;
+		}
+
+			// Get all rights of any role of person
+		$roleIDs		= self::getRoleIDs($idPerson);
+		$personRights	= TodoyuArray::flatten(TodoyuRightsManager::getExtRoleRights($extKey, $roleIDs));
+
+			// Check whether the given right is there
+		return in_array($right, $personRights);
+	}
+
+
+
+	/**
 	 * Get IDs of internal persons (staff)
 	 *
 	 * @return	Array
