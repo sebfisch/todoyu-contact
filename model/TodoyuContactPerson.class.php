@@ -114,6 +114,17 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 
 
 	/**
+	 * Get password
+	 *
+	 * @return	String
+	 */
+	public function getPassword() {
+		return $this->get('password');
+	}
+
+
+
+	/**
 	 * Check whether a person works in a internal company
 	 *
 	 * @return	Boolean
