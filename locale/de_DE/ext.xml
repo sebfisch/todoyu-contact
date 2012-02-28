@@ -32,7 +32,7 @@
 	<label index="person.attr.id">Personen ID</label>
 	<label index="person.attr.salutation">Anrede</label>
 	<label index="person.attr.salutation.m">Herr</label>
-	<label index="person.attr.salutation.f">Frau</label>
+	<label index="person.attr.salutation.w">Frau</label>
 	<label index="person.attr.birthdate">Geburtsdatum</label>
 	<label index="person.attr.firstname">Vorname</label>
 	<label index="person.attr.lastname">Nachname</label>

@@ -23,7 +23,7 @@
 	<label index="person.saved.error">Errore durante il salvataggio della persona</label>
 	<label index="person.attr.salutation">Saluto</label>
 	<label index="person.attr.salutation.m">Sig.</label>
-	<label index="person.attr.salutation.f">Sig.ra</label>
+	<label index="person.attr.salutation.w">Sig.ra</label>
 	<label index="person.attr.birthdate">Data di nascita</label>
 	<label index="person.attr.firstname">Nome</label>
 	<label index="person.attr.lastname">Cognome</label>

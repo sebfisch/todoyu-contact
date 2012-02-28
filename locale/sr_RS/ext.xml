@@ -32,7 +32,7 @@
 	<label index="person.attr.id">Шифра особе</label>
 	<label index="person.attr.salutation">Ословљављање</label>
 	<label index="person.attr.salutation.m">Господин</label>
-	<label index="person.attr.salutation.f">Госпођа</label>
+	<label index="person.attr.salutation.w">Госпођа</label>
 	<label index="person.attr.birthdate">Датум рођења</label>
 	<label index="person.attr.firstname">Име</label>
 	<label index="person.attr.lastname">Презиме</label>

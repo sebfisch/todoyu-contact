@@ -23,7 +23,7 @@
 	<label index="person.saved.error">Não Foi Possível Salvar o Contato</label>
 	<label index="person.attr.salutation">Saudação</label>
 	<label index="person.attr.salutation.m">Sr</label>
-	<label index="person.attr.salutation.f">Sra</label>
+	<label index="person.attr.salutation.w">Sra</label>
 	<label index="person.attr.birthdate">Aniversário</label>
 	<label index="person.attr.firstname">Nome</label>
 	<label index="person.attr.lastname">Sobrenome</label>

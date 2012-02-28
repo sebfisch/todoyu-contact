@@ -23,7 +23,7 @@
 	<label index="person.saved.error">Uložení osoby selhalo</label>
 	<label index="person.attr.salutation">Oslovení</label>
 	<label index="person.attr.salutation.m">Pán</label>
-	<label index="person.attr.salutation.f">Paní</label>
+	<label index="person.attr.salutation.w">Paní</label>
 	<label index="person.attr.birthdate">Datum narození</label>
 	<label index="person.attr.firstname">Jméno</label>
 	<label index="person.attr.lastname">Příjmení</label>

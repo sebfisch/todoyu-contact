@@ -23,7 +23,7 @@
 	<label index="person.saved.error">Opslaan van persoon mislukt</label>
 	<label index="person.attr.salutation">Aanhef</label>
 	<label index="person.attr.salutation.m">Dhr.</label>
-	<label index="person.attr.salutation.f">Mw.</label>
+	<label index="person.attr.salutation.w">Mw.</label>
 	<label index="person.attr.birthdate">Geboortedatum</label>
 	<label index="person.attr.firstname">Voornaam</label>
 	<label index="person.attr.lastname">Achternaam</label>

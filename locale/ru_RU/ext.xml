@@ -31,7 +31,7 @@
 	<label index="person.attr.id">ID персоны</label>
 	<label index="person.attr.salutation">Обращение</label>
 	<label index="person.attr.salutation.m">Г-н</label>
-	<label index="person.attr.salutation.f">Г-жа</label>
+	<label index="person.attr.salutation.w">Г-жа</label>
 	<label index="person.attr.birthdate">Дата рождения</label>
 	<label index="person.attr.firstname">Имя</label>
 	<label index="person.attr.lastname">Фамилия</label>

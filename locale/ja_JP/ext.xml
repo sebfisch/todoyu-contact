@@ -31,7 +31,7 @@
 	<label index="person.attr.id">個人 ID</label>
 	<label index="person.attr.salutation">敬称</label>
 	<label index="person.attr.salutation.m">Mr</label>
-	<label index="person.attr.salutation.f">Ms</label>
+	<label index="person.attr.salutation.w">Ms</label>
 	<label index="person.attr.birthdate">誕生日</label>
 	<label index="person.attr.firstname">名</label>
 	<label index="person.attr.lastname">姓</label>
