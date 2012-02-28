@@ -111,11 +111,10 @@ class TodoyuContactPersonRights {
 	 * @return	Array
 	 */
 	public static function getPersonIDsAllowedToBeSeen($withAccount = false) {
-		$fields	= 'id';
 		$table	= TodoyuContactPersonManager::TABLE;
 		$where	= self::getAllowedToBeSeenPersonsWhereClause($withAccount);
 
-		return Todoyu::db()->getColumn($fields, $table, $where, '', '', '', 'id');
+		return Todoyu::db()->getColumn('id', $table, $where);
 	}
 
 

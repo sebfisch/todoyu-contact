@@ -386,10 +386,9 @@ class TodoyuContactRenderer {
 	 * Render general person header
 	 *
 	 * @param	Integer		$idPerson
-	 * @param	Boolean		$withDetails
 	 * @return	String
 	 */
-	public static function renderPersonHeader($idPerson, $withDetails = null) {
+	public static function renderPersonHeader($idPerson) {
 		$idPerson	= intval($idPerson);
 		$person		= TodoyuContactPersonManager::getPerson($idPerson);
 
@@ -397,15 +396,6 @@ class TodoyuContactRenderer {
 
 		$data	= $person->getTemplateData();
 		$data	= TodoyuHookManager::callHookDataModifier('contact', 'person.renderHeader', $data);
-
-			// If not forced, check preference
-		if( is_null($withDetails) ) {
-			$withDetails = TodoyuContactPreferences::isPersonDetailsExpanded($idPerson);
-		}
-
-//		if( $withDetails ) {
-//			$data['details'] = self::renderPersonDetails($idPerson);
-//		}
 
 		return Todoyu::render($tmpl, $data);
 	}

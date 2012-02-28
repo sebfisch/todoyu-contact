@@ -305,10 +305,10 @@ class TodoyuContactViewHelper {
 			krsort($favoriteCountries);
 
 			array_unshift($countryOptions, array(
-				'value' => 'disabled',
-				'label' => '------------------------',
-				'disabled' => true)
-			);
+				'value'		=> 'disabled',
+				'label'		=> '------------------------',
+				'disabled'	=> true
+			));
 
 			foreach($favoriteCountries as $favoriteCountry) {
 				array_unshift($countryOptions, $favoriteCountry);
@@ -429,8 +429,8 @@ class TodoyuContactViewHelper {
 		$optGroups	= array();
 
 		foreach($timezones as $timezone) {
-			$tzParts	= explode('/', $timezone['timezone']);
-			$optGroups[$tzParts[0]][] = array(
+			list($tzRegion)	= explode('/', $timezone['timezone']);
+			$optGroups[$tzRegion][] = array(
 				'value'	=> $timezone['id'],
 				'label'	=> $timezone['timezone']
 			);

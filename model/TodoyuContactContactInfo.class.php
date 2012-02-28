@@ -43,7 +43,7 @@ class TodoyuContactContactInfo extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getContactInfoTypeID() {
-		return intval($this->get('id_contactinfotype'));
+		return $this->getInt('id_contactinfotype');
 	}
 
 
