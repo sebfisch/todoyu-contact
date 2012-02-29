@@ -79,7 +79,7 @@ class TodoyuContactCompanyExportManager {
 			Todoyu::Label('contact.ext.company.attr.id')				=> $company->getID(),
 			Todoyu::Label('core.global.date_create')					=> TodoyuTime::format($company->date_create),
 			Todoyu::Label('core.global.date_update')					=> TodoyuTime::format($company->date_update),
-			Todoyu::Label('core.global.id_person_create')				=> $company->getCreatePerson()->getFullName(),
+			Todoyu::Label('core.global.id_person_create')				=> $company->getPersonCreate()->getFullName(),
 
 			Todoyu::Label('contact.ext.company.attr.title')			=> $company->getTitle(),
 			Todoyu::Label('contact.ext.company.attr.shortname')		=> $company->getShortname(),
