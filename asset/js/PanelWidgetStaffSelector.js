@@ -101,22 +101,39 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 */
 	onInputKeyUps: function(event) {
 		if( event.keyCode === Event.KEY_RETURN ) {
-				// Add "hot" item to selection
-			var firstItem	= this.list.down('li');
-			if( firstItem !== undefined ) {
-				this.addItemToSelection(firstItem);
-				this.input.select();
-				this.saveSelection();
-				this.markFirstAsHot();
-			} else {
-					// Activate first highlighted item from selection
-				var firstHighlighted = this.getFirstHighlighted();
-				if( firstHighlighted ) {
-					firstHighlighted.toggleClassName('disabled');
-					this.saveSelection();
-				}
-			}
+			this.onReturnKey();
 		}
+	},
+
+
+
+	/**
+	 * Handle return key press in search field
+	 *
+	 */
+	onReturnKey: function() {
+			// Add "hot" item to selection
+		var firstItem	= this.list.down('li');
+		if( firstItem ) {
+			this.addItemToSelection(firstItem);
+			this.input.select();
+			this.saveSelection();
+			this.markFirstAsHot();
+		} else {
+				// Activate first highlighted item from selection
+			this.toggleMatchingElementsInSelection();
+			this.saveSelection();
+		}
+	},
+
+
+
+	/**
+	 * Toggle all status for all elements which match the search text
+	 *
+	 */
+	toggleMatchingElementsInSelection: function() {
+		this.getMatchingSelectionElements(this.getSearchText()).invoke('toggleClassName', 'disabled');
 	},
 
 
@@ -124,16 +141,13 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	/**
 	 * Get first highlighted (if any) item from persons selection
 	 *
-	 * @method	getFirstHighlighted
-	 * @return	{Element|Boolean}
+	 * @method	getAllSelectedAndHighlightedItems
+	 * @return	{Array}
 	 */
-	getFirstHighlighted: function() {
-		var highlighted = this.selection.select('li.disabled').collect(function(item) {
-    		return item.style.backgroundColor !== '' ? item : null;
+	getAllSelectedAndHighlightedItems: function() {
+		return this.selection.select('li').findAll(function(item) {
+    		return item.style.backgroundColor !== '';
 		});
-		highlighted = highlighted.compact();
-
-		return ( highlighted.size() > 0 ) ? highlighted.first() : false;
 	},
 
 
@@ -289,7 +303,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * @return	{Boolean}
 	 */
 	isSelectionEmpty: function() {
-		return this.selection.down('li') === undefined;
+		return !this.selection.down('li');
 	},
 
 
@@ -375,7 +389,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 */
 	onEmptyResult: function($super, response) {
 		if( this.getSearchText().strip() !== '' ) {
-			this.highlightSelectedItems(this.getSearchText());
+			this.highlightMatchingSelectedItems(this.getSearchText());
 		}
 	},
 
@@ -384,20 +398,31 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	/**
 	 * Highlight all already selected items which match the current search word
 	 *
-	 * @method	highlightSelectedItems
+	 * @method	highlightMatchingSelectedItems
 	 * @param	{String}	search
 	 */
-	highlightSelectedItems: function(search) {
-		var pattern	= new RegExp(search, 'i');
-		var matches = this.selection.select('li').findAll(function(li){
-			var name = li.down('a').innerHTML.stripTags().strip();
-			return pattern.test(name);
-		});
-
-		matches.each(function(li){
+	highlightMatchingSelectedItems: function(search) {
+		this.getMatchingSelectionElements(search).each(function(li){
 			li.highlight({
 				duration:3.0
 			});
+		});
+	},
+
+
+
+	/**
+	 * Get elements in selection which match the search word
+	 *
+	 * @param	{String}	search
+	 * @return	{Element[]}
+	 */
+	getMatchingSelectionElements: function(search) {
+		var pattern	= new RegExp(search, 'i');
+
+		return this.selection.select('li').findAll(function(li){
+			var name = li.down('a').innerHTML.stripTags().strip();
+			return pattern.test(name);
 		});
 	},
 
