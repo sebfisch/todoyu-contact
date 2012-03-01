@@ -30,7 +30,6 @@ class TodoyuContactFormElement_RecordsStaff extends TodoyuFormElement_Records {
 	 * Init the object with special person config
 	 */
 	protected function init() {
-		TodoyuDebug::printInFirebug('init');
 		$this->initRecords('staff', 'contact', 'person', 'staffList');
 	}
 
