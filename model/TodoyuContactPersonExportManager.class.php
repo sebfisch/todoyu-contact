@@ -69,6 +69,7 @@ class TodoyuContactPersonExportManager {
 	/**
 	 * Parses person-data for export
 	 *
+	 * @todo	use person getters instead of directly accessing properties
 	 * @param	TodoyuContactPerson		$person
 	 * @return	Array
 	 */
