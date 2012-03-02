@@ -154,6 +154,35 @@ class TodoyuContactRenderer {
 
 
 	/**
+	 * @param	Array		$companyIDs
+	 * @param	Bool		$expandIfSingle
+	 * @return	String
+	 */
+	public static function renderCompanyListingSearch(array $companyIDs, $expandIfSingle = false) {
+		$companyIDs	= TodoyuArray::intval($companyIDs, true, true);
+
+		$companies	= array();
+		foreach($companyIDs as $idCompany) {
+			$company	= TodoyuContactCompanyManager::getCompany($idCompany);
+
+			$companyData	= $company->getTemplateData();
+			$companyData	= array_merge($companyData, TodoyuContactCompanySearch::getCompanyRowData($idCompany));
+
+			$companies[$idCompany]	= $companyData;
+		}
+
+		$tmpl	= 'ext/projectbillingcompanysearch/view/company-list.tmpl';
+		$data	= array(
+			'companyIDs'=> $companyIDs,
+			'companies'	=> $companies,
+		);
+
+		return Todoyu::render($tmpl, $data);
+	}
+
+
+
+	/**
 	 * Render edit form for given contact record of given type
 	 *
 	 * @param	String	$type
@@ -195,6 +224,16 @@ class TodoyuContactRenderer {
 
 
 	/**
+	 * @param	Array		$personIDs
+	 * @return	String
+	 */
+	public static function renderPersonListingSearch(array $personIDs) {
+		return TodoyuListingRenderer::render('contact', 'personSearch', 0, true, array('personIDs' => $personIDs));
+	}
+
+
+
+	/**
 	 * Render company list
 	 *
 	 * @param	String		$searchWord
@@ -205,6 +244,16 @@ class TodoyuContactRenderer {
 		Todoyu::restrict('contact', 'general:area');
 
 		return TodoyuListingRenderer::render('contact', 'company', $offset, false, array('sword' => $searchWord));
+	}
+
+
+
+	/**
+	 * @param	Integer[]	$companyIDs
+	 * @return	String
+	 */
+	public static function renderCompanyListSearch($companyIDs){
+		return TodoyuListingRenderer::render('contact', 'company', 0, true, array('companyIDs' => $companyIDs));
 	}
 
 

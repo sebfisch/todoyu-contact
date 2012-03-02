@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labels>
+	<label index="company.label">Firma</label>
+	<label index="person.label">Person</label>
+	<label index="fulltext">Volltext</label>
+</labels>

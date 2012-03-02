@@ -81,6 +81,31 @@ span.wizardIcon.createWizardCompany	{
 	background:url(../img/icons.png) no-repeat 3px -504px !important;
 }
 
+	/* Company search */
+#search-tab-company span.icon {
+	background:url(../img/icons.png) transparent 0 -146px;
+}
+
+#navi-main-list-search li.itemSearchCompany a {
+	background:transparent url(../img/icons.png) 4px -146px no-repeat !important;
+}
+
+
+
+	/* Person search */
+#search-tab-person span.icon {
+	background:url(../img/icons.png) transparent 0 4px;
+}
+
+#navi-main-list-search li.itemSearchPerson a {
+	background:transparent url(../img/icons.png) 4px 4px no-repeat !important;
+}
+
+#navi-main-list-search li.itemSearchPerson a:hover,
+#navi-main-list-search li.itemSearchCompany a:hover {
+	background-color:#eff3e5 !important;
+}
+
 
 
 /* -------------------------

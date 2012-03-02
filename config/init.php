@@ -112,6 +112,8 @@ TodoyuFormHook::registerLoadData('ext/contact/config/form/address.xml', 'TodoyuC
 // Implement person quickInfo class to various person labels
 TodoyuHookManager::registerHook('project', 'taskdata', 'TodoyuContactTaskManager::hookModifyTaskPersonAttributes', 200);
 
+
+
 /* ----------------------------------------
 	Configure contact data types listings
    --------------------------------------- */
@@ -137,6 +139,12 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['person'] = array(
 	)
 );
 
+		// Person search
+Todoyu::$CONFIG['EXT']['contact']['listing']['personSearch'] = Todoyu::$CONFIG['EXT']['contact']['listing']['person'];
+Todoyu::$CONFIG['EXT']['contact']['listing']['personSearch']['dataFunc']	= 'TodoyuContactPersonSearch::getPersonListingDataSearch';
+
+
+
 	// Company
 Todoyu::$CONFIG['EXT']['contact']['listing']['company'] = array(
 	'name'		=> 'company',
@@ -146,7 +154,7 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['company'] = array(
 	'columns'	=> array(
 		'icon'		=> '',
 		'title'		=> 'contact.ext.company.attr.title',
-	//	'persons'	=> 'contact.ext.company.employees',
+//	    'persons'	=> 'contact.ext.company.employees',
 		'address'	=> 'contact.ext.address',
 		'actions'	=> ''
 	),
@@ -156,6 +164,9 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['company'] = array(
 	)
 );
 
+	// Company search
+Todoyu::$CONFIG['EXT']['contact']['listing']['companySearch'] = Todoyu::$CONFIG['EXT']['contact']['listing']['company'];
+Todoyu::$CONFIG['EXT']['contact']['listing']['companySearch']['dataFunc']	= 'TodoyuContactCompanySearch::getCompanyListingDataSearch';
 
 
 /* ----------------------------
@@ -206,8 +217,8 @@ if( TodoyuExtensions::isInstalled('profile') && Todoyu::allowed('contact', 'gene
 	// Tabs for bookmark section in profile
 Todoyu::$CONFIG['EXT']['profile']['contactTabs'] = array(
 	array(
-		'id'			=> 'contact',
-		'label'			=> 'contact.ext.profile.module'
+		'id'	=> 'contact',
+		'label'	=> 'contact.ext.profile.module'
 	)
 );
 

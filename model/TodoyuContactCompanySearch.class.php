@@ -102,6 +102,25 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 
 
 	/**
+	 * Get row data for given company
+	 *
+	 * @param	Integer		$idCompany
+	 * @return	Array
+	 */
+	public static function getCompanyRowData($idCompany) {
+		$idCompany	= intval($idCompany);
+
+		return array(
+			'icon'		=> '',
+			'title'		=> TodoyuContactCompanyManager::getCompany($idCompany)->getTitle(),
+			'address'	=> TodoyuContactCompanyManager::getCompanyAddressLabel($idCompany),
+			'actions'	=> TodoyuContactRenderer::renderCompanyActions($idCompany)
+		);
+	}
+
+
+
+	/**
 	 * Get listing data for companies
 	 *
 	 * @param	Integer		$size
@@ -126,22 +145,26 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 
 
 
-	/**
-	 * Get row data for given company
-	 *
-	 * @param	Integer		$idCompany
-	 * @return	Array
-	 */
-	public static function getCompanyRowData($idCompany) {
-		$idCompany	= intval($idCompany);
-
-		return array(
-			'icon'		=> '',
-			'title'		=> TodoyuContactCompanyManager::getCompany($idCompany)->getTitle(),
-			'address'	=> TodoyuContactCompanyManager::getCompanyAddressLabel($idCompany),
-			'actions'	=> TodoyuContactRenderer::renderCompanyActions($idCompany)
-		);
-	}
+//	/**
+//	 * @param	Integer $size
+//	 * @param	Integer $offset
+//	 * @param	Array   $params
+//	 * @return  Array
+//	 */
+//	public static function getCompanyLisitingDataSearch($size, $offset, $params) {
+//		$companyIDs	= TodoyuArray::intval($params['companyIDs']);
+//
+//		$data	= array(
+//			'rows'	=> array(),
+//			'total'	=> count($companyIDs)
+//		);
+//
+//		foreach($companyIDs as $idCompany) {
+//			$data['rows'][] = self::getCompanyRowData($idCompany);
+//		}
+//
+//		return $data;
+//	}
 
 }
 
