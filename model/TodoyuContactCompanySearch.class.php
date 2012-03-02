@@ -114,7 +114,7 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 			'icon'		=> '',
 			'title'		=> TodoyuContactCompanyManager::getCompany($idCompany)->getTitle(),
 			'address'	=> TodoyuContactCompanyManager::getCompanyAddressLabel($idCompany),
-			'actions'	=> TodoyuContactRenderer::renderCompanyActions($idCompany)
+			'actions'	=> TodoyuContactCompanyRenderer::renderCompanyActions($idCompany)
 		);
 	}
 

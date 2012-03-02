@@ -47,7 +47,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 		TodoyuContactCompanyRights::restrictEdit($idCompany);
 
 		$tabs	= TodoyuContactRenderer::renderTabs('company', true);
-		$content= TodoyuContactRenderer::renderCompanyEditForm($idCompany);
+		$content= TodoyuContactCompanyRenderer::renderCompanyEditForm($idCompany);
 
 		return TodoyuRenderer::renderContent($content, $tabs);
 	}
@@ -189,7 +189,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 		$type		= 'company';
 
 		$tabs		= TodoyuContactRenderer::renderTabs('company');
-		$content	= TodoyuContactRenderer::renderDetailsContent($type, $idCompany);
+		$content	= TodoyuContactRenderer::renderDetails($type, $idCompany);
 
 		$content	= TodoyuRenderer::renderContent($content, $tabs);
 
@@ -253,7 +253,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 		$idCompany	= intval($params['record']);
 		$fieldName	= trim($params['field']);
 
-		return TodoyuContactRenderer::renderCompanyCreateWizard(0, $fieldName);
+		return TodoyuContactCompanyRenderer::renderCompanyCreateWizard(0, $fieldName);
 	}
 
 

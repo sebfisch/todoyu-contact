@@ -93,42 +93,6 @@ class TodoyuContactRenderer {
 
 
 	/**
-	 * Render company quick creation form
-	 *
-	 * @return	String
-	 */
-	public static function renderCompanyQuickCreateForm() {
-		$form	= TodoyuContactCompanyManager::getQuickCreateForm();
-
-			// Preset (empty) form data
-		$formData	= $form->getFormData();
-		$formData	= TodoyuFormHook::callLoadData('ext/contact/config/form/company.xml', $formData, 0);
-		$form->setFormData($formData);
-
-		return $form->render();
-	}
-
-
-
-	/**
-	 * Render person quick creation form
-	 *
-	 * @return	String
-	 */
-	public static function renderPersonQuickCreateForm() {
-		$form	= TodoyuContactPersonManager::getQuickCreateForm();
-
-			// Preset (empty) form data
-		$formData	= $form->getFormData();
-		$formData	= TodoyuFormHook::callLoadData('ext/contact/config/form/person.xml', $formData, 0);
-		$form->setFormData($formData);
-
-		return $form->render();
-	}
-
-
-
-	/**
 	 * Render contacts list
 	 *
 	 * @param	String		$type
@@ -140,44 +104,15 @@ class TodoyuContactRenderer {
 
 		switch($type) {
 			case 'person':
-				$content = self::renderPersonList($searchWord);
+				$content = TodoyuContactPersonRenderer::renderPersonList($searchWord);
 				break;
 
 			case 'company':
-				$content = self::renderCompanyList($searchWord);
+				$content = TodoyuContactCompanyRenderer::renderCompanyList($searchWord);
 				break;
 		}
 
 		return $content;
-	}
-
-
-
-	/**
-	 * @param	Array		$companyIDs
-	 * @param	Bool		$expandIfSingle
-	 * @return	String
-	 */
-	public static function renderCompanyListingSearch(array $companyIDs, $expandIfSingle = false) {
-		$companyIDs	= TodoyuArray::intval($companyIDs, true, true);
-
-		$companies	= array();
-		foreach($companyIDs as $idCompany) {
-			$company	= TodoyuContactCompanyManager::getCompany($idCompany);
-
-			$companyData	= $company->getTemplateData();
-			$companyData	= array_merge($companyData, TodoyuContactCompanySearch::getCompanyRowData($idCompany));
-
-			$companies[$idCompany]	= $companyData;
-		}
-
-		$tmpl	= 'ext/projectbillingcompanysearch/view/company-list.tmpl';
-		$data	= array(
-			'companyIDs'=> $companyIDs,
-			'companies'	=> $companies,
-		);
-
-		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -190,207 +125,20 @@ class TodoyuContactRenderer {
 	 * @return	String
 	 */
 	public static function renderContactEdit($type, $idRecord = 0) {
-		$content	= '';
 		$idRecord	= intval($idRecord);
 
+		$content	= '';
 		switch($type) {
 			case 'person':
-				$content = self::renderPersonEditForm($idRecord);
+				$content = TodoyuContactPersonRenderer::renderPersonEditForm($idRecord);
 				break;
 
 			case 'company':
-				$content = self::renderCompanyEditForm($idRecord);
+				$content = TodoyuContactCompanyRenderer::renderCompanyEditForm($idRecord);
 				break;
 		}
 
 		return $content;
-	}
-
-
-
-	/**
-	 * Render person list
-	 *
-	 * @param	String		$searchWord
-	 * @param	Integer		$offset
-	 * @return	String
-	 */
-	public static function renderPersonList($searchWord = '', $offset = 0) {
-		Todoyu::restrict('contact', 'general:area');
-
-		return TodoyuListingRenderer::render('contact', 'person', $offset, false, array('sword' => $searchWord));
-	}
-
-
-
-	/**
-	 * @param	Array		$personIDs
-	 * @return	String
-	 */
-	public static function renderPersonListingSearch(array $personIDs) {
-		return TodoyuListingRenderer::render('contact', 'personSearch', 0, true, array('personIDs' => $personIDs));
-	}
-
-
-
-	/**
-	 * Render company list
-	 *
-	 * @param	String		$searchWord
-	 * @param	Integer		$offset
-	 * @return	String
-	 */
-	public static function renderCompanyList($searchWord = '', $offset = 0) {
-		Todoyu::restrict('contact', 'general:area');
-
-		return TodoyuListingRenderer::render('contact', 'company', $offset, false, array('sword' => $searchWord));
-	}
-
-
-
-	/**
-	 * @param	Integer[]	$companyIDs
-	 * @return	String
-	 */
-	public static function renderCompanyListSearch($companyIDs){
-		return TodoyuListingRenderer::render('contact', 'company', 0, true, array('companyIDs' => $companyIDs));
-	}
-
-
-
-	/**
-	 * Render person edit form
-	 *
-	 * @param	Integer	$idPerson
-	 * @return	String
-	 */
-	public static function renderPersonEditForm($idPerson) {
-		$idPerson	= intval($idPerson);
-		$xmlPath	= 'ext/contact/config/form/person.xml';
-
-		$form	= TodoyuFormManager::getForm($xmlPath, $idPerson);
-
-		$person	= TodoyuContactPersonManager::getPerson($idPerson);
-		$data	= $person->getTemplateData(true);
-			// Call hooked load data functions
-		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $idPerson);
-
-		$form->setFormData($data);
-		$form->setRecordID($idPerson);
-
-		$tmpl	= 'ext/contact/view/form.tmpl';
-		$data	= array(
-			'header'	=> $person->getLabel(),
-			'formhtml'	=> $form->render()
-		);
-
-		return Todoyu::render($tmpl, $data);
-	}
-
-
-
-	/**
-	 * Render person edit form for popup (different save and cancel handling than conventional)
-	 *
-	 * @param	Integer	$idPerson
-	 * @param	String	$fieldName		HTML Id of the input field
-	 * @return	String
-	 */
-	public static function renderPersonCreateWizard($idPerson, $fieldName) {
-		$idPerson	= intval($idPerson);
-		$xmlPath	= 'ext/contact/config/form/person.xml';
-
-		$form	= TodoyuFormManager::getForm($xmlPath, $idPerson);
-
-		$person	= TodoyuContactPersonManager::getPerson($idPerson);
-		$data	= $person->getTemplateData(true);
-			// Call hooked load data functions
-		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $idPerson);
-
-		$form->setFormData($data);
-		$form->setRecordID($idPerson);
-
-		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Ext.contact.Person.cancelWizard(this.form);');
-		$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Ext.contact.Person.saveWizard(this.form, \''.$fieldName.'\');');
-
-		$tmpl	= 'ext/contact/view/form.tmpl';
-		$data	= array(
-			'formheader'	=> $person->getLabel(),
-			'formhtml'		=> $form->render()
-		);
-
-		$content	= Todoyu::render($tmpl, $data);
-		$content	.= TodoyuString::wrapScript('Todoyu.Ext.contact.Person.onEdit(' . $idPerson. ')');
-
-		return $content;
-	}
-
-
-
-	/**
-	 * Render company edit form for popup (different save and cancel handling than conventional)
-	 *
-	 * @param	Integer	$idCompany
-	 * @param	String	$idTarget		HTML Id of the input field
-	 * @return	String
-	 */
-	public static function renderCompanyCreateWizard($idCompany, $idTarget) {
-		$idCompany	= intval($idCompany);
-		$xmlPath	= 'ext/contact/config/form/company.xml';
-
-		$form	= TodoyuFormManager::getForm($xmlPath, $idCompany);
-
-		$company	= TodoyuContactCompanyManager::getCompany($idCompany);
-		$data	= $company->getTemplateData(true);
-			// Call hooked load data functions
-		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $idCompany);
-
-		$form->setFormData($data);
-		$form->setRecordID($idCompany);
-
-		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Ext.contact.Company.cancelWizard(this.form);');
-		$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Ext.contact.Company.saveWizard(this.form, \''.$idTarget.'\');');
-
-		$tmpl	= 'ext/contact/view/form.tmpl';
-		$data	= array(
-			'formheader'	=> $company->getLabel(),
-			'formhtml'		=> $form->render()
-		);
-
-		$content	= Todoyu::render($tmpl, $data);
-		$content	.= TodoyuString::wrapScript('Todoyu.Ext.contact.Company.onEdit(' . $idCompany. ')');
-
-		return $content;
-	}
-
-
-
-	/**
-	 * Render company edit form
-	 *
-	 * @param	Integer	$idCompany
-	 * @return	String
-	 */
-	public static function renderCompanyEditForm($idCompany) {
-		$idCompany	= intval($idCompany);
-		$xmlPath	= 'ext/contact/config/form/company.xml';
-
-		$form	= TodoyuFormManager::getForm($xmlPath, $idCompany);
-
-		$company= TodoyuContactCompanyManager::getCompany($idCompany);
-		$data	= $company->getTemplateData(true);
-		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $idCompany);
-
-		$form->setFormData($data);
-		$form->setRecordID($idCompany);
-
-		$tmpl	= 'ext/contact/view/form.tmpl';
-		$data	= array(
-			'formheader'	=> $company->getLabel(),
-			'formhtml'		=> $form->render()
-		);
-
-		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -413,159 +161,20 @@ class TodoyuContactRenderer {
 	 * @param	Integer		$idRecord
 	 * @return	String
 	 */
-	public static function renderDetailsContent($type, $idRecord) {
+	public static function renderDetails($type, $idRecord) {
 		$content = '';
 
 		switch($type) {
 			case 'person':
-				$content	= self::renderPersonDetails($idRecord);
+				$content	= TodoyuContactPersonRenderer::renderPersonDetails($idRecord);
 				break;
 
 			case 'company':
-				$content	= self::renderCompanyDetails($idRecord);
+				$content	= TodoyuContactCompanyRenderer::renderCompanyDetails($idRecord);
 				break;
 		}
 
 		return $content;
-	}
-
-
-
-	/**
-	 * Render general person header
-	 *
-	 * @param	Integer		$idPerson
-	 * @return	String
-	 */
-	public static function renderPersonHeader($idPerson) {
-		$idPerson	= intval($idPerson);
-		$person		= TodoyuContactPersonManager::getPerson($idPerson);
-
-		$tmpl		= 'ext/contact/view/person-header.tmpl';
-
-		$data	= $person->getTemplateData();
-		$data	= TodoyuHookManager::callHookDataModifier('contact', 'person.renderHeader', $data);
-
-		return Todoyu::render($tmpl, $data);
-	}
-
-
-
-	/**
-	 * Render person details
-	 *
-	 * @param	Integer		$idPerson
-	 * @return	String
-	 */
-	public static function renderPersonDetails($idPerson) {
-		$idPerson	= intval($idPerson);
-		$person		= TodoyuContactPersonManager::getPerson($idPerson);
-
-		$tmpl	= 'ext/contact/view/person-detail.tmpl';
-		$data	= $person->getTemplateData(true);
-
-		$companyIDs = $person->getCompanyIDs();
-		foreach($companyIDs as $idCompany) {
-			$company		= TodoyuContactCompanyManager::getCompany($idCompany);
-			$companyData	= $company->getTemplateData(true);
-
-			$data['companyData'][$idCompany] = $companyData['address'];
-		}
-
-		$data['email']			= $person->getEmail();
-		$data['hookedContent']	= implode('', TodoyuHookManager::callHook('contact', 'person.renderDetail', array($idPerson)));
-
-		return Todoyu::render($tmpl, $data);
-	}
-
-
-
-	/**
-	 * Render company summary
-	 *
-	 * @param	Integer	$idCompany
-	 * @return	String
-	 */
-	public static function renderCompanyDetails($idCompany) {
-		$idCompany = intval($idCompany);
-
-		$tmpl		= 'ext/contact/view/company-detail.tmpl';
-		$company	= TodoyuContactCompanyManager::getCompany($idCompany);
-		$data		= $company->getTemplateData(true);
-
-		$data['hookedContent']	= implode('', TodoyuHookManager::callHook('contact', 'company.renderDetail', array($idCompany)));
-
-		return Todoyu::render($tmpl, $data);
-	}
-
-
-
-	/**
-	 * Render action buttons for person records
-	 *
-	 * @param	Integer		$idPerson
-	 * @return	String
-	 */
-	public static function renderPersonActions($idPerson) {
-		$tmpl	= 'ext/contact/view/person-actions.tmpl';
-		$data	= array(
-			'id'	=> intval($idPerson)
-		);
-
-		return Todoyu::render($tmpl, $data);
-	}
-
-
-
-	/**
-	 * Render action buttons for company record
-	 *
-	 * @param	Integer		$idCompany
-	 * @return	String
-	 */
-	public static function renderCompanyActions($idCompany) {
-		$tmpl	= 'ext/contact/view/company-actions.tmpl';
-		$data	= array(
-			'id'	=> intval($idCompany)
-		);
-
-		return Todoyu::render($tmpl, $data);
-	}
-
-
-
-	/**
-	 * @param	Integer		$idRecord
-	 * @param	String		$recordType
-	 * @return	String
-	 */
-	public static function renderContactImageUploadForm($idRecord, $recordType) {
-		$idRecord	= intval($idRecord);
-
-				// Construct form object
-		$xmlPath	= 'ext/contact/config/form/uploadcontactimage.xml';
-		$form		= TodoyuFormManager::getForm($xmlPath);
-
-			// Set form data
-		$formData	= array(
-			'MAX_FILE_SIZE'	=> intval(Todoyu::$CONFIG['EXT']['contact']['contactimage']['max_file_size'])
-		);
-
-		$formData				= TodoyuFormHook::callLoadData($xmlPath, $formData);
-		$formData['idContact']	= $idRecord;
-		$formData['recordType']	= $recordType;
-
-		$form->setFormData($formData);
-		$form->setUseRecordID(false);
-
-
-			// Render form
-		$data	= array(
-			'formhtml'	=> $form->render()
-		);
-
-			// Render form wrapped via dwoo template
-		return Todoyu::render('ext/contact/view/contactimageuploadform.tmpl', $data);
 	}
 
 
@@ -599,7 +208,7 @@ class TodoyuContactRenderer {
 	 */
 	public static function renderUploadframeContentFailed($error, $filename) {
 		$error		= intval($error);
-		$maxFileSize= TodoyuString::formatSize(TodoyuNumeric::intval(Todoyu::$CONFIG['EXT']['contact']['contactimage']['max_file_size']));
+		$maxFileSize= TodoyuString::formatSize(TodoyuNumeric::intPositive(Todoyu::$CONFIG['EXT']['contact']['contactimage']['max_file_size']));
 
 		$tmpl	= 'core/view/htmldoc.tmpl';
 		$data	= array(

@@ -31,7 +31,7 @@ Todoyu::$CONFIG['FILTERS']['COMPANY'] = array(
 	'config'	=> array(
 		'label'				=> 'contact.ext.company',
 		'position'			=> 30,
-		'resultsRenderer'	=> 'TodoyuContactRenderer::renderCompanyListingSearch',
+		'resultsRenderer'	=> 'TodoyuContactCompanyRenderer::renderCompanyListingSearch',
 		'class'				=> 'TodoyuContactCompanyFilter',
 		'defaultSorting'	=> 'ext_contact_company.title',
 		'require'			=> 'contact.general:use'
@@ -57,7 +57,7 @@ Todoyu::$CONFIG['FILTERS']['PERSON'] = array(
 	'config'	=> array(
 		'label'				=> 'contact.ext.person',
 		'position'			=> 35,
-		'resultsRenderer'	=> 'TodoyuContactRenderer::renderPersonListingSearch',
+		'resultsRenderer'	=> 'TodoyuContactPersonRenderer::renderPersonListingSearch',
 		'class'				=> 'TodoyuContactPersonFilter',
 		'defaultSorting'	=> 'ext_contact_person.lastname',
 		'require'			=> 'contact.general:use'
@@ -69,7 +69,7 @@ Todoyu::$CONFIG['FILTERS']['PERSON'] = array(
 			'widget'	=> 'text',
 			'wConf' => array(
 				'LabelFuncRef'	=> 'TodoyuProjectProjectFilterDataSource::getLabel',
-				'negation'		=> 'default'
+				'negation'		=> false
 			)
 		)
 	)

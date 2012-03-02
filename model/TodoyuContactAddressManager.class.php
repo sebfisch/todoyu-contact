@@ -138,12 +138,13 @@ class TodoyuContactAddressManager {
 		$idCompany	= intval($idCompany);
 
 		$fields		= '	ext_contact_mm_company_address.*,
-						' . ( $addressFields != '' ? $addressFields : 'ext_contact_address.*' ) . ',
-						ext_contact_address.id addrId';
-		$tables		= '	ext_contact_mm_company_address,
-						ext_contact_address ';
+						' . ( $addressFields != '' ? $addressFields : self::TABLE . '.*' )
+						. ',' . self::TABLE . '.id addrId';
+
+		$tables		= '	ext_contact_mm_company_address'
+					. ',' . self::TABLE;
 		$where		= '		ext_contact_mm_company_address.id_company	= ' . $idCompany .
-					  ' AND	ext_contact_address.id						= ext_contact_mm_company_address.id_address';
+					  ' AND	' . self::TABLE . '.id						= ext_contact_mm_company_address.id_address';
 		$orderBy	= 'city';
 		$groupBy	= $limit	= '';
 		$indexField	= 'addrId';
@@ -168,9 +169,9 @@ class TodoyuContactAddressManager {
 
 
 	/**
-	 * Get the IDs of the most used countries in the address records
+	 * Get IDs of the most used countries over all address records
 	 *
-	 * @return	Array
+	 * @return	Integer[]
 	 */
 	public static function getMostUsedCountryIDs() {
 		$field	= 'id_country';

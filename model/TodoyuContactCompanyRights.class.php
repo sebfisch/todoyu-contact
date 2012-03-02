@@ -111,7 +111,7 @@ class TodoyuContactCompanyRights {
 	/**
 	 * Returns all company IDs which are allowed to be seen by the current person
 	 *
-	 * @return	Array
+	 * @return	Integer[]
 	 */
 	public static function getCompanyIDsAllowedToBeSeen() {
 		$fields	= 'id';

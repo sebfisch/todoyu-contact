@@ -86,7 +86,7 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 		if( $value !== '' ) {
 			$tables	= array(self::TABLE);
 
-			$logic		= $negate ? ' NOT LIKE ':' LIKE ';
+			$logic		= !$negate ? ' NOT LIKE ':' LIKE ';
 			$conjunction= $negate ? ' AND ':' OR ';
 
 			$keyword= Todoyu::db()->escape($value);

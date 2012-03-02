@@ -41,7 +41,7 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 	 * @param	Array		$find		Keywords which have to be in the person
 	 * @param	Array		$ignore		Keywords which must not be in the person
 	 * @param	Integer		$limit
-	 * @return	Array		Project IDs
+	 * @return	Integer[]				Project IDs
 	 */
 	public static function searchPersons(array $find, array $ignore = array(), $limit = 100) {
 		$table	= self::TABLE;
@@ -134,7 +134,7 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 				'firstname'	=> $person->getFirstname(),
 				'email'		=> $email,
 				'company'	=> $person->getMainCompany()->getTitle(),
-				'actions'	=> TodoyuContactRenderer::renderPersonActions($personData['id'])
+				'actions'	=> TodoyuContactPersonRenderer::renderPersonActions($personData['id'])
 			);
 		}
 

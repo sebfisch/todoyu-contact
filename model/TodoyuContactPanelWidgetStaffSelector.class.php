@@ -221,7 +221,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 	 * Get jobtype person IDs
 	 *
 	 * @param	Integer		$idJobtype
-	 * @return	Array
+	 * @return	Integer[]
 	 */
 	protected function getJobtypePersons($idJobtype) {
 		return TodoyuContactJobTypeManager::getPersonIDsWithJobtype($idJobtype);
@@ -332,7 +332,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 	/**
 	 * Get IDs of selected groups (jobtypes)
 	 *
-	 * @return	Array
+	 * @return	Integer[]
 	 */
 	protected function getSelectedGroupIDs() {
 		return $this->getSelectedTypeIDs('g');
@@ -343,7 +343,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 	/**
 	 * Get IDs of selected persons
 	 *
-	 * @return	Array
+	 * @return	Integer[]
 	 */
 	protected function getSelectedPersonIDs() {
 		return $this->getSelectedTypeIDs('p');
@@ -356,7 +356,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 	 * Type is marked with the first letter in the key
 	 *
 	 * @param	String		$type
-	 * @return	Array
+	 * @return	Integer[]
 	 */
 	protected function getSelectedTypeIDs($type) {
 		$items		= $this->getSelection();

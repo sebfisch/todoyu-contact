@@ -52,7 +52,7 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 	 * Get person IDs which match to the given filters
 	 *
 	 * @param	Integer		$limit		Limit of results
-	 * @return	Array
+	 * @return	Integer[]
 	 */
 	public function getPersonIDs($limit = 100) {
 		$sortingFallback	= self::TABLE . '.lastname, ' . self::TABLE . '.firstname';

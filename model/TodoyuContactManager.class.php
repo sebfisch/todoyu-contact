@@ -99,7 +99,7 @@ class TodoyuContactManager {
 	 * @param	String	$labelField
 	 * @param	Mixed	$selectedIndex	Integer / null
 	 * @param	Mixed	$selectedValue	Integer / null
-	 * @return	Array	options array
+	 * @return	Array					Options array
 	 */
 	public static function buildOptionsArray($res, $valueField, $labelField, $selectedIndex = null, $selectedValue = null ) {
 		$options	= array();

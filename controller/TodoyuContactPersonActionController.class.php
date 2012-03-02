@@ -47,7 +47,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 		TodoyuContactPersonRights::restrictEdit($idPerson);
 
 		$tabs	= TodoyuContactRenderer::renderTabs('person', true);
-		$content= TodoyuContactRenderer::renderPersonEditForm($idPerson);
+		$content= TodoyuContactPersonRenderer::renderPersonEditForm($idPerson);
 
 		return TodoyuRenderer::renderContent($content, $tabs);
 	}
@@ -229,7 +229,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 
 		TodoyuContactPersonRights::restrictSee($idPerson);
 
-		$content	= TodoyuContactRenderer::renderPersonDetails($idPerson);
+		$content	= TodoyuContactPersonRenderer::renderPersonDetails($idPerson);
 
 		if( TodoyuRequest::isAjaxRequest() ) {
 			$tabs		= TodoyuContactRenderer::renderTabs('person');
@@ -252,9 +252,8 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 		TodoyuContactPersonRights::restrictAdd();
 
 		$field		= trim($params['field']);
-		$idRecord	= intval($params['record']);
 
-		return TodoyuContactRenderer::renderPersonCreateWizard(0, $field);
+		return TodoyuContactPersonRenderer::renderPersonCreateWizard(0, $field);
 	}
 
 

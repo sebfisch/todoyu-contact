@@ -462,7 +462,7 @@ class TodoyuContactPersonManager {
 	/**
 	 * Get IDs of internal persons (staff)
 	 *
-	 * @return	Array
+	 * @return	Integer[]
 	 */
 	public static function getInternalPersonIDs() {
 		$persons	= self::getInternalPersons();
@@ -770,8 +770,8 @@ class TodoyuContactPersonManager {
 	/**
 	 * Get IDs of working addresses of given person(s)
 	 *
-	 * @param	Array	$personIDs
-	 * @return	Array
+	 * @param	Array		$personIDs
+	 * @return	Integer[]
 	 */
 	public static function getWorkaddressIDsOfPersons(array $personIDs) {
 		$addressIDs	= array();

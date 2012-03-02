@@ -73,7 +73,7 @@ class TodoyuContactPanelWidgetStaffList extends TodoyuPanelWidgetSearchList {
 	/**
 	 * Get person IDs which match the filter
 	 *
-	 * @return	Array
+	 * @return	Integer[]
 	 */
 	protected function getPersonIDs() {
 		$filters	= array(

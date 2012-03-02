@@ -163,7 +163,7 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	/**
 	 * Get IDs of the roles the person is a member of
 	 *
-	 * @return	Array
+	 * @return	Integer[]
 	 */
 	public function getRoleIDs() {
 		if( !$this->isInCache('roleids') ) {
@@ -346,7 +346,7 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	/**
 	 * Get all company IDs of a person (a person can work for multiple companies)
 	 *
-	 * @return	Array
+	 * @return	Integer[]
 	 */
 	public function getCompanyIDs() {
 		$field	= '	mm.id_company';

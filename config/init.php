@@ -65,7 +65,6 @@ Todoyu::$CONFIG['EXT']['contact']['addresstypes'] = array(
 		'index'	=> 1,
 		'label'	=> 'contact.ext.address.attr.addresstype.1'
 	),
-
 	array(	// Business address
 		'index'	=> 2,
 		'label'	=> 'contact.ext.address.attr.addresstype.2'
@@ -214,7 +213,7 @@ if( TodoyuExtensions::isInstalled('profile') && Todoyu::allowed('contact', 'gene
 	));
 }
 
-	// Tabs for bookmark section in profile
+	// Tabs for contact section in profile: "personal data"
 Todoyu::$CONFIG['EXT']['profile']['contactTabs'] = array(
 	array(
 		'id'	=> 'contact',

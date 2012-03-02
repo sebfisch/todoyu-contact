@@ -42,7 +42,7 @@ class TodoyuContactQuickCreateCompanyActionController extends TodoyuActionContro
 	 * @return	String
 	 */
 	public function popupAction(array $params) {
-		return TodoyuContactRenderer::renderCompanyQuickCreateForm();
+		return TodoyuContactCompanyRenderer::renderCompanyQuickCreateForm();
 	}
 
 

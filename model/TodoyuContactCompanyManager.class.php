@@ -504,7 +504,7 @@ class TodoyuContactCompanyManager {
 	 * @param	Array	$searchFields
 	 * @param	Integer	$size
 	 * @param	Integer	$offset
-	 * @return	Array
+	 * @return	Integer[]
 	 */
 	public static function searchCompanyIDs($sword, array $searchFields = null, $size = 100, $offset = 0) {
 		$companyIds = array();
@@ -665,7 +665,7 @@ class TodoyuContactCompanyManager {
 	 * Get project IDs of the company
 	 *
 	 * @param	Integer		$idCompany
-	 * @return	Array
+	 * @return	Integer[]
 	 */
 	public static function getProjectIDs($idCompany) {
 		$idCompany	= intval($idCompany);

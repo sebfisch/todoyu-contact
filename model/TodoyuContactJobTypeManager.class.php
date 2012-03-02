@@ -236,7 +236,7 @@ class TodoyuContactJobTypeManager {
 	 *
 	 * @param	Integer		$idJobtype
 	 * @param	Boolean		$onlyInternal
-	 * @return	Array
+	 * @return	Integer[]
 	 */
 	public static function getPersonIDsWithJobtype($idJobtype, $onlyInternal = true) {
 		$idJobtype	= intval($idJobtype);
