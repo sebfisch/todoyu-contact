@@ -20,26 +20,26 @@
 
 	// Add job types to records area of sysadmin
 TodoyuSysmanagerExtManager::addRecordConfig('contact', 'jobtype', array(
-	'label'		=> 'contact.ext.record.jobtype',
-	'desc'		=> 'contact.ext.record.jobtype.desc',
-	'list'		=> 'TodoyuContactJobTypeManager::getRecords',
-	'form'		=> 'ext/contact/config/form/admin/jobtype.xml',
-	'object'	=> 'TodoyuContactJobType',
-	'delete'	=> 'TodoyuContactJobTypeManager::deleteJobType',
-	'save'		=> 'TodoyuContactJobTypeManager::saveJobType',
-	'table'		=> 'ext_contact_jobtype'
+	'label'			=> 'contact.ext.record.jobtype',
+	'description'	=> 'contact.ext.record.jobtype.desc',
+	'list'			=> 'TodoyuContactJobTypeManager::getRecords',
+	'form'			=> 'ext/contact/config/form/admin/jobtype.xml',
+	'object'		=> 'TodoyuContactJobType',
+	'delete'		=> 'TodoyuContactJobTypeManager::deleteJobType',
+	'save'			=> 'TodoyuContactJobTypeManager::saveJobType',
+	'table'			=> 'ext_contact_jobtype'
 ));
 
 	// Add contact info types to records area of sysadmin
 TodoyuSysmanagerExtManager::addRecordConfig('contact', 'contactinfotype', array(
-	'label'		=> 'contact.ext.record.contactinfotype',
-	'desc'		=> 'contact.ext.record.contactinfotype.desc',
-	'list'		=> 'TodoyuContactContactInfoTypeManager::getRecords',
-	'form'		=> 'ext/contact/config/form/admin/contactinfotype.xml',
-	'object'	=> 'TodoyuContactContactInfoType',
-	'delete'	=> 'TodoyuContactContactInfoTypeManager::deleteContactTypeInfo',
-	'save'		=> 'TodoyuContactContactInfoTypeManager::saveContactInfoType',
-	'table'		=> 'ext_contact_contactinfotype'
+	'label'			=> 'contact.ext.record.contactinfotype',
+	'description'	=> 'contact.ext.record.contactinfotype.desc',
+	'list'			=> 'TodoyuContactContactInfoTypeManager::getRecords',
+	'form'			=> 'ext/contact/config/form/admin/contactinfotype.xml',
+	'object'		=> 'TodoyuContactContactInfoType',
+	'delete'		=> 'TodoyuContactContactInfoTypeManager::deleteContactTypeInfo',
+	'save'			=> 'TodoyuContactContactInfoTypeManager::saveContactInfoType',
+	'table'			=> 'ext_contact_contactinfotype'
 ));
 
 ?>
