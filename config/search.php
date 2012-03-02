@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Add contact search engine types: persons, comments
+ * Register contact search engine types: persons, comments to search headlet
  *
  * @package		Todoyu
  * @subpackage	Project
