@@ -42,9 +42,8 @@ class TodoyuContactPanelwidgetstaffselectorActionController extends TodoyuAction
 	 * @return	String
 	 */
 	public function listAction(array $params) {
-		$search	= trim($params['search']);
-
-		$selectorWidget	= TodoyuPanelWidgetManager::getPanelWidget('contact', 'StaffSelector');
+		$search			= trim($params['search']);
+		$selectorWidget	= TodoyuContactManager::getPanelWidgetStaffSelector(AREAEXT);
 		/**
 		 * @var	TodoyuContactPanelWidgetStaffSelector	$selectorWidget
 		 */
@@ -63,7 +62,7 @@ class TodoyuContactPanelwidgetstaffselectorActionController extends TodoyuAction
 	public function saveAction(array $params) {
 		$items	= TodoyuString::trimExplode(',', $params['selection'], true);
 
-		$selectorWidget	= TodoyuPanelWidgetManager::getPanelWidget('contact', 'StaffSelector');
+		$selectorWidget	= TodoyuContactManager::getPanelWidgetStaffSelector(AREAEXT);
 		/**
 		 * @var	TodoyuContactPanelWidgetStaffSelector	$selectorWidget
 		 */

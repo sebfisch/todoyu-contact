@@ -150,6 +150,22 @@ class TodoyuContactManager {
 		return $option[ 'name_' . TodoyuLabelManager::getLocale() ];
 	}
 
+
+
+	/**
+	 * Get panel widget staff selector
+	 * Try to get a custom implementation for the current area
+	 *
+	 * @param	String		$areaExtKey		Extension key of current area
+	 * @return	TodoyuContactPanelWidgetStaffSelector	Or an extension of this class
+	 */
+	public static function getPanelWidgetStaffSelector($areaExtKey) {
+		$overrideExists	= TodoyuPanelWidgetManager::exists(AREA, $areaExtKey, 'StaffSelector');
+		$extKey			= $overrideExists ? $areaExtKey : 'contact';
+
+		return TodoyuPanelWidgetManager::getPanelWidget($extKey, 'StaffSelector');
+	}
+
 }
 
 ?>
