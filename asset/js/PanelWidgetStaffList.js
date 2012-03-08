@@ -18,12 +18,12 @@
 *****************************************************************************/
 
 /**
- * @module	Contact
- */
+* @module	Contact
+*/
 
 /**
- * Staff list panel widget
- */
+* Staff list panel widget
+*/
 Todoyu.Ext.contact.PanelWidget.StaffList = Class.create(Todoyu.PanelWidgetSearchList, {
 
 	/**

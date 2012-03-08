@@ -175,18 +175,5 @@ class TodoyuContactPreferences {
 		return self::getPref('detailsexpanded', $idPerson) == 1;
 	}
 
-
-
-	/**
-	 * Save staff selector preferences
-	 *
-	 * @param	Array	$prefs
-	 */
-	public static function saveStaffSelectorPrefs(array $prefs) {
-		$prefs	= json_encode($prefs);
-
-		self::savePref('panelwidget-staffselector', $prefs, 0, true, AREA);
-	}
-
 }
 ?>

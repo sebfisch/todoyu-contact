@@ -43,7 +43,7 @@ class TodoyuContactPreferenceActionController extends TodoyuActionController {
 	public function panelwidgetstaffselectorAction(array $params) {
 		$prefs	= json_decode($params['value'], true);
 
-		TodoyuContactPreferences::saveStaffSelectorPrefs($prefs);
+		TodoyuContactPanelWidgetStaffSelector::savePrefs($prefs);
 	}
 
 

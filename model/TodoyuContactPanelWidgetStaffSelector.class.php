@@ -78,11 +78,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 	 */
 	public function renderContent($listOnly = false) {
 		$searchList	= parent::renderContent($listOnly);
-		$selection	= '';
-
-		if( !$listOnly ) {
-			$selection	= $this->renderSelection();
-		}
+		$selection	= ($listOnly ? '' : $this->renderSelection());
 
 		return $searchList . $selection;
 	}
@@ -113,14 +109,31 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 	 * @return	Array
 	 */
 	protected function getItems() {
-		$items	= array();
+		$items		= array();
+		$searchWords= $this->getSearchWords();
 
-		if( sizeof($this->getSearchWords()) === 0 ) {
+		if( sizeof($searchWords) === 0 ) {
 			return $items;
 		}
 
+			// Get matching "virtual" group items (preference)
+		$virtualGroups  = $this->searchVirtualGroups($searchWords);
+		foreach($virtualGroups as $idPref => $virtualGroup) {
+			$virtualGroup	= json_decode($virtualGroup['value']);
+			$groupTitle		= strtolower($virtualGroup->title);
+//			$groupItems     = json_decode($virtualGroup->items);
+
+			$items[] = array(
+				'id'	=> 'v' . $idPref,
+				'label'	=> $groupTitle,
+				'title'	=> $groupTitle,
+				'class'	=> 'virtualgroup'
+			);
+		}
+
+			// Get matching grouped (by jobtype) items
 		if( $this->isGroupSearchActive() ) {
-			$groups	= $this->searchGroups($this->getSearchWords());
+			$groups	= $this->searchGroups($searchWords);
 
 			foreach($groups as $group) {
 				$jobTypePersons	= $this->getJobtypePersons($group['id']);
@@ -133,8 +146,8 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 			}
 		}
 
-
-		$persons= $this->searchPersons($this->getSearchWords());
+			// Get matching person items
+		$persons= $this->searchPersons($searchWords);
 
 		foreach($persons as $person) {
 			$colorIndex	= TodoyuColors::getColorIndex($person['id']);
@@ -218,7 +231,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 
 
 	/**
-	 * Get jobtype person IDs
+	 * Get person IDs of given jobtype
 	 *
 	 * @param	Integer		$idJobtype
 	 * @return	Integer[]
@@ -229,14 +242,40 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 
 
 
+	/**
+	 * Get person IDs of given "virtual" group (pref)
+	 *
+	 * @param	Integer	$idItem
+	 * @return  Integer[]
+	 */
+	protected function getVirtualGroupPersons($idItem) {
+		$virtualGroup   = self::getVirtualGroup($idItem);
+
+		if( ! $virtualGroup ) {
+			return array();
+		}
+
+			// Get person IDs of selected groups and persons of virt. group
+		$selectionItems  = json_decode($virtualGroup->items);
+
+		return self::getPersonIDsOfSelection($selectionItems);
+	}
+
+
 
 	/**
-	 * Get selected persons. Based on selected persons and person with a selected jobtype
+	 * Get selected persons.
+	 * -persons with selected virtual groups (pref)
+	 * -persons with selected jobtypes
+	 * -selected persons
 	 *
 	 * @return	Integer[]
 	 */
-	public function getSelectedPersons() {
-		$selection	= $this->getSelection();
+	public function getPersonIDsOfSelection($selection = array()) {
+		if( empty($selection) ) {
+			$selection	= $this->getSelection();
+		}
+
 		$persons	= array();
 
 		foreach($selection as $item) {
@@ -245,13 +284,24 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 				continue;
 			}
 
-			switch(substr($item, 0, 1)) {
+			$typePrefix = substr($item, 0, 1);
+			$idItem     = substr($item, 1);
+
+				// Add persons
+			switch($typePrefix) {
+					// Add person IDs from given person IDs, e.g "p1"
 				case 'p':
 					$persons[] = intval(substr($item, 1));
 					break;
 
+					// Add person IDs from given (jobtype) group, e.g. "g1"
 				case 'g':
-					$persons = array_merge($persons, $this->getJobtypePersons(substr($item, 1)));
+					$persons = array_merge($persons, $this->getJobtypePersons($idItem));
+					break;
+
+					// Add person IDs from given virtual group (pref), e.g. "v1"
+				case 'v':
+					$persons = array_merge($persons, $this->getVirtualGroupPersons($idItem));
 					break;
 			}
 		}
@@ -395,6 +445,154 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 	 */
 	protected function isGroupSearchActive() {
 		return $this->config['group'] === true;
+	}
+
+
+
+	/**
+	 * Validate group title (ensure uniqueness)
+	 *
+	 * @param	String		$title
+	 * @return	String
+	 */
+	public static function validateGroupTitle($title) {
+		//@todo implement!
+//		$groupTitles	= self::getGroupTitles();
+//
+//		if( in_array($title, $groupTitles) ) {
+//			$title = self::validateGroupTitle($title . '-2');
+//		}
+
+		return $title;
+	}
+
+
+
+	/**
+	 * Save staff selector preferences
+	 *
+	 * @param	Array	$prefs
+	 */
+	public static function savePrefs(array $prefs) {
+		$prefs	= json_encode($prefs);
+
+		TodoyuContactPreferences::savePref('panelwidget-staffselector', $prefs, 0, true, AREA);
+	}
+
+
+
+
+
+
+
+
+
+
+	/**
+	 * Save staff selector selection as "virtual" group (preference for current person)
+	 *
+	 * @param	String	$title
+	 * @param	String	$groupItems		JSON encoded array of type-prefixed IDs of persons and groups
+	 */
+	public static function saveVirtualGroup($title, $groupItems) {
+		$pref	= json_encode(array(
+			'title' => $title,
+			'items' => $groupItems
+		));
+		TodoyuContactPreferences::savePref('panelwidget-staffselector-group', $pref, 0, false);
+	}
+
+
+
+	/**
+	 * Get virtual group preference of given ID of given/current person
+	 *
+	 * @param	Integer		$idPerson
+	 * @return  stdClass|Boolean
+	 */
+	public static function getVirtualGroup($idPref, $idPerson = 0) {
+		$idPref     = (int) $idPref;
+		$idPerson   = Todoyu::personid($idPerson);
+
+		$record = Todoyu::db()->getRecord(TodoyuPreferenceManager::TABLE, $idPref);
+
+		if( $record['preference'] !== 'panelwidget-staffselector-group' &&
+			(!TodoyuAuth::isAdmin() || intval($record['id_person']) !== $idPerson)
+		) {
+				// Record is different type of pref. or not belongs to another person
+			return false;
+		}
+
+		return json_decode($record['value']);
+	}
+
+
+
+	/**
+	 * Get all virtual group prefs of given person
+	 *
+	 * @param	Integer		$idPerson
+	 * @return	Array
+	 */
+	public static function getVirtualGroups($idPerson = 0) {
+		$idPerson	= Todoyu::personid($idPerson);
+
+		return TodoyuContactPreferences::getPrefs('panelwidget-staffselector-group', 0, 0, $idPerson);
+	}
+
+
+
+	/**
+	 * Get all virtual group prefs of given person
+	 *
+	 * @param	Integer		$idPerson
+	 * @return	Array
+	 */
+	public static function getVirtualGroupsIndexed($idPerson = 0) {
+		$idPerson	= Todoyu::personid($idPerson);
+
+		$indexField = 'id';
+		$fields     = 'id,value';
+		$table	    = TodoyuPreferenceManager::TABLE;
+		$where  = '		id_person	= ' . $idPerson
+				. ' AND	ext			= ' . EXTID_CONTACT
+				. ' AND	area		= 0'
+				. ' AND	preference	= \'panelwidget-staffselector-group\' ';
+
+		return Todoyu::db()->getIndexedArray($indexField, $fields, $table, $where);
+	}
+
+
+
+	/**
+	 * Filter virtual groups preferences of given person by matching titles
+	 *
+	 * @param	Array		$searchWords
+	 * @param	Integer		$idPerson
+	 * @return  Array
+	 */
+	protected function searchVirtualGroups($searchWords, $idPerson = 0) {
+		$searchWords	= TodoyuArray::strtolower($searchWords);
+		$virtualGroups	= self::getVirtualGroupsIndexed($idPerson);
+
+		foreach($virtualGroups as $idPref => $virtualGroup) {
+			$virtualGroup	= json_decode($virtualGroup['value']);
+			$groupTitle		=  strtolower($virtualGroup->title);
+
+			$matchFound	= false;
+			foreach($searchWords as $sword) {
+				if( strpos($groupTitle, $sword) !== false ) {
+					$matchFound = true;
+					break;
+				}
+			}
+
+			if( !$matchFound ) {
+				unset($virtualGroups[$idPref]);
+			}
+		}
+
+		return $virtualGroups;
 	}
 
 }

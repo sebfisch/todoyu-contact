@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * [Enter Class Description]
+ * Staff selector panelwidget action controller
  *
  * @package		Todoyu
  * @subpackage	Contact
@@ -55,7 +55,7 @@ class TodoyuContactPanelwidgetstaffselectorActionController extends TodoyuAction
 
 
 	/**
-	 * Save selected persons
+	 * Save selected persons preference
 	 *
 	 * @param	Array	$params
 	 */
@@ -73,8 +73,49 @@ class TodoyuContactPanelwidgetstaffselectorActionController extends TodoyuAction
 
 		echo json_encode(array(
 			'items'		=> $items,
-			'persons'	=> $selectorWidget->getSelectedPersons()
+			'persons'	=> $selectorWidget->getPersonIDsOfSelection()
 		));
+	}
+
+
+
+	/**
+	 * Save selected persons + groups as new "virtual" group (preference)
+	 *
+	 * @param	Array	$params
+	 */
+	public function saveGroupAction(array $params) {
+			// Validate title to be unique
+		$title	= TodoyuContactPanelWidgetStaffSelector::validateGroupTitle(trim($params['title']));
+
+			// Group items (persons and groups, as type-prefixed IDs e.g. g1 g2 g3 p1 p2 p3...)
+		$groupItems	= $params['items'];
+		TodoyuContactPanelWidgetStaffSelector::saveVirtualGroup($title, $groupItems);
+	}
+
+
+
+	/**
+	 * Delete given "virtual" group (pref)
+	 *
+	 * @param	Array	$params
+	 */
+	public function deleteGroupAction(array $params) {
+		$idPref = (int) $params['group'];
+
+			// Only admin and pref-owner can delete a virtual group
+		if( ! TodoyuAuth::isAdmin() ) {
+			$prefRecord     = Todoyu::db()->getRecord(TodoyuPreferenceManager::TABLE, $idPref);
+			$idPrefPerson   = (int) $prefRecord['id_person'];
+
+			if( Todoyu::personid() !== $idPrefPerson ) {
+					// Deletion failed because pref belongs to another person
+				TodoyuHeader::sendTodoyuErrorHeader();
+				return ;
+			}
+		}
+
+		Todoyu::db()->deleteRecord(TodoyuPreferenceManager::TABLE, $idPref);
 	}
 
 }

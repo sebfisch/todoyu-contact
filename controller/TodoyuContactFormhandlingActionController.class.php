@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- *  Form handling action controller for contact extension
+ * Form handling action controller for contact extension
  *
  * @package		Todoyu
  * @subpackage	Contact

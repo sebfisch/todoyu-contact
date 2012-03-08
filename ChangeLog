@@ -3,6 +3,7 @@ todoyu contact extension changelog
 contact 1.2.0 - not released yet
 	* Bugfix: Person form did still list deleted assigned roles
 	* Bugfix: Fixed method to fetch persons with birthdays in a range
+	* Feature: Staff selector panelwidget can store/reload person selection as a group of itself
 	* Feature: Added search tabs and filters for company and person records
 	* Added: TodoyuContactPersonManager::isAllowed to check whether some person has some right
 	* Added: Disabled person items in staffselector can be selected on [Enter] when highlighted
