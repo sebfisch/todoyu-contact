@@ -456,12 +456,11 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 	 * @return	String
 	 */
 	public static function validateGroupTitle($title) {
-		//@todo implement!
-//		$groupTitles	= self::getGroupTitles();
-//
-//		if( in_array($title, $groupTitles) ) {
-//			$title = self::validateGroupTitle($title . '-2');
-//		}
+		$groupTitles	= self::getVirtualGroupTitles();
+
+		if( in_array($title, $groupTitles) ) {
+			$title = self::validateGroupTitle($title . '-2');
+		}
 
 		return $title;
 	}
@@ -538,6 +537,27 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 		$idPerson	= Todoyu::personid($idPerson);
 
 		return TodoyuContactPreferences::getPrefs('panelwidget-staffselector-group', 0, 0, $idPerson);
+	}
+
+
+
+	/**
+	 * Get titles of all virtual groups of given/current person
+	 *
+	 * @param   Integer     $idPerson
+	 * @return  String[]
+	 */
+	public static function getVirtualGroupTitles($idPerson = 0) {
+		$titles	= array();
+
+		$virtualGroups	= self::getVirtualGroupsIndexed($idPerson);
+		foreach($virtualGroups as $virtualGroup) {
+			$virtualGroup	= json_decode($virtualGroup['value']);
+
+			$titles[]   =strtolower($virtualGroup->title);
+		}
+
+	 	return $titles;
 	}
 
 
