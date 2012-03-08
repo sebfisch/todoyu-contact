@@ -153,7 +153,7 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['company'] = array(
 	'columns'	=> array(
 		'icon'		=> '',
 		'title'		=> 'contact.ext.company.attr.title',
-//	    'persons'	=> 'contact.ext.company.employees',
+//		'persons'	=> 'contact.ext.company.employees',
 		'address'	=> 'contact.ext.address',
 		'actions'	=> ''
 	),

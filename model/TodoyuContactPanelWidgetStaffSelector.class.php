@@ -121,7 +121,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 		foreach($virtualGroups as $idPref => $virtualGroup) {
 			$virtualGroup	= json_decode($virtualGroup['value']);
 			$groupTitle		= strtolower($virtualGroup->title);
-//			$groupItems     = json_decode($virtualGroup->items);
+//			$groupItems		= json_decode($virtualGroup->items);
 
 			$items[] = array(
 				'id'	=> 'v' . $idPref,
@@ -249,7 +249,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 	 * @return  Integer[]
 	 */
 	protected function getVirtualGroupPersons($idItem) {
-		$virtualGroup   = self::getVirtualGroup($idItem);
+		$virtualGroup	= self::getVirtualGroup($idItem);
 
 		if( ! $virtualGroup ) {
 			return array();
@@ -284,8 +284,8 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 				continue;
 			}
 
-			$typePrefix = substr($item, 0, 1);
-			$idItem     = substr($item, 1);
+			$typePrefix	= substr($item, 0, 1);
+			$idItem		= substr($item, 1);
 
 				// Add persons
 			switch($typePrefix) {
@@ -510,8 +510,8 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 	 * @return  stdClass|Boolean
 	 */
 	public static function getVirtualGroup($idPref, $idPerson = 0) {
-		$idPref     = (int) $idPref;
-		$idPerson   = Todoyu::personid($idPerson);
+		$idPref		= (int) $idPref;
+		$idPerson	= Todoyu::personid($idPerson);
 
 		$record = Todoyu::db()->getRecord(TodoyuPreferenceManager::TABLE, $idPref);
 
@@ -544,8 +544,8 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 	/**
 	 * Get titles of all virtual groups of given/current person
 	 *
-	 * @param   Integer     $idPerson
-	 * @return  String[]
+	 * @param	Integer		$idPerson
+	 * @return	String[]
 	 */
 	public static function getVirtualGroupTitles($idPerson = 0) {
 		$titles	= array();
@@ -554,7 +554,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 		foreach($virtualGroups as $virtualGroup) {
 			$virtualGroup	= json_decode($virtualGroup['value']);
 
-			$titles[]   =strtolower($virtualGroup->title);
+			$titles[]	=strtolower($virtualGroup->title);
 		}
 
 	 	return $titles;
@@ -572,8 +572,8 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 		$idPerson	= Todoyu::personid($idPerson);
 
 		$indexField = 'id';
-		$fields     = 'id,value';
-		$table	    = TodoyuPreferenceManager::TABLE;
+		$fields		= 'id,value';
+		$table		= TodoyuPreferenceManager::TABLE;
 		$where  = '		id_person	= ' . $idPerson
 				. ' AND	ext			= ' . EXTID_CONTACT
 				. ' AND	area		= 0'

@@ -148,7 +148,7 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 //	/**
 //	 * @param	Integer $size
 //	 * @param	Integer $offset
-//	 * @param	Array   $params
+//	 * @param	Array	$params
 //	 * @return  Array
 //	 */
 //	public static function getCompanyLisitingDataSearch($size, $offset, $params) {

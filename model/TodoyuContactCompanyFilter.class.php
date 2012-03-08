@@ -75,9 +75,9 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 	/**
 	 * Fulltext search over company attributes
 	 *
-	 * @param   Mixed       $value
-	 * @param   Boolean     $negate
-	 * @return  Array
+	 * @param	Mixed		$value
+	 * @param	Boolean		$negate
+	 * @return	Array
 	 */
 	public function Filter_fulltext($value, $negate = false) {
 		$value		= trim($value);
@@ -91,8 +91,8 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 
 			$keyword= Todoyu::db()->escape($value);
 			$where	= ' ((	'
-					.		                        self::TABLE . '.title	    ' . $logic . ' \'%' . $keyword . '%\''
-					.       $conjunction . '	' . self::TABLE . '.shortname	' . $logic . ' \'%' . $keyword . '%\''
+					.								self::TABLE . '.title		' . $logic . ' \'%' . $keyword . '%\''
+					.		$conjunction . '	' . self::TABLE . '.shortname	' . $logic . ' \'%' . $keyword . '%\''
 					. ' ))';
 
 			$queryParts	= array(
@@ -107,8 +107,8 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 
 
 	/**
-	 * @param   Mixed   $value
-	 * @param   Boolean $negate
+	 * @param	Mixed	$value
+	 * @param	Boolean	$negate
 	 */
 	public function Filter_projectfilter($value, $negate = false) {
 

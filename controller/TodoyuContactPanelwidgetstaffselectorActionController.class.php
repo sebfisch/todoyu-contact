@@ -105,8 +105,8 @@ class TodoyuContactPanelwidgetstaffselectorActionController extends TodoyuAction
 
 			// Only admin and pref-owner can delete a virtual group
 		if( ! TodoyuAuth::isAdmin() ) {
-			$prefRecord     = Todoyu::db()->getRecord(TodoyuPreferenceManager::TABLE, $idPref);
-			$idPrefPerson   = (int) $prefRecord['id_person'];
+			$prefRecord		= Todoyu::db()->getRecord(TodoyuPreferenceManager::TABLE, $idPref);
+			$idPrefPerson	= (int) $prefRecord['id_person'];
 
 			if( Todoyu::personid() !== $idPrefPerson ) {
 					// Deletion failed because pref belongs to another person

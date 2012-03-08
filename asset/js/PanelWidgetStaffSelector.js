@@ -116,9 +116,9 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	/**
 	 * Add icons to listed items of search results and selection
 	 *
-	 * @param	{Boolean}   addDeleteIcons
-	 * @param	{Boolean}   addAddIcons
-	 * @param	{Boolean}   addRemoveIcons
+	 * @param	{Boolean}	addDeleteIcons
+	 * @param	{Boolean}	addAddIcons
+	 * @param	{Boolean}	addRemoveIcons
 	 * @method	addItemsIcons
 	 */
 	addItemsIcons: function(addDeleteIcons, addAddIcons, addRemoveIcons) {
@@ -248,7 +248,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 			// "normalize" item - get LI tag of clicked item
 		var itemTagName = item.tagName ? item.tagName.toLowerCase() : '';
 		if( itemTagName !== 'li') {
-			item    = item.up('li');
+			item	= item.up('li');
 		}
 
 			// Remove 'no items' label if no items are in selection
@@ -292,9 +292,9 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 		var nodes		= this.selection.select('li');
 
 			// Collect nodes grouped by type
-		var hashPersons	        = {};
+		var hashPersons			= {};
 		var hashVirtualGroups	= {};
-		var hashGroups	        = {};
+		var hashGroups			= {};
 
 		nodes.each(function(item) {
 			var hash = item.hasClassName('person') ? hashPersons : ( item.hasClassName('group') ? hashGroups : hashVirtualGroups);
@@ -315,8 +315,8 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	/**
 	 * Insert given items alphabetically sorted into selection
 	 *
-	 * @method  insertSelectionNodesSorted
-	 * @param   {Object}	hashItems
+	 * @method	insertSelectionNodesSorted
+	 * @param	{Object}	hashItems
 	 */
 	insertSelectionNodesSorted: function(hashItems) {
 		var sortedItems	= Object.keys(hashItems).sort();
@@ -368,7 +368,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * Delete group preference with given ID
 	 *
 	 * @method	deleteGroup
-	 * @param   {Number}		idPref
+	 * @param	{Number}		idPref
 	 */
 	deleteGroup: function(idPref) {
 		var url = Todoyu.getUrl('contact', 'panelwidgetstaffselector');
@@ -389,7 +389,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * Handler after "virtual" group (pref) has been deleted
 	 *
 	 * @method	onGroupDeleted
-	 * @param   {Ajax.Response}  response
+	 * @param	{Ajax.Response}  response
 	 */
 	onGroupDeleted: function(response) {
 		if( !response.hasTodoyuError() ) {
