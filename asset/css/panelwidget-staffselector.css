@@ -76,6 +76,9 @@
 #panelwidget-staffselector li.virtualgroup a span.add {
 	background-position:2px -28px;
 }
+#panelwidget-staffselector li.virtualgroup a span.remove {
+	margin-right:22px;
+}
 #panelwidget-staffselector li a span.deletegroup {
 	background-image:url(../img/panelwidget-staffselector.png);
 	background-position:2px -32px;
