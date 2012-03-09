@@ -94,7 +94,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	/**
 	 * Init staff selector specific observers
 	 *
-	 * @method  initStaffSelectorObservers
+	 * @method	initStaffSelectorObservers
 	 */
 	initStaffSelectorObservers: function() {
 			// Observe selection list for disable and remove clicks
@@ -174,8 +174,9 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 
 
 	/**
-	 * Handle return key press in search field
+	 * Handle enter key press in search field
 	 *
+	 * @method	onReturnKey
 	 */
 	onReturnKey: function() {
 			// Add "hot" item to selection
@@ -209,7 +210,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * Get first highlighted (if any) item from persons selection
 	 *
 	 * @method	getAllSelectedAndHighlightedItems
-	 * @return	{Array}
+	 * @return	{Element[]}
 	 */
 	getAllSelectedAndHighlightedItems: function() {
 		return this.selection.select('li').findAll(function(item) {
@@ -270,7 +271,8 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 		}
 
 			// Sort items
-		this.sortSelection();
+		var nodes	= this.selection.select('li');
+		this.sortNodes(nodes);
 
 			// Highlight new item
 		new Effect.Highlight(item, {
@@ -288,9 +290,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 *
 	 * @method	sortSelect
 	 */
-	sortSelection: function() {
-		var nodes		= this.selection.select('li');
-
+	sortNodes: function(nodes) {
 			// Collect nodes grouped by type
 		var hashPersons			= {};
 		var hashVirtualGroups	= {};
@@ -411,9 +411,9 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 */
 	onRemoveClick: function(event, removeIcon) {
 		event.stop();
-
 		var item	= removeIcon.up('li');
 
+			// Remove from selection list
 		new Effect.SlideUp(item, {
 			duration: 0.3,
 			afterFinish: function() {
@@ -424,6 +424,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 				this.saveSelection();
 			}.bind(this)
 		});
+
 	},
 
 
@@ -489,6 +490,12 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * @param	{Ajax.Response}	response
 	 */
 	onSelectionSaved: function(items, response) {
+			// Update list to possibly redisplay items in results that have been removed from selection
+		if( this.getSearchText() !== '' ) {
+			this.update();
+		}
+
+			// Fire registered callbacks
 		Todoyu.PanelWidget.fire('staffselector', response.responseJSON);
 	},
 
@@ -499,7 +506,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * Disabled items are prefixed with a minus
 	 *
 	 * @method	getSelectedItems
-	 * @return	{Array}				selected items' IDs
+	 * @return	{String[]}				selected items' IDs
 	 */
 	getSelectedItems: function() {
 		return this.selection.select('li').collect(function(item){
@@ -533,7 +540,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * @param	{Ajax.Response}		response
 	 */
 	onEmptyResult: function($super, response) {
-		if( this.getSearchText().strip() !== '' ) {
+		if( this.getSearchText() !== '' ) {
 			this.highlightMatchingSelectedItems(this.getSearchText());
 		}
 	},
@@ -707,7 +714,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 
 
 	/**
-	 * @method  onSavedGroup
+	 * @method	onSavedGroup
 	 */
 	onSavedVirtualGroup: function() {
 		Todoyu.notifySuccess('[LLL:contact.panelwidget-staffselector.saved.success');
