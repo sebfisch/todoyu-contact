@@ -354,7 +354,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	onDeleteGroupClick: function(event, deleteIcon) {
 		event.stop();
 
-		if( confirm('[LLL:contact.panelwidget-staffselector.confirm.deletegroup.confirm') ) {
+		if( confirm('[LLL:contact.panelwidget-staffselector.confirm.deletegroup.confirm]') ) {
 			var item	= deleteIcon.up('li');
 			var idPref = item.id.split('-')[3].replace('v', '');
 
@@ -687,7 +687,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 			return;
 		}
 
-		var title 	= prompt('[LLL:contact.panelwidget-staffselector.newGroupLabel.prompt]', '[LLL:search.ext.newSeparatorLabel.preset]');
+		var title 	= prompt('[LLL:contact.panelwidget-staffselector.newGroupLabel.prompt]', '[LLL:contact.panelwidget-staffselector.newGroupLabel.prompt.preset]');
 
 			// Canceled saving
 		if( title === null ) {

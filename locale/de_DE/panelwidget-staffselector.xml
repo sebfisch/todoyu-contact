@@ -7,6 +7,7 @@
 	<label index="newGroupLabel.prompt">Bitte einen Gruppen-Namen angeben</label>
 	<label index="newGroupLabel.saved.success">Gruppe wurde gespeichert</label>
 	<label index="newGroupLabel.error.saveEmptyName">Bitte einen Gruppen-Namen angeben</label>
+	<label index="newGroupLabel.prompt.preset">Neue Gruppe</label>
 	<label index="icon.additem">Anwählen</label>
 	<label index="icon.removefromselection">Von Auswahl entfernen</label>
 	<label index="icon.deletegroup">Gruppe löschen</label>
