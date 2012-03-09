@@ -528,6 +528,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	onUpdated: function(response) {
 		this.addItemsIcons(true, true, false);
 		this.markFirstAsHot();
+		Todoyu.Hook.exec('contact.staffselector.updated');
 	},
 
 
@@ -543,6 +544,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 		if( this.getSearchText() !== '' ) {
 			this.highlightMatchingSelectedItems(this.getSearchText());
 		}
+		Todoyu.Hook.exec('contact.staffselector.updated');
 	},
 
 
