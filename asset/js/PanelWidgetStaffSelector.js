@@ -134,7 +134,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 
 			// Add (X) removal icon to all active selection items
 		if( addRemoveIcons ) {
-			this.addRemoveIconsToList();
+			this.addRemoveIconsToItems();
 		}
 	},
 
@@ -196,7 +196,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 
 
 	/**
-	 * Toggle all status for all elements which match the search text
+	 * Toggle activeness of all elements matching the search text
 	 *
 	 * @method	toggleMatchingElementsInSelection
 	 */
@@ -251,8 +251,12 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 		if( itemTagName !== 'li') {
 			item	= item.up('li');
 		}
+			// Remove add button from item
+		if( item.down('span.add') ) {
+			item.down('span.add').remove();
+		}
 
-			// Remove 'no items' label if no items are in selection
+			// Remove 'no items' label from empty selection
 		if( this.isSelectionEmpty() ) {
 			this.selection.update('');
 		}
@@ -262,15 +266,14 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 			bottom: item
 		});
 
-			// Add remove button
-		this.addRemoveIconsToList([item]);
-
-			// Remove add button
-		if( item.down('span.add') ) {
-			item.down('span.add').remove();
+			// "Virtual" group: Add "delete group" icon to item
+		if( item.hasClassName('virtualgroup') ) {
+			this.addDeleteGroupIconsToItems([item]);
 		}
+			// Add "remove from selection" button to item
+		this.addRemoveIconsToItems([item]);
 
-			// Sort items
+			// Sort selection items
 		var nodes	= this.selection.select('li');
 		this.sortNodes(nodes);
 
@@ -336,7 +339,9 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * @param	{Element}	item
 	 */
 	onSelectionItemClick: function(event, item) {
-		if( ! event.element().hasClassName('remove') ) {
+		var eventElement    = event.element();
+
+		if( ! eventElement.hasClassName('remove') && ! eventElement.hasClassName('deletegroup') ) {
 			item.toggleClassName('disabled');
 			this.saveSelection();
 		}
@@ -627,24 +632,53 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 
 
 	/**
-	 * Add removal icons to all selected items. If no items are provided,
-	 * add to all in the selection list
+	 * Add removal icons to items.
 	 *
 	 * @method	addRemoveIconsToList
-	 * @param	{Array}	items
+	 * @param   {Element[]}     items
 	 */
-	addRemoveIconsToList: function(items) {
-		items	= /*items ||*/ this.selection.select('li');
+	addRemoveIconsToItems: function(items) {
+		items	= items || this.selection.select('li');
 
 		items.each(function(item){
 			var anchor = item.down('a');
-			if( ! anchor.down('span.remove') ) {
-				anchor.insert(new Element('span', {
-					'class':	'remove',
-					title:		'[LLL:contact.panelwidget-staffselector.icon.removefromselection]'
-				}));
-			}
-		});
+			this.insertItemSpan(anchor, 'remove', '[LLL:contact.panelwidget-staffselector.icon.removefromselection]');
+		}, this);
+	},
+
+
+	/**
+	 * Add "delete group" icons to items.
+	 *
+	 * @method  addDeleteGroupIconsToSelectionItems
+	 * @param   {Element[]}     items
+	 */
+	addDeleteGroupIconsToItems: function(items) {
+		items	= items || this.selection.select('li');
+
+		items.each(function(item){
+			var anchor = item.down('a');
+			this.insertItemSpan(anchor, 'deletegroup', '[LLL:contact.panelwidget-staffselector.icon.deletegroup]');
+		}, this);
+	},
+
+
+
+	/**
+	 * Insert span with given CSS class and title into given item if not there yet
+	 *
+	 * @method	insertItemSpan
+	 * @param   {Element}	item
+	 * @param   {String}	className
+	 * @param   {String}	title
+	 */
+	insertItemSpan: function(item, className, title) {
+		if( ! item.down('span.' + className) ) {
+			item.insert(new Element('span', {
+				'class':	className,
+				title:		title
+			}));
+		}
 	},
 
 

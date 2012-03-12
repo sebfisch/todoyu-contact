@@ -66,24 +66,25 @@
 	background-image:url(../../../../core/asset/img/icons.png);
 	background-repeat:no-repeat;
 }
-
-#panelwidget-staffselector li a span.remove {
-	background-position:2px -358px;
-}
 #panelwidget-staffselector li a span.add {
 	background-position:2px -28px;
 }
-#panelwidget-staffselector li.virtualgroup a span.add {
-	background-position:2px -28px;
+#panelwidget-staffselector li a span.remove {
+	background-position:2px -358px;
 }
-#panelwidget-staffselector li.virtualgroup a span.remove {
-	margin-right:22px;
-}
+
 #panelwidget-staffselector li a span.deletegroup {
 	background-image:url(../img/panelwidget-staffselector.png);
 	background-position:2px -32px;
 	margin-right:2px !important;
 }
+#panelwidget-staffselector li.virtualgroup a span.add {
+	background-position:2px -28px;
+}
 
-
-
+#panelwidget-staffselector li.virtualgroup a span.remove {
+	margin-right:-34px;
+}
+#panelwidget-staffselector .selection li a span.deletegroup {
+	margin-right:58px !important;
+}
