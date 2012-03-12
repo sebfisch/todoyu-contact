@@ -520,6 +520,20 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 
 
 	/**
+	 * Handle list update
+	 * Call parent and extra hook
+	 *
+	 * @param	{Function}		$super
+	 * @param	{Ajax.Response}	response
+	 */
+	onListUpdated: function($super, response) {
+		$super(response);
+		Todoyu.Hook.exec('contact.staffselector.updated');
+	},
+
+	
+
+	/**
 	 * Handler when list was updated
 	 *
 	 * @method	onUpdated
@@ -528,7 +542,6 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	onUpdated: function(response) {
 		this.addItemsIcons(true, true, false);
 		this.markFirstAsHot();
-		Todoyu.Hook.exec('contact.staffselector.updated');
 	},
 
 
@@ -544,7 +557,6 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 		if( this.getSearchText() !== '' ) {
 			this.highlightMatchingSelectedItems(this.getSearchText());
 		}
-		Todoyu.Hook.exec('contact.staffselector.updated');
 	},
 
 
