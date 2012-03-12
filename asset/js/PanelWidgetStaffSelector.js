@@ -116,25 +116,26 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	/**
 	 * Add icons to listed items of search results and selection
 	 *
-	 * @param	{Boolean}	addDeleteIcons
+	 * @param	{Boolean}	addDeleteGroupIcons
 	 * @param	{Boolean}	addAddIcons
 	 * @param	{Boolean}	addRemoveIcons
 	 * @method	addItemsIcons
 	 */
-	addItemsIcons: function(addDeleteIcons, addAddIcons, addRemoveIcons) {
+	addItemsIcons: function(addDeleteGroupIcons, addAddIcons, addRemoveIcons) {
 			// Add (+) select icon to all selectable virtual group, group and person items
 		if( addAddIcons ) {
 			this.addAddIconsToList();
 		}
 
-			// Add (-) delete icon to all virtual group items
-		if( addDeleteIcons ) {
-			this.addDeleteIconsToList();
+			// Add "delete group" icon to all virtual group items
+		if( addDeleteGroupIcons ) {
+			var items	= $('panelwidget-staffselector-content').select('li.virtualgroup a');
+			this.addDeleteGroupIcons(items);
 		}
 
 			// Add (X) removal icon to all active selection items
 		if( addRemoveIcons ) {
-			this.addRemoveIconsToItems();
+			this.addRemoveIconToItems();
 		}
 	},
 
@@ -268,10 +269,10 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 
 			// "Virtual" group: Add "delete group" icon to item
 		if( item.hasClassName('virtualgroup') ) {
-			this.addDeleteGroupIconsToItems([item]);
+			this.addDeleteGroupIconToItems([item]);
 		}
 			// Add "remove from selection" button to item
-		this.addRemoveIconsToItems([item]);
+		this.addRemoveIconToItems([item]);
 
 			// Sort selection items
 		var nodes	= this.selection.select('li');
@@ -332,7 +333,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 
 
 	/**
-	 * Handler when clicked on a selection item: remove item from selection
+	 * Handler when clicked on a selection item: enable / disable that item
 	 *
 	 * @method	onSelectionItemClick
 	 * @param	{Event}		event
@@ -376,13 +377,14 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * @param	{Number}		idPref
 	 */
 	deleteGroup: function(idPref) {
+			// Delete from selection pref
 		var url = Todoyu.getUrl('contact', 'panelwidgetstaffselector');
 		var options	= {
 			parameters: {
 				action:	'deleteGroup',
 				group:	idPref
 			},
-			onComplete: this.onGroupDeleted.bind(this)
+			onComplete: this.onVirtualGroupDeleted.bind(this, idPref)
 		};
 
 		Todoyu.send(url, options);
@@ -394,14 +396,20 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * Handler after "virtual" group (pref) has been deleted
 	 *
 	 * @method	onGroupDeleted
-	 * @param	{Ajax.Response}  response
+	 * @param	{Number}			idVirtualGroup
+	 * @param	{Ajax.Response}		response
 	 */
-	onGroupDeleted: function(response) {
-		if( !response.hasTodoyuError() ) {
-			Todoyu.notifySuccess('[LLL:contact.panelwidget-staffselector.deletegroup.success');
-			this.update();
-		} else {
+	onVirtualGroupDeleted: function(idVirtualGroup, response) {
+		if( response.hasTodoyuError() ) {
 			Todoyu.notifySuccess('[LLL:contact.panelwidget-staffselector.deletegroup.error');
+		} else {
+			Todoyu.notifySuccess('[LLL:contact.panelwidget-staffselector.deletegroup.success');
+
+				// Remove item from widget items (results or selection), store updated selection and refresh widget
+			var item	= $('panelwidget-staffselector-item-v' + idVirtualGroup);
+			item.remove();
+			this.addMessageIfSelectionEmpty();
+			this.saveSelection();
 		}
 	},
 
@@ -418,7 +426,19 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 		event.stop();
 		var item	= removeIcon.up('li');
 
-			// Remove from selection list
+		this.removeItemFromSelection(item);
+	},
+
+
+
+	/**
+	 * Remove item from selection list
+	 * Includes check+message for empty selection and storing of updated selection
+	 *
+	 * @method	removeItemFromSelection
+	 * @param	{Element}	item
+	 */
+	removeItemFromSelection: function(item) {
 		new Effect.SlideUp(item, {
 			duration: 0.3,
 			afterFinish: function() {
@@ -429,7 +449,6 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 				this.saveSelection();
 			}.bind(this)
 		});
-
 	},
 
 
@@ -603,13 +622,18 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * Add deletion icons to all virtual group items in the search results list
 	 *
 	 * @method	addDeleteIconsToList
+	 * @param	{Element}	items
 	 */
-	addDeleteIconsToList: function() {
-		this.list.select('li.virtualgroup a').each(function(item){
-			item.insert(new Element('span', {
-				'class':	'deletegroup',
-				title:		'[LLL:contact.panelwidget-staffselector.icon.deletegroup]'
-			}));
+	addDeleteGroupIcons: function(items) {
+		items	= items || this.list;
+
+		items.each(function(item){
+			if( !item.down('span.deletegroup') ) {
+				item.insert(new Element('span', {
+					'class':	'deletegroup',
+					title:		'[LLL:contact.panelwidget-staffselector.icon.deletegroup]'
+				}));
+			}
 		});
 	},
 
@@ -637,7 +661,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * @method	addRemoveIconsToList
 	 * @param   {Element[]}     items
 	 */
-	addRemoveIconsToItems: function(items) {
+	addRemoveIconToItems: function(items) {
 		items	= items || this.selection.select('li');
 
 		items.each(function(item){
@@ -647,13 +671,14 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	},
 
 
+
 	/**
 	 * Add "delete group" icons to items.
 	 *
 	 * @method  addDeleteGroupIconsToSelectionItems
 	 * @param   {Element[]}     items
 	 */
-	addDeleteGroupIconsToItems: function(items) {
+	addDeleteGroupIconToItems: function(items) {
 		items	= items || this.selection.select('li');
 
 		items.each(function(item){
@@ -753,7 +778,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 				title:	title,
 				items:	Object.toJSON(this.getSelectedItems())
 			},
-			onComplete:	this.onSavedVirtualGroup.bind(this)
+			onComplete:	this.onSavedVirtualGroup.bind(this, title)
 		};
 
 		Todoyu.send(url, options);
@@ -762,12 +787,35 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 
 
 	/**
+	 * Handler after "virtual" group has been saved: add the new group into active selection
+	 *
 	 * @method	onSavedGroup
+	 * @param	{Ajax.Response}		response
 	 */
-	onSavedVirtualGroup: function() {
-		Todoyu.notifySuccess('[LLL:contact.panelwidget-staffselector.saved.success');
+	onSavedVirtualGroup: function(groupLabel, response) {
+		var idPreference	= response.getTodoyuHeader('idPreference');
 
-		this.update();
+		if( idPreference != 0 ) {
+			Todoyu.notifySuccess('[LLL:contact.panelwidget-staffselector.saved.success');
+
+				// Render and insert selection item
+			var item	= new Element('li', {
+				'id':		'panelwidget-staffselector-item-v' + idPreference,
+				'class':	'virtualgroup'
+			}).insert({
+				bottom: new Element('a', {
+					'title':	groupLabel,
+					'href':		'javascript:void(0)'
+				}).update(groupLabel)
+			});
+
+			this.addItemToSelection(item);
+
+			this.addDeleteGroupIconToItems([item]);
+			this.addRemoveIconToItems([item]);
+
+			this.sortNodes(this.selection);
+		}
 	}
 
 });

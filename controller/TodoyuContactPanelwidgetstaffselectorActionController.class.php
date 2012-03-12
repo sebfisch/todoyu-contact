@@ -88,9 +88,18 @@ class TodoyuContactPanelwidgetstaffselectorActionController extends TodoyuAction
 			// Validate title to be unique
 		$title	= TodoyuContactPanelWidgetStaffSelector::validateGroupTitle(trim($params['title']));
 
-			// Group items (persons and groups, as type-prefixed IDs e.g. g1 g2 g3 p1 p2 p3...)
+			// Store new "virtual" group preference
+			// Group items: persons and groups, as type-prefixed IDs e.g. g1 g2 g3 p1 p2 p3...
 		$groupItems	= $params['items'];
-		TodoyuContactPanelWidgetStaffSelector::saveVirtualGroup($title, $groupItems);
+		$selectorWidget	= TodoyuContactManager::getPanelWidgetStaffSelector(AREAEXT);
+		$idPref	= $selectorWidget->saveVirtualGroup($title, $groupItems);
+
+			// Add new item into selection and store selection
+		$selection	= $selectorWidget->getSelection();
+		$selection[]= 'v'.$idPref;
+		$selectorWidget->saveSelection($selection);
+
+		TodoyuHeader::sendTodoyuHeader('idPreference', $idPref);
 	}
 
 
