@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <labels>
-	<label index="company.label">Firma</label>
-	<label index="person.label">Person</label>
+	<label index="company.label">Firmen</label>
+	<label index="person.label">Personen</label>
 	<label index="fulltext">Volltext</label>
+	<label index="contactinformation">Kontakt-Information</label>
+	<label index="person.name">Name (Vor- / Nach- / Kurz-)</label>
+	<label index="person.company">Arbeitgeber</label>
+	<label index="person.salutation">Anrede</label>
+	<label index="person.system_role">Benutzerrolle</label>
+	<label index="person.company.isInternal">Angestellt in interner Firma</label>
 </labels>

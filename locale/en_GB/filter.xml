@@ -7,5 +7,6 @@
 	<label index="person.name">Name (First / Last / Short)</label>
 	<label index="person.company">Employer</label>
 	<label index="person.salutation">Salutation</label>
+	<label index="person.system_role">User Role</label>
 	<label index="person.company.isInternal">Employer is internal company</label>
 </labels>

@@ -74,6 +74,32 @@ class TodoyuContactPersonFilterDataSource {
 	 * @param	Array	$definitions
 	 * @return	Array
 	 */
+	public static function getSystemRoleOptions(array $definitions) {
+		$options	= array();
+		$roles	= TodoyuRoleManager::getAllRoles();
+
+		foreach($roles as $role) {
+			$label  = $role['title'] . ($role['is_active'] ? '' : ' (inactive)');
+
+			$options[] = array(
+				'label'		=> $label,
+				'value'		=> $role['id']
+			);
+		}
+
+		$definitions['options'] = $options;
+
+		return $definitions;
+	}
+
+
+
+	/**
+	 * Prepare options of salutations for rendering in widget.
+	 *
+	 * @param	Array	$definitions
+	 * @return	Array
+	 */
 	public static function getSalutationOptions(array $definitions) {
 		$definitions['options'] = array(
 			array(

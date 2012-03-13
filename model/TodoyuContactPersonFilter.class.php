@@ -136,8 +136,8 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 			$tables	= array(self::TABLE, 'ext_contact_mm_company_person');
 			$compare= $negate ? '!= ' : '= ';
 
-			$where	= '     ext_contact_mm_company_person.id_company ' . $compare . $value
-					. ' AND ' . self::TABLE . '.id                      = ext_contact_mm_company_person.id_person ';
+			$where	= '			ext_contact_mm_company_person.id_company ' . $compare . $value
+					. ' AND ' . self::TABLE . '.id							= ext_contact_mm_company_person.id_person ';
 
 			$queryParts	= array(
 				'tables'	=> $tables,
@@ -230,7 +230,7 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 	 * @return	Array
 	 */
 	public function Filter_salutation($value, $negate = false) {
-		$where	=       self::TABLE . '.deleted		= 0';
+		$where	=	self::TABLE . '.deleted		= 0';
 
 		if( $value === 'm' ) {
 			$where 	.= ' AND	' . self::TABLE . '.salutation	= \'m\'';
@@ -263,6 +263,32 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 				. ' AND ' . Todoyu::db()->buildLikeQuery(array($value), array('ext_contact_contactinfo.info'))
 				. ' AND ext_contact_mm_person_contactinfo.id_contactinfo	= ext_contact_contactinfo.id'
 				. ' AND ' . self::TABLE . '.id								= ext_contact_mm_person_contactinfo.id_person';
+
+		return array(
+			'tables'=> $tables,
+			'where'	=> $where,
+		);
+	}
+
+
+
+	/**
+	 * Filter by system_role
+	 *
+	 * @param	Array		$roles
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public function Filter_systemrole($roles, $negate = false) {
+		if( empty($roles) ) {
+			return false;
+		}
+
+		$tables = array('ext_contact_mm_person_role');
+
+		$roleIDs= TodoyuArray::intExplode(',', $roles);
+		$where  = Todoyu::db()->buildInArrayQuery($roleIDs, 'ext_contact_mm_person_role.id_role', true, $negate)
+				. ' AND ext_contact_person.id	= ext_contact_mm_person_role.id_person';
 
 		return array(
 			'tables'=> $tables,

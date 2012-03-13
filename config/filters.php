@@ -82,6 +82,17 @@ Todoyu::$CONFIG['FILTERS']['PERSON'] = array(
 				'negation'		=> false
 			)
 		),
+		'systemrole' => array(
+			'label'		=> 'contact.filter.person.system_role',
+			'optgroup'	=> 'contact.filter.person.label',
+			'widget'	=> 'select',
+			'wConf'		=> array(
+				'multiple'	=> true,
+				'size'		=> 8,
+				'FuncRef'	=> 'TodoyuContactPersonFilterDataSource::getSystemRoleOptions',
+				'negation'	=> 'default'
+			)
+		),
 		'salutation' => array(
 			'label'		=> 'contact.filter.person.salutation',
 			'optgroup'	=> 'contact.filter.person.label',
