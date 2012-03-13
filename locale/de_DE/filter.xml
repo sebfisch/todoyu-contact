@@ -9,4 +9,5 @@
 	<label index="person.salutation">Anrede</label>
 	<label index="person.system_role">Benutzerrolle</label>
 	<label index="person.company.isInternal">Angestellt in interner Firma</label>
+	<label index="person.isActive">todoyu-login ist aktiviert</label>
 </labels>
