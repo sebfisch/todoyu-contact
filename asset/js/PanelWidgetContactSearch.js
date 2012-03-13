@@ -172,9 +172,10 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 	 * Get current search value
 	 *
 	 * @method	getValue
+	 * @return	{String}
 	 */
 	getValue: function() {
-		return $F(this.input);
+		return ( this.input ) ? $F(this.input) : '';
 	},
 
 

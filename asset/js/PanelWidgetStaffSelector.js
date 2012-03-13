@@ -83,7 +83,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 *
 	 * @method	initObservers
 	 */
-	initObservers: function() {
+	addPanelWidgetObservers: function() {
 		this.input.on('keyup', this.onSearchKeyUp.bind(this));
 		this.list.on('click', '', this.onItemClick.bind(this));
 	},

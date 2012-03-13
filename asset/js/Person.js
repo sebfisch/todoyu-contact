@@ -85,7 +85,7 @@ Todoyu.Ext.contact.Person =  {
 	 * @param	{Number}		idPerson
 	 */
 	initEditForm: function(idPerson) {
-		this.initObservers(idPerson);
+		this.addPanelWidgetObservers(idPerson);
 		this.showLoginFields(idPerson);
 	},
 
@@ -97,7 +97,7 @@ Todoyu.Ext.contact.Person =  {
 	 * @method	initObservers
 	 * @param	{Number}			idPerson
 	 */
-	initObservers: function(idPerson) {
+	addPanelWidgetObservers: function(idPerson) {
 		this.observeFieldsForShortname(idPerson);
 
 		if( this.canSeeAccountFields(idPerson) ) {
