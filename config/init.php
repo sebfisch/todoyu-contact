@@ -141,6 +141,7 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['person'] = array(
 		// Person search
 Todoyu::$CONFIG['EXT']['contact']['listing']['personSearch'] = Todoyu::$CONFIG['EXT']['contact']['listing']['person'];
 Todoyu::$CONFIG['EXT']['contact']['listing']['personSearch']['dataFunc']	= 'TodoyuContactPersonSearch::getPersonListingDataSearch';
+//Todoyu::$CONFIG['EXT']['contact']['listing']['personSearch']['dataFunc']	= 'TodoyuContactPersonSearch::getPersonListingData';
 
 
 

@@ -8,6 +8,7 @@ contact 1.2.0 - not released yet
 	* Feature: Added search tabs and filters for company and person records
 	* Added: TodoyuContactPersonManager::isAllowed to check whether some person has some right
 	* Added: Disabled person items in staffselector can be selected on [Enter] when highlighted
+	* Added: American english person salutations
 	* Changed: Adapted changes to core-change from r8715
 	* Changed: TodoyuContactCompany::getAddresses() return now a list of address objects
 	* Changed: TodoyuContactPerson::getCompanies() return now a list of company objects

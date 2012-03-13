@@ -122,39 +122,26 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 
 
 	/**
-	 * Get filter for linked companies
+	 * Get filter for company
 	 *
 	 * @param	String		$value
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
 	public function Filter_Company($value, $negate = false) {
-		$valueParts	= TodoyuArray::trimExplode(' ', $value, true);
+		$value	= intval($value);
 		$queryParts	= false;
 
-		if( sizeof($valueParts) > 0 ) {
-			$fields	= array(
-				'ext_contact_company.title'
-			);
+		if( $value > 0 ) {
+			$tables	= array(self::TABLE, 'ext_contact_mm_company_person');
+			$compare= $negate ? '!= ' : '= ';
 
-			$likeWhere	= Todoyu::db()->buildLikeQuery($valueParts, $fields);
-
-			$where		= 'ext_contact_person.id IN
-						(
-							SELECT
-								ext_contact_person.id
-							FROM
-								ext_contact_person,
-								ext_contact_company,
-								ext_contact_mm_company_person
-							WHERE
-									ext_contact_person.id					= ext_contact_mm_company_person.id_person
-								AND	ext_contact_mm_company_person.id_company= ext_contact_company.id
-								AND ' . $likeWhere .
-						')';
+			$where	= '     ext_contact_mm_company_person.id_company ' . $compare . $value
+					. ' AND ' . self::TABLE . '.id                      = ext_contact_mm_company_person.id_person ';
 
 			$queryParts	= array(
-				'where'		=> $where,
+				'tables'	=> $tables,
+				'where'		=> $where
 			);
 		}
 
@@ -216,17 +203,70 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 			'ext_contact_mm_company_person',
 			'ext_contact_company'
 		);
+
+		$compare	= $negate ? ' != ' : ' = ';
 		$where	= '		ext_contact_company.deleted		= 0'
-				. ' AND	ext_contact_company.is_internal	= 1';
+				. ' AND	ext_contact_company.is_internal	' . $compare . ' 1';
+
 		$joins	= array(
-			'ext_contact_person.id = ext_contact_mm_company_person.id_person',
-			'ext_contact_mm_company_person.id_company = ext_contact_company.id'
+			'ext_contact_person.id						= ext_contact_mm_company_person.id_person',
+			'ext_contact_mm_company_person.id_company	= ext_contact_company.id'
 		);
 
 		return array(
 			'tables'=> $tables,
 			'where'	=> $where,
 			'join'	=> $joins
+		);
+	}
+
+
+
+	/**
+	 * Filter person salutation
+	 *
+	 * @param	Mixed		$value
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public function Filter_salutation($value, $negate = false) {
+		$where	=       self::TABLE . '.deleted		= 0';
+
+		if( $value === 'm' ) {
+			$where 	.= ' AND	' . self::TABLE . '.salutation	= \'m\'';
+		} else {
+			$where 	.= ' AND	' . self::TABLE . '.salutation	IN (\'w\', \'f\') ';
+		}
+
+		return array(
+			'where'	=> $where,
+		);
+	}
+
+
+
+	/**
+	 * Filter contact information fulltext
+	 *
+	 * @param	Mixed		$value
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public function Filter_contactinformation($value, $negate = false) {
+		$tables = array(
+			self::TABLE,
+			'ext_contact_contactinfo',
+			'ext_contact_mm_person_contactinfo'
+		);
+
+		$where	= ' ext_contact_contactinfo.deleted							= 0 '
+				. ' AND ' . Todoyu::db()->buildLikeQuery(array($value), array('ext_contact_contactinfo.info'))
+				. ' AND ext_contact_mm_person_contactinfo.id_contactinfo	= ext_contact_contactinfo.id'
+				. ' AND ' . self::TABLE . '.id								= ext_contact_mm_person_contactinfo.id_person';
+
+		return array(
+			'tables'=> $tables,
+			'where'	=> $where,
 		);
 	}
 

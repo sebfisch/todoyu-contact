@@ -67,5 +67,33 @@ class TodoyuContactPersonFilterDataSource {
 	}
 
 
+
+	/**
+	 * Prepare options of salutations for rendering in widget.
+	 *
+	 * @param	Array	$definitions
+	 * @return	Array
+	 */
+	public static function getSalutationOptions(array $definitions) {
+		$definitions['options'] = array(
+			array(
+				'index' => '1',
+				'value' => 'm',
+				'key'   => 'mr',
+				'class' => 'salutationMale',
+				'label' => Todoyu::Label('contact.ext.person.attr.salutation.m')
+			),
+			array(
+				'index' => '2',
+				'value' => 'f',
+				'key'   => 'mrs',
+				'class' => 'salutationFemale',
+				'label' => Todoyu::Label('contact.ext.person.attr.salutation.f')
+			)
+		);
+
+		return $definitions;
+	}
+
 }
 ?>

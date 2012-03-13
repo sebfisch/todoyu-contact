@@ -63,6 +63,7 @@ Todoyu::$CONFIG['FILTERS']['PERSON'] = array(
 		'require'			=> 'contact.general:use'
 	),
 	'widgets' => array(
+			// Optgroup persons
 		'fulltext' => array(
 			'label'		=> 'contact.filter.fulltext',
 			'optgroup'	=> 'contact.filter.person.label',
@@ -71,7 +72,59 @@ Todoyu::$CONFIG['FILTERS']['PERSON'] = array(
 				'LabelFuncRef'	=> 'TodoyuProjectProjectFilterDataSource::getLabel',
 				'negation'		=> false
 			)
-		)
+		),
+		'name' => array(
+			'label'		=> 'contact.filter.person.name',
+			'optgroup'	=> 'contact.filter.person.label',
+			'widget'	=> 'text',
+			'wConf' => array(
+				'LabelFuncRef'	=> 'TodoyuProjectProjectFilterDataSource::getLabel',
+				'negation'		=> false
+			)
+		),
+		'salutation' => array(
+			'label'		=> 'contact.filter.person.salutation',
+			'optgroup'	=> 'contact.filter.person.label',
+			'widget'	=> 'select',
+			'wConf'		=> array(
+				'multiple'	=> false,
+				'size'		=> 2,
+				'FuncRef'	=> 'TodoyuContactPersonFilterDataSource::getSalutationOptions',
+				'negation'	=> false
+			)
+		),
+		'contactinformation' => array(
+			'label'		=> 'contact.filter.contactinformation',
+			'optgroup'	=> 'contact.filter.person.label',
+			'widget'	=> 'text',
+			'wConf' => array(
+				'LabelFuncRef'	=> 'TodoyuProjectProjectFilterDataSource::getLabel',
+				'negation'		=> false
+			)
+		),
+
+			// Optgroup companies
+		'company' => array(
+			'label'		=> 'contact.filter.person.company',
+			'optgroup'	=> 'contact.filter.company.label',
+			'widget'	=> 'text',
+			'wConf' => array(
+				'autocomplete'	=> true,
+				'FuncRef'		=> 'TodoyuContactCompanyFilterDataSource::autocompleteCompanies',
+				'FuncParams'	=> array(),
+				'LabelFuncRef'	=> 'TodoyuContactCompanyFilterDataSource::getCompanyLabel',
+				'negation'		=> 'default'
+			)
+		),
+		'isInternal'	=> array(
+			'label'		=> 'contact.filter.person.company.isInternal',
+			'optgroup'	=> 'contact.filter.company.label',
+			'widget'	=> 'checkbox',
+			'internal'	=> true,
+			'wConf'		=> array(
+				'checked'	=> true
+			)
+		),
 	)
 );
 

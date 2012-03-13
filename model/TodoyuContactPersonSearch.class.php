@@ -108,7 +108,7 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 
 
 	/**
-	 * Get listing data for persons. Keys: [total,rows]
+	 * Get persons listing data. Keys: [total,rows]
 	 *
 	 * @param	Integer		$size
 	 * @param	Integer		$offset
@@ -116,29 +116,64 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 	 * @return	Array
 	 */
 	public static function getPersonListingData($size, $offset = 0, array $params) {
-		$persons= TodoyuContactPersonManager::searchPersons($params['sword'], null, $size, $offset);
 		$data	= array(
 			'rows'	=> array(),
 			'total'	=> Todoyu::db()->getTotalFoundRows()
 		);
 
+		$persons= TodoyuContactPersonManager::searchPersons($params['sword'], null, $size, $offset);
+
 		foreach($persons as $personData) {
-			$person	= TodoyuContactPersonManager::getPerson($personData['id']);
-
-			$email	= Todoyu::allowed('contact', 'relation:seeAllContactinfotypes') ? $person->getEmail(true) : false;
-
-			$data['rows'][] = array(
-				'icon'		=> '',
-				'iconClass'	=> ($person->isActive() ? 'login' : '') . ($person->isAdmin() ? ' admin' : ''),
-				'lastname'	=> $person->getLastname(),
-				'firstname'	=> $person->getFirstname(),
-				'email'		=> $email,
-				'company'	=> $person->getMainCompany()->getTitle(),
-				'actions'	=> TodoyuContactPersonRenderer::renderPersonActions($personData['id'])
-			);
+			$data['rows'][] = self::getPersonListingDataRow($personData['id']);
 		}
 
 		return $data;
+	}
+
+
+
+	/**
+	 * Get persons search results listing data.
+	 *
+	 * @param	Integer		$size
+	 * @param	Integer		$offset
+	 * @param	Array		$params
+	 * @return	Array
+	 */
+	public static function getPersonListingDataSearch($size, $offset = 0, array $params) {
+		$personIDs   = TodoyuArray::intval($params['personIDs']);
+
+		$data	= array(
+			'rows'	=> array(),
+			'total'	=> Todoyu::db()->getTotalFoundRows()
+		);
+
+		foreach($personIDs as $idPerson) {
+			$data['rows'][] = self::getPersonListingDataRow($idPerson);
+		}
+
+		return $data;
+	}
+
+
+
+	/**
+	 * @param	Integer		$idPerson
+	 * @return	Array
+	 */
+	private static function getPersonListingDataRow($idPerson) {
+		$idPerson   = intval($idPerson);
+		$person	= TodoyuContactPersonManager::getPerson($idPerson);
+
+		return array(
+			'icon'		=> '',
+			'iconClass'	=> ($person->isActive() ? 'login' : '') . ($person->isAdmin() ? ' admin' : ''),
+			'lastname'	=> $person->getLastname(),
+			'firstname'	=> $person->getFirstname(),
+			'email'		=> Todoyu::allowed('contact', 'relation:seeAllContactinfotypes') ? $person->getEmail(true) : false,
+			'company'	=> $person->getMainCompany()->getTitle(),
+			'actions'	=> TodoyuContactPersonRenderer::renderPersonActions($person->getID())
+		);
 	}
 
 }
