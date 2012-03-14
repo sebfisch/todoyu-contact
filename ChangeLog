@@ -1,6 +1,7 @@
 todoyu contact extension changelog
 
 contact 1.2.0 - not released yet
+	* Bugfix: "Show More" option of company/person list did ignore given fulltext filter
 	* Bugfix: Person form did still list deleted assigned roles
 	* Bugfix: Fixed method to fetch persons with birthdays in a range
 	* Bugfix: Removing item, that matches searchword, from selection didn't reinsert it into staffselector search results

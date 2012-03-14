@@ -89,7 +89,13 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 		$offset	= intval($params['offset']);
 
-		return TodoyuListingRenderer::render('contact', 'company', $offset, false);
+		if( isset($params['listParams'])) {
+			$listParams = json_decode($params['listParams'], true);
+		} else {
+			$listParams = array();
+		}
+
+		return TodoyuListingRenderer::render('contact', 'company', $offset, false, $listParams);
 	}
 
 
