@@ -487,16 +487,22 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	/**
 	 * Parses the salutation to label
 	 *
-	 * @return	String
+	 * @return	String|Boolean
 	 */
 	public function getSalutationLabel() {
-		return Todoyu::Label('contact.ext.person.attr.salutation.' . $this->getSalutationKey());
+		$salutationKey  = $this->getSalutationKey();
+
+		if( !empty($salutationKey) ) {
+			return Todoyu::Label('contact.ext.person.attr.salutation.' . $salutationKey);
+		}
+
+		return false;
 	}
 
 
 
 	/**
-	 * Get phone contact infos
+	 * Get person's phone contact infos: all stored phone numbers
 	 *
 	 * @return	Array
 	 */
@@ -505,6 +511,12 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	}
 
 
+
+	/**
+	 * Get first phone number of person
+	 *
+	 * @return	String|Boolean
+	 */
 	public function getPhone() {
 		$phones	= $this->getPhones();
 
@@ -516,6 +528,11 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	}
 
 
+	/**
+	 * Get email addresses of person
+	 *
+	 * @todo	check - used? if: implement, otherwise remove!
+	 */
 	public function getContactEmails() {
 
 	}
@@ -528,7 +545,6 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	 * @return	TodoyuContactCompany
 	 */
 	public function getMainCompany() {
-
 		$field	= 'id_company';
 		$table	= ' ext_contact_mm_company_person mm,
 					ext_contact_company c';
@@ -543,4 +559,5 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	}
 
 }
+
 ?>

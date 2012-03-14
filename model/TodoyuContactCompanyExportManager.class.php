@@ -36,14 +36,13 @@ class TodoyuContactCompanyExportManager {
 		$exportData	= self::prepareDataForExport($companies);
 
 		$export = new TodoyuExportCSV($exportData);
-		$export->setFilename('todoyu_company_export_' . date('YmdHis') . '.csv');
-		$export->download();
+		$export->download('todoyu_company_export_' . date('YmdHis') . '.csv');
 	}
 
 
 
 	/**
-	 * Prepares the given companies to be exported
+	 * Prepares data of given companies for export
 	 *
 	 * @param	Array	$companies
 	 * @return	Array
@@ -56,7 +55,7 @@ class TodoyuContactCompanyExportManager {
 				$companyObj	= TodoyuContactCompanyManager::getCompany($company['id']);
 
 				$companyObj->loadForeignData();
-				$exportData[]	= self::parseDataForExport($companyObj);
+				$exportData[]	= self::getCompanyExportData($companyObj);
 			}
 		}
 
@@ -71,12 +70,13 @@ class TodoyuContactCompanyExportManager {
 	 * @param	TodoyuContactCompany	$company
 	 * @return	Array
 	 */
-	public static function parseDataForExport(TodoyuContactCompany $company) {
-		$creator    = $company->getCreatePerson();
+	public static function getCompanyExportData(TodoyuContactCompany $company) {
+		$creator    = $company->getPerson('create');
+
 		$exportData = array(
 			Todoyu::Label('contact.ext.company.attr.id')			=> $company->getID(),
-			Todoyu::Label('core.global.date_create')				=> TodoyuTime::format($company->date_create),
-			Todoyu::Label('core.global.date_update')				=> TodoyuTime::format($company->date_update),
+			Todoyu::Label('core.global.date_create')				=> TodoyuTime::format($company->getDateCreate()),
+			Todoyu::Label('core.global.date_update')				=> TodoyuTime::format($company->getDateUpdate()),
 			Todoyu::Label('core.global.id_person_create')			=> $creator ? $creator->getFullName() : '',
 			Todoyu::Label('contact.ext.company.attr.title')			=> $company->getTitle(),
 			Todoyu::Label('contact.ext.company.attr.shortname')		=> $company->getShortname(),
