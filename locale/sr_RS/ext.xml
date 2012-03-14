@@ -7,7 +7,7 @@
 	<label index="person">Особа</label>
 	<label index="persons">Особе</label>
 	<label index="company">Предузеће</label>
-	<label index="companys">Предузећа</label>
+	<label index="companies">Предузећа</label>
 	<label index="workaddress">Радна адреса</label>
 	<label index="jobtype">Запошљење</label>
 	<label index="noJobDefined">Нема дефинираног посла</label>

@@ -7,7 +7,7 @@
 	<label index="person">個人情報</label>
 	<label index="persons">個人情報</label>
 	<label index="company">企業情報</label>
-	<label index="companys">企業情報</label>
+	<label index="companies">企業情報</label>
 	<label index="workaddress">勤務先</label>
 	<label index="jobtype">職種</label>
 	<label index="person.new">新しい個人情報</label>

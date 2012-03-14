@@ -32,7 +32,7 @@
 Todoyu::$CONFIG['FILTERS']['COMPANY'] = array(
 	'key'		=> 'company',
 	'config'	=> array(
-		'label'				=> 'contact.ext.company',
+		'label'				=> 'contact.ext.companies',
 		'position'			=> 30,
 		'resultsRenderer'	=> 'TodoyuContactCompanyRenderer::renderCompanyListingSearch',
 		'class'				=> 'TodoyuContactCompanyFilter',
@@ -67,7 +67,7 @@ Todoyu::$CONFIG['FILTERS']['COMPANY'] = array(
 Todoyu::$CONFIG['FILTERS']['PERSON'] = array(
 	'key'	=> 'person',
 	'config'	=> array(
-		'label'				=> 'contact.ext.person',
+		'label'				=> 'contact.ext.persons',
 		'position'			=> 35,
 		'resultsRenderer'	=> 'TodoyuContactPersonRenderer::renderPersonListingSearch',
 		'class'				=> 'TodoyuContactPersonFilter',

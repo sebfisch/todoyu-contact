@@ -7,7 +7,7 @@
 	<label index="person">Персона</label>
 	<label index="persons">Персоны</label>
 	<label index="company">Компания</label>
-	<label index="companys">Компании</label>
+	<label index="companies">Компании</label>
 	<label index="workaddress">Место работы</label>
 	<label index="jobtype">Тип работы</label>
 	<label index="person.new">Новая персона</label>

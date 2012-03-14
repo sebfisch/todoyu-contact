@@ -7,7 +7,7 @@
 	<label index="person">Person</label>
 	<label index="persons">Personen</label>
 	<label index="company">Firma</label>
-	<label index="companys">Firmen</label>
+	<label index="companies">Firmen</label>
 	<label index="workaddress">Arbeitsadresse</label>
 	<label index="jobtype">Stellenbezeichnung</label>
 	<label index="noJobDefined">Keine Stellenbezeichnung definiert</label>

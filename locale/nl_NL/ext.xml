@@ -7,7 +7,7 @@
 	<label index="person">Persoon</label>
 	<label index="persons">Personen</label>
 	<label index="company">Bedrijf</label>
-	<label index="companys">Bedrijven</label>
+	<label index="companies">Bedrijven</label>
 	<label index="workaddress">Zakelijk adres</label>
 	<label index="jobtype">Baansoort</label>
 	<label index="person.new">Nieuw persoon</label>

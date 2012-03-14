@@ -132,6 +132,10 @@ span.wizardIcon.createWizardCompany	{
 	background:url(../../../../core/asset/img/icons.png) no-repeat 3px -357px;
 }
 
+div#search-results p#person-listing-messag-emptylist,
+div#search-results p#company-listing-messag-emptylist {
+	display:none;
+}
 
 
 /* -------------------------

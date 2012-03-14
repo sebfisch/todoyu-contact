@@ -93,7 +93,7 @@ Todoyu::$CONFIG['EXT']['contact']['tabs'] = array(
 	'company'	=> array(
 		'key'		=> 'company',
 		'id'		=> 'company',
-		'label'		=> 'contact.ext.companys',
+		'label'		=> 'contact.ext.companies',
 		'require'	=> 'contact.general:area',
 		'position'	=> 110
 	)

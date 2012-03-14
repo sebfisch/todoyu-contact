@@ -7,7 +7,7 @@
 	<label index="person">Contato</label>
 	<label index="persons">Contatos</label>
 	<label index="company">Empresa</label>
-	<label index="companys">Empresas</label>
+	<label index="companies">Empresas</label>
 	<label index="workaddress">Local de Trabalho</label>
 	<label index="jobtype">Cargo</label>
 	<label index="person.new">Novo Contato</label>

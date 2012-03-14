@@ -7,7 +7,7 @@
 	<label index="person">Osoba</label>
 	<label index="persons">Osoby</label>
 	<label index="company">Společnost</label>
-	<label index="companys">Společnosti</label>
+	<label index="companies">Společnosti</label>
 	<label index="workaddress">Pracovní adresa</label>
 	<label index="jobtype">Typ práce</label>
 	<label index="person.new">Nová osoba</label>
