@@ -170,11 +170,11 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['companySearch']['dataFunc']	= 'Tod
 
 
 
-/* -----------------------
-	Add filter exports
-   ----------------------- */
-TodoyuSearchActionPanelManager::addExport('company', 'csvexport', 'TodoyuContactCompanyExportManager::exportCSV', 'contact.ext.export.companycsv', 'companyExportCsv', 'contactcompanysearch:export:companycsv');
-TodoyuSearchActionPanelManager::addExport('person', 'csvexport', 'TodoyuContactPersonExportManager::exportCSV', 'contact.ext.export.personcsv', 'personExportCsv', 'contactpersonsearch:export:personcsv');
+/* ----------------------------------------------
+	Add exports to search area action panel
+   ---------------------------------------------- */
+TodoyuSearchActionPanelManager::addExport('company', 'csvexport', 'TodoyuContactCompanyExportManager::exportCSVfromIDs', 'contact.ext.export.companycsv', 'exportCsv', 'contactcompanysearch:export:companycsv');
+TodoyuSearchActionPanelManager::addExport('person', 'csvexport', 'TodoyuContactPersonExportManager::exportCSVfromIDs', 'contact.ext.export.personcsv', 'exportCsv', 'contactpersonsearch:export:personcsv');
 
 
 

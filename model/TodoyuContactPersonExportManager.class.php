@@ -33,10 +33,32 @@ class TodoyuContactPersonExportManager {
 	 */
 	public static function exportCSV($searchWord) {
 		$persons	= TodoyuContactPersonManager::searchPersons($searchWord, null, '', '');
-		$exportData	= self::prepareDataForExport($persons);
+		self::sendCSVfromData(self::getExportDataByPersonsData($persons));
+	}
 
+
+
+	/**
+	 * Exports data of companies of given IDs as CSV file
+	 *
+	 * @param	Integer[]	$personIDs
+	 */
+	public static function exportCSVfromIDs(array $personIDs) {
+		$personIDs = TodoyuArray::intval($personIDs);
+
+		self::sendCSVfromData(self::getExportDataByPersonIDs($personIDs));
+	}
+
+
+
+	/**
+	 * Send CSV for download
+	 *
+	 * @param	Array	$exportData
+	 */
+	public static function sendCSVfromData(array $exportData) {
 		$export = new TodoyuExportCSV($exportData);
-		$export->download('todoyu_person_export_' . date('YmdHis') . '.csv');
+		$export->download('todoyu_company_export_' . date('YmdHis') . '.csv');
 	}
 
 
@@ -44,17 +66,41 @@ class TodoyuContactPersonExportManager {
 	/**
 	 * Prepares the given persons to be exported
 	 *
-	 * @param	Array	$persons
+	 * @param	Array	$personsData
 	 * @return	Array
 	 */
-	protected static function prepareDataForExport(array $persons) {
+	protected static function getExportDataByPersonsData(array $personsData) {
 		$exportData = array();
 
-		foreach($persons as $person) {
-			$personObj	= TodoyuContactPersonManager::getPerson($person['id']);
+		foreach($personsData as $personData) {
+			$person	= TodoyuContactPersonManager::getPerson($personData['id']);
+			$person->loadForeignData();
 
-			$personObj->loadForeignData();
-			$exportData[]	= self::parseDataForExport($personObj);
+			$exportData[]	= self::getPersonExportData($person);
+		}
+
+		return $exportData;
+	}
+
+
+
+	/**
+	 * Prepares data of given persons of given IDs for export
+	 *
+	 * @param	Array	$personIDs
+	 * @return	Array
+	 */
+	public static function getExportDataByPersonIDs(array $personIDs) {
+		$personIDs = TodoyuArray::intval($personIDs);
+
+		$exportData = array();
+		foreach($personIDs as $idPerson) {
+			if( $idPerson !== 0 ) {
+				$person	= TodoyuContactPersonManager::getPerson($idPerson);
+				$person->loadForeignData();
+
+				$exportData[]	= self::getPersonExportData($person);
+			}
 		}
 
 		return $exportData;
@@ -68,7 +114,7 @@ class TodoyuContactPersonExportManager {
 	 * @param	TodoyuContactPerson		$person
 	 * @return	Array
 	 */
-	protected static function parseDataForExport(TodoyuContactPerson $person) {
+	protected static function getPersonExportData(TodoyuContactPerson $person) {
 		$exportData = array(
 			Todoyu::Label('contact.ext.person.attr.id')			=> $person->getID(),
 			Todoyu::Label('core.global.date_create')			=> TodoyuTime::format($person->getDateCreate()),
