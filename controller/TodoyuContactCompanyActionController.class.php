@@ -188,12 +188,12 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 		$type		= 'company';
 
-		$tabs		= TodoyuContactRenderer::renderTabs('company');
+//		$tabs		= TodoyuContactRenderer::renderTabs('company');
 		$content	= TodoyuContactRenderer::renderDetails($type, $idCompany);
-
-		$content	= TodoyuRenderer::renderContent($content, $tabs);
-
-		return TodoyuRequest::isAjaxRequest() ? $content : TodoyuContactRenderer::renderContactPage('company', $idCompany, '', $content);
+		return $content;
+//		$content	= TodoyuRenderer::renderContent($content, $tabs);
+//
+//		return TodoyuRequest::isAjaxRequest() ? $content : TodoyuContactRenderer::renderContactPage('company', $idCompany, '', $content);
 	}
 
 
