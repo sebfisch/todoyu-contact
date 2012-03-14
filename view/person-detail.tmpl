@@ -1,6 +1,6 @@
 <div id="contact-details" class="person">
 	<h1 class="headerLine">
-		<span class="title">{$fullname}</span>
+		<span class="title first">{$fullname}</span>
 	</h1>
 
 	<div class="infoBoxOuter">
@@ -9,8 +9,7 @@
 			<h4>{Label LLL:contact.ext.person.mainpersondata}</h4>
 			<div class="content overflow">
 				<div class="left image">{personImage $id}</div>
-				<p>
-					{salutationLabel $id}<br />
+				<p>{salutationLabel $id}<br />
 					{$fullname}<br />
 					<a href="mailto:{$firstname}%20{$lastname}%20%3C{$email}%3E">{$email}</a>
 				</p>
@@ -140,17 +139,16 @@
 			<div class="content overflow">
 				<table class="list autoWidthTable">
 					{if $birthday != '0000-00-00' && isInternal()}
-					<tr>
-						<th>{Label LLL:contact.ext.person.attr.birthday}:</th>
-						<td>{formatSqlDate $birthday}</td>
-					</tr>
+						<tr>
+							<th>{Label LLL:contact.ext.person.attr.birthday}:</th>
+							<td>{formatSqlDate $birthday}</td>
+						</tr>
 					{/if}
-					
 					{if allowed('contact', 'person:seeComment')}
-					<tr>
-						<th>{Label LLL:contact.ext.person.attr.comment}:</th>
-						<td>{$comment|default:"-"}</td>
-					</tr>
+						<tr>
+							<th>{Label LLL:contact.ext.person.attr.comment}:</th>
+							<td>{$comment|default:"-"}</td>
+						</tr>
 					{/if}
 				</table>
 			</div>
@@ -161,13 +159,14 @@
 		{$hookedContent}
 
 		{* ------------ Actions panel (edit, delete, close) ------------ *}
-
 		<div class="actions">
-			{if isPersonEditAllowed($id)}
-				{Button label='contact.ext.person.edit' onclick='Todoyu.Ext.contact.Person.edit($id)' class='buttonPersonEdit' id='person-edit' title='LLL:contact.ext.person.edit'}
-			{/if}
-			{if isPersonDeleteAllowed($id)}
-				{Button label='contact.ext.person.delete' onclick='Todoyu.Ext.contact.Person.remove($id)' class='buttonPersonDelete' id='person-delete' title='LLL:contact.ext.person.delete'}
+			{if constant('AREA') === constant('EXTID_CONTACT')}
+				{if isPersonEditAllowed($id)}
+					{Button label='contact.ext.person.edit' onclick='Todoyu.Ext.contact.Person.edit($id)' class='buttonPersonEdit' id='person-edit' title='LLL:contact.ext.person.edit'}
+				{/if}
+				{if isPersonDeleteAllowed($id)}
+					{Button label='contact.ext.person.delete' onclick='Todoyu.Ext.contact.Person.remove($id)' class='buttonPersonDelete' id='person-delete' title='LLL:contact.ext.person.delete'}
+				{/if}
 			{/if}
 			{Button label='contact.ext.person.close' onclick='Todoyu.Ext.contact.Person.closeDetailView()' class='cancel' id='person-close' title='LLL:contact.ext.person.close'}
 		</div>

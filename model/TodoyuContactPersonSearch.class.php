@@ -165,13 +165,27 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 		$idPerson   = intval($idPerson);
 		$person	= TodoyuContactPersonManager::getPerson($idPerson);
 
+		if( Todoyu::allowed('contact', 'relation:seeAllContactinfotypes') ) {
+			$email  = $person->getEmail(true);
+			if( empty($email) ) {
+				$email  = '-';
+			}
+		} else {
+			$email  = false;
+		}
+
+		$company    = $person->getMainCompany()->getTitle();
+		if( empty($company) ) {
+			$company    = '-';
+		}
+
 		return array(
 			'icon'		=> '',
 			'iconClass'	=> ($person->isActive() ? 'login' : '') . ($person->isAdmin() ? ' admin' : ''),
 			'lastname'	=> $person->getLastname(),
 			'firstname'	=> $person->getFirstname(),
-			'email'		=> Todoyu::allowed('contact', 'relation:seeAllContactinfotypes') ? $person->getEmail(true) : false,
-			'company'	=> $person->getMainCompany()->getTitle(),
+			'email'		=> $email,
+			'company'	=> $company,
 			'actions'	=> TodoyuContactPersonRenderer::renderPersonActions($person->getID())
 		);
 	}

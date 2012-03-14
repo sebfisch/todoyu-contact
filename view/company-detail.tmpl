@@ -1,7 +1,6 @@
 <div id="contact-details" class="company">
 	<h1 class="headerLine">
-		<span class="title">{$title}</span>
-		<span class="rgt"></span>
+		<span class="title first">{$title}</span>
 	</h1>
 
 	<div class="infoBoxOuter">
@@ -103,11 +102,13 @@
 	
 		{* ------------ Actions panel (edit, delete, close) ------------ *}
 		<div class="actions">
-			{if isCompanyEditAllowed($id)}
-				{Button label='contact.ext.company.edit' onclick='Todoyu.Ext.contact.Company.edit($id)' class='buttonCompanyEdit' id='company-edit' title='LLL:contact.ext.company.edit'}
-			{/if}
-			{if isCompanyDeleteAllowed($id)}
-				{Button label='contact.ext.company.delete' onclick='Todoyu.Ext.contact.Company.remove($id)' class='buttonCompanyDelete' id='company-delete' title='LLL:contact.ext.company.delete'}
+			{if constant('AREA') === constant('EXTID_CONTACT')}
+				{if isCompanyEditAllowed($id)}
+					{Button label='contact.ext.company.edit' onclick='Todoyu.Ext.contact.Company.edit($id)' class='buttonCompanyEdit' id='company-edit' title='LLL:contact.ext.company.edit'}
+				{/if}
+				{if isCompanyDeleteAllowed($id)}
+					{Button label='contact.ext.company.delete' onclick='Todoyu.Ext.contact.Company.remove($id)' class='buttonCompanyDelete' id='company-delete' title='LLL:contact.ext.company.delete'}
+				{/if}
 			{/if}
 			{Button label='contact.ext.company.close' onclick='Todoyu.Ext.contact.Company.closeDetailView()' class='cancel' id='company-close' title='LLL:contact.ext.company.close'}
 		</div>
