@@ -134,4 +134,5 @@
 	<label index="company.search.mode">Find Companies</label>
 	<label index="other">Other Information</label>
 	<label index="profile.module">Personal Data</label>
+	<label index="export.companycsv">Export companies as CSV</label>
 </labels>

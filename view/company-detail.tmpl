@@ -109,7 +109,7 @@
 			{if isCompanyDeleteAllowed($id)}
 				{Button label='contact.ext.company.delete' onclick='Todoyu.Ext.contact.Company.remove($id)' class='buttonCompanyDelete' id='company-delete' title='LLL:contact.ext.company.delete'}
 			{/if}
-			{Button label='contact.ext.company.close' onclick='Todoyu.Ext.contact.Company.showList(Todoyu.Ext.contact.PanelWidget.ContactSearch.getValue())' class='cancel' id='company-close' title='LLL:contact.ext.company.close'}
+			{Button label='contact.ext.company.close' onclick='Todoyu.Ext.contact.Company.closeDetailView()' class='cancel' id='company-close' title='LLL:contact.ext.company.close'}
 		</div>
 		<div class="clear"></div>
 

@@ -338,6 +338,21 @@ Todoyu.Ext.contact.Person =  {
 
 
 	/**
+	 * Close person detail view and reload persons list / area content
+	 *
+	 * @method	closeDetailView
+	 */
+	closeDetailView: function() {
+		if( Todoyu.getArea() === 'contact' ) {
+			this.showList();
+		} else {
+			document.location.reload();
+		}
+	},
+
+
+
+	/**
 	 * Show info popup to given person data
 	 *
 	 * @method	show
@@ -352,7 +367,7 @@ Todoyu.Ext.contact.Person =  {
 			}
 		};
 
-		this.ext.updateContent(url, options);
+		Todoyu.Ui.updateContentBody(url, options);
 	},
 
 

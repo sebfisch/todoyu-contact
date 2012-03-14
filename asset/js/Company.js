@@ -157,7 +157,7 @@ Todoyu.Ext.contact.Company =  {
 				// Notify (implement)
 			Todoyu.notifySuccess('[LLL:contact.ext.company.saved.ok]', notificationIdentifier);
 
-			this.showList(this.ext.PanelWidget.ContactSearch.getValue());
+			this.showList();
 		}
 	},
 
@@ -201,6 +201,21 @@ Todoyu.Ext.contact.Company =  {
 
 
 	/**
+	 * Close company detail view and reload companies list / area content
+	 *
+	 * @method	closeDetailView
+	 */
+	closeDetailView: function() {
+		if( Todoyu.getArea() === 'contact' ) {
+			this.showList();
+		} else {
+			document.location.reload();
+		}
+	},
+
+
+
+	/**
 	 * Show detail view (popup) of given company
 	 *
 	 * @method	show
@@ -215,7 +230,7 @@ Todoyu.Ext.contact.Company =  {
 			}
 		};
 
-		this.ext.updateContent(url, options);
+		Todoyu.Ui.updateContentBody(url, options);
 	},
 
 

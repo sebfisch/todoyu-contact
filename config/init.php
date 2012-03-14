@@ -112,7 +112,6 @@ TodoyuFormHook::registerLoadData('ext/contact/config/form/address.xml', 'TodoyuC
 TodoyuHookManager::registerHook('project', 'taskdata', 'TodoyuContactTaskManager::hookModifyTaskPersonAttributes', 200);
 
 
-
 /* ----------------------------------------
 	Configure contact data types listings
    --------------------------------------- */
@@ -167,6 +166,14 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['company'] = array(
 	// Company search
 Todoyu::$CONFIG['EXT']['contact']['listing']['companySearch'] = Todoyu::$CONFIG['EXT']['contact']['listing']['company'];
 Todoyu::$CONFIG['EXT']['contact']['listing']['companySearch']['dataFunc']	= 'TodoyuContactCompanySearch::getCompanyListingDataSearch';
+
+
+
+/* -----------------------
+	Add filter exports
+   ----------------------- */
+TodoyuSearchActionPanelManager::addExport('company', 'csvexport', 'TodoyuContactCompanyExportManager::exportCSV', 'contact.ext.export.companycsv', 'companyExportCsv', 'contactcompanysearch:export:companycsv');
+
 
 
 /* ----------------------------

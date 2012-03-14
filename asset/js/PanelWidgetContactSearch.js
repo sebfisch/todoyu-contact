@@ -163,7 +163,7 @@ Todoyu.Ext.contact.PanelWidget.ContactSearch = {
 
 		var type	= this.getType().capitalize();
 
-		this.ext[type].showList(this.getValue());
+		this.ext[type].showList();
 	},
 
 

@@ -3,7 +3,7 @@
 * todoyu is published under the BSD License:
 * http://www.opensource.org/licenses/bsd-license.php
 *
-* Copyright (c) 2012, snowflake productions GmbH, Switzerland
+* Copyright (c) 2011, snowflake productions GmbH, Switzerland
 * All rights reserved.
 *
 * This script is part of the todoyu project.
@@ -33,13 +33,10 @@ class TodoyuContactCompanyExportManager {
 	 */
 	public static function exportCSV($searchWord) {
 		$companies	= TodoyuContactCompanyManager::searchCompany($searchWord, null, '', '');
-
 		$exportData	= self::prepareDataForExport($companies);
 
 		$export = new TodoyuExportCSV($exportData);
-
 		$export->setFilename('todoyu_company_export_' . date('YmdHis') . '.csv');
-
 		$export->download();
 	}
 
@@ -75,15 +72,14 @@ class TodoyuContactCompanyExportManager {
 	 * @return	Array
 	 */
 	public static function parseDataForExport(TodoyuContactCompany $company) {
+		$creator    = $company->getCreatePerson();
 		$exportData = array(
-			Todoyu::Label('contact.ext.company.attr.id')				=> $company->getID(),
-			Todoyu::Label('core.global.date_create')					=> TodoyuTime::format($company->date_create),
-			Todoyu::Label('core.global.date_update')					=> TodoyuTime::format($company->date_update),
-			Todoyu::Label('core.global.id_person_create')				=> $company->getPersonCreate()->getFullName(),
-
+			Todoyu::Label('contact.ext.company.attr.id')			=> $company->getID(),
+			Todoyu::Label('core.global.date_create')				=> TodoyuTime::format($company->date_create),
+			Todoyu::Label('core.global.date_update')				=> TodoyuTime::format($company->date_update),
+			Todoyu::Label('core.global.id_person_create')			=> $creator ? $creator->getFullName() : '',
 			Todoyu::Label('contact.ext.company.attr.title')			=> $company->getTitle(),
 			Todoyu::Label('contact.ext.company.attr.shortname')		=> $company->getShortname(),
-
 			Todoyu::Label('contact.ext.company.attr.is_internal')	=> $company->isInternal() ? Todoyu::Label('core.global.yes') : Todoyu::Label('core.global.no'),
 		);
 
@@ -102,15 +98,15 @@ class TodoyuContactCompanyExportManager {
 			$prefix			= Todoyu::Label('contact.ext.address') . '_' . ($index + 1) . '_';
 			$addressObj		= TodoyuContactAddressManager::getAddress($address['id']);
 
-			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.addresstype')]	= TodoyuContactAddressTypeManager::getAddressTypeLabel($address['id_addresstype']);
+			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.addresstype')]= TodoyuContactAddressTypeManager::getAddressTypeLabel($address['id_addresstype']);
 			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.street')]		= $address['street'];
-			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.postbox')]		= $address['postbox'];
-			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.zip')]			= $address['zip'];
+			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.postbox')]	= $address['postbox'];
+			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.zip')]		= $address['zip'];
 			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.city')]		= $address['city'];
 			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.region')]		= $addressObj->getRegionLabel();
-			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.country')]		= $addressObj->getCountry()->getLabel();
+			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.country')]	= $addressObj->getCountry()->getLabel();
 			$exportData[$prefix . Todoyu::Label('core.form.is_preferred')]				= $address['is_preferred'] ? Todoyu::Label('core.global.yes') : Todoyu::Label('core.global.no');
-			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.comment')]		= $address['comment'];
+			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.comment')]	= $address['comment'];
 		}
 
 			// Map & prepare employee records of company

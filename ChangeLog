@@ -9,6 +9,8 @@ contact 1.2.0 - not released yet
 	* Added: TodoyuContactPersonManager::isAllowed to check whether some person has some right
 	* Added: Disabled person items in staffselector can be selected on [Enter] when highlighted
 	* Added: American english person salutations
+	* Changed: Closing person/company detail view reloads respective contacts list in contacts area, area content in other areas
+	* Changed: Person and company listing can be displayed also outside of contact area, editing actions are only available in contact area
 	* Changed: Adapted changes to core-change from r8715
 	* Changed: TodoyuContactCompany::getAddresses() return now a list of address objects
 	* Changed: TodoyuContactPerson::getCompanies() return now a list of company objects
@@ -60,12 +62,12 @@ contact 1.1.0 - 2011-06-17
 	* Bugfix: Locale preferences problems in contact
 	* Bugfix: Removed display of email in person quickinfo when not available
 	* Bugfix: Added rights check in controller to avoid direct url access
- 	* Bugfix: Fixed birthday in person quickinfo and detail view to be formatted by date format of locale
- 	* Feature: Added salutation and company to person search
+	* Bugfix: Fixed birthday in person quickinfo and detail view to be formatted by date format of locale
+	* Feature: Added salutation and company to person search
 	* Feature: Added comment to person quickinfo
 	* Feature: Added person ID plugin (dwoo)
- 	* Feature: Set default salutation to m (male) for new person records
- 	* Feature: Implementation / documentation of contact export hooks
+	* Feature: Set default salutation to m (male) for new person records
+	* Feature: Implementation / documentation of contact export hooks
 	* Feature: Export for contacts
 	* Feature: Improved staff selector - Autocompleter, disable. Much smaller now
 	* Feature: Added general person header stub (analog to e.g. project header)

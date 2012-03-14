@@ -20,12 +20,15 @@
 
 /**
  * Filter configurations for the contact extension
+ * Search widgets over persons, companies
  *
  * @package		Todoyu
  * @subpackage	Contact
  */
 
-	// Company filters
+/**
+ *  Company filters
+ */
 Todoyu::$CONFIG['FILTERS']['COMPANY'] = array(
 	'key'		=> 'company',
 	'config'	=> array(
@@ -42,8 +45,15 @@ Todoyu::$CONFIG['FILTERS']['COMPANY'] = array(
 			'optgroup'	=> 'contact.filter.company.label',
 			'widget'	=> 'text',
 			'wConf' => array(
-				'LabelFuncRef'	=> 'TodoyuProjectProjectFilterDataSource::getLabel',
 				'negation'		=> 'default'
+			)
+		),
+		'contactinformation' => array(
+			'label'		=> 'contact.filter.contactinformation',
+			'optgroup'	=> 'contact.filter.company.label',
+			'widget'	=> 'text',
+			'wConf' => array(
+				'negation'		=> false
 			)
 		)
 	)
@@ -51,7 +61,9 @@ Todoyu::$CONFIG['FILTERS']['COMPANY'] = array(
 
 
 
-	// Person filters
+/**
+ * Person filters
+ */
 Todoyu::$CONFIG['FILTERS']['PERSON'] = array(
 	'key'	=> 'person',
 	'config'	=> array(

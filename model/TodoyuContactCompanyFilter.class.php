@@ -86,7 +86,7 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 		if( $value !== '' ) {
 			$tables	= array(self::TABLE);
 
-			$logic		= !$negate ? ' NOT LIKE ':' LIKE ';
+			$logic		= $negate ? ' NOT LIKE ':' LIKE ';
 			$conjunction= $negate ? ' AND ':' OR ';
 
 			$keyword= Todoyu::db()->escape($value);
@@ -102,6 +102,33 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 		}
 
 		return $queryParts;
+	}
+
+
+
+	/**
+	 * Filter contact information fulltext
+	 *
+	 * @param	Mixed		$value
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public function Filter_contactinformation($value, $negate = false) {
+		$tables = array(
+			self::TABLE,
+			'ext_contact_contactinfo',
+			'ext_contact_mm_company_contactinfo'
+		);
+
+		$where	= ' ext_contact_contactinfo.deleted							= 0 '
+				. ' AND ' . Todoyu::db()->buildLikeQuery(array($value), array('ext_contact_contactinfo.info'))
+				. ' AND ext_contact_mm_company_contactinfo.id_contactinfo	= ext_contact_contactinfo.id'
+				. ' AND ' . self::TABLE . '.id								= ext_contact_mm_company_contactinfo.id_company';
+
+		return array(
+			'tables'=> $tables,
+			'where'	=> $where,
+		);
 	}
 
 
