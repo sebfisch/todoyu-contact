@@ -487,7 +487,7 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	/**
 	 * Parses the salutation to label
 	 *
-	 * @return	String|Boolean
+	 * @return	String
 	 */
 	public function getSalutationLabel() {
 		$salutationKey  = $this->getSalutationKey();
@@ -496,7 +496,7 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 			return Todoyu::Label('contact.ext.person.attr.salutation.' . $salutationKey);
 		}
 
-		return false;
+		return '';
 	}
 
 

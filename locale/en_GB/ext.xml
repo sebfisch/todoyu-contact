@@ -11,7 +11,6 @@
 	<label index="workaddress">Place Of Work</label>
 	<label index="jobtype">Job Type</label>
 	<label index="noJobDefined">No Job Defined</label>
-	<label index="person.new">New Person</label>
 	<label index="company.new">New Company</label>
 	<label index="create.person.label">New Person</label>
 	<label index="create.company.label">New Company</label>
@@ -20,6 +19,7 @@
 	<label index="contactimage.upload.maxFileSizeExceeded">The file '#{filename}' has exceeded the maximum allowed filesize (#{maxFileSize}Bytes) to upload</label>
 	<label index="contactimage.upload.maxLengthFileNameExceeded">The file '#{filename}' has exceeded the maximum allowed length (#{maxLengthFileName}) of its name to upload</label>
 	<label index="contactimage.upload.remove">Remove profile picture</label>
+	<label index="person.new">New Person</label>
 	<label index="person.create">Add New Person</label>
 	<label index="person.edit">Edit Person</label>
 	<label index="person.delete">Delete Person</label>

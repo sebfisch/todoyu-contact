@@ -33,14 +33,10 @@ class TodoyuContactPersonExportManager {
 	 */
 	public static function exportCSV($searchWord) {
 		$persons	= TodoyuContactPersonManager::searchPersons($searchWord, null, '', '');
-
 		$exportData	= self::prepareDataForExport($persons);
 
 		$export = new TodoyuExportCSV($exportData);
-
-		$export->setFilename('todoyu_person_export_' . date('YmdHis') . '.csv');
-
-		$export->download();
+		$export->download('todoyu_person_export_' . date('YmdHis') . '.csv');
 	}
 
 
@@ -69,33 +65,32 @@ class TodoyuContactPersonExportManager {
 	/**
 	 * Parses person-data for export
 	 *
-	 * @todo	use person getters instead of directly accessing properties
 	 * @param	TodoyuContactPerson		$person
 	 * @return	Array
 	 */
 	protected static function parseDataForExport(TodoyuContactPerson $person) {
 		$exportData = array(
-			Todoyu::Label('contact.ext.person.attr.id')			=> $person->id,
-			Todoyu::Label('core.global.date_create')			=> TodoyuTime::format($person->date_create),
-			Todoyu::Label('core.global.date_update')			=> TodoyuTime::format($person->date_update),
-			Todoyu::Label('core.global.id_person_create')		=> TodoyuContactPersonManager::getPerson($person->id_person_create)->getFullName(),
+			Todoyu::Label('contact.ext.person.attr.id')			=> $person->getID(),
+			Todoyu::Label('core.global.date_create')			=> TodoyuTime::format($person->getDateCreate()),
+			Todoyu::Label('core.global.date_update')			=> TodoyuTime::format($person->getDateUpdate()),
+			Todoyu::Label('core.global.id_person_create')		=> TodoyuContactPersonManager::getPerson($person->getPerson('create'))->getFullName(),
 
-			Todoyu::Label('contact.ext.person.attr.lastname')	=> $person->lastname,
-			Todoyu::Label('contact.ext.person.attr.firstname')	=> $person->firstname,
+			Todoyu::Label('contact.ext.person.attr.lastname')	=> $person->getLastName(),
+			Todoyu::Label('contact.ext.person.attr.firstname')	=> $person->getFirstName(),
 			Todoyu::Label('contact.ext.person.attr.salutation')	=> $person->getSalutationLabel(),
-			Todoyu::Label('contact.ext.person.attr.shortname')	=> $person->shortname,
+			Todoyu::Label('contact.ext.person.attr.shortname')	=> $person->getShortname(),
 
-			Todoyu::Label('contact.ext.person.attr.username')	=> $person->username,
-			Todoyu::Label('contact.ext.person.attr.email')		=> $person->email,
-			Todoyu::Label('contact.ext.person.attr.is_admin')	=> $person->is_admin ? Todoyu::Label('core.global.yes') : Todoyu::Label('core.global.no'),
-			Todoyu::Label('contact.ext.person.attr.active')		=> $person->is_active ? Todoyu::Label('core.global.yes') : Todoyu::Label('core.global.no'),
+			Todoyu::Label('contact.ext.person.attr.username')	=> $person->getUsername(),
+			Todoyu::Label('contact.ext.person.attr.email')		=> $person->getEmail(),
+			Todoyu::Label('contact.ext.person.attr.is_admin')	=> Todoyu::Label('core.global.' . ($person->isAdmin()	? 'yes' : 'no')),
+			Todoyu::Label('contact.ext.person.attr.is_active')	=> Todoyu::Label('core.global.' . ($person->isActive()	? 'yes' : 'no')),
 			Todoyu::Label('contact.ext.person.attr.birthday')	=> TodoyuTime::format($person->getBirthday(), 'date'),
 
 		);
 
 			// Map & prepare company records of person
-		foreach( $person->company as $index => $company ) {
-			$exportData[Todoyu::Label('contact.ext.person.attr.company') . '_' . ($index + 1)]	= $company['title'];
+		foreach( $person->getCompanies() as $index => $company ) {
+			$exportData[Todoyu::Label('contact.ext.person.attr.company') . '_' . ($index + 1)]	= $company->getTitle();
 		}
 
 			// Map & prepare contactinfo records of person
