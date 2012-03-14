@@ -85,7 +85,7 @@ Todoyu.Ext.contact.Person =  {
 	 * @param	{Number}		idPerson
 	 */
 	initEditForm: function(idPerson) {
-		this.addPanelWidgetObservers(idPerson);
+		this.initObservers(idPerson);
 		this.showLoginFields(idPerson);
 	},
 
@@ -97,7 +97,7 @@ Todoyu.Ext.contact.Person =  {
 	 * @method	initObservers
 	 * @param	{Number}			idPerson
 	 */
-	addPanelWidgetObservers: function(idPerson) {
+	initObservers: function(idPerson) {
 		this.observeFieldsForShortname(idPerson);
 
 		if( this.canSeeAccountFields(idPerson) ) {
@@ -290,7 +290,7 @@ Todoyu.Ext.contact.Person =  {
 			Todoyu.notifyError('[LLL:contact.ext.person.saved.error]', notificationIdentifier);
 			$('contact-form-content').update(response.responseText);
 
-			var idPerson	= parseInt(response.request.parameters['person[id]'], 10);
+			var idPerson	= response.getTodoyuHeader('idRecord');
 			this.initEditForm(idPerson);
 		} else {
 			Todoyu.notifySuccess('[LLL:contact.ext.person.saved]', notificationIdentifier);

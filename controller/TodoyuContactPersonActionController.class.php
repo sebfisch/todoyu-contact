@@ -134,6 +134,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 			return $idPerson;
 		} else {
 			TodoyuHeader::sendTodoyuErrorHeader();
+			TodoyuHeader::sendTodoyuHeader('idRecord', $idPerson);
 
 			return $form->render();
 		}
