@@ -116,12 +116,11 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 	 * @return	Array
 	 */
 	public static function getPersonListingData($size, $offset = 0, array $params) {
+		$persons= TodoyuContactPersonManager::searchPersons($params['sword'], null, $size, $offset);
 		$data	= array(
 			'rows'	=> array(),
 			'total'	=> Todoyu::db()->getTotalFoundRows()
 		);
-
-		$persons= TodoyuContactPersonManager::searchPersons($params['sword'], null, $size, $offset);
 
 		foreach($persons as $personData) {
 			$data['rows'][] = self::getPersonListingDataRow($personData['id']);

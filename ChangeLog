@@ -7,6 +7,7 @@ contact 1.2.0 - not released yet
 	* Bugfix: Removing item, that matches searchword, from selection didn't reinsert it into staffselector search results
 	* Feature: Staff selector panelwidget can store/reload person selection as a group of itself
 	* Feature: Added search tabs and filters for company and person records
+	* Added: Persons list paging
 	* Added: TodoyuContactPersonManager::isAllowed to check whether some person has some right
 	* Added: Disabled person items in staffselector can be selected on [Enter] when highlighted
 	* Added: American english person salutations
