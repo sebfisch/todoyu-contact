@@ -45,35 +45,6 @@ class TodoyuContactCompanyRenderer {
 
 
 	/**
-	 * @param	Array		$companyIDs
-	 * @param	Bool		$expandIfSingle
-	 * @return	String
-	 */
-	public static function renderCompanyListingSearch(array $companyIDs, $expandIfSingle = false) {
-		$companyIDs	= TodoyuArray::intval($companyIDs, true, true);
-
-		$companies	= array();
-		foreach($companyIDs as $idCompany) {
-			$company	= TodoyuContactCompanyManager::getCompany($idCompany);
-
-			$companyData	= $company->getTemplateData();
-			$companyData	= array_merge($companyData, TodoyuContactCompanySearch::getCompanyRowData($idCompany));
-
-			$companies[$idCompany]	= $companyData;
-		}
-
-		$tmpl	= 'ext/projectbillingcompanysearch/view/company-list.tmpl';
-		$data	= array(
-			'companyIDs'=> $companyIDs,
-			'companies'	=> $companies,
-		);
-
-		return Todoyu::render($tmpl, $data);
-	}
-
-
-
-	/**
 	 * Render company list
 	 *
 	 * @param	String		$searchWord
@@ -89,12 +60,41 @@ class TodoyuContactCompanyRenderer {
 
 
 //	/**
-//	 * @param	Integer[]	$companyIDs
+//	 * @param	Array		$companyIDs
+//	 * @param	Bool		$expandIfSingle
 //	 * @return	String
 //	 */
-//	public static function renderCompanyListSearch($companyIDs){
-//		return TodoyuListingRenderer::render('contact', 'company', 0, true, array('companyIDs' => $companyIDs));
+//	public static function renderCompanyListingSearch(array $companyIDs, $expandIfSingle = false) {
+//		$companyIDs	= TodoyuArray::intval($companyIDs, true, true);
+//
+//		$companies	= array();
+//		foreach($companyIDs as $idCompany) {
+//			$company	= TodoyuContactCompanyManager::getCompany($idCompany);
+//
+//			$companyData	= $company->getTemplateData();
+//			$companyData	= array_merge($companyData, TodoyuContactCompanySearch::getCompanyListingDataRow($idCompany));
+//
+//			$companies[$idCompany]	= $companyData;
+//		}
+//
+//		$tmpl	= 'ext/projectbillingcompanysearch/view/company-list.tmpl';
+//		$data	= array(
+//			'companyIDs'=> $companyIDs,
+//			'companies'	=> $companies,
+//		);
+//
+//		return Todoyu::render($tmpl, $data);
 //	}
+
+
+
+	/**
+	 * @param	Integer[]	$companyIDs
+	 * @return	String
+	 */
+	public static function renderCompanyListingSearch($companyIDs){
+		return TodoyuListingRenderer::render('contact', 'companySearch', 0, true, array('companyIDs' => $companyIDs));
+	}
 
 
 

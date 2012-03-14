@@ -132,7 +132,7 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 
 
 	/**
-	 * Get persons search results listing data.
+	 * Get persons search results listing data
 	 *
 	 * @param	Integer		$size
 	 * @param	Integer		$offset
@@ -141,7 +141,6 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 	 */
 	public static function getPersonListingDataSearch($size, $offset = 0, array $params) {
 		$personIDs   = TodoyuArray::intval($params['personIDs']);
-
 		$data	= array(
 			'rows'	=> array(),
 			'total'	=> Todoyu::db()->getTotalFoundRows()

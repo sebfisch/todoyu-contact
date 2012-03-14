@@ -27,8 +27,6 @@
 if( Todoyu::allowed('contact', 'general:use') ) {
 	if( Todoyu::allowed('contact', 'general:area') ) {
 		TodoyuSearchManager::addEngine('person', 'TodoyuContactPersonSearch::getSuggestions', 'contact.ext.person.search.title', 'contact.ext.person.search.mode', 100);
-	}
-	if( Todoyu::allowed('contact', 'general:area') ) {
 		TodoyuSearchManager::addEngine('company', 'TodoyuContactCompanySearch::getSuggestions', 'contact.ext.company.search.title', 'contact.ext.company.search.mode', 110);
 	}
 }

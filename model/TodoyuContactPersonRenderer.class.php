@@ -66,7 +66,6 @@ class TodoyuContactPersonRenderer {
 	 * @return	String
 	 */
 	public static function renderPersonListingSearch(array $personIDs) {
-//		return TodoyuListingRenderer::render('contact', 'person', 0, false, array('personIDs' => $personIDs));
 		return TodoyuListingRenderer::render('contact', 'personSearch', 0, true, array('personIDs' => $personIDs));
 	}
 

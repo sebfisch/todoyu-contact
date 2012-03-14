@@ -83,10 +83,13 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 			$companies	= Todoyu::db()->getArray($fields, $table, $where, '', $order);
 
 			foreach($companies as $company) {
-				$phones	= TodoyuContactCompanyManager::getPhones($company['id']);
+				$labelTitle = TodoyuString::wrap($company['title'], '<span class="keyword">|</span>');
 
-				$labelTitle = TodoyuString::wrap($company['title'], '<span class="keyword">|</span>') . (isset($phones[0])
-						? ' | ' . $phones[0]['info'] : '');
+				$phones	= TodoyuContactCompanyManager::getPhones($company['id']);
+				if( isset($phones[0]) ) {
+					$labelTitle .= ' | ' . $phones[0]['info'];
+				}
+
 				$suggestions[] = array(
 					'labelTitle'=> $labelTitle,
 					'labelInfo'	=> '',
@@ -107,7 +110,7 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 	 * @param	Integer		$idCompany
 	 * @return	Array
 	 */
-	public static function getCompanyRowData($idCompany) {
+	public static function getCompanyListingDataRow($idCompany) {
 		$idCompany	= intval($idCompany);
 
 		return array(
@@ -130,14 +133,13 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 	 */
 	public static function getCompanyListingData($size, $offset = 0, array $params) {
 		$companies	= TodoyuContactCompanyManager::searchCompany($params['sword'], null, $size, $offset);
-
-		$data	= array(
+		$data		= array(
 			'rows'	=> array(),
 			'total'	=> Todoyu::db()->getTotalFoundRows()
 		);
 
 		foreach($companies as $company) {
-			$data['rows'][] = self::getCompanyRowData($company['id']);
+			$data['rows'][] = self::getCompanyListingDataRow($company['id']);
 		}
 
 		return $data;
@@ -145,26 +147,27 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 
 
 
-//	/**
-//	 * @param	Integer $size
-//	 * @param	Integer $offset
-//	 * @param	Array	$params
-//	 * @return  Array
-//	 */
-//	public static function getCompanyLisitingDataSearch($size, $offset, $params) {
-//		$companyIDs	= TodoyuArray::intval($params['companyIDs']);
-//
-//		$data	= array(
-//			'rows'	=> array(),
-//			'total'	=> count($companyIDs)
-//		);
-//
-//		foreach($companyIDs as $idCompany) {
-//			$data['rows'][] = self::getCompanyRowData($idCompany);
-//		}
-//
-//		return $data;
-//	}
+	/**
+	 * Get companies search results listing data.
+	 *
+	 * @param	Integer		$size
+	 * @param	Integer		$offset
+	 * @param	Array		$params
+	 * @return  Array
+	 */
+	public static function getCompanyListingDataSearch($size, $offset = 0, array $params) {
+		$companyIDs	= TodoyuArray::intval($params['companyIDs']);
+		$data		= array(
+			'rows'	=> array(),
+			'total'	=> count($companyIDs)
+		);
+
+		foreach($companyIDs as $idCompany) {
+			$data['rows'][] = self::getCompanyListingDataRow($idCompany);
+		}
+
+		return $data;
+	}
 
 }
 

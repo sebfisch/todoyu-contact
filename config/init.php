@@ -115,7 +115,7 @@ TodoyuHookManager::registerHook('project', 'taskdata', 'TodoyuContactTaskManager
 /* ----------------------------------------
 	Configure contact data types listings
    --------------------------------------- */
-	// Person
+	// Person listing
 Todoyu::$CONFIG['EXT']['contact']['listing']['person'] = array(
 	'name'		=> 'person',
 	'update'	=> 'contact/person/listing',
@@ -137,14 +137,7 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['person'] = array(
 	)
 );
 
-		// Person search
-Todoyu::$CONFIG['EXT']['contact']['listing']['personSearch'] = Todoyu::$CONFIG['EXT']['contact']['listing']['person'];
-Todoyu::$CONFIG['EXT']['contact']['listing']['personSearch']['dataFunc']	= 'TodoyuContactPersonSearch::getPersonListingDataSearch';
-//Todoyu::$CONFIG['EXT']['contact']['listing']['personSearch']['dataFunc']	= 'TodoyuContactPersonSearch::getPersonListingData';
-
-
-
-	// Company
+	// Company listing
 Todoyu::$CONFIG['EXT']['contact']['listing']['company'] = array(
 	'name'		=> 'company',
 	'update'	=> 'contact/company/listing',
@@ -153,7 +146,6 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['company'] = array(
 	'columns'	=> array(
 		'icon'		=> '',
 		'title'		=> 'contact.ext.company.attr.title',
-//		'persons'	=> 'contact.ext.company.employees',
 		'address'	=> 'contact.ext.address',
 		'actions'	=> ''
 	),
@@ -162,6 +154,15 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['company'] = array(
 		'address'	=> 50
 	)
 );
+
+
+
+/* ----------------------------------------
+	Configure search + results listing
+   --------------------------------------- */
+			// Person search
+Todoyu::$CONFIG['EXT']['contact']['listing']['personSearch'] = Todoyu::$CONFIG['EXT']['contact']['listing']['person'];
+Todoyu::$CONFIG['EXT']['contact']['listing']['personSearch']['dataFunc']	= 'TodoyuContactPersonSearch::getPersonListingDataSearch';
 
 	// Company search
 Todoyu::$CONFIG['EXT']['contact']['listing']['companySearch'] = Todoyu::$CONFIG['EXT']['contact']['listing']['company'];
@@ -173,6 +174,7 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['companySearch']['dataFunc']	= 'Tod
 	Add filter exports
    ----------------------- */
 TodoyuSearchActionPanelManager::addExport('company', 'csvexport', 'TodoyuContactCompanyExportManager::exportCSV', 'contact.ext.export.companycsv', 'companyExportCsv', 'contactcompanysearch:export:companycsv');
+TodoyuSearchActionPanelManager::addExport('person', 'csvexport', 'TodoyuContactPersonExportManager::exportCSV', 'contact.ext.export.personcsv', 'personExportCsv', 'contactpersonsearch:export:personcsv');
 
 
 

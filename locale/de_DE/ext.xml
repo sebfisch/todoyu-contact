@@ -11,7 +11,6 @@
 	<label index="workaddress">Arbeitsadresse</label>
 	<label index="jobtype">Stellenbezeichnung</label>
 	<label index="noJobDefined">Keine Stellenbezeichnung definiert</label>
-	<label index="person.new">Neue Person</label>
 	<label index="company.new">Neue Firma</label>
 	<label index="create.person.label">Neue Person</label>
 	<label index="create.company.label">Neue Firma</label>
@@ -20,6 +19,7 @@
 	<label index="contactimage.upload.maxFileSizeExceeded">Die Datei '#{filename}' hat die maximal zulässige Grösse für Uploads (#{maxFileSize}Bytes) überschritten</label>
 	<label index="contactimage.upload.maxLengthFileNameExceeded">Der Dateiname '#{filename}' hat die maximal zulässige Länge (#{maxLengthFileName}) für den Upload überschritten</label>
 	<label index="contactimage.upload.remove">Profilbild entfernen</label>
+	<label index="person.new">Neue Person</label>
 	<label index="person.create">Neue Person hinzufügen</label>
 	<label index="person.edit">Person bearbeiten</label>
 	<label index="person.delete">Person löschen</label>
@@ -32,6 +32,7 @@
 	<label index="person.attr.id">Personen ID</label>
 	<label index="person.attr.salutation">Anrede</label>
 	<label index="person.attr.salutation.m">Herr</label>
+	<label index="person.attr.salutation.f">Frau</label>
 	<label index="person.attr.salutation.w">Frau</label>
 	<label index="person.attr.birthdate">Geburtsdatum</label>
 	<label index="person.attr.firstname">Vorname</label>
@@ -133,4 +134,6 @@
 	<label index="company.search.mode">Suche Firmen</label>
 	<label index="other">Weitere Informationen</label>
 	<label index="profile.module">Personen Daten</label>
+	<label index="export.companycsv">Firmen als CSV exportieren</label>
+	<label index="export.personcsv">Persons als CSV exportieren</label>
 </labels>

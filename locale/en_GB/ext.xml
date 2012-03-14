@@ -135,4 +135,5 @@
 	<label index="other">Other Information</label>
 	<label index="profile.module">Personal Data</label>
 	<label index="export.companycsv">Export companies as CSV</label>
+	<label index="export.personcsv">Export persons as CSV</label>
 </labels>
