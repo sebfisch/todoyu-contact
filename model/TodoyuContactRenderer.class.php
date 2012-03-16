@@ -180,6 +180,41 @@ class TodoyuContactRenderer {
 
 
 	/**
+	* @param	Integer		$idRecord
+	* @param	String		$recordType
+	* @return	String
+	*/
+	public static function renderContactImageUploadForm($idRecord, $recordType) {
+		$idRecord	= intval($idRecord);
+
+			// Construct form object
+		$xmlPath	= 'ext/contact/config/form/uploadcontactimage.xml';
+		$form		= TodoyuFormManager::getForm($xmlPath);
+
+			// Set form data
+		$formData	= array(
+			'MAX_FILE_SIZE'	=> intval(Todoyu::$CONFIG['EXT']['contact']['contactimage']['max_file_size'])
+		);
+
+		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData);
+		$formData['idContact']	= $idRecord;
+		$formData['recordType']	= $recordType;
+
+		$form->setFormData($formData);
+		$form->setUseRecordID(false);
+
+			// Render form
+		$data	= array(
+			'formhtml'	=> $form->render()
+		);
+
+			// Render form wrapped via dwoo template
+		return Todoyu::render('ext/contact/view/contactimageuploadform.tmpl', $data);
+	}
+
+
+
+	/**
 	 * Render upload iframe form after uploading finished
 	 *
 	 * @param	String		$recordType
