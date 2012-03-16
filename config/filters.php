@@ -55,6 +55,23 @@ Todoyu::$CONFIG['FILTERS']['COMPANY'] = array(
 			'wConf' => array(
 				'negation'		=> false
 			)
+		),
+		'isInternal'	=> array(
+			'funcRef'	=> 'TodoyuContactCompanyFilter::Filter_isInternal',
+			'label'		=> 'contact.filter.company.isInternal',
+			'optgroup'	=> 'contact.filter.company.label',
+			'widget'	=> 'checkbox',
+			'wConf'		=> array(
+				'negation'	=> false
+			)
+		),
+		'dateEnter'		=> array(
+			'label'		=> 'contact.filter.company.dateEnter',
+			'optgroup'	=> 'contact.filter.company.label',
+			'widget'	=> 'date',
+			'wConf'		=> array(
+				'negation'	=> 'datetime'
+			)
 		)
 	)
 );

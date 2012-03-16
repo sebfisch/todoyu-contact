@@ -59,35 +59,6 @@ class TodoyuContactCompanyRenderer {
 
 
 
-//	/**
-//	 * @param	Array		$companyIDs
-//	 * @param	Bool		$expandIfSingle
-//	 * @return	String
-//	 */
-//	public static function renderCompanyListingSearch(array $companyIDs, $expandIfSingle = false) {
-//		$companyIDs	= TodoyuArray::intval($companyIDs, true, true);
-//
-//		$companies	= array();
-//		foreach($companyIDs as $idCompany) {
-//			$company	= TodoyuContactCompanyManager::getCompany($idCompany);
-//
-//			$companyData	= $company->getTemplateData();
-//			$companyData	= array_merge($companyData, TodoyuContactCompanySearch::getCompanyListingDataRow($idCompany));
-//
-//			$companies[$idCompany]	= $companyData;
-//		}
-//
-//		$tmpl	= 'ext/projectbillingcompanysearch/view/company-list.tmpl';
-//		$data	= array(
-//			'companyIDs'=> $companyIDs,
-//			'companies'	=> $companies,
-//		);
-//
-//		return Todoyu::render($tmpl, $data);
-//	}
-
-
-
 	/**
 	 * @param	Integer[]	$companyIDs
 	 * @return	String

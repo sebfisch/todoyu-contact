@@ -140,6 +140,60 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 	public function Filter_projectfilter($value, $negate = false) {
 
 	}
+
+
+
+	/**
+	 * Filter for internal company
+	 *
+	 * @param	Integer		$value
+	 * @param	Boolean		$negate
+	 * @return	Array					Query parts
+	 */
+	public function Filter_isInternal($value, $negate = false) {
+		$tables	= array(self::TABLE);
+
+		$isInternal	= $negate ? 0 : 1;
+		$where		= self::TABLE . '.is_internal = ' . $isInternal;
+
+		$queryParts	= array(
+			'tables'	=> $tables,
+			'where'		=> $where
+		);
+
+		return $queryParts;
+	}
+
+
+
+	/**
+	 * Filter condition: dateEnter
+	 *
+	 * @param	String		$date
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public function Filter_dateEnter($date, $negate = false) {
+		return $this->makeFilter_date('date_enter', $date, $negate);
+	}
+
+
+
+	/**
+	 * Setup query parts for task date_... fields (create, update, start, end, deadline) filter
+	 *
+	 * @param	String			$field
+	 * @param	Integer			$date
+	 * @param	Boolean			$negate
+	 * @return	Array|Boolean				Query parts array / false if no date timestamp given (or 1.1.1970 00:00)
+	 */
+	public static function makeFilter_date($field, $date, $negate = false) {
+		$tables	= array(self::TABLE);
+		$field	= self::TABLE . '.' . $field;
+
+		return TodoyuSearchFilterHelper::getDateFilterQueryparts($tables, $field, $date, $negate);
+	}
+
 }
 
 ?>
