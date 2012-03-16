@@ -353,7 +353,7 @@ Todoyu.Ext.contact.Person =  {
 
 
 	/**
-	 * Show info popup to given person data
+	 * Show info about given person's data
 	 *
 	 * @method	show
 	 * @param	{Number}		idPerson

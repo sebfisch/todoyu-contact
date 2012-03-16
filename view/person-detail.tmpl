@@ -61,12 +61,12 @@
 		{* ------------ Employer companies with assigned job types ------------ *}
 		{foreach $company comp}
 			{if isCompanySeeAllowed($comp.id)}
-				<div class="infoBox employer">
-					<h4><a href="?ext=contact&controller=company&action=detail&company={$comp.id}">{Label LLL:contact.ext.person.attr.company}: {$comp.title}</a></h4>
+				<div class="infoBox employer content">
+					<h4><a href="javascript:void(0)" onclick="Todoyu.Ext.contact.Company.show({$comp.id})">{Label LLL:contact.ext.person.attr.company}: {$comp.title}</a></h4>
 					<div class="content overflow">
 						<table class="list autoWidthTable">
 							<tr>
-								<th>{Label LLL:contact.ext.jobtype}:</dt>
+								<th>{Label LLL:contact.ext.jobtype}:</th>
 								<td>{$comp.jobtype.title|default:"-"}</td>
 							</tr>
 							<tr>

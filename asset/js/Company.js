@@ -216,7 +216,7 @@ Todoyu.Ext.contact.Company =  {
 
 
 	/**
-	 * Show detail view (popup) of given company
+	 * Show detail view of given company
 	 *
 	 * @method	show
 	 * @param	{Number}		idCompany

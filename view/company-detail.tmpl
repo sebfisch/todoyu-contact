@@ -64,7 +64,7 @@
 					<div class="content overflow address">
 						<table class="list autoWidthTable">
 							<tr>
-								<th><a href="?ext=contact&amp;controller=person&amp;action=detail&amp;person={$pers.id}">{personLabel $pers.id 'employee' $id}</a></th>
+								<th><a href="javascript:void(0)" onclick="Todoyu.Ext.contact.Person.show({$pers.id})">{personLabel $pers.id 'employee' $id}</a></th>
 								<td>{$pers.jobtype.title}</td>
 								{if $pers.id_workaddress > 0}<td>{$pers.workaddress.street}, {$pers.workaddress.zip} {$pers.workaddress.city}, {countryName $pers.workaddress.id_country}</td>{/if}
 							</tr>
