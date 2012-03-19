@@ -84,7 +84,7 @@ class TodoyuContactPersonQuickInfoManager {
 	 * Add JS onload function to page (hooked into TodoyuPage::render())
 	 */
 	public static function addJSonloadFunction() {
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.contact.QuickinfoPerson.init', 100, true);
+		TodoyuPage::addJsInit('Todoyu.Ext.contact.QuickinfoPerson.init()', 100);
 	}
 
 }

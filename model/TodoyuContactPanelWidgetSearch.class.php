@@ -41,7 +41,7 @@ class TodoyuContactPanelWidgetSearch extends TodoyuPanelWidget {
 			$params												// widget parameters
 		);
 
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.contact.PanelWidget.ContactSearch.init', 100, true);
+		TodoyuPage::addJsInit('Todoyu.Ext.contact.PanelWidget.ContactSearch.init()', 100);
 
 		$this->addHasIconClass();
 	}
