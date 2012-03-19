@@ -20,7 +20,7 @@
 
 	// Add main menu area entry for contact
 if( /*(Todoyu::person()->isInternal() || TodoyuAuth::isAdmin()) &&*/ Todoyu::allowed('contact', 'general:area') ) {
-	TodoyuFrontend::addMenuEntry('contact', 'contact.ext.page.title', '?ext=contact', 40);
+	TodoyuFrontend::addMenuEntry('contact', 'contact.ext.page.title', 'index.php?ext=contact', 40);
 
 		// Add sub menu entries
 	if( Todoyu::allowed('contact', 'general:area') ) {

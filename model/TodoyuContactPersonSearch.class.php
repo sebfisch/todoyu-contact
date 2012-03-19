@@ -98,7 +98,7 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 				'labelTitle'=> $labelTitle,
 				'labelInfo'	=> $person->getCompany()->getLabel(),
 				'title'		=> strip_tags($labelTitle),
-				'onclick'	=> 'location.href=\'?ext=contact&amp;controller=person&amp;action=detail&amp;person=' . $idPerson . '\''
+				'onclick'	=> 'location.href=\'index.php?ext=contact&amp;controller=person&amp;action=detail&amp;person=' . $idPerson . '\''
 			);
 		}
 

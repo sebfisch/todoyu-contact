@@ -94,7 +94,7 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 					'labelTitle'=> $labelTitle,
 					'labelInfo'	=> '',
 					'title'		=> strip_tags($labelTitle),
-					'onclick'	=> 'location.href=\'?ext=contact&amp;controller=company&amp;action=detail&amp;company=' . $company['id'] . '\''
+					'onclick'	=> 'location.href=\'index.php?ext=contact&amp;controller=company&amp;action=detail&amp;company=' . $company['id'] . '\''
 				);
 			}
 		}

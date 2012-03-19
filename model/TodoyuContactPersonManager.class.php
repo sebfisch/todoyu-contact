@@ -49,7 +49,7 @@ class TodoyuContactPersonManager {
 		$form		= TodoyuFormManager::getForm($xmlPath, $idPerson);
 
 			// Adjust form to needs of quick creation wizard
-		$form->setAttribute('action', '?ext=contact&amp;controller=quickcreateperson');
+		$form->setAttribute('action', 'index.php?ext=contact&amp;controller=quickcreateperson');
 		$form->setAttribute('onsubmit', 'return false');
 		$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Ext.contact.QuickCreatePerson.save(this.form)');
 		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Ext.contact.Person.removeUnusedImages(this.form);Todoyu.Popups.close(\'quickcreate\')');

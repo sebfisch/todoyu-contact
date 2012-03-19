@@ -49,7 +49,7 @@ class TodoyuContactCompanyManager {
 		$form		= TodoyuFormManager::getForm($xmlPath, $idCompany);
 
 			// Adjust form to needs of quick creation wizard
-		$form->setAttribute('action', '?ext=contact&amp;controller=quickcreatecompany');
+		$form->setAttribute('action', 'index.php?ext=contact&amp;controller=quickcreatecompany');
 		$form->setAttribute('onsubmit', 'return false');
 		$form->getFieldset('buttons')->getField('save')->setAttribute('onclick', 'Todoyu.Ext.contact.QuickCreateCompany.save(this.form)');
 		$form->getFieldset('buttons')->getField('cancel')->setAttribute('onclick', 'Todoyu.Ext.contact.Company.removeUnusedImages(this.form);Todoyu.Popups.close(\'quickcreate\')');
