@@ -112,25 +112,33 @@ span.wizardIcon.createWizardCompany	{
 	Person list
    ------------------------- */
 	/* Column configs */
-
-#contact-details div.actions span.icon {
+#contact-details .actions button {
+	float:right;
+	margin: 0 5px;
+}
+#contact-details .actions .icon {
 	cursor:pointer;
 	margin-right:5px;
 }
-#contact-details div.actions span.icon {
+#contact-details .actions .icon {
 	background:url(../img/icons.png) no-repeat;
 }
-#contact-details div.actions .buttonPersonEdit span.icon {
+#contact-details .actions .buttonPersonEdit .icon {
 	background-position:6px -27px;
 	width:22px;
 }
-#contact-details div.actions button.buttonPersonDelete span.icon {
+#contact-details .actions button.buttonPersonDelete .icon {
 	background-position:6px -57px;
 	width:22px;
 }
-#contact-details div.actions button.cancel span.icon {
-	background:url(../../../../core/asset/img/icons.png) no-repeat 3px -357px;
+#contact-details .actions .backToList {
+	float:left;
 }
+#contact-details .actions .backToList .icon {
+	background:url(../../../../core/asset/img/icons.png) no-repeat 3px -1890px;
+}
+
+
 
 div#search-results p#person-listing-messag-emptylist,
 div#search-results p#company-listing-messag-emptylist {
@@ -152,12 +160,16 @@ div#search-results p#company-listing-messag-emptylist {
 /* -------------------------
 	Company list
    -------------------------*/
-#contact-details div.actions .buttonCompanyEdit span.icon {
+#contact-details div.actions .buttonCompanyEdit .icon {
 	background-position:6px -178px;
 	width:22px;
 }
-#contact-details.company div.actions .buttonCompanyDelete span.icon {
+#contact-details.company div.actions .buttonCompanyDelete .icon {
 	background-position:6px -208px;
+	width:22px;
+}
+#contact-details div.actions .buttonCompanyEdit span.icon {
+	background-position:6px -178px;
 	width:22px;
 }
 
@@ -255,7 +267,6 @@ div.visitingCardContent table tr td.label {
 
 #contact-details div.actions {
 	padding-top:5px;
-	float:right;
 }
 
 #contact-details .content a {
