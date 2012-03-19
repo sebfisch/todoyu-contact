@@ -100,6 +100,31 @@ class TodoyuContactPersonFilterDataSource {
 	 * @param	Array	$definitions
 	 * @return	Array
 	 */
+	public static function getJobTypeOptions(array $definitions) {
+		$options	= array();
+		$jobtypes	= TodoyuContactJobTypeManager::getAllJobTypes();
+		foreach($jobtypes as $jobtype) {
+			$label	= $jobtype['title'];
+
+			$options[] = array(
+				'label'		=> $label,
+				'value'		=> $jobtype['id']
+			);
+		}
+
+		$definitions['options'] = $options;
+
+		return $definitions;
+	}
+
+
+
+	/**
+	 * Prepare options of salutations for rendering in widget.
+	 *
+	 * @param	Array	$definitions
+	 * @return	Array
+	 */
 	public static function getSalutationOptions(array $definitions) {
 		$definitions['options'] = array(
 			array(

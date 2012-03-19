@@ -153,8 +153,6 @@ Todoyu::$CONFIG['FILTERS']['PERSON'] = array(
 //			)
 //		),
 
-
-
 			// Optgroup companies
 		'company' => array(
 			'label'		=> 'contact.filter.person.company',
@@ -177,6 +175,16 @@ Todoyu::$CONFIG['FILTERS']['PERSON'] = array(
 				'checked'	=> true
 			)
 		),
+		'jobtype'		=> array(
+			'label'		=> 'contact.ext.jobtype',
+			'optgroup'	=> 'contact.filter.company.label',
+			'widget'	=> 'select',
+			'wConf'		=> array(
+				'multiple'	=> false,
+				'FuncRef'	=> 'TodoyuContactPersonFilterDataSource::getJobTypeOptions',
+				'negation'	=> 'default'
+			)
+		)
 	)
 );
 

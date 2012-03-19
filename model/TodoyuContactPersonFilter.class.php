@@ -296,6 +296,33 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 		);
 	}
 
+
+
+	/**
+	 * Filter by jobtype
+	 *
+	 * @param	Array		$idJobtype
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public function Filter_jobtype($idJobtype, $negate = false) {
+		$idJobtype  = (int) $idJobtype;
+
+		if( $idJobtype === 0 ) {
+			return false;
+		}
+
+		$tables = array('ext_contact_mm_company_person');
+		$compare= $negate ? ' != ' : ' = ';
+		$where  = '         ext_contact_mm_company_person.id_jobtype    ' . $compare . $idJobtype
+				. ' AND ' . self::TABLE . '.id = ext_contact_mm_company_person.id_person';
+
+		return array(
+			'tables'=> $tables,
+			'where'	=> $where,
+		);
+	}
+
 }
 
 ?>

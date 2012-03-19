@@ -134,16 +134,6 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 
 
 	/**
-	 * @param	Mixed	$value
-	 * @param	Boolean	$negate
-	 */
-	public function Filter_projectfilter($value, $negate = false) {
-
-	}
-
-
-
-	/**
 	 * Filter for internal company
 	 *
 	 * @param	Integer		$value
@@ -188,6 +178,8 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 	 * @return	Array|Boolean				Query parts array / false if no date timestamp given (or 1.1.1970 00:00)
 	 */
 	public static function makeFilter_date($field, $date, $negate = false) {
+		$date	= TodoyuTime::parseDateString($date);
+
 		$tables	= array(self::TABLE);
 		$field	= self::TABLE . '.' . $field;
 
