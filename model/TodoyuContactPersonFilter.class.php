@@ -323,6 +323,136 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 		);
 	}
 
+
+
+	/**
+	 * Filter by country of address
+	 *
+	 * @param	Array		$idCountry
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public function Filter_country($idCountry, $negate = false) {
+		$idCountry  = (int) $idCountry;
+
+		if( $idCountry === 0 ) {
+			return false;
+		}
+
+		$tables = array(
+			'ext_contact_address',
+			'ext_contact_mm_person_address',
+			self::TABLE
+		);
+		$compare= $negate ? ' != ' : ' = ';
+
+		$where  = '			ext_contact_address.id_country '		. $compare . $idCountry
+				. ' AND		ext_contact_mm_person_address.id_address	= ext_contact_address.id '
+				. ' AND ' . self::TABLE . '.id							= ext_contact_mm_person_address.id_person ';
+
+		return array(
+			'tables'=> $tables,
+			'where'	=> $where,
+		);
+	}
+
+
+
+	/**
+	 * Get filter for street of address
+	 *
+	 * @param	String		$value
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public function Filter_street($value, $negate = false) {
+		$valueParts	= TodoyuArray::trimExplode(' ', $value, true);
+		$queryParts	= false;
+
+		if( sizeof($valueParts) > 0 ) {
+			$fields	= array('ext_contact_address.street');
+			$queryParts	= array(
+					'tables'=> array(
+						'ext_contact_address',
+						'ext_contact_mm_person_address',
+						self::TABLE
+					),
+					'where'	=> Todoyu::db()->buildLikeQuery($valueParts, $fields)
+							.  ' AND	ext_contact_mm_person_address.id_address	= ext_contact_address.id '
+							. ' AND ' . self::TABLE . '.id							= ext_contact_mm_person_address.id_person '
+			);
+
+
+		}
+
+		return $queryParts;
+	}
+
+
+
+	/**
+	 * Get filter for zip of address
+	 *
+	 * @param	String		$value
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public function Filter_zip($value, $negate = false) {
+		$valueParts	= TodoyuArray::trimExplode(' ', $value, true);
+		$queryParts	= false;
+
+		if( sizeof($valueParts) > 0 ) {
+			$fields	= array('ext_contact_address.zip');
+			$queryParts	= array(
+					'tables'=> array(
+						'ext_contact_address',
+						'ext_contact_mm_person_address',
+						self::TABLE
+					),
+					'where'	=> Todoyu::db()->buildLikeQuery($valueParts, $fields)
+							.  ' AND	ext_contact_mm_person_address.id_address	= ext_contact_address.id '
+							. ' AND ' . self::TABLE . '.id							= ext_contact_mm_person_address.id_person '
+			);
+
+
+		}
+
+		return $queryParts;
+	}
+
+
+
+	/**
+	 * Filter by city of address
+	 *
+	 * @param	Array		$city
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public function Filter_city($city, $negate = false) {
+		$city  = trim($city);
+
+		if( empty($city) ) {
+			return false;
+		}
+
+		$tables = array(
+			'ext_contact_address',
+			'ext_contact_mm_person_address',
+			self::TABLE
+		);
+		$compare= $negate ? ' != ' : ' = ';
+
+		$where  = '			ext_contact_address.city '		. $compare . ' "' . $city . '" '
+				. ' AND		ext_contact_mm_person_address.id_address	= ext_contact_address.id '
+				. ' AND ' . self::TABLE . '.id							= ext_contact_mm_person_address.id_person ';
+
+		return array(
+			'tables'=> $tables,
+			'where'	=> $where,
+		);
+	}
+
 }
 
 ?>

@@ -40,6 +40,8 @@ Todoyu::$CONFIG['FILTERS']['COMPANY'] = array(
 		'require'			=> 'contact.general:use'
 	),
 	'widgets' => array(
+
+			// Company optgroup
 		'fulltext' => array(
 			'label'		=> 'contact.filter.fulltext',
 			'optgroup'	=> 'contact.filter.company.label',
@@ -72,7 +74,49 @@ Todoyu::$CONFIG['FILTERS']['COMPANY'] = array(
 			'wConf'		=> array(
 				'negation'	=> 'datetime'
 			)
-		)
+		),
+
+			// Address optgroup
+		'country'		=> array(
+			'label'		=> 'contact.filter.address.country',
+			'optgroup'	=> 'contact.filter.addresses.label',
+			'widget'	=> 'select',
+			'wConf'		=> array(
+				'multiple'	=> false,
+				'FuncRef'	=> 'TodoyuContactAddressFilterDataSource::getCountryOptions',
+				'negation'	=> 'default'
+			)
+		),
+		'zip'		=> array(
+			'label'		=> 'contact.filter.address.zip',
+			'optgroup'	=> 'contact.filter.addresses.label',
+			'widget'	=> 'text',
+			'wConf' => array(
+				'autocomplete'	=> false,
+				'negation'		=> false
+			)
+		),
+		'city'		=> array(
+			'label'		=> 'contact.filter.address.city',
+			'optgroup'	=> 'contact.filter.addresses.label',
+			'widget'	=> 'text',
+			'wConf' => array(
+				'autocomplete'	=> true,
+				'FuncRef'		=> 'TodoyuContactAddressFilterDataSource::autocompleteCities',
+				'FuncParams'	=> array(),
+				'LabelFuncRef'	=> 'TodoyuContactAddressFilterDataSource::getCityLabel',
+				'negation'		=> 'default'
+			)
+		),
+		'street'		=> array(
+			'label'		=> 'contact.filter.address.street',
+			'optgroup'	=> 'contact.filter.addresses.label',
+			'widget'	=> 'text',
+			'wConf' => array(
+				'autocomplete'	=> false,
+				'negation'		=> false
+			)
+		),
 	)
 );
 
@@ -184,7 +228,50 @@ Todoyu::$CONFIG['FILTERS']['PERSON'] = array(
 				'FuncRef'	=> 'TodoyuContactPersonFilterDataSource::getJobTypeOptions',
 				'negation'	=> 'default'
 			)
-		)
+		),
+
+			// Optgroup addresses
+		'country'		=> array(
+			'label'		=> 'contact.filter.address.country',
+			'optgroup'	=> 'contact.filter.addresses.label',
+			'widget'	=> 'select',
+			'wConf'		=> array(
+				'multiple'	=> false,
+				'FuncRef'	=> 'TodoyuContactAddressFilterDataSource::getCountryOptions',
+				'negation'	=> 'default'
+			)
+		),
+		'zip'		=> array(
+			'label'		=> 'contact.filter.address.zip',
+			'optgroup'	=> 'contact.filter.addresses.label',
+			'widget'	=> 'text',
+			'wConf' => array(
+				'autocomplete'	=> false,
+				'negation'		=> false
+			)
+		),
+		'city'		=> array(
+			'label'		=> 'contact.filter.address.city',
+			'optgroup'	=> 'contact.filter.addresses.label',
+			'widget'	=> 'text',
+			'wConf' => array(
+				'autocomplete'	=> true,
+				'FuncRef'		=> 'TodoyuContactAddressFilterDataSource::autocompleteCities',
+				'FuncParams'	=> array(),
+				'LabelFuncRef'	=> 'TodoyuContactAddressFilterDataSource::getCityLabel',
+				'negation'		=> 'default'
+			)
+		),
+		'street'		=> array(
+			'label'		=> 'contact.filter.address.street',
+			'optgroup'	=> 'contact.filter.addresses.label',
+			'widget'	=> 'text',
+			'wConf' => array(
+				'autocomplete'	=> false,
+				'negation'		=> false
+			)
+		),
+
 	)
 );
 

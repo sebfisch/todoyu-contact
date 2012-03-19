@@ -12,4 +12,9 @@
 	<label index="person.isActive">todoyu-login ist aktiviert</label>
 	<label index="company.isInternal">Ist Interne Firma</label>
 	<label index="company.dateEnter">Eintrittsdatum</label>
+	<label index="addresses.label">Addressen</label>
+	<label index="address.country">Land</label>
+	<label index="address.zip">Postleitzahl</label>
+	<label index="address.city">Stadt</label>
+	<label index="address.street">Strasse</label>
 </labels>

@@ -187,6 +187,35 @@ class TodoyuContactAddressManager {
 
 
 	/**
+	 * Search stored addresses for cities, optionally filter by search-word
+	 *
+	 * @param	String		$sword
+	 * @return  String[]
+	 */
+	public static function searchStoredCities($sword = '') {
+		$field	= 'city';
+		$table	= self::TABLE;
+		$where	= '';
+
+		if( !empty($limitByRelationTable) ) {
+
+		}
+
+		if( !empty($sword) ) {
+			$swords = explode(' ', trim($sword));
+			$where  = Todoyu::db()->buildLikeQuery($swords, array(self::TABLE . '.city'))
+					. ' AND		' . self::TABLE . '.deleted		= 0';
+		}
+
+		$group	= 'city';
+		$order	= 'city';
+
+		return Todoyu::db()->getColumn($field, $table, $where, $group, $order);
+	}
+
+
+
+	/**
 	 * Get label of given address
 	 *
 	 * @param	Integer	$idAddress
