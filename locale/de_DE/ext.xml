@@ -15,7 +15,7 @@
 	<label index="create.person.label">Neue Person</label>
 	<label index="create.company.label">Neue Firma</label>
 	<label index="contactimage.upload">Bild hochladen</label>
-	<label index="contactimage.upload.success">Bild wurde erfolgreich hochgeladen</label>
+	<label index="contactimage.upload.success">Bild wurde erfolgreich hochgeladen.</label>
 	<label index="contactimage.upload.maxFileSizeExceeded">Die Datei '#{filename}' hat die maximal zulässige Grösse für Uploads (#{maxFileSize}Bytes) überschritten</label>
 	<label index="contactimage.upload.maxLengthFileNameExceeded">Der Dateiname '#{filename}' hat die maximal zulässige Länge (#{maxLengthFileName}) für den Upload überschritten</label>
 	<label index="contactimage.upload.remove">Profilbild entfernen</label>
@@ -23,7 +23,7 @@
 	<label index="person.create">Neue Person hinzufügen</label>
 	<label index="person.edit">Person bearbeiten</label>
 	<label index="person.delete">Person löschen</label>
-	<label index="person.delete.ok">Person wurde erfolgreich gelöscht</label>
+	<label index="person.delete.ok">Person wurde erfolgreich gelöscht.</label>
 	<label index="person.delete.confirm">Diese Person löschen?</label>
 	<label index="person.details">Details der Person anzeigen</label>
 	<label index="person.close">Ansicht schliessen</label>
@@ -56,7 +56,7 @@
 	<label index="company.edit">Firma bearbeiten</label>
 	<label index="company.delete">Firma löschen</label>
 	<label index="company.delete.confirm">Diese Firma löschen?</label>
-	<label index="company.delete.ok">Die Firma wurde erfolgreich gelöscht</label>
+	<label index="company.delete.ok">Die Firma wurde erfolgreich gelöscht.</label>
 	<label index="company.delete.hasProjects">Eine Firma mit Projekten kann nicht gelöscht werden</label>
 	<label index="company.details">Zeige Firmendetails</label>
 	<label index="company.close">Ansicht schliessen</label>

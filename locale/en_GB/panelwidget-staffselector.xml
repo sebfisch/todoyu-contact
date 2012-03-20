@@ -5,7 +5,7 @@
 	<label index="selection.empty">Nothing selected. Use search to add new persons and groups</label>
 	<label index="button.save.newgroup">Save selection as group</label>
 	<label index="newGroupLabel.prompt">Enter a name for the new group</label>
-	<label index="newGroupLabel.saved.success">Group has been saved</label>
+	<label index="newGroupLabel.saved.success">Group has been saved.</label>
 	<label index="newGroupLabel.error.saveEmptyName">Enter a name for the new group</label>
 	<label index="newGroupLabel.prompt.preset">New Group</label>
 	<label index="icon.additem">Select</label>
