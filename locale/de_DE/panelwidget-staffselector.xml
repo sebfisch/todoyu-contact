@@ -3,7 +3,7 @@
 	<label index="title">Mitarbeiter</label>
 	<label index="selection">Aktuelle Auswahl</label>
 	<label index="selection.empty">Nichts ausgewählt. Nutzen Sie die Suche um Personen und Gruppen hinzuzufügen</label>
-	<label index="button.save.newgroup">Als Gruppe speichern</label>
+	<label index="button.save.newgroup">Auswahl als Gruppe speichern</label>
 	<label index="newGroupLabel.prompt">Bitte einen Gruppen-Namen angeben</label>
 	<label index="newGroupLabel.saved.success">Gruppe wurde gespeichert</label>
 	<label index="newGroupLabel.error.saveEmptyName">Bitte einen Gruppen-Namen angeben</label>
