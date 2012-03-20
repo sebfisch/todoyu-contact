@@ -12,7 +12,7 @@
 }
 
 #panelwidget-contactsearch-sword {
-	width:170px;
+	width:191px;
 	float:left;
 }
 
@@ -20,10 +20,6 @@
 	background:url('../../../../core/asset/img/icons.png') no-repeat;
 	margin-left:5px;
 	cursor:pointer;
-}
-
-#panelwidget-contactsearch-content a.searchIcon {
-	background-position:2px -447px;
 }
 
 #panelwidget-contactsearch-content a.clearIcon {
