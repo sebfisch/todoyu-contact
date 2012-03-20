@@ -95,15 +95,11 @@ class TodoyuContactCompanyRights {
 		$idCompany	= intval($idCompany);
 		$hasProjects= TodoyuContactCompanyManager::hasProjects($idCompany);
 
-		if( TodoyuAuth::isAdmin() && ! $hasProjects ) {
-			return true;
-		}
-
-		if( ! self::isSeeAllowed($idCompany) ) {
+		if( $hasProjects ) {
 			return false;
 		}
 
-		return Todoyu::allowed('contact', 'company:editAndDeleteAll') && ! $hasProjects;
+		return Todoyu::allowed('contact', 'company:editAndDeleteAll');
 	}
 
 

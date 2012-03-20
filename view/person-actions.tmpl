@@ -10,7 +10,7 @@
 	{/if}
 
 	{* --------------- Delete *}
-	{if isPersonDeleteAllowed($id) && !(isPersonID($id))}
+	{if isPersonDeleteAllowed($id)}
 		<span title="{Label contact.ext.person.delete}" class="icon delete" onclick="Todoyu.Ext.contact.Person.remove({$id})"></span>
 	{else}
 		<span title="{Label contact.ext.person.delete}" class="icon delete disabled"></span>

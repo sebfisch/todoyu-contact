@@ -47,7 +47,7 @@ class TodoyuContactPersonRights {
 	public static function isSeeAllowed($idPerson) {
 		$idPerson	= intval($idPerson);
 
-		if( TodoyuAuth::isAdmin() || Todoyu::allowed('contact', 'person:seeAllPersons') ) {
+		if( Todoyu::allowed('contact', 'person:seeAllPersons') ) {
 			return true;
 		}
 
@@ -93,13 +93,7 @@ class TodoyuContactPersonRights {
 	 * @return	Boolean
 	 */
 	public static function isDeleteAllowed($idPerson) {
-		$idPerson	= intval($idPerson);
-
-		if( ! self::isSeeAllowed($idPerson) ) {
-			return false;
-		}
-
-		return TodoyuAuth::isAdmin() || Todoyu::allowed('contact', 'person:editAndDeleteAll');
+		return Todoyu::allowed('contact', 'person:editAndDeleteAll');
 	}
 
 
