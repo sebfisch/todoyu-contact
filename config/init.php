@@ -18,6 +18,30 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/* -------------------------------
+	Content Tabs Configuration
+   ------------------------------- */
+Todoyu::$CONFIG['EXT']['contact']['tabs'] = array(
+	'person'	=> array(
+		'key'		=> 'person',
+		'id'		=> 'person',
+		'label'		=> 'contact.ext.persons',
+		'require'	=> 'contact.general:area',
+		'position'	=> 105
+	),
+	'company'	=> array(
+		'key'		=> 'company',
+		'id'		=> 'company',
+		'label'		=> 'contact.ext.companies',
+		'require'	=> 'contact.general:area',
+		'position'	=> 110
+	)
+);
+
+Todoyu::$CONFIG['EXT']['contact']['defaultTypeTab'] = 'person';
+
+
+
 /* ---------------------------------------------
 	Add autocompleters for contact data types
    --------------------------------------------- */
@@ -76,31 +100,6 @@ Todoyu::$CONFIG['EXT']['contact']['addresstypes'] = array(
 );
 
 Todoyu::$CONFIG['EXT']['contact']['numFavoriteCountries']	= 5;
-
-
-
-/* -------------------------------
-	Content Tabs Configuration
-   ------------------------------- */
-Todoyu::$CONFIG['EXT']['contact']['tabs'] = array(
-	'person'	=> array(
-		'key'		=> 'person',
-		'id'		=> 'person',
-		'label'		=> 'contact.ext.persons',
-		'require'	=> 'contact.general:area',
-		'position'	=> 105
-	),
-	'company'	=> array(
-		'key'		=> 'company',
-		'id'		=> 'company',
-		'label'		=> 'contact.ext.companies',
-		'require'	=> 'contact.general:area',
-		'position'	=> 110
-	)
-);
-
-Todoyu::$CONFIG['EXT']['contact']['defaultTypeTab'] = 'person';
-
 
 
 

@@ -26,6 +26,160 @@
  * @subpackage	Contact
  */
 
+	/**
+	 * Person filters
+	 */
+	Todoyu::$CONFIG['FILTERS']['PERSON'] = array(
+		'key'	=> 'person',
+		'config'	=> array(
+			'label'				=> 'contact.ext.persons',
+			'position'			=> 30,
+			'resultsRenderer'	=> 'TodoyuContactPersonRenderer::renderPersonListingSearch',
+			'class'				=> 'TodoyuContactPersonFilter',
+			'defaultSorting'	=> 'ext_contact_person.lastname',
+			'require'			=> 'contact.general:use'
+		),
+		'widgets' => array(
+				// Optgroup persons
+			'fulltext' => array(
+				'label'		=> 'contact.filter.fulltext',
+				'optgroup'	=> 'contact.filter.person.label',
+				'widget'	=> 'text',
+				'wConf' => array(
+					'LabelFuncRef'	=> 'TodoyuProjectProjectFilterDataSource::getLabel',
+					'negation'		=> false
+				)
+			),
+			'name' => array(
+				'label'		=> 'contact.filter.person.name',
+				'optgroup'	=> 'contact.filter.person.label',
+				'widget'	=> 'text',
+				'wConf' => array(
+					'LabelFuncRef'	=> 'TodoyuProjectProjectFilterDataSource::getLabel',
+					'negation'		=> false
+				)
+			),
+			'salutation' => array(
+				'label'		=> 'contact.filter.person.salutation',
+				'optgroup'	=> 'contact.filter.person.label',
+				'widget'	=> 'select',
+				'wConf'		=> array(
+					'multiple'	=> false,
+					'size'		=> 2,
+					'FuncRef'	=> 'TodoyuContactPersonFilterDataSource::getSalutationOptions',
+					'negation'	=> false
+				)
+			),
+			'contactinformation' => array(
+				'label'		=> 'contact.filter.contactinformation',
+				'optgroup'	=> 'contact.filter.person.label',
+				'widget'	=> 'text',
+				'wConf' => array(
+					'LabelFuncRef'	=> 'TodoyuProjectProjectFilterDataSource::getLabel',
+					'negation'		=> false
+				)
+			),
+			'systemrole' => array(
+				'label'		=> 'contact.filter.person.system_role',
+				'optgroup'	=> 'contact.filter.person.label',
+				'widget'	=> 'select',
+				'wConf'		=> array(
+					'multiple'	=> true,
+					'size'		=> 8,
+					'FuncRef'	=> 'TodoyuContactPersonFilterDataSource::getSystemRoleOptions',
+					'negation'	=> 'default'
+				)
+			),
+	//		'isActive'	=> array(
+	//			'label'		=> 'contact.filter.person.isActive',
+	//			'optgroup'	=> 'contact.filter.person.label',
+	//			'widget'	=> 'checkbox',
+	//			'internal'	=> true,
+	//			'wConf'		=> array(
+	//				'checked'	=> true,
+	//				'negation'	=> false
+	//			)
+	//		),
+
+				// Optgroup companies
+			'company' => array(
+				'label'		=> 'contact.filter.person.company',
+				'optgroup'	=> 'contact.filter.company.label',
+				'widget'	=> 'text',
+				'wConf' => array(
+					'autocomplete'	=> true,
+					'FuncRef'		=> 'TodoyuContactCompanyFilterDataSource::autocompleteCompanies',
+					'FuncParams'	=> array(),
+					'LabelFuncRef'	=> 'TodoyuContactCompanyFilterDataSource::getCompanyLabel',
+					'negation'		=> 'default'
+				)
+			),
+			'isInternal'	=> array(
+				'label'		=> 'contact.filter.person.company.isInternal',
+				'optgroup'	=> 'contact.filter.company.label',
+				'widget'	=> 'checkbox',
+				'internal'	=> true,
+				'wConf'		=> array(
+					'checked'	=> true
+				)
+			),
+			'jobtype'		=> array(
+				'label'		=> 'contact.ext.jobtype',
+				'optgroup'	=> 'contact.filter.company.label',
+				'widget'	=> 'select',
+				'wConf'		=> array(
+					'multiple'	=> false,
+					'FuncRef'	=> 'TodoyuContactPersonFilterDataSource::getJobTypeOptions',
+					'negation'	=> 'default'
+				)
+			),
+
+				// Optgroup addresses
+			'country'		=> array(
+				'label'		=> 'contact.filter.address.country',
+				'optgroup'	=> 'contact.filter.addresses.label',
+				'widget'	=> 'select',
+				'wConf'		=> array(
+					'multiple'	=> false,
+					'FuncRef'	=> 'TodoyuContactAddressFilterDataSource::getCountryOptions',
+					'negation'	=> 'default'
+				)
+			),
+			'zip'		=> array(
+				'label'		=> 'contact.filter.address.zip',
+				'optgroup'	=> 'contact.filter.addresses.label',
+				'widget'	=> 'text',
+				'wConf' => array(
+					'autocomplete'	=> false,
+					'negation'		=> false
+				)
+			),
+			'city'		=> array(
+				'label'		=> 'contact.filter.address.city',
+				'optgroup'	=> 'contact.filter.addresses.label',
+				'widget'	=> 'text',
+				'wConf' => array(
+					'autocomplete'	=> true,
+					'FuncRef'		=> 'TodoyuContactAddressFilterDataSource::autocompleteCities',
+					'FuncParams'	=> array(),
+					'LabelFuncRef'	=> 'TodoyuContactAddressFilterDataSource::getCityLabel',
+					'negation'		=> 'default'
+				)
+			),
+			'street'		=> array(
+				'label'		=> 'contact.filter.address.street',
+				'optgroup'	=> 'contact.filter.addresses.label',
+				'widget'	=> 'text',
+				'wConf' => array(
+					'autocomplete'	=> false,
+					'negation'		=> false
+				)
+			),
+
+		)
+	);
+
+
 /**
  *  Company filters
  */
@@ -33,7 +187,7 @@ Todoyu::$CONFIG['FILTERS']['COMPANY'] = array(
 	'key'		=> 'company',
 	'config'	=> array(
 		'label'				=> 'contact.ext.companies',
-		'position'			=> 30,
+		'position'			=> 35,
 		'resultsRenderer'	=> 'TodoyuContactCompanyRenderer::renderCompanyListingSearch',
 		'class'				=> 'TodoyuContactCompanyFilter',
 		'defaultSorting'	=> 'ext_contact_company.title',
@@ -117,161 +271,6 @@ Todoyu::$CONFIG['FILTERS']['COMPANY'] = array(
 				'negation'		=> false
 			)
 		),
-	)
-);
-
-
-
-/**
- * Person filters
- */
-Todoyu::$CONFIG['FILTERS']['PERSON'] = array(
-	'key'	=> 'person',
-	'config'	=> array(
-		'label'				=> 'contact.ext.persons',
-		'position'			=> 35,
-		'resultsRenderer'	=> 'TodoyuContactPersonRenderer::renderPersonListingSearch',
-		'class'				=> 'TodoyuContactPersonFilter',
-		'defaultSorting'	=> 'ext_contact_person.lastname',
-		'require'			=> 'contact.general:use'
-	),
-	'widgets' => array(
-			// Optgroup persons
-		'fulltext' => array(
-			'label'		=> 'contact.filter.fulltext',
-			'optgroup'	=> 'contact.filter.person.label',
-			'widget'	=> 'text',
-			'wConf' => array(
-				'LabelFuncRef'	=> 'TodoyuProjectProjectFilterDataSource::getLabel',
-				'negation'		=> false
-			)
-		),
-		'name' => array(
-			'label'		=> 'contact.filter.person.name',
-			'optgroup'	=> 'contact.filter.person.label',
-			'widget'	=> 'text',
-			'wConf' => array(
-				'LabelFuncRef'	=> 'TodoyuProjectProjectFilterDataSource::getLabel',
-				'negation'		=> false
-			)
-		),
-		'salutation' => array(
-			'label'		=> 'contact.filter.person.salutation',
-			'optgroup'	=> 'contact.filter.person.label',
-			'widget'	=> 'select',
-			'wConf'		=> array(
-				'multiple'	=> false,
-				'size'		=> 2,
-				'FuncRef'	=> 'TodoyuContactPersonFilterDataSource::getSalutationOptions',
-				'negation'	=> false
-			)
-		),
-		'contactinformation' => array(
-			'label'		=> 'contact.filter.contactinformation',
-			'optgroup'	=> 'contact.filter.person.label',
-			'widget'	=> 'text',
-			'wConf' => array(
-				'LabelFuncRef'	=> 'TodoyuProjectProjectFilterDataSource::getLabel',
-				'negation'		=> false
-			)
-		),
-		'systemrole' => array(
-			'label'		=> 'contact.filter.person.system_role',
-			'optgroup'	=> 'contact.filter.person.label',
-			'widget'	=> 'select',
-			'wConf'		=> array(
-				'multiple'	=> true,
-				'size'		=> 8,
-				'FuncRef'	=> 'TodoyuContactPersonFilterDataSource::getSystemRoleOptions',
-				'negation'	=> 'default'
-			)
-		),
-//		'isActive'	=> array(
-//			'label'		=> 'contact.filter.person.isActive',
-//			'optgroup'	=> 'contact.filter.person.label',
-//			'widget'	=> 'checkbox',
-//			'internal'	=> true,
-//			'wConf'		=> array(
-//				'checked'	=> true,
-//				'negation'	=> false
-//			)
-//		),
-
-			// Optgroup companies
-		'company' => array(
-			'label'		=> 'contact.filter.person.company',
-			'optgroup'	=> 'contact.filter.company.label',
-			'widget'	=> 'text',
-			'wConf' => array(
-				'autocomplete'	=> true,
-				'FuncRef'		=> 'TodoyuContactCompanyFilterDataSource::autocompleteCompanies',
-				'FuncParams'	=> array(),
-				'LabelFuncRef'	=> 'TodoyuContactCompanyFilterDataSource::getCompanyLabel',
-				'negation'		=> 'default'
-			)
-		),
-		'isInternal'	=> array(
-			'label'		=> 'contact.filter.person.company.isInternal',
-			'optgroup'	=> 'contact.filter.company.label',
-			'widget'	=> 'checkbox',
-			'internal'	=> true,
-			'wConf'		=> array(
-				'checked'	=> true
-			)
-		),
-		'jobtype'		=> array(
-			'label'		=> 'contact.ext.jobtype',
-			'optgroup'	=> 'contact.filter.company.label',
-			'widget'	=> 'select',
-			'wConf'		=> array(
-				'multiple'	=> false,
-				'FuncRef'	=> 'TodoyuContactPersonFilterDataSource::getJobTypeOptions',
-				'negation'	=> 'default'
-			)
-		),
-
-			// Optgroup addresses
-		'country'		=> array(
-			'label'		=> 'contact.filter.address.country',
-			'optgroup'	=> 'contact.filter.addresses.label',
-			'widget'	=> 'select',
-			'wConf'		=> array(
-				'multiple'	=> false,
-				'FuncRef'	=> 'TodoyuContactAddressFilterDataSource::getCountryOptions',
-				'negation'	=> 'default'
-			)
-		),
-		'zip'		=> array(
-			'label'		=> 'contact.filter.address.zip',
-			'optgroup'	=> 'contact.filter.addresses.label',
-			'widget'	=> 'text',
-			'wConf' => array(
-				'autocomplete'	=> false,
-				'negation'		=> false
-			)
-		),
-		'city'		=> array(
-			'label'		=> 'contact.filter.address.city',
-			'optgroup'	=> 'contact.filter.addresses.label',
-			'widget'	=> 'text',
-			'wConf' => array(
-				'autocomplete'	=> true,
-				'FuncRef'		=> 'TodoyuContactAddressFilterDataSource::autocompleteCities',
-				'FuncParams'	=> array(),
-				'LabelFuncRef'	=> 'TodoyuContactAddressFilterDataSource::getCityLabel',
-				'negation'		=> 'default'
-			)
-		),
-		'street'		=> array(
-			'label'		=> 'contact.filter.address.street',
-			'optgroup'	=> 'contact.filter.addresses.label',
-			'widget'	=> 'text',
-			'wConf' => array(
-				'autocomplete'	=> false,
-				'negation'		=> false
-			)
-		),
-
 	)
 );
 
