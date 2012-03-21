@@ -17,7 +17,7 @@
 	<label index="create.company.label">Ново предузеће</label>
 	<label index="contactimage.upload">Додај слику</label>
 	<label index="contactimage.upload.success">Додвање слике је било успешнп</label>
-	<label index="contactimage.upload.maxFileSizeExceeded">Фајл '#{filename}' је прекорачило максимално дозвољену величину (#{maxFileSize}Bytes) за додавање</label>
+	<label index="contactimage.upload.maxFileSizeExceeded">Фајл '#{filename}' је прекорачило максимално дозвољену величину (#{maxFileSize}) за додавање</label>
 	<label index="contactimage.upload.maxLengthFileNameExceeded">Фајл '#{filename}' је прекорачило максимално дозвољену дужину (#{maxLengthFileName}) имена за додавање</label>
 	<label index="contactimage.upload.remove">Уклони слику профил-а</label>
 	<label index="person.create">Додај нову особу</label>

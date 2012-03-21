@@ -16,7 +16,7 @@
 	<label index="create.company.label">New Company</label>
 	<label index="contactimage.upload">Upload an image</label>
 	<label index="contactimage.upload.success">Upload of image was successful</label>
-	<label index="contactimage.upload.maxFileSizeExceeded">The file '#{filename}' has exceeded the maximum allowed filesize (#{maxFileSize}Bytes) to upload</label>
+	<label index="contactimage.upload.maxFileSizeExceeded">The file '#{filename}' has exceeded the maximum allowed filesize (#{maxFileSize}) to upload</label>
 	<label index="contactimage.upload.maxLengthFileNameExceeded">The file '#{filename}' has exceeded the maximum allowed length (#{maxLengthFileName}) of its name to upload</label>
 	<label index="contactimage.upload.remove">Remove profile picture</label>
 	<label index="person.new">New Person</label>

@@ -17,7 +17,7 @@
 	<label index="create.company.label">Nowa Firma</label>
 	<label index="contactimage.upload">Prześlij plik</label>
 	<label index="contactimage.upload.success">Przesyłąnie pliku zakończone powodzeniem</label>
-	<label index="contactimage.upload.maxFileSizeExceeded">Plik '#{filename}' przekroczył maksymalny rozmiar (#{maxFileSize}Bytes) możliwy do przesłania</label>
+	<label index="contactimage.upload.maxFileSizeExceeded">Plik '#{filename}' przekroczył maksymalny rozmiar (#{maxFileSize}) możliwy do przesłania</label>
 	<label index="contactimage.upload.maxLengthFileNameExceeded">Plik '#{filename}' przekroczył maksymalną dopuszczalną długość (#{maxLengthFileName})</label>
 	<label index="contactimage.upload.remove">Usuń zdjęcie profilowe</label>
 	<label index="person.create">Dodaj nową osobę</label>

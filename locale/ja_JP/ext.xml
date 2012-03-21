@@ -16,7 +16,7 @@
 	<label index="create.company.label">新しい企業情報</label>
 	<label index="contactimage.upload">イメージのアップロード</label>
 	<label index="contactimage.upload.success">イメージのアップロードが成功しました</label>
-	<label index="contactimage.upload.maxFileSizeExceeded">アップロードしようとしたファイル '#{filename}' は許可されているファイルサイズの最大値 (#{maxFileSize}バイト) を超えています</label>
+	<label index="contactimage.upload.maxFileSizeExceeded">アップロードしようとしたファイル '#{filename}' は許可されているファイルサイズの最大値 (#{maxFileSize}) を超えています</label>
 	<label index="contactimage.upload.maxLengthFileNameExceeded">アップロードしようとしたファイル '#{filename}' は許可されているファイル名の最大文字長 (#{maxLengthFileName}) を超えています。</label>
 	<label index="contactimage.upload.remove">プロフィールの画像を削除</label>
 	<label index="person.create">新規個人情報の追加</label>

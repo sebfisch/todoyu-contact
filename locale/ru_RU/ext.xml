@@ -16,7 +16,7 @@
 	<label index="create.company.label">Новая компания</label>
 	<label index="contactimage.upload">Загрузить изображение</label>
 	<label index="contactimage.upload.success">Изображение успешно загружено</label>
-	<label index="contactimage.upload.maxFileSizeExceeded">Размер файла '#{filename}' превышает максимально допустимый (#{maxFileSize}Bytes)</label>
+	<label index="contactimage.upload.maxFileSizeExceeded">Размер файла '#{filename}' превышает максимально допустимый (#{maxFileSize})</label>
 	<label index="contactimage.upload.maxLengthFileNameExceeded">Длина имени файла '#{filename}' превышает максимально допустимую (#{maxLengthFileName})</label>
 	<label index="contactimage.upload.remove">Удалить изображение</label>
 	<label index="person.create">Добавить новую персону</label>
