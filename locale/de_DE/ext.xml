@@ -16,6 +16,7 @@
 	<label index="create.company.label">Neue Firma</label>
 	<label index="contactimage.upload">Bild hochladen</label>
 	<label index="contactimage.upload.success">Bild wurde erfolgreich hochgeladen.</label>
+	<label index="contactimage.upload.failed">Hochladen des Bildes ist fehlgeschlagen</label>
 	<label index="contactimage.upload.maxFileSizeExceeded">Die Datei '#{filename}' hat die maximal zulässige Grösse für Uploads (#{maxFileSize}) überschritten</label>
 	<label index="contactimage.upload.maxLengthFileNameExceeded">Der Dateiname '#{filename}' hat die maximal zulässige Länge (#{maxLengthFileName}) für den Upload überschritten</label>
 	<label index="contactimage.upload.remove">Profilbild entfernen</label>

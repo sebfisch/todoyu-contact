@@ -178,7 +178,7 @@ Todoyu.Ext.contact.Upload = {
 		if( error === 1 || error === 2 ) {
 			msg	= '[LLL:contact.ext.contactimage.upload.maxFileSizeExceeded]';
 		} else {
-			msg	= '[LLL:contact.ext.contactimage.upload.uploadFailed]';
+			msg	= '[LLL:contact.ext.contactimage.upload.failed]';
 		}
 
 		Todoyu.notifyError(msg.interpolate(info), 'contact.upload');
