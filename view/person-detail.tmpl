@@ -11,9 +11,9 @@
 				<div class="left image">{personImage $id}</div>
 				<p>
 					<h1>{salutationLabel $id} {$fullname}</h1>
-				    <br/>
+					<br/>
 					{if !empty($email)}
-					    <strong>{Label contact.ext.record.contactinfotype.email}:</strong>
+						<strong>{Label contact.ext.record.contactinfotype.email}:</strong>
 						<a href="mailto:{$firstname}%20{$lastname}%20%3C{$email}%3E">{$email}</a>
 					{/if}
 				</p>

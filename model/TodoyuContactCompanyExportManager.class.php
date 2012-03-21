@@ -117,7 +117,7 @@ class TodoyuContactCompanyExportManager {
 	 * @return	Array
 	 */
 	public static function getCompanyExportData(TodoyuContactCompany $company) {
-		$creator    = $company->getPerson('create');
+		$creator	= $company->getPerson('create');
 
 		$exportData = array(
 			Todoyu::Label('contact.ext.company.attr.id')			=> $company->getID(),

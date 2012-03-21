@@ -314,7 +314,7 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 
 		$tables = array('ext_contact_mm_company_person');
 		$compare= $negate ? ' != ' : ' = ';
-		$where  = '         ext_contact_mm_company_person.id_jobtype    ' . $compare . $idJobtype
+		$where  = '			ext_contact_mm_company_person.id_jobtype    ' . $compare . $idJobtype
 				. ' AND ' . self::TABLE . '.id = ext_contact_mm_company_person.id_person';
 
 		return array(

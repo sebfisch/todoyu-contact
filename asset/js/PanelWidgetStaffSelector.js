@@ -340,7 +340,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * @param	{Element}	item
 	 */
 	onSelectionItemClick: function(event, item) {
-		var eventElement    = event.element();
+		var eventElement	= event.element();
 
 		if( ! eventElement.hasClassName('remove') && ! eventElement.hasClassName('deletegroup') ) {
 			item.toggleClassName('disabled');
@@ -659,7 +659,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * Add removal icons to items.
 	 *
 	 * @method	addRemoveIconsToList
-	 * @param   {Element[]}     items
+	 * @param	{Element[]}		items
 	 */
 	addRemoveIconToItems: function(items) {
 		items	= items || this.selection.select('li');
@@ -675,8 +675,8 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	/**
 	 * Add "delete group" icons to items.
 	 *
-	 * @method  addDeleteGroupIconsToSelectionItems
-	 * @param   {Element[]}     items
+	 * @method	addDeleteGroupIconsToSelectionItems
+	 * @param	{Element[]}								items
 	 */
 	addDeleteGroupIconToItems: function(items) {
 		items	= items || this.selection.select('li');
@@ -693,9 +693,9 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * Insert span with given CSS class and title into given item if not there yet
 	 *
 	 * @method	insertItemSpan
-	 * @param   {Element}	item
-	 * @param   {String}	className
-	 * @param   {String}	title
+	 * @param	{Element}	item
+	 * @param	{String}	className
+	 * @param	{String}	title
 	 */
 	insertItemSpan: function(item, className, title) {
 		if( ! item.down('span.' + className) ) {

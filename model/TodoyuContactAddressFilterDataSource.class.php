@@ -56,7 +56,7 @@ class TodoyuContactAddressFilterDataSource {
 	 * @return	Array
 	 */
 	public static function getCountryOptions(array $definitions) {
-		$countries    = TodoyuStaticRecords::getCountryOptions();
+		$countries	= TodoyuStaticRecords::getCountryOptions();
 
 		$options	= array();
 		foreach($countries as $country) {

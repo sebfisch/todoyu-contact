@@ -113,7 +113,7 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 	public static function getCompanyListingDataRow($idCompany) {
 		$idCompany	= intval($idCompany);
 
-		$address    = TodoyuContactCompanyManager::getCompanyAddressLabel($idCompany);
+		$address	= TodoyuContactCompanyManager::getCompanyAddressLabel($idCompany);
 
 		return array(
 			'icon'		=> '',

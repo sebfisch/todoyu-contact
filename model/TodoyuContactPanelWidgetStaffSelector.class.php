@@ -330,8 +330,8 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 			$disabledClass	= $disabled ? ' disabled' : '';
 
 				// Add item per type
-			$prefix     = substr($item, 0, 1);
-			$idRecord   = intval(substr($item, 1));
+			$prefix		= substr($item, 0, 1);
+			$idRecord	= intval(substr($item, 1));
 
 			switch($prefix) {
 				case 'p':
