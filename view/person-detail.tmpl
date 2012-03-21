@@ -9,9 +9,13 @@
 			<h4>{Label LLL:contact.ext.person.mainpersondata}</h4>
 			<div class="content overflow">
 				<div class="left image">{personImage $id}</div>
-				<p>{salutationLabel $id}<br />
-					{$fullname}<br />
-					<a href="mailto:{$firstname}%20{$lastname}%20%3C{$email}%3E">{$email}</a>
+				<p>
+					<h1>{salutationLabel $id} {$fullname}</h1>
+				    <br/>
+					{if !empty($email)}
+					    <strong>{Label contact.ext.record.contactinfotype.email}:</strong>
+						<a href="mailto:{$firstname}%20{$lastname}%20%3C{$email}%3E">{$email}</a>
+					{/if}
 				</p>
 			</div>
 		</div>
