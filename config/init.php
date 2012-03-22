@@ -124,14 +124,14 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['person'] = array(
 		'icon'		=> '',
 		'lastname'	=> 'contact.ext.person.attr.lastname',
 		'firstname'	=> 'contact.ext.person.attr.firstname',
-		'email'		=> 'contact.ext.person.attr.email',
+//		'email'		=> 'contact.ext.person.attr.email',
 		'company'	=> 'contact.ext.company',
 		'actions'	=> '',
 	),
 	'truncate'	=> array(
 		'lastname'	=> 20,
 		'firstname'	=> 20,
-		'email'		=> 23,
+//		'email'		=> 23,
 		'company'	=> 25
 	)
 );
