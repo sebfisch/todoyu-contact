@@ -89,7 +89,7 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 			$logic		= $negate ? ' NOT LIKE ':' LIKE ';
 			$conjunction= $negate ? ' AND ':' OR ';
 
-			$keyword= Todoyu::db()->escape($value);
+			$keyword= TodoyuSql::escape($value);
 			$where	= ' ((	'
 					.								self::TABLE . '.title		' . $logic . ' \'%' . $keyword . '%\''
 					.		$conjunction . '	' . self::TABLE . '.shortname	' . $logic . ' \'%' . $keyword . '%\''
@@ -121,7 +121,7 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 		);
 
 		$where	= ' ext_contact_contactinfo.deleted							= 0 '
-				. ' AND ' . Todoyu::db()->buildLikeQuery(array($value), array('ext_contact_contactinfo.info'))
+				. ' AND ' . TodoyuSql::buildLikeQuery(array($value), array('ext_contact_contactinfo.info'))
 				. ' AND ext_contact_mm_company_contactinfo.id_contactinfo	= ext_contact_contactinfo.id'
 				. ' AND ' . self::TABLE . '.id								= ext_contact_mm_company_contactinfo.id_company';
 
@@ -240,7 +240,7 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 						'ext_contact_mm_company_address',
 						self::TABLE
 					),
-					'where'	=> Todoyu::db()->buildLikeQuery($valueParts, $fields)
+					'where'	=> TodoyuSql::buildLikeQuery($valueParts, $fields)
 							.  ' AND	ext_contact_mm_company_address.id_address	= ext_contact_address.id '
 							. ' AND ' . self::TABLE . '.id							= ext_contact_mm_company_address.id_company '
 			);
@@ -272,7 +272,7 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 						'ext_contact_mm_company_address',
 						self::TABLE
 					),
-					'where'	=> Todoyu::db()->buildLikeQuery($valueParts, $fields)
+					'where'	=> TodoyuSql::buildLikeQuery($valueParts, $fields)
 							.  ' AND	ext_contact_mm_company_address.id_address	= ext_contact_address.id '
 							. ' AND ' . self::TABLE . '.id							= ext_contact_mm_company_address.id_company '
 			);

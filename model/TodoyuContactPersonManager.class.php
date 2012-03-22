@@ -121,7 +121,7 @@ class TodoyuContactPersonManager {
 	 * @return	Array
 	 */
 	public static function getAllActivePersons(array $fields = array(), $showInactive = false) {
-		$fields	= sizeof($fields) === 0 ? '*' : implode(',', Todoyu::db()->escapeArray($fields));
+		$fields	= sizeof($fields) === 0 ? '*' : implode(',', TodoyuSql::escapeArray($fields));
 		$table	= self::TABLE;
 		$where	= 'deleted = 0';
 		$order	= 'lastname, firstname';
@@ -172,8 +172,8 @@ class TodoyuContactPersonManager {
 
 		$field	= 'id';
 		$table	= self::TABLE;
-		$where	= '		`username`	= ' . Todoyu::db()->quote($username, true) .
-				  ' AND	`password`	= ' . Todoyu::db()->quote($password, true) .
+		$where	= '		`username`	= ' . TodoyuSql::quote($username, true) .
+				  ' AND	`password`	= ' . TodoyuSql::quote($password, true) .
 				  ' AND	`is_active`	= 1
 					AND	`deleted`	= 0';
 
@@ -215,7 +215,7 @@ class TodoyuContactPersonManager {
 	public static function getPersonIDByUsername($username) {
 		$fields	= 'id';
 		$table	= self::TABLE;
-		$where	= '		username	= ' . Todoyu::db()->quote($username, true)
+		$where	= '		username	= ' . TodoyuSql::quote($username, true)
 				. ' AND is_active	= 1'
 				. ' AND deleted		= 0';
 		$limit	= '1';
@@ -524,7 +524,7 @@ class TodoyuContactPersonManager {
 		if( sizeof($swords) > 0 ) {
 			$searchFields	= is_null($searchFields) ? array('username', 'email', 'firstname', 'lastname', 'shortname') : $searchFields;
 
-			$where	.= ' AND ' . Todoyu::db()->buildLikeQuery($swords, $searchFields);
+			$where	.= ' AND ' . TodoyuSql::buildLikeQuery($swords, $searchFields);
 		}
 
 			// Limit results to allowed person records
@@ -564,8 +564,8 @@ class TodoyuContactPersonManager {
 		$searchFieldsJobtype = array(
 			'jt.title'
 		);
-		$likePerson		= Todoyu::db()->buildLikeQuery($searchWords, $searchFieldsPerson);
-		$likeJobtypes	= Todoyu::db()->buildLikeQuery($searchWords, $searchFieldsJobtype);
+		$likePerson		= TodoyuSql::buildLikeQuery($searchWords, $searchFieldsPerson);
+		$likeJobtypes	= TodoyuSql::buildLikeQuery($searchWords, $searchFieldsJobtype);
 
 		$fields	= '	p.id,
 					p.firstname,
@@ -779,7 +779,7 @@ class TodoyuContactPersonManager {
 		if( sizeof($personIDs) > 0) {
 			$field	= 'id_workaddress';
 			$table	= 'ext_contact_mm_company_person';
-			$where	= Todoyu::db()->buildInArrayQuery($personIDs, 'id_person')
+			$where	= TodoyuSql::buildInArrayQuery($personIDs, 'id_person')
 					. ' AND id_workaddress != 0';
 
 			$addressIDs	= Todoyu::db()->getColumn($field, $table, $where);

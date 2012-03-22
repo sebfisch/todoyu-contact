@@ -206,7 +206,7 @@ class TodoyuContactContactInfoManager {
 		}
 
 		if( $type !== false ) {
-			$where .= ' AND cit.key LIKE \'%' . Todoyu::db()->escape($type) . '%\'';
+			$where .= ' AND cit.key LIKE \'%' . TodoyuSql::escape($type) . '%\'';
 		}
 
 		return Todoyu::db()->getArray($fields, $tables, $where, '', $order);

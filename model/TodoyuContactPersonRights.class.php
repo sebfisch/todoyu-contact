@@ -153,7 +153,7 @@ class TodoyuContactPersonRights {
 		$allowedPersonsIDs	= array_unique(array_merge($personIDs, $projectsPersonsIDs, $companyPersonIDs));
 
 		if( sizeof($allowedPersonsIDs) > 0 ) {
-			return Todoyu::db()->buildInArrayQuery($allowedPersonsIDs);
+			return TodoyuSql::buildInArrayQuery($allowedPersonsIDs);
 		} else {
 			return ' 0';
 		}

@@ -112,7 +112,7 @@ class TodoyuContactCompanyManager {
 	 * @return	Array
 	 */
 	public static function getAllCompanies(array $fields = array(), $where = '') {
-		$fields	= sizeof($fields) === 0 ? '*' : implode(',', Todoyu::db()->escapeArray($fields));
+		$fields	= sizeof($fields) === 0 ? '*' : implode(',', TodoyuSql::escapeArray($fields));
 		$table	= self::TABLE;
 		$where	= ($where === '' ? '' : $where . ' AND ') . 'deleted = 0';
 		$order	= 'title';
@@ -485,7 +485,7 @@ class TodoyuContactCompanyManager {
 		if( sizeof($sWords) ) {
 			$searchFields	= is_null($searchFields) ? array('title', 'shortname') : $searchFields;
 
-			$where	.= ' AND ' . Todoyu::db()->buildLikeQuery($sWords, $searchFields);
+			$where	.= ' AND ' . TodoyuSql::buildLikeQuery($sWords, $searchFields);
 		}
 
 			// Limit results to allowed person records
