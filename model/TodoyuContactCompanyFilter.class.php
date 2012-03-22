@@ -196,7 +196,7 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 	 * @return	Array
 	 */
 	public function Filter_country($idCountry, $negate = false) {
-		$idCountry  = (int) $idCountry;
+		$idCountry	= (int) $idCountry;
 
 		if( $idCountry === 0 ) {
 			return false;
@@ -209,7 +209,7 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 		);
 		$compare= $negate ? ' != ' : ' = ';
 
-		$where  = '			ext_contact_address.id_country '		. $compare . $idCountry
+		$where	= '			ext_contact_address.id_country '		. $compare . $idCountry
 				. ' AND		ext_contact_mm_company_address.id_address	= ext_contact_address.id '
 				. ' AND ' . self::TABLE . '.id							= ext_contact_mm_company_address.id_company ';
 
@@ -293,7 +293,7 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 	 * @return	Array
 	 */
 	public function Filter_city($city, $negate = false) {
-		$city  = trim($city);
+		$city	= trim($city);
 
 		if( empty($city) ) {
 			return false;
@@ -306,7 +306,7 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 		);
 		$compare= $negate ? ' != ' : ' = ';
 
-		$where  = '			ext_contact_address.city '		. $compare . ' "' . $city . '" '
+		$where	= '			ext_contact_address.city '		. $compare . ' "' . $city . '" '
 				. ' AND		ext_contact_mm_company_address.id_address	= ext_contact_address.id '
 				. ' AND ' . self::TABLE . '.id							= ext_contact_mm_company_address.id_company ';
 

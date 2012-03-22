@@ -140,7 +140,7 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 	 * @return	Array
 	 */
 	public static function getPersonListingDataSearch($size, $offset = 0, array $params) {
-		$personIDs   = TodoyuArray::intval($params['personIDs']);
+		$personIDs	= TodoyuArray::intval($params['personIDs']);
 		$data	= array(
 			'rows'	=> array(),
 			'total'	=> Todoyu::db()->getTotalFoundRows()
@@ -160,7 +160,7 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 	 * @return	Array
 	 */
 	private static function getPersonListingDataRow($idPerson) {
-		$idPerson   = intval($idPerson);
+		$idPerson	= intval($idPerson);
 		$person	= TodoyuContactPersonManager::getPerson($idPerson);
 
 		if( Todoyu::allowed('contact', 'relation:seeAllContactinfotypes') ) {
@@ -172,9 +172,9 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 			$email  = false;
 		}
 
-		$company    = $person->getMainCompany()->getTitle();
+		$company	= $person->getMainCompany()->getTitle();
 		if( empty($company) ) {
-			$company    = '-';
+			$company	= '-';
 		}
 
 		return array(

@@ -118,7 +118,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 		}
 		
 			// Get matching "virtual" group items (preference)
-		$virtualGroups  = $this->searchVirtualGroups($searchWords, 0, true);
+		$virtualGroups	= $this->searchVirtualGroups($searchWords, 0, true);
 		foreach($virtualGroups as $idPref => $virtualGroup) {
 			
 			$virtualGroup	= json_decode($virtualGroup['value']);
@@ -253,7 +253,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 		}
 
 			// Get person IDs of selected groups and persons of virt. group
-		$selectionItems  = json_decode($virtualGroup->items);
+		$selectionItems	= json_decode($virtualGroup->items);
 
 		return self::getPersonIDsOfSelection($selectionItems);
 	}
@@ -572,7 +572,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 		$indexField = 'id';
 		$fields		= 'id,value';
 		$table		= TodoyuPreferenceManager::TABLE;
-		$where  = '		id_person	= ' . $idPerson
+		$where	= '		id_person	= ' . $idPerson
 				. ' AND	ext			= ' . EXTID_CONTACT
 				. ' AND	area		= 0'
 				. ' AND	preference	= \'panelwidget-staffselector-group\' ';
@@ -594,7 +594,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 		$virtualGroups	= self::getVirtualGroupsIndexed($idPerson);
 
 		if( $excludeSelection ) {
-			$selection  = $this->getSelectedTypeIDs('v');
+			$selection	= $this->getSelectedTypeIDs('v');
 		}
 		
 		foreach($virtualGroups as $idPref => $virtualGroup) {

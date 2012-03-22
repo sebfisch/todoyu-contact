@@ -202,8 +202,8 @@ class TodoyuContactAddressManager {
 		}
 
 		if( !empty($sword) ) {
-			$swords = explode(' ', trim($sword));
-			$where  = Todoyu::db()->buildLikeQuery($swords, array(self::TABLE . '.city'))
+			$swords	= explode(' ', trim($sword));
+			$where	= Todoyu::db()->buildLikeQuery($swords, array(self::TABLE . '.city'))
 					. ' AND		' . self::TABLE . '.deleted		= 0';
 		}
 
