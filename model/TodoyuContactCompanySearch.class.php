@@ -113,12 +113,14 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 	public static function getCompanyListingDataRow($idCompany) {
 		$idCompany	= intval($idCompany);
 
-		$address	= TodoyuContactCompanyManager::getCompanyAddressLabel($idCompany);
+		$street	= TodoyuContactCompanyManager::getCompanyStreetLabel($idCompany);
+		$address= TodoyuContactCompanyManager::getCompanyPlaceLabel($idCompany);
 
 		return array(
 			'icon'		=> '',
 			'title'		=> TodoyuContactCompanyManager::getCompany($idCompany)->getTitle(),
-			'address'	=> empty($address) ? '-' : $address,
+			'street'	=> empty($street) ? '-' : $street,
+			'place'		=> empty($address) ? '-' : $address,
 			'actions'	=> TodoyuContactCompanyRenderer::renderCompanyActions($idCompany)
 		);
 	}

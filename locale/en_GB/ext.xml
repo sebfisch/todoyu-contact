@@ -94,6 +94,7 @@
 	<label index="contactinfo.type.website">Website</label>
 	<label index="contactinfo.type.skype">Skype</label>
 	<label index="address">Address</label>
+	<label index="place">Place</label>
 	<label index="address.new">New Address</label>
 	<label index="address.attr.addresstype">Address Type</label>
 	<label index="address.attr.addresstype.1">Home Address</label>

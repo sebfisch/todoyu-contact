@@ -630,9 +630,29 @@ class TodoyuContactCompanyManager {
 	 * Compiled from the first address record. Using, street, zip and city
 	 *
 	 * @param	Integer		$idCompany
+	 * @param	Boolean		$includeStreet
 	 * @return	String
 	 */
 	public static function getCompanyAddressLabel($idCompany) {
+		$idCompany	= intval($idCompany);
+
+		$labelStreet= self::getCompanyStreetLabel($idCompany) .
+		$labelPlace	=	  self::getCompanyPlaceLabel($idCompany);
+
+		return $labelStreet . (!empty($labelStreet) ? ', ' : '') . $labelPlace;
+	}
+
+
+
+
+	/**
+	 * Get place (zip and city) label of the company from the first address record.
+	 *
+	 * @param	Integer		$idCompany
+	 * @param	Boolean		$includeStreet
+	 * @return	String
+	 */
+	public static function getCompanyPlaceLabel($idCompany) {
 		$idCompany	= intval($idCompany);
 
 		$addresses	= self::getCompanyAddressRecords($idCompany);
@@ -640,12 +660,34 @@ class TodoyuContactCompanyManager {
 
 		if( sizeof($addresses) > 0 ) {
 			$address = $addresses[0];
-			$label	=	  ($address['street'] !== '' ? $address['street'] . ', ' : '')
-						. ($address['zip']	!== '' ? $address['zip'] . ' ' : '')
-						. $address['city'];
+
+			$label	= ($address['zip']	!== '' ? $address['zip'] . ' ' : '')
+					. $address['city'];
 		}
 
 		return $label;
+	}
+
+
+
+	/**
+	 * Get street of first related adddress record of company
+	 *
+	 * @param	Integer	$idCompany
+	 * @return	String
+	 */
+	public static function getCompanyStreetLabel($idCompany, $includeStreet = true) {
+		$idCompany	= intval($idCompany);
+
+		$addresses	= self::getCompanyAddressRecords($idCompany);
+		$street	= '';
+
+		if( sizeof($addresses) > 0 ) {
+			$address = $addresses[0];
+			$street	=	  ($address['street'] !== '' ? $address['street'] : '');
+		}
+
+		return $street;
 	}
 
 

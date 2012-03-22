@@ -132,7 +132,7 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['person'] = array(
 		'lastname'	=> 20,
 		'firstname'	=> 20,
 //		'email'		=> 23,
-		'company'	=> 25
+		'company'	=> 45
 	)
 );
 
@@ -145,12 +145,14 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['company'] = array(
 	'columns'	=> array(
 		'icon'		=> '',
 		'title'		=> 'contact.ext.company.attr.title',
-		'address'	=> 'contact.ext.address',
+		'street'	=> 'contact.ext.address.attr.street',
+		'place'		=> 'contact.ext.place',
 		'actions'	=> ''
 	),
 	'truncate'	=> array(
 		'title'		=> 45,
-		'address'	=> 50
+		'street'	=> 40,
+		'place'		=> 40
 	)
 );
 
