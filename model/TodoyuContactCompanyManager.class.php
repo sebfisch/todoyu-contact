@@ -48,6 +48,9 @@ class TodoyuContactCompanyManager {
 		$xmlPath	= 'ext/contact/config/form/company.xml';
 		$form		= TodoyuFormManager::getForm($xmlPath, $idCompany);
 
+		$form->getField('date_enter')->setValue(NOW);
+		$form->getField('date_enter')->setValue(NOW);
+
 			// Adjust form to needs of quick creation wizard
 		$form->setAttribute('action', 'index.php?ext=contact&amp;controller=quickcreatecompany');
 		$form->setAttribute('onsubmit', 'return false');

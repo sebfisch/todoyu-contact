@@ -3,6 +3,7 @@ todoyu contact extension changelog
 contact 1.2.0 - not released yet
 	* Feature: Staff selector panelwidget can store/reload person selection as a group of itself
 	* Feature: Added search tabs and filters for company and person records
+	* Added: New Company entering date is preset with current date
 	* Added: Persons list paging
 	* Added: TodoyuContactPersonManager::isAllowed to check whether some person has some right
 	* Added: Disabled person items in staffselector can be selected on [Enter] when highlighted
