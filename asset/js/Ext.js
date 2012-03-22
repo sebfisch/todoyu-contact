@@ -49,7 +49,58 @@ Todoyu.Ext.contact = {
 	 * @method	init
 	 */
 	init: function() {
+		this.initObservers();
 
+	},
+
+
+
+	/**
+	 * @method	initObservers
+	 */
+	initObservers: function() {
+		if( Todoyu.getArea() === 'contact' ) {
+			this.initListingObserver();
+		}
+	},
+
+
+
+	/**
+	 * Install observer on contact listing
+	 *
+	 * @method	initObservers
+	 */
+	initListingObserver: function() {
+		var typeKey	= this.getActiveTypeKey();
+
+		if( Todoyu.exists('paging-' + typeKey) ) {
+			$('paging-' + typeKey).on('click', 'td', this.onClickListTD.bind(this, typeKey));
+		}
+	},
+
+
+
+	/**
+	 * @method	onClickListTD
+	 * @param	{String}		typeKey		'person'/'company'
+	 * @param	{Event}			event
+	 */
+	onClickListTD: function(typeKey, event) {
+		var parentSpan	= event.target.up('span');
+		if( event.target.hasClassName('actions') || parentSpan && parentSpan.hasClassName('actions') ) {
+			return ;
+		}
+
+		var itemID	= event.target.up('tr').id.split('-').last();
+		switch( typeKey ) {
+			case 'person':
+				this.Person.show(itemID);
+				break;
+			case 'company':
+				this.Company.show(itemID);
+				break;
+		}
 	},
 
 
@@ -75,7 +126,20 @@ Todoyu.Ext.contact = {
 	 * @param	{Array}		options
 	 */
 	updateContent: function(url, options) {
+		options.onComplete	= this.onContentUpdated.bind(this);
+
 		Todoyu.Ui.updateContent(url, options);
+	},
+
+
+
+	/**
+	 * Handler when content body has been updated - reinit listing observer
+	 *
+	 * @method	onContentUpdated
+	 */
+	onContentUpdated: function() {
+		this.initListingObserver();
 	},
 
 
@@ -92,6 +156,18 @@ Todoyu.Ext.contact = {
 		var objName = type.capitalize();
 
 		this[objName].showList();
+	},
+
+
+
+	/**
+	 * Get key of currently active contact type
+	 *
+	 * @method	getActiveType
+	 * @return	{String}		'company' / 'person'
+	 */
+	getActiveTypeKey: function() {
+		return	Todoyu.Tabs.getActiveKey('contact');
 	},
 
 

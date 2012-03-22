@@ -108,9 +108,14 @@ span.wizardIcon.createWizardCompany	{
 
 
 
-/* -------------------------
-	Person list
-   ------------------------- */
+/* ----------------------------
+	Contact listing general
+   ---------------------------- */
+#paging-person table tbody tr,
+#paging-company table tbody tr {
+	cursor:pointer;
+}
+
 	/* Column configs */
 #contact-details .actions button {
 	margin:0 5px;
@@ -122,14 +127,7 @@ span.wizardIcon.createWizardCompany	{
 #contact-details .actions .icon {
 	background:url(../img/icons.png) no-repeat;
 }
-#contact-details .actions .buttonPersonEdit .icon {
-	background-position:6px -27px;
-	width:22px;
-}
-#contact-details .actions button.buttonPersonDelete .icon {
-	background-position:6px -57px;
-	width:22px;
-}
+
 #contact-details .actions .backToList {
 	/*float:left;*/
 }
@@ -137,12 +135,6 @@ span.wizardIcon.createWizardCompany	{
 	background:url(../../../../core/asset/img/icons.png) no-repeat 3px -1890px;
 }
 
-
-
-div#search-results p#person-listing-messag-emptylist,
-div#search-results p#company-listing-messag-emptylist {
-	display:none;
-}
 
 
 /* -------------------------
@@ -155,6 +147,27 @@ div#search-results p#company-listing-messag-emptylist {
 #contact-tabs .tabkey-company .icon {
 	background:url(../img/icons.png) no-repeat 0 -146px;
 }
+
+
+
+/* -------------------------
+	Person list
+   ------------------------- */
+#contact-details .actions .buttonPersonEdit .icon {
+	background-position:6px -27px;
+	width:22px;
+}
+#contact-details .actions button.buttonPersonDelete .icon {
+	background-position:6px -57px;
+	width:22px;
+}
+
+div#search-results p#person-listing-message-emptylist,
+div#search-results p#company-listing-message-emptylist {
+	display:none;
+}
+
+
 
 /* -------------------------
 	Company list

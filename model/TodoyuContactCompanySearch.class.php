@@ -141,7 +141,11 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 		);
 
 		foreach($companies as $company) {
-			$data['rows'][] = self::getCompanyListingDataRow($company['id']);
+			$idCompany	= $company['id'];
+			$data['rows'][] = array(
+				'id'		=> $idCompany,
+				'columns'	=> self::getCompanyListingDataRow($idCompany)
+			);
 		}
 
 		return $data;
@@ -165,7 +169,10 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 		);
 
 		foreach($companyIDs as $idCompany) {
-			$data['rows'][] = self::getCompanyListingDataRow($idCompany);
+			$data['rows'][] = array(
+				'id'		=> $idCompany,
+				'columns'	=> self::getCompanyListingDataRow($idCompany)
+			);
 		}
 
 		return $data;

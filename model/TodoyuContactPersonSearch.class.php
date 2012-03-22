@@ -123,7 +123,11 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 		);
 
 		foreach($persons as $personData) {
-			$data['rows'][] = self::getPersonListingDataRow($personData['id']);
+			$idPerson	= $personData['id'];
+			$data['rows'][] = array(
+				'id'		=> $idPerson,
+				'columns'	=> self::getPersonListingDataRow($idPerson)
+			);
 		}
 
 		return $data;
@@ -147,7 +151,10 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 		);
 
 		foreach($personIDs as $idPerson) {
-			$data['rows'][] = self::getPersonListingDataRow($idPerson);
+			$data['rows'][] = array(
+				'id'		=> $idPerson,
+				'columns'	=> self::getPersonListingDataRow($idPerson)
+			);
 		}
 
 		return $data;
