@@ -541,9 +541,10 @@ class TodoyuContactCompanyManager {
 	 * Get person records of a company
 	 *
 	 * @param	Integer		$idCompany
+	 * @param	String		$order
 	 * @return	Array
 	 */
-	public static function getCompanyPersonRecords($idCompany) {
+	public static function getCompanyPersonRecords($idCompany, $order = '') {
 		$idCompany	= intval($idCompany);
 
 		$fields	= '	mm.*,
@@ -553,7 +554,7 @@ class TodoyuContactCompanyManager {
 		$where	= '		mm.id_person	= p.id
 					AND	mm.id_company	= ' . $idCompany .
 				  ' AND	p.deleted		= 0';
-		$order	= 'mm.id';
+		$order	= empty($order) ? 'mm.id' : $order;
 
 		return Todoyu::db()->getArray($fields, $tables, $where, '', $order);
 	}

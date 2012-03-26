@@ -57,25 +57,16 @@
 				</div>
 			{/if}
 		{/foreach}
-	
+
 		{* ------------ Company employees with job type and work address ------------ *}
-		{foreach $person numEmployee pers}
-			{if isPersonSeeAllowed($pers.id)}
-				<div class="infoBox employeePart">
-					<h4>{Label LLL:contact.ext.company.attr.person}</h4>
-					<div class="content overflow address">
-						<table class="list autoWidthTable">
-							<tr>
-								<th><a href="javascript:void(0)" onclick="Todoyu.Ext.contact.Person.show({$pers.id})">{personLabel $pers.id 'employee' $id}</a></th>
-								<td>{$pers.jobtype.title}</td>
-								{if $pers.id_workaddress > 0}<td>{$pers.workaddress.street}, {$pers.workaddress.zip} {$pers.workaddress.city}, {countryName $pers.workaddress.id_country}</td>{/if}
-							</tr>
-						</table>
-					</div>
-				</div>
-			{/if}
-		{/foreach}
-	
+		{if count($person) > 0}
+			<div class="infoBox employeePart">
+				<h4>{Label LLL:contact.ext.company.attr.person}</h4>
+				{$employees}
+				<br/><br/>
+			</div>
+		{/if}
+
 		{* ------------ Additional infos (date of entry) ------------ *}
 
 		<div class="infoBox others">
@@ -98,7 +89,6 @@
 			</div>
 		</div>
 
-	
 		{* ------------ Hooked content ------------ *}
 		{$hookedContent}
 	

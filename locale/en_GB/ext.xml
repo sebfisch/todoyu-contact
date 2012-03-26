@@ -54,6 +54,7 @@
 	<label index="person.header.noneselected">No Person Selected.</label>
 	<label index="person.mainpersondata">Main Person Data</label>
 	<label index="person.userinformation">User Information</label>
+	<label index="employee">Employee</label>
 	<label index="company.edit">Edit Company</label>
 	<label index="company.delete">Delete Company</label>
 	<label index="company.delete.confirm">Do you really want to remove this company record?</label>

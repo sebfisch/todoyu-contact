@@ -180,6 +180,46 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 		return $data;
 	}
 
+
+
+	/**
+	 * Get listing data for employees
+	 *
+	 * @param	Integer		$size
+	 * @param	Integer		$offset
+	 * @param	String		$searchWord
+	 * @return	Array
+	 */
+	public static function getEmployeeListingData($size, $offset = 0, array $params) {
+		$idCompany = intval($params['idCompany']);
+
+		$sorting	= 'p.lastname, p.firstname, mm.id';
+		$persons	= TodoyuContactCompanyManager::getCompanyPersonRecords($idCompany, $sorting);
+
+		$data	= array(
+			'rows'	=> array(),
+			'total'	=> count($persons)
+		);
+
+		foreach($persons as $personData) {
+			$person		= TodoyuContactPersonManager::getPerson($personData['id_person']);
+
+	  		$data['rows'][]	= array(
+				'id'		=> $personData['id_person'],
+				'columns'	=> array(
+					'name'		=> $person->getLabel(),
+					'jobtype'	=> TodoyuContactJobTypeManager::getJobType($personData['id_jobtype'])->get('title'),
+					'city'		=> '',
+					'street'	=> '',
+				)
+			);
+		}
+
+		TodoyuDebug::printInFirebug($data,'ddd');
+
+		return $data;
+	}
+
 }
 
 ?>

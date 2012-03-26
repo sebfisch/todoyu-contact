@@ -54,6 +54,7 @@
 	<label index="person.header.noneselected">Keine Person ausgewählt</label>
 	<label index="person.mainpersondata">Personen Daten</label>
 	<label index="person.userinformation">Benutzerinformationen</label>
+	<label index="employee">Angestellter</label>
 	<label index="company.edit">Firma bearbeiten</label>
 	<label index="company.delete">Firma löschen</label>
 	<label index="company.delete.confirm">Diese Firma löschen?</label>

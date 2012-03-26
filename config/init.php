@@ -124,14 +124,12 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['person'] = array(
 		'icon'		=> '',
 		'lastname'	=> 'contact.ext.person.attr.lastname',
 		'firstname'	=> 'contact.ext.person.attr.firstname',
-//		'email'		=> 'contact.ext.person.attr.email',
 		'company'	=> 'contact.ext.company',
 		'actions'	=> '',
 	),
 	'truncate'	=> array(
 		'lastname'	=> 20,
 		'firstname'	=> 20,
-//		'email'		=> 23,
 		'company'	=> 45
 	)
 );
@@ -156,6 +154,20 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['company'] = array(
 	)
 );
 
+Todoyu::$CONFIG['EXT']['contact']['listing']['employee'] = array(
+	'name'		=> 'person',
+	'update'	=> 'contact/empoyee/listing',
+	'dataFunc'	=> 'TodoyuContactCompanySearch::getEmployeeListingData',
+	'size'		=> 999,
+	'columns'	=> array(
+		'name'		=> 'contact.ext.person',
+		'jobtype'	=> 'contact.ext.jobtype',
+	),
+	'truncate'	=> array(
+		'name'		=> 45,
+		'jobtype'	=> 50,
+	)
+);
 
 
 /* ----------------------------------------

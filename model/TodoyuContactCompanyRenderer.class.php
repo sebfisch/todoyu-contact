@@ -148,11 +148,26 @@ class TodoyuContactCompanyRenderer {
 
 		$tmpl		= 'ext/contact/view/company-detail.tmpl';
 		$company	= TodoyuContactCompanyManager::getCompany($idCompany);
+
 		$data		= $company->getTemplateData(true);
+		$data['employees']	= self::renderEmployeeList($idCompany);
 
 		$data['hookedContent']	= implode('', TodoyuHookManager::callHook('contact', 'company.renderDetail', array($idCompany)));
 
 		return Todoyu::render($tmpl, $data);
+	}
+
+
+
+
+	/**
+	 * Render employee list of given company
+	 *
+	 * @param	Integer		$idCompany
+	 * @return	String
+	 */
+	public static function renderEmployeeList($idCompany) {
+		return TodoyuListingRenderer::render('contact', 'employee', 0, true, array('idCompany' => $idCompany));
 	}
 
 
