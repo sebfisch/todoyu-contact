@@ -166,8 +166,6 @@
 
 		{* ------------ Actions panel (edit, delete, close) ------------ *}
 		<div class="actions">
-			{Button label='contact.ext.backToList' onclick='Todoyu.Ext.contact.Person.closeDetailView()' class='backToList' id='person-backtolist' title='LLL:contact.ext.backToList'}
-
 			{if constant('AREA') === constant('EXTID_CONTACT')}
 				{if isPersonEditAllowed($id)}
 					{Button label='contact.ext.person.edit' onclick='Todoyu.Ext.contact.Person.edit($id)' class='buttonPersonEdit' id='person-edit' title='LLL:contact.ext.person.edit'}
@@ -176,6 +174,8 @@
 					{Button label='contact.ext.person.delete' onclick='Todoyu.Ext.contact.Person.remove($id)' class='buttonPersonDelete' id='person-delete' title='LLL:contact.ext.person.delete'}
 				{/if}
 			{/if}
+
+			{Button label='contact.ext.backToList' onclick='Todoyu.Ext.contact.Person.closeDetailView()' class='backToList' id='person-backtolist' title='LLL:contact.ext.backToList'}
 		</div>
 		<div class="clear"></div>
 
