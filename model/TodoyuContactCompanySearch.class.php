@@ -215,8 +215,6 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 			);
 		}
 
-		TodoyuDebug::printInFirebug($data,'ddd');
-
 		return $data;
 	}
 
