@@ -107,6 +107,35 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 
 
 	/**
+	 * Fulltext search over company name
+	 *
+	 * @param	Mixed		$value
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public function Filter_name($value, $negate = false) {
+		$value		= trim($value);
+		$queryParts	= false;
+
+		if( $value !== '' ) {
+			$tables	= array(self::TABLE);
+
+			$logic		= $negate ? ' NOT LIKE ':' LIKE ';
+			$keyword	= TodoyuSql::escape($value);
+			$where		= ' ( ' . self::TABLE . '.title		' . $logic . ' \'%' . $keyword . '%\'' . ' )';
+
+			$queryParts	= array(
+				'tables'=> $tables,
+				'where'	=> $where
+			);
+		}
+
+		return $queryParts;
+	}
+
+
+
+	/**
 	 * Filter contact information fulltext
 	 *
 	 * @param	Mixed		$value

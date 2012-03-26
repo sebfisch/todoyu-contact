@@ -203,6 +203,14 @@ Todoyu::$CONFIG['FILTERS']['COMPANY'] = array(
 				'negation'		=> 'default'
 			)
 		),
+		'name' => array(
+				'label'		=> 'contact.filter.company.name',
+				'optgroup'	=> 'contact.filter.company.label',
+				'widget'	=> 'text',
+				'wConf' => array(
+					'negation'		=> 'default'
+				)
+			),
 		'contactinformation' => array(
 			'label'		=> 'contact.filter.contactinformation',
 			'optgroup'	=> 'contact.filter.company.label',
