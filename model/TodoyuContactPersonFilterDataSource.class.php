@@ -146,6 +146,23 @@ class TodoyuContactPersonFilterDataSource {
 		return $definitions;
 	}
 
+
+
+	/**
+	 * Get person label
+	 *
+	 * @param	Array	$definitions
+	 * @return	Array
+	 */
+	public static function getPersonLabel($definitions) {
+		$idPerson	= intval($definitions['value']);
+		$person	= TodoyuContactPersonManager::getPerson($idPerson);
+
+		$definitions['value_label'] = $person->getLabel();
+
+		return $definitions;
+	}
+
 }
 
 ?>

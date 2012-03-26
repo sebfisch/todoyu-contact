@@ -13,6 +13,7 @@
 	<label index="company.name">Company Name</label>
 	<label index="company.isInternal">Is Internal Company</label>
 	<label index="company.dateEnter">Entering Date</label>
+	<label index="company.person">Employee</label>
 	<label index="addresses.label">Addresses</label>
 	<label index="address.country">Country</label>
 	<label index="address.zip">Zip</label>

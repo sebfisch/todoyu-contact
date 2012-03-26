@@ -251,6 +251,36 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 
 
 	/**
+	 * Filter by employed person
+	 *
+	 * @param	Array		$idPerson
+	 * @param	Boolean		$negate
+	 * @return	Array
+	 */
+	public function Filter_person($idPerson, $negate = false) {
+		$idPerson	= (int) $idPerson;
+
+		if( $idPerson === 0 ) {
+			return false;
+		}
+
+		$tables = array(
+			'ext_contact_mm_company_person',
+			self::TABLE
+		);
+		$compare= $negate ? ' != ' : ' = ';
+		$where	= '			ext_contact_mm_company_person.id_person		' . $compare . $idPerson
+				. ' AND ' . self::TABLE . '.id							= ext_contact_mm_company_person.id_company ';
+
+		return array(
+			'tables'=> $tables,
+			'where'	=> $where,
+		);
+	}
+
+
+
+	/**
 	 * Get filter for street of address
 	 *
 	 * @param	String		$value

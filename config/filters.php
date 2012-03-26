@@ -237,6 +237,20 @@ Todoyu::$CONFIG['FILTERS']['COMPANY'] = array(
 			)
 		),
 
+			// Person optgroup
+		'person' => array(
+			'label'		=> 'contact.filter.company.person',
+			'optgroup'	=> 'contact.filter.person.label',
+			'widget'	=> 'text',
+			'wConf' => array(
+				'autocomplete'	=> true,
+				'FuncRef'		=> 'TodoyuContactPersonFilterDataSource::autocompletePersons',
+				'FuncParams'	=> array(),
+				'LabelFuncRef'	=> 'TodoyuContactPersonFilterDataSource::getLabel',
+				'negation'		=> 'default'
+			)
+		),
+
 			// Address optgroup
 		'country'		=> array(
 			'label'		=> 'contact.filter.address.country',

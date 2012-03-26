@@ -13,6 +13,7 @@
 	<label index="company.name">Firmenname</label>
 	<label index="company.isInternal">Ist Interne Firma</label>
 	<label index="company.dateEnter">Eintrittsdatum</label>
+	<label index="company.person">Angestellte(r)</label>
 	<label index="addresses.label">Addressen</label>
 	<label index="address.country">Land</label>
 	<label index="address.zip">Postleitzahl</label>

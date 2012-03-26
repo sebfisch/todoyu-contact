@@ -27,7 +27,7 @@
 class TodoyuContactCompanyFilterDataSource {
 
 	/**
-	 * Get person filter definition label
+	 * Get company filter definition label
 	 *
 	 * @param	Array	$definitions
 	 * @return	Array
