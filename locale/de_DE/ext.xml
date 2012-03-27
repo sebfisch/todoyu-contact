@@ -52,7 +52,7 @@
 	<label index="person.attr.image.upload">Profilbild hochladen</label>
 	<label index="person.attr.comment">Kommentar</label>
 	<label index="person.header.noneselected">Keine Person ausgewählt</label>
-	<label index="person.mainpersondata">Personen Daten</label>
+	<label index="person.mainpersondata">Meine Personendaten</label>
 	<label index="person.userinformation">Benutzerinformationen</label>
 	<label index="employee">Angestellter</label>
 	<label index="company.edit">Firma bearbeiten</label>
@@ -136,7 +136,7 @@
 	<label index="company.search.title">Firmen</label>
 	<label index="company.search.mode">Suche Firmen</label>
 	<label index="other">Weitere Informationen</label>
-	<label index="profile.module">Personen Daten</label>
+	<label index="profile.module">Meine Personendaten</label>
 	<label index="export.companycsv">Firmen als CSV exportieren</label>
 	<label index="export.personcsv">Persons als CSV exportieren</label>
 	<label index="backToList">Zurück zur Liste</label>
