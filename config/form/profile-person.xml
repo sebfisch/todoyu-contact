@@ -38,10 +38,6 @@
 					<required />
 				</field>
 
-				<field type="text" name="shortname">
-					<label>contact.ext.person.attr.shortname</label>
-				</field>
-
 				<field type="date" name="birthday">
 					<label>contact.ext.person.attr.birthday</label>
 					<calendar>
@@ -64,6 +60,10 @@
 	<fieldset name="user">
 			<legend>contact.form.legend.profile.userdata</legend>
 			<elements>
+				<field type="text" name="shortname">
+					<label>contact.ext.person.attr.shortname</label>
+				</field>
+
 				<field type="text" name="email">
 					<label>contact.ext.person.attr.email</label>
 					<validate>
