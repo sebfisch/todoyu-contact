@@ -189,17 +189,15 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 		Todoyu::restrict('contact', 'general:area');
 
 		$idCompany	= intval($params['company']);
-
 		TodoyuContactCompanyRights::restrictSee($idCompany);
 
-		$type		= 'company';
+		$content	= TodoyuContactRenderer::renderDetails('company', $idCompany);
 
-//		$tabs		= TodoyuContactRenderer::renderTabs('company');
-		$content	= TodoyuContactRenderer::renderDetails($type, $idCompany);
-		return $content;
-//		$content	= TodoyuRenderer::renderContent($content, $tabs);
-//
-//		return TodoyuRequest::isAjaxRequest() ? $content : TodoyuContactRenderer::renderContactPage('company', $idCompany, '', $content);
+		if( TodoyuRequest::isAjaxRequest() ) {
+			return $content;
+		}
+
+		return TodoyuContactRenderer::renderContactPage('company', $idCompany, '', $content);
 	}
 
 
