@@ -236,7 +236,13 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 
 		TodoyuContactPersonRights::restrictSee($idPerson);
 
-		return TodoyuContactPersonRenderer::renderPersonDetails($idPerson);
+		$content	= TodoyuContactPersonRenderer::renderPersonDetails($idPerson);
+
+		if( TodoyuRequest::isAjaxRequest() ) {
+			return $content;
+		}
+
+		return TodoyuContactRenderer::renderContactPage('person', $idPerson, '', $content);
 	}
 
 
