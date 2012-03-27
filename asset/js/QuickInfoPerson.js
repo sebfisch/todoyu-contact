@@ -42,7 +42,7 @@ Todoyu.Ext.contact.QuickInfoPerson = {
 
 
 	/**
-	 * Install quickinfo for events
+	 * Install quickinfo for persons
 	 *
 	 * @method	install
 	 */

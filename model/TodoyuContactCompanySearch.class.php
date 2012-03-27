@@ -202,15 +202,20 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 		);
 
 		foreach($persons as $personData) {
-			$person		= TodoyuContactPersonManager::getPerson($personData['id_person']);
+			$idPerson	= $personData['id_person'];
+			$person		= TodoyuContactPersonManager::getPerson($idPerson);
+			$jobType	= TodoyuContactJobTypeManager::getJobType($personData['id_jobtype'])->get('title');
 
 	  		$data['rows'][]	= array(
 				'id'		=> $personData['id_person'],
 				'columns'	=> array(
-					'name'		=> $person->getLabel(),
-					'jobtype'	=> TodoyuContactJobTypeManager::getJobType($personData['id_jobtype'])->get('title'),
-					'city'		=> '',
-					'street'	=> '',
+					'name'		=> array(
+						'spanID'		=> 'company_person-' . $idCompany . '-' . $idPerson,
+						'classname'		=> 'quickInfoPerson',
+						'onClick'		=> 'Todoyu.Ext.contact.Person.show(' . $idPerson . ')',
+						'content'		=> $person->getLabel()
+					),
+					'jobtype'	=> $jobType ? $jobType : '-',
 				)
 			);
 		}

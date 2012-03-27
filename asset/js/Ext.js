@@ -60,8 +60,20 @@ Todoyu.Ext.contact = {
 	 */
 	initObservers: function() {
 		if( Todoyu.getArea() === 'contact' ) {
+			this.initPersonQuickInfos();
 			this.initListingObserver();
 		}
+	},
+
+
+
+	/**
+	 * @method	initPersonQuickInfos
+	 */
+	initPersonQuickInfos: function() {
+		$('content-body').select('span.quickInfoPerson').each(function(element) {
+			Todoyu.Ext.contact.QuickInfoPerson.add(element.id);
+		})
 	},
 
 
@@ -139,7 +151,7 @@ Todoyu.Ext.contact = {
 	 * @method	onContentUpdated
 	 */
 	onContentUpdated: function() {
-		this.initListingObserver();
+		this.initObservers();
 	},
 
 
