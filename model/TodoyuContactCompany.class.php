@@ -155,7 +155,7 @@ class TodoyuContactCompany extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isInternal() {
-		return intval($this->get('is_internal')) === 1;
+		return $this->getInt('is_internal') === 1;
 	}
 
 
