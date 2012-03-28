@@ -187,7 +187,7 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 	 *
 	 * @param	Integer		$size
 	 * @param	Integer		$offset
-	 * @param	String		$searchWord
+	 * @param	Array		$params
 	 * @return	Array
 	 */
 	public static function getEmployeeListingData($size, $offset = 0, array $params) {
@@ -209,7 +209,7 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 	  		$data['rows'][]	= array(
 				'id'		=> $personData['id_person'],
 				'columns'	=> array(
-					'name'		=> array(
+					'name'	=> array(
 						'spanID'		=> 'company_person-' . $idCompany . '-' . $idPerson,
 						'classname'		=> 'quickInfoPerson',
 						'onClick'		=> 'Todoyu.Ext.contact.Person.show(' . $idPerson . ')',

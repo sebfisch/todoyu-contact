@@ -150,7 +150,6 @@ class TodoyuContactCompanyRenderer {
 		$company	= TodoyuContactCompanyManager::getCompany($idCompany);
 
 		$data		= $company->getTemplateData(true);
-		$data['employees']	= self::renderEmployeeList($idCompany);
 
 		$data['hookedContent']	= implode('', TodoyuHookManager::callHook('contact', 'company.renderDetail', array($idCompany)));
 

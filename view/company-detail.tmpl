@@ -58,14 +58,18 @@
 			{/if}
 		{/foreach}
 
+
+
 		{* ------------ Company employees with job type and work address ------------ *}
 		{if count($person) > 0}
 			<div class="infoBox employeePart">
 				<h4>{Label LLL:contact.ext.company.attr.person}</h4>
-				{$employees}
+				{List ext=contact list=employee noPaging=true params=array(idCompany=$id)}
 				<br/><br/>
 			</div>
 		{/if}
+
+
 
 		{* ------------ Additional infos (date of entry) ------------ *}
 
