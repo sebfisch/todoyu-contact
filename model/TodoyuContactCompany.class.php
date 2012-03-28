@@ -161,12 +161,34 @@ class TodoyuContactCompany extends TodoyuBaseObject {
 
 
 	/**
+	 * Get contact info records data
+	 *
+	 * @return	Array
+	 */
+	public function getContactInfoRecords() {
+		return TodoyuContactCompanyManager::getCompanyContactinfoRecords($this->getID());
+	}
+
+
+
+	/**
+	 * Get address records data
+	 *
+	 * @return	Array
+	 */
+	public function getAddressRecords() {
+		return TodoyuContactCompanyManager::getCompanyAddressRecords($this->getID());
+	}
+
+
+
+	/**
 	 * Loads the related foreign record data to the company
 	 */
 	public function loadForeignData() {
 		$this->data['person']		= $this->getEmployeesRecords();
-		$this->data['contactinfo']	= TodoyuContactCompanyManager::getCompanyContactinfoRecords($this->getID());
-		$this->data['address']		= TodoyuContactCompanyManager::getCompanyAddressRecords($this->getID());
+		$this->data['contactinfo']	= $this->getContactInfoRecords();
+		$this->data['address']		= $this->getAddressRecords();
 	}
 
 

@@ -49,6 +49,15 @@ class TodoyuContactAddress extends TodoyuBaseObject {
 
 
 	/**
+	 * Get label for address type
+	 */
+	public function getAddressTypeLabel() {
+		TodoyuContactAddressTypeManager::getAddressTypeLabel($this->getAddressTypeID());
+	}
+
+
+
+	/**
 	 * Get timezone ID
 	 *
 	 * @return	Integer

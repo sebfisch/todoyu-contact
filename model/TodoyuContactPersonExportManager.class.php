@@ -73,10 +73,7 @@ class TodoyuContactPersonExportManager {
 		$exportData = array();
 
 		foreach($personsData as $personData) {
-			$person	= TodoyuContactPersonManager::getPerson($personData['id']);
-			$person->loadForeignData();
-
-			$exportData[]	= self::getPersonExportData($person);
+			$exportData[]	= self::getPersonExportData($personData['id']);
 		}
 
 		return $exportData;
@@ -91,16 +88,11 @@ class TodoyuContactPersonExportManager {
 	 * @return	Array
 	 */
 	public static function getExportDataByPersonIDs(array $personIDs) {
-		$personIDs = TodoyuArray::intval($personIDs);
+		$personIDs = TodoyuArray::intval($personIDs, true, true);
 
 		$exportData = array();
 		foreach($personIDs as $idPerson) {
-			if( $idPerson !== 0 ) {
-				$person	= TodoyuContactPersonManager::getPerson($idPerson);
-				$person->loadForeignData();
-
-				$exportData[]	= self::getPersonExportData($person);
-			}
+			$exportData[]	= self::getPersonExportData($idPerson);
 		}
 
 		return $exportData;
@@ -111,15 +103,20 @@ class TodoyuContactPersonExportManager {
 	/**
 	 * Parses person-data for export
 	 *
-	 * @param	TodoyuContactPerson		$person
+	 * @param	Integer		$idPerson
 	 * @return	Array
 	 */
-	protected static function getPersonExportData(TodoyuContactPerson $person) {
+	protected static function getPersonExportData($idPerson) {
+		$person			= TodoyuContactPersonManager::getPerson($idPerson);
+		$companyPrefix	= Todoyu::Label('contact.ext.person.attr.company');
+		$rolePrefix		= Todoyu::Label('core.global.role');
+		$addressPrefix	= Todoyu::Label('contact.ext.address');
+
 		$exportData = array(
 			Todoyu::Label('contact.ext.person.attr.id')			=> $person->getID(),
 			Todoyu::Label('core.global.date_create')			=> TodoyuTime::format($person->getDateCreate()),
 			Todoyu::Label('core.global.date_update')			=> TodoyuTime::format($person->getDateUpdate()),
-			Todoyu::Label('core.global.id_person_create')		=> TodoyuContactPersonManager::getPerson($person->getPerson('create'))->getFullName(),
+			Todoyu::Label('core.global.id_person_create')		=> $person->getPersonCreate()->getFullName(),
 
 			Todoyu::Label('contact.ext.person.attr.lastname')	=> $person->getLastName(),
 			Todoyu::Label('contact.ext.person.attr.firstname')	=> $person->getFirstName(),
@@ -130,17 +127,16 @@ class TodoyuContactPersonExportManager {
 			Todoyu::Label('contact.ext.person.attr.email')		=> $person->getEmail(),
 			Todoyu::Label('contact.ext.person.attr.is_admin')	=> Todoyu::Label('core.global.' . ($person->isAdmin()	? 'yes' : 'no')),
 			Todoyu::Label('contact.ext.person.attr.is_active')	=> Todoyu::Label('core.global.' . ($person->isActive()	? 'yes' : 'no')),
-			Todoyu::Label('contact.ext.person.attr.birthday')	=> TodoyuTime::format($person->getBirthday(), 'date'),
-
+			Todoyu::Label('contact.ext.person.attr.birthday')	=> $person->hasBirthday() ? TodoyuTime::format($person->getBirthday(), 'date') : '',
 		);
 
 			// Map & prepare company records of person
-		foreach( $person->getCompanies() as $index => $company ) {
-			$exportData[Todoyu::Label('contact.ext.person.attr.company') . '_' . ($index + 1)]	= $company->getTitle();
+		foreach($person->getCompanies() as $index => $company) {
+			$exportData[$companyPrefix . '_' . ($index + 1)]	= $company->getTitle();
 		}
 
 			// Map & prepare contactinfo records of person
-		foreach( $person->contactinfo as $index => $contactinfo ) {
+		foreach($person->getContactInfoRecords() as $index => $contactinfo) {
 			$prefix			= Todoyu::Label('contact.ext.contactinfo') . '_' . ($index + 1) . '_';
 			$contactinfoObj	= TodoyuContactContactInfoManager::getContactinfo($contactinfo['id']);
 
@@ -150,27 +146,26 @@ class TodoyuContactPersonExportManager {
 		}
 
 			// Map & prepare address records of person
-		foreach( $person->address as $index => $address) {
-			$prefix			= Todoyu::Label('contact.ext.address') . '_' . ($index + 1) . '_';
-			$addressObj		= TodoyuContactAddressManager::getAddress($address['id']);
+		foreach($person->getAddresses() as $index => $address) {
+			$prefix			= $addressPrefix . '_' . ($index + 1) . '_';
 
-			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.addresstype')]= TodoyuContactAddressTypeManager::getAddressTypeLabel($address['id_addresstype']);
-			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.street')]		= $address['street'];
-			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.postbox')]	= $address['postbox'];
-			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.zip')]		= $address['zip'];
-			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.city')]		= $address['city'];
-			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.region')]		= $addressObj->getRegionLabel();
-			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.country')]	= $addressObj->getCountry()->getLabel();
-			$exportData[$prefix . Todoyu::Label('core.form.is_preferred')]				= $address['is_preferred'] ? Todoyu::Label('core.global.yes') : Todoyu::Label('core.global.no');
-			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.comment')]	= $address['comment'];
+			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.addresstype')]= $address->getAddressTypeLabel();
+			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.street')]		= $address->getStreet();
+			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.postbox')]	= $address->getPostbox();
+			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.zip')]		= $address->getZip();
+			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.city')]		= $address->getCity();
+			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.region')]		= $address->getRegionLabel();
+			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.country')]	= $address->getCountry()->getLabel();
+			$exportData[$prefix . Todoyu::Label('core.form.is_preferred')]				= $address->isPreferred() ? Todoyu::Label('core.global.yes') : Todoyu::Label('core.global.no');
+			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.comment')]	= $address->getComment();
 		}
 
 			// Map & prepare role records of person
-		foreach( $person->role as $index => $role) {
-			$exportData[Todoyu::Label('core.global.role') . '_' . ($index + 1)]	= $role['title'];
+		foreach($person->getRoleRecords() as $index => $role) {
+			$exportData[$rolePrefix . '_' . ($index + 1)]	= $role['title'];
 		}
 
-		$exportData = TodoyuHookManager::callHookDataModifier('contact', 'personCSVExportParseData', $exportData, array('company' => $company));
+		$exportData = TodoyuHookManager::callHookDataModifier('contact', 'personCSVExportParseData', $exportData, array('person'=>$person));
 
 		return $exportData;
 	}

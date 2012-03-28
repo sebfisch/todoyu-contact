@@ -308,7 +308,22 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getBirthday() {
-		return intval(strtotime($this->get('birthday')));
+		if( $this->hasBirthday() ) {
+			return intval(strtotime($this->get('birthday')));
+		} else {
+			return 0;
+		}
+	}
+
+
+
+	/**
+	 * Check whether a birthday is set for person
+	 *
+	 * @return	Boolean
+	 */
+	public function hasBirthday() {
+		return $this->get('birthday') !== '0000-00-00';
 	}
 
 
@@ -441,14 +456,68 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	}
 
 
+
+	/**
+	 * Get contact info records data
+	 *
+	 * @return	Array
+	 */
+	public function getContactInfoRecords() {
+		return TodoyuContactPersonManager::getContactinfoRecords($this->getID());
+	}
+
+
+
+	/**
+	 * Get addresses
+	 *
+	 * @return	TodoyuContactAddress[]
+	 */
+	public function getAddresses() {
+		$field	= '	a.id';
+		$tables	= '	ext_contact_address a,
+					ext_contact_mm_person_address mm';
+		$where	= '		a.deleted		= 0'
+				. ' AND mm.id_address	= a.id'
+				. ' AND	mm.id_person	= ' . $this->getID();
+
+		$addressIDs	= Todoyu::db()->getColumn($field, $tables, $where, '', '', '', 'id');
+
+		return TodoyuRecordManager::getRecordList('TodoyuContactAddress', $addressIDs);
+	}
+
+
+
+	/**
+	 * Get address records data
+	 *
+	 * @return	Array
+	 */
+	public function getAddressRecords() {
+		return TodoyuContactPersonManager::getAddressRecords($this->getID());
+	}
+
+
+
+	/**
+	 * Get role records data
+	 *
+	 * @return	Array
+	 */
+	public function getRoleRecords() {
+		return TodoyuContactPersonManager::getRoles($this->getID());
+	}
+
+
+
 	/**
 	 * Load all foreign records of a person
 	 */
 	public function loadForeignData() {
 		$this->data['company']		= $this->getEmployers();
-		$this->data['contactinfo']	= TodoyuContactPersonManager::getContactinfoRecords($this->getID());
-		$this->data['address']		= TodoyuContactPersonManager::getAddressRecords($this->getID());
-		$this->data['role']			= TodoyuContactPersonManager::getRoles($this->getID());
+		$this->data['contactinfo']	= $this->getContactInfoRecords();
+		$this->data['address']		= $this->getAddressRecords();
+		$this->data['role']			= $this->getRoleRecords();
 	}
 
 
