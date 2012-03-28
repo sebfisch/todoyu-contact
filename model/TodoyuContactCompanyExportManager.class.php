@@ -140,19 +140,21 @@ class TodoyuContactCompanyExportManager {
 		}
 
 			// Map & prepare address records of company
-		foreach($company->getAddressRecords() as $index => $address) {
+		$index = 1;
+		foreach($company->getAddresses() as $address) {
 			$prefix			= $addressPrefix . '_' . ($index + 1) . '_';
-			$addressObj		= TodoyuContactAddressManager::getAddress($address['id']);
 
-			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.addresstype')]= TodoyuContactAddressTypeManager::getAddressTypeLabel($address['id_addresstype']);
-			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.street')]		= $address['street'];
-			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.postbox')]	= $address['postbox'];
-			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.zip')]		= $address['zip'];
-			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.city')]		= $address['city'];
-			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.region')]		= $addressObj->getRegionLabel();
-			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.country')]	= $addressObj->getCountry()->getLabel();
-			$exportData[$prefix . Todoyu::Label('core.form.is_preferred')]				= $address['is_preferred'] ? $labelYes : $labelNo;
-			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.comment')]	= $address['comment'];
+			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.addresstype')]= $address->getAddressTypeLabel();
+			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.street')]		= $address->getStreet();
+			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.postbox')]	= $address->getPostbox();
+			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.zip')]		= $address->getZip();
+			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.city')]		= $address->getCity();
+			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.region')]		= $address->getRegionLabel();
+			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.country')]	= $address->getCountry()->getLabel();
+			$exportData[$prefix . Todoyu::Label('core.form.is_preferred')]				= $address->isPreferred() ? $labelYes : $labelNo;
+			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.comment')]	= $address->getComment();
+
+			$index++;
 		}
 
 			// Map & prepare employee records of company

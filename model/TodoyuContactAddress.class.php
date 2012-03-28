@@ -174,7 +174,7 @@ class TodoyuContactAddress extends TodoyuBaseObject {
 	 *
 	 * @return	Array
 	 */
-	public function getRegion() {
+	public function getRegionRecord() {
 		return TodoyuStaticRecords::getRecord('country_zone', $this->getRegionID());
 	}
 
@@ -186,9 +186,17 @@ class TodoyuContactAddress extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getRegionLabel() {
-		$region	= $this->getRegion();
+		$region	= $this->getRegionRecord();
 
-		return $region['id'] > 0 ? TodoyuStaticRecords::getLabel('core.static_country_zone', $region['iso_alpha3_country'] . '.' . $region['code']) : '';
+		if( $region['id'] > 0 ) {
+			$regionLabel = TodoyuStaticRecords::getLabel('country_zone', $region['iso_alpha3_country'] . '.' . $region['code']);
+
+			if( strpos($regionLabel, 'country_zone') === false ) {
+				return $regionLabel;
+			}
+		}
+
+		return '';
 	}
 
 
