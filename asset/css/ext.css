@@ -81,6 +81,21 @@ span.wizardIcon.createWizardCompany	{
 	background:url(../img/icons.png) no-repeat 3px -504px !important;
 }
 
+#search-results #paging-person td.icon,
+#search-results #paging-person td.lastname,
+#search-results #paging-person td.firstname,
+#search-results #paging-person td.company,
+#search-results #paging-person td.actions,
+#search-results #paging-company td.icon,
+#search-results #paging-company td.title,
+#search-results #paging-company td.street,
+#search-results #paging-company td.place,
+#search-results #paging-company td.actions {
+	cursor:default;
+}
+
+
+
 	/* Company search */
 #search-tab-company span.icon {
 	background:url(../img/icons.png) transparent 0 -146px;
@@ -105,7 +120,6 @@ span.wizardIcon.createWizardCompany	{
 #navi-main-list-search li.itemSearchCompany a:hover {
 	background-color:#eff3e5 !important;
 }
-
 
 
 /* ----------------------------

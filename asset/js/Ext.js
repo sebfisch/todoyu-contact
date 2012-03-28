@@ -176,10 +176,13 @@ Todoyu.Ext.contact = {
 	 * Get key of currently active contact type
 	 *
 	 * @method	getActiveType
+	 * @param	{String}		listName
 	 * @return	{String}		'company' / 'person'
 	 */
-	getActiveTypeKey: function() {
-		return	Todoyu.Tabs.getActiveKey('contact');
+	getActiveTypeKey: function(listName) {
+		listName	= listName || 'contact';
+
+		return	Todoyu.Tabs.getActiveKey(listName);
 	},
 
 
