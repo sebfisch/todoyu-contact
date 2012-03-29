@@ -360,7 +360,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	onDeleteGroupClick: function(event, deleteIcon) {
 		event.stop();
 
-		if( confirm('[LLL:contact.panelwidget-staffselector.confirm.deletegroup.confirm]') ) {
+		if( confirm('[LLL:contact.panelwidget-staffselector.deletegroup.confirm]') ) {
 			var item	= deleteIcon.up('li');
 			var idPref = item.id.split('-')[3].replace('v', '');
 
@@ -401,9 +401,9 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 */
 	onVirtualGroupDeleted: function(idVirtualGroup, response) {
 		if( response.hasTodoyuError() ) {
-			Todoyu.notifySuccess('[LLL:contact.panelwidget-staffselector.deletegroup.error');
+			Todoyu.notifySuccess('[LLL:contact.panelwidget-staffselector.deletegroup.error]');
 		} else {
-			Todoyu.notifySuccess('[LLL:contact.panelwidget-staffselector.deletegroup.success');
+			Todoyu.notifySuccess('[LLL:contact.panelwidget-staffselector.deletegroup.success]');
 
 				// Remove item from widget items (results or selection), store updated selection and refresh widget
 			var item	= $('panelwidget-staffselector-item-v' + idVirtualGroup);
@@ -796,7 +796,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 		var idPreference	= response.getTodoyuHeader('idPreference');
 
 		if( idPreference != 0 ) {
-			Todoyu.notifySuccess('[LLL:contact.panelwidget-staffselector.saved.success');
+			Todoyu.notifySuccess('[LLL:contact.panelwidget-staffselector.saved.success]');
 
 				// Render and insert selection item
 			var item	= new Element('li', {
