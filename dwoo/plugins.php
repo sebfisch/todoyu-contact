@@ -88,6 +88,10 @@ function Dwoo_Plugin_name_compile(Dwoo_Compiler $compiler, $idPerson) {
  * @return	String
  */
 function Dwoo_Plugin_personLabel(Dwoo $dwoo, $idPerson = 0, $idPrefix = 'person', $idRecord = 0, $tag = 'span', $class = '') {
+	if( !TodoyuContactPersonRights::isSeeAllowed($idPerson) ) {
+		return '';
+	}
+
 	$htmlID		= $idPrefix . '-' . $idRecord . '-' . $idPerson;
 	$personLabel= TodoyuContactPersonManager::getLabel($idPerson);
 	$attributes	= array(
