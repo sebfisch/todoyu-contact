@@ -240,7 +240,14 @@ class TodoyuContactAddress extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getLabel() {
-		 return $this->getStreet() . ', ' . $this->getZip() . ', ' . $this->getCity() . ', ' . $this->getCountry()->getCode2();
+		$countryLabel	= $this->getCountry()->getLabel();
+		$addressLabel	= $this->getStreet() . ', ' . $this->getZip() . ', ' . $this->getCity();
+
+		if( $countryLabel ) {
+			$addressLabel .= ', ' . $countryLabel;
+		}
+
+		return $addressLabel;
 	}
 
 

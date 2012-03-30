@@ -225,9 +225,8 @@ class TodoyuContactAddressManager {
 		$idAddress	= intval($idAddress);
 
 		if( $idAddress > 0 ) {
-			$address= self::getAddress($idAddress);
-			$countryLabel	= TodoyuStaticRecords::getCountryLabel($address['id_country']);
-			$label			= $address['street'] . ', ' . $address['zip'] . ', ' . $address['city'] . ', ' . $countryLabel;
+			$address		= self::getAddress($idAddress);
+			$label			= $address->getLabel();
 		} else {
 			$label	= '';
 		}
