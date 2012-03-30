@@ -153,6 +153,38 @@ class TodoyuContactManager {
 
 
 	/**
+	 * Get options config for countries that are used in any address records
+	 *
+	 * @param	String	$mmTable
+	 * @return	Array
+	 */
+	public static function getUsedCountryOptions($mmTable = '') {
+		$fields	= 'static_country.id, static_country.iso_alpha3';
+		$tables	= 'static_country, ext_contact_address';
+
+		$where		= ' 	ext_contact_address.deleted 	= 0 '
+					. ' AND	static_country.id				= ext_contact_address.id_country ';
+
+		if( !empty($mmTable) ) {
+				// Limit to addresses of given relation type
+			$tables	.= ',' . $mmTable;
+			$where	.= ' AND ' . $mmTable . '.id_address	= ext_contact_address.id ';
+		}
+
+		$group		= 'ext_contact_address.id_country';
+		$countries	= Todoyu::db()->getArray($fields, $tables, $where, $group);
+
+		foreach( $countries as $index => $countryData ) {
+			$countries[$index]['value']	= $countryData['id'];
+			$countries[$index]['label']	= TodoyuStaticRecords::getLabel('country', $countryData['iso_alpha3']);
+		}
+
+		return $countries;
+	}
+
+
+
+	/**
 	 * Get panel widget staff selector
 	 * Try to get a custom implementation for the current area
 	 *

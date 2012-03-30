@@ -141,7 +141,7 @@ Todoyu::$CONFIG['FILTERS']['PERSON'] = array(
 			'widget'	=> 'select',
 			'wConf'		=> array(
 				'multiple'	=> false,
-				'FuncRef'	=> 'TodoyuContactAddressFilterDataSource::getCountryOptions',
+				'FuncRef'	=> 'TodoyuContactAddressFilterDataSource::getPersonCountryOptions',
 				'negation'	=> 'default'
 			)
 		),
@@ -259,7 +259,7 @@ Todoyu::$CONFIG['FILTERS']['COMPANY'] = array(
 			'widget'	=> 'select',
 			'wConf'		=> array(
 				'multiple'	=> false,
-				'FuncRef'	=> 'TodoyuContactAddressFilterDataSource::getCountryOptions',
+				'FuncRef'	=> 'TodoyuContactAddressFilterDataSource::getCompanyCountryOptions',
 				'negation'	=> 'default'
 			)
 		),

@@ -71,6 +71,30 @@ class TodoyuContactAddressFilterDataSource {
 		return $definitions;
 	}
 
+
+
+	/**
+	 * Prepare options of countries of any company for rendering in widget.
+	 *
+	 * @param	Array	$definitions
+	 * @return	Array
+	 */
+	public static function getCompanyCountryOptions(array $definitions) {
+		return TodoyuContactCompanyFilterDataSource::getCountryOptions($definitions);
+	}
+
+
+
+	/**
+	 * Prepare options of countries of any person for rendering in widget.
+	 *
+	 * @param	Array	$definitions
+	 * @return	Array
+	 */
+	public static function getPersonCountryOptions(array $definitions) {
+		return TodoyuContactPersonFilterDataSource::getCountryOptions($definitions);
+	}
+
 }
 
 ?>

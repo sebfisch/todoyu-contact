@@ -163,6 +163,20 @@ class TodoyuContactPersonFilterDataSource {
 		return $definitions;
 	}
 
+
+
+	/**
+	 * Get options config of countries related to any person address
+	 *
+	 * @param	Array	$definitions
+	 * @return	Array
+	 */
+	public static function getCountryOptions(array $definitions) {
+		$definitions['options'] = TodoyuContactManager::getUsedCountryOptions('ext_contact_mm_person_address');
+
+		return $definitions;
+	}
+
 }
 
 ?>
