@@ -37,7 +37,7 @@ Todoyu::$CONFIG['FILTERS']['PERSON'] = array(
 		'resultsRenderer'	=> 'TodoyuContactPersonRenderer::renderPersonListingSearch',
 		'class'				=> 'TodoyuContactPersonFilter',
 		'defaultSorting'	=> 'ext_contact_person.lastname',
-		'require'			=> 'contact.general:use'
+		'require'			=> 'contact.person:seeAllPersons'
 	),
 	'widgets' => array(
 			// Optgroup persons
@@ -179,6 +179,7 @@ Todoyu::$CONFIG['FILTERS']['PERSON'] = array(
 );
 
 
+
 /**
  *  Company filters
  */
@@ -190,7 +191,7 @@ Todoyu::$CONFIG['FILTERS']['COMPANY'] = array(
 		'resultsRenderer'	=> 'TodoyuContactCompanyRenderer::renderCompanyListingSearch',
 		'class'				=> 'TodoyuContactCompanyFilter',
 		'defaultSorting'	=> 'ext_contact_company.title',
-		'require'			=> 'contact.general:use'
+		'require'			=> 'contact.company:seeAllCompanies'
 	),
 	'widgets' => array(
 

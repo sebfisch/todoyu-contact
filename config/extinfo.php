@@ -21,7 +21,6 @@
 /**
  * Various contact extension info data
  */
-
 Todoyu::$CONFIG['EXT']['contact']['info'] = array(
 	'title'			=> 'Contact',
 	'description'	=> 'Maintain Your Contacts',
