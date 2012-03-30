@@ -107,8 +107,10 @@ Todoyu::$CONFIG['EXT']['contact']['numFavoriteCountries']	= 5;
 TodoyuFormHook::registerLoadData('ext/contact/config/form/person.xml', 'TodoyuContactPersonManager::hookPersonLoadFormData');
 TodoyuFormHook::registerLoadData('ext/contact/config/form/address.xml', 'TodoyuContactAddressManager::hookAddressLoadFormData');
 
-// Implement person quickInfo class to various person labels
-TodoyuHookManager::registerHook('project', 'taskdata', 'TodoyuContactTaskManager::hookModifyTaskPersonAttributes', 200);
+	// Add person quickInfos to task persons
+if( Todoyu::allowed('contact', 'general:use') ) {
+	TodoyuHookManager::registerHook('project', 'taskdata', 'TodoyuContactTaskManager::hookModifyTaskPersonAttributes', 200);
+}
 
 
 /* ----------------------------------------

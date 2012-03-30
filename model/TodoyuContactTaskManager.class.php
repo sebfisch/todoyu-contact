@@ -35,12 +35,13 @@ class TodoyuContactTaskManager {
 	 */
 	public static function hookModifyTaskPersonAttributes(array $data, $idTask) {
 		$idTask		= intval($idTask);
-		$taskData	= TodoyuProjectTaskManager::getTaskData($idTask);
+		$task		= TodoyuProjectTaskManager::getTask($idTask);
 
 		$personTypes	= array('create', 'owner', 'assigned');
 		foreach($personTypes as $type) {
 			if( isset($data['person_' . $type]) ) {
-				$htmlID	= 'task_person' . $type . '-' . $idTask . '-' . $taskData['id_person_' . $type];
+				$idPerson	= $task->getPersonID($type);
+				$htmlID		= 'task_person' . $type . '-' . $idTask . '-' . $idPerson;
 
 				$data['person_' . $type]['id']			= $htmlID;
 				$data['person_' . $type]['wrap'][1]		.= TodoyuString::wrapScript('Todoyu.Ext.contact.QuickInfoPerson.add(\'' .  $htmlID . '\');');
