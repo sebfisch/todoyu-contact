@@ -287,12 +287,12 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 		$tables = array('ext_contact_mm_person_role');
 
 		$roleIDs= TodoyuArray::intExplode(',', $roles);
-		$where  = TodoyuSql::buildInArrayQuery($roleIDs, 'ext_contact_mm_person_role.id_role', true, !$negate)
+		$where  = TodoyuSql::buildInArrayQuery($roleIDs, 'ext_contact_mm_person_role.id_role', true, $negate)
 				. ' AND ext_contact_person.id	= ext_contact_mm_person_role.id_person';
 
 		return array(
 			'tables'=> $tables,
-			'where'	=> $where,
+			'where'	=> $where
 		);
 	}
 
