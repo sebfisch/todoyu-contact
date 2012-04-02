@@ -91,6 +91,11 @@ class TodoyuContactPersonRenderer {
 		$form->setFormData($data);
 		$form->setRecordID($idPerson);
 
+		if( !TodoyuContactPersonManager::hasImage($idPerson) ) {
+			$removeImageClass	= $form->getFieldset('image')->getField('remove')->getAttribute('class');
+			$form->getFieldset('image')->getField('remove')->setAttribute('class', $removeImageClass . ' displayNone');
+		}
+
 		$tmpl	= 'ext/contact/view/form.tmpl';
 		$data	= array(
 			'header'	=> $person->getLabel(),

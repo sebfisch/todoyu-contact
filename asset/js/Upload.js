@@ -133,11 +133,31 @@ Todoyu.Ext.contact.Upload = {
 			parameters: {
 				action:		'loadimage',
 				idImage:	idImage
-			}
+			},
+			onComplete: this.onRefreshPreviewImage.bind(this, form, idImage, recordType)
 		};
 		var target	= form.down('div.fieldnamePreview img');
 
 		Todoyu.Ui.replace(target, url, options);
+	},
+
+
+
+	/**
+	 * After image has been refreshed: make "remove image" button visible
+	 *
+	 * @method	onRefreshPreviewImage
+	 * @param	{Element}	form
+	 * @param	{Number}	idImage
+	 * @param	{String}	recordType		'person' / 'company'
+	 * @todo	add check for image being dummy (via http header?) only "real" pictures need the button
+	 */
+	onRefreshPreviewImage: function(form, idImage, recordType) {
+		var idFieldButtonRemove	= 'formElement-' + recordType + '-' + idImage + '-field-remove';
+		var idButtonRemove		= recordType + '-' + idImage + '-field-remove';
+
+		$(idFieldButtonRemove).removeClassName('displayNone');
+		$(idButtonRemove).removeClassName('displayNone');
 	},
 
 

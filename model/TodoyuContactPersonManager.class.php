@@ -33,6 +33,8 @@ class TodoyuContactPersonManager {
 	 */
 	const TABLE = 'ext_contact_person';
 
+	const contactTypeKey	= 'person';
+
 
 
 	/**
@@ -429,6 +431,18 @@ class TodoyuContactPersonManager {
 		$personRoles	= TodoyuContactPersonManager::getRoleIDs($idPerson);
 
 		return sizeof(array_intersect($roles, $personRoles)) > 0;
+	}
+
+
+
+	/**
+	 * Check whether person of given ID has any image in profile
+	 *
+	 * @param	Integer		$idPerson
+	 * @return	Boolean
+	 */
+	public static function hasImage($idPerson) {
+		return TodoyuContactImageManager::hasImage($idPerson, self::contactTypeKey);
 	}
 
 
@@ -1081,7 +1095,7 @@ class TodoyuContactPersonManager {
 	 * @return	String
 	 */
 	public static function getPreviewImageForm(TodoyuFormElement_Comment $formElement) {
-		return TodoyuContactImageManager::renderImageForm($formElement, 'person');
+		return TodoyuContactImageManager::renderImageForm($formElement, self::contactTypeKey);
 	}
 
 

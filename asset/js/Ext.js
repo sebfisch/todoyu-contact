@@ -138,7 +138,9 @@ Todoyu.Ext.contact = {
 	 * @param	{Array}		options
 	 */
 	updateContent: function(url, options) {
-		options.onComplete	= this.onContentUpdated.bind(this);
+		var typeKey	= url.split('controller=')[1];
+
+		options.onComplete	= this.onContentUpdated.bind(this, typeKey);
 
 		Todoyu.Ui.updateContent(url, options);
 	},
@@ -154,6 +156,7 @@ Todoyu.Ext.contact = {
 	 */
 	onContentUpdated: function(type, response) {
 		this.initObservers();
+
 		this.setTabActive(type);
 	},
 
@@ -211,6 +214,33 @@ Todoyu.Ext.contact = {
 	 */
 	savePref: function(preference, value, idItem, onComplete) {
 		Todoyu.Pref.save('contact', preference, value, idItem, onComplete);
+	},
+
+
+
+	/**
+	 * Remove unused temporary contact (person / company) image files
+	 *
+	 * @method	removeUnusedImages
+	 * @param	{Element}	form
+	 * @param	{String}	typeKey		'person' / 'image'
+	 */
+	removeUnusedImages: function(form, typeKey) {
+		if( form.down('[name = ' + typeKey + '[id]]').getValue() == 0 ) {
+			if( form.down('[name = ' + typeKey + '[image_id]]').getValue() != 0 ) {
+				var idImage	= form.down('[name=' + typeKey + '[image_id]]').getValue();
+				var url		= Todoyu.getUrl('contact', typeKey);
+
+				var options = {
+					parameters: {
+						action:		'removeimage',
+						idImage:	idImage
+					}
+				};
+
+				Todoyu.send(url, options);
+			}
+		}
 	}
 
 };

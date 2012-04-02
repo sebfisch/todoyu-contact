@@ -33,6 +33,8 @@ class TodoyuContactCompanyManager {
 	 */
 	const TABLE = 'ext_contact_company';
 
+	const contactTypeKey	= 'company';
+
 
 
 	/**
@@ -81,7 +83,7 @@ class TodoyuContactCompanyManager {
 	/**
 	 * Get a company object
 	 *
-	 * @param	Integer				$idCompany
+	 * @param	Integer					$idCompany
 	 * @return	TodoyuContactCompany
 	 */
 	public static function getCompany($idCompany) {
@@ -136,7 +138,7 @@ class TodoyuContactCompanyManager {
 		}
 
 		if( $data['image_id'] != 0 ) {
-			TodoyuContactImageManager::renameStorageFolder('company', $data['image_id'], $idCompany);
+			TodoyuContactImageManager::renameStorageFolder(self::contactTypeKey, $data['image_id'], $idCompany);
 		}
 
 		unset($data['image_id']);
@@ -296,7 +298,7 @@ class TodoyuContactCompanyManager {
 	 * @return	Integer		Deleted records
 	 */
 	public static function deleteRemovedContactInfos($idCompany, array $currentContactInfoIDs) {
-		return TodoyuContactContactInfoManager::deleteLinkedContactInfos('company', $idCompany, $currentContactInfoIDs, 'id_company');
+		return TodoyuContactContactInfoManager::deleteLinkedContactInfos(self::contactTypeKey, $idCompany, $currentContactInfoIDs, 'id_company');
 	}
 
 
@@ -694,6 +696,18 @@ class TodoyuContactCompanyManager {
 
 
 	/**
+	 * Check whether company of given ID has any image in profile
+	 *
+	 * @param	Integer		$idCompany
+	 * @return	Boolean
+	 */
+	public static function hasImage($idCompany) {
+		return TodoyuContactImageManager::hasImage($idCompany, self::contactTypeKey);
+	}
+
+
+
+	/**
 	 * Check whether a company has projects
 	 *
 	 * @param	Integer		$idCompany
@@ -733,7 +747,7 @@ class TodoyuContactCompanyManager {
 	 * @return	String
 	 */
 	public static function getPreviewImageForm(TodoyuFormElement_Comment $formElement) {
-		return TodoyuContactImageManager::renderImageForm($formElement, 'company');
+		return TodoyuContactImageManager::renderImageForm($formElement, self::contactTypeKey);
 	}
 
 

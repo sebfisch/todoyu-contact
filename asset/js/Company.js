@@ -92,7 +92,7 @@ Todoyu.Ext.contact.Company =  {
 					action:		'remove',
 					company:	idCompany
 				},
-				onComplete: this.onRemoved.bind(this)
+				onComplete: this.onRemove.bind(this)
 			};
 
 			Todoyu.send(url, options);
@@ -107,7 +107,7 @@ Todoyu.Ext.contact.Company =  {
 	 * @method	onRemoved
 	 * @param	{Ajax.Response}	response
 	 */
-	onRemoved: function(response) {
+	onRemove: function(response) {
 		var notificationIdentifier	= 'contact.company.removed';
 
 		if( response.hasTodoyuError() ) {
@@ -132,7 +132,7 @@ Todoyu.Ext.contact.Company =  {
 			parameters: {
 				action:	'save'
 			},
-			onComplete: this.onSaved.bind(this)
+			onComplete: this.onSave.bind(this)
 		});
 
 		return false;
@@ -146,7 +146,7 @@ Todoyu.Ext.contact.Company =  {
 	 * @method	onSaved
 	 * @param	{Ajax.Response}		response
 	 */
-	onSaved: function(response) {
+	onSave: function(response) {
 		var error					= response.hasTodoyuError();
 		var notificationIdentifier	= 'contact.company.saved';
 
@@ -304,21 +304,7 @@ Todoyu.Ext.contact.Company =  {
 	 * @param	{Element}	form
 	 */
 	removeUnusedImages: function(form) {
-		if( form.down('[name = company[id]]').getValue() == 0 ) {
-			if( form.down('[name = company[image_id]]').getValue() != 0 ) {
-				var idImage	= form.down('[name=company[image_id]]').getValue();
-				var url		= Todoyu.getUrl('contact', 'company');
-
-				var options = {
-					parameters: {
-						action:		'removeimage',
-						idImage:	idImage
-					}
-				};
-
-				Todoyu.send(url, options);
-			}
-		}
+		this.ext.removeUnusedImages(form, 'company');
 	}
 
 };

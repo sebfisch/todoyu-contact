@@ -439,25 +439,13 @@ Todoyu.Ext.contact.Person =  {
 
 
 	/**
+	 * Remove unused temporary image files
+	 *
 	 * @method	removeUnusedImages
 	 * @param	{Element}	form
 	 */
 	removeUnusedImages: function(form) {
-		if( form.down('[name = person[id]]').getValue() == 0 ) {
-			if( form.down('[name = person[image_id]]').getValue() != 0 ) {
-				var idImage	= form.down('[name=person[image_id]]').getValue();
-				var url		= Todoyu.getUrl('contact', 'person');
-
-				var options = {
-					parameters: {
-						action:		'removeimage',
-						idImage:	idImage
-					}
-				};
-
-				Todoyu.send(url, options);
-			}
-		}
+		this.ext.removeUnusedImages(form, 'person');
 	}
 
 
