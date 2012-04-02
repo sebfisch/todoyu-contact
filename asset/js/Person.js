@@ -366,7 +366,7 @@ Todoyu.Ext.contact.Person =  {
 				action:	'detail',
 				person:	idPerson
 			},
-			onComplete: this.ext.onContentUpdated.bind(this.ext)
+			onComplete: this.ext.onContentUpdated.bind(this.ext, 'person')
 		};
 
 		Todoyu.Ui.updateContentBody(url, options);

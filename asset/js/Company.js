@@ -228,7 +228,7 @@ Todoyu.Ext.contact.Company =  {
 				action:		'detail',
 				company:	idCompany
 			},
-			onComplete: this.ext.onContentUpdated.bind(this.ext)
+			onComplete: this.ext.onContentUpdated.bind(this.ext, 'company')
 		};
 
 		Todoyu.Ui.updateContentBody(url, options);

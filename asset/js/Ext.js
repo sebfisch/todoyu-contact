@@ -149,9 +149,23 @@ Todoyu.Ext.contact = {
 	 * Handler when content body has been updated - reinit listing observer
 	 *
 	 * @method	onContentUpdated
+	 * @param	{String}		type		Type: person or company
+	 * @param	{Ajax.Response}	response
 	 */
-	onContentUpdated: function() {
+	onContentUpdated: function(type, response) {
 		this.initObservers();
+		this.setTabActive(type);
+	},
+
+
+
+	/**
+	 * Set tab active
+	 *
+	 * @param	type
+	 */
+	setTabActive: function(type) {
+		Todoyu.Tabs.setActive('contact', type);
 	},
 
 
@@ -163,11 +177,10 @@ Todoyu.Ext.contact = {
 	 * @param	{String}		type
 	 */
 	changeType: function(type) {
-		Todoyu.Tabs.setActive('contact', type);
+		this.setTabActive(type);
 
-		var objName = type.capitalize();
-
-		this[objName].showList();
+		var typeKey = type.capitalize();
+		this[typeKey].showList();
 	},
 
 
