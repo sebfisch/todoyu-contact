@@ -165,7 +165,7 @@ Todoyu.Ext.contact = {
 	/**
 	 * Set tab active
 	 *
-	 * @param	type
+	 * @param	{String}	type
 	 */
 	setTabActive: function(type) {
 		Todoyu.Tabs.setActive('contact', type);

@@ -193,8 +193,9 @@ Todoyu.Ext.contact.Person =  {
 	 * Generate person short name from it's first- + lastname
 	 *
 	 * @method	generateShortName
-	 * @param	{Event}		event
 	 * @param	{Number}	idPerson
+	 * @param	{Event}		event
+	 * @param	{Element}	element
 	 */
 	generateShortName: function(idPerson, event, element) {
 		var lastname	= $F('person-' + idPerson + '-field-lastname');

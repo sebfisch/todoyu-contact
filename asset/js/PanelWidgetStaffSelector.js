@@ -737,8 +737,6 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * @return	{Array}
 	 */
 	getSelectedPersons: function() {
-		var items	= this.getSelectedItems();
-
 		return this.getSelectedItems().findAll(function(item){
 			return item.substr(0, 1) !== '-';
 		});

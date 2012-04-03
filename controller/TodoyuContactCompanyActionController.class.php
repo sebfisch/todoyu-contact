@@ -254,7 +254,6 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	public function createWizardAction(array $params) {
 		TodoyuContactCompanyRights::restrictAdd();
 
-		$idCompany	= intval($params['record']);
 		$fieldName	= trim($params['field']);
 
 		return TodoyuContactCompanyRenderer::renderCompanyCreateWizard(0, $fieldName);
