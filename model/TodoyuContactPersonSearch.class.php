@@ -85,15 +85,10 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 
 		$personIDs		= self::searchPersons($find, $ignore, $limit);
 
-			// Get comment details
 		foreach($personIDs as $idPerson) {
 			$person	= TodoyuContactPersonManager::getPerson($idPerson);
-			if ( Todoyu::allowed('contact', 'relation:seeAllContactinfotypes') ) {
-				$phone	= $person->getPhone();
-				$email	= $person->getEmail(true);
-			}
-			$labelTitle = TodoyuString::wrap($person->getFullName(), '<span class="keyword">|</span>') . ($email
-					? ' | ' . $email : '') . ($phone ? ' | ' . $phone : '');
+			$labelTitle	= self::getSuggestionTitle($person);
+
 			$suggestions[] = array(
 				'labelTitle'=> $labelTitle,
 				'labelInfo'	=> $person->getCompany()->getLabel(),
@@ -103,6 +98,29 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 		}
 
 		return $suggestions;
+	}
+
+
+
+	/**
+	 * Get title for person suggestion item label
+	 *
+	 * @param	TodoyuContactPerson		$person
+	 * @return	String
+	 */
+	private static function getSuggestionTitle(TodoyuContactPerson $person) {
+		$labelTitle = TodoyuString::wrap($person->getFullName(), '<span class="keyword">|</span>');
+
+			// Add email + phone if allowed to be seen
+		if ( Todoyu::allowed('contact', 'relation:seeAllContactinfotypes') ) {
+			$email	= $person->getEmail(true);
+			$labelTitle	.= !empty($email) ? ' | ' . $email : '';
+
+			$phone	= $person->getPhone();
+			$labelTitle	.= !empty($phone) ? ' | ' . $phone : '';
+		}
+
+		return $labelTitle;
 	}
 
 
