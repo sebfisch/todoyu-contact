@@ -796,7 +796,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 		var idPreference	= response.getTodoyuHeader('idPreference');
 
 		if( idPreference != 0 ) {
-			Todoyu.notifySuccess('[LLL:contact.panelwidget-staffselector.saved.success]');
+			Todoyu.notifySuccess('[LLL:contact.panelwidget-staffselector.newGroupLabel.saved.success]');
 
 				// Render and insert selection item
 			var item	= new Element('li', {
