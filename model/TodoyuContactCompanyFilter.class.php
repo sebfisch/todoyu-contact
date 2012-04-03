@@ -188,7 +188,7 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 	/**
 	 * Filter condition: dateEnter
 	 *
-	 * @param	String		$date
+	 * @param	String		$date		Formatted (according to current locale) date string
 	 * @param	Boolean		$negate
 	 * @return	Array
 	 */
@@ -202,17 +202,12 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 	 * Setup query parts for task date_... fields (create, update, start, end, deadline) filter
 	 *
 	 * @param	String			$field
-	 * @param	Integer			$date
+	 * @param	Integer			$date		Formatted (according to current locale) date string
 	 * @param	Boolean			$negate
 	 * @return	Array|Boolean				Query parts array / false if no date timestamp given (or 1.1.1970 00:00)
 	 */
 	public static function makeFilter_date($field, $date, $negate = false) {
-		$date	= TodoyuTime::parseDateString($date);
-
-		$tables	= array(self::TABLE);
-		$field	= self::TABLE . '.' . $field;
-
-		return TodoyuSearchFilterHelper::getDateFilterQueryparts($tables, $field, $date, $negate);
+		return TodoyuSearchFilterHelper::makeFilter_date(self::TABLE, $field, $date, $negate);
 	}
 
 
