@@ -116,10 +116,10 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	/**
 	 * Add icons to listed items of search results and selection
 	 *
+	 * @method	addItemsIcons
 	 * @param	{Boolean}	addDeleteGroupIcons
 	 * @param	{Boolean}	addAddIcons
 	 * @param	{Boolean}	addRemoveIcons
-	 * @method	addItemsIcons
 	 */
 	addItemsIcons: function(addDeleteGroupIcons, addAddIcons, addRemoveIcons) {
 			// Add (+) select icon to all selectable virtual group, group and person items
@@ -547,6 +547,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * Handle list update
 	 * Call parent and extra hook
 	 *
+	 * @method	onListUpdated
 	 * @param	{Function}		$super
 	 * @param	{Ajax.Response}	response
 	 */
@@ -604,6 +605,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	/**
 	 * Get elements in selection which match the search word
 	 *
+	 * @method	getMatchingSelectionElements
 	 * @param	{String}	search
 	 * @return	{Element[]}
 	 */

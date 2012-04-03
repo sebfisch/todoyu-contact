@@ -129,6 +129,7 @@ Todoyu.Ext.contact.Person =  {
 	/**
 	 * Check whether accounts fields
 	 *
+	 * @method	canSeeAccountFields
 	 * @param	{Number}	idPerson
 	 * @return	{Boolean}
 	 */
