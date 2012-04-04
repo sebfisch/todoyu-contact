@@ -87,7 +87,9 @@ Todoyu.Ext.contact.Person =  {
 	initEditForm: function(idPerson) {
 		this.initObservers(idPerson);
 		this.showLoginFields(idPerson);
+		this.ext.Upload.toggleRemoveButton('person', idPerson);
 	},
+
 
 
 
@@ -368,7 +370,7 @@ Todoyu.Ext.contact.Person =  {
 				action:	'detail',
 				person:	idPerson
 			},
-			onComplete: this.ext.onContentUpdated.bind(this.ext, 'person')
+			onComplete: this.ext.onContentUpdated.bind(this.ext, 'person', null)
 		};
 
 		Todoyu.Ui.updateContentBody(url, options);

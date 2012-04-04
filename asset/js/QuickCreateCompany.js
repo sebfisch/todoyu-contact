@@ -23,13 +23,15 @@
 
 Todoyu.Ext.contact.QuickCreateCompany = {
 
+	ext: Todoyu.Ext.contact,
+
 	/**
 	 * Evoked upon opening of company quick create wizard popup
 	 *
 	 * @method	onPopupOpened
 	 */
 	onPopupOpened: function() {
-
+		this.ext.Company.onEdit(0);
 	},
 
 

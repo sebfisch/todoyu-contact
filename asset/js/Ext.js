@@ -71,9 +71,9 @@ Todoyu.Ext.contact = {
 	 * @method	initPersonQuickInfos
 	 */
 	initPersonQuickInfos: function() {
-		$('content-body').select('span.quickInfoPerson').each(function(element) {
+		$$('.quickInfoPerson').each(function(element) {
 			Todoyu.Ext.contact.QuickInfoPerson.add(element.id);
-		})
+		});
 	},
 
 
@@ -135,12 +135,13 @@ Todoyu.Ext.contact = {
 	 *
 	 * @method	updateContent
 	 * @param	{String}		url
-	 * @param	{Array}		options
+	 * @param	{Array}			options
+	 * @param	{String}		type
 	 */
-	updateContent: function(url, options) {
-		var typeKey	= url.split('controller=')[1];
+	updateContent: function(url, options, type) {
+		var typeKey	= type || url.split('controller=')[1];
 
-		options.onComplete	= this.onContentUpdated.bind(this, typeKey);
+		options.onComplete	= this.onContentUpdated.bind(this, typeKey, options.onComplete);
 
 		Todoyu.Ui.updateContent(url, options);
 	},
@@ -152,12 +153,17 @@ Todoyu.Ext.contact = {
 	 *
 	 * @method	onContentUpdated
 	 * @param	{String}		type		Type: person or company
+	 * @param	{Function}		onComplete
 	 * @param	{Ajax.Response}	response
 	 */
-	onContentUpdated: function(type, response) {
+	onContentUpdated: function(type, onComplete, response) {
 		this.initObservers();
 
 		this.setTabActive(type);
+
+		if( onComplete ) {
+			onComplete(response);
+		}
 	},
 
 

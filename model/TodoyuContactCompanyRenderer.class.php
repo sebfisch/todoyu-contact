@@ -126,11 +126,6 @@ class TodoyuContactCompanyRenderer {
 		$form->setFormData($data);
 		$form->setRecordID($idCompany);
 
-		if( !TodoyuContactCompanyManager::hasImage($idCompany) ) {
-			$removeImageClass	= $form->getFieldset('image')->getField('remove')->getAttribute('class');
-			$form->getFieldset('image')->getField('remove')->setAttribute('class', $removeImageClass . ' displayNone');
-		}
-
 		$tmpl	= 'ext/contact/view/form.tmpl';
 		$data	= array(
 			'formheader'=> $company->getLabel(),

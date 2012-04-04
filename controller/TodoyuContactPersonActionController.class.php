@@ -271,11 +271,12 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function loadimageAction(array $params) {
-		$idPerson	= $params['idImage'];
+		$idPerson	= trim($params['record']);
+		$wasRemoved	= intval($params['removed']) === 1;
 
 		TodoyuContactPersonRights::restrictSee($idPerson);
 
-		return TodoyuContactImageManager::getImage($idPerson, 'person');
+		return TodoyuContactImageManager::getImage($idPerson, 'person', $wasRemoved);
 	}
 
 
@@ -286,11 +287,11 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 */
 	public function renderimageAction(array $params) {
-		$idPerson	= $params['idImage'];
+		$imageKey	= $params['idImage'];
 
-		TodoyuContactPersonRights::restrictSee($idPerson);
+		TodoyuContactPersonRights::restrictSee($imageKey);
 
-		TodoyuContactImageManager::renderImage($idPerson, 'person');
+		TodoyuContactImageManager::renderImage($imageKey, 'person');
 	}
 
 

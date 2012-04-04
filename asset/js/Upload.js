@@ -104,14 +104,15 @@ Todoyu.Ext.contact.Upload = {
 	 *
 	 * @method	uploadFinished
 	 * @param	{String}	recordType		(person / company)
-	 * @param	{Number}	idContact
-	 * @param	{Number}	idReplace
+	 * @param	{Number}	idRecord
+	 * @param	{Number}	newImageKey
 	 */
-	uploadFinished: function(recordType, idContact, idReplace) {
-		var form = $(recordType + '-' + idContact + '-form');
+	uploadFinished: function(recordType, idRecord, newImageKey) {
+		var form 		= $(recordType + '-' + idRecord + '-form');
+		var imageKey	=	newImageKey.length > 1 ? newImageKey : idRecord;
 
-		this.refreshPreviewImage(form, idContact ? idContact : idReplace, recordType);
-		this.setReplaceIdToHiddenField(form, idReplace, recordType);
+		this.refreshPreviewImage(form, recordType, idRecord, imageKey, false);
+		this.setReplaceIdToHiddenField(form, recordType, imageKey);
 
 		this.removeUploadForm();
 		Todoyu.notifySuccess('[LLL:contact.ext.contactimage.upload.success]', 'contact.upload');
@@ -124,17 +125,20 @@ Todoyu.Ext.contact.Upload = {
 	 *
 	 * @method	refreshPreviewImage
 	 * @param	{String}	form
-	 * @param	{Number}	idImage
 	 * @param	{String}	recordType		(person / company)
+	 * @param	{Number}	idRecord
+	 * @param	{String}	imageKey
+	 * @param	{Boolean}	removed
 	 */
-	refreshPreviewImage: function(form, idImage, recordType) {
+	refreshPreviewImage: function(form, recordType, idRecord, imageKey, removed) {
 		var url		= Todoyu.getUrl('contact', recordType);
 		var options	= {
 			parameters: {
 				action:		'loadimage',
-				idImage:	idImage
+				record:		imageKey,
+				removed:	removed ? 1 : 0
 			},
-			onComplete: this.onRefreshPreviewImage.bind(this, form, idImage, recordType)
+			onComplete: this.onRefreshPreviewImage.bind(this, form, recordType, idRecord, imageKey)
 		};
 		var target	= form.down('div.fieldnamePreview img');
 
@@ -148,16 +152,13 @@ Todoyu.Ext.contact.Upload = {
 	 *
 	 * @method	onRefreshPreviewImage
 	 * @param	{Element}	form
-	 * @param	{Number}	idImage
 	 * @param	{String}	recordType		'person' / 'company'
+	 * @param	{Number}	idRecord
+	 * @param	{String}	imageKey
 	 * @todo	add check for image being dummy (via http header?) only "real" pictures need the button
 	 */
-	onRefreshPreviewImage: function(form, idImage, recordType) {
-		var idFieldButtonRemove	= 'formElement-' + recordType + '-' + idImage + '-field-remove';
-		var idButtonRemove		= recordType + '-' + idImage + '-field-remove';
-
-		$(idFieldButtonRemove).removeClassName('displayNone');
-		$(idButtonRemove).removeClassName('displayNone');
+	onRefreshPreviewImage: function(form, recordType, idRecord, imageKey) {
+		this.toggleRemoveButton(recordType, idRecord);
 	},
 
 
@@ -167,12 +168,13 @@ Todoyu.Ext.contact.Upload = {
 	 *
 	 * @method	setReplaceIdToHiddenField
 	 * @param	{String}	form
-	 * @param	{Number}	idReplace
+	 * @param	{Number}	newImageKey
 	 * @param	{String}	recordType		(person / company)
 	 */
-	setReplaceIdToHiddenField: function(form, idReplace, recordType) {
+	setReplaceIdToHiddenField: function(form, recordType, newImageKey) {
 		var field = $(form).down('[name = ' + recordType + '[image_id]]');
-		field.setValue(idReplace);
+
+		field.value = newImageKey;
 	},
 
 
@@ -214,19 +216,52 @@ Todoyu.Ext.contact.Upload = {
 	 * @param	{String}	recordType
 	 */
 	removeImage: function(form, recordType) {
-		var url = Todoyu.getUrl('contact', 'formhandling');
-		var idImage = this.getImageId(form, recordType);
+		var idRecord = $(form).id.split('-')[1];// this.getImageId(form, recordType);
 
+		var url 	= Todoyu.getUrl('contact', 'formhandling');
 		var options = {
 			parameters: {
 				action:		'removeimage',
-				idRecord:	idImage,
-				recordType:	recordType
+				recordType:	recordType,
+				record:		idRecord
 			},
-			onComplete: this.refreshPreviewImage.bind(this, form, idImage, recordType)
+			onComplete: this.onImageRemoved.bind(this, form, recordType, idRecord)
 		};
 
 		Todoyu.send(url, options);
+	},
+
+
+
+	/**
+	 * Handle image removed
+	 *
+	 * @param	{Form}			form
+	 * @param	{String}		recordType
+	 * @param	{Number}		idRecord
+	 * @param	{Ajax.Response}	response
+	 */
+	onImageRemoved: function(form, recordType, idRecord, response) {
+		this.refreshPreviewImage(form, recordType, idRecord, '', true);
+	},
+
+
+
+	/**
+	 * Toggle image remove button
+	 * Only show when image is set
+	 *
+	 * @param	{String}	recordType
+	 * @param	{Number}	idRecord
+	 */
+	toggleRemoveButton: function(recordType, idRecord) {
+		var image		= $('formElement-' + recordType + '-' + idRecord + '-field-preview').down('img');
+		var method		= image.alt === 'none' ? 'hide' : 'show';
+		var removeField	= $('formElement-' + recordType + '-' + idRecord + '-field-remove');
+
+		if( removeField ) {
+			removeField[method]();
+		}
 	},
 
 

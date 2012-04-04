@@ -137,7 +137,7 @@ class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 */
 	public function removeimageAction(array $params) {
-		$idRecord	= $params['idRecord'];
+		$idRecord	= $params['record'];
 		$recordType	= $params['recordType'];
 
 		if( $idRecord > 0 ) {

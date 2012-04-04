@@ -38,14 +38,12 @@ class TodoyuContactImageManager {
 	/**
 	 * Check whether the contact of given type and ID has an image (real file, not the displayed fallback dummy) assigned
 	 *
-	 * @param	Integer		$idRecord	ID of TodoyuContactPerson / TodoyuContactCompany
+	 * @param	String		$imageKey	ID of TodoyuContactPerson / TodoyuContactCompany
 	 * @param	String		$typeKey	'person' / 'company'
 	 * @return	Boolean
 	 */
-	public static function hasImage($idRecord, $typeKey) {
-		$idRecord	= intval($idRecord);
-
-		$pathContactImage	= self::getPathContactImage($idRecord, $typeKey);
+	public static function hasImage($imageKey, $typeKey) {
+		$pathContactImage	= self::getPathContactImage($imageKey, $typeKey);
 
 		return TodoyuFileManager::isFile($pathContactImage);
 	}
@@ -61,13 +59,16 @@ class TodoyuContactImageManager {
 	 * @return	String
 	 */
 	public static function renderImageForm(TodoyuFormElement_Comment $formElement, $typeKey) {
+		$idRecord	= intval($formElement->getForm()->getHiddenField('id'));
 		$idImage	= $formElement->getForm()->getHiddenField('image_id');
 
 		if( !$idImage ) {
-			$idImage	= intval($formElement->getForm()->getHiddenField('id'));
+			$idImage	= $idRecord;
 		}
 
-		return self::getImage($idImage, $typeKey);
+		$dummy	= $idRecord === 0 || !self::hasImage($idRecord, $typeKey);
+
+		return self::getImage($idImage, $typeKey, $dummy);
 	}
 
 
@@ -77,9 +78,10 @@ class TodoyuContactImageManager {
 	 *
 	 * @param	Integer		$idImage
 	 * @param	String		$typeKey		'person' / 'company'
+	 * @param	Boolean		$isDummy
 	 * @return	String
 	 */
-	public static function getImage($idImage, $typeKey) {
+	public static function getImage($idImage, $typeKey, $isDummy = true) {
 		$params	= array(
 			'ext'			=> 'contact',
 			'controller'	=> $typeKey,
@@ -89,8 +91,9 @@ class TodoyuContactImageManager {
 		);
 
 		$imgSrc	= TodoyuString::buildUrl($params);
+		$alt	= $isDummy ? 'none' : '';
 
-		return TodoyuString::getImgTag($imgSrc);
+		return TodoyuString::getImgTag($imgSrc, 0, 0, $alt);
 	}
 
 
@@ -99,13 +102,13 @@ class TodoyuContactImageManager {
 	 * Renders the Image. Needed because the files folder is .htaccess protected.
 	 * If no picture of an user is found, one of randomly 7 images is taken
 	 *
-	 * @param	Integer		$idRecord		ID of TodoyuContactPerson / TodoyuContactCompany
+	 * @param	Integer		$imageKey		ID of TodoyuContactPerson / TodoyuContactCompany
 	 * @param	String		$typeKey		'person' / 'company'
 	 */
-	public static function renderImage($idRecord, $typeKey) {
+	public static function renderImage($imageKey, $typeKey) {
 			// Image ID === 0 => get random dummy image
-		$idImage	=  self::hasImage($idRecord, $typeKey) ? $idRecord : 0;
-		$filePath	=  self::getPathContactImage($idImage, $typeKey);
+		$imageKey	=  self::hasImage($imageKey, $typeKey) ? $imageKey : 0;
+		$filePath	=  self::getPathContactImage($imageKey, $typeKey);
 
 		header('Content-Type: image/png');
 		header('Content-Disposition: inline; filename="' . basename($filePath) . '"');
@@ -176,18 +179,16 @@ class TodoyuContactImageManager {
 	/**
 	 * Get path to profile image of contact record of given type + ID
 	 *
-	 * @param	Integer		$idRecord		ID of TodoyuContactPerson / TodoyuContactCompany
+	 * @param	Integer		$imageKey		ID of TodoyuContactPerson / TodoyuContactCompany
 	 * @param	String		$typeKey		'person' / 'company'
 	 * @return	String
 	 */
-	public static function getPathContactImage($idRecord, $typeKey) {
-		$idRecord	= intval($idRecord);
-
-		if( $idRecord === 0 ) {
+	public static function getPathContactImage($imageKey, $typeKey) {
+		if( $imageKey === 0 ) {
 				// Get random dummy image
 			$path	= PATH . '/ext/contact/asset/img/persondefault/user0' . rand(1, 6) . '.png';
 		} else {
-			$path	= self::getPathStorageDir($typeKey)  . '/' . $idRecord . '/' . self::$destFileName;
+			$path	= self::getPathStorageDir($typeKey)  . '/' . $imageKey . '/' . self::$destFileName;
 		}
 
 		return $path;
@@ -198,15 +199,15 @@ class TodoyuContactImageManager {
 	/**
 	 * Rename storage folder.
 	 *
-	 * @param	String	$typeKey 	'person' / 'company'
-	 * @param	String	$old
-	 * @param	Integer	$new
+	 * @param	String		$typeKey 			'person' / 'company'
+	 * @param	String		$temporaryImageKey
+	 * @param	Integer		$idRecord
 	 */
-	public static function renameStorageFolder($typeKey, $old, $new) {
+	public static function renameStorageFolder($typeKey, $temporaryImageKey, $idRecord) {
 		$storagePath	= self::getPathStorageDir($typeKey);
 
 		if( is_dir($storagePath) ) {
-			rename($storagePath . '/' . $old, $storagePath . '/' . $new);
+			TodoyuFileManager::rename($storagePath . '/' . $temporaryImageKey, $storagePath . '/' . $idRecord);
 		}
 	}
 

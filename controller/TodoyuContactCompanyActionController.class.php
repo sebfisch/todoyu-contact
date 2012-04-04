@@ -314,11 +314,12 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function loadimageAction(array $params) {
-		$idCompany	= $params['idImage'];
+		$idCompany	= trim($params['record']);
+		$wasRemoved	= intval($params['removed']) === 1;
 
 		TodoyuContactCompanyRights::restrictSee($idCompany);
 
-		return TodoyuContactImageManager::getImage($idCompany, 'company');
+		return TodoyuContactImageManager::getImage($idCompany, 'company', $wasRemoved);
 	}
 
 

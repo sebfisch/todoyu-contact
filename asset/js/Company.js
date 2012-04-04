@@ -73,7 +73,18 @@ Todoyu.Ext.contact.Company =  {
 	 * @param	{Ajax.Response}		response
 	 */
 	onEdit: function(idCompany, response) {
+		this.initEditForm(idCompany);
+	},
 
+
+
+	/**
+	 * Init edit form
+	 *
+	 * @param	{Number}	idCompany
+	 */
+	initEditForm: function(idCompany) {
+		this.ext.Upload.toggleRemoveButton('company', idCompany);
 	},
 
 
@@ -228,7 +239,7 @@ Todoyu.Ext.contact.Company =  {
 				action:		'detail',
 				company:	idCompany
 			},
-			onComplete: this.ext.onContentUpdated.bind(this.ext, 'company')
+			onComplete: this.ext.onContentUpdated.bind(this.ext, 'company', null)
 		};
 
 		Todoyu.Ui.updateContentBody(url, options);
