@@ -113,6 +113,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	},
 
 
+
 	/**
 	 * Add icons to listed items of search results and selection
 	 *
