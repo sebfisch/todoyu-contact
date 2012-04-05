@@ -216,7 +216,7 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 				return $this->getFirstname() . ' ' . $this->getLastname();
 			}
 		} else {
-			return '';
+			return Todoyu::Label('core.global.system');
 		}
 	}
 
