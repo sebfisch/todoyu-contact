@@ -103,16 +103,6 @@ Todoyu::$CONFIG['EXT']['contact']['numFavoriteCountries']	= 5;
 
 
 
-	// Load person foreign records data
-TodoyuFormHook::registerLoadData('ext/contact/config/form/person.xml', 'TodoyuContactPersonManager::hookPersonLoadFormData');
-TodoyuFormHook::registerLoadData('ext/contact/config/form/address.xml', 'TodoyuContactAddressManager::hookAddressLoadFormData');
-
-	// Add person quickInfos to task persons
-if( Todoyu::allowed('contact', 'general:use') ) {
-	TodoyuHookManager::registerHook('project', 'taskdata', 'TodoyuContactTaskManager::hookModifyTaskPersonAttributes', 200);
-}
-
-
 /* ----------------------------------------
 	Configure contact data types listings
    --------------------------------------- */
