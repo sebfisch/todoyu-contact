@@ -41,11 +41,14 @@ class TodoyuContactTaskManager {
 		foreach($personTypes as $type) {
 			if( isset($data['person_' . $type]) ) {
 				$idPerson	= $task->getPersonID($type);
-				$htmlID		= 'task_person' . $type . '-' . $idTask . '-' . $idPerson;
 
-				$data['person_' . $type]['id']			= $htmlID;
-				$data['person_' . $type]['wrap'][1]		.= TodoyuString::wrapScript('Todoyu.Ext.contact.QuickInfoPerson.add(\'' .  $htmlID . '\');');
-				$data['person_' . $type]['className']	.= ' quickInfoPerson';
+				if( $idPerson !== 0 ) {
+					$htmlID		= 'task_person' . $type . '-' . $idTask . '-' . $idPerson;
+
+					$data['person_' . $type]['id']			= $htmlID;
+					$data['person_' . $type]['wrap'][1]		.= TodoyuString::wrapScript('Todoyu.Ext.contact.QuickInfoPerson.add(\'' .  $htmlID . '\');');
+					$data['person_' . $type]['className']	.= ' quickInfoPerson';
+				}
 			}
 		}
 
