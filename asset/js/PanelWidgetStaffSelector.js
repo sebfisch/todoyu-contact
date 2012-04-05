@@ -294,6 +294,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * Sort selection items (virtual groups, groups then persons by alphabet)
 	 *
 	 * @method	sortSelect
+	 * @param	{Element[]}		nodes
 	 */
 	sortNodes: function(nodes) {
 			// Collect nodes grouped by type
@@ -815,7 +816,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 			this.addDeleteGroupIconToItems([item]);
 			this.addRemoveIconToItems([item]);
 
-			this.sortNodes(this.selection);
+			this.sortNodes(this.selection.select('li'));
 		}
 	}
 
