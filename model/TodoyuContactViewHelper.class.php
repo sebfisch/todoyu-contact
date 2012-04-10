@@ -79,11 +79,12 @@ class TodoyuContactViewHelper {
 	 * @param	TodoyuFormElement	$field
 	 * @param	Boolean				$showEmail
 	 * @param	Boolean				$lastNameFirst
+	 * @param	Boolean				$onlyWithEmail		Filter out records w/o account email address?
 	 * @return	Array
 	 */
-	public static function getInternalPersonOptions(TodoyuFormElement $field, $showEmail = false, $lastNameFirst = true) {
+	public static function getInternalPersonOptions(TodoyuFormElement $field, $showEmail = false, $lastNameFirst = true, $onlyWithEmail = false) {
 		$options	= array();
-		$persons	= TodoyuContactPersonManager::getInternalPersons();
+		$persons	= TodoyuContactPersonManager::getInternalPersons(false, false, $onlyWithEmail);
 
 		if( sizeof($persons) > 0 ) {
 				// List internal persons

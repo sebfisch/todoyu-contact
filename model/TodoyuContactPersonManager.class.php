@@ -491,9 +491,11 @@ class TodoyuContactPersonManager {
 	 *
 	 * @param	Boolean		$getJobType
 	 * @param	Boolean		$getWorkAddress
+	 * @param	Boolean		$onlyWithEmail		Filter out records w/o account email address?
 	 * @return	Array
 	 */
-	public static function getInternalPersons($getJobType = false, $getWorkAddress = false) {
+	public static function getInternalPersons($getJobType = false, $getWorkAddress = false, $onlyWithEmail = false) {
+			// Fetch persons data
 		$fields	=	'p.*';
 
 		if( $getJobType ) {
@@ -513,7 +515,18 @@ class TodoyuContactPersonManager {
 		$order	= '	p.lastname,
 					p.firstname';
 
-		return Todoyu::db()->getIndexedArray('id', $fields, $table, $where, '', $order);
+		$persons	= Todoyu::db()->getIndexedArray('id', $fields, $table, $where, '', $order);
+
+			// Remove persons w/o email address
+		if( $onlyWithEmail ) {
+			foreach($persons as $index => $personData) {
+				if ( !self::getPerson($personData['id'])->hasEmail() ) {
+					unset($persons[$index]);
+				}
+			}
+		}
+
+		return $persons;
 	}
 
 
