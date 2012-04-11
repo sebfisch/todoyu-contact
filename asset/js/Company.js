@@ -81,6 +81,7 @@ Todoyu.Ext.contact.Company =  {
 	/**
 	 * Init edit form
 	 *
+	 * @method	initEditForm
 	 * @param	{Number}	idCompany
 	 */
 	initEditForm: function(idCompany) {
@@ -154,7 +155,7 @@ Todoyu.Ext.contact.Company =  {
 	/**
 	 * Handler being evoked OnComplete of save company request: check for and notify success / error, update display
 	 *
-	 * @method	onSaved
+	 * @method	onSave
 	 * @param	{Ajax.Response}		response
 	 */
 	onSave: function(response) {
