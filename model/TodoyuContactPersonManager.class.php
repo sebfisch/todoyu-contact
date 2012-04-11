@@ -359,6 +359,24 @@ class TodoyuContactPersonManager {
 
 
 	/**
+	 * Sort given person IDs alphabetical or by given sorting flags
+	 *
+	 * @param	Integer[]	$personIDs
+	 * @param	String		$sorting
+	 * @return	Integer[]
+	 */
+	public static function sortPersonIDs(array $personIDs, $sorting = 'lastname,firstname') {
+		$field		= 'id';
+		$table		= self::TABLE;
+		$where		= TodoyuSql::buildInArrayQuery($personIDs);
+		$group		= 'id';
+
+		return Todoyu::db()->getColumn($field, $table, $where, $group, $sorting);
+	}
+
+
+
+	/**
 	 * Get role IDs of a person
 	 *
 	 * @param	Integer		$idPerson
