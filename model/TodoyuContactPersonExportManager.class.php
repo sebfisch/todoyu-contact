@@ -44,9 +44,10 @@ class TodoyuContactPersonExportManager {
 	 * @param	Integer[]	$personIDs
 	 */
 	public static function exportCSVfromIDs(array $personIDs) {
-		$personIDs = TodoyuArray::intval($personIDs);
+		$personIDs	= TodoyuArray::intval($personIDs);
+		$exportData	= self::getExportDataByPersonIDs($personIDs);
 
-		self::sendCSVfromData(self::getExportDataByPersonIDs($personIDs));
+		self::sendCSVfromData($exportData);
 	}
 
 
@@ -133,23 +134,30 @@ class TodoyuContactPersonExportManager {
 		);
 
 			// Map & prepare company records of person
-		foreach($person->getCompanies() as $index => $company) {
-			$exportData[$companyPrefix . '_' . ($index + 1)]	= $company->getTitle();
+		$counter = 1;
+		foreach($person->getCompanies() as $company) {
+			$exportData[$companyPrefix . '_' . $counter]	= $company->getTitle();
+
+			$counter++;
 		}
 
 			// Map & prepare contactinfo records of person
-		foreach($person->getContactInfoRecords() as $index => $contactinfo) {
-			$prefix			= Todoyu::Label('contact.ext.contactinfo') . '_' . ($index + 1) . '_';
+		$counter = 1;
+		foreach($person->getContactInfoRecords() as $contactinfo) {
+			$prefix			= Todoyu::Label('contact.ext.contactinfo') . '_' . $counter . '_';
 			$contactinfoObj	= TodoyuContactContactInfoManager::getContactinfo($contactinfo['id']);
 
 			$exportData[$prefix . Todoyu::Label('contact.ext.contactinfo.attr.type')]	= $contactinfoObj->getTypeLabel();
 			$exportData[$prefix . Todoyu::Label('contact.ext.contactinfo.attr.info')]	= $contactinfo['info'];
 			$exportData[$prefix . Todoyu::Label('core.form.is_preferred')]				= $contactinfo['preferred'] ? $labelYes : $labelNo;
+
+			$counter++;
 		}
 
 			// Map & prepare address records of person
-		foreach($person->getAddresses() as $index => $address) {
-			$prefix			= $addressPrefix . '_' . ($index + 1) . '_';
+		$counter = 1;
+		foreach($person->getAddresses() as $address) {
+			$prefix			= $addressPrefix . '_' . $counter . '_';
 
 			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.addresstype')]= $address->getAddressTypeLabel();
 			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.street')]		= $address->getStreet();
@@ -160,6 +168,8 @@ class TodoyuContactPersonExportManager {
 			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.country')]	= $address->getCountry()->getLabel();
 			$exportData[$prefix . Todoyu::Label('core.form.is_preferred')]				= $address->isPreferred() ? $labelYes : $labelNo;
 			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.comment')]	= $address->getComment();
+
+			$counter++;
 		}
 
 			// Map & prepare role records of person

@@ -46,8 +46,9 @@ class TodoyuContactCompanyExportManager {
 	 */
 	public static function exportCSVfromIDs(array $companyIDs) {
 		$companyIDs = TodoyuArray::intval($companyIDs);
+		$exportData	= self::getExportDataByCompanyIDs($companyIDs);
 
-		self::sendCSVfromData(self::getExportDataByCompanyIDs($companyIDs));
+		self::sendCSVfromData($exportData);
 	}
 
 
@@ -130,19 +131,22 @@ class TodoyuContactCompanyExportManager {
 		);
 
 			// Map & prepare contactinfo records of company
+		$counter = 1;
 		foreach($company->getContactInfoRecords() as $index => $contactinfo) {
-			$prefix			= $contactInfoPrefix . '_' . ($index + 1) . '_';
+			$prefix			= $contactInfoPrefix . '_' . $counter . '_';
 			$contactinfoObj	= TodoyuContactContactInfoManager::getContactinfo($contactinfo['id']);
 
 			$exportData[$prefix . Todoyu::Label('contact.ext.contactinfo.attr.type')]	= $contactinfoObj->getTypeLabel();
 			$exportData[$prefix . Todoyu::Label('contact.ext.contactinfo.attr.info')]	= $contactinfo['info'];
 			$exportData[$prefix . Todoyu::Label('core.form.is_preferred')]				= $contactinfo['is_preferred'] ? $labelYes : $labelNo;
+
+			$counter++;
 		}
 
 			// Map & prepare address records of company
-		$index = 1;
+		$counter = 1;
 		foreach($company->getAddresses() as $address) {
-			$prefix			= $addressPrefix . '_' . ($index + 1) . '_';
+			$prefix			= $addressPrefix . '_' . $counter . '_';
 
 			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.addresstype')]= $address->getAddressTypeLabel();
 			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.street')]		= $address->getStreet();
@@ -154,12 +158,15 @@ class TodoyuContactCompanyExportManager {
 			$exportData[$prefix . Todoyu::Label('core.form.is_preferred')]				= $address->isPreferred() ? $labelYes : $labelNo;
 			$exportData[$prefix . Todoyu::Label('contact.ext.address.attr.comment')]	= $address->getComment();
 
-			$index++;
+			$counter++;
 		}
 
 			// Map & prepare employee records of company
-		foreach($company->getEmployeesRecords() as $index => $person ) {
-			$exportData[$employeePrefix . '_' . ($index + 1)]	= $person['firstname'] . ' ' . $person['lastname'];
+		$counter = 1;
+		foreach($company->getEmployeesRecords() as $person ) {
+			$exportData[$employeePrefix . '_' . $counter]	= $person['firstname'] . ' ' . $person['lastname'];
+
+			$counter++;
 		}
 
 		$exportData = TodoyuHookManager::callHookDataModifier('contact', 'companyCSVExportParseData', $exportData, array('company'=>$company));
