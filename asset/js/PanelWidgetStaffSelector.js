@@ -715,21 +715,20 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	/**
 	 * Check whether any item is selected or not
 	 *
-	 * @method	isAnyPersonSelected
-	 */
-	isAnyPersonSelected: function() {
-		return this.getSelectedItems().size() > 0;
-	},
-
-
-
-	/**
-	 * Check whether any item is selected or not
-	 *
 	 * @method	isAnyItemSelected
+	 * @param	{Boolean}		[isActive]
+	 * @return	{Boolean}
 	 */
-	isAnyItemSelected: function() {
-		return this.getSelectedItems().size() > 0;
+	isAnyItemSelected: function(isActive) {
+		var items = this.getSelectedItems();
+
+		if( isActive ) {
+			return items.any(function(itemKey){
+				return itemKey.substr(0, 1) !== '-';
+			});
+		} else {
+			return items.size() > 0;
+		}
 	},
 
 
@@ -755,7 +754,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 */
 	onSaveGroupButtonClick: function() {
 			// No persons selected
-		if( !this.isAnyItemSelected() ) {
+		if( !this.isAnyItemSelected(true) ) {
 			alert('LLL:contact.panelwidget-staffselector.selection.empty');
 			return;
 		}
