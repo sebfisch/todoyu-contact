@@ -21,7 +21,7 @@ CREATE TABLE `ext_contact_person` (
 	`birthday` date NOT NULL,
 	`comment` text NOT NULL,
 	PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -41,7 +41,7 @@ CREATE TABLE `ext_contact_company` (
 	`is_internal` tinyint(1) NOT NULL DEFAULT '0',
 	`comment` text NOT NULL,
 	PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -67,7 +67,7 @@ CREATE TABLE `ext_contact_address` (
 	`comment` varchar(255) NOT NULL,
 	`is_preferred` tinyint(1) NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -85,7 +85,7 @@ CREATE TABLE `ext_contact_contactinfo` (
 	`info` tinytext NOT NULL,
 	`is_preferred` tinyint(1) unsigned NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -104,7 +104,7 @@ CREATE TABLE `ext_contact_contactinfotype` (
 	`title` varchar(64) NOT NULL,
 	`is_public` tinyint(1) NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -134,7 +134,7 @@ CREATE TABLE `ext_contact_mm_company_address` (
 	`id_address` int(10) unsigned NOT NULL,
 	PRIMARY KEY (`id`),
 	KEY `ref` (`id_company`,`id_address`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -148,7 +148,7 @@ CREATE TABLE `ext_contact_mm_company_contactinfo` (
 	`id_contactinfo` int(10) unsigned NOT NULL,
 	PRIMARY KEY (`id`),
 	KEY `ref` (`id_company`,`id_contactinfo`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -164,7 +164,7 @@ CREATE TABLE `ext_contact_mm_company_person` (
 	`id_jobtype` int(10) unsigned NOT NULL,
 	PRIMARY KEY (`id`),
 	KEY `ref` (`id_company`,`id_person`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
