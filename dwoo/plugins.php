@@ -69,7 +69,6 @@ function Dwoo_Plugin_personid_compile(Dwoo_Compiler $compiler) {
  * @param	Integer			$idPerson
  * @return	String
  */
-
 function Dwoo_Plugin_name_compile(Dwoo_Compiler $compiler, $idPerson) {
 	return 'TodoyuContactPersonManager::getPerson(' . $idPerson . ')->getFullName(true)';
 }
@@ -103,6 +102,31 @@ function Dwoo_Plugin_personLabel(Dwoo $dwoo, $idPerson = 0, $idPrefix = 'person'
 	$quickInfoScript= TodoyuString::wrapScript('Todoyu.Ext.contact.QuickInfoPerson.add(\'' . $htmlID . '\');');
 
 	return $personTag . $quickInfoScript;
+}
+
+
+
+/**
+ * Get person shortname, optionally generate it from first- and lastname
+ *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
+ * @param	Dwoo		$dwoo
+ * @param	Integer		$idPerson
+ * @param	Boolean		$truncateFromFullnameIfMissing
+ * @return	String
+ */
+function Dwoo_Plugin_shortname(Dwoo $dwoo, $idPerson = 0, $truncateFromFullnameIfMissing = false) {
+	$idPerson	= intval($idPerson);
+	$person	= TodoyuContactPersonManager::getPerson($idPerson);
+
+	$shortname	= $person->getShortname();
+	if( empty($shortname) && $truncateFromFullnameIfMissing ) {
+		$shortname	= strtoupper(substr($person->getFirstName(), 0, 2) . substr($person->getLastName(), 0, 2));
+	}
+
+	return $shortname;
 }
 
 
