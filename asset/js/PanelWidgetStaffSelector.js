@@ -626,7 +626,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * Add deletion icons to all virtual group items in the search results list
 	 *
 	 * @method	addDeleteIconsToList
-	 * @param	{Element}	items
+	 * @param	{Element}	[items]
 	 */
 	addDeleteGroupIcons: function(items) {
 		items	= items || this.list;
@@ -663,7 +663,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * Add removal icons to items.
 	 *
 	 * @method	addRemoveIconsToList
-	 * @param	{Element[]}		items
+	 * @param	{Element[]}		[items]
 	 */
 	addRemoveIconToItems: function(items) {
 		items	= items || this.selection.select('li');
@@ -680,7 +680,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * Add "delete group" icons to items.
 	 *
 	 * @method	addDeleteGroupIconsToSelectionItems
-	 * @param	{Element[]}								items
+	 * @param	{Element[]}								[items]
 	 */
 	addDeleteGroupIconToItems: function(items) {
 		items	= items || this.selection.select('li');

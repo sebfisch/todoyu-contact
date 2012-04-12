@@ -136,7 +136,7 @@ Todoyu.Ext.contact = {
 	 * @method	updateContent
 	 * @param	{String}		url
 	 * @param	{Array}			options
-	 * @param	{String}		type
+	 * @param	{String}		[type]
 	 */
 	updateContent: function(url, options, type) {
 		var typeKey	= type || url.split('controller=')[1];
@@ -199,7 +199,7 @@ Todoyu.Ext.contact = {
 	 * Get key of currently active contact type
 	 *
 	 * @method	getActiveType
-	 * @param	{String}		listName
+	 * @param	{String}		[listName]
 	 * @return	{String}		'company' / 'person'
 	 */
 	getActiveTypeKey: function(listName) {
