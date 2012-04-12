@@ -26,9 +26,6 @@
  * @subpackage	Contact
  */
 
-if( ! Todoyu::allowed('contact', 'general:area') ) {
-	return;
-}
 
 /**
  * Person filters
