@@ -203,7 +203,7 @@ class TodoyuContactAddressManager {
 
 		if( !empty($sword) ) {
 			$swords	= explode(' ', trim($sword));
-			$where	= TodoyuSql::buildLikeQuery($swords, array(self::TABLE . '.city'))
+			$where	= TodoyuSql::buildLikeQueryPart($swords, array(self::TABLE . '.city'))
 					. ' AND		' . self::TABLE . '.deleted		= 0';
 		}
 

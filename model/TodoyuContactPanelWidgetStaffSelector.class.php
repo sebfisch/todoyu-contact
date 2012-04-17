@@ -182,7 +182,7 @@ class TodoyuContactPanelWidgetStaffSelector extends TodoyuPanelWidgetSearchList 
 		$searchFields	= array(
 			'jt.title'
 		);
-		$like	= TodoyuSql::buildLikeQuery($searchWords, $searchFields);
+		$like	= TodoyuSql::buildLikeQueryPart($searchWords, $searchFields);
 
 		$fields	= '	jt.id,
 					jt.title as label';

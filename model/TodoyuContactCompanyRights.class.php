@@ -137,7 +137,7 @@ class TodoyuContactCompanyRights {
 
 		$allowedCompanyIDs	= array_unique(array_merge($allowedCompanyIDs, $ownCompanyIDs));
 
-		return TodoyuSql::buildInArrayQuery($allowedCompanyIDs);
+		return TodoyuSql::buildInListQueryPart($allowedCompanyIDs, 'id');
 	}
 
 

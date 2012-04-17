@@ -70,7 +70,7 @@ class TodoyuContactJobTypeManager {
 
 		$where	= 'deleted = 0';
 		if( count($typeIDs) > 0 ) {
-			$where		.= ' AND ' . TodoyuSql::buildInArrayQuery($typeIDs);
+			$where		.= ' AND ' . TodoyuSql::buildInListQueryPart($typeIDs, 'id');
 		}
 
 //		$order	= 'title';
@@ -134,7 +134,7 @@ class TodoyuContactJobTypeManager {
 		$searchFields = array('title');
 
 		if( sizeof($search) > 0 ) {
-			$where = TodoyuSql::buildLikeQuery($search, $searchFields);
+			$where = TodoyuSql::buildLikeQueryPart($search, $searchFields);
 		} else {
 			$where = '1';
 		}

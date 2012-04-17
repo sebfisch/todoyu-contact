@@ -487,7 +487,7 @@ class TodoyuContactCompanyManager {
 		if( sizeof($sWords) ) {
 			$searchFields	= is_null($searchFields) ? array('title', 'shortname') : $searchFields;
 
-			$where	.= ' AND ' . TodoyuSql::buildLikeQuery($sWords, $searchFields);
+			$where	.= ' AND ' . TodoyuSql::buildLikeQueryPart($sWords, $searchFields);
 		}
 
 			// Limit results to allowed person records

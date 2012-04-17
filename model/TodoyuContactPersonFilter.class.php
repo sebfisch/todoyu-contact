@@ -84,7 +84,7 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 				self::TABLE . '.email'
 			);
 			$queryParts	= array(
-				'where'		=> TodoyuSql::buildLikeQuery($valueParts, $fields),
+				'where'		=> TodoyuSql::buildLikeQueryPart($valueParts, $fields),
 			);
 		}
 
@@ -112,7 +112,7 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 			);
 
 			$queryParts	= array(
-				'where'		=> TodoyuSql::buildLikeQuery($valueParts, $fields),
+				'where'		=> TodoyuSql::buildLikeQueryPart($valueParts, $fields),
 			);
 		}
 
@@ -260,7 +260,7 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 		);
 
 		$where	= ' ext_contact_contactinfo.deleted							= 0 '
-				. ' AND ' . TodoyuSql::buildLikeQuery(array($value), array('ext_contact_contactinfo.info'))
+				. ' AND ' . TodoyuSql::buildLikeQueryPart(array($value), array('ext_contact_contactinfo.info'))
 				. ' AND ext_contact_mm_person_contactinfo.id_contactinfo	= ext_contact_contactinfo.id'
 				. ' AND ' . self::TABLE . '.id								= ext_contact_mm_person_contactinfo.id_person';
 
@@ -287,7 +287,7 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 		$tables = array('ext_contact_mm_person_role');
 
 		$roleIDs= TodoyuArray::intExplode(',', $roles);
-		$where  = TodoyuSql::buildInArrayQuery($roleIDs, 'ext_contact_mm_person_role.id_role', true, $negate)
+		$where  = TodoyuSql::buildInListQueryPart($roleIDs, 'ext_contact_mm_person_role.id_role', true, $negate)
 				. ' AND ext_contact_person.id	= ext_contact_mm_person_role.id_person';
 
 		return array(
@@ -377,7 +377,7 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 						'ext_contact_mm_person_address',
 						self::TABLE
 					),
-					'where'	=> TodoyuSql::buildLikeQuery($valueParts, $fields)
+					'where'	=> TodoyuSql::buildLikeQueryPart($valueParts, $fields)
 							.  ' AND	ext_contact_mm_person_address.id_address	= ext_contact_address.id '
 							. ' AND ' . self::TABLE . '.id							= ext_contact_mm_person_address.id_person '
 			);
@@ -409,7 +409,7 @@ class TodoyuContactPersonFilter extends TodoyuSearchFilterBase {
 						'ext_contact_mm_person_address',
 						self::TABLE
 					),
-					'where'	=> TodoyuSql::buildLikeQuery($valueParts, $fields)
+					'where'	=> TodoyuSql::buildLikeQueryPart($valueParts, $fields)
 							.  ' AND	ext_contact_mm_person_address.id_address	= ext_contact_address.id '
 							. ' AND ' . self::TABLE . '.id							= ext_contact_mm_person_address.id_person '
 			);

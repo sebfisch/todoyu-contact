@@ -150,7 +150,7 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 		);
 
 		$where	= ' ext_contact_contactinfo.deleted							= 0 '
-				. ' AND ' . TodoyuSql::buildLikeQuery(array($value), array('ext_contact_contactinfo.info'))
+				. ' AND ' . TodoyuSql::buildLikeQueryPart(array($value), array('ext_contact_contactinfo.info'))
 				. ' AND ext_contact_mm_company_contactinfo.id_contactinfo	= ext_contact_contactinfo.id'
 				. ' AND ' . self::TABLE . '.id								= ext_contact_mm_company_contactinfo.id_company';
 
@@ -294,7 +294,7 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 						'ext_contact_mm_company_address',
 						self::TABLE
 					),
-					'where'	=> TodoyuSql::buildLikeQuery($valueParts, $fields)
+					'where'	=> TodoyuSql::buildLikeQueryPart($valueParts, $fields)
 							.  ' AND	ext_contact_mm_company_address.id_address	= ext_contact_address.id '
 							. ' AND ' . self::TABLE . '.id							= ext_contact_mm_company_address.id_company '
 			);
@@ -326,7 +326,7 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 						'ext_contact_mm_company_address',
 						self::TABLE
 					),
-					'where'	=> TodoyuSql::buildLikeQuery($valueParts, $fields)
+					'where'	=> TodoyuSql::buildLikeQueryPart($valueParts, $fields)
 							.  ' AND	ext_contact_mm_company_address.id_address	= ext_contact_address.id '
 							. ' AND ' . self::TABLE . '.id							= ext_contact_mm_company_address.id_company '
 			);
