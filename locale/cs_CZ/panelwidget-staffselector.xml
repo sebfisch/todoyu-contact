@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labels>
+	<label index="title">Personál</label>
+	<label index="selection">Aktivní výběr</label>
+	<label index="selection.empty">Nic není vybrané. Použijte hledání pro přidání nových osob a skupin</label>
+</labels>
