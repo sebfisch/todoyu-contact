@@ -14,12 +14,12 @@
 <!--activate persons tab-->
 <tr>
 	<td>assertElementPresent</td>
-	<td>//p[@id='contact-tab-person-label']/span[3]</td>
+	<td>//p[@id='contact-tab-person-label']/span[2]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>//p[@id='contact-tab-person-label']/span[3]</td>
+	<td>//p[@id='contact-tab-person-label']/span[2]</td>
 	<td></td>
 </tr>
 <tr>
@@ -60,24 +60,24 @@
 	<td></td>
 </tr>
 <tr>
-	<td>keyPress</td>
+	<td>focus</td>
 	<td>panelwidget-contactsearch-sword</td>
-	<td>e</td>
-</tr>
-<tr>
-	<td>keyPress</td>
-	<td>panelwidget-contactsearch-sword</td>
-	<td>r</td>
-</tr>
-<tr>
-	<td>assertElementPresent</td>
-	<td>//a[@onclick='Todoyu.Ext.contact.PanelWidget.ContactSearch.search()']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>//a[@onclick='Todoyu.Ext.contact.PanelWidget.ContactSearch.search()']</td>
+	<td>type</td>
+	<td>panelwidget-contactsearch-sword</td>
+	<td>er</td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>100</td>
 	<td></td>
+</tr>
+<tr>
+	<td>typeKeys</td>
+	<td>panelwidget-contactsearch-sword</td>
+	<td>er</td>
 </tr>
 <tr>
 	<td>pause</td>
@@ -88,6 +88,12 @@
 	<td>waitForCondition</td>
 	<td>selenium.browserbot.getUserWindow().Ajax.activeRequestCount == 0</td>
 	<td>10000</td>
+</tr>
+<!--clear-search option available?-->
+<tr>
+	<td>assertElementPresent</td>
+	<td>//a[@id=&quot;panelwidget-contactsearch-clear&quot;]</td>
+	<td></td>
 </tr>
 <!--check some persons to be there and some not-->
 <tr>
