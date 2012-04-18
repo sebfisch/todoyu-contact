@@ -78,19 +78,6 @@ class TodoyuContactPersonManager {
 
 
 	/**
-	 * Get person data array
-	 *
-	 * @param	Integer		$idPerson
-	 * @return	Array
-	 * @deprecated
-	 */
-	public static function getPersonArray($idPerson) {
-		return TodoyuRecordManager::getRecordData(self::TABLE, $idPerson);
-	}
-
-
-
-	/**
 	 * Form hook to load persons foreign record data
 	 * Load: company, contactinfo, address
 	 *

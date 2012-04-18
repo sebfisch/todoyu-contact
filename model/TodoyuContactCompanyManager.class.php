@@ -95,18 +95,6 @@ class TodoyuContactCompanyManager {
 
 
 	/**
-	 * Get a company array
-	 *
-	 * @param	Integer		$idCompany
-	 * @return	Array
-	 */
-	public static function getCompanyData($idCompany) {
-		return TodoyuRecordManager::getRecordData(self::TABLE, $idCompany);
-	}
-
-
-
-	/**
 	 * Get all company records
 	 *
 	 * @param	Array		$fields			Custom field list (instead of *)
