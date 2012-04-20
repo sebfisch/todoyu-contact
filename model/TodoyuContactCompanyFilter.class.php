@@ -33,6 +33,8 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 	 */
 	const TABLE = 'ext_contact_company';
 
+
+
 	/**
 	 * Init filter object
 	 *
