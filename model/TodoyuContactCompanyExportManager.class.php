@@ -33,8 +33,9 @@ class TodoyuContactCompanyExportManager {
 	 */
 	public static function exportCSV($searchWord) {
 		$companies	= TodoyuContactCompanyManager::searchCompany($searchWord, null, '', '');
+		$csvData	= self::getExportDataByCompaniesData($companies);
 
-		self::sendCSVfromData(self::getExportDataByCompaniesData($companies));
+		self::sendCSVfromData($csvData);
 	}
 
 
@@ -163,8 +164,17 @@ class TodoyuContactCompanyExportManager {
 
 			// Map & prepare employee records of company
 		$counter = 1;
-		foreach($company->getEmployeesRecords() as $person ) {
-			$exportData[$employeePrefix . '_' . $counter]	= $person['firstname'] . ' ' . $person['lastname'];
+		$contactInfoTypes	= TodoyuContactContactInfoTypeManager::getContactInfoTypes(true);
+
+		foreach($company->getEmployeesRecords() as $personData) {
+			$exportData[$employeePrefix . '_' . $counter]	= $personData['firstname'] . ' ' . $personData['lastname'];
+
+				// Add contact infos of categories "email" and "phone" per employee
+			$contactInfos	= TodoyuContactPersonManager::getPerson($personData['id'])->getContactInfoRecords();
+			foreach($contactInfos as $contactInfo) {
+				$labelContactInfoType	= $contactInfoTypes[$contactInfo['id_contactinfotype']] ['title'];
+				$exportData[$employeePrefix . '_' . $counter . '_' . $labelContactInfoType] = $contactInfo['info'];
+			}
 
 			$counter++;
 		}
