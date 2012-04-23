@@ -107,6 +107,19 @@ function Dwoo_Plugin_personLabel(Dwoo $dwoo, $idPerson = 0, $idPrefix = 'person'
 
 
 /**
+ * Get address label
+ *
+ * @param	Dwoo_Compiler		$compiler
+ * @param	Integer				$idAddress
+ * @return	String
+ */
+function Dwoo_Plugin_addressLabel_compile(Dwoo_Compiler $compiler, $idAddress) {
+	return 'TodoyuContactAddressManager::getLabel(' . $idAddress . ')';
+}
+
+
+
+/**
  * Get person shortname, optionally generate it from first- and lastname
  *
  * @package		Todoyu
