@@ -21,7 +21,6 @@
 /**
  * Assets registration of contact extension
  */
-
 Todoyu::$CONFIG['EXT']['contact']['assets'] = array(
 	'js'	=> array(
 		array(

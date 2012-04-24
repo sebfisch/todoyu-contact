@@ -26,7 +26,6 @@
  * @subpackage	Contact
  */
 
-
 /**
  * Person filters
  */

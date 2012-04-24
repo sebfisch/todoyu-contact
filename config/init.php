@@ -162,6 +162,7 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['employee'] = array(
 );
 
 
+
 /* ----------------------------------------
 	Configure search + results listing
    --------------------------------------- */
@@ -237,6 +238,7 @@ Todoyu::$CONFIG['EXT']['profile']['contactTabs'] = array(
 );
 
 
+
 TodoyuCreateWizardManager::addWizard('person', array(
 	'ext'		=> 'contact',
 	'controller'=> 'person',
@@ -262,6 +264,7 @@ TodoyuCreateWizardManager::addWizard('company', array(
 		)
 	)
 ));
+
 
 
 Todoyu::$CONFIG['FORM']['TYPES']['recordsStaff'] = array(
