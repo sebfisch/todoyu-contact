@@ -59,7 +59,7 @@ class TodoyuContactJobTypeManager {
 
 
 	/**
-	 * Get jobtypes
+	 * Get job types
 	 *
 	 * @param	Array	$typeIDs	optional
 	 * @return	Array
@@ -87,7 +87,7 @@ class TodoyuContactJobTypeManager {
 
 
 	/**
-	 * Get all jobtype records
+	 * Get all job type records
 	 *
 	 * @return	Array
 	 */
@@ -103,7 +103,7 @@ class TodoyuContactJobTypeManager {
 
 
 	/**
-	 * Get jobtype options
+	 * Get job type options
 	 *
 	 * @return	Array
 	 */
@@ -121,7 +121,7 @@ class TodoyuContactJobTypeManager {
 
 
 	/**
-	 * Search in jobtypes
+	 * Search in job types
 	 *
 	 * @param	String		$search
 	 * @return	Array
@@ -211,7 +211,7 @@ class TodoyuContactJobTypeManager {
 
 
 	/**
-	 * Get autocomplete list for jobtype
+	 * Get auto-complete list for job type
 	 *
 	 * @param	String		$input
 	 * @param	Array		$formData
@@ -220,10 +220,10 @@ class TodoyuContactJobTypeManager {
 	 */
 	public static function autocompleteJobtypes($input, array $formData = array(), $name = '') {
 		$data		= array();
-		$jobtypes	= self::searchJobtypes($input);
+		$jobTypes	= self::searchJobtypes($input);
 
-		foreach($jobtypes as $jobtype) {
-			$data[$jobtype['id']] = $jobtype['title'];
+		foreach($jobTypes as $jobType) {
+			$data[$jobType['id']] = $jobType['title'];
 		}
 
 		return $data;
@@ -232,19 +232,19 @@ class TodoyuContactJobTypeManager {
 
 
 	/**
-	 * Get person IDs for a jobtype
+	 * Get person IDs for a job type
 	 *
-	 * @param	Integer		$idJobtype
+	 * @param	Integer		$idJobType
 	 * @param	Boolean		$onlyInternal
 	 * @return	Integer[]
 	 */
-	public static function getPersonIDsWithJobtype($idJobtype, $onlyInternal = true) {
-		$idJobtype	= intval($idJobtype);
+	public static function getPersonIDsWithJobtype($idJobType = 0, $onlyInternal = true) {
+		$idJobType	= intval($idJobType);
 
 		$fields		= '	mmcp.id_person';
 		$tables		= '	ext_contact_mm_company_person mmcp,
 						ext_contact_person p';
-		$where		= '		mmcp.id_jobtype	= ' . $idJobtype
+		$where		= '		mmcp.id_jobtype	= ' . $idJobType
 					. ' AND mmcp.id_person	= p.id'
 					. ' AND p.deleted		= 0';
 		$group		= '	mmcp.id_person';
