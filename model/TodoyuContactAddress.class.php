@@ -50,9 +50,11 @@ class TodoyuContactAddress extends TodoyuBaseObject {
 
 	/**
 	 * Get label for address type
+	 *
+	 * @return	String
 	 */
 	public function getAddressTypeLabel() {
-		TodoyuContactAddressTypeManager::getAddressTypeLabel($this->getAddressTypeID());
+		return TodoyuContactAddressTypeManager::getAddressTypeLabel($this->getAddressTypeID());
 	}
 
 
