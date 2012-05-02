@@ -38,12 +38,6 @@ Event Hooks
 	@param	Array		$data
 
 
-
-
-
-Data modification
-***************************************
-
 #contact.person.renderDetail
 	Person detail is rendered. Add additional content to the data array. Will be attached at the end
 	@param	Integer	idPerson
@@ -53,6 +47,10 @@ Data modification
 	Company detail is rendered. Add additional content to the data array. Will be attached at the end
 	@param	Integer	idCompany
 
+
+
+Data modification
+***************************************
 
 #contact.personCSVExportParseData
 	Modify parsed export data before writing to output file
