@@ -397,7 +397,7 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 
 
 	/**
-	 * Get main company
+	 * Get "main" company of person
 	 *
 	 * @todo	There is not really a main company, we just take the first one
 	 * @return	TodoyuContactCompany
@@ -594,16 +594,6 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 		} else {
 			return false;
 		}
-	}
-
-
-	/**
-	 * Get email addresses of person
-	 *
-	 * @todo	check - used? if: implement, otherwise remove!
-	 */
-	public function getContactEmails() {
-
 	}
 
 

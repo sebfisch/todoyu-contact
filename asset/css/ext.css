@@ -13,6 +13,8 @@ h1.extIconContact .title {
 	cursor:help;
 }
 
+
+
 /* --------------------------
 	Sub menu
    -------------------------- */
@@ -307,6 +309,7 @@ button.removeContactImage .icon {
 }
 
 
+
 /* -------------------
 	Person Profile
    ------------------- */
@@ -330,6 +333,7 @@ button.removeContactImage .icon {
 div#contact-details.company div.employeePart table.personListing tr.headerLine {
 	border-radius:0;
 }
+
 div#contact-details.company div.employeePart table.personListing tr.headerLine th {
 	background-image:none;
 	background:#eeeeee;
@@ -343,6 +347,7 @@ div#contact-details.company div.employeePart table.personListing tr.odd {
 div#contact-details.company div.employeePart table.personListing tr td {
 	border-top:1px solid #eee;
 }
+
 div#contact-details.company div.employeePart table.personListing tr th.jobtype,
 div#contact-details.company div.employeePart table.personListing tr td.jobtype {
 	border-left:1px solid #dddddd;
