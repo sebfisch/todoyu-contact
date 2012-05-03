@@ -18,8 +18,14 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+	// Info types
 define('CONTACT_INFOTYPE_CATEGORY_EMAIL', 1);
 define('CONTACT_INFOTYPE_CATEGORY_PHONE', 2);
 define('CONTACT_INFOTYPE_CATEGORY_OTHER', 3);
+
+	// Address types
+define('CONTACT_ADDRESSTYPE_HOME', 1);
+define('CONTACT_ADDRESSTYPE_BUSINESS', 2);
+define('CONTACT_ADDRESSTYPE_INVOICE', 3);
 
 ?>

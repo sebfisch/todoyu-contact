@@ -86,15 +86,15 @@ Todoyu::$CONFIG['EXT']['contact']['contactinfotypecategories'] = array(
    ----------------------- */
 Todoyu::$CONFIG['EXT']['contact']['addresstypes'] = array(
 	array(	// Home address
-		'index'	=> 1,
+		'index'	=> CONTACT_ADDRESSTYPE_HOME,
 		'label'	=> 'contact.ext.address.attr.addresstype.1'
 	),
 	array(	// Business address
-		'index'	=> 2,
+		'index'	=> CONTACT_ADDRESSTYPE_BUSINESS,
 		'label'	=> 'contact.ext.address.attr.addresstype.2'
 	),
 	array(	// Billing address
-		'index'	=> 3,
+		'index'	=> CONTACT_ADDRESSTYPE_INVOICE,
 		'label'	=> 'contact.ext.address.attr.addresstype.3'
 	)
 );
