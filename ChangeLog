@@ -1,6 +1,6 @@
 todoyu contact extension changelog
 
-contact 1.2.0 - not released yet
+contact 1.2.0 - 2012-05-03
 	* Feature: Staff selector panelwidget can store/reload person selection as a group of itself
 	* Feature: Added search tabs and filters for company and person records
 	* Added: Contact infos of employees in company CSV export
