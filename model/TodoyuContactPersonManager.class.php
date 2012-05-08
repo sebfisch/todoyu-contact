@@ -327,7 +327,6 @@ class TodoyuContactPersonManager {
 	 * @param	Integer		$idPerson
 	 * @param	String		$password
 	 * @param	Boolean		$alreadyHashed		Is password already a md5 hash?
-	 * @return	Boolean		Updated
 	 */
 	public static function updatePassword($idPerson, $password, $alreadyHashed = true) {
 		$idPerson	=	intval($idPerson);
@@ -340,7 +339,7 @@ class TodoyuContactPersonManager {
 			'password'	=> $password
 		);
 
-		return self::updatePerson($idPerson, $data);
+		self::updatePerson($idPerson, $data);
 	}
 
 
@@ -355,7 +354,7 @@ class TodoyuContactPersonManager {
 	public static function sortPersonIDs(array $personIDs, $sorting = 'lastname,firstname') {
 		$field		= 'id';
 		$table		= self::TABLE;
-		$where		= TodoyuSql::buildInListQueryPart($personIDs);
+		$where		= TodoyuSql::buildInListQueryPart($personIDs, $field);
 		$group		= 'id';
 
 		return Todoyu::db()->getColumn($field, $table, $where, $group, $sorting);
@@ -539,24 +538,29 @@ class TodoyuContactPersonManager {
 	/**
 	 * Search for person
 	 *
-	 * @param	String		$sword
-	 * @param	Array		$searchFields
+	 * @param	String[]	$searchWords
 	 * @param	Integer		$size
 	 * @param	Integer		$offset
+	 * @param	Integer[]	$ignoreIDs			Ignore records with this IDs
 	 * @return	Array
 	 */
-	public static function searchPersons($sword = '', array $searchFields = null, $size = 100, $offset = 0) {
+	public static function searchPersons(array $searchWords = array(), $size = 100, $offset = 0, array $ignoreIDs = array()) {
+		$ignoreIDs	= TodoyuArray::intval($ignoreIDs, true, true);
+
 		$fields	= 'SQL_CALC_FOUND_ROWS *';
 		$table	= self::TABLE;
 		$where	= ' deleted = 0';
 		$order	= 'lastname';
 		$limit	= ($size != '') ? intval($offset) . ',' . intval($size) : '';
 
-		$swords	= TodoyuArray::trimExplode(' ', $sword);
-		if( sizeof($swords) > 0 ) {
-			$searchFields	= is_null($searchFields) ? array('username', 'email', 'firstname', 'lastname', 'shortname') : $searchFields;
+		if( sizeof($searchWords) > 0 ) {
+			$searchFields	= array('username', 'email', 'firstname', 'lastname', 'shortname');
+			$where			.= ' AND ' . TodoyuSql::buildLikeQueryPart($searchWords, $searchFields);
+		}
 
-			$where	.= ' AND ' . TodoyuSql::buildLikeQueryPart($swords, $searchFields);
+			// Add ignore IDs
+		if( sizeof($ignoreIDs) > 0 ) {
+			$where .= ' AND ' . TodoyuSql::buildInListQueryPart($ignoreIDs, 'id', true, true);
 		}
 
 			// Limit results to allowed person records
@@ -630,18 +634,6 @@ class TodoyuContactPersonManager {
 		}
 
 		return Todoyu::db()->getArray($fields, $table, $where, $group, $order, $limit);
-	}
-
-
-
-	/**
-	 * Get list of all persons within given amount limit (unconditional search)
-	 *
-	 * @param	Integer		$limit
-	 * @return	Array
-	 */
-	public static function getList($limit) {
-		return self::searchPersons('', null, $limit);
 	}
 
 
@@ -1137,6 +1129,55 @@ class TodoyuContactPersonManager {
 		);
 
 		return TodoyuString::wrapTodoyuLink($person->getLabel(), 'contact', $linkParams);
+	}
+
+
+
+	/**
+	 * Get matching staff persons
+	 *
+	 * @param 	String[]	$searchWords
+	 * @param	Integer[]	$ignoreIDs
+	 * @return	Array[]
+	 */
+	public static function getMatchingStaffPersons(array $searchWords, array $ignoreIDs = array()) {
+		$ignore			= TodoyuArray::intval($ignoreIDs, true, true);
+		$staffPersons	= self::searchStaff($searchWords, $ignore);
+		$staffItems		= array();
+
+		foreach($staffPersons as $person) {
+			$staffItems[] = array(
+				'id'	=> $person['id'],
+				'label'	=> $person['label']
+			);
+		}
+
+		return $staffItems;
+	}
+
+
+
+	/**
+	 * Get matching persons as list with id and label key
+	 *
+	 * @param	String[]	$searchWords
+	 * @param	Integer[]	$ignoreIDs
+	 * @return	Array[]
+	 */
+	public static function getMatchingPersons(array $searchWords, array $ignoreIDs = array()) {
+		$persons	= self::searchPersons($searchWords, 30, 0, $ignoreIDs);
+		$personItems= array();
+
+		foreach($persons as $personData) {
+			$person	= self::getPerson($personData['id']);
+
+			$personItems[] = array(
+				'id'	=> $person['id'],
+				'label'	=> $person->getLabel()
+			);
+		}
+
+		return $personItems;
 	}
 
 }

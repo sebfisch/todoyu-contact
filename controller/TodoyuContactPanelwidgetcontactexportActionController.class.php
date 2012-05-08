@@ -41,13 +41,15 @@ class TodoyuContactPanelwidgetcontactexportActionController extends TodoyuAction
 	 * @param	Array		$params
 	 */
 	public function exportAction(array $params) {
-		$searchWord	= $params['searchword'];
-		$tab		= $params['tab'];
+		$searchWords= TodoyuArray::trimExplode(' ', $params['searchword'], true);
+		$tab		= trim($params['tab']);
 
 		if( $tab == 'person' ) {
-			TodoyuContactPersonExportManager::exportCSV($searchWord);
-		} else if( $tab == 'company' ) {
-			TodoyuContactCompanyExportManager::exportCSV($searchWord);
+			TodoyuContactPersonExportManager::exportCSV($searchWords);
+		} elseif( $tab == 'company' ) {
+			TodoyuContactCompanyExportManager::exportCSV($searchWords);
+		} else {
+			TodoyuLogger::logError('Unknown tab for contact export <' . $tab . '>');
 		}
 	}
 

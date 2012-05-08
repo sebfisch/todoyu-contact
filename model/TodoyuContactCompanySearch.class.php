@@ -132,11 +132,11 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 	 *
 	 * @param	Integer		$size
 	 * @param	Integer		$offset
-	 * @param	String		$searchWord
+	 * @param	Array		$params
 	 * @return	Array
 	 */
 	public static function getCompanyListingData($size, $offset = 0, array $params) {
-		$companies	= TodoyuContactCompanyManager::searchCompany($params['sword'], null, $size, $offset);
+		$companies	= TodoyuContactCompanyManager::searchCompany($params['sword'], $size, $offset);
 		$data		= array(
 			'rows'	=> array(),
 			'total'	=> Todoyu::db()->getTotalFoundRows()

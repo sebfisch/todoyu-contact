@@ -29,21 +29,15 @@ class TodoyuContactPersonFilterDataSource {
 	/**
 	 * Get autocomplete list for person
 	 *
-	 * @param	String		$input
+	 * @param	String		$searchWord
 	 * @param	Array		$formData
 	 * @param	String		$name
 	 * @return	Array
 	 */
-	public static function autocompletePersons($input, array $formData = array(), $name = '') {
-		$data = array();
-
-		$fieldsToSearchIn = array(
-			'firstname',
-			'lastname',
-			'shortname'
-		);
-
-		$persons = TodoyuContactPersonManager::searchPersons($input, $fieldsToSearchIn);
+	public static function autocompletePersons($searchWord, array $formData = array(), $name = '') {
+		$searchWords= TodoyuArray::trimExplode(' ', $searchWord, true);
+		$persons	= TodoyuContactPersonManager::searchPersons($searchWords);
+		$data 		= array();
 
 		foreach($persons as $person) {
 			$data[$person['id']] = TodoyuContactPersonManager::getLabel($person['id']);

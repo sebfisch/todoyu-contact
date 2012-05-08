@@ -29,11 +29,13 @@ class TodoyuContactPersonExportManager {
 	/**
 	 * Exports persons as CSV file
 	 *
-	 * @param	String	$searchWord
+	 * @param	Array	$searchWords
 	 */
-	public static function exportCSV($searchWord) {
-		$persons	= TodoyuContactPersonManager::searchPersons($searchWord, null, '', '');
-		self::sendCSVfromData(self::getExportDataByPersonsData($persons));
+	public static function exportCSV(array $searchWords) {
+		$persons	= TodoyuContactPersonManager::searchPersons($searchWords, '');
+		$exportData	= self::getExportDataByPersonsData($persons);
+
+		self::sendCSVfromData($exportData);
 	}
 
 

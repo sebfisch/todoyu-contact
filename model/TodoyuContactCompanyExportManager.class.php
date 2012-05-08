@@ -29,10 +29,10 @@ class TodoyuContactCompanyExportManager {
 	/**
 	 * Exports companies as CSV file
 	 *
-	 * @param	String	$searchWord
+	 * @param	Array	$searchWords
 	 */
-	public static function exportCSV($searchWord) {
-		$companies	= TodoyuContactCompanyManager::searchCompany($searchWord, null, '', '');
+	public static function exportCSV(array $searchWords) {
+		$companies	= TodoyuContactCompanyManager::searchCompany($searchWords, '');
 		$csvData	= self::getExportDataByCompaniesData($companies);
 
 		self::sendCSVfromData($csvData);

@@ -130,12 +130,13 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 	 *
 	 * @param	Integer		$size
 	 * @param	Integer		$offset
-	 * @param	String		$searchWord
+	 * @param	Array		$params
 	 * @return	Array
 	 */
 	public static function getPersonListingData($size, $offset = 0, array $params) {
-		$persons= TodoyuContactPersonManager::searchPersons($params['sword'], null, $size, $offset);
-		$data	= array(
+		$searchWords= TodoyuArray::trimExplode(' ', $params['sword'], true);
+		$persons	= TodoyuContactPersonManager::searchPersons($searchWords, $size, $offset);
+		$data		= array(
 			'rows'	=> array(),
 			'total'	=> Todoyu::db()->getTotalFoundRows()
 		);

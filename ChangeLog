@@ -1,5 +1,13 @@
 todoyu contact extension changelog
 
+contact 1.3.0 - not released yet
+	* Feature: Added person record selector according to staff selector
+	* Added: $ignoreIDs parameter to TodoyuContactPersonManager::searchPerson()
+	* Added: TodoyuContactPersonManager::getMatchingStaffPersons() and ::getMatchingPersons()
+	* Changed: Cleanup TodoyuContactPersonManager::searchPerson() - Removed searchInFields parameter, $searchWords parameter is now an array
+	* Changed: Removed TodoyuContactCompanyManager::searchCompanyIDs() because it was never used
+	* Changed: Removed TodoyuContactPersonManager::getList() because it was never used
+
 contact 1.2.0 - 2012-05-03
 	* Feature: Staff selector panelwidget can store/reload person selection as a group of itself
 	* Feature: Added search tabs and filters for company and person records

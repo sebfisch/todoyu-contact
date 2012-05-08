@@ -458,24 +458,22 @@ class TodoyuContactCompanyManager {
 	/**
 	 * Search companies
 	 *
-	 * @param	String		$sWord
-	 * @param	Array		$searchFields
+	 * @param	String[]	$searchWords
 	 * @param	Integer		$size
 	 * @param	Integer		$offset
 	 * @return	Array
 	 */
-	public static function searchCompany($sWord, array $searchFields = null, $size = 100, $offset = 0) {
+	public static function searchCompany(array $searchWords, $size = 100, $offset = 0) {
 		$fields	= 'SQL_CALC_FOUND_ROWS *';
 		$where	= ' deleted = 0';
 		$table	= self::TABLE;
 		$order	= 'title';
 		$limit	= ($size != '') ? intval($offset) . ',' . intval($size) : '';
 
-		$sWords	= TodoyuArray::trimExplode(' ', $sWord);
-		if( sizeof($sWords) ) {
-			$searchFields	= is_null($searchFields) ? array('title', 'shortname') : $searchFields;
+		if( sizeof($searchWords) ) {
+			$searchFields	= array('title', 'shortname');
 
-			$where	.= ' AND ' . TodoyuSql::buildLikeQueryPart($sWords, $searchFields);
+			$where	.= ' AND ' . TodoyuSql::buildLikeQueryPart($searchWords, $searchFields);
 		}
 
 			// Limit results to allowed person records
@@ -486,29 +484,6 @@ class TodoyuContactCompanyManager {
 		}
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order, $limit);
-	}
-
-
-
-	/**
-	 * Alias method for searchCompany, returns a flatten array of IDs
-	 *
-	 * @param	String	$sword
-	 * @param	Array	$searchFields
-	 * @param	Integer	$size
-	 * @param	Integer	$offset
-	 * @return	Integer[]
-	 */
-	public static function searchCompanyIDs($sword, array $searchFields = null, $size = 100, $offset = 0) {
-		$companyIds = array();
-
-		$companies	= self::searchCompany($sword, $searchFields, $size, $offset);
-
-		foreach($companies as $company) {
-			$companyIds[]	= $company['id'];
-		}
-
-		return $companyIds;
 	}
 
 
