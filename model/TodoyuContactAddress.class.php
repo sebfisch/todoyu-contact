@@ -243,7 +243,7 @@ class TodoyuContactAddress extends TodoyuBaseObject {
 	 */
 	public function getLabel() {
 		$countryLabel	= $this->getCountry()->getLabel();
-		$addressLabel	= $this->getStreet() . ', ' . $this->getZip() . ', ' . $this->getCity();
+		$addressLabel	= $this->getStreet() . ', ' . $this->getZip() . ' ' . $this->getCity();
 
 		if( $countryLabel ) {
 			$addressLabel .= ', ' . $countryLabel;
