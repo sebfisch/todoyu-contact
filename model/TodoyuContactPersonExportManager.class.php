@@ -61,7 +61,7 @@ class TodoyuContactPersonExportManager {
 	 */
 	public static function sendCSVfromData(array $exportData) {
 		$export = new TodoyuExportCSV($exportData);
-		$export->download('todoyu_company_export_' . date('YmdHis') . '.csv');
+		$export->download('todoyu_person_export_' . date('YmdHis') . '.csv');
 	}
 
 
