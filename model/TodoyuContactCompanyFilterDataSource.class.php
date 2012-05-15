@@ -50,7 +50,8 @@ class TodoyuContactCompanyFilterDataSource {
 	 */
 	public static function autocompleteCompanies($input, array $formData = array(), $name = '') {
 		$result		= array();
-		$companies	= TodoyuContactCompanyManager::searchCompany($input);
+		$searchWords= TodoyuArray::trimExplode(' ', $input, true);
+		$companies	= TodoyuContactCompanyManager::searchCompany($searchWords);
 
 		foreach($companies as $companyData) {
 			$company	= TodoyuContactCompanyManager::getCompany($companyData['id']);
