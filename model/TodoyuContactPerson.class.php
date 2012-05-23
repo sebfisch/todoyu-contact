@@ -284,7 +284,7 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isActive() {
-		return intval($this->get('is_active')) === 1;
+		return $this->getInt('is_active') === 1;
 	}
 
 
