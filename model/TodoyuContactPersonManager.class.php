@@ -33,6 +33,9 @@ class TodoyuContactPersonManager {
 	 */
 	const TABLE = 'ext_contact_person';
 
+	/**
+	 * @var	String
+	 */
 	const contactTypeKey	= 'person';
 
 

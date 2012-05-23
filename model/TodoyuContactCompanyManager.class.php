@@ -33,6 +33,9 @@ class TodoyuContactCompanyManager {
 	 */
 	const TABLE = 'ext_contact_company';
 
+	/**
+	 * @var	String
+	 */
 	const contactTypeKey	= 'company';
 
 
