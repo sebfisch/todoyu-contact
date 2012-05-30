@@ -525,11 +525,11 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	/**
 	 * Get person template data
 	 *
-	 * @param	Boolean		$loadForeignRecords
+	 * @param	Boolean		$loadForeignData
 	 * @return	Array
 	 */
-	public function getTemplateData($loadForeignRecords = false) {
-		if( $loadForeignRecords ) {
+	public function getTemplateData($loadForeignData = false) {
+		if( $loadForeignData ) {
 			$this->loadForeignData();
 		}
 
