@@ -123,11 +123,11 @@ class TodoyuContactProfileRenderer {
 					// Remove internal data fields for non-admins (comment, account)
 		if( !TodoyuAuth::isAdmin() ) {
 			$form->getFieldset('main')->getField('comment')->remove();
-
-				// Move email field from account into main fieldset
-			$fieldEmail	= $fieldsetAccount->getFieldset('loginfields')->getField('email');
-			$form->getFieldset('main')->addField('email', $fieldEmail);
 		}
+
+			// Move email field from account into main fieldset
+		$fieldEmail	= $fieldsetAccount->getFieldset('loginfields')->getField('email');
+		$form->getFieldset('main')->addField('email', $fieldEmail);
 
 			// Remove account fieldset
 		$fieldsetAccount->remove();
