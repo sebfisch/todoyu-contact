@@ -209,6 +209,15 @@
 							</required>
 						</field>
 
+						<field type="select" name="id_smtpaccount">
+							<label>contact.ext.person.attr.id_smtpaccount</label>
+							<source type="function">
+								<function>TodoyuSysmanagerViewHelper::getSmtpAccountOptions</function>
+								<lazyInit />
+							</source>
+							<pleaseSelectLabel>contact.ext.person.attr.id_smtpaccount.option.useAccountEmail</pleaseSelectLabel>
+						</field>
+
 						<field type="checkbox" name="is_admin">
 							<label>contact.ext.person.attr.is_admin</label>
 							<restrictAdmin />

@@ -46,7 +46,9 @@
 	<label index="person.attr.username">User Name</label>
 	<label index="person.attr.password">Password</label>
 	<label index="person.attr.password.hasPassword">Only fill in to set a new password or to change the current one. Leave empty to keep the current password.</label>
-	<label index="person.attr.email">Email</label>
+	<label index="person.attr.email">Email Address</label>
+	<label index="person.attr.id_smtpaccount">Outgoing Email</label>
+	<label index="person.attr.id_smtpaccount.option.useAccountEmail">Use Account Email</label>
 	<label index="person.attr.is_admin">Is Admin</label>
 	<label index="person.attr.role.new">New Role</label>
 	<label index="person.attr.image.upload">Upload a profile picture</label>

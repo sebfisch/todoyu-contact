@@ -46,7 +46,9 @@
 	<label index="person.attr.username">Benutzername</label>
 	<label index="person.attr.password">Passwort</label>
 	<label index="person.attr.password.hasPassword">Nur ausfüllen um das aktuelle Passwort zu ändern</label>
-	<label index="person.attr.email">Email</label>
+	<label index="person.attr.email">Email Adresse</label>
+	<label index="person.attr.id_smtpaccount">Email Versandkonto</label>
+	<label index="person.attr.id_smtpaccount.option.useAccountEmail">Profil-Email verwenden</label>
 	<label index="person.attr.is_admin">Hat Administratorrechte</label>
 	<label index="person.attr.role.new">Neue Rolle</label>
 	<label index="person.attr.image.upload">Profilbild hochladen</label>
