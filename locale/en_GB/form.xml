@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <labels>
-	<label index="legend.profile.userdata">User Data</label>
-	<label index="legend.profile.basics">Person Data</label>
-	<label index="legend.profile.picture">Profile Picture</label>
-	<label index="legend.profile.furtherInformation">Further information about you</label>
 	<label index="legend.person.basics">Basic Person Information</label>
 	<label index="legend.person.picture">Profile Picture</label>
-	<label index="legend.person.furtherInformation">Further information about the person</label>
+	<label index="legend.person.furtherInformation">Further information</label>
 	<label index="legend.person.login">User Account</label>
 	<label index="legend.company.basics">Main Company Information</label>
 	<label index="legend.company.logo">Company Logo</label>

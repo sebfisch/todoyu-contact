@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <labels>
-	<label index="legend.profile.userdata">Даныые участника [Сделано]</label>
-	<label index="legend.profile.basics">Основная информация [Сделано]</label>
-	<label index="legend.profile.picture">Изображение [Сделано]</label>
-	<label index="legend.profile.furtherInformation">Дополнительная информация о вас [Сделано]</label>
 	<label index="legend.person.basics">Основная информация [Сделано]</label>
 	<label index="legend.person.picture">Изображение [Сделано]</label>
 	<label index="legend.person.furtherInformation">Дополнительная информация [Сделано]</label>

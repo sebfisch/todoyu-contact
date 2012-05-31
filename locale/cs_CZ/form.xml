@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <labels>
-	<label index="legend.profile.userdata">Uživatelské údaje</label>
-	<label index="legend.profile.basics">Hlavní osobní údaje</label>
-	<label index="legend.profile.picture">Profilový obrázek</label>
-	<label index="legend.profile.furtherInformation">Další informace o vás</label>
 	<label index="legend.person.basics">Základní osobní informace</label>
 	<label index="legend.person.picture">Profilový obrázek</label>
 	<label index="legend.person.furtherInformation">Další informace o osobě</label>

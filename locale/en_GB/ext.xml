@@ -136,7 +136,7 @@
 	<label index="company.search.title">Companies</label>
 	<label index="company.search.mode">Find Companies</label>
 	<label index="other">Other Information</label>
-	<label index="profile.module">My Personal Data</label>
+	<label index="profile.module">Person Data</label>
 	<label index="export.companycsv">Export companies as CSV</label>
 	<label index="export.personcsv">Export persons as CSV</label>
 	<label index="backToList">Back to the listing</label>

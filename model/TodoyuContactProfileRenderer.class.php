@@ -22,7 +22,7 @@
 /**
  * Contact profile renderer
  *
- * @name		Contact profile renderer
+ * @name		ProfileRenderer
  * @package		Todoyu
  * @subpackage	Contact
  */
@@ -99,7 +99,7 @@ class TodoyuContactProfileRenderer {
 	 */
 	public static function renderPersonForm($idPerson) {
 		$idPerson	= intval($idPerson);
-		$xmlPath	= 'ext/contact/config/form/profile-person.xml';
+		$xmlPath	= 'ext/contact/config/form/person.xml';
 
 		$form	= TodoyuFormManager::getForm($xmlPath, $idPerson);
 
@@ -110,6 +110,27 @@ class TodoyuContactProfileRenderer {
 
 		$form->setFormData($data);
 		$form->setRecordID($idPerson);
+
+			// Adapt form action and buttons for profile
+		$form->setAction('index.php?ext=contact&amp;controller=profile');
+
+		$fieldsetButtons	= $form->getFieldset('buttons');
+		$fieldsetButtons->getField('save')->setAttribute('onclick', 'Todoyu.Ext.contact.Person.save(this.form)');
+		$fieldsetButtons->getField('cancel')->remove();
+
+		$fieldsetAccount	= $form->getFieldset('account');
+
+					// Remove internal data fields for non-admins (comment, account)
+		if( !TodoyuAuth::isAdmin() ) {
+			$form->getFieldset('main')->getField('comment')->remove();
+
+				// Move email field from account into main fieldset
+			$fieldEmail	= $fieldsetAccount->getFieldset('loginfields')->getField('email');
+			$form->getFieldset('main')->addField('email', $fieldEmail);
+		}
+
+			// Remove account fieldset
+		$fieldsetAccount->remove();
 
 		return $form->render();
 	}

@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <labels>
-	<label index="legend.profile.userdata">用户数据</label>
-	<label index="legend.profile.basics">用户信息</label>
-	<label index="legend.profile.picture">头像</label>
-	<label index="legend.profile.furtherInformation">你的详细信息</label>
 	<label index="legend.person.basics">基本个人信息</label>
 	<label index="legend.person.picture">头像</label>
 	<label index="legend.person.furtherInformation">此人详细信息</label>

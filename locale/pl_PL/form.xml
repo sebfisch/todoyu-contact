@@ -1,9 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <labels>
-	<label index="legend.profile.userdata">Dane użytkownika</label>
-	<label index="legend.profile.basics">Główne informacje o osobie</label>
-	<label index="legend.profile.picture">Zdjęcie profilowe</label>
-	<label index="legend.profile.furtherInformation">Dalsze informacje o tobie</label>
 	<label index="legend.person.basics">Podstawowe informacje</label>
 	<label index="legend.person.picture">Zdjęcie profilowe</label>
 	<label index="legend.person.furtherInformation">Dalsze informacje o osobie</label>

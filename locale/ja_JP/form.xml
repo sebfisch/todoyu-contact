@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <labels>
-	<label index="legend.profile.userdata">ユーザデータ [完了]</label>
-	<label index="legend.profile.basics">主な個人情報 [完了]</label>
-	<label index="legend.profile.picture">プロファイル画像 [完了]</label>
-	<label index="legend.profile.furtherInformation">あなたに関する詳しい情報 [完了]</label>
 	<label index="legend.person.basics">個人の基本情報 [完了]</label>
 	<label index="legend.person.picture">プロファイル画像 [完了]</label>
 	<label index="legend.person.furtherInformation">個人に関する詳しい情報 [完了]</label>
