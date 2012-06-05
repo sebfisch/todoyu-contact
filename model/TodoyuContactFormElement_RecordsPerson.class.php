@@ -55,22 +55,6 @@ class TodoyuContactFormElement_RecordsPerson extends TodoyuFormElement_Records {
 	}
 
 
-
-	/**
-	 * Set value
-	 * Fix data if value contains whole user records instead of IDs
-	 *
-	 * @param	Array		$value
-	 */
-	public function setValue($value) {
-		$first	= reset($value);
-		if( is_array($first) ) {
-			$value	= TodoyuArray::getColumn($value, 'id');
-		}
-
-		parent::setValue($value);
-	}
-
 }
 
 ?>

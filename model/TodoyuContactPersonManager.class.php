@@ -545,9 +545,10 @@ class TodoyuContactPersonManager {
 	 * @param	Integer		$size
 	 * @param	Integer		$offset
 	 * @param	Integer[]	$ignoreIDs			Ignore records with this IDs
+	 * @param	Boolean		$onlyActiveUsers
 	 * @return	Array
 	 */
-	public static function searchPersons(array $searchWords = array(), $size = 100, $offset = 0, array $ignoreIDs = array()) {
+	public static function searchPersons(array $searchWords = array(), $size = 100, $offset = 0, array $ignoreIDs = array(), $onlyActiveUsers = false) {
 		$ignoreIDs	= TodoyuArray::intval($ignoreIDs, true, true);
 
 		$fields	= 'SQL_CALC_FOUND_ROWS *';
@@ -569,6 +570,10 @@ class TodoyuContactPersonManager {
 			// Limit results to allowed person records
 		if( ! Todoyu::allowed('contact', 'person:seeAllPersons') ) {
 			$where .= ' AND ' . TodoyuContactPersonRights::getAllowedToBeSeenPersonsWhereClause();
+		}
+
+		if( $onlyActiveUsers ) {
+			$where .= ' AND is_active = 1 AND username != \'\'';
 		}
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order, $limit);
@@ -1177,6 +1182,31 @@ class TodoyuContactPersonManager {
 			$personItems[] = array(
 				'id'	=> $person['id'],
 				'label'	=> $person->getLabel()
+			);
+		}
+
+		return $personItems;
+	}
+
+
+
+	/**
+	 * Get matching persons with email
+	 *
+	 * @param	Array	$searchWords
+	 * @param	Array	$ignoreIDs
+	 * @return	Array
+	 */
+	public static function getMatchingEmailPersons(array $searchWords, array $ignoreIDs = array()) {
+		$persons	= self::searchPersons($searchWords, 30, 0, $ignoreIDs, true);
+		$personItems= array();
+
+		foreach($persons as $personData) {
+			$person	= self::getPerson($personData['id']);
+
+			$personItems[] = array(
+				'id'	=> $person['id'],
+				'label'	=> $person->getLabel(true)
 			);
 		}
 

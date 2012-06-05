@@ -346,6 +346,25 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 		return json_encode($persons);
 	}
 
+
+
+	/**
+	 * Get matching email persons as JSON
+	 *
+	 * @param	Array	$params
+	 * @return	String
+	 */
+	public function emailPersonListAction(array $params) {
+		$search			= trim($params['search']);
+		$searchWords	= TodoyuArray::trimExplode(' ', $search, true);
+		$ignoreIDs		= TodoyuArray::intExplode(',', $params['ignore']);
+		$persons		= TodoyuContactPersonManager::getMatchingEmailPersons($searchWords, $ignoreIDs);
+
+		TodoyuHeader::sendTypeJSON();
+
+		return json_encode($persons);
+	}
+
 }
 
 ?>

@@ -24,13 +24,13 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuContactFormElement_RecordsStaff extends TodoyuFormElement_Records {
+class TodoyuContactFormElement_RecordsEmailPerson extends TodoyuContactFormElement_RecordsPerson {
 
 	/**
 	 * Init the object with special person config
 	 */
 	protected function init() {
-		$this->initRecords('staff', 'contact', 'person', 'staffList');
+		$this->initRecords('emailPerson', 'contact', 'person', 'emailPersonList');
 	}
 
 
@@ -47,7 +47,7 @@ class TodoyuContactFormElement_RecordsStaff extends TodoyuFormElement_Records {
 		foreach($personIDs as $idPerson) {
 			$records[] = array(
 				'id'	=> $idPerson,
-				'label'	=> TodoyuContactPersonManager::getLabel($idPerson)
+				'label'	=> TodoyuContactPersonManager::getLabel($idPerson, true)
 			);
 		}
 

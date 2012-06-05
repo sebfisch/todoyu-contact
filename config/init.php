@@ -265,17 +265,11 @@ TodoyuCreateWizardManager::addWizard('company', array(
 	)
 ));
 
-
-	// Form element record selector: staff persons
-Todoyu::$CONFIG['FORM']['TYPES']['recordsStaff'] = array(
-	'class'		=> 'TodoyuContactFormElement_RecordsStaff',
-	'template'	=> 'core/view/form/FormElement_Records.tmpl'
-);
-
-	// Form element record selector: all persons
-Todoyu::$CONFIG['FORM']['TYPES']['recordsPerson'] = array(
-	'class'		=> 'TodoyuContactFormElement_RecordsPerson',
-	'template'	=> 'core/view/form/FormElement_Records.tmpl'
-);
+	// Records staff selector
+TodoyuFormManager::addFieldTypeRecords('recordsStaff', 'TodoyuContactFormElement_RecordsStaff');
+	// Records person selector
+TodoyuFormManager::addFieldTypeRecords('recordsPerson', 'TodoyuContactFormElement_RecordsPerson');
+	// Records staff selector
+TodoyuFormManager::addFieldTypeRecords('recordsEmailPerson', 'TodoyuContactFormElement_RecordsEmailPerson');
 
 ?>

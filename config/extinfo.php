@@ -30,9 +30,9 @@ Todoyu::$CONFIG['EXT']['contact']['info'] = array(
 		'company'	=> 'snowflake productions GmbH, Zurich'
 	),
 	'state'			=> 'stable',
-	'version'		=> '1.2.1',
+	'version'		=> '1.3.0',
 	'constraints'	=> array(
-		'core'		=> '2.2.0',
+		'core'		=> '2.2.1',
 		'system'	=> true
 	),
 	'urlDocumentation'	=> 'http://doc.todoyu.com/?contact'

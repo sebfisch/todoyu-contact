@@ -324,6 +324,12 @@ button.removeContactImage .icon {
 .fElement.typeRecords.recordsStaff .recordIcon {
 	background:url(../img/icons.png) no-repeat 2px 2px;
 }
+.fElement.typeRecords.recordsPerson .recordIcon {
+	background:url(../img/icons.png) no-repeat 2px 2px;
+}
+.fElement.typeRecords.recordsEmailPerson .recordIcon {
+	background:url(../img/icons.png) no-repeat 0 -420px;
+}
 
 
 
