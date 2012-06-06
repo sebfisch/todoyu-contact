@@ -1213,5 +1213,23 @@ class TodoyuContactPersonManager {
 		return $personItems;
 	}
 
+
+
+	/**
+	 * Link a person to a company
+	 *
+	 * @param	Integer		$idPerson
+	 * @param	Integer		$idCompany
+	 * @param	Integer		$idWorkAddress
+	 * @param	Integer		$idJobType
+	 * @param	Array		$extraData
+	 */
+	public static function addCompanyLink($idPerson, $idCompany, $idWorkAddress = 0, $idJobType = 0, array $extraData = array()) {
+		$extraData['id_workaddress']= intval($idWorkAddress);
+		$extraData['id_jobtype'] 	= intval($idJobType);
+
+		TodoyuDbHelper::addMMLink('ext_contact_mm_company_person', 'id_person', 'id_company', $idPerson, $idCompany, $extraData);
+	}
+
 }
 ?>
