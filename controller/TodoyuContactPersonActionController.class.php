@@ -367,69 +367,6 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 
 
 
-	/**
-	 * Get matching email persons and imap addresses as JSON
-	 *
-	 * @param	Array	$params
-	 * @return	String				JSON encoded items list, each containing type-prefixed ID and label
-	 */
-	public function personAndAddressListAction(array $params) {
-		$search			= trim($params['search']);
-		$searchWords	= TodoyuArray::trimExplode(' ', $search, true);
-		$ignoreIDs		= TodoyuArray::intExplode(',', $params['ignore']);
-
-		TodoyuLogger::logNotice('@todo: change ignore IDs to be divided into persons/addresses.');
-
-			// Get person items, IDs prefixed with 'p'
-		$persons	= TodoyuContactPersonManager::getMatchingEmailPersons($searchWords, $ignoreIDs);
-		$persons	= TodoyuFormManager::prefixRecordsId($persons, 'p');
-
-			// Get IMAP address items, IDs prefixed with 'p'
-		$addresses	= TodoyuImapAddressManager::getMatchingAddresses($searchWords, $ignoreIDs);
-		$addresses	= TodoyuFormManager::prefixRecordsId($addresses, 'a');
-
-			// Find and remove addresses whose email-address is identically contained in the person items' labels already
-		$emailsOfPersons	= self::extractEmailAddressesFromRecords($persons);
-		foreach($addresses as $index => $address) {
-			$emailAddress	= self::extractEmailAddressFromLabel($address['label']);
-			if( in_array($emailAddress, $emailsOfPersons) ) {
-				unset($addresses[$index]);
-			}
-		}
-
-		TodoyuHeader::sendTypeJSON();
-
-		return json_encode(array_merge($persons, $addresses));
-	}
-
-
-
-	/**
-	 * @param	Array	$records	Records array, containing a 'label' attribute for each item
-	 * @return	String[]
-	 */
-	private static function extractEmailAddressesFromRecords(array $records) {
-		$emailAddresses	= array();
-		foreach($records as $record) {
-			$emailAddresses[]	= self::extractEmailAddressFromLabel($record['label']);
-		}
-
-		return $emailAddresses;
-	}
-
-
-
-	/**
-	 * @param	String	$label
-	 * @return	Mixed
-	 */
-	private static function extractEmailAddressFromLabel($label) {
-		$pattern	= '/\(.*@.*\..*\)/';
-		preg_match($pattern, $label, $match);
-
-		return $match[0];
-	}
-
 }
 
 ?>
