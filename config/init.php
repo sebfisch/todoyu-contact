@@ -265,6 +265,13 @@ TodoyuCreateWizardManager::addWizard('company', array(
 	)
 ));
 
+
+
+		// Add email receiver type: 'contactperson'
+TodoyuMailReceiverManager::registerType('contactperson', 'TodoyuContactMailReceiverPerson');
+
+
+
 	// Records selector: staff (can be person, role or group)
 TodoyuFormManager::addFieldTypeRecords('recordsStaff', 'TodoyuContactFormElement_RecordsStaff');
 	// Records selector: person
