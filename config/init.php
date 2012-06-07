@@ -265,11 +265,13 @@ TodoyuCreateWizardManager::addWizard('company', array(
 	)
 ));
 
-	// Records staff selector
+	// Records selector: staff (can be person, role or group)
 TodoyuFormManager::addFieldTypeRecords('recordsStaff', 'TodoyuContactFormElement_RecordsStaff');
-	// Records person selector
+	// Records selector: person
 TodoyuFormManager::addFieldTypeRecords('recordsPerson', 'TodoyuContactFormElement_RecordsPerson');
-	// Records staff selector
+	// Records selector: email person
 TodoyuFormManager::addFieldTypeRecords('recordsEmailPerson', 'TodoyuContactFormElement_RecordsEmailPerson');
+	// Records selector: Person and address
+TodoyuFormManager::addFieldTypeRecords('recordsPersonAndAddress', 'TodoyuContactFormElement_RecordsPersonAndAddress');
 
 ?>
