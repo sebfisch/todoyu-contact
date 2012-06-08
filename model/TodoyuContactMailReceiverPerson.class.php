@@ -27,9 +27,11 @@
 class TodoyuContactMailReceiverPerson extends TodoyuMailReceiver implements TodoyuMailReceiverInterface {
 
 	/**
+	 * Type key
+	 *
 	 * @var	String
 	 */
-	private $typeKey = 'contactperson';
+	private $type = 'contactperson';
 
 
 
