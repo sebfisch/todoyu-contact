@@ -107,19 +107,6 @@ function Dwoo_Plugin_personLabel(Dwoo $dwoo, $idPerson = 0, $idPrefix = 'person'
 
 
 /**
- * Returns a wrapped label tag of a mail receiver, evoking person-info tooltip on rollOver
- *
- * @param	Dwoo			$dwoo
- * @param	Integer			$receiverTuple
- * @return	String
- */
-function Dwoo_Plugin_mailreceiverLabel(Dwoo $dwoo, $receiverTuple = 0) {
-	return TodoyuMailReceiverManager::getMailReceiverObject($receiverTuple)->getLabel();
-}
-
-
-
-/**
  * Get address label
  *
  * @param	Dwoo_Compiler		$compiler
