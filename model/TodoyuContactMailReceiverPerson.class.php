@@ -27,14 +27,22 @@
 class TodoyuContactMailReceiverPerson extends TodoyuMailReceiver implements TodoyuMailReceiverInterface {
 
 	/**
+	 * @var	String
+	 */
+	private $typeKey = 'contactperson';
+
+
+
+	/**
 	 * Construct object
 	 *
 	 * @param	Integer		$idPerson
 	 */
 	public function __construct($idPerson) {
-		$person	= TodoyuContactPersonManager::getPerson($idPerson);
+		$idPerson	= intval($idPerson);
 
-		$this->init($person->getFullName(), $person->getEmail());
+		$person	= TodoyuContactPersonManager::getPerson($idPerson);
+		$this->init($person->getFullName(), $person->getEmail(), $idPerson);
 	}
 
 }
