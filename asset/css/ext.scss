@@ -1,3 +1,7 @@
+@import "../../../../core/config/theme.scss";
+
+
+
 /* ----------------------------------------------
 	Extension icon: stand-alone and in heading
    ---------------------------------------------- */
@@ -356,6 +360,6 @@ div#contact-details.company div.employeePart table.personListing tr td {
 
 div#contact-details.company div.employeePart table.personListing tr th.jobtype,
 div#contact-details.company div.employeePart table.personListing tr td.jobtype {
-	border-left:1px solid #dddddd;
+	border-left:1px solid $grey02;
 	padding:5px;
 }

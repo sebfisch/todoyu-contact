@@ -1,3 +1,7 @@
+@import "../../../../core/config/theme.scss";
+
+
+
 /* -----------------------------------------------------
 	Staff selector
    ----------------------------------------------------- */
@@ -22,12 +26,12 @@
 }
 
 #panelwidget-staffselector li {
-	border-left:5px solid #FFF;
+	border-left:5px solid $white;
 	padding-left:2px;
 }
 
 #panelwidget-staffselector-list li {
-	border-left-color:#FFF !important;
+	border-left-color:$white !important;
 }
 
 #panelwidget-staffselector-list li.hot a {
@@ -39,7 +43,7 @@
 }
 
 #panelwidget-staffselector-selection {
-	border:1px solid #ddd;
+	border:1px solid $grey02;
 	display:inline-block;
 	margin-top:3px;
 	padding:5px;

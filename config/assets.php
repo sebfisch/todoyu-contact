@@ -87,14 +87,14 @@ Todoyu::$CONFIG['EXT']['contact']['assets'] = array(
 			'position'	=> 100
 		),
 		array(
-			'file'		=> 'ext/contact/asset/css/ext.css',
+			'file'		=> 'ext/contact/asset/css/ext.scss',
 			'position'	=> 100
 		),
 		array(
 			'file'	=> 'ext/contact/asset/css/panelwidget-contactsearch.css'
 		),
 		array(
-			'file'		=> 'ext/contact/asset/css/panelwidget-staffselector.css',
+			'file'		=> 'ext/contact/asset/css/panelwidget-staffselector.scss',
 			'position'	=> 110
 		),
 		array(
