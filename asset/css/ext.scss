@@ -346,7 +346,7 @@ div#contact-details.company div.employeePart table.personListing tr.headerLine {
 
 div#contact-details.company div.employeePart table.personListing tr.headerLine th {
 	background-image:none;
-	background:#eeeeee;
+	background:$colorNeutral01;
 	border:none;
 }
 
@@ -355,7 +355,7 @@ div#contact-details.company div.employeePart table.personListing tr.odd {
 }
 
 div#contact-details.company div.employeePart table.personListing tr td {
-	border-top:1px solid #eee;
+	border-top:1px solid $colorNeutral01;
 }
 
 div#contact-details.company div.employeePart table.personListing tr th.jobtype,
