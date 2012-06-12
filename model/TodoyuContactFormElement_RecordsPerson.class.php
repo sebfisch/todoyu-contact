@@ -38,7 +38,7 @@ class TodoyuContactFormElement_RecordsPerson extends TodoyuFormElement_Records {
 	/**
 	 * Get record data
 	 *
-	 * @return	Array
+	 * @return	Array[]
 	 */
 	protected function getRecords() {
 		$personIDs	= $this->getValue();
