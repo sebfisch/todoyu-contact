@@ -231,7 +231,7 @@ class TodoyuContactAddress extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isPreferred() {
-		return $this->getInt('is_preferred') === 1;
+		return $this->isFlagSet('is_preferred');
 	}
 
 
