@@ -83,7 +83,7 @@ Todoyu::$CONFIG['EXT']['contact']['assets'] = array(
 	),
 	'css'	=> array(
 		array(
-			'file'		=> 'ext/contact/asset/css/quickinfo.css',
+			'file'		=> 'ext/contact/asset/css/quickinfo.scss',
 			'position'	=> 100
 		),
 		array(
@@ -91,18 +91,18 @@ Todoyu::$CONFIG['EXT']['contact']['assets'] = array(
 			'position'	=> 100
 		),
 		array(
-			'file'	=> 'ext/contact/asset/css/panelwidget-contactsearch.css'
+			'file'	=> 'ext/contact/asset/css/panelwidget-contactsearch.scss'
 		),
 		array(
 			'file'		=> 'ext/contact/asset/css/panelwidget-staffselector.scss',
 			'position'	=> 110
 		),
 		array(
-			'file'		=> 'ext/contact/asset/css/panelwidget-stafflist.css',
+			'file'		=> 'ext/contact/asset/css/panelwidget-stafflist.scss',
 			'position'	=> 110
 		),
 		array(
-			'file'		=> 'ext/contact/asset/css/panelwidget-contactexport.css',
+			'file'		=> 'ext/contact/asset/css/panelwidget-contactexport.scss',
 			'position'	=> 111
 		)
 	)
