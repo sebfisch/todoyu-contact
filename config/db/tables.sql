@@ -21,6 +21,7 @@ CREATE TABLE `ext_contact_person` (
 	`title` varchar(64) NOT NULL,
 	`birthday` date NOT NULL,
 	`comment` text NOT NULL,
+	`mail_signature` text NOT NULL,
 	PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 

@@ -7,6 +7,7 @@ contact 1.3.0 - not released yet
 	* Added: TodoyuContactPersonManager::getMatchingStaffPersons() and ::getMatchingPersons()
 	* Added: Email person record selector
 	* Added: TodoyuContactPersonManager::addCompanyLink()
+	* Added: Mail signature per user for all mails
 	* Changed: Cleanup profile - Reused general person form instead of an additional form version for the same fields
 	* Changed: Cleanup TodoyuContactPersonManager::searchPerson() - Removed searchInFields parameter, $searchWords parameter is now an array
 	* Changed: Removed TodoyuContactCompanyManager::searchCompanyIDs() because it was never used

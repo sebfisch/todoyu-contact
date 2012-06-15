@@ -440,6 +440,19 @@ class TodoyuContactViewHelper {
 		return $optGroups;
 	}
 
+
+
+	/**
+	 * Get options of SMTP accounts
+	 *
+	 * @param	TodoyuFormElement $field
+	 * @return	Array[]
+	 */
+	public static function getSmtpAccountOptions(TodoyuFormElement $field) {
+		return TodoyuSysmanagerSmtpAccountManager::getAllAccountsOptions(false);
+	}
+
+
 }
 
 ?>

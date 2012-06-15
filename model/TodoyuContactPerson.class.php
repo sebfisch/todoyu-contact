@@ -617,6 +617,73 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 		return TodoyuContactCompanyManager::getCompany($idCompany);
 	}
 
+
+
+	/**
+	 * Get SMTP account ID
+	 *
+	 * @return	Integer
+	 */
+	public function getSmtpAccountID() {
+		return $this->getInt('id_smtpaccount');
+	}
+
+
+
+	/**
+	 * Check whether person has configured an SMTP account
+	 *
+	 * @return	Boolean
+	 */
+	public function hasSmtpAccount() {
+		return $this->getSmtpAccountID() !== 0;
+	}
+
+
+
+	/**
+	 * Get SMTP account
+	 *
+	 * @return TodoyuSysmanagerSmtpAccount
+	 */
+	public function getSmtpAccount() {
+		return TodoyuSysmanagerSmtpAccountManager::getAccount($this->getSmtpAccountID());
+	}
+
+
+
+	/**
+	 * Get mail signature
+	 *
+	 * @return	String
+	 */
+	public function getMailSignature() {
+		return rtrim($this->get('mail_signature'));
+	}
+
+
+
+	/**
+	 * Get signature as html
+	 * Just wrap with <pre> tags to preserve the formatting
+	 *
+	 * @return	String
+	 */
+	public function getMailSignatureAsHtml() {
+		return '<pre>' . $this->getMailSignature() . '</pre>';
+	}
+
+
+
+	/**
+	 * Check whether person has a mail signature
+	 *
+	 * @return	Boolean
+	 */
+	public function hasMailSignature() {
+		return trim($this->getMailSignature()) !== '';
+	}
+
 }
 
 ?>

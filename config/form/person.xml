@@ -196,8 +196,8 @@
 									<allow>
 										<fieldEquals>
 											<field>is_active</field>
-												<value>0</value>
-											</fieldEquals>
+											<value>0</value>
+										</fieldEquals>
 									</allow>
 								</email>
 								<requiredIfNotEmpty>
@@ -207,15 +207,6 @@
 							<required>
 								<noCheck />
 							</required>
-						</field>
-
-						<field type="select" name="id_smtpaccount">
-							<label>contact.ext.person.attr.id_smtpaccount</label>
-							<source type="function">
-								<function>TodoyuSysmanagerViewHelper::getSmtpAccountOptions</function>
-								<lazyInit />
-							</source>
-							<pleaseSelectLabel>contact.ext.person.attr.id_smtpaccount.option.useAccountEmail</pleaseSelectLabel>
 						</field>
 
 						<field type="checkbox" name="is_admin">
@@ -247,6 +238,26 @@
 						</field>
 					</elements>
 				</fieldset>
+
+			</elements>
+		</fieldset>
+
+		<fieldset name="mail">
+			<legend>Email</legend>
+			<elements>
+
+				<field type="select" name="id_smtpaccount">
+					<label>contact.ext.person.attr.id_smtpaccount</label>
+					<source type="function">
+						<function>TodoyuContactViewHelper::getSmtpAccountOptions</function>
+						<lazyInit />
+					</source>
+					<pleaseSelectLabel>contact.ext.person.attr.id_smtpaccount.option.useAccountEmail</pleaseSelectLabel>
+				</field>
+
+				<field type="textarea" name="mail_signature">
+					<label>Mail Signatur</label>
+				</field>
 
 			</elements>
 		</fieldset>
