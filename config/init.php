@@ -267,7 +267,7 @@ TodoyuCreateWizardManager::addWizard('company', array(
 
 
 
-		// Add email receiver type: 'contactperson'
+	// Add email receiver type: 'contactperson'
 TodoyuMailReceiverManager::registerType('contactperson', 'TodoyuContactMailReceiverPerson');
 
 
