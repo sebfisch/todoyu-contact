@@ -142,4 +142,5 @@
 	<label index="export.companycsv">Firmen als CSV exportieren</label>
 	<label index="export.personcsv">Persons als CSV exportieren</label>
 	<label index="backToList">Zurück zur Liste</label>
+	<label index="locale_correspondence">Korrespondenzsprache</label>
 </labels>

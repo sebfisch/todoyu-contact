@@ -511,38 +511,6 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 
 
 	/**
-	 * Load all foreign records of a person
-	 */
-	public function loadForeignData() {
-		$this->data['company']		= $this->getEmployers();
-		$this->data['contactinfo']	= $this->getContactInfoRecords();
-		$this->data['address']		= $this->getAddressRecords();
-		$this->data['role']			= $this->getRoleRecords();
-	}
-
-
-
-	/**
-	 * Get person template data
-	 *
-	 * @param	Boolean		$loadForeignData
-	 * @return	Array
-	 */
-	public function getTemplateData($loadForeignData = false) {
-		if( $loadForeignData ) {
-			$this->loadForeignData();
-		}
-
-		$data = parent::getTemplateData();
-
-		$data['fullname'] = $this->getFullName();
-
-		return $data;
-	}
-
-
-
-	/**
 	 * Get salutation key
 	 *
 	 * @return	String		'm' or 'w'
@@ -682,6 +650,55 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	 */
 	public function hasMailSignature() {
 		return trim($this->getMailSignature()) !== '';
+	}
+
+
+
+	/**
+	 * Get correspondence locale
+	 *
+	 * @return	String
+	 */
+	public function getLocaleCorrespondence() {
+		$localeCorrespondence	= $this->get('locale_correspondence');
+
+		if( empty($localeCorrespondence) ) {
+			$localeCorrespondence	= $this->getLocale();
+		}
+
+		return $localeCorrespondence;
+	}
+
+
+
+	/**
+	 * Load all foreign records of a person
+	 */
+	public function loadForeignData() {
+		if( !$this->has('company') ) {
+			$this->data['company']		= $this->getEmployers();
+			$this->data['contactinfo']	= $this->getContactInfoRecords();
+			$this->data['address']		= $this->getAddressRecords();
+			$this->data['role']			= $this->getRoleRecords();
+		}
+	}
+
+
+
+	/**
+	 * Get person template data
+	 *
+	 * @param	Boolean		$loadForeignData
+	 * @return	Array
+	 */
+	public function getTemplateData($loadForeignData = false) {
+		if( $loadForeignData ) {
+			self::loadForeignData();
+		}
+
+		$this->data['fullname'] = $this->getFullName();
+
+		return parent::getTemplateData();
 	}
 
 }

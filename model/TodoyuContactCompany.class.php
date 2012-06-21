@@ -183,12 +183,32 @@ class TodoyuContactCompany extends TodoyuBaseObject {
 
 
 	/**
-	 * Loads the related foreign record data to the company
+	 * Get correspondence locale
+	 *
+	 * @return	String
 	 */
-	public function loadForeignData() {
-		$this->data['person']		= $this->getEmployeesRecords();
-		$this->data['contactinfo']	= $this->getContactInfoRecords();
-		$this->data['address']		= $this->getAddressRecords();
+	public function getLocaleCorrespondence() {
+		$localeCorrespondence	= $this->get('locale_correspondence');
+
+		if( empty($localeCorrespondence) ) {
+			$localeCorrespondence	= Todoyu::getSystemLocale();
+		}
+
+		return $localeCorrespondence;
+	}
+
+
+
+	/**
+	 * Loads the related foreign record data to the company
+	 *
+	 */
+	protected function loadForeignData() {
+		if( !$this->has('person') ) {
+			$this->data['person']		= $this->getEmployeesRecords();
+			$this->data['contactinfo']	= $this->getContactInfoRecords();
+			$this->data['address']		= $this->getAddressRecords();
+		}
 	}
 
 
@@ -200,8 +220,8 @@ class TodoyuContactCompany extends TodoyuBaseObject {
 	 * @return	Array
 	 */
 	public function getTemplateData($loadForeignData = false) {
-		if( $loadForeignData && $this->getID() !== 0 ) {
-			$this->loadForeignData();
+		if( $loadForeignData ) {
+			self::loadForeignData();
 		}
 
 		return parent::getTemplateData();

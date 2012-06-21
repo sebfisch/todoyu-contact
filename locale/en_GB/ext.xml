@@ -142,4 +142,5 @@
 	<label index="export.companycsv">Export companies as CSV</label>
 	<label index="export.personcsv">Export persons as CSV</label>
 	<label index="backToList">Back to the listing</label>
+	<label index="locale_correspondence">Contact Language</label>
 </labels>

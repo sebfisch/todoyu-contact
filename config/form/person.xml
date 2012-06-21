@@ -46,10 +46,14 @@
 
 				<field type="date" name="birthday">
 					<label>contact.ext.person.attr.birthday</label>
-					<calendar>
-						<range>[1940,2020]</range>
-					</calendar>
 					<storeAsDate />
+				</field>
+
+				<field type="select" name="locale_correspondence">
+					<label>contact.ext.locale_correspondence</label>
+					<source type="function">
+						<function>TodoyuViewHelper::getLocaleOptions</function>
+					</source>
 				</field>
 
 				<field type="textarea" name="comment">
