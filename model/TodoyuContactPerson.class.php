@@ -232,14 +232,27 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 		$email	= $this->getAccountEmail();
 
 		if( $email === '' && $checkContactInfo ) {
-			$preferredEmails	= TodoyuContactContactInfoManagerPerson::getEmails($this->getID());
+			$contactInfoMailAddresses	= $this->getEmailContactInfos();
 
-			if( sizeof($preferredEmails) > 0 ) {
-				$email	= trim($preferredEmails[0]['info']);
+			if( sizeof($contactInfoMailAddresses) > 0 ) {
+				$email	= trim($contactInfoMailAddresses[0]['info']);
 			}
 		}
 
 		return $email === '' ? false : $email;
+	}
+
+
+
+	/**
+	 * Get all contact info email addresses
+	 *
+	 * @param	String|null		$type
+	 * @param	Boolean			$onlyPreferred
+	 * @return	Array
+	 */
+	public function getEmailContactInfos($type = null, $onlyPreferred = false) {
+		return TodoyuContactContactInfoManagerPerson::getEmails($this->getID(), $type, $onlyPreferred);
 	}
 
 
@@ -678,6 +691,36 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	 */
 	public function hasLocaleCorrespondence() {
 		return trim($this->get('locale_correspondence')) !== '';
+	}
+
+
+
+	/**
+	 * Get all email addresses which are linked with the person
+	 * - Account address
+	 * - Contact info addresses
+	 * - Smtp address
+	 *
+	 * @return	String[]
+	 */
+	public function getAllMailAddresses() {
+		$addresses	= array();
+
+		if( $this->isActive() ) {
+			$addresses[] = $this->getAccountEmail();
+		}
+
+		$mailContactInfos = $this->getEmailContactInfos();
+		if( sizeof($mailContactInfos) ) {
+			$contactInfoAddresses	= TodoyuArray::getColumn($mailContactInfos, 'info');
+			$addresses	= array_merge($addresses, $contactInfoAddresses);
+		}
+
+		if( $this->hasSmtpAccount() ) {
+			$addresses[] = $this->getSmtpAccount()->getUsername();
+		}
+
+		return array_unique($addresses);
 	}
 
 
