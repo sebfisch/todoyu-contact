@@ -672,6 +672,17 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 
 
 	/**
+	 * Check whether the person has set a correspondence locale
+	 *
+	 * @return	Boolean
+	 */
+	public function hasLocaleCorrespondence() {
+		return trim($this->get('locale_correspondence')) !== '';
+	}
+
+
+
+	/**
 	 * Load all foreign records of a person
 	 */
 	public function loadForeignData() {
