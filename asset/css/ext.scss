@@ -243,28 +243,25 @@ div.visitingCardContent table tr td.label {
 .personListing td.login span.icon {
 	background-position:2px -568px;
 }
-.personListing td.actions span.info {
+.personListing td.actions span.info,
+.companyListing td.actions span.info {
 	background-position:5px -356px;
 }
-.personListing td.actions span.edit {
-	background-position:5px -26px;
+.personListing td.actions span.edit,
+.companyListing td.actions span.edit  {
+	background: url(../../../../core/asset/img/icons.png) no-repeat 5px -749px;
 }
-.personListing td.actions span.delete {
-	background-position:5px -57px;
+
+.personListing td.actions span.delete,
+.companyListing td.actions span.delete  {
+	background: url(../../../../core/asset/img/icons.png) no-repeat 5px -330px;
 }
 
 .companyListing span.icon {
 	background-position:2px -149px;
 }
-.companyListing td.actions span.info {
-	background-position:5px -356px;
-}
-.companyListing td.actions span.edit {
-	background-position:5px -178px;
-}
-.companyListing td.actions span.delete {
-	background-position:5px -208px;
-}
+
+
 
 /* -------------------
 	Person Details
