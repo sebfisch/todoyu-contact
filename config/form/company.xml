@@ -32,6 +32,13 @@
 					<label>contact.ext.company.attr.is_internal</label>
 				</field>
 
+				<field type="select" name="locale_correspondence">
+					<label>contact.ext.locale_correspondence</label>
+					<source type="function">
+						<function>TodoyuViewHelper::getAllLocaleOptions</function>
+					</source>
+				</field>
+
 				<field type="databaseRelation" name="contactinfo">
 					<label>contact.ext.contactinfo</label>
 					<addLabel>contact.ext.contactinfo.new</addLabel>

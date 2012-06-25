@@ -52,7 +52,7 @@
 				<field type="select" name="locale_correspondence">
 					<label>contact.ext.locale_correspondence</label>
 					<source type="function">
-						<function>TodoyuViewHelper::getLocaleOptions</function>
+						<function>TodoyuViewHelper::getAllLocaleOptions</function>
 					</source>
 				</field>
 
