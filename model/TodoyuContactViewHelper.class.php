@@ -424,6 +424,7 @@ class TodoyuContactViewHelper {
 	 *
 	 * @param	TodoyuFormElement $field
 	 * @return	Array
+	 * @todo	Move to core?
 	 */
 	public static function getTimezoneOptionsGrouped(TodoyuFormElement $field) {
 		$timezones	= TodoyuStaticRecords::getAllTimezones();
@@ -431,9 +432,15 @@ class TodoyuContactViewHelper {
 
 		foreach($timezones as $timezone) {
 			list($tzRegion)	= explode('/', $timezone['timezone']);
+
+				// Get timezone's offset from UTC (Coordinated universal time)
+			$utcDateTime= new DateTime('now', new DateTimeZone($timezone['timezone']));
+			$utcOffset	= $utcDateTime->format('P');
+
+				// Add option
 			$optGroups[$tzRegion][] = array(
 				'value'	=> $timezone['id'],
-				'label'	=> $timezone['timezone']
+				'label'	=> ' (UTC' . $utcOffset . ') ' . $timezone['timezone']
 			);
 		}
 
