@@ -32,7 +32,7 @@ class TodoyuContactPanelWidgetSearch extends TodoyuPanelWidgetSearchBox {
 	 * @param	Array	$config
 	 * @param	Array	$params
 	 */
-	function __construct(array $config, array $params = array()) {
+	public function __construct(array $config, array $params = array()) {
 		parent::__construct(
 			'contact',											// ext key
 			'contactsearch',									// panel widget ID
@@ -40,6 +40,8 @@ class TodoyuContactPanelWidgetSearch extends TodoyuPanelWidgetSearchBox {
 			$config,											// widget config array
 			$params												// widget parameters
 		);
+
+		$this->setJsObject('Todoyu.Ext.contact.PanelWidget.ContactSearch');
 	}
 
 
