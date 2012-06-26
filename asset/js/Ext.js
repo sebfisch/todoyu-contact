@@ -42,6 +42,11 @@ Todoyu.Ext.contact = {
 	Headlet: {},
 
 
+	/**
+	 * @type	Todoyu.Ext.contact.PanelWidget.ContactSearch
+	 */
+	searchBox: null,
+
 
 	/**
 	 * Initialize
@@ -49,8 +54,10 @@ Todoyu.Ext.contact = {
 	 * @method	init
 	 */
 	init: function() {
-		this.initObservers();
-
+		if( Todoyu.isInArea('contact') ) {
+			this.initObservers();
+			this.initPanelWidgets();
+		}
 	},
 
 
@@ -59,10 +66,29 @@ Todoyu.Ext.contact = {
 	 * @method	initObservers
 	 */
 	initObservers: function() {
-		if( Todoyu.getArea() === 'contact' ) {
-			this.initPersonQuickInfos();
-			this.initListingObserver();
-		}
+		this.initPersonQuickInfos();
+		this.initListingObserver();
+	},
+
+
+
+	/**
+	 * Initialize panel widgets
+	 *
+	 */
+	initPanelWidgets: function() {
+		this.searchBox = new this.PanelWidget.ContactSearch();
+	},
+
+
+
+	/**
+	 * Get search text from panel widget
+	 *
+	 * @return	{String}
+	 */
+	getSearchText: function() {
+		return this.searchBox.getSearchText();
 	},
 
 

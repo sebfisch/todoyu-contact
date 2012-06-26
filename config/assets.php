@@ -91,9 +91,6 @@ Todoyu::$CONFIG['EXT']['contact']['assets'] = array(
 			'position'	=> 100
 		),
 		array(
-			'file'	=> 'ext/contact/asset/css/panelwidget-contactsearch.scss'
-		),
-		array(
 			'file'		=> 'ext/contact/asset/css/panelwidget-staffselector.scss',
 			'position'	=> 110
 		),

@@ -22,9 +22,9 @@
  * Class for the contact search input panelWidget
  *
  * @package		Todoyu
- * @subpackage	contact
+ * @subpackage	Contact
  */
-class TodoyuContactPanelWidgetSearch extends TodoyuPanelWidget {
+class TodoyuContactPanelWidgetSearch extends TodoyuPanelWidgetSearchBox {
 
 	/**
 	 * Constructor of the class
@@ -40,30 +40,6 @@ class TodoyuContactPanelWidgetSearch extends TodoyuPanelWidget {
 			$config,											// widget config array
 			$params												// widget parameters
 		);
-
-		TodoyuPage::addJsInit('Todoyu.Ext.contact.PanelWidget.ContactSearch.init()', 100);
-
-		$this->addHasIconClass();
-	}
-
-
-
-	/**
-	 * Render content of contact search panel widget
-	 *
-	 * @return String
-	 */
-	public function renderContent() {
-		$contactType = TodoyuContactPreferences::getActiveTab();
-
-		$tmpl	= 'ext/contact/view/panelwidget/contactsearch.tmpl';
-		$data	= array(
-			'id'			=> $this->getID(),
-			'sword'			=> $this->getSearchWord(),
-			'contactType'	=> $contactType
-		);
-
-		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -73,21 +49,8 @@ class TodoyuContactPanelWidgetSearch extends TodoyuPanelWidget {
 	 *
 	 * @return	String
 	 */
-	private function getSearchWord() {
+	protected function getSearchWord() {
 		return TodoyuContactPreferences::getSearchWord();
-	}
-
-
-
-	/**
-	 * Check whether using the contact search widget is allowed to current logged in person
-	 * -Currently this is allowed to any person having the right to use the contacts area and see contacts
-	 *
-	 * @return	Boolean
-	 */
-	public static function isAllowed() {
-		return true;
-//		return Todoyu::allowed('contact', 'panelwidgets:contactsearch');
 	}
 
 }

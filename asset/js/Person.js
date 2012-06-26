@@ -325,8 +325,8 @@ Todoyu.Ext.contact.Person =  {
 	 * @param	{String}		sword		(search word)
 	 */
 	showList: function(sword) {
-		if( sword === undefined ) {
-			sword = this.ext.PanelWidget.ContactSearch.getValue();
+		if( !sword ) {
+			sword = this.ext.getSearchText();
 		}
 
 		var url = Todoyu.getUrl('contact', 'person');
