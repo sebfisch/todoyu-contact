@@ -389,7 +389,7 @@ class TodoyuContactViewHelper {
 	 * Get selector options config array for info types
 	 *
 	 * @param	TodoyuFormElement	$field
-	 * @return	Array
+	 * @return	Array[]
 	 */
 	public static function getContactInfoTypeOptions(TodoyuFormElement $field) {
 		$types	= TodoyuContactContactInfoTypeManager::getContactInfoTypes(true);
