@@ -173,7 +173,7 @@ class TodoyuContactContactInfoManager {
 	 * @param	Integer|Boolean	$category
 	 * @param	String|Boolean	$type
 	 * @param	Boolean			$onlyPreferred
-	 * @return	Array
+	 * @return	Array[]
 	 */
 	protected static function getContactInfos($key, $idElement, $category = 0, $type = false, $onlyPreferred = false) {
 		$idElement	= intval($idElement);

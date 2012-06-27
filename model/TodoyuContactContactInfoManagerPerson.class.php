@@ -44,7 +44,7 @@ class TodoyuContactContactInfoManagerPerson extends TodoyuContactContactInfoMana
 	 * @param	Integer			$idPerson
 	 * @param	String|Boolean	$type
 	 * @param	Boolean			$onlyPreferred
-	 * @return	Array
+	 * @return	Array[]
 	 */
 	public static function getEmails($idPerson, $type = false, $onlyPreferred = false) {
 		return self::getContactInfos('person', $idPerson, CONTACT_INFOTYPE_CATEGORY_EMAIL, $type, $onlyPreferred);
