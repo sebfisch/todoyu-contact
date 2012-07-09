@@ -185,16 +185,12 @@ div#search-results p#company-listing-message-emptylist {
 /* -------------------------
 	Company list
    -------------------------*/
-#contact-details div.actions .buttonCompanyEdit .icon {
-	background-position:6px -178px;
-	width:22px;
-}
 #contact-details.company div.actions .buttonCompanyDelete .icon {
-	background-position:6px -208px;
+	background:url(../../../../core/asset/img/icons.png) no-repeat 6px -328px;
 	width:22px;
 }
-#contact-details div.actions .buttonCompanyEdit span.icon {
-	background-position:6px -178px;
+#contact-details div.actions .buttonCompanyEdit .icon {
+	background:url(../../../../core/asset/img/icons.png) no-repeat 6px -747px;
 	width:22px;
 }
 
