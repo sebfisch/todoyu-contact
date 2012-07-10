@@ -118,19 +118,21 @@ class TodoyuContactProfileRenderer {
 		$fieldsetButtons->getField('save')->setAttribute('onclick', 'Todoyu.Ext.contact.Person.save(this.form)');
 		$fieldsetButtons->getField('cancel')->remove();
 
-		$fieldsetAccount	= $form->getFieldset('account');
-
-					// Remove internal data fields for non-admins (comment, account)
+		// Remove internal data fields for non-admins (comment, account)
 		if( !TodoyuAuth::isAdmin() ) {
 			$form->getFieldset('main')->getField('comment')->remove();
 		}
 
-			// Move email field from account into main fieldset
-		$fieldEmail	= $fieldsetAccount->getFieldset('loginfields')->getField('email');
-		$form->getFieldset('main')->addField('email', $fieldEmail);
+		$fieldsetAccount	= $form->getFieldset('account');
+		// Move email field from account into main fieldset
+		if( $fieldsetAccount !== null ) {
+			$fieldEmail	= $fieldsetAccount->getFieldset('loginfields')->getField('email');
+			$form->getFieldset('main')->addField('email', $fieldEmail);
 
-			// Remove account fieldset
-		$fieldsetAccount->remove();
+				// Remove account fieldset
+			$fieldsetAccount->remove();
+		}
+
 
 		return $form->render();
 	}
