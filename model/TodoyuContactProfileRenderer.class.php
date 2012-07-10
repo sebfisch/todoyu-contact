@@ -98,41 +98,14 @@ class TodoyuContactProfileRenderer {
 	 * @return	String
 	 */
 	public static function renderPersonForm($idPerson) {
-		$idPerson	= intval($idPerson);
-		$xmlPath	= 'ext/contact/config/form/person.xml';
-
-		$form	= TodoyuFormManager::getForm($xmlPath, $idPerson);
-
+		$form	= TodoyuContactProfileManager::getProfileForm($idPerson);
 		$person	= TodoyuContactPersonManager::getPerson($idPerson);
+		$xmlPath= 'ext/contact/config/form/person.xml';
+
 		$data	= $person->getTemplateData(true);
 			// Call hooked load data functions
 		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $idPerson);
-
 		$form->setFormData($data);
-		$form->setRecordID($idPerson);
-
-			// Adapt form action and buttons for profile
-		$form->setAction('index.php?ext=contact&amp;controller=profile');
-
-		$fieldsetButtons	= $form->getFieldset('buttons');
-		$fieldsetButtons->getField('save')->setAttribute('onclick', 'Todoyu.Ext.contact.Person.save(this.form)');
-		$fieldsetButtons->getField('cancel')->remove();
-
-		// Remove internal data fields for non-admins (comment, account)
-		if( !TodoyuAuth::isAdmin() ) {
-			$form->getFieldset('main')->getField('comment')->remove();
-		}
-
-		$fieldsetAccount	= $form->getFieldset('account');
-		// Move email field from account into main fieldset
-		if( $fieldsetAccount !== null ) {
-			$fieldEmail	= $fieldsetAccount->getFieldset('loginfields')->getField('email');
-			$form->getFieldset('main')->addField('email', $fieldEmail);
-
-				// Remove account fieldset
-			$fieldsetAccount->remove();
-		}
-
 
 		return $form->render();
 	}

@@ -3,6 +3,7 @@ todoyu contact extension changelog
 contact 1.3.0 - not released yet
 	* Bugfix: Added Avatar (smaller scaled contact-image)
 	* Bugfix: Icon clean-up
+	* Bugfix: Person edit form in profile handling
 	* Feature: Outgoing mail account (including SMTP) in person account data
 	* Feature: Added person record selector according to staff selector
 	* Added: UTC offset info in timezone options' labels

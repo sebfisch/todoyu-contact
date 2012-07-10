@@ -269,13 +269,7 @@ Todoyu.Ext.contact.Person =  {
 	 * @return	{Boolean}
 	 */
 	save: function(form) {
-		$(form).request({
-			parameters: {
-				action:	'save',
-				area:	Todoyu.getArea()
-			},
-			onComplete: this.onSaved.bind(this)
-		});
+		this.saveForm(form, this.onSaved.bind(this));
 
 		return false;
 	},
@@ -288,19 +282,56 @@ Todoyu.Ext.contact.Person =  {
 	 * @method	onSaved
 	 * @param	{Array}		response
 	 */
-	onSaved: function(response) {
+	onSaved: function(idPerson, form, response) {
 		var notificationIdentifier	= 'contact.person.saved';
+		Todoyu.notifySuccess('[LLL:contact.ext.person.saved]', notificationIdentifier);
+
+		this.showList();
+	},
+
+
+
+	/**
+	 * Save form and call successCallback on success
+	 *
+	 * @param	{Form}		form
+	 * @param	{Function}	successCallback
+	 * @return	{Boolean}
+	 */
+	saveForm: function(form, successCallback) {
+		$(form).request({
+			parameters: {
+				action:	'save',
+				area:	Todoyu.getArea()
+			},
+			onComplete: this.onFormSaved.bind(this, form, successCallback)
+		});
+
+		return false;
+	},
+
+
+
+	/**
+	 * Handle form saved
+	 * Replace form with new content on error or call successCallback on success
+	 *
+	 * @param	{Form}			form
+	 * @param	{Function}		successCallback
+	 * @param	{Ajax.Response}	response
+	 */
+	onFormSaved: function(form, successCallback, response) {
+		var notificationIdentifier	= 'contact.person.saved';
+
+		var idPerson	= response.getTodoyuHeader('idRecord');
 
 		if( response.hasTodoyuError() ) {
 			Todoyu.notifyError('[LLL:contact.ext.person.saved.error]', notificationIdentifier);
-			$('contact-form-content').update(response.responseText);
+			form.replace(response.responseText);
 
-			var idPerson	= response.getTodoyuHeader('idRecord');
 			this.initEditForm(idPerson);
 		} else {
-			Todoyu.notifySuccess('[LLL:contact.ext.person.saved]', notificationIdentifier);
-
-			this.showList();
+			successCallback(idPerson, form, response);
 		}
 	},
 
@@ -322,18 +353,18 @@ Todoyu.Ext.contact.Person =  {
 	 * Show (filtered) persons list
 	 *
 	 * @method	showList
-	 * @param	{String}		sword		(search word)
+	 * @param	{String}		[searchText]
 	 */
-	showList: function(sword) {
-		if( !sword ) {
-			sword = this.ext.getSearchText();
+	showList: function(searchText) {
+		if( !searchText ) {
+			searchText = this.ext.getSearchText();
 		}
 
 		var url = Todoyu.getUrl('contact', 'person');
 		var options = {
 			parameters: {
 				action:	'list',
-				sword:	sword
+				sword:	searchText
 			}
 		};
 

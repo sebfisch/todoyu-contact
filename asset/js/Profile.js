@@ -53,15 +53,7 @@ Todoyu.Ext.contact.Profile = {
 	 * @param	{Element}	form
 	 */
 	save: function(form) {
-		$(form).request({
-			parameters: {
-				action:	'save',
-				area:	Todoyu.getArea()
-			},
-			onComplete: this.onSaved.bind(this)
-		});
-
-		return false;
+		this.ext.Person.saveForm(form, this.onSaved.bind(this));
 	},
 
 
@@ -70,31 +62,14 @@ Todoyu.Ext.contact.Profile = {
 	 * Handler evoked upon onComplete of person saving: check for and notify success / error, update display
 	 *
 	 * @method	onSaved
-	 * @param	{Array}		response
+	 * @param	{Number}			idPerson
+	 * @param	{Form}				form
+	 * @param	{Ajax.Response}		response
 	 */
-	onSaved: function(response) {
+	onSaved: function(idPerson, form, response) {
 		var notificationIdentifier	= 'contact.profile.person.saved';
 
-		if( response.hasTodoyuError() ) {
-			Todoyu.notifyError('[LLL:contact.ext.person.saved.error]', notificationIdentifier);
-			$('contact-form-content').update(response.responseText);
-			var idPerson	= parseInt(response.request.parameters['person[id]'], 10);
-			this.initEditForm(idPerson);
-		} else {
-			Todoyu.notifySuccess('[LLL:contact.ext.person.saved]', notificationIdentifier);
-			$('contact-form-content').update(response.responseText);
-		}
-	},
-
-
-
-	/**
-	 * Initialize edit form
-	 *
-	 * @method	initEditForm
-	 * @param	{Number}		idPerson
-	 */
-	initEditForm: function(idPerson) {
-		this.Ext.contact.Person.observeFieldsForShortname(idPerson);
+		Todoyu.notifySuccess('[LLL:contact.ext.person.saved]', notificationIdentifier);
 	}
+
 };

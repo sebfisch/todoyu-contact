@@ -88,7 +88,9 @@ Todoyu.Ext.contact = {
 	 * @return	{String}
 	 */
 	getSearchText: function() {
-		return Todoyu.R['panelwidgetsearchbox-contactsearch'].getSearchText();
+		var searchWidget = Todoyu.R['panelwidgetsearchbox-contactsearch'];
+
+		return searchWidget ? searchWidget.getSearchText() : '';
 	},
 
 

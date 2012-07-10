@@ -42,13 +42,12 @@ class TodoyuContactProfileActionController  extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function saveAction($params) {
-		$xmlPath	= 'ext/contact/config/form/profile-person.xml';
 		$data		= $params['person'];
 		$idPerson	= Todoyu::personid();
 
 		TodoyuContactPersonRights::restrictEdit($idPerson);
 
-		$form		= TodoyuFormManager::getForm($xmlPath, $idPerson);
+		$form	= TodoyuContactProfileManager::getProfileForm($idPerson);
 
 			// Set form data
 		$form->setFormData($data);
@@ -65,6 +64,7 @@ class TodoyuContactProfileActionController  extends TodoyuActionController {
 			return TodoyuContactProfileRenderer::renderPersonForm($idPerson);
 		} else {
 			TodoyuHeader::sendTodoyuErrorHeader();
+			TodoyuHeader::sendTodoyuHeader('idRecord', $idPerson);
 
 			return $form->render();
 		}
