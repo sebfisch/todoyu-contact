@@ -30,6 +30,11 @@
 					<hasIcon />
 					<onclick>Todoyu.Ext.contact.Upload.removeUploadForm()</onclick>
 				</field>
+				
+				<field type="comment" name="note">
+					<comment>contact.ext.contactimage.note</comment>
+					<noStorage />
+				</field>
 
 			</elements>
 		</fieldset>

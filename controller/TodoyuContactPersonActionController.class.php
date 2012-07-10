@@ -276,7 +276,7 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 
 		TodoyuContactPersonRights::restrictSee($idPerson);
 
-		return TodoyuContactImageManager::getImage($idPerson, 'person', $wasRemoved);
+		return TodoyuContactImageManager::getContactImage($idPerson, 'person', $wasRemoved);
 	}
 
 
@@ -286,12 +286,27 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	 *
 	 * @param	Array	$params
 	 */
-	public function renderimageAction(array $params) {
+	public function rendercontactimageAction(array $params) {
 		$imageKey	= $params['idImage'];
 
 		TodoyuContactPersonRights::restrictSee($imageKey);
 
-		TodoyuContactImageManager::renderImage($imageKey, 'person');
+		TodoyuContactImageManager::renderContactImage($imageKey, 'person');
+	}
+
+
+
+	/**
+	 * Output of an image
+	 *
+	 * @param	Array	$params
+	 */
+	public function renderavatarAction(array $params) {
+		$imageKey	= $params['idImage'];
+
+		TodoyuContactPersonRights::restrictSee($imageKey);
+
+		TodoyuContactImageManager::renderAvatarImage($imageKey, 'person');
 	}
 
 

@@ -36,14 +36,36 @@ class TodoyuContactImageManager {
 
 
 	/**
-	 * Check whether the contact of given type and ID has an image (real file, not the displayed fallback dummy) assigned
-	 *
-	 * @param	String		$imageKey	ID of TodoyuContactPerson / TodoyuContactCompany
-	 * @param	String		$typeKey	'person' / 'company'
+	 * @param	Integer		$idContact
+	 * @param	String		$contactType
 	 * @return	Boolean
 	 */
-	public static function hasImage($imageKey, $typeKey) {
-		$pathContactImage	= self::getPathContactImage($imageKey, $typeKey);
+	public static function hasContactImage($idContact, $contactType){
+		return self::hasImage($idContact, $contactType, 'contactimage');
+	}
+
+
+
+	/**
+	 * @param	Integer		$idContact
+	 * @param	String		$contactType
+	 * @return	Boolean
+	 */
+	public static function hasAvatar($idContact, $contactType) {
+		return self::hasImage($idContact, $contactType, 'avatar');
+	}
+
+
+
+	/**
+	 * Check whether the contact of given type and ID has an image (real file, not the displayed fallback dummy) assigned
+	 *
+	 * @param	String		$idContact	ID of TodoyuContactPerson / TodoyuContactCompany
+	 * @param	String		$contactType	'person' / 'company'
+	 * @return	Boolean
+	 */
+	protected static function hasImage($idContact, $contactType, $imageType) {
+		$pathContactImage	= self::getPathContactImage($idContact, $contactType, $imageType);
 
 		return TodoyuFileManager::isFile($pathContactImage);
 	}
@@ -66,9 +88,9 @@ class TodoyuContactImageManager {
 			$idImage	= $idRecord;
 		}
 
-		$dummy	= $idRecord === 0 || !self::hasImage($idRecord, $typeKey);
+		$dummy	= $idRecord === 0 || !self::hasImage($idRecord, $typeKey, 'contactimage');
 
-		return self::getImage($idImage, $typeKey, $dummy);
+		return self::getContactImage($idImage, $typeKey, $dummy);
 	}
 
 
@@ -81,17 +103,44 @@ class TodoyuContactImageManager {
 	 * @param	Boolean		$isDummy
 	 * @return	String
 	 */
-	public static function getImage($idImage, $typeKey, $isDummy = true) {
-		$params	= array(
-			'ext'			=> 'contact',
-			'controller'	=> $typeKey,
-			'action'		=> 'renderimage',
-			'idImage'		=> $idImage,
-			'hash'			=> NOW
+	public static function getContactImage($idImage, $typeKey, $isDummy = true) {
+		return self::getImage($typeKey, 'contactimage', $idImage, $isDummy);
+	}
+
+
+
+	/**
+	 * @static
+	 * @param $idImage
+	 * @param $typeKey
+	 * @param bool $isDummy
+	 * @return String
+	 */
+	public static function getAvatarImage($idImage, $typeKey, $isDummy = true) {
+			return self::getImage($typeKey, 'avatar', $idImage, $isDummy);
+	}
+
+
+
+	/**
+	 * @static
+	 * @param	String			$typeKey
+	 * @param	String			$imageType
+	 * @param	String/Integer	$idImage
+	 * @param	Boolean			$isDummy
+	 * @return	String
+	 */
+	protected static function getImage($typeKey, $imageType, $idImage, $isDummy) {
+		$params = array(
+			'ext' => 'contact',
+			'controller' => $typeKey,
+			'action' => 'render' . $imageType,
+			'idImage' => $idImage,
+			'hash' => NOW
 		);
 
-		$imgSrc	= TodoyuString::buildUrl($params);
-		$alt	= $isDummy ? 'none' : '';
+		$imgSrc = TodoyuString::buildUrl($params);
+		$alt = $isDummy ? 'none' : '';
 
 		return TodoyuString::getImgTag($imgSrc, 0, 0, $alt);
 	}
@@ -102,14 +151,38 @@ class TodoyuContactImageManager {
 	 * Renders the Image. Needed because the files folder is .htaccess protected.
 	 * If no picture of an user is found, one of randomly 7 images is taken
 	 *
-	 * @param	Integer		$imageKey		ID of TodoyuContactPerson / TodoyuContactCompany
+	 * @param	Integer		$idImage		ID of TodoyuContactPerson / TodoyuContactCompany
 	 * @param	String		$typeKey		'person' / 'company'
 	 */
-	public static function renderImage($imageKey, $typeKey) {
+	public static function renderContactImage($idImage, $typeKey) {
 			// Image ID === 0 => get random dummy image
-		$imageKey	=  self::hasImage($imageKey, $typeKey) ? $imageKey : 0;
-		$filePath	=  self::getPathContactImage($imageKey, $typeKey);
+		$idImage	=  self::hasContactImage($idImage, $typeKey) ? $idImage : 0;
+		$filePath	=  self::getPathContactImage($idImage, $typeKey, 'contactimage');
 
+		self::renderImage($filePath);
+	}
+
+
+
+	/**
+	 * @static
+	 * @param	String/Integer	$idImage
+	 * @param	String			$typeKey
+	 */
+	public static function renderAvatarImage($idImage, $typeKey) {
+		$idImage	=  self::hasAvatar($idImage, $typeKey) ? $idImage : 0;
+		$filePath	=  self::getPathContactImage($idImage, $typeKey, 'avatar');
+
+		self::renderImage($filePath);
+	}
+
+
+
+	/**
+	 * @static
+	 * @param	String		$filePath
+	 */
+	protected static function renderImage($filePath) {
 		header('Content-Type: image/png');
 		header('Content-Disposition: inline; filename="' . basename($filePath) . '"');
 		echo file_get_contents($filePath);
@@ -130,10 +203,8 @@ class TodoyuContactImageManager {
 	 * @param	String		$typeKey		'person' / 'company'
 	 * @return	Integer
 	 */
-	public static function store($path, $name, $mime, $idRecord, $typeKey) {
+	public static function storeImage($path, $name, $mime, $idRecord, $typeKey) {
 		$idRecord	= intval($idRecord);
-
-		$storageDir	= self::getPathStorageDir($typeKey);
 
 		if( $idRecord == 0 ) {
 			$idRecord	= md5(NOW);
@@ -142,10 +213,8 @@ class TodoyuContactImageManager {
 			$new	= false;
 		}
 
-		$dimension			= self::getDimension();
-		$pathResizedImage	= $storageDir . '/' . $idRecord . '/' . self::$destFileName;
-
-		TodoyuImageManager::saveResizedImage($path, $pathResizedImage, $dimension['x'], $dimension['y'], null, true);
+		self::storeContactImage($idRecord, $path, $typeKey);
+		self::storeAvatarImage($idRecord, $path, $typeKey);
 
 		return $new ? $idRecord : 0;
 	}
@@ -153,25 +222,31 @@ class TodoyuContactImageManager {
 
 
 	/**
-	 * Get path to storage directory
-	 *
-	 * @param	String	$typeKey		'person' / 'company'
-	 * @return	String
+	 * @static
+	 * @param $idRecord
+	 * @param $path
+	 * @param $typeKey
 	 */
-	public static function getPathStorageDir($typeKey) {
-		return TodoyuFileManager::pathAbsolute(Todoyu::$CONFIG['EXT']['contact']['contactimage']['path' . $typeKey]);
+	protected static function storeContactImage($idRecord, $path, $typeKey) {
+		$pathResizedImage	= self::getPathStorageDir($typeKey, 'contactimage') . '/' . $idRecord . '/' . self::$destFileName;
+		$dimension			= self::getDimension('contactimage');
+
+		TodoyuImageManager::saveResizedImage($path, $pathResizedImage, $dimension['x'], $dimension['y'], null, true);
 	}
 
 
 
 	/**
-	 * Gets the web-path to the image
-	 *
-	 * @param	String	$typeKey		'person' / 'company'
-	 * @return	String
+	 * @static
+	 * @param	Integer		$idRecord
+	 * @param	String		$path
+	 * @param	String		$typeKey
 	 */
-	public static function getPathWebDir($typeKey) {
-		return TodoyuFileManager::pathWeb(Todoyu::$CONFIG['EXT']['contact']['contactimage']['path' . $typeKey]);
+	protected static function storeAvatarImage($idRecord, $path, $typeKey) {
+		$pathResizedImage	= self::getPathStorageDir($typeKey, 'avatar') . '/' . $idRecord . '/' . self::$destFileName;
+		$dimension			= self::getDimension('avatar');
+
+		TodoyuImageManager::saveResizedImage($path, $pathResizedImage, $dimension['x'], $dimension['y'], null, true);
 	}
 
 
@@ -179,16 +254,16 @@ class TodoyuContactImageManager {
 	/**
 	 * Get path to profile image of contact record of given type + ID
 	 *
-	 * @param	Integer		$imageKey		ID of TodoyuContactPerson / TodoyuContactCompany
-	 * @param	String		$typeKey		'person' / 'company'
+	 * @param	Integer		$idContact		ID of TodoyuContactPerson / TodoyuContactCompany
+	 * @param	String		$contactType		'person' / 'company'
 	 * @return	String
 	 */
-	public static function getPathContactImage($imageKey, $typeKey) {
-		if( $imageKey === 0 ) {
+	protected static function getPathContactImage($idContact, $contactType, $imageType) {
+		if( $idContact === 0 ) {
 				// Get random dummy image
 			$path	= PATH . '/ext/contact/asset/img/persondefault/user0' . rand(1, 6) . '.png';
 		} else {
-			$path	= self::getPathStorageDir($typeKey)  . '/' . $imageKey . '/' . self::$destFileName;
+			$path	= self::getPathStorageDir($contactType, $imageType)  . '/' . $idContact . '/' . self::$destFileName;
 		}
 
 		return $path;
@@ -204,22 +279,25 @@ class TodoyuContactImageManager {
 	 * @param	Integer		$idRecord
 	 */
 	public static function renameStorageFolder($typeKey, $temporaryImageKey, $idRecord) {
-		$storagePath	= self::getPathStorageDir($typeKey);
+		$storagePathContactImage	= self::getPathStorageDir($typeKey, 'contactimage');
+		$storagePathAvatar			= self::getPathStorageDir($typeKey, 'avatar');
 
-		if( is_dir($storagePath) ) {
-			TodoyuFileManager::rename($storagePath . '/' . $temporaryImageKey, $storagePath . '/' . $idRecord);
-		}
+		self::renameFile($storagePathContactImage, $temporaryImageKey, $idRecord);
+		self::renameFile($storagePathAvatar, $temporaryImageKey, $idRecord);
 	}
 
 
 
 	/**
-	 * Returns the dimension of a picture (set in contact/config/init.php)
-	 *
-	 * @return	Array
+	 * @static
+	 * @param	String			$storagePath
+	 * @param	String/Integer	$temporaryImageKey
+	 * @param	Integer			$idRecord
 	 */
-	protected static function getDimension() {
-		return Todoyu::$CONFIG['EXT']['contact']['contactimage']['dimension'];
+	protected static function renameFile($storagePath, $temporaryImageKey, $idRecord) {
+		if (is_dir($storagePath)) {
+			TodoyuFileManager::rename($storagePath . '/' . $temporaryImageKey, $storagePath . '/' . $idRecord);
+		}
 	}
 
 
@@ -231,11 +309,25 @@ class TodoyuContactImageManager {
 	 * @param	String		$typeKey		'person' / 'company'
 	 */
 	public static function removeImage($idImage, $typeKey) {
-		$storageDir	= self::getPathStorageDir($typeKey);
-		$dir		= $storageDir . '/' . $idImage;
+		$storageDir	= self::getPathStorageDir($typeKey, 'contactimage');
+		self::removeFile($storageDir, $idImage);
+		$storageDir	= self::getPathStorageDir($typeKey, 'avatar');
+		self::removeFile($storageDir, $idImage);
+	}
 
-		if( is_file($dir . '/contactimage.png') ) {
-			unlink($dir . '/contactimage.png');
+
+
+	/**
+	 * @static
+	 * @param	String			$storageDir
+	 * @param	String/Integer	$idImage
+	 */
+	protected static function removeFile($storageDir, $idImage) {
+		$dir = $storageDir . '/' . $idImage;
+		$file = $dir . '/' . self::$destFileName;
+
+		if (is_file($file)) {
+			unlink($file);
 			rmdir($dir);
 		}
 	}
@@ -249,7 +341,7 @@ class TodoyuContactImageManager {
 	 * @return	Boolean
 	 */
 	public static function checkFileType($typeKey) {
-		$allowedTypes	= Todoyu::$CONFIG['EXT']['contact']['contactimage']['allowedTypes'];
+		$allowedTypes = self::getAllowedTypes('contactimage');
 
 		if( !in_array($typeKey, $allowedTypes) ) {
 			return false;
@@ -258,6 +350,49 @@ class TodoyuContactImageManager {
 		return true;
 	}
 
+
+
+	/**
+	 * @return	Array
+	 */
+	protected static function getAllowedTypes($imageType) {
+		return Todoyu::$CONFIG['EXT']['contact'][$imageType]['allowedTypes'];
+	}
+
+
+
+	/**
+	 * Returns the dimension of a picture (set in contact/config/init.php)
+	 *
+	 * @return	Array
+	 */
+	protected static function getDimension($imageType) {
+		return Todoyu::$CONFIG['EXT']['contact'][$imageType]['dimension'];
+	}
+
+
+
+	/**
+	 * Get path to storage directory
+	 *
+	 * @param	String	$contactType		'person' / 'company'
+	 * @return	String
+	 */
+	protected static function getPathStorageDir($contactType, $imageType) {
+		return TodoyuFileManager::pathAbsolute(Todoyu::$CONFIG['EXT']['contact'][$imageType]['path' . $contactType]);
+	}
+
+
+
+	/**
+	 * Gets the web-path to the image
+	 *
+	 * @param	String	$contactType		'person' / 'company'
+	 * @return	String
+	 */
+	protected static function getPathWebDir($contactType, $imageType) {
+		return TodoyuFileManager::pathWeb(Todoyu::$CONFIG['EXT']['contact'][$imageType]['path' . $contactType]);
+	}
 }
 
 ?>

@@ -118,7 +118,7 @@ class TodoyuContactFormhandlingActionController extends TodoyuActionController {
 
 			// Render frame content. Success or error
 		if( $error === UPLOAD_ERR_OK ) {
-			$idReplace	= TodoyuContactImageManager::store($file['tmp_name'], $file['name'], $file['type'], $idContact, $recordType);
+			$idReplace	= TodoyuContactImageManager::storeImage($file['tmp_name'], $file['name'], $file['type'], $idContact, $recordType);
 
 			return TodoyuContactRenderer::renderUploadFormFinished($recordType, $idContact, $idReplace);
 		} else {

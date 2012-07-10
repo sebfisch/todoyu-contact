@@ -205,8 +205,23 @@ Todoyu::$CONFIG['EXT']['contact']['contactimage'] = array(
 	'pathcompany'	=> 'files/contact/company',
 	'max_file_size'	=> 512000,
 	'dimension'		=> array(
-		'x'	=> 100,
-		'y'	=> 100
+		'x'	=> 120,
+		'y'	=> 120
+	),
+	'allowedTypes'	=> array(
+		'image/png',
+		'image/jpeg',
+		'image/gif'
+	)
+);
+
+Todoyu::$CONFIG['EXT']['contact']['avatar'] = array(
+	'pathperson'	=> 'files/contact/person/avatar',
+	'pathcompany'	=> 'files/contact/company/avatar',
+	'max_file_size'	=> 512000,
+	'dimension'		=> array(
+		'x'	=> 80,
+		'y'	=> 80
 	),
 	'allowedTypes'	=> array(
 		'image/png',

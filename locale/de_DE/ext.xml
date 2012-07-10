@@ -20,6 +20,7 @@
 	<label index="contactimage.upload.maxFileSizeExceeded">Die Datei '#{filename}' hat die maximal zulässige Grösse für Uploads (#{maxFileSize}) überschritten</label>
 	<label index="contactimage.upload.maxLengthFileNameExceeded">Der Dateiname '#{filename}' hat die maximal zulässige Länge (#{maxLengthFileName}) für den Upload überschritten</label>
 	<label index="contactimage.upload.remove">Profilbild entfernen</label>
+	<label index="contactimage.note">Die Bilder werden quadratisch skaliert. Für eine optimale Qualität, bitte ein Quadratisches Bild hochladen.</label>
 	<label index="person.new">Neue Person</label>
 	<label index="person.create">Neue Person hinzufügen</label>
 	<label index="person.edit">Person bearbeiten</label>

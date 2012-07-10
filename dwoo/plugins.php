@@ -202,7 +202,20 @@ function Dwoo_Plugin_salutationLabel(Dwoo $dwoo, $idPerson) {
  * @return	String
  */
 function Dwoo_Plugin_personImage_compile(Dwoo_Compiler $compiler, $idPerson) {
-	return 'TodoyuContactImageManager::getImage(' . $idPerson . ', \'person\')';
+	return 'TodoyuContactImageManager::getContactImage(' . $idPerson . ', \'person\')';
+}
+
+
+
+/**
+ * Renders the image of given person
+ *
+ * @param	Dwoo_Compiler	$compiler
+ * @param	Integer			$idPerson
+ * @return	String
+ */
+function Dwoo_Plugin_personAvatar_compile(Dwoo_Compiler $compiler, $idPerson) {
+	return 'TodoyuContactImageManager::getAvatarImage(' . $idPerson . ', \'person\')';
 }
 
 
@@ -215,7 +228,7 @@ function Dwoo_Plugin_personImage_compile(Dwoo_Compiler $compiler, $idPerson) {
  * @return	String
  */
 function Dwoo_Plugin_companyImage_compile(Dwoo_Compiler $compiler, $idCompany) {
-	return 'TodoyuContactImageManager::getImage(' . $idCompany . ', \'company\')';
+	return 'TodoyuContactImageManager::getContactImage(' . $idCompany . ', \'company\')';
 }
 
 

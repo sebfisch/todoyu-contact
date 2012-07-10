@@ -319,7 +319,7 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 		TodoyuContactCompanyRights::restrictSee($idCompany);
 
-		return TodoyuContactImageManager::getImage($idCompany, 'company', $wasRemoved);
+		return TodoyuContactImageManager::getContactImage($idCompany, 'company', $wasRemoved);
 	}
 
 
@@ -329,12 +329,27 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 	 *
 	 * @param	Array	$params
 	 */
-	public function renderimageAction(array $params) {
+	public function rendercontactimageAction(array $params) {
 		$idCompany	= $params['idImage'];
 
 		TodoyuContactCompanyRights::restrictSee($idCompany);
 
-		TodoyuContactImageManager::renderImage($idCompany, 'company');
+		TodoyuContactImageManager::renderContactImage($idCompany, 'company');
+	}
+
+
+
+	/**
+	 * Output of an image
+	 *
+	 * @param	Array	$params
+	 */
+	public function renderavatarAction(array $params) {
+		$idCompany	= $params['idImage'];
+
+		TodoyuContactCompanyRights::restrictSee($idCompany);
+
+		TodoyuContactImageManager::renderAvatarImage($idCompany, 'company');
 	}
 
 

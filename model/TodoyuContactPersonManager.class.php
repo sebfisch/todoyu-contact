@@ -449,7 +449,19 @@ class TodoyuContactPersonManager {
 	 * @return	Boolean
 	 */
 	public static function hasImage($idPerson) {
-		return TodoyuContactImageManager::hasImage($idPerson, self::contactTypeKey);
+		return TodoyuContactImageManager::hasImage($idPerson, self::contactTypeKey, 'contactimage');
+	}
+
+
+
+	/**
+	 * Check whether person of given ID has any image in profile
+	 *
+	 * @param		$idPerson
+	 * @return		Boolean
+	 */
+	public static function hasAvatar($idPerson) {
+		return TodoyuContactImageManager::hasImage($idPerson, self::contactTypeKey, 'avatar');
 	}
 
 
