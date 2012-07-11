@@ -422,29 +422,11 @@ class TodoyuContactViewHelper {
 	/**
 	 * Get selector options config array for timezones, grouped into optGroups of continents
 	 *
-	 * @param	TodoyuFormElement $field
-	 * @return	Array
-	 * @todo	Move to core?
+	 * @param	TodoyuFormElement_SelectGrouped 	$field
+	 * @return	Array[]
 	 */
-	public static function getTimezoneOptionsGrouped(TodoyuFormElement $field) {
-		$timezones	= TodoyuStaticRecords::getAllTimezones();
-		$optGroups	= array();
-
-		foreach($timezones as $timezone) {
-			list($tzRegion)	= explode('/', $timezone['timezone']);
-
-				// Get timezone's offset from UTC (Coordinated universal time)
-			$utcDateTime= new DateTime('now', new DateTimeZone($timezone['timezone']));
-			$utcOffset	= $utcDateTime->format('P');
-
-				// Add option
-			$optGroups[$tzRegion][] = array(
-				'value'	=> $timezone['id'],
-				'label'	=> ' (UTC' . $utcOffset . ') ' . $timezone['timezone']
-			);
-		}
-
-		return $optGroups;
+	public static function getTimezoneOptionsGrouped(TodoyuFormElement_SelectGrouped $field) {
+		return TodoyuTimezoneManager::getTimezonesGroupedOptions(true, true);
 	}
 
 
