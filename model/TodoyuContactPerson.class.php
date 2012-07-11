@@ -726,6 +726,17 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 
 
 	/**
+	 * Get mail receiver
+	 *
+	 * @return	TodoyuMailReceiverInterface
+	 */
+	public function getMailReceiver() {
+		return TodoyuMailReceiverManager::getMailReceiver($this->getID());
+	}
+
+
+
+	/**
 	 * Load all foreign records of a person
 	 */
 	public function loadForeignData() {
