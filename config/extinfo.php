@@ -32,7 +32,7 @@ Todoyu::$CONFIG['EXT']['contact']['info'] = array(
 	'state'			=> 'stable',
 	'version'		=> '1.3.0',
 	'constraints'	=> array(
-		'core'		=> '2.2.1',
+		'core'		=> '2.3.0b1',
 		'system'	=> true
 	),
 	'urlDocumentation'	=> 'http://doc.todoyu.com/?contact'
