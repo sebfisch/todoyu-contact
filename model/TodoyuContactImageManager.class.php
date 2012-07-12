@@ -60,11 +60,12 @@ class TodoyuContactImageManager {
 	/**
 	 * Check whether the contact of given type and ID has an image (real file, not the displayed fallback dummy) assigned
 	 *
-	 * @param	String		$idContact	ID of TodoyuContactPerson / TodoyuContactCompany
+	 * @param	String		$idContact		ID of TodoyuContactPerson / TodoyuContactCompany
 	 * @param	String		$contactType	'person' / 'company'
+	 * @param
 	 * @return	Boolean
 	 */
-	protected static function hasImage($idContact, $contactType, $imageType) {
+	public static function hasImage($idContact, $contactType, $imageType) {
 		$pathContactImage	= self::getPathContactImage($idContact, $contactType, $imageType);
 
 		return TodoyuFileManager::isFile($pathContactImage);
@@ -222,7 +223,8 @@ class TodoyuContactImageManager {
 
 
 	/**
-	 * @static
+	 *
+	 *
 	 * @param $idRecord
 	 * @param $path
 	 * @param $typeKey
@@ -237,7 +239,8 @@ class TodoyuContactImageManager {
 
 
 	/**
-	 * @static
+	 *
+	 *
 	 * @param	Integer		$idRecord
 	 * @param	String		$path
 	 * @param	String		$typeKey
@@ -254,8 +257,9 @@ class TodoyuContactImageManager {
 	/**
 	 * Get path to profile image of contact record of given type + ID
 	 *
-	 * @param	Integer		$idContact		ID of TodoyuContactPerson / TodoyuContactCompany
+	 * @param	Integer		$idContact			ID of TodoyuContactPerson / TodoyuContactCompany
 	 * @param	String		$contactType		'person' / 'company'
+	 * @param	String		$imageType
 	 * @return	String
 	 */
 	protected static function getPathContactImage($idContact, $contactType, $imageType) {
@@ -353,10 +357,13 @@ class TodoyuContactImageManager {
 
 
 	/**
+	 * Get allowed image mime types
+	 *
+	 * @param	String		$imageType
 	 * @return	Array
 	 */
 	protected static function getAllowedTypes($imageType) {
-		return Todoyu::$CONFIG['EXT']['contact'][$imageType]['allowedTypes'];
+		return TodoyuArray::assure(Todoyu::$CONFIG['EXT']['contact'][$imageType]['allowedTypes']);
 	}
 
 
@@ -364,10 +371,11 @@ class TodoyuContactImageManager {
 	/**
 	 * Returns the dimension of a picture (set in contact/config/init.php)
 	 *
+	 * @param	String		$imageType
 	 * @return	Array
 	 */
 	protected static function getDimension($imageType) {
-		return Todoyu::$CONFIG['EXT']['contact'][$imageType]['dimension'];
+		return TodoyuArray::assure(Todoyu::$CONFIG['EXT']['contact'][$imageType]['dimension']);
 	}
 
 
@@ -375,7 +383,8 @@ class TodoyuContactImageManager {
 	/**
 	 * Get path to storage directory
 	 *
-	 * @param	String	$contactType		'person' / 'company'
+	 * @param	String		$contactType		'person' / 'company'
+	 * @param	String		$imageType
 	 * @return	String
 	 */
 	protected static function getPathStorageDir($contactType, $imageType) {
@@ -387,7 +396,8 @@ class TodoyuContactImageManager {
 	/**
 	 * Gets the web-path to the image
 	 *
-	 * @param	String	$contactType		'person' / 'company'
+	 * @param	String		$contactType		'person' / 'company'
+	 * @param	String		$imageType
 	 * @return	String
 	 */
 	protected static function getPathWebDir($contactType, $imageType) {
