@@ -39,7 +39,6 @@ class TodoyuContactProfileManager {
 
 		$form	= TodoyuFormManager::getForm($xmlPath, $idPerson);
 
-
 		$form->setRecordID($idPerson);
 
 			// Adapt form action and buttons for profile
@@ -48,18 +47,6 @@ class TodoyuContactProfileManager {
 		$fieldsetButtons	= $form->getFieldset('buttons');
 		$fieldsetButtons->getField('save')->setAttribute('onclick', 'Todoyu.Ext.contact.Profile.save(this.form)');
 		$fieldsetButtons->getField('cancel')->remove();
-
-			// Remove internal data fields for non-admins (comment, account)
-		if( !TodoyuAuth::isAdmin() ) {
-			$form->getFieldset('main')->getField('comment')->remove();
-
-				// Move email field from account into main fieldset
-			$fieldsetAccount= $form->getFieldset('account');
-			$fieldEmail		= $fieldsetAccount->getFieldset('loginfields')->getField('email');
-			$form->getFieldset('main')->addField('email', $fieldEmail);
-				// Remove account fieldset
-			$fieldsetAccount->remove();
-		}
 
 		return $form;
 	}
