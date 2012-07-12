@@ -97,6 +97,7 @@
 	<label index="contactinfo.type.fax_exchange">Faxzentrale</label>
 	<label index="contactinfo.type.website">Website</label>
 	<label index="contactinfo.type.skype">Skype</label>
+	<label index="contactinfo.type.tel_internal">Telefon intern</label>
 	<label index="address">Adresse</label>
 	<label index="place">Ort</label>
 	<label index="address.new">Neue Adresse</label>
