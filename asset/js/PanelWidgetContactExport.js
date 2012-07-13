@@ -42,7 +42,7 @@ Todoyu.Ext.contact.PanelWidget.ContactExport = {
 		var options = {
 			action:		'export',
 			tab:		Todoyu.Tabs.getActive('contact').id.replace('contact-tab-',''),
-			searchword:	this.ext.PanelWidget.ContactSearch.getValue()
+			searchword:	this.ext.getSearchText()
 		};
 
 		Todoyu.goTo('contact', 'panelwidgetcontactexport', options , '', false);
