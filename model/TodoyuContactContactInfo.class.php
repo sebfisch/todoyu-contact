@@ -38,6 +38,27 @@ class TodoyuContactContactInfo extends TodoyuBaseObject {
 
 
 	/**
+	 * Get info
+	 *
+	 * @return	String
+	 */
+	public function getInfo() {
+		return $this->get('info');
+	}
+
+
+
+	/**
+	 * Check whether contact info is preferred
+	 *
+	 * @return	Boolean
+	 */
+	public function isPreferred() {
+		return $this->isFlagSet('is_preferred');
+	}
+
+
+	/**
 	 * Get contact info type ID
 	 *
 	 * @return	Integer

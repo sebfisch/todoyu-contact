@@ -24,13 +24,17 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuContactFormElement_RecordsEmailPerson extends TodoyuContactFormElement_RecordsPerson {
+class TodoyuContactFormElement_RecordsEmailPerson extends TodoyuFormElement_Records {
 
 	/**
-	 * Init the object with special person config
+	 * Initialize
+	 *
+	 * @param	String				$name
+	 * @param	TodoyuFormFieldset	$fieldset
+	 * @param	Array				$config
 	 */
-	protected function init() {
-		$this->initRecords('emailPerson', 'contact', 'person', 'emailPersonList');
+	public function __construct($name, TodoyuFormFieldset $fieldset, array $config = array()) {
+		parent::__construct('emailPerson', $name, $fieldset, $config);
 	}
 
 
@@ -38,7 +42,7 @@ class TodoyuContactFormElement_RecordsEmailPerson extends TodoyuContactFormEleme
 	/**
 	 * Get record data
 	 *
-	 * @return	Array
+	 * @return	Array[]
 	 */
 	protected function getRecords() {
 		$personIDs	= $this->getValue();
@@ -46,8 +50,9 @@ class TodoyuContactFormElement_RecordsEmailPerson extends TodoyuContactFormEleme
 
 		foreach($personIDs as $idPerson) {
 			$records[] = array(
-				'id'	=> $idPerson,
-				'label'	=> TodoyuContactPersonManager::getLabel($idPerson, true)
+				'id'		=> $idPerson,
+				'label'		=> TodoyuContactPersonManager::getLabel($idPerson, true),
+				'className'	=> 'emailPerson'
 			);
 		}
 

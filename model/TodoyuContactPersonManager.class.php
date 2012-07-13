@@ -1158,17 +1158,20 @@ class TodoyuContactPersonManager {
 	 *
 	 * @param 	String[]	$searchWords
 	 * @param	Integer[]	$ignoreIDs
+	 * @param	Array		$params
+	 * @param	String		$type
 	 * @return	Array[]
 	 */
-	public static function getMatchingStaffPersons(array $searchWords, array $ignoreIDs = array()) {
+	public static function getMatchingStaffPersons(array $searchWords, array $ignoreIDs = array(), array $params = array(), $type = null) {
 		$ignore			= TodoyuArray::intval($ignoreIDs, true, true);
 		$staffPersons	= self::searchStaff($searchWords, $ignore);
 		$staffItems		= array();
 
 		foreach($staffPersons as $person) {
 			$staffItems[] = array(
-				'id'	=> $person['id'],
-				'label'	=> $person['label']
+				'id'		=> $person['id'],
+				'label'		=> $person['label'],
+				'className'	=> 'typeStaff'
 			);
 		}
 
@@ -1192,8 +1195,9 @@ class TodoyuContactPersonManager {
 			$person	= self::getPerson($personData['id']);
 
 			$personItems[] = array(
-				'id'	=> $person['id'],
-				'label'	=> $person->getLabel()
+				'id'		=> $person['id'],
+				'label'		=> $person->getLabel(),
+				'className'	=> 'typePerson'
 			);
 		}
 
@@ -1217,12 +1221,75 @@ class TodoyuContactPersonManager {
 			$person	= self::getPerson($personData['id']);
 
 			$personItems[] = array(
-				'id'	=> $person['id'],
-				'label'	=> $person->getLabel(true)
+				'id'		=> $person['id'],
+				'label'		=> $person->getLabel(true),
+				'className'	=> 'typeEmailPerson'
 			);
 		}
 
 		return $personItems;
+	}
+
+
+
+	/**
+	 * Get matching email receiver tuples for active persons
+	 *
+	 * @param	String[]		$searchWords
+	 * @param	String[]		$ignoreTuples
+	 * @param	Array			$params
+	 * @return	String[]
+	 */
+	public static function getMatchingEmailReceiversActivePersons(array $searchWords, array $ignoreTuples = array(), array $params = array()) {
+		$ignoreIDs	= array();
+		$tuples		= array();
+
+		foreach($ignoreTuples as $ignoreTuple) {
+			list($type, $idRecord) = explode(':', $ignoreTuple, 2);
+
+			if( $type === 'contactperson' ) {
+				$ignoreIDs[] = $idRecord;
+			}
+		}
+
+		$persons	= self::searchPersons($searchWords, 30, 0, $ignoreIDs, true);
+
+		foreach($persons as $person) {
+			$tuples[] = 'contactperson:' . $person['id'];
+		}
+
+		return $tuples;
+	}
+
+
+
+	/**
+	 * Get matching email receiver tuples for contact infos
+	 *
+	 * @param	String[]		$searchWords
+	 * @param	String[]		$ignoreTuples
+	 * @param	Array			$params
+	 * @return	String[]
+	 */
+	public static function getMatchingEmailReceiversContactInfo(array $searchWords, array $ignoreTuples = array(), array $params = array()) {
+		$ignoreIDs	= array();
+		$tuples		= array();
+
+		foreach($ignoreTuples as $ignoreTuple) {
+			list($type, $idRecord) = explode(':', $ignoreTuple, 2);
+
+			if( $type === 'contactinfo' ) {
+				$ignoreIDs[] = $idRecord;
+			}
+		}
+
+		$contactInfoIDs	= TodoyuContactContactInfoManagerPerson::getMatchingEmailContactInfoIDs($searchWords, $ignoreIDs, $params);
+
+		foreach($contactInfoIDs as $idContactInfo) {
+			$tuples[] = 'contactinfo:' . $idContactInfo;
+		}
+
+		return $tuples;
 	}
 
 

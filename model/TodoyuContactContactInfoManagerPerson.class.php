@@ -89,6 +89,41 @@ class TodoyuContactContactInfoManagerPerson extends TodoyuContactContactInfoMana
 		return $email;
 	}
 
+
+
+	/**
+	 * Get IDs of matching email contact infos
+	 *
+	 * @param	String[]	$searchWords
+	 * @param	Integer[]	$ignoreIDs
+	 * @param	Array		$params
+	 * @return	Integer[]
+	 */
+	public static function getMatchingEmailContactInfoIDs(array $searchWords, array $ignoreIDs = array(), array $params = array()) {
+		$ignoreIDs	= TodoyuArray::intval($ignoreIDs);
+
+		$fields	= '	ci.id';
+		$tables	= '	ext_contact_person p,
+					ext_contact_contactinfo ci,
+					ext_contact_contactinfotype cit,
+					ext_contact_mm_person_contactinfo mm';
+		$where	= '		mm.id_person			= p.id'
+				. ' AND	mm.id_contactinfo		= ci.id'
+				. '	AND	ci.id_contactinfotype	= cit.id'
+				. ' AND cit.category			= ' . CONTACT_INFOTYPE_CATEGORY_EMAIL
+				. '	AND ci.deleted = 0';
+
+		$searchFields	= array('p.username', 'p.email', 'p.firstname', 'p.lastname', 'p.shortname', 'ci.info');
+		$where			.= ' AND ' . TodoyuSql::buildLikeQueryPart($searchWords, $searchFields);
+
+			// Add ignore IDs
+		if( sizeof($ignoreIDs) > 0 ) {
+			$where .= ' AND ' . TodoyuSql::buildInListQueryPart($ignoreIDs, 'ci.id', true, true);
+		}
+
+		return Todoyu::db()->getColumn($fields, $tables, $where, '', '', 20, 'id');
+	}
+
 }
 
 ?>

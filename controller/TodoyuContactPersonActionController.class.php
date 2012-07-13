@@ -324,64 +324,6 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 		TodoyuContactImageManager::removeImage($idPerson, 'person');
 	}
 
-
-	/**
-	 * Get matching staff persons as JSON
-	 *
-	 * @param	Array		$params
-	 * @return	String
-	 */
-	public function staffListAction(array $params) {
-		$search			= trim($params['search']);
-		$searchWords	= TodoyuArray::trimExplode(' ', $search, true);
-		$ignoreIDs		= TodoyuArray::intExplode(',', $params['ignore']);
-		$staffPersons	= TodoyuContactPersonManager::getMatchingStaffPersons($searchWords, $ignoreIDs);
-
-		TodoyuHeader::sendTypeJSON();
-
-		return json_encode($staffPersons);
-	}
-
-
-
-	/**
-	 * Get matching persons as JSON
-	 *
-	 * @param	Array		$params
-	 * @return	String
-	 */
-	public function personListAction(array $params) {
-		$search			= trim($params['search']);
-		$searchWords	= TodoyuArray::trimExplode(' ', $search, true);
-		$ignoreIDs		= TodoyuArray::intExplode(',', $params['ignore']);
-		$persons		= TodoyuContactPersonManager::getMatchingPersons($searchWords, $ignoreIDs);
-
-		TodoyuHeader::sendTypeJSON();
-
-		return json_encode($persons);
-	}
-
-
-
-	/**
-	 * Get matching email persons as JSON
-	 *
-	 * @param	Array	$params
-	 * @return	String
-	 */
-	public function emailPersonListAction(array $params) {
-		$search			= trim($params['search']);
-		$searchWords	= TodoyuArray::trimExplode(' ', $search, true);
-		$ignoreIDs		= TodoyuArray::intExplode(',', $params['ignore']);
-		$persons		= TodoyuContactPersonManager::getMatchingEmailPersons($searchWords, $ignoreIDs);
-
-		TodoyuHeader::sendTypeJSON();
-
-		return json_encode($persons);
-	}
-
-
-
 }
 
 ?>

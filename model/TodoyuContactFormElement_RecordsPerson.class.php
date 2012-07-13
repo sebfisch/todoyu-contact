@@ -27,10 +27,14 @@
 class TodoyuContactFormElement_RecordsPerson extends TodoyuFormElement_Records {
 
 	/**
-	 * Init the object with special person config
+	 * Initialize
+	 *
+	 * @param	String				$name
+	 * @param	TodoyuFormFieldset	$fieldset
+	 * @param	Array				$config
 	 */
-	protected function init() {
-		$this->initRecords('staff', 'contact', 'person', 'personList');
+	public function __construct($name, TodoyuFormFieldset $fieldset, array $config = array()) {
+		parent::__construct('person', $name, $fieldset, $config);
 	}
 
 
@@ -46,8 +50,9 @@ class TodoyuContactFormElement_RecordsPerson extends TodoyuFormElement_Records {
 
 		foreach($personIDs as $idPerson) {
 			$records[] = array(
-				'id'	=> $idPerson,
-				'label'	=> TodoyuContactPersonManager::getLabel($idPerson)
+				'id'		=> $idPerson,
+				'label'		=> TodoyuContactPersonManager::getLabel($idPerson),
+				'className'	=> 'person'
 			);
 		}
 

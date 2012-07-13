@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Contact
  */
-class TodoyuContactMailReceiverPerson extends TodoyuMailReceiver implements TodoyuMailReceiverInterface {
+class TodoyuContactMailReceiverPerson extends TodoyuMailReceiver {
 
 	/**
 	 * @var	TodoyuContactPerson		Person
