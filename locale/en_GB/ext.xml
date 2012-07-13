@@ -54,6 +54,7 @@
 	<label index="person.attr.role.new">New Role</label>
 	<label index="person.attr.image.upload">Upload a profile picture</label>
 	<label index="person.attr.comment">Comment</label>
+	<label index="person.attr.mail_signature">Mail Signature</label>
 	<label index="person.header.noneselected">No Person Selected.</label>
 	<label index="person.mainpersondata">Main Person Data</label>
 	<label index="person.userinformation">User Information</label>
