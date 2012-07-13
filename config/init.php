@@ -21,214 +21,151 @@
 /* -------------------------------
 	Content Tabs Configuration
    ------------------------------- */
-Todoyu::$CONFIG['EXT']['contact']['tabs'] = array(
-	'person'	=> array(
-		'key'		=> 'person',
-		'id'		=> 'person',
-		'label'		=> 'contact.ext.persons',
-		'require'	=> 'contact.general:area',
-		'position'	=> 105
+Todoyu::$CONFIG['EXT']['contact'] = array(
+	'defaultTypeTab' => 'person',
+	'numFavoriteCountries' => 5,
+	'tabs' => array(
+		'person'	=> array(
+			'key'		=> 'person',
+			'id'		=> 'person',
+			'label'		=> 'contact.ext.persons',
+			'require'	=> 'contact.general:area',
+			'position'	=> 105
+		),
+		'company'	=> array(
+			'key'		=> 'company',
+			'id'		=> 'company',
+			'label'		=> 'contact.ext.companies',
+			'require'	=> 'contact.general:area',
+			'position'	=> 110
+		)
 	),
-	'company'	=> array(
-		'key'		=> 'company',
-		'id'		=> 'company',
-		'label'		=> 'contact.ext.companies',
-		'require'	=> 'contact.general:area',
-		'position'	=> 110
+	/* ---------------------------------------------
+		Categories of dynamic contact info types
+	   --------------------------------------------- */
+	'contactinfotypecategories' => array(
+		array(	// Email
+			'index'	=> CONTACT_INFOTYPE_CATEGORY_EMAIL,
+			'label'	=> 'contact.ext.record.contactinfotype.email'
+		),
+		array(	// Phone
+			'index'	=> CONTACT_INFOTYPE_CATEGORY_PHONE,
+			'label'	=> 'contact.ext.record.contactinfotype.phone'
+		),
+		array(	// Other
+			'index'	=> CONTACT_INFOTYPE_CATEGORY_OTHER,
+			'label'	=> 'contact.ext.record.contactinfotype.other'
+		)
+	),
+	/* -----------------------
+		Types of addresses
+	   ----------------------- */
+	'addresstypes' => array(
+		array(	// Home address
+			'index'	=> CONTACT_ADDRESSTYPE_HOME,
+			'label'	=> 'contact.ext.address.attr.addresstype.1'
+		),
+		array(	// Business address
+			'index'	=> CONTACT_ADDRESSTYPE_BUSINESS,
+			'label'	=> 'contact.ext.address.attr.addresstype.2'
+		),
+		array(	// Billing address
+			'index'	=> CONTACT_ADDRESSTYPE_INVOICE,
+			'label'	=> 'contact.ext.address.attr.addresstype.3'
+		)
+	),
+	'listing' => array(
+		'person' => array(
+			'name'		=> 'person',
+			'update'	=> 'contact/person/listing',
+			'dataFunc'	=> 'TodoyuContactPersonSearch::getPersonListingData',
+			'size'		=> Todoyu::$CONFIG['LIST']['size'],
+			'columns'	=> array(
+				'icon'		=> '',
+				'lastname'	=> 'contact.ext.person.attr.lastname',
+				'firstname'	=> 'contact.ext.person.attr.firstname',
+				'company'	=> 'contact.ext.company',
+				'actions'	=> '',
+			),
+			'truncate'	=> array(
+				'lastname'	=> 20,
+				'firstname'	=> 20,
+				'company'	=> 45
+			)
+		),
+		'company' => array(
+			'name'		=> 'company',
+			'update'	=> 'contact/company/listing',
+			'dataFunc'	=> 'TodoyuContactCompanySearch::getCompanyListingData',
+			'size'		=> Todoyu::$CONFIG['LIST']['size'],
+			'columns'	=> array(
+				'icon'		=> '',
+				'title'		=> 'contact.ext.company.attr.title',
+				'street'	=> 'contact.ext.address.attr.street',
+				'place'		=> 'contact.ext.place',
+				'actions'	=> ''
+			),
+			'truncate'	=> array(
+				'title'		=> 45,
+				'street'	=> 40,
+				'place'		=> 40
+			)
+		),
+		'employee' => array(
+			'name'		=> 'person',
+			'update'	=> 'contact/empoyee/listing',
+			'dataFunc'	=> 'TodoyuContactCompanySearch::getEmployeeListingData',
+			'size'		=> 999,
+			'columns'	=> array(
+				'name'		=> 'contact.ext.person',
+				'jobtype'	=> 'contact.ext.jobtype',
+			),
+			'truncate'	=> array(
+				'name'		=> 45,
+				'jobtype'	=> 50,
+			)
+		)
+	),
+	'panelWidgetProjectList' => array(
+		'maxPersons'	=> 30 // Maximum persons in staff listing widget
+	),
+	'panelWidgetStaffSelector'	=> array(
+		'maxListSize'	=> 15 // Max size of person selector widget
+	),
+	/* ----------------------------
+		Configure Contact Images
+	   ---------------------------- */
+	'contactimage' => array(
+		'pathperson'	=> 'files/contact/person',
+		'pathcompany'	=> 'files/contact/company',
+		'max_file_size'	=> 512000,
+		'dimension'		=> array(
+			'x'	=> 120,
+			'y'	=> 120
+		),
+		'allowedTypes'	=> array(
+			'image/png',
+			'image/jpeg',
+			'image/gif'
+		)
+	),
+	'avatar' => array(
+		'pathperson'	=> 'files/contact/person/avatar',
+		'pathcompany'	=> 'files/contact/company/avatar',
+		'max_file_size'	=> 512000,
+		'dimension'		=> array(
+			'x'	=> 80,
+			'y'	=> 80
+		),
+		'allowedTypes'	=> array(
+			'image/png',
+			'image/jpeg',
+			'image/gif'
+		)
 	)
 );
 
-Todoyu::$CONFIG['EXT']['contact']['defaultTypeTab'] = 'person';
 
-
-
-/* ---------------------------------------------
-	Add autocompleters for contact data types
-   --------------------------------------------- */
-	// Company
-TodoyuAutocompleter::addAutocompleter('company', 'TodoyuContactCompanyFilterDataSource::autocompleteCompanies', array('contact', 'general:use'));
-	// Person
-TodoyuAutocompleter::addAutocompleter('person', 'TodoyuContactPersonFilterDataSource::autocompletePersons', array('contact', 'general:use'));
-	// Jobtype
-TodoyuAutocompleter::addAutocompleter('jobtype', 'TodoyuContactJobTypeManager::autocompleteJobtypes', array('contact', 'general:use'));
-
-
-
-/* ---------------------------------------------
-	Add quickInfo callback for person labels
-   --------------------------------------------- */
-TodoyuQuickinfoManager::addFunction('person', 'TodoyuContactPersonQuickinfoManager::addPersonInfos');
-
-
-
-/* ---------------------------------------------
-	Categories of dynamic contact info types
-   --------------------------------------------- */
-Todoyu::$CONFIG['EXT']['contact']['contactinfotypecategories'] = array(
-	array(	// Email
-		'index'	=> CONTACT_INFOTYPE_CATEGORY_EMAIL,
-		'label'	=> 'contact.ext.record.contactinfotype.email'
-	),
-	array(	// Phone
-		'index'	=> CONTACT_INFOTYPE_CATEGORY_PHONE,
-		'label'	=> 'contact.ext.record.contactinfotype.phone'
-	),
-	array(	// Other
-		'index'	=> CONTACT_INFOTYPE_CATEGORY_OTHER,
-		'label'	=> 'contact.ext.record.contactinfotype.other'
-	),
-);
-
-
-
-/* -----------------------
-	Types of addresses
-   ----------------------- */
-Todoyu::$CONFIG['EXT']['contact']['addresstypes'] = array(
-	array(	// Home address
-		'index'	=> CONTACT_ADDRESSTYPE_HOME,
-		'label'	=> 'contact.ext.address.attr.addresstype.1'
-	),
-	array(	// Business address
-		'index'	=> CONTACT_ADDRESSTYPE_BUSINESS,
-		'label'	=> 'contact.ext.address.attr.addresstype.2'
-	),
-	array(	// Billing address
-		'index'	=> CONTACT_ADDRESSTYPE_INVOICE,
-		'label'	=> 'contact.ext.address.attr.addresstype.3'
-	)
-);
-
-Todoyu::$CONFIG['EXT']['contact']['numFavoriteCountries']	= 5;
-
-
-
-/* ----------------------------------------
-	Configure contact data types listings
-   --------------------------------------- */
-	// Person listing
-Todoyu::$CONFIG['EXT']['contact']['listing']['person'] = array(
-	'name'		=> 'person',
-	'update'	=> 'contact/person/listing',
-	'dataFunc'	=> 'TodoyuContactPersonSearch::getPersonListingData',
-	'size'		=> Todoyu::$CONFIG['LIST']['size'],
-	'columns'	=> array(
-		'icon'		=> '',
-		'lastname'	=> 'contact.ext.person.attr.lastname',
-		'firstname'	=> 'contact.ext.person.attr.firstname',
-		'company'	=> 'contact.ext.company',
-		'actions'	=> '',
-	),
-	'truncate'	=> array(
-		'lastname'	=> 20,
-		'firstname'	=> 20,
-		'company'	=> 45
-	)
-);
-
-	// Company listing
-Todoyu::$CONFIG['EXT']['contact']['listing']['company'] = array(
-	'name'		=> 'company',
-	'update'	=> 'contact/company/listing',
-	'dataFunc'	=> 'TodoyuContactCompanySearch::getCompanyListingData',
-	'size'		=> Todoyu::$CONFIG['LIST']['size'],
-	'columns'	=> array(
-		'icon'		=> '',
-		'title'		=> 'contact.ext.company.attr.title',
-		'street'	=> 'contact.ext.address.attr.street',
-		'place'		=> 'contact.ext.place',
-		'actions'	=> ''
-	),
-	'truncate'	=> array(
-		'title'		=> 45,
-		'street'	=> 40,
-		'place'		=> 40
-	)
-);
-
-Todoyu::$CONFIG['EXT']['contact']['listing']['employee'] = array(
-	'name'		=> 'person',
-	'update'	=> 'contact/empoyee/listing',
-	'dataFunc'	=> 'TodoyuContactCompanySearch::getEmployeeListingData',
-	'size'		=> 999,
-	'columns'	=> array(
-		'name'		=> 'contact.ext.person',
-		'jobtype'	=> 'contact.ext.jobtype',
-	),
-	'truncate'	=> array(
-		'name'		=> 45,
-		'jobtype'	=> 50,
-	)
-);
-
-
-
-/* ----------------------------------------
-	Configure search + results listing
-   --------------------------------------- */
-			// Person search
-Todoyu::$CONFIG['EXT']['contact']['listing']['personSearch'] = Todoyu::$CONFIG['EXT']['contact']['listing']['person'];
-Todoyu::$CONFIG['EXT']['contact']['listing']['personSearch']['dataFunc']	= 'TodoyuContactPersonSearch::getPersonListingDataSearch';
-
-	// Company search
-Todoyu::$CONFIG['EXT']['contact']['listing']['companySearch'] = Todoyu::$CONFIG['EXT']['contact']['listing']['company'];
-Todoyu::$CONFIG['EXT']['contact']['listing']['companySearch']['dataFunc']	= 'TodoyuContactCompanySearch::getCompanyListingDataSearch';
-
-
-
-/* ----------------------------------------------
-	Add exports to search area action panel
-   ---------------------------------------------- */
-TodoyuSearchActionPanelManager::addExport('company', 'csvexport', 'TodoyuContactCompanyExportManager::exportCSVfromIDs', 'contact.ext.export.companycsv', 'exportCsv', 'contactcompanysearch:export:companycsv');
-TodoyuSearchActionPanelManager::addExport('person', 'csvexport', 'TodoyuContactPersonExportManager::exportCSVfromIDs', 'contact.ext.export.personcsv', 'exportCsv', 'contactpersonsearch:export:personcsv');
-
-
-
-/* ----------------------------
-	Configure panel widgets
-   ---------------------------- */
-	// Maximum persons in staff listing widget
-Todoyu::$CONFIG['EXT']['contact']['panelWidgetProjectList']['maxPersons']	= 30;
-	// Max size of person selector widget
-Todoyu::$CONFIG['EXT']['contact']['panelWidgetStaffSelector'] = array(
-	'maxListSize'	=> 15
-);
-
-
-
-/* ----------------------------
-	Configure Contact Images
-   ---------------------------- */
-	//configuration of the contact-image
-Todoyu::$CONFIG['EXT']['contact']['contactimage'] = array(
-	'pathperson'	=> 'files/contact/person',
-	'pathcompany'	=> 'files/contact/company',
-	'max_file_size'	=> 512000,
-	'dimension'		=> array(
-		'x'	=> 120,
-		'y'	=> 120
-	),
-	'allowedTypes'	=> array(
-		'image/png',
-		'image/jpeg',
-		'image/gif'
-	)
-);
-
-Todoyu::$CONFIG['EXT']['contact']['avatar'] = array(
-	'pathperson'	=> 'files/contact/person/avatar',
-	'pathcompany'	=> 'files/contact/company/avatar',
-	'max_file_size'	=> 512000,
-	'dimension'		=> array(
-		'x'	=> 80,
-		'y'	=> 80
-	),
-	'allowedTypes'	=> array(
-		'image/png',
-		'image/jpeg',
-		'image/gif'
-	)
-);
 
 
 /* -------------------------------------
@@ -251,6 +188,47 @@ Todoyu::$CONFIG['EXT']['profile']['contactTabs'] = array(
 		'label'	=> 'contact.ext.profile.module'
 	)
 );
+
+
+
+/* ----------------------------------------
+	Configure search + results listing
+   --------------------------------------- */
+			// Person search
+Todoyu::$CONFIG['EXT']['contact']['listing']['personSearch'] = Todoyu::$CONFIG['EXT']['contact']['listing']['person'];
+Todoyu::$CONFIG['EXT']['contact']['listing']['personSearch']['dataFunc']	= 'TodoyuContactPersonSearch::getPersonListingDataSearch';
+
+	// Company search
+Todoyu::$CONFIG['EXT']['contact']['listing']['companySearch'] = Todoyu::$CONFIG['EXT']['contact']['listing']['company'];
+Todoyu::$CONFIG['EXT']['contact']['listing']['companySearch']['dataFunc']	= 'TodoyuContactCompanySearch::getCompanyListingDataSearch';
+
+
+
+/* ---------------------------------------------
+	Add autocompleters for contact data types
+   --------------------------------------------- */
+	// Company
+TodoyuAutocompleter::addAutocompleter('company', 'TodoyuContactCompanyFilterDataSource::autocompleteCompanies', array('contact', 'general:use'));
+	// Person
+TodoyuAutocompleter::addAutocompleter('person', 'TodoyuContactPersonFilterDataSource::autocompletePersons', array('contact', 'general:use'));
+	// Jobtype
+TodoyuAutocompleter::addAutocompleter('jobtype', 'TodoyuContactJobTypeManager::autocompleteJobtypes', array('contact', 'general:use'));
+
+
+
+/* ---------------------------------------------
+	Add quickInfo callback for person labels
+   --------------------------------------------- */
+TodoyuQuickinfoManager::addFunction('person', 'TodoyuContactPersonQuickinfoManager::addPersonInfos');
+
+
+/* ----------------------------------------------
+	Add exports to search area action panel
+   ---------------------------------------------- */
+TodoyuSearchActionPanelManager::addExport('company', 'csvexport', 'TodoyuContactCompanyExportManager::exportCSVfromIDs', 'contact.ext.export.companycsv', 'exportCsv', 'contactcompanysearch:export:companycsv');
+TodoyuSearchActionPanelManager::addExport('person', 'csvexport', 'TodoyuContactPersonExportManager::exportCSVfromIDs', 'contact.ext.export.personcsv', 'exportCsv', 'contactpersonsearch:export:personcsv');
+
+
 
 
 
@@ -283,15 +261,19 @@ TodoyuCreateWizardManager::addWizard('company', array(
 
 
 	// Add email receiver type: 'contactperson'
-TodoyuMailReceiverManager::registerType('contactperson', 'TodoyuContactMailReceiverPerson');
-
+TodoyuMailReceiverManager::addType('contactperson', 'TodoyuContactMailReceiverPerson');
+TodoyuMailReceiverManager::addType('contactinfo', 'TodoyuContactMailReceiverContactInfo');
 
 
 	// Records selector: staff (can be person, role or group)
-TodoyuFormManager::addFieldTypeRecords('recordsStaff', 'TodoyuContactFormElement_RecordsStaff');
+TodoyuFormRecordsManager::addType('staff', 'TodoyuContactFormElement_RecordsStaff', 'TodoyuContactPersonManager::getMatchingStaffPersons');
 	// Records selector: person
-TodoyuFormManager::addFieldTypeRecords('recordsPerson', 'TodoyuContactFormElement_RecordsPerson');
+TodoyuFormRecordsManager::addType('person', 'TodoyuContactFormElement_RecordsPerson', 'TodoyuContactPersonManager::getMatchingPersons');
 	// Records selector: email person
-TodoyuFormManager::addFieldTypeRecords('recordsEmailPerson', 'TodoyuContactFormElement_RecordsEmailPerson');
+TodoyuFormRecordsManager::addType('emailPerson', 'TodoyuContactFormElement_RecordsEmailPerson', 'TodoyuContactPersonManager::getMatchingEmailPersons');
+
+
+TodoyuMailReceiverManager::addSearchCallback('TodoyuContactPersonManager::getMatchingEmailReceiversActivePersons');
+TodoyuMailReceiverManager::addSearchCallback('TodoyuContactPersonManager::getMatchingEmailReceiversContactInfo');
 
 ?>
