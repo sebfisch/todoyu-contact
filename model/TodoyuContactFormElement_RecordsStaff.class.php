@@ -56,8 +56,6 @@ class TodoyuContactFormElement_RecordsStaff extends TodoyuFormElement_Records {
 			);
 		}
 
-		TodoyuDebug::printInFirebug($records, 'rec');
-
 		return $records;
 	}
 
