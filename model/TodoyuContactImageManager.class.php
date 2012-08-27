@@ -141,9 +141,8 @@ class TodoyuContactImageManager {
 		);
 
 		$imgSrc = TodoyuString::buildUrl($params);
-		$alt = $isDummy ? 'none' : '';
 
-		return TodoyuString::getImgTag($imgSrc, 0, 0, $alt);
+		return TodoyuString::getImgTag($imgSrc, 0, 0);
 	}
 
 
