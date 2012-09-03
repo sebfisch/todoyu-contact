@@ -23,8 +23,8 @@ h1.extIconContact .title {
 	Sub menu
    -------------------------- */
 #navi-main-list-contact {
-	li{
-		item {
+	li {
+		&.item {
 			a {
 				background-image: url(../img/icons.png) !important;
 				background-repeat: no-repeat;
