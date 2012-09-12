@@ -599,7 +599,6 @@ class TodoyuContactCompanyManager {
 	 * Compiled from the first address record. Using, street, zip and city
 	 *
 	 * @param	Integer		$idCompany
-	 * @param	Boolean		$includeStreet
 	 * @return	String
 	 */
 	public static function getCompanyAddressLabel($idCompany) {
@@ -618,7 +617,6 @@ class TodoyuContactCompanyManager {
 	 * Get place (zip and city) label of the company from the first address record.
 	 *
 	 * @param	Integer		$idCompany
-	 * @param	Boolean		$includeStreet
 	 * @return	String
 	 */
 	public static function getCompanyPlaceLabel($idCompany) {
@@ -640,9 +638,10 @@ class TodoyuContactCompanyManager {
 
 
 	/**
-	 * Get street of first related adddress record of company
+	 * Get street of first related address record of company
 	 *
-	 * @param	Integer	$idCompany
+	 * @param	Integer		$idCompany
+	 * @param	Boolean		$includeStreet
 	 * @return	String
 	 */
 	public static function getCompanyStreetLabel($idCompany, $includeStreet = true) {
