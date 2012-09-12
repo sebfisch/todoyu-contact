@@ -192,10 +192,12 @@ class TodoyuContactManager {
 	 * @return	TodoyuContactPanelWidgetStaffSelector	Or an extension of this class
 	 */
 	public static function getPanelWidgetStaffSelector($areaExtKey) {
-		$overrideExists	= TodoyuPanelWidgetManager::exists(AREA, $areaExtKey, 'StaffSelector');
+		$widgetName	= 'StaffSelector';
+
+		$overrideExists	= TodoyuPanelWidgetManager::exists(AREA, $areaExtKey, $widgetName);
 		$extKey			= $overrideExists ? $areaExtKey : 'contact';
 
-		return TodoyuPanelWidgetManager::getPanelWidget($extKey, 'StaffSelector');
+		return TodoyuPanelWidgetManager::getPanelWidget($extKey, $widgetName);
 	}
 
 }
