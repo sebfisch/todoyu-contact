@@ -280,7 +280,9 @@ Todoyu.Ext.contact.Person =  {
 	 * Handler evoked upon onComplete of person saving: check for and notify success / error, update display
 	 *
 	 * @method	onSaved
-	 * @param	{Array}		response
+	 * @param	{Number}			idPerson
+	 * @param	{Form}				form
+	 * @param	{Ajax.Response}		response
 	 */
 	onSaved: function(idPerson, form, response) {
 		var notificationIdentifier	= 'contact.person.saved';
