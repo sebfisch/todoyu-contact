@@ -121,6 +121,10 @@ class TodoyuContactContactInfoManagerPerson extends TodoyuContactContactInfoMana
 			$where .= ' AND ' . TodoyuSql::buildInListQueryPart($ignoreIDs, 'ci.id', true, true);
 		}
 
+		if( ! Todoyu::allowed('contact', 'person:seeAllPersons') ) {
+			$where .= ' AND p.' . TodoyuContactPersonRights::getAllowedToBeSeenPersonsWhereClause();
+		}
+
 		return Todoyu::db()->getColumn($fields, $tables, $where, '', '', 20, 'id');
 	}
 
