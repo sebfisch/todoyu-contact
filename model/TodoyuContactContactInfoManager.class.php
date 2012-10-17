@@ -179,8 +179,8 @@ class TodoyuContactContactInfoManager {
 		$idElement	= intval($idElement);
 		$category	= intval($category);
 
-		if( ! array_key_exists($key, self::$mmConfig) ) {
-			TodoyuLogger::logError('Key for contact info type missing or invalid');
+		if( !isset(self::$mmConfig[$key]) ) {
+			TodoyuLogger::logError('Key <' . $key . '> for contact info type missing or invalid');
 			return array();
 		}
 
