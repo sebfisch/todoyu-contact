@@ -1,6 +1,7 @@
 todoyu contact extension changelog
 
 contact 1.3.0 - not released yet
+	* Added: New field is_notactive to disable companies
 	* Bugfix: Fixed Problem with Person search
 	* Bugfix: label fix
 	* Bugfix: Added Avatar (smaller scaled contact-image)

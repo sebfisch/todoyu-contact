@@ -238,6 +238,15 @@ class TodoyuContactCompany extends TodoyuBaseObject {
 		return parent::getTemplateData();
 	}
 
+
+
+	/**
+	 * @return	Boolean
+	 */
+	public function isNotActive() {
+		return intval($this->get('is_notactive')) === 1;
+	}
+
 }
 
 ?>

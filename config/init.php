@@ -209,6 +209,7 @@ Todoyu::$CONFIG['EXT']['contact']['listing']['companySearch']['dataFunc']	= 'Tod
    --------------------------------------------- */
 	// Company
 TodoyuAutocompleter::addAutocompleter('company', 'TodoyuContactCompanyFilterDataSource::autocompleteCompanies', array('contact', 'general:use'));
+TodoyuAutocompleter::addAutocompleter('activecompany', 'TodoyuContactCompanyFilterDataSource::autocompleteActiveCompanies', array('contact', 'general:use'));
 	// Person
 TodoyuAutocompleter::addAutocompleter('person', 'TodoyuContactPersonFilterDataSource::autocompletePersons', array('contact', 'general:use'));
 	// Jobtype

@@ -372,6 +372,29 @@ class TodoyuContactCompanyFilter extends TodoyuSearchFilterBase implements Todoy
 		);
 	}
 
+
+
+	/**
+	 * Filter for no more active companies
+	 *
+	 * @param	Integer		$value
+	 * @param	Boolean		$negate
+	 * @return	Array				Query parts
+	 */
+	public function Filter_isNotActive($value, $negate = false) {
+		$tables	= array(self::TABLE);
+
+		$isNotActive	= $negate ? 0 : 1;
+		$where		= self::TABLE . '.is_notactive = ' . $isNotActive;
+
+		$queryParts	= array(
+			'tables'	=> $tables,
+			'where'		=> $where
+		);
+
+		return $queryParts;
+	}
+
 }
 
 ?>

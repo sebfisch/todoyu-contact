@@ -28,6 +28,10 @@
 					<label>contact.ext.company.attr.date_enter</label>
 				</field>
 
+				<field type="checkbox" name="is_notactive">
+					<label>contact.ext.company.attr.is_notactive</label>
+				</field>
+
 				<field type="checkbox" name="is_internal">
 					<label>contact.ext.company.attr.is_internal</label>
 				</field>

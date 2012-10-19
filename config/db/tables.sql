@@ -44,6 +44,7 @@ CREATE TABLE `ext_contact_company` (
 	`is_internal` tinyint(1) NOT NULL DEFAULT '0',
 	`comment` text NOT NULL,
 	`locale_correspondence` varchar(5) NOT NULL DEFAULT '',
+	`is_notactive` tinyint(2) NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 

@@ -237,6 +237,15 @@ Todoyu::$CONFIG['FILTERS']['COMPANY'] = array(
 				'negation'	=> 'datetime'
 			)
 		),
+		'notActive'		=> array(
+			'funcRef'	=> 'TodoyuContactCompanyFilter::Filter_isNotActive',
+			'label'		=> 'contact.ext.company.attr.is_notactive',
+			'optgroup'	=> 'contact.filter.company.label',
+			'widget'	=> 'checkbox',
+			'wConf'		=> array(
+				'negation'	=> false
+			)
+		),
 
 			// Person optgroup
 		'person' => array(

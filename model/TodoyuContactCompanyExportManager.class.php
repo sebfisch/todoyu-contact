@@ -129,6 +129,7 @@ class TodoyuContactCompanyExportManager {
 			Todoyu::Label('contact.ext.company.attr.title')			=> $company->getTitle(),
 			Todoyu::Label('contact.ext.company.attr.shortname')		=> $company->getShortname(),
 			Todoyu::Label('contact.ext.company.attr.is_internal')	=> $company->isInternal() ? $labelYes : $labelNo,
+			Todoyu::Label('contact.ext.company.attr.is_notactive')	=> $company->isNotActive() ? $labelYes : $labelNo
 		);
 
 			// Map & prepare contactinfo records of company

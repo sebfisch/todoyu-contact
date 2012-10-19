@@ -279,6 +279,10 @@ div#search-results {
 
 .companyListing span.icon {
 	background-position:2px -149px;
+
+	&.notactive {
+		background-position: 2px -599px;
+	}
 }
 
 

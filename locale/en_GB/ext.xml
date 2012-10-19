@@ -80,6 +80,7 @@
 	<label index="company.employees">Employees</label>
 	<label index="company.attr.image.upload">Upload a company logo</label>
 	<label index="company.attr.comment">Comment</label>
+	<label index="company.attr.is_notactive">Not active</label>
 	<label index="company.maincompanydata">Main Company Data</label>
 	<label index="company.removeLogo">Remove company logo</label>
 	<label index="contactinfo">Contact Information</label>

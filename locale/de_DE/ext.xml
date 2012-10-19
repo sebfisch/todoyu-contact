@@ -80,6 +80,7 @@
 	<label index="company.employees">Angestellte</label>
 	<label index="company.attr.image.upload">Firmenlogo hochladen</label>
 	<label index="company.attr.comment">Kommentar</label>
+	<label index="company.attr.is_notactive">Nicht mehr aktiv</label>
 	<label index="company.maincompanydata">Allgemeine Information</label>
 	<label index="company.removeLogo">Firmenlogo entfernen</label>
 	<label index="contactinfo">Kontaktinformation</label>

@@ -117,7 +117,9 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 		$address= TodoyuContactCompanyManager::getCompanyPlaceLabel($idCompany);
 
 		return array(
-			'icon'		=> '',
+			'icon'		=> array('content'		=> '',
+								 'classname'	=> TodoyuContactCompanyManager::getCompany($idCompany)->isNotActive() ? 'notactive' : ''
+			),
 			'title'		=> TodoyuContactCompanyManager::getCompany($idCompany)->getTitle(),
 			'street'	=> empty($street) ? '-' : $street,
 			'place'		=> empty($address) ? '-' : $address,

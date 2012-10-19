@@ -64,6 +64,30 @@ class TodoyuContactCompanyFilterDataSource {
 
 
 	/**
+	 * Reduce company autocompletion to active company (is_notactive = 0) companies
+	 *
+	 * @param	String		$input
+	 * @param	Array		$formData
+	 * @param	String		$name
+	 * @return	Array
+	 */
+	public static function autocompleteActiveCompanies($input, array $formData = array(), $name = ''){
+		$result 	= array();
+		$tempResult = self::autocompleteCompanies($input, $formData, $name);
+
+		foreach($tempResult as $idCompany => $companyTitle) {
+			$company	= TodoyuContactCompanyManager::getCompany($idCompany);
+			if( !$company->isNotActive() ) {
+				$result[$idCompany] = $companyTitle;
+			}
+		}
+
+		return $result;
+	}
+
+
+
+	/**
 	 * Get company label
 	 *
 	 * @param	Array	$definitions
