@@ -44,6 +44,10 @@
 					<label>contact.ext.person.attr.shortname</label>
 				</field>
 
+				<field type="checkbox" name="is_dummy">
+					<label>contact.ext.person.attr.is_dummy</label>
+				</field>
+
 				<field type="date" name="birthday">
 					<label>contact.ext.person.attr.birthday</label>
 					<storeAsDate />

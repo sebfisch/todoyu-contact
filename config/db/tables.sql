@@ -13,6 +13,7 @@ CREATE TABLE `ext_contact_person` (
 	`email` varchar(100) NOT NULL,
 	`id_smtpaccount` smallint(5) unsigned NOT NULL DEFAULT '0',
 	`is_admin` tinyint(1) NOT NULL DEFAULT '0',
+	`is_dummy` tinyint(1) NOT NULL DEFAULT '0',
 	`is_active` tinyint(1) NOT NULL DEFAULT '0',
 	`firstname` varchar(64) NOT NULL,
 	`lastname` varchar(64) NOT NULL,
