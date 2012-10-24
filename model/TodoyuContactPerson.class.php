@@ -203,6 +203,22 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 
 
 	/**
+	 * Check whether the person has the given extension's right
+	 *
+	 * @param	String		$ext
+	 * @param	String		$right
+	 * @return	Boolean
+	 */
+	public function hasRight($ext, $right) {
+		$roleIDs		= $this->getRoleIDs();
+		$rolesRights	= TodoyuArray::flatten(TodoyuRightsManager::getExtRoleRights($ext, $roleIDs));
+
+		return in_array($right, $rolesRights);
+	}
+
+
+
+	/**
 	 * Get fullname of the person
 	 *
 	 * @param	Boolean		$lastnameFirst

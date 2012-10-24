@@ -9,6 +9,7 @@ contact 1.3.0 - not released yet
 	* Bugfix: Person edit form in profile handling
 	* Feature: Outgoing mail account (including SMTP) in person account data
 	* Feature: Added person record selector according to staff selector
+	* Added: TodoyuContactPerson->hasRight($ext, $right)
 	* Added: UTC offset info in timezone options' labels
 	* Added: $ignoreIDs parameter to TodoyuContactPersonManager::searchPerson()
 	* Added: TodoyuContactPersonManager::getMatchingStaffPersons() and ::getMatchingPersons()
