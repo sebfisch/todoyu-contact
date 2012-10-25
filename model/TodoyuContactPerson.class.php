@@ -103,6 +103,17 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 
 
 	/**
+	 * Check whether person is a dummy user (e.g. room or other placeholder)
+	 *
+	 * @return	Boolean
+	 */
+	public function isDummy() {
+		return intval($this->data['is_dummy']) === 1;
+	}
+
+
+
+	/**
 	 * Get username
 	 *
 	 * @return	String
