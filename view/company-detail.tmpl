@@ -73,12 +73,16 @@
 		{/if}
 
 
+		{* ------------ Projects ------------ *}
+		{include file="ext/contact/view/detail-project-part.tmpl" header="LLL:contact.ext.company.details.projectPartHeader"}
+
+
 
 		{* ------------ Additional infos (date of entry) ------------ *}
 
 		<div class="infoBox others">
 			<h4>{Label LLL:contact.ext.other}</h4>
-				<div class="content overflow address">
+			<div class="content overflow address">
 				<table class="list autoWidthTable">
 					{if $date_enter > 0 && isInternal()}
 						<tr>
@@ -95,6 +99,8 @@
 				</table>
 			</div>
 		</div>
+
+
 
 		{* ------------ Hooked content ------------ *}
 		{$hookedContent}

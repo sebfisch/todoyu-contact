@@ -1310,5 +1310,26 @@ class TodoyuContactPersonManager {
 		TodoyuDbHelper::addMMLink('ext_contact_mm_company_person', 'id_person', 'id_company', $idPerson, $idCompany, $extraData);
 	}
 
+
+
+	/**
+	 * Project records which the given person is assigned to
+	 *
+	 * @param	Integer		$idPerson
+	 * @return	Array
+	 */
+	public static function getProjectOfPerson($idPerson) {
+		$idPerson	= intval($idPerson);
+
+		$fields	= 'p.*, mm.id_role';
+		$table	= 'ext_project_project as p,
+					ext_project_mm_project_person as mm';
+		$where	= 'p.id = mm.id_project AND mm.id_person = ' . $idPerson
+					. ' AND p.deleted = 0';
+
+		$group	= 'p.id';
+
+		return Todoyu::db()->getArray($fields, $table, $where, $group);
+	}
 }
 ?>

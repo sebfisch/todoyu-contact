@@ -575,6 +575,25 @@ class TodoyuContactCompanyManager {
 
 
 	/**
+	 * Get project records of a company
+	 *
+	 * @param	Integer		$idCompany
+	 * @return	Array
+	 */
+	public static function getCompanyProjectRecords($idCompany) {
+		$idCompany	= intval($idCompany);
+
+		$fields	= 'p.*';
+		$tables	= ' ext_project_project as p';
+		$where	= ' p.id_company = ' . $idCompany
+					. ' AND p.deleted = 0';
+
+		return Todoyu::db()->getArray($fields, $tables, $where);
+	}
+
+
+
+	/**
 	 * Get the number of persons on a company
 	 *
 	 * @param	Integer		$idCompany
@@ -661,18 +680,6 @@ class TodoyuContactCompanyManager {
 
 
 	/**
-	 * Check whether company of given ID has any image in profile
-	 *
-	 * @param	Integer		$idCompany
-	 * @return	Boolean
-	 */
-	public static function hasImage($idCompany) {
-		return TodoyuContactImageManager::hasImage($idCompany, self::contactTypeKey);
-	}
-
-
-
-	/**
 	 * Check whether a company has projects
 	 *
 	 * @param	Integer		$idCompany
@@ -718,6 +725,8 @@ class TodoyuContactCompanyManager {
 
 
 	/**
+	 * Get assigned project records of given company
+	 *
 	 * @param	Integer		$idCompany
 	 * @return	Array
 	 */

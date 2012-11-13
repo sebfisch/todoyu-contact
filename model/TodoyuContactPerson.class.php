@@ -551,6 +551,17 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 
 
 	/**
+	 * Get project records data
+	 *
+	 * @return	Array
+	 */
+	private function getPersonProjectRecords() {
+		return TodoyuContactPersonManager::getProjectOfPerson($this->getID());
+	}
+
+
+
+	/**
 	 * Get salutation key
 	 *
 	 * @return	String		'm' or 'w'
@@ -772,6 +783,7 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 			$this->data['contactinfo']	= $this->getContactInfoRecords();
 			$this->data['address']		= $this->getAddressRecords();
 			$this->data['role']			= $this->getRoleRecords();
+			$this->data['projects']		= $this->getPersonProjectRecords();
 		}
 	}
 
@@ -792,7 +804,6 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 
 		return parent::getTemplateData();
 	}
-
 }
 
 ?>

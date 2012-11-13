@@ -182,6 +182,12 @@ class TodoyuContactCompany extends TodoyuBaseObject {
 
 
 
+	public function getProjectRecords() {
+		return TodoyuContactCompanyManager::getCompanyProjectRecords($this->getID());
+	}
+
+
+
 	/**
 	 * Get correspondence locale
 	 *
@@ -219,6 +225,7 @@ class TodoyuContactCompany extends TodoyuBaseObject {
 			$this->data['person']		= $this->getEmployeesRecords();
 			$this->data['contactinfo']	= $this->getContactInfoRecords();
 			$this->data['address']		= $this->getAddressRecords();
+			$this->data['projects']		= $this->getProjectRecords();
 		}
 	}
 
@@ -246,7 +253,6 @@ class TodoyuContactCompany extends TodoyuBaseObject {
 	public function isNotActive() {
 		return intval($this->get('is_notactive')) === 1;
 	}
-
 }
 
 ?>
