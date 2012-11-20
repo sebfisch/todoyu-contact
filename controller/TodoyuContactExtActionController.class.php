@@ -70,6 +70,25 @@ class TodoyuContactExtActionController extends TodoyuActionController {
 		return TodoyuContactRenderer::renderContactPage($type, $idRecord, $searchWord, $content);
 	}
 
+
+
+	/**
+	 * Check for duplicated contactinfo entries
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
+	public function checkforduplicatedcontactinformationAction(array $params) {
+		$contactInfo		= $params['value'];
+
+		$records = TodoyuContactContactInfoManager::getContactInfoDuplicates($contactInfo);
+
+		if( sizeof($records) > 0 ) {
+			TodoyuHeader::sendTodoyuHeader('duplicates', true);
+		}
+
+		return TodoyuContactRenderer::renderDuplicatesList($records);
+	}
 }
 
 ?>

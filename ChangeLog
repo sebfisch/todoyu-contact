@@ -1,6 +1,7 @@
 todoyu contact extension changelog
 
 contact 1.3.0 - not released yet
+	* Added: Live-form-validation for duplicated contactinformation (person + company)
 	* Added: Live-form-validation for duplicated person (first + lastname)
 	* Added: Live-form-validation for duplicated company titles
 	* Added: List of assigned projects in company and person detail-view

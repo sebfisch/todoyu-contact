@@ -212,6 +212,73 @@ class TodoyuContactContactInfoManager {
 		return Todoyu::db()->getArray($fields, $tables, $where, '', $order);
 	}
 
+
+
+	/**
+	 * @param	String		$contactInfo
+	 * @return	Array
+	 */
+	public static function getContactInfoDuplicates($contactInfo) {
+		$duplicates	= array();
+		$records	= array();
+
+		if( trim($contactInfo) ) {
+			$duplicates = self::searchForDuplicatedContactInfo($contactInfo);
+		}
+
+		if ( sizeof($duplicates) > 0 ) {
+			foreach ($duplicates as $duplicatedContactInfo) {
+				$label = '';
+
+				if ( $duplicatedContactInfo['id_person'] ) {
+					if ( TodoyuContactRights::isContactinfotypeOfPersonSeeAllowed($duplicatedContactInfo['id_person'], $duplicatedContactInfo['id']) ) {
+						$label = TodoyuContactPersonManager::getPerson($duplicatedContactInfo['id_person'])->getFullName(true);
+					}
+				} else if ( $duplicatedContactInfo['id_company'] ) {
+					if ( TodoyuContactRights::isContactinfotypeOfCompanySeeAllowed($duplicatedContactInfo['id_company'], $duplicatedContactInfo['id']) ) {
+						$label = TodoyuContactCompanyManager::getCompany($duplicatedContactInfo['id_company'])->getTitle();
+					}
+				}
+
+				if ( $label ) {
+					$records[]['title'] = Todoyu::Label($duplicatedContactInfo['title']) . ' - ' . $label;
+				}
+			}
+		}
+
+		return $records;
+	}
+
+
+
+	/**
+	 * Search for a contact info
+	 *
+	 * @param	String		$contactInfo
+	 */
+	protected static function searchForDuplicatedContactInfo($contactInfo) {
+		$results = array();
+
+		foreach(self::$mmConfig as $key => $mmConfig) {
+			$fields	= '	ci.*,
+					cit.key,
+					cit.title,
+					mm.' . $mmConfig['field'];
+			$tables	= '	ext_contact_contactinfo ci,
+					ext_contact_contactinfotype cit,
+					' . $mmConfig['table'] . ' mm';
+			$where	= ' mm.id_contactinfo							= ci.id '
+					. '	AND	ci.id_contactinfotype						= cit.id '
+					. '	AND ci.deleted = 0'
+					. ' AND ' . TodoyuSql::buildLikeQueryPart(array($contactInfo), array('ci.info'));
+
+
+			$results = array_merge($results, Todoyu::db()->getArray($fields, $tables, $where));
+		}
+
+		return $results;
+	}
+
 }
 
 ?>

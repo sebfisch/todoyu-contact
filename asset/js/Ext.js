@@ -276,6 +276,45 @@ Todoyu.Ext.contact = {
 				Todoyu.send(url, options);
 			}
 		}
-	}
+	},
 
+
+
+	/**
+	 * Check for duplicated contact information
+	 *
+	 * @param	{String}		fieldID
+	 */
+	checkForDuplicatedContactInformation: function(fieldID) {
+		var value		= $(fieldID).getValue();
+
+		var url = Todoyu.getUrl('contact', 'ext');
+		var options = {
+			parameters: {
+				action:		'checkforduplicatedcontactinformation',
+				value:		value
+			},
+			onComplete: this.onCheckForDuplicatedContactInformation.bind(this, fieldID)
+		};
+
+		Todoyu.send(url, options);
+	},
+
+
+
+	/**
+	 * Callback for duplicated-entry-check
+	 *
+	 * @param	{String}		fieldID
+	 * @param	{Ajax.response}	response
+	 */
+	onCheckForDuplicatedContactInformation: function(fieldID, response) {
+		var error = response.getTodoyuHeader('duplicates');
+
+		Todoyu.Form.setFieldWarningStatus(fieldID, error);
+
+		if( error ) {
+			Todoyu.FormValidator.addWarningMessage(fieldID, response.responseText);
+		}
+	}
 };

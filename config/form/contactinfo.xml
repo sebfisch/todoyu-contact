@@ -20,6 +20,11 @@
 
 				<field type="text" name="info">
 					<label>contact.ext.contactinfo.attr.info</label>
+					<validateLive>
+						<function>
+							Todoyu.Ext.contact.checkForDuplicatedContactInformation
+						</function>
+					</validateLive>
 					<required />
 				</field>
 
