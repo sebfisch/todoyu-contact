@@ -35,6 +35,24 @@ class TodoyuContactAddressManager {
 
 
 
+	/*
+	 * Config for person and company
+	 *
+	 * @var	Array
+	 */
+	private static $mmConfig	= array(
+		'person'	=> array(
+			'table'	=> 'ext_contact_mm_person_address',
+			'field'	=> 'id_person'
+		),
+		'company'	=> array(
+			'table'	=> 'ext_contact_mm_company_address',
+			'field'	=> 'id_company'
+		)
+	);
+
+
+
 	/**
 	 * Return the requested Address object
 	 *
@@ -269,6 +287,68 @@ class TodoyuContactAddressManager {
 		return $data;
 	}
 
+
+
+	/**
+	 * Prepare found duplicated address-records
+	 *
+	 * @param	Array		$searchWords
+	 * @return	Array
+	 */
+	public static function getDuplicatedAddresses(array $searchWords) {
+		$records	= array();
+
+		$duplicates = self::searchForDuplicatedAddresses($searchWords);
+
+		if ( sizeof($duplicates) > 0 ) {
+			foreach ($duplicates as $duplicatedAddressInfo) {
+				$label = '';
+
+				if ( $duplicatedAddressInfo['id_person'] ) {
+					if ( TodoyuContactRights::isAddresstypeOfPersonSeeAllowed($duplicatedAddressInfo['id_person'], $duplicatedAddressInfo['id_addresstype']) ) {
+						$label = TodoyuContactPersonManager::getPerson($duplicatedAddressInfo['id_person'])->getFullName(true);
+					}
+				} else if ( $duplicatedAddressInfo['id_company'] ) {
+					if ( TodoyuContactRights::isAddresstypeOfCompanySeeAllowed($duplicatedAddressInfo['id_company'], $duplicatedAddressInfo['id_addresstype']) ) {
+						$label = TodoyuContactCompanyManager::getCompany($duplicatedAddressInfo['id_company'])->getTitle();
+					}
+				}
+
+				if ( $label ) {
+					$records[]['title'] = self::getAddresstypeLabel($duplicatedAddressInfo['id_addresstype']) . ' - ' . $label;
+				}
+			}
+		}
+
+		return $records;
+	}
+
+
+
+	/**
+	 * Search for duplicated addresses for person & company
+	 *
+	 * @param	Array	$searchWords
+	 * @return	Array
+	 */
+	protected static function searchForDuplicatedAddresses(array $searchWords) {
+		$results = array();
+
+		foreach(self::$mmConfig as $mmConfig) {
+			$fields	= 'a.id,'
+					. 'a.id_addresstype,
+					. mm.' . $mmConfig['field'];
+			$tables	= self::TABLE . ' a, '
+					 . $mmConfig['table'] . ' mm';
+			$where	= ' mm.id_address							= a.id'
+					. '	AND a.deleted = 0'
+					. ' AND ' . TodoyuSql::buildLikeQueryPart($searchWords, array('a.street', 'a.zip', 'a.city', 'a.postbox'));
+
+			$results = array_merge($results, Todoyu::db()->getArray($fields, $tables, $where));
+		}
+
+		return $results;
+	}
 }
 
 ?>

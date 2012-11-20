@@ -70,6 +70,38 @@ Todoyu.Ext.contact.Address = {
 		new Effect.Highlight(idTarget, {
 			duration: 2.0
 		});
-	}
+	},
 
+
+
+	/**
+	 * Form Validator for duplicated address records
+	 *
+	 * @param	{String}		fieldID
+	 */
+	checkForDuplicatedAddresses: function(fieldID) {
+		var baseId = fieldID.split('-').without(fieldID.split('-').last());
+		baseId = baseId.join('-');
+
+		var street	= $F(baseId + '-street');
+		var postbox	= $F(baseId + '-postbox');
+		var zip		= $F(baseId + '-zip');
+		var city	= $F(baseId + '-city');
+
+		if( street && zip && city) {
+			var url = Todoyu.getUrl('contact', 'ext');
+			var options	= {
+				parameters: {
+					action: 'checkforduplicatedaddress',
+					street: street,
+					postbox: postbox,
+					zip: zip,
+					city: city
+				},
+				onComplete: Todoyu.Ext.contact.onCheckForDuplicatedEntries.curry(baseId + '-street')
+			};
+
+			Todoyu.send(url, options);
+		}
+	}
 };

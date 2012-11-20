@@ -294,7 +294,7 @@ Todoyu.Ext.contact = {
 				action:		'checkforduplicatedcontactinformation',
 				value:		value
 			},
-			onComplete: this.onCheckForDuplicatedContactInformation.bind(this, fieldID)
+			onComplete: this.onCheckForDuplicatedEntries.bind(this, fieldID)
 		};
 
 		Todoyu.send(url, options);
@@ -308,9 +308,8 @@ Todoyu.Ext.contact = {
 	 * @param	{String}		fieldID
 	 * @param	{Ajax.response}	response
 	 */
-	onCheckForDuplicatedContactInformation: function(fieldID, response) {
+	onCheckForDuplicatedEntries: function(fieldID, response) {
 		var error = response.getTodoyuHeader('duplicates');
-
 		Todoyu.Form.setFieldWarningStatus(fieldID, error);
 
 		if( error ) {

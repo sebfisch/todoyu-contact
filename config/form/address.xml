@@ -21,20 +21,40 @@
 				<field type="textarea" name="street">
 					<label>contact.ext.address.attr.street</label>
 					<required />
+					<validateLive>
+						<function>
+							Todoyu.Ext.contact.Address.checkForDuplicatedAddresses
+						</function>
+					</validateLive>
 				</field>
 
 				<field type="text" name="postbox">
 					<label>contact.ext.address.attr.postbox</label>
+					<validateLive>
+						<function>
+							Todoyu.Ext.contact.Address.checkForDuplicatedAddresses
+						</function>
+					</validateLive>
 				</field>
 
 				<field type="text" name="zip">
 					<label>contact.ext.address.attr.zip</label>
 					<required />
+					<validateLive>
+						<function>
+							Todoyu.Ext.contact.Address.checkForDuplicatedAddresses
+						</function>
+					</validateLive>
 				</field>
 
 				<field type="text" name="city">
 					<label>contact.ext.address.attr.city</label>
 					<required />
+					<validateLive>
+						<function>
+							Todoyu.Ext.contact.Address.checkForDuplicatedAddresses
+						</function>
+					</validateLive>
 				</field>
 
 				<field type="select" name="id_country">

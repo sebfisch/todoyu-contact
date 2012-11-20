@@ -89,6 +89,26 @@ class TodoyuContactExtActionController extends TodoyuActionController {
 
 		return TodoyuContactRenderer::renderDuplicatesList($records);
 	}
+
+
+
+	/**
+	 * Check for duplicated address records
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
+	public function checkforduplicatedaddressAction(array $params) {
+		$addressInformations	= array($params['city'], $params['street'], $params['zip'], $params['postbox']);
+
+		$records = TodoyuContactAddressManager::getDuplicatedAddresses($addressInformations);
+
+		if( sizeof($records) > 0 ) {
+			TodoyuHeader::sendTodoyuHeader('duplicates', true);
+		}
+
+		return TodoyuContactRenderer::renderDuplicatesList($records);
+	}
 }
 
 ?>

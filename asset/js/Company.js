@@ -335,26 +335,9 @@ Todoyu.Ext.contact.Company =  {
 				action: 'checkduplicatedentries',
 				fieldvalue: value
 			},
-			onComplete: this.onCheckDuplicatedEntries.bind(this, fieldID)
+			onComplete: Todoyu.Ext.contact.onCheckForDuplicatedEntries.curry(fieldID)
 		};
 
 		Todoyu.send(url, options);
-	},
-
-
-
-	/**
-	 * Callback for duplicated-entry-check
-	 *
-	 * @param	{String}			fieldID
-	 * @param	{Ajax.Response}		response
-	 */
-	onCheckDuplicatedEntries: function(fieldID, response) {
-		var error = response.getTodoyuHeader('duplicates');
-
-		Todoyu.Form.setFieldWarningStatus(fieldID, error);
-		if( error ) {
-			Todoyu.FormValidator.addWarningMessage(fieldID, response.responseText);
-		}
 	}
 };
