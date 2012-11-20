@@ -1,0 +1,11 @@
+{if sizeof($records) > 0}
+	<div class="message">
+		<span class="icon"></span>
+		<span class="label">{Label contact.form.warning.duplicatedEntries}:</span>
+	</div>
+	<ul class="duplicatedList">
+		{foreach $records record}
+			<li>{$record.title}</li>
+		{/foreach}
+	</ul>
+{/if}

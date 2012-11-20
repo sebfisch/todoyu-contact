@@ -8,5 +8,5 @@
 	<label index="legend.company.logo">Firmenlogo</label>
 	<label index="legend.admin.jobtype.record">Stellenbezeichnung</label>
 	<label index="legend.admin.contactinfotype.record">Kontakt Informationstyp</label>
-
+	<label index="warning.duplicatedEntries">Folgende Einträge existieren bereits für diese Eingabe</label>
 </labels>

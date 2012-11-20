@@ -367,5 +367,26 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 		TodoyuContactImageManager::removeImage($idCompany, 'company');
 	}
 
+
+
+	/**
+	 * @param	Array		$params
+	 */
+	public function checkduplicatedentriesAction(array $params) {
+		$value	= $params['fieldvalue'];
+
+		$duplicates = TodoyuContactCompanyManager::searchCompany(array($value));
+		$companies	= array();
+
+		if( sizeof($duplicates) > 0) {
+			foreach( $duplicates as $company) {
+				$companies[]['title'] = TodoyuContactCompanyManager::getCompany($company['id'])->getTitle();
+			}
+
+			TodoyuHeader::sendTodoyuHeader('duplicates', true);
+			return TodoyuContactRenderer::renderDuplicatesList($companies);
+		}
+	}
+
 }
 ?>

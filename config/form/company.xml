@@ -18,6 +18,11 @@
 				<field type="text" name="title">
 					<label>contact.ext.company.attr.title</label>
 					<required />
+					<validateLive>
+						<function>
+							Todoyu.Ext.contact.Company.checkDuplicatedEntries
+						</function>
+					</validateLive>
 				</field>
 
 				<field type="text" name="shortname">

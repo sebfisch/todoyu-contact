@@ -317,6 +317,44 @@ Todoyu.Ext.contact.Company =  {
 	 */
 	removeUnusedImages: function(form) {
 		this.ext.removeUnusedImages(form, 'company');
-	}
+	},
 
+
+
+	/**
+	 * Check input for duplicated company names
+	 *
+	 * @param	{String}		fieldID
+	 */
+	checkDuplicatedEntries: function(fieldID) {
+		var value = $(fieldID).getValue();
+		var url		= Todoyu.getUrl('contact', 'company');
+
+		var options	= {
+			parameters: {
+				action: 'checkduplicatedentries',
+				fieldvalue: value
+			},
+			onComplete: this.onCheckDuplicatedEntries.bind(this, fieldID)
+		};
+
+		Todoyu.send(url, options);
+	},
+
+
+
+	/**
+	 * Callback for duplicated-entry-check
+	 *
+	 * @param	{String}			fieldID
+	 * @param	{Ajax.Response}		response
+	 */
+	onCheckDuplicatedEntries: function(fieldID, response) {
+		var error = response.getTodoyuHeader('duplicates');
+
+		Todoyu.Form.setFieldWarningStatus(fieldID, error);
+		if( error ) {
+			Todoyu.FormValidator.addWarningMessage(fieldID, response.responseText);
+		}
+	}
 };

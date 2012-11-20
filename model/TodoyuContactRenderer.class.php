@@ -254,6 +254,24 @@ class TodoyuContactRenderer {
 		return Todoyu::render($tmpl, $data);
 	}
 
+
+
+	/**
+	 * Render list of found duplicated records (person/company)
+	 *
+	 * @param	Array		$records
+	 * @return	String
+	 */
+	public static function renderDuplicatesList($records){
+		$tmpl = 'ext/contact/view/form-warning-duplicates.tmpl';
+
+		$data = array(
+			'records' => $records
+		);
+
+		return Todoyu::render($tmpl, $data);
+	}
+
 }
 
 ?>
