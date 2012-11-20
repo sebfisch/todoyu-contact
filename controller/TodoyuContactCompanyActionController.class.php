@@ -370,6 +370,8 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 
 
 	/**
+	 * Check for duplicated companies.
+	 *
 	 * @param	Array		$params
 	 */
 	public function checkduplicatedentriesAction(array $params) {
@@ -387,6 +389,5 @@ class TodoyuContactCompanyActionController extends TodoyuActionController {
 			return TodoyuContactRenderer::renderDuplicatesList($companies);
 		}
 	}
-
 }
 ?>

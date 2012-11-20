@@ -483,7 +483,55 @@ Todoyu.Ext.contact.Person =  {
 	 */
 	removeUnusedImages: function(form) {
 		this.ext.removeUnusedImages(form, 'person');
+	},
+
+
+
+	/**
+	 * Check for duplicated person entry
+	 *
+	 * @param	{String}		fieldID
+	 */
+	checkDuplicatedEntries: function(fieldID) {
+		var idPerson	= fieldID.split('-')[1];
+
+		var lastname	= $F('person-' + idPerson + '-field-lastname');
+		var firstname	= $F('person-' + idPerson + '-field-firstname');
+
+		if( lastname && firstname ) {
+			var url = Todoyu.getUrl('contact', 'person');
+			var options	= {
+				parameters: {
+					action: 'checkduplicatedentries',
+					firstname: firstname,
+					lastname: lastname
+				},
+				onComplete: this.onCheckDuplicatedEntries.bind(this, idPerson)
+			};
+
+			Todoyu.send(url, options);
+		}
+	},
+
+
+
+	/**
+	 * Call-back for duplicated-person-check
+	 *
+	 * @param	{Integer}		idPerson
+	 * @param	{Ajax.response}	response
+	 */
+	onCheckDuplicatedEntries: function(idPerson, response) {
+		var fieldIDFirstname	= 'person-' + idPerson + '-field-firstname';
+		var fieldIDLastname		= 'person-' + idPerson + '-field-lastname';
+
+		var error	= response.getTodoyuHeader('duplicates');
+
+		Todoyu.Form.setFieldWarningStatus(fieldIDFirstname, error);
+		Todoyu.Form.setFieldWarningStatus(fieldIDLastname, error);
+
+		if( error ) {
+			Todoyu.FormValidator.addWarningMessage(fieldIDFirstname, response.responseText);
+		}
 	}
-
-
 };

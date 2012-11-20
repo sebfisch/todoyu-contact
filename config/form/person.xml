@@ -33,11 +33,21 @@
 				<field type="text" name="lastname">
 					<label>contact.ext.person.attr.lastname</label>
 					<required />
+					<validateLive>
+						<function>
+							Todoyu.Ext.contact.Person.checkDuplicatedEntries
+						</function>
+					</validateLive>
 				</field>
 
 				<field type="text" name="firstname">
 					<label>contact.ext.person.attr.firstname</label>
 					<required />
+					<validateLive>
+						<function>
+							Todoyu.Ext.contact.Person.checkDuplicatedEntries
+						</function>
+					</validateLive>
 				</field>
 
 				<field type="text" name="shortname">

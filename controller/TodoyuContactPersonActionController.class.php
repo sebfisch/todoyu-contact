@@ -324,6 +324,33 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 		TodoyuContactImageManager::removeImage($idPerson, 'person');
 	}
 
+
+
+	/**
+	 * Check for duplicated entries for person
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
+	public function checkduplicatedentriesAction(array $params) {
+		$lastname	= $params['lastname'];
+		$firstname	= $params['firstname'];
+
+		$duplicates = TodoyuContactPersonManager::searchPersons(array($lastname, $firstname));
+
+		$persons	= array();
+
+		if( sizeof($duplicates) > 0) {
+			foreach( $duplicates as $person) {
+				$personRecord = TodoyuContactPersonManager::getPerson($person['id']);
+				$persons[]['title'] = $personRecord->getFullName() . ' - ' . $personRecord->getCompany()->getTitle() ;
+			}
+
+			TodoyuHeader::sendTodoyuHeader('duplicates', true);
+			return TodoyuContactRenderer::renderDuplicatesList($persons);
+		}
+	}
+
 }
 
 ?>
