@@ -531,7 +531,7 @@ Todoyu.Ext.contact.Person =  {
 		Todoyu.Form.setFieldWarningStatus(fieldIDLastname, error);
 
 		if( error ) {
-			Todoyu.FormValidator.addWarningMessage(fieldIDFirstname, response.responseText);
+			Todoyu.FormValidator.addWarningMessage(fieldIDFirstname, response.responseText, !$(fieldIDFirstname).up('.dialog'));
 		}
 	}
 };

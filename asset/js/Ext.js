@@ -313,7 +313,7 @@ Todoyu.Ext.contact = {
 		Todoyu.Form.setFieldWarningStatus(fieldID, error);
 
 		if( error ) {
-			Todoyu.FormValidator.addWarningMessage(fieldID, response.responseText);
+			Todoyu.FormValidator.addWarningMessage(fieldID, response.responseText, !$(fieldID).up('.dialog'));
 		}
 	}
 };
