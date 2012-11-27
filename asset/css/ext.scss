@@ -380,33 +380,15 @@ button.removeContactImage .icon {
 }
 
 .fElement.fieldnameStreet,
-.fElement.fieldnameContactinfo,
-.formPerson .fElement.fieldnameFirstname,
-.formCompany .fElement.fieldnameTitle {
-
+.fElement.fieldnameContactinfo {
 	& .warningMessage {
-		& * {
-			color: $blue06;
-		}
+		width: 92%;
+	}
+}
 
-		& .message {
-			margin-bottom: 5px;
-			padding: 2px 0 2px 3px;
-
-
-			& .icon {
-				background: url(../../../../core/asset/img/icons.png) no-repeat 3px -629px;
-			}
-
-			& .label {
-				margin-left: 5px;
-				vertical-align: middle;
-			}
-		}
-
-		& ul {
-			margin-left: 21px;
-		}
+div.warningMessage {
+	& ul.duplicatedList {
+		margin: 5px 0 0 32px;
 	}
 }
 
