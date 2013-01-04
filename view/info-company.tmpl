@@ -55,7 +55,7 @@
 					<td class="label"></td>
 				{/if}
 				<td colspan="3">
-					{htmlencode $addressData.street}<br />
+					{nl2br htmlencode($addressData.street)}<br />
 					{if $addressData.postbox} {Label contact.ext.address.attr.postbox}: {htmlencode $addressData.postbox}<br />{/if}
 					{htmlencode $addressData.zip} {htmlencode $addressData.city}<br />
 					{if $addressData.region}{htmlencode $addressData.region}{/if}

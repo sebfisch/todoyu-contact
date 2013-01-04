@@ -52,7 +52,7 @@
 				{if (isAddressTypeSeeAllowed('person', $id, $addressType.id_addresstype))}
 					<h4>{addressType $addressType.id_addresstype}</h4>
 					<div class="content overflow address">
-						{$addressType.street}<br />
+						{nl2br $addressType.street}<br />
 						{if strlen($addressType.postbox)>0}
 							{Label contact.ext.address.attr.postbox}: {htmlencode wordwrap($addressType.postbox 30 cut=true)}<br />
 						{/if}
