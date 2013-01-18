@@ -20,7 +20,6 @@
 
 				<field type="textarea" name="street">
 					<label>contact.ext.address.attr.street</label>
-					<required />
 					<validateLive>
 						<function>
 							Todoyu.Ext.contact.Address.checkForDuplicatedAddresses
