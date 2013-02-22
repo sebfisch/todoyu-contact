@@ -74,12 +74,15 @@ class TodoyuContactCompanyExportManager {
 	 */
 	public static function getExportDataByCompaniesData(array $companiesData) {
 		$exportData = array();
+
+		TodoyuCache::disable();
 		foreach($companiesData as $companyData) {
 			if( intval($companyData['id']) !== 0 ) {
 				$exportData[]	= self::getCompanyExportData($companyData['id']);
 			}
-		}
 
+		}
+		TodoyuCache::enable();
 		return $exportData;
 	}
 
@@ -95,12 +98,13 @@ class TodoyuContactCompanyExportManager {
 		$companyIDs = TodoyuArray::intval($companyIDs);
 
 		$exportData = array();
-		foreach($companyIDs as $idCompany) {
+		TodoyuCache::disable();
+		foreach($companyIDs as $count => $idCompany) {
 			if( $idCompany !== 0 ) {
 				$exportData[]	= self::getCompanyExportData($idCompany);
 			}
 		}
-
+		TodoyuCache::enable();
 		return $exportData;
 	}
 

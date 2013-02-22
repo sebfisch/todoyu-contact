@@ -75,9 +75,11 @@ class TodoyuContactPersonExportManager {
 	protected static function getExportDataByPersonsData(array $personsData) {
 		$exportData = array();
 
+		TodoyuCache::disable();
 		foreach($personsData as $personData) {
 			$exportData[]	= self::getPersonExportData($personData['id']);
 		}
+		TodoyuCache::enable();
 
 		return $exportData;
 	}
@@ -92,12 +94,12 @@ class TodoyuContactPersonExportManager {
 	 */
 	public static function getExportDataByPersonIDs(array $personIDs) {
 		$personIDs = TodoyuArray::intval($personIDs, true, true);
-
+		TodoyuCache::disable();
 		$exportData = array();
 		foreach($personIDs as $idPerson) {
 			$exportData[]	= self::getPersonExportData($idPerson);
 		}
-
+		TodoyuCache::enable();
 		return $exportData;
 	}
 
