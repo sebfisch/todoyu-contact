@@ -1,6 +1,7 @@
 todoyu contact extension changelog
 
-contact 1.3.0 - not released yet
+contact 1.3.0 - not released yet$
+	* Bugfix: Permission check on person in employee list of a company
 	* Bugfix: Linking from project list in person and company was wrong
 	* Bugfix: Fixed memory problems with export by disabling unnecessary caching
 	* Require: Core 2.3.0

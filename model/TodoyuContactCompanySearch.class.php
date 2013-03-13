@@ -205,22 +205,24 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 		);
 
 		foreach($persons as $personData) {
-			$idPerson	= $personData['id_person'];
-			$person		= TodoyuContactPersonManager::getPerson($idPerson);
-			$jobType	= TodoyuContactJobTypeManager::getJobType($personData['id_jobtype'])->get('title');
+			if( TodoyuContactPersonRights::isSeeAllowed($personData['id_person']) ) {
+				$idPerson	= $personData['id_person'];
+				$person		= TodoyuContactPersonManager::getPerson($idPerson);
+				$jobType	= TodoyuContactJobTypeManager::getJobType($personData['id_jobtype'])->get('title');
 
-	  		$data['rows'][]	= array(
-				'id'		=> $personData['id_person'],
-				'columns'	=> array(
-					'name'	=> array(
-						'spanID'		=> 'company_person-' . $idCompany . '-' . $idPerson,
-						'classname'		=> 'quickInfoPerson',
-						'onClick'		=> 'Todoyu.Ext.contact.Person.show(' . $idPerson . ')',
-						'content'		=> $person->getLabel()
-					),
-					'jobtype'	=> $jobType ? $jobType : '-',
-				)
-			);
+				$data['rows'][]	= array(
+					'id'		=> $personData['id_person'],
+					'columns'	=> array(
+						'name'	=> array(
+							'spanID'		=> 'company_person-' . $idCompany . '-' . $idPerson,
+							'classname'		=> 'quickInfoPerson',
+							'onClick'		=> 'Todoyu.Ext.contact.Person.show(' . $idPerson . ')',
+							'content'		=> $person->getLabel()
+						),
+						'jobtype'	=> $jobType ? $jobType : '-',
+					)
+				);
+			}
 		}
 
 		return $data;
