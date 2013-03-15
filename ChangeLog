@@ -4,6 +4,7 @@ contact 1.3.0 - not released yet
 	* Require: Core 2.3.0
 	* Feature: Outgoing mail account (including SMTP) in person account data
 	* Feature: Added person record selector according to staff selector
+	* Added: css-cropping of list table content
 	* Added: new line to br for company-addresses in detail - view
 	* Added: Live-form-validation for duplicated address-records (person + company)
 	* Added: Live-form-validation for duplicated contactinformation (person + company)

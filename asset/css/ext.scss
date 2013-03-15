@@ -242,50 +242,73 @@ div#search-results {
 /* -------------------
 	Person and Company Listing
    ------------------- */
-.personListing span.icon,
-.companyListing span.icon {
-	background:{
-		image:url(../img/icons.png);
-		position:2px 2px;
-		repeat:no-repeat;
+.personListing,
+.companyListing {
+	col.icon {
+		width: 30px;
+	}
+	
+	span.icon {
+		background:{
+					image:url(../img/icons.png);
+					position:2px 2px;
+					repeat:no-repeat;
+		}
+	}
+
+	td.actions {
+		span.actions {
+			float:right;
+		}
+
+		span.icon {
+			cursor:pointer;
+			display:inline-block;
+			width:25px;
+		}
+
+		span.info {
+			background-position:5px -356px;
+		}
+
+		span.edit {
+			background:url(../../../../core/asset/img/icons.png) no-repeat 5px -749px;
+		}
+
+		span.delete {
+			background:url(../../../../core/asset/img/icons.png) no-repeat 5px -330px;
+		}
+	}
+
+	td.login {
+		span.icon {
+			background-position:2px -568px;
+		}
 	}
 }
-.personListing td.actions span.actions,
-.companyListing td.actions span.actions {
-	float:right;
-}
-.personListing td.actions span.icon,
-.companyListing td.actions span.icon {
-	cursor:pointer;
-	display:inline-block;
-	width:25px;
-}
-.personListing td.login span.icon {
-	background-position:2px -568px;
-}
-.personListing td.actions span.info,
-.companyListing td.actions span.info {
-	background-position:5px -356px;
-}
-.personListing td.actions span.edit,
-.companyListing td.actions span.edit  {
-	background:url(../../../../core/asset/img/icons.png) no-repeat 5px -749px;
-}
 
-.personListing td.actions span.delete,
-.companyListing td.actions span.delete  {
-	background:url(../../../../core/asset/img/icons.png) no-repeat 5px -330px;
-}
+.companyListing {
 
-.companyListing span.icon {
-	background-position:2px -149px;
+	span.icon {
+		background-position:2px -149px;
 
-	&.notactive {
-		background-position: 2px -599px;
+		&.notactive {
+			background-position: 2px -599px;
+		}
+	}
+	
+	col.title {
+		width: 40%;
+	}
+	
+	col.street {
+		width: 25%;
+	}
+
+	col.place {
+		width: 20%;
 	}
 }
-
-
 
 /* -------------------
 	Person Details

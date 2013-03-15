@@ -86,11 +86,6 @@ Todoyu::$CONFIG['EXT']['contact'] = array(
 				'firstname'	=> 'contact.ext.person.attr.firstname',
 				'company'	=> 'contact.ext.company',
 				'actions'	=> '',
-			),
-			'truncate'	=> array(
-				'lastname'	=> 20,
-				'firstname'	=> 20,
-				'company'	=> 45
 			)
 		),
 		'company' => array(
@@ -104,11 +99,6 @@ Todoyu::$CONFIG['EXT']['contact'] = array(
 				'street'	=> 'contact.ext.address.attr.street',
 				'place'		=> 'contact.ext.place',
 				'actions'	=> ''
-			),
-			'truncate'	=> array(
-				'title'		=> 45,
-				'street'	=> 40,
-				'place'		=> 40
 			)
 		),
 		'employee' => array(
@@ -119,10 +109,6 @@ Todoyu::$CONFIG['EXT']['contact'] = array(
 			'columns'	=> array(
 				'name'		=> 'contact.ext.person',
 				'jobtype'	=> 'contact.ext.jobtype',
-			),
-			'truncate'	=> array(
-				'name'		=> 45,
-				'jobtype'	=> 50,
 			)
 		)
 	),
