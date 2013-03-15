@@ -1,9 +1,6 @@
 todoyu contact extension changelog
 
-contact 1.3.0 - not released yet$
-	* Bugfix: Permission check on person in employee list of a company
-	* Bugfix: Linking from project list in person and company was wrong
-	* Bugfix: Fixed memory problems with export by disabling unnecessary caching
+contact 1.3.0 - not released yet
 	* Require: Core 2.3.0
 	* Feature: Outgoing mail account (including SMTP) in person account data
 	* Feature: Added person record selector according to staff selector
@@ -38,6 +35,10 @@ contact 1.3.0 - not released yet$
 	* Bugfix: Added Avatar (smaller scaled contact-image)
 	* Bugfix: Icon clean-up
 	* Bugfix: Person edit form in profile handling
+	* Bugfix: Permission check on person in employee list of a company
+	* Bugfix: Linking from project list in person and company was wrong
+	* Bugfix: Fixed memory problems with export by disabling unnecessary caching
+    * Bugfix: Position of delete group icon
 
 
 contact 1.2.0 - 2012-05-03

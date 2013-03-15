@@ -128,15 +128,15 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 			this.addAddIconsToList();
 		}
 
+			// Add (X) removal icon to all active selection items
+		if( addRemoveIcons ) {
+			this.addRemoveIconToItems();
+		}
+
 			// Add "delete group" icon to all virtual group items
 		if( addDeleteGroupIcons ) {
 			var items	= $('panelwidget-staffselector-content').select('li.virtualgroup a');
 			this.addDeleteGroupIcons(items);
-		}
-
-			// Add (X) removal icon to all active selection items
-		if( addRemoveIcons ) {
-			this.addRemoveIconToItems();
 		}
 	},
 
@@ -632,12 +632,10 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 		items	= items || this.list;
 
 		items.each(function(item){
-			if( !item.down('span.deletegroup') ) {
-				item.insert(new Element('span', {
-					'class':	'deletegroup',
-					title:		'[LLL:contact.panelwidget-staffselector.icon.deletegroup]'
-				}));
-			}
+			item.insert(new Element('span', {
+				className:	'deletegroup',
+				title:		'[LLL:contact.panelwidget-staffselector.icon.deletegroup]'
+			}));
 		});
 	},
 
