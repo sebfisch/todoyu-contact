@@ -168,13 +168,16 @@ Todoyu.Ext.contact.Upload = {
 	 *
 	 * @method	setReplaceIdToHiddenField
 	 * @param	{String}	form
-	 * @param	{Number}	newImageKey
 	 * @param	{String}	recordType		(person / company)
+	 * @param	{Number}	newImageKey
 	 */
 	setReplaceIdToHiddenField: function(form, recordType, newImageKey) {
-		var field = $(form).down('[name = ' + recordType + '[image_id]]');
+		var idRecord	= form.id.split('-')[1];
+		var field = $(recordType + '-' + idRecord + '-field-image-id');
 
-		field.value = newImageKey;
+		if( field ) {
+			field.value = newImageKey;
+		}
 	},
 
 

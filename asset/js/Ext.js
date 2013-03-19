@@ -258,23 +258,22 @@ Todoyu.Ext.contact = {
 	 *
 	 * @method	removeUnusedImages
 	 * @param	{Element}	form
-	 * @param	{String}	typeKey		'person' / 'image'
+	 * @param	{String}	typeKey		'person' / 'company'
 	 */
 	removeUnusedImages: function(form, typeKey) {
-		if( form.down('[name = ' + typeKey + '[id]]').getValue() == 0 ) {
-			if( form.down('[name = ' + typeKey + '[image_id]]').getValue() != 0 ) {
-				var idImage	= form.down('[name=' + typeKey + '[image_id]]').getValue();
-				var url		= Todoyu.getUrl('contact', typeKey);
+		var idRecord = form.id.split('-')[1];
+		if( $(typeKey + '-' + idRecord + '-field-image-id') ) {
+			var idImage	= $F(typeKey + '-' + idRecord + '-field-image-id')
+			var url		= Todoyu.getUrl('contact', typeKey);
 
-				var options = {
-					parameters: {
-						action:		'removeimage',
-						idImage:	idImage
-					}
-				};
+			var options = {
+				parameters: {
+					action:		'removeimage',
+					idImage:	idImage
+				}
+			};
 
-				Todoyu.send(url, options);
-			}
+			Todoyu.send(url, options);
 		}
 	},
 
