@@ -161,9 +161,9 @@ span {
 			margin:0 5px;
 		}
 		.icon {
+			background:url(../img/icons.png) no-repeat;
 			cursor:pointer;
 			margin-right:5px;
-			background:url(../img/icons.png) no-repeat;
 		}
 		.backToList {
 			.icon {
@@ -223,12 +223,12 @@ div#search-results {
 	padding:12px 12px 18px 12px !important;
 
 	table tr td {
-		text-align:left;
 		padding:2px 2px 2px 8px !important;
+		text-align:left;
 
 		&.label {
-			padding-right:18px;
 			letter-spacing:0.3px;
+			padding-right:18px;
 		}
 	}
 }
@@ -250,33 +250,35 @@ div#search-results {
 	
 	span.icon {
 		background:{
-					image:url(../img/icons.png);
-					position:2px 2px;
-					repeat:no-repeat;
+			image:url(../img/icons.png);
+			position:2px 2px;
+			repeat:no-repeat;
 		}
 	}
 
 	td.actions {
-		span.actions {
-			float:right;
-		}
+		span {
+			&.actions {
+				float:right;
+			}
 
-		span.icon {
-			cursor:pointer;
-			display:inline-block;
-			width:25px;
-		}
+			&.edit {
+				background:url(../../../../core/asset/img/icons.png) no-repeat 5px -749px;
+			}
 
-		span.info {
-			background-position:5px -356px;
-		}
+			.delete {
+				background:url(../../../../core/asset/img/icons.png) no-repeat 5px -330px;
+			}
 
-		span.edit {
-			background:url(../../../../core/asset/img/icons.png) no-repeat 5px -749px;
-		}
+			&.icon {
+				cursor:pointer;
+				display:inline-block;
+				width:25px;
+			}
 
-		span.delete {
-			background:url(../../../../core/asset/img/icons.png) no-repeat 5px -330px;
+			&.info {
+				background-position:5px -356px;
+			}
 		}
 	}
 
@@ -288,7 +290,6 @@ div#search-results {
 }
 
 .companyListing {
-
 	span.icon {
 		background-position:2px -149px;
 
@@ -297,16 +298,17 @@ div#search-results {
 		}
 	}
 	
-	col.title {
-		width: 40%;
-	}
-	
-	col.street {
-		width: 25%;
-	}
+	col {
+		&.title {
+			width: 40%;
+		}
 
-	col.place {
-		width: 20%;
+		&.street {
+			width: 25%;
+		}
+		&.place {
+			width: 20%;
+		}
 	}
 }
 
@@ -314,33 +316,38 @@ div#search-results {
 	Person Details
    ------------------- */
 #contact-details {
-	div.image img {
-		margin-top:3px;
-		border:solid #d5dee5;
-		border-width:4px 4px 21px 4px;
+	div {
+		.actions {
+			float:right;
+			padding-top:5px;
+		}
+
+		.clear {
+			clear:both;
+			width:100%;
+		}
+
+		&.image img {
+			border:1px solid $colorNeutral02;
+			margin-top:3px;
+		}
 	}
-	.left {
-		float:left;
-		margin-right:13px;
-		padding:0 0 6px 0;
-	}
-	div.clear {
-		clear:both;
-		width:100%;
-	}
+
 	h1 {
 		white-space:normal;
 	}
 	h3 {
 		margin-bottom:5px;
 	}
-	div.actions {
-		float:right;
-		padding-top:5px;
-	}
 
 	.content a {
 		text-decoration:underline !important;
+	}
+
+	.left {
+		float:left;
+		margin-right:13px;
+		padding:0 0 6px 0;
 	}
 
 	.projectPart {
@@ -366,14 +373,16 @@ div#search-results {
 	}
 }
 
-button.uploadContactImage .icon {
-	background:url(../img/icons.png) no-repeat 6px -448px;
-	width:25px;
-}
+button {
+	&.uploadContactImage .icon {
+		background:url(../img/icons.png) no-repeat 6px -448px;
+		width:25px;
+	}
 
-button.removeContactImage .icon {
-	background:url(../img/icons.png) no-repeat 6px -478px;
-	width:25px;
+	&.removeContactImage .icon {
+		background:url(../img/icons.png) no-repeat 6px -478px;
+		width:25px;
+	}
 }
 
 
