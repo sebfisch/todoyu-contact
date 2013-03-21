@@ -304,7 +304,9 @@ class TodoyuContactPersonActionController extends TodoyuActionController {
 	public function renderavatarAction(array $params) {
 		$imageKey	= $params['idImage'];
 
-		if( !TodoyuContactPersonRights::isSeeAllowed($imageKey) ) $imageKey = 0;
+		if( !TodoyuContactPersonRights::isSeeAllowed($imageKey) ) {
+			$imageKey = 0;
+		}
 
 		TodoyuContactImageManager::renderAvatarImage($imageKey, 'person');
 	}

@@ -118,13 +118,14 @@ class TodoyuContactImageManager {
 	 * @return String
 	 */
 	public static function getAvatarImage($idImage, $typeKey, $isDummy = true) {
-			return self::getImage($typeKey, 'avatar', $idImage, $isDummy);
+		return self::getImage($typeKey, 'avatar', $idImage, $isDummy);
 	}
 
 
 
 	/**
-	 * @static
+	 * Get image tag with dynamic image url
+	 *
 	 * @param	String			$typeKey
 	 * @param	String			$imageType
 	 * @param	String/Integer	$idImage
@@ -133,11 +134,11 @@ class TodoyuContactImageManager {
 	 */
 	protected static function getImage($typeKey, $imageType, $idImage, $isDummy) {
 		$params = array(
-			'ext' => 'contact',
-			'controller' => $typeKey,
-			'action' => 'render' . $imageType,
-			'idImage' => $idImage,
-			'hash' => NOW
+			'ext'		=> 'contact',
+			'controller'=> $typeKey,
+			'action'	=> 'render' . $imageType,
+			'idImage'	=> $idImage,
+			'hash'		=> NOW
 		);
 
 		$imgSrc = TodoyuString::buildUrl($params);
@@ -151,7 +152,7 @@ class TodoyuContactImageManager {
 	 * Renders the Image. Needed because the files folder is .htaccess protected.
 	 * If no picture of an user is found, one of randomly 7 images is taken
 	 *
-	 * @param	Integer		$idImage		ID of TodoyuContactPerson / TodoyuContactCompany
+	 * @param	Integer		$idImage		ID of person or company
 	 * @param	String		$typeKey		'person' / 'company'
 	 */
 	public static function renderContactImage($idImage, $typeKey) {
@@ -159,13 +160,14 @@ class TodoyuContactImageManager {
 		$idImage	=  self::hasContactImage($idImage, $typeKey) ? $idImage : 0;
 		$filePath	=  self::getPathContactImage($idImage, $typeKey, 'contactimage');
 
-		self::renderImage($filePath);
+		self::sendImageToBrowser($filePath);
 	}
 
 
 
 	/**
-	 * @static
+	 * Render avatar image for person
+	 *
 	 * @param	String/Integer	$idImage
 	 * @param	String			$typeKey
 	 */
@@ -173,18 +175,25 @@ class TodoyuContactImageManager {
 		$idImage	=  self::hasAvatar($idImage, $typeKey) ? $idImage : 0;
 		$filePath	=  self::getPathContactImage($idImage, $typeKey, 'avatar');
 
-		self::renderImage($filePath);
+		self::sendImageToBrowser($filePath);
 	}
 
 
 
 	/**
-	 * @static
+	 * Send image to browser with
+	 *
 	 * @param	String		$filePath
+	 * @return	String		Binary data
 	 */
-	protected static function renderImage($filePath) {
-		header('Content-Type: image/png');
-		header('Content-Disposition: inline; filename="' . basename($filePath) . '"');
+	protected static function sendImageToBrowser($filePath) {
+		TodoyuHeader::sendContentType('image/png');
+		TodoyuHeader::sendHeader('Content-Transfer-Encoding', 'binary');
+		TodoyuHeader::sendHeader('Expires', date('r', NOW + TodoyuTime::SECONDS_WEEK*4));
+		TodoyuHeader::sendHeader('Pragma', 'cache');
+		TodoyuHeader::sendHeader('Cache-Control', 'max-age=50000');
+		TodoyuHeader::sendHeader('User-Cache-Control', 'max-age=50000');
+
 		echo file_get_contents($filePath);
 		exit();
 	}
