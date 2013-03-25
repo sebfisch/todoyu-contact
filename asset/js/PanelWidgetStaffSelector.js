@@ -71,7 +71,8 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 
 		this.initStaffSelectorObservers();
 
-		this.addItemsIcons(true, true, true);
+			// Add icons to list icons
+		this.addItemsIcons(true, true);
 
 		this.markFirstAsHot();
 
@@ -122,24 +123,17 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 *
 	 * @method	addItemsIcons
 	 * @param	{Boolean}	addDeleteGroupIcons
-	 * @param	{Boolean}	addAddIcons
 	 * @param	{Boolean}	addRemoveIcons
 	 */
-	addItemsIcons: function(addDeleteGroupIcons, addAddIcons, addRemoveIcons) {
-			// Add (+) select icon to all selectable virtual group, group and person items
-		if( addAddIcons ) {
-			this.addAddIconsToList();
-		}
-
+	addItemsIcons: function(addDeleteGroupIcons, addRemoveIcons) {
 			// Add (X) removal icon to all active selection items
 		if( addRemoveIcons ) {
-			this.addRemoveIconToItems();
+			this.addRemoveIconsToSelection();
 		}
 
 			// Add "delete group" icon to all virtual group items
 		if( addDeleteGroupIcons ) {
-			var items	= $('panelwidget-staffselector-content').select('li.virtualgroup a');
-			this.addDeleteGroupIcons(items);
+			this.addDeleteGroupIcons();
 		}
 	},
 
@@ -256,10 +250,6 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 		if( itemTagName !== 'li') {
 			item	= item.up('li');
 		}
-			// Remove add button from item
-		if( item.down('span.add') ) {
-			item.down('span.add').remove();
-		}
 
 			// Remove 'no items' label from empty selection
 		if( this.isSelectionEmpty() ) {
@@ -271,13 +261,10 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 			bottom: item
 		});
 
-			// Add "remove from selection" button to item
-		this.addRemoveIconToItems([item]);
-
-					// "Virtual" group: Add "delete group" icon to item
-		if( item.hasClassName('virtualgroup') ) {
-			this.addDeleteGroupIconToItems([item]);
-		}
+			// Remove icons
+		item.select('a span').invoke('remove');
+			// Add icons
+		this.addItemsIcons(true, true);
 
 			// Sort selection items
 		var nodes	= this.selection.select('li');
@@ -572,7 +559,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * @param	{Ajax.Response}	response
 	 */
 	onUpdated: function(response) {
-		this.addItemsIcons(true, true, false);
+		this.addItemsIcons(true, false);
 		this.markFirstAsHot();
 	},
 
@@ -628,52 +615,16 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 
 
 	/**
-	 * Add deletion icons to all virtual group items in the search results list
-	 *
-	 * @method	addDeleteIconsToList
-	 * @param	{Element}	[items]
-	 */
-	addDeleteGroupIcons: function(items) {
-		items	= items || this.list;
-
-		items.each(function(item){
-			item.insert(new Element('span', {
-				className:	'deletegroup',
-				title:		'[LLL:contact.panelwidget-staffselector.icon.deletegroup]'
-			}));
-		});
-	},
-
-
-
-	/**
-	 * Add icons for adding to active selection to all items in the search results list
-	 *
-	 * @method	addAddIconsToList
-	 */
-	addAddIconsToList: function() {
-		this.list.select('li a').each(function(item){
-			item.insert(new Element('span', {
-				'class':	'add',
-				title:		'[LLL:contact.panelwidget-staffselector.icon.additem]'
-			}));
-		});
-	},
-
-
-
-	/**
 	 * Add removal icons to items.
 	 *
 	 * @method	addRemoveIconsToList
 	 * @param	{Element[]}		[items]
 	 */
-	addRemoveIconToItems: function(items) {
+	addRemoveIconsToSelection: function(items) {
 		items	= items || this.selection.select('li');
 
 		items.each(function(item){
-			var anchor = item.down('a');
-			this.insertItemSpan(anchor, 'remove', '[LLL:contact.panelwidget-staffselector.icon.removefromselection]');
+			this.insertIcon(item, 'remove', '[LLL:contact.panelwidget-staffselector.icon.removefromselection]');
 		}, this);
 	},
 
@@ -685,12 +636,15 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * @method	addDeleteGroupIconsToSelectionItems
 	 * @param	{Element[]}								[items]
 	 */
-	addDeleteGroupIconToItems: function(items) {
-		items	= items || this.selection.select('li');
+	addDeleteGroupIcons: function(items) {
+		if( !items ) {
+			var itemsList		= this.list.select('.virtualgroup'),
+				itemsSelection	= this.selection.select('.virtualgroup');
+			items	=  itemsList.concat(itemsSelection);
+		}
 
 		items.each(function(item){
-			var anchor = item.down('a');
-			this.insertItemSpan(anchor, 'deletegroup', '[LLL:contact.panelwidget-staffselector.icon.deletegroup]');
+			this.insertIcon(item, 'deletegroup', '[LLL:contact.panelwidget-staffselector.icon.deletegroup]');
 		}, this);
 	},
 
@@ -699,14 +653,17 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	/**
 	 * Insert span with given CSS class and title into given item if not there yet
 	 *
-	 * @method	insertItemSpan
+	 * @method	insertIcon
 	 * @param	{Element}	item
 	 * @param	{String}	className
 	 * @param	{String}	title
 	 */
-	insertItemSpan: function(item, className, title) {
-		if( ! item.down('span.' + className) ) {
-			item.insert({
+	insertIcon: function(item, className, title) {
+		var anchor = item.down('a');
+		
+		if( !anchor.down('.' + className) ) {
+			console.log('insertIcon REAL: ' + className);
+			anchor.insert({
 				bottom: new Element('span', {
 					className:	className,
 					title:		title

@@ -16,6 +16,21 @@
 
 		a {
 			width:250px;
+
+			span {
+				background-image:url(../../../../core/asset/img/icons.png);
+				background-repeat:no-repeat;
+				display:inline-block;
+				float:right;
+				height:16px;
+				margin-right:40px;
+				width:16px;
+
+				&.deletegroup {
+					background-image:url(../img/panelwidget-staffselector.png);
+					background-position:2px -32px;
+				}
+			}
 		}
 
 		&.group a {
@@ -56,26 +71,11 @@
 
 	li {
 		a span {
-			background-image:url(../../../../core/asset/img/icons.png);
-			background-repeat:no-repeat;
-			display:inline-block;
-			float:right;
-			height:16px;
-			margin-right:40px;
-			width:16px;
-
-			&.add {
-				background-position:2px -28px;
-			}
-
-			&.deletegroup {
-				background-image:url(../img/panelwidget-staffselector.png);
-				background-position:2px -32px;
-				margin-right:2px !important;
-			}
-
 			&.remove {
 				background-position:2px -358px;
+			}
+			&.deletegroup {
+				margin-right:2px !important;
 			}
 		}
 
