@@ -351,21 +351,21 @@ div#search-results {
 	}
 
 	.projectPart {
-		& li {
+		li {
 			padding: 4px 0;
 		}
 
-		& table.list {
-			& td {
+		table.list {
+			td {
 				border-top: 1px solid $colorNeutral01;
 				padding: 5px;
 			}
 
-			& td:first-child {
+			td:first-child {
 				width: 1px;
 			}
 
-			& td:last-child {
+			td:last-child {
 				border-left: 1px solid $colorNeutral03;
 			}
 
@@ -413,13 +413,13 @@ button {
 
 .fElement.fieldnameStreet,
 .fElement.fieldnameContactinfo {
-	& .warningMessage {
+	.warningMessage {
 		width: 92%;
 	}
 }
 
 div.warningMessage {
-	& ul.duplicatedList {
+	ul.duplicatedList {
 		margin: 5px 0 0 32px;
 	}
 }
