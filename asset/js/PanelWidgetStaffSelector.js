@@ -74,6 +74,9 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 		this.addItemsIcons(true, true, true);
 
 		this.markFirstAsHot();
+
+		var selectedNodes = this.selection.select('li');
+		this.sortNodes(selectedNodes);
 	},
 
 
@@ -268,12 +271,13 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 			bottom: item
 		});
 
-			// "Virtual" group: Add "delete group" icon to item
+			// Add "remove from selection" button to item
+		this.addRemoveIconToItems([item]);
+
+					// "Virtual" group: Add "delete group" icon to item
 		if( item.hasClassName('virtualgroup') ) {
 			this.addDeleteGroupIconToItems([item]);
 		}
-			// Add "remove from selection" button to item
-		this.addRemoveIconToItems([item]);
 
 			// Sort selection items
 		var nodes	= this.selection.select('li');
@@ -298,22 +302,23 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 */
 	sortNodes: function(nodes) {
 			// Collect nodes grouped by type
-		var hashPersons			= {};
-		var hashVirtualGroups	= {};
-		var hashGroups			= {};
+		var listPersons			= {},
+			listVirtualGroups	= {},
+			listGroups			= {},
+			currentList, itemLabel;
 
 		nodes.each(function(item) {
-			var hash = item.hasClassName('person') ? hashPersons : ( item.hasClassName('group') ? hashGroups : hashVirtualGroups);
-			var label	= item.down('a').innerHTML.stripTags().strip();
-			hash[label] = item;
+			currentList	= item.hasClassName('person') ? listPersons : ( item.hasClassName('group') ? listGroups : listVirtualGroups);
+			itemLabel	= item.down('a').innerHTML.stripTags().strip();
+			currentList[itemLabel] = item;
 		});
 
 			// Update selection with sorted item nodes
 		this.selection.update('');
 
-		this.insertSelectionNodesSorted(hashVirtualGroups);
-		this.insertSelectionNodesSorted(hashGroups);
-		this.insertSelectionNodesSorted(hashPersons);
+		this.insertSelectionNodesSorted(listVirtualGroups);
+		this.insertSelectionNodesSorted(listGroups);
+		this.insertSelectionNodesSorted(listPersons);
 	},
 
 
@@ -701,10 +706,12 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 */
 	insertItemSpan: function(item, className, title) {
 		if( ! item.down('span.' + className) ) {
-			item.insert(new Element('span', {
-				'class':	className,
-				title:		title
-			}));
+			item.insert({
+				bottom: new Element('span', {
+					className:	className,
+					title:		title
+				})
+			});
 		}
 	},
 
@@ -789,6 +796,7 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 	 * Handler after "virtual" group has been saved: add the new group into active selection
 	 *
 	 * @method	onSavedGroup
+	 * @param	{String}			groupLabel
 	 * @param	{Ajax.Response}		response
 	 */
 	onSavedVirtualGroup: function(groupLabel, response) {
@@ -799,21 +807,16 @@ Todoyu.Ext.contact.PanelWidget.StaffSelector = Class.create(Todoyu.PanelWidgetSe
 
 				// Render and insert selection item
 			var item	= new Element('li', {
-				'id':		'panelwidget-staffselector-item-v' + idPreference,
-				'class':	'virtualgroup'
+				id:			'panelwidget-staffselector-item-v' + idPreference,
+				className:	'virtualgroup'
 			}).insert({
 				bottom: new Element('a', {
-					'title':	groupLabel,
-					'href':		'javascript:void(0)'
+					title:	groupLabel,
+					href:	'javascript:void(0)'
 				}).update(groupLabel)
 			});
 
 			this.addItemToSelection(item);
-
-			this.addDeleteGroupIconToItems([item]);
-			this.addRemoveIconToItems([item]);
-
-			this.sortNodes(this.selection.select('li'));
 		}
 	}
 
