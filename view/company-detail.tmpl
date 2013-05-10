@@ -46,19 +46,20 @@
 				<div class="infoBox addressPart">
 					<h4>{addressType $addressType.id_addresstype}</h4>
 					<div class="content overflow address">
-						{nl2br $addressType.street}
-
-						{if strlen($addressType.zip)>0 || strlen($addressType.city)>0}
-							<br />{$addressType.zip} {$addressType.city}
+						{if strlen($addressType.street) > 0}
+							{nl2br $addressType.street}<br />
 						{/if}
-
-						<br />
-						{countryName $addressType.id_country}
 
 						{if strlen($addressType.postbox)>0}
-							<br />
 							{Label contact.ext.address.attr.postbox}: {htmlencode wordwrap($addressType.postbox 30 cut=true)}<br />
 						{/if}
+
+						{if strlen($addressType.zip)>0 || strlen($addressType.city)>0}
+							{$addressType.zip} {$addressType.city}<br/>
+						{/if}
+						{countryName $addressType.id_country}
+
+
 
 						{if strlen($addressType.comment) > 0}
 							<br />
