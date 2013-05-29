@@ -44,16 +44,21 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	 * @param	Boolean		$lastnameFirst
 	 * @param	Boolean		$showTitle
 	 * @param	Integer		$idRole
+	 * @param	Boolean		$showCompanyAbbr
 	 * @return	String
 	 */
-	public function getLabel($showEmail = false, $lastnameFirst = true, $showTitle = false, $idRole = 0) {
+	public function getLabel($showEmail = false, $lastnameFirst = true, $showTitle = false, $idRole = 0, $showCompanyAbbr = true) {
 		 $label	= $this->getFullName($lastnameFirst);
+
+		if( $showCompanyAbbr ) {
+			$label .= ' (' . $this->getCompany()->getShortname(). ')';
+		}
 
 		if( $showTitle ) {
 			/** @var	TodoyuRole		$role  */
 			$role	= TodoyuRoleManager::getRole($idRole);
-
-			$label	.= ', ' . $role->getTitle();
+			$title	= $role->getTitle();
+			$label	.= !empty($title) ? ', ' . $title : '';
 		}
 
 		 if( $showEmail ) {

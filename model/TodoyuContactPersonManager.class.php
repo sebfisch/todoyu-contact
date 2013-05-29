@@ -685,14 +685,15 @@ class TodoyuContactPersonManager {
 	 * @param	Integer		$idPerson
 	 * @param	Boolean		$showEmail
 	 * @param	Boolean		$lastnameFirst
+	 * @param	Boolean		$showCompanyAbbr
 	 * @return	String
 	 */
-	public static function getLabel($idPerson, $showEmail = false, $lastnameFirst = true) {
+	public static function getLabel($idPerson, $showEmail = false, $lastnameFirst = true, $showCompanyAbbr = true) {
 		$idPerson	= intval($idPerson);
 		$label		= '';
 
 		if( $idPerson !== 0 ) {
-			$label	= self::getPerson($idPerson)->getLabel($showEmail, $lastnameFirst);
+			$label	= self::getPerson($idPerson)->getLabel($showEmail, $lastnameFirst, $showCompanyAbbr);
 		}
 
 		return  $label;
