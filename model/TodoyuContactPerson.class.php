@@ -47,7 +47,7 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 	 * @param	Boolean		$showCompanyAbbr
 	 * @return	String
 	 */
-	public function getLabel($showEmail = false, $lastnameFirst = true, $showTitle = false, $idRole = 0, $showCompanyAbbr = true) {
+	public function getLabel($showEmail = false, $lastnameFirst = true, $showTitle = false, $idRole = 0, $showCompanyAbbr = false) {
 		 $label	= $this->getFullName($lastnameFirst);
 
 		if( $showCompanyAbbr ) {

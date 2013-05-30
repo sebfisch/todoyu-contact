@@ -27,7 +27,7 @@
 class TodoyuContactPersonFilterDataSource {
 
 	/**
-	 * Get autocomplete list for person
+	 * Get auto-complete suggestions list for person
 	 *
 	 * @param	String		$searchWord
 	 * @param	Array		$formData
@@ -40,7 +40,7 @@ class TodoyuContactPersonFilterDataSource {
 		$data 		= array();
 
 		foreach($persons as $person) {
-			$data[$person['id']] = TodoyuContactPersonManager::getLabel($person['id']);
+			$data[$person['id']] = TodoyuContactPersonManager::getLabel($person['id'], false, true, true);
 		}
 
 		return $data;

@@ -109,8 +109,8 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 	 * @param	Boolean					$addCompanyAbbr
 	 * @return	String
 	 */
-	private static function getSuggestionTitle(TodoyuContactPerson $person, $addCompanyAbbr = true) {
-		$label		= $person->getFullName();
+	private static function getSuggestionTitle(TodoyuContactPerson $person, $addCompanyAbbr = false) {
+		$label	= $person->getFullName();
 		if( $addCompanyAbbr ) {
 			$label .= ' (' . $person->getCompany()->getShortname() . ')';
 		}
