@@ -138,7 +138,7 @@ Todoyu.Ext.contact.Upload = {
 				record:		imageKey,
 				removed:	removed ? 1 : 0
 			},
-			onComplete: this.onRefreshPreviewImage.bind(this, form, recordType, idRecord, imageKey)
+			onComplete: this.onRefreshPreviewImage.bind(this, form, recordType, idRecord, removed)
 		};
 		var target	= form.down('div.fieldnamePreview img');
 
@@ -154,11 +154,11 @@ Todoyu.Ext.contact.Upload = {
 	 * @param	{Element}	form
 	 * @param	{String}	recordType		'person' / 'company'
 	 * @param	{Number}	idRecord
-	 * @param	{String}	imageKey
+	 * @param	{Boolean}	removed
 	 * @todo	add check for image being dummy (via http header?) only "real" pictures need the button
 	 */
-	onRefreshPreviewImage: function(form, recordType, idRecord, imageKey) {
-		this.toggleRemoveButton(recordType, idRecord);
+	onRefreshPreviewImage: function(form, recordType, idRecord, removed) {
+		this.showRemoveImageButton(recordType, idRecord, !removed);
 	},
 
 
@@ -251,6 +251,22 @@ Todoyu.Ext.contact.Upload = {
 
 
 	/**
+	 * Show or hide button to remove contact record image
+	 *
+	 * @method	showRemoveImageButton
+	 * @param	{String}	recordType
+	 * @param	{Number}	idRecord
+	 * @param	{Boolean}	[visible]
+	 */
+	showRemoveImageButton: function(recordType, idRecord, visible) {
+		visible	= visible || false;
+
+		$(recordType + '-' + idRecord + '-field-remove')[visible ? 'show' : 'hide']();
+	},
+
+
+
+	/**
 	 * Toggle image remove button
 	 * Only show when image is set
 	 *
@@ -264,6 +280,25 @@ Todoyu.Ext.contact.Upload = {
 
 		if( removeField ) {
 			removeField[method]();
+		}
+	},
+
+
+
+	/**
+	 * Init remove contact image button: hide if the current image is a dummy
+	 *
+	 * @method	initRemoveContactImageButton
+	 */
+	initRemoveContactImageButton: function() {
+		var removeContactImageButtons	= $$('button.removeContactImage');
+		if( removeContactImageButtons.length > 0 ) {
+			var contactImage	= $$('fieldset.image div.fieldnamePreview span.commenttext img')[0]
+			if(contactImage.src.indexOf('&dummy=1&') > -1 ) {
+				removeContactImageButtons.each(function(element, index) {
+					element.hide()
+				});
+			}
 		}
 	},
 

@@ -203,6 +203,7 @@ class TodoyuContactRenderer {
 		$form->setFormData($formData);
 		$form->setUseRecordID(false);
 
+
 			// Render form
 		$data	= array(
 			'formhtml'	=> $form->render()

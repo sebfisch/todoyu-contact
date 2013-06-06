@@ -138,6 +138,7 @@ class TodoyuContactImageManager {
 			'controller'=> $typeKey,
 			'action'	=> 'render' . $imageType,
 			'idImage'	=> $idImage,
+			'dummy'		=> $isDummy ? 1:0,
 			'hash'		=> NOW
 		);
 
@@ -150,17 +151,17 @@ class TodoyuContactImageManager {
 
 	/**
 	 * Renders the Image. Needed because the files folder is .htaccess protected.
-	 * If no picture of an user is found, one of randomly 7 images is taken
+	 * If no user picture is found, one of 7 random images is taken
 	 *
-	 * @param	Integer		$idImage		ID of person or company
-	 * @param	String		$typeKey		'person' / 'company'
+	 * @param	Integer		$idImage	ID of person or company
+	 * @param	String		$typeKey	'person' / 'company'
 	 */
 	public static function renderContactImage($idImage, $typeKey) {
 			// Image ID === 0 => get random dummy image
 		$idImage	=  self::hasContactImage($idImage, $typeKey) ? $idImage : 0;
 		$filePath	=  self::getPathContactImage($idImage, $typeKey, 'contactimage');
 
-		self::sendImageToBrowser($filePath);
+		self::sendImageToBrowser($filePath, $idImage);
 	}
 
 
@@ -184,15 +185,18 @@ class TodoyuContactImageManager {
 	 * Send image to browser with
 	 *
 	 * @param	String		$filePath
+	 * @param	Integer		[$idImage]		0 = placeholder / > 0 = uploaded image
 	 * @return	String		Binary data
 	 */
-	protected static function sendImageToBrowser($filePath) {
+	protected static function sendImageToBrowser($filePath, $idImage = 0) {
 		TodoyuHeader::sendContentType('image/png');
 		TodoyuHeader::sendHeader('Content-Transfer-Encoding', 'binary');
 		TodoyuHeader::sendHeader('Expires', date('r', NOW + TodoyuTime::SECONDS_WEEK*4));
 		TodoyuHeader::sendHeader('Pragma', 'cache');
 		TodoyuHeader::sendHeader('Cache-Control', 'max-age=50000');
 		TodoyuHeader::sendHeader('User-Cache-Control', 'max-age=50000');
+
+		TodoyuHeader::sendTodoyuHeader('imageid', $idImage);
 
 		echo file_get_contents($filePath);
 		exit();
