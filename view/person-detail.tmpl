@@ -10,7 +10,7 @@
 			<div class="content overflow">
 				<div class="left image">{personImage $id}</div>
 				<p>
-					<h1>{salutationLabel $id} {$fullname}</h1>
+					<h1>{salutationLabel $id} {if !empty($title)}{$title} {/if}{$fullname}</h1>
 					<br/>
 					{if !empty($email)}
 						<strong>{Label contact.ext.record.contactinfotype.email}:</strong>

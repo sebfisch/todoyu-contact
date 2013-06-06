@@ -77,6 +77,7 @@
 	<label index="person.attr.company">Datore di lavoro</label>
 	<label index="person.attr.company.new">Nuovo datore di lavoro</label>
 	<label index="person.attr.email">Email</label>
+	<label index="person.attr.title">Titolo</label>
 	<label index="person.attr.firstname">Nome</label>
 	<label index="person.attr.is_active">Abilita accesso</label>
 	<label index="person.attr.is_admin">Amministratore</label>

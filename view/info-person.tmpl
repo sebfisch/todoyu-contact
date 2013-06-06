@@ -4,6 +4,12 @@
 			<td class="label">{Label contact.ext.person.attr.salutation}:</td>
 			<td>{salutationLabel $salutation}</td>
 		</tr>
+		{if !empty($title)}
+			<tr class="even">
+				<td class="label">{Label contact.ext.person.attr.title}:</td>
+				<td>{htmlencode $title}</td>
+			</tr>
+		{/if}
 		<tr class="odd">
 			<td class="label">{Label contact.ext.person.attr.firstname}:</td>
 			<td width="90%">{htmlencode wordwrap($firstname 30 cut=true)}</td>

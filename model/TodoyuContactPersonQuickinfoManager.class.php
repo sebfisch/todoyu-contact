@@ -29,19 +29,19 @@ class TodoyuContactPersonQuickInfoManager {
 	/**
 	 * Add items to person quickinfo
 	 *
-	 * @param	TodoyuQuickinfo		$quickinfo
+	 * @param	TodoyuQuickinfo		$quickInfo
 	 * @param	Integer				$idPerson
 	 */
-	public static function addPersonInfos(TodoyuQuickinfo $quickinfo, $idPerson) {
+	public static function addPersonInfos(TodoyuQuickinfo $quickInfo, $idPerson) {
 		$idPerson	= intval($idPerson);
 		$person		= TodoyuContactPersonManager::getPerson($idPerson);
 
 			// Name (with link)
 		if( Todoyu::allowed('contact', 'general:area') ) {
 			$link	= TodoyuContactPersonManager::getDetailLink($idPerson);
-			$quickinfo->addInfo('name', $link, 10, false);
+			$quickInfo->addInfo('name', $link, 10, false);
 		} else {
-			$quickinfo->addInfo('name', $person->getLabel(), 10, false);
+			$quickInfo->addInfo('name', $person->getLabel(), 10, false);
 		}
 
 			// Restrict contact infos
@@ -49,13 +49,13 @@ class TodoyuContactPersonQuickInfoManager {
 				// Email
 			$email	= $person->getEmail(true);
 			if( $email !== false ) {
-				$quickinfo->addEmail('email', $email, $person->getFullName(), 100);
+				$quickInfo->addEmail('email', $email, $person->getFullName(), 100);
 			}
 
 				// Get preferred or only phone
 			$phone = $person->getPhone();
 			if( $phone !== false ) {
-				$quickinfo->addInfo('phone', $phone, 150);
+				$quickInfo->addInfo('phone', $phone, 150);
 			}
 		}
 		
@@ -64,7 +64,7 @@ class TodoyuContactPersonQuickInfoManager {
 				// Comment
 			$comment	= $person->getComment();
 			if( $comment !== '' ) {
-				$quickinfo->addInfo('comment', TodoyuString::crop($comment, 100), 200);
+				$quickInfo->addInfo('comment', TodoyuString::crop($comment, 100), 200);
 			}
 		}
 

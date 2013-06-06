@@ -103,6 +103,7 @@
 	<label index="person.attr.company">Employer</label>
 	<label index="person.attr.company.new">New Employer</label>
 	<label index="person.attr.email">Email Address</label>
+	<label index="person.attr.title">Title</label>
 	<label index="person.attr.firstname">First Name</label>
 	<label index="person.attr.id">Person ID</label>
 	<label index="person.attr.id_smtpaccount">Outgoing Email</label>

@@ -30,6 +30,10 @@
 					</source>
 				</field>
 
+				<field type="text" name="title">
+					<label>contact.ext.person.attr.title</label>
+				</field>
+
 				<field type="text" name="lastname">
 					<label>contact.ext.person.attr.lastname</label>
 					<required />
