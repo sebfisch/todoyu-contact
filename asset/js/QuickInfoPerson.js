@@ -101,7 +101,7 @@ Todoyu.Ext.contact.QuickInfoPerson = {
 
 
 	/**
-	 * Remove given calendar event quickinfo element from cache
+	 * Remove given event quickinfo element from cache
 	 *
 	 * @method	removeFromCache
 	 * @param	{Number}	idPerson
