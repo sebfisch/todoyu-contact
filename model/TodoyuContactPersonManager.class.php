@@ -234,6 +234,28 @@ class TodoyuContactPersonManager {
 
 
 	/**
+	 * Get person by email address
+	 *
+	 * @param	String		$email
+	 * @return	TodoyuContactPerson|Boolean
+	 */
+	public static function getPersonByEmail($email) {
+		if( !TodoyuString::isValidEmail($email) ) {
+			return false;
+		}
+
+		$fields = 'id';
+		$table	= self::TABLE;
+		$where	= ' deleted = 0 AND ' . TodoyuSql::buildLikeQueryPart(array($email), array('email'));
+
+		$personIDs	= Todoyu::db()->getArray($fields, $table, $where, '', '', '');
+
+		return count($personIDs) === 1 ? self::getPerson($personIDs[0]['id']) : false;
+	}
+
+
+
+	/**
 	 * Add a new person
 	 *
 	 * @param	Array		$data
