@@ -377,7 +377,9 @@ function Dwoo_Plugin_isContactinfotypeSeeAllowed(Dwoo $dwoo, $type, $idRecord, $
  * @return	Array
  */
 function Dwoo_Plugin_renderContactInfoType(Dwoo $dwoo, $contactInfoData) {
-	return TodoyuHookManager::callHookDataModifier('contact', 'contactinfotype.render', array('contactInfoData' => $contactInfoData));
+	$contactInfoData = TodoyuHookManager::callHookDataModifier('contact', 'contactinfotype.render', $contactInfoData);
+
+	return $contactInfoData['html'];
 }
 
 ?>

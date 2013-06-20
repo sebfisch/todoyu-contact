@@ -287,13 +287,14 @@ class TodoyuContactContactInfoManager {
 	 * @param	Array	$data
 	 * @return	String
 	 */
-	public static function renderContactInformation($data) {
-		$contactInfoData = $data['contactInfoData'];
+	public static function renderContactInformation($contactInfoData) {
+		$contactInfoData['html'] = TodoyuSTring::htmlentities($contactInfoData['info']);
+
 		if( intval($contactInfoData['infotype_category']) === CONTACT_INFOTYPE_CATEGORY_EMAIL) {
-			return TodoyuString::buildMailtoATag($contactInfoData['info'], $contactInfoData['info']);
+			$contactInfoData['html'] = TodoyuString::buildMailtoATag($contactInfoData['info'], $contactInfoData['info']);
 		}
 
-		return TodoyuSTring::htmlentities($contactInfoData['info']);
+		return $contactInfoData;
 	}
 }
 
