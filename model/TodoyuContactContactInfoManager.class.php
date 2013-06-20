@@ -279,6 +279,22 @@ class TodoyuContactContactInfoManager {
 		return $results;
 	}
 
+
+
+	/**
+	 * Renders contact informations
+	 *
+	 * @param	Array	$data
+	 * @return	String
+	 */
+	public static function renderContactInformation($data) {
+		$contactInfoData = $data['contactInfoData'];
+		if( intval($contactInfoData['infotype_category']) === CONTACT_INFOTYPE_CATEGORY_EMAIL) {
+			return TodoyuString::buildMailtoATag($contactInfoData['info'], $contactInfoData['info']);
+		}
+
+		return TodoyuSTring::htmlentities($contactInfoData['info']);
+	}
 }
 
 ?>

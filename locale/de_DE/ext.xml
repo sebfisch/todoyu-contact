@@ -14,6 +14,7 @@
 	<label index="ac.person.notFoundInfo">Keine passende Person gefunden</label>
 	<label index="ac.region.notFoundInfo">Keine passende Region gefunden</label>
 	<label index="address">Adresse</label>
+	<label index="phone">Telefon</label>
 	<label index="address.attr.addresstype">Adresstyp</label>
 	<label index="address.attr.addresstype.1">Heimadresse</label>
 	<label index="address.attr.addresstype.2">Geschäftsadresse</label>

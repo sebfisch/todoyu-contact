@@ -30,11 +30,7 @@
 							<tr>
 								<th>{labelContactinfotype $ciData.id_contactinfotype}:</th>
 								<td>
-									{if $ciData.infotype_category == constant(CONTACT_INFOTYPE_CATEGORY_EMAIL)}
-										<a href="mailto:{$firstname}%20{$lastname}%20%3C{$ciData.info}%3E">{htmlencode wordwrap($ciData.info 30 cut=false)}</a>
-									{else}
-										{htmlencode wordwrap($ciData.info 30 cut=false)}
-									{/if}
+									{renderContactInfoType $ciData}
 								</td>
 							</tr>
 						{/if}

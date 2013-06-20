@@ -67,6 +67,9 @@ class TodoyuContactExtActionController extends TodoyuActionController {
 			$content	= TodoyuContactRenderer::renderContactList($type, $searchWord);
 		}
 
+		TodoyuPage::addJsInit('Todoyu.Ext.contact.Company.initCompanyList()', 100);
+		TodoyuPage::addJsInit('Todoyu.Ext.contact.Person.initPersonList()', 100);
+
 		return TodoyuContactRenderer::renderContactPage($type, $idRecord, $searchWord, $content);
 	}
 

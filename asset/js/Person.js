@@ -367,7 +367,8 @@ Todoyu.Ext.contact.Person =  {
 			parameters: {
 				action:	'list',
 				sword:	searchText
-			}
+			},
+			onComplete: this.initPersonList.bind(this)
 		};
 
 		this.ext.updateContent(url, options);
@@ -533,5 +534,34 @@ Todoyu.Ext.contact.Person =  {
 		if( error ) {
 			Todoyu.FormValidator.addWarningMessage(fieldIDFirstname, response.responseText, !$(fieldIDFirstname).up('.dialog'));
 		}
+	},
+
+
+
+	/**
+	 * Install Quickinfo for person email and phone.
+	 * Include installation on paging
+	 */
+	initPersonList: function() {
+		var listing = $('paging-person');
+
+		if( listing ) {
+			listing.stopObserving();
+			listing.on('DOMNodeInserted', '#paging-person', this.initPersonList.bind(this));
+			Todoyu.QuickInfo.install('personEmail', '#paging-person span.email', this.getPersonIdForQuickinfo.bind(this));
+			Todoyu.QuickInfo.install('personPhone', '#paging-person span.phone', this.getPersonIdForQuickinfo.bind(this));
+		}
+	},
+
+
+
+	/**
+	 * Extract person id from table row.
+	 *
+	 * @param	{Element}	element
+	 * @returns {Number}
+	 */
+	getPersonIdForQuickinfo: function(element) {
+		return element.up('tr').id.split('-').last();
 	}
 };

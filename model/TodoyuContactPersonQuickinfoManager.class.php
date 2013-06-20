@@ -87,6 +87,51 @@ class TodoyuContactPersonQuickInfoManager {
 		TodoyuPage::addJsInit('Todoyu.Ext.contact.QuickinfoPerson.init()', 100);
 	}
 
+
+
+	/**
+	 * Add given company email-addresses to quickinfo
+	 *
+	 * @param    TodoyuQuickinfo $quickInfo
+	 * @param    Integer $idPerson
+	 */
+	public static function addQuickInfoEmail(TodoyuQuickinfo $quickInfo, $idPerson) {
+		$idPerson = intval($idPerson);
+		$emailRecords = TodoyuContactContactInfoManagerPerson::getEmails($idPerson);
+
+		foreach ($emailRecords as $key =>  $emailRecord) {
+			if( TodoyuContactRights::isContactinfotypeOfPersonSeeAllowed($idPerson, $emailRecord['id_contactinfotype'])) {
+				$emailType = TodoyuLabelManager::getLabel($emailRecord['title']);
+
+				$emailTag = TodoyuSTring::buildMailtoATag($emailRecord['info'],
+														  TodoyuString::wrapWithTag('strong', $emailType) . ': ' . $emailRecord['info']);
+
+				$quickInfo->addHTML('email' . $key,
+									$emailTag);
+			}
+		}
+	}
+
+
+
+	/**
+	 * Add given company phone numbers to quickinfo
+	 *
+	 * @param    TodoyuQuickinfo $quickInfo
+	 * @param    Integer $idCompany
+	 */
+	public static function addQuickInfoPhone(TodoyuQuickinfo $quickInfo, $idCompany) {
+		$idCompany = intval($idCompany);
+		$phoneRecords = TodoyuContactContactInfoManagerPerson::getPhones($idCompany);
+
+		foreach ($phoneRecords as $key => $phoneRecord) {
+			if( TodoyuContactRights::isContactinfotypeOfPersonSeeAllowed($idCompany, $phoneRecord['id_contactinfotype'])) {
+				$title = TodoyuLabelManager::getLabel($phoneRecord['title']);
+				$quickInfo->addHTML('phone' . $key, TodoyuString::wrapWithTag('strong', $title) . ': ' . $phoneRecord['info']);
+			}
+		}
+	}
+
 }
 
 ?>

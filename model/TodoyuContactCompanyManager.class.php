@@ -745,8 +745,6 @@ class TodoyuContactCompanyManager {
 		$orderBy	= 'is_preferred DESC';
 
 		return Todoyu::db()->getArray($fields, $tables, $where, '', $orderBy);
-
-
 	}
 }
 

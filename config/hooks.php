@@ -28,4 +28,5 @@ if( Todoyu::allowed('contact', 'general:use') ) {
 	TodoyuHookManager::registerHook('project', 'taskdata', 'TodoyuContactTaskManager::hookModifyTaskPersonAttributes', 200);
 }
 
+TodoyuHookManager::registerHook('contact', 'contactinfotype.render', 'TodoyuContactContactInfoManager::renderContactInformation');
 ?>

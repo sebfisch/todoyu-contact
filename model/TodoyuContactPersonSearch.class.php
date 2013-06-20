@@ -214,7 +214,8 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 			'iconClass'	=> ($person->isActive() ? 'login' : '') . ($person->isAdmin() ? ' admin' : ''),
 			'lastname'	=> $person->getLastname(),
 			'firstname'	=> $person->getFirstname(),
-			'email'		=> $email,
+			'email'		=> TodoyuLabelManager::getLabel('contact.ext.person.attr.email'),
+			'phone'		=> TodoyuLabelManager::getLabel('contact.ext.phone'),
 			'company'	=> $company,
 			'actions'	=> TodoyuContactPersonRenderer::renderPersonActions($person->getID())
 		);

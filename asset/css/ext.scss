@@ -300,17 +300,65 @@ div#search-results {
 	
 	col {
 		&.title {
-			width: 40%;
+			width: 41%;
 		}
 
-		&.street {
-			width: 25%;
+		&.email {
+			width: 15%;
+
+			span {
+				cursor: help;
+			}
 		}
-		&.place {
-			width: 20%;
+		&.phone {
+			width: 15%;
+
+			span {
+				cursor: help;
+			}
+		}
+		&.address {
+			width: 15%;
+
+			span {
+				cursor: help;
+			}
 		}
 	}
 }
+
+.personListing {
+	col {
+		&.firstname {
+			width: 15%;
+		}
+
+		&.lastname {
+			width: 15%;
+		}
+
+		&.company {
+			width: 30%;
+		}
+
+		&.phone {
+			width: 14%;
+
+			span {
+				cursor: help;
+			}
+		}
+
+		&.email {
+			width: 14%;
+
+			span {
+				cursor: help;
+			}
+		}
+	}
+}
+
 
 /* -------------------
 	Person Details

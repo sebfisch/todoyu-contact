@@ -85,6 +85,8 @@ Todoyu::$CONFIG['EXT']['contact'] = array(
 				'lastname'	=> 'contact.ext.person.attr.lastname',
 				'firstname'	=> 'contact.ext.person.attr.firstname',
 				'company'	=> 'contact.ext.company',
+				'email'	=> 'contact.ext.person.attr.email',
+				'phone'		=> 'contact.ext.phone',
 				'actions'	=> '',
 			)
 		),
@@ -96,8 +98,9 @@ Todoyu::$CONFIG['EXT']['contact'] = array(
 			'columns'	=> array(
 				'icon'		=> '',
 				'title'		=> 'contact.ext.company.attr.title',
-				'street'	=> 'contact.ext.address.attr.street',
-				'place'		=> 'contact.ext.place',
+				'email'		=> 'contact.ext.person.attr.email',
+				'phone'		=> 'contact.ext.phone',
+				'address'	=> 'contact.ext.address',
 				'actions'	=> ''
 			)
 		),
@@ -262,5 +265,12 @@ TodoyuFormRecordsManager::addType('emailPerson', 'TodoyuContactFormElement_Recor
 
 TodoyuMailReceiverManager::addSearchCallback('TodoyuContactPersonManager::getMatchingEmailReceiversActivePersons');
 TodoyuMailReceiverManager::addSearchCallback('TodoyuContactPersonManager::getMatchingEmailReceiversContactInfo');
+
+TodoyuQuickinfoManager::addFunction('companyEmail', 'TodoyuContactCompanyQuickInfoManager::addQuickInfoEmail');
+TodoyuQuickinfoManager::addFunction('companyPhone', 'TodoyuContactCompanyQuickInfoManager::addQuickInfoPhone');
+TodoyuQuickinfoManager::addFunction('companyAddress', 'TodoyuContactCompanyQuickInfoManager::addQuickInfoAddress');
+
+TodoyuQuickinfoManager::addFunction('personEmail', 'TodoyuContactPersonQuickInfoManager::addQuickInfoEmail');
+TodoyuQuickinfoManager::addFunction('personPhone', 'TodoyuContactPersonQuickInfoManager::addQuickInfoPhone');
 
 ?>

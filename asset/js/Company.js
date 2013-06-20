@@ -204,7 +204,8 @@ Todoyu.Ext.contact.Company =  {
 			parameters: {
 				action:	'list',
 				sword:	sword
-			}
+			},
+			onComplete: this.initCompanyList.bind(this)
 		};
 
 		this.ext.updateContent(url, options);
@@ -339,5 +340,35 @@ Todoyu.Ext.contact.Company =  {
 		};
 
 		Todoyu.send(url, options);
+	},
+
+
+
+	/**
+	 * Install Quickinfo for company email, phone and address.
+	 * Include installation on paging
+	 */
+	initCompanyList: function() {
+		var listing = $('paging-company');
+
+		if( listing ) {
+			listing.stopObserving();
+			listing.on('DOMNodeInserted', '#paging-company', this.initCompanyList.bind(this));
+			Todoyu.QuickInfo.install('companyEmail', '#paging-company span.email', this.getCompanyIdForQuickinfo.bind(this));
+			Todoyu.QuickInfo.install('companyPhone', '#paging-company span.phone', this.getCompanyIdForQuickinfo.bind(this));
+			Todoyu.QuickInfo.install('companyAddress', '#paging-company span.address', this.getCompanyIdForQuickinfo.bind(this));
+		}
+	},
+
+
+
+	/**
+	 * Extract company id from table row.
+	 *
+	 * @param	{Element}	element
+	 * @returns {Number}
+	 */
+	getCompanyIdForQuickinfo: function(element) {
+		return element.up('tr').id.split('-').last();
 	}
 };
