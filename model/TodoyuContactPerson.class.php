@@ -623,6 +623,21 @@ class TodoyuContactPerson extends TodoyuBaseObject {
 
 
 	/**
+	 * @return bool
+	 */
+	public function getPhoneRecord() {
+		$phones	= $this->getPhones();
+
+		if( sizeof($phones) > 0 ) {
+			return $phones[0];
+		} else {
+			return false;
+		}
+	}
+
+
+
+	/**
 	 * Get main company (first linked) of the person
 	 *
 	 * @return	TodoyuContactCompany

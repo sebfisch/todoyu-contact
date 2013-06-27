@@ -57,6 +57,9 @@ Todoyu.Ext.contact = {
 		if( Todoyu.isInArea('contact') ) {
 			this.initObservers();
 			this.initPanelWidgets();
+
+			Todoyu.Hook.add('core.listing.extended', Todoyu.Ext.contact.Company.initCompanyList.bind(Todoyu.Ext.contact.Company));
+			Todoyu.Hook.add('core.listing.extended', Todoyu.Ext.contact.Person.initPersonList.bind(Todoyu.Ext.contact.Person));
 		}
 	},
 

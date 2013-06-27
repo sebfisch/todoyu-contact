@@ -253,6 +253,54 @@ class TodoyuContactCompany extends TodoyuBaseObject {
 	public function isNotActive() {
 		return intval($this->get('is_notactive')) === 1;
 	}
+
+
+
+	/**
+	 * @return	String | Boolean
+	 */
+	public function getEmail() {
+		$emails	= $this->getEmails();
+
+		if( sizeof($emails) > 0 ) {
+			return $emails[0]['info'];
+		} else {
+			return false;
+		}
+	}
+
+
+
+	/**
+	 * @return	Array
+	 */
+	public function getEmails() {
+		return TodoyuContactContactInfoManagerCompany::getEmails($this->getID());
+	}
+
+
+
+	/**
+	 * @return	String | Boolean
+	 */
+	public function getPhone() {
+		$phones = $this->getPhones();
+
+		if( sizeof($phones) ) {
+			return $phones[0]['info'];
+		} else {
+			return false;
+		}
+	}
+
+
+
+	/**
+	 * @return Array
+	 */
+	public function getPhones() {
+		return TodoyuContactContactInfoManagerCompany::getPhones($this->getID());
+	}
 }
 
 ?>

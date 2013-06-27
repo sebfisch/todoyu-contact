@@ -352,11 +352,10 @@ Todoyu.Ext.contact.Company =  {
 		var listing = $('paging-company');
 
 		if( listing ) {
-			listing.stopObserving();
-			listing.on('DOMNodeInserted', '#paging-company', this.initCompanyList.bind(this));
 			Todoyu.QuickInfo.install('companyEmail', '#paging-company span.email', this.getCompanyIdForQuickinfo.bind(this));
 			Todoyu.QuickInfo.install('companyPhone', '#paging-company span.phone', this.getCompanyIdForQuickinfo.bind(this));
 			Todoyu.QuickInfo.install('companyAddress', '#paging-company span.address', this.getCompanyIdForQuickinfo.bind(this));
+			this.replaceEmails(listing);
 		}
 	},
 
@@ -370,5 +369,29 @@ Todoyu.Ext.contact.Company =  {
 	 */
 	getCompanyIdForQuickinfo: function(element) {
 		return element.up('tr').id.split('-').last();
+	},
+
+
+
+	/**
+	 *
+	 * @param listing
+	 */
+	replaceEmails: function(listing) {
+		if( listing ) {
+			listing.select('span.email').each(function(element) {
+				var email = element.innerHTML.strip();
+				if( !element.down('a') && email != '-') {
+					var link = 'mailto:' + email;
+
+					var aTag = new Element('a', {
+									href: link
+								});
+
+					aTag.update(email);
+					element.update(aTag);
+				}
+			});
+		}
 	}
 };

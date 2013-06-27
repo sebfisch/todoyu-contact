@@ -288,7 +288,7 @@ class TodoyuContactContactInfoManager {
 	 * @return	String
 	 */
 	public static function renderContactInformation($contactInfoData) {
-		$contactInfoData['html'] = TodoyuSTring::htmlentities($contactInfoData['info']);
+		$contactInfoData['html'] = TodoyuString::htmlentities($contactInfoData['info']);
 
 		if( intval($contactInfoData['infotype_category']) === CONTACT_INFOTYPE_CATEGORY_EMAIL) {
 			$contactInfoData['html'] = TodoyuString::buildMailtoATag($contactInfoData['info'], $contactInfoData['info']);

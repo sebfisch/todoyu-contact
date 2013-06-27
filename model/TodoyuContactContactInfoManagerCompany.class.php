@@ -56,32 +56,32 @@ class TodoyuContactContactInfoManagerCompany extends TodoyuContactContactInfoMan
 	/**
 	 * Get phone numbers of given types of given person
 	 *
-	 * @param	Integer			$idPerson
+	 * @param	Integer			$idCompany
 	 * @param	String|Boolean	$type
 	 * @param	Boolean			$onlyPreferred
 	 * @return	Array
 	 */
-	public static function getPhones($idPerson, $type = false, $onlyPreferred = false) {
-		return self::getContactInfos('company', $idPerson, CONTACT_INFOTYPE_CATEGORY_PHONE, $type, $onlyPreferred);
+	public static function getPhones($idCompany, $type = false, $onlyPreferred = false) {
+		return self::getContactInfos('company', $idCompany, CONTACT_INFOTYPE_CATEGORY_PHONE, $type, $onlyPreferred);
 	}
 
 
 
 	/**
-	 * Get preferred email of a person
+	 * Get preferred email of a company
 	 * First check system email, than check "contactinfo" records. Look for preferred emails
 	 *
-	 * @param	Integer		$idPerson
+	 * @param	Integer		$idCompany
 	 * @return	String
 	 */
-	public static function getPreferredEmail($idPerson) {
-		$idPerson	= intval($idPerson);
-		$person		= TodoyuContactPersonManager::getPerson($idPerson);
+	public static function getPreferredEmail($idCompany) {
+		$idCompany		= intval($idCompany);
+		$Company		= TodoyuContactCompanyManager::getCompany($idCompany);
 
-		$email		= $person->getEmail();
+		$email = array();
 
 		if( empty($email) ) {
-			$contactEmails	= self::getContactInfos('company', $idPerson, CONTACT_INFOTYPE_CATEGORY_EMAIL);
+			$contactEmails	= self::getContactInfos('company', $idCompany, CONTACT_INFOTYPE_CATEGORY_EMAIL);
 			if( sizeof($contactEmails) > 0 ) {
 				$email = $contactEmails[0]['info'];
 			}

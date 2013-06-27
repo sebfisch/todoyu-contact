@@ -113,14 +113,28 @@ class TodoyuContactCompanySearch implements TodoyuSearchEngineIf {
 	public static function getCompanyListingDataRow($idCompany) {
 		$idCompany	= intval($idCompany);
 
+		$company = TodoyuContactCompanyManager::getCompany($idCompany);
+
+		$email = $company->getEmail();
+
+		if( empty($email) ) {
+			$email = '-';
+		}
+
+		$phone = $company->getPhone();
+
+		if( empty($phone) ) {
+			$phone = '-';
+		}
+
 		return array(
 			'icon'		=> array('content'		=> '',
 								 'classname'	=> TodoyuContactCompanyManager::getCompany($idCompany)->isNotActive() ? 'notactive' : ''
 			),
-			'title'		=> TodoyuContactCompanyManager::getCompany($idCompany)->getTitle(),
-			'email'		=> TodoyuLabelManager::getLabel('contact.ext.person.attr.email'),
-			'phone'		=> TodoyuLabelManager::getLabel('contact.ext.phone'),
-			'address'	=> TodoyuLabelManager::getLabel('contact.ext.address'),
+			'title'		=> $company->getTitle(),
+			'email'		=> $email,
+			'phone'		=> $phone,
+			'address'	=> '',
 			'actions'	=> TodoyuContactCompanyRenderer::renderCompanyActions($idCompany)
 		);
 	}

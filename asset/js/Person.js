@@ -546,10 +546,9 @@ Todoyu.Ext.contact.Person =  {
 		var listing = $('paging-person');
 
 		if( listing ) {
-			listing.stopObserving();
-			listing.on('DOMNodeInserted', '#paging-person', this.initPersonList.bind(this));
 			Todoyu.QuickInfo.install('personEmail', '#paging-person span.email', this.getPersonIdForQuickinfo.bind(this));
 			Todoyu.QuickInfo.install('personPhone', '#paging-person span.phone', this.getPersonIdForQuickinfo.bind(this));
+			Todoyu.Ext.contact.Company.replaceEmails(listing);
 		}
 	},
 

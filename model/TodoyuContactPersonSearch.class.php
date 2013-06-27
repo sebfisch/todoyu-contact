@@ -209,13 +209,29 @@ class TodoyuContactPersonSearch implements TodoyuSearchEngineIf {
 			$company	= '-';
 		}
 
+//		$phone = $person->getPhone();
+//		if( empty($phone) ) {
+//			$phone = '-';
+//		}
+
+		$phone = $person->getPhoneRecord();
+
+		$phone = TodoyuHookManager::callHookDataModifier('contact', 'contactinfotype.render', $phone);
+
+		if( empty($phone) ) {
+			$phone = '-';
+		} else {
+			$phone = $phone['html'];
+		}
+
+
 		return array(
 			'icon'		=> '',
 			'iconClass'	=> ($person->isActive() ? 'login' : '') . ($person->isAdmin() ? ' admin' : ''),
 			'lastname'	=> $person->getLastname(),
 			'firstname'	=> $person->getFirstname(),
-			'email'		=> TodoyuLabelManager::getLabel('contact.ext.person.attr.email'),
-			'phone'		=> TodoyuLabelManager::getLabel('contact.ext.phone'),
+			'email'		=> $email,
+			'phone'		=> $phone,
 			'company'	=> $company,
 			'actions'	=> TodoyuContactPersonRenderer::renderPersonActions($person->getID())
 		);
