@@ -7,6 +7,7 @@ contact 1.3.1 - not released yet
 	* Added: Person label in auto-completion suggestion contains company shortname
 	* Added: Quick info for contact information on company.
 	* Added: Hook to render contact information in person/company details
+	* Added: Catalan language. Credits to Carles Baiges Camprubí LaCol (www.lacol.org)
 	* Changed: Display changes of address
 	* Changed: Company-listing columns
 	* Changed: Dependency to core 2.3.1
