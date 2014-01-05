@@ -64,6 +64,9 @@
 
 				<field type="date" name="birthday">
 					<label>contact.ext.person.attr.birthday</label>
+					<calendar>
+						<range>[1940,2020]</range>
+					</calendar>
 					<storeAsDate />
 				</field>
 
