@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labels>
+	<label index="legend.person.basics">Informasi Dasar Orang</label>
+	<label index="legend.person.picture">Gambar Profil</label>
+	<label index="legend.person.furtherInformation">Informasi Lebih Lanjut</label>
+	<label index="legend.person.login">Account Pengguna</label>
+	<label index="legend.company.basics">Informasi Perusahaan Utama</label>
+	<label index="legend.company.logo">Logo Perusahaan</label>
+	<label index="legend.admin.jobtype.record">Jenis Pekerjaan</label>
+	<label index="legend.admin.contactinfotype.record">Tipe Informasi Kontak</label>
+	<label index="warning.duplicatedEntries">Masukkan berikut yang sudah ada:</label>
+</labels>

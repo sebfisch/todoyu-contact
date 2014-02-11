@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labels>
+	<label index="company.label">Perusahaan</label>
+	<label index="person.label">Orang</label>
+	<label index="fulltext">Teks Penuh</label>
+	<label index="contactinformation">Informasi Kontak</label>
+	<label index="person.name">Nama (Awal / Akhir / Pendek)</label>
+	<label index="person.company">Pimpinan</label>
+	<label index="person.salutation">Penghormatan</label>
+	<label index="person.system_role">Peran Pengguna</label>
+	<label index="person.company.isInternal">Pimpinan Internal Perusahaan</label>
+	<label index="person.isActive">todoyu-login diaktifkan</label>
+	<label index="company.name">Nama Perusahaan</label>
+	<label index="company.isInternal">Internal Perusahaan</label>
+	<label index="company.dateEnter">Memasuki Tanggal</label>
+	<label index="company.person">Karyawan</label>
+	<label index="addresses.label">Alamat</label>
+	<label index="address.country">Negara</label>
+	<label index="address.zip">Kode Pos</label>
+	<label index="address.city">Kota</label>
+	<label index="address.street">Jalan</label>
+</labels>

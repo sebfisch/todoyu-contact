@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labels>
+	<label index="title">Export Kontak</label>
+	<label index="export.instruction">Export kontak sebagai CSV. Pencarian kondisi di atas digunakan.</label>
+	<label index="export.button">Export Kontak</label>
+</labels>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labels>
+	<label index="title">Staf</label>
+	<label index="selection">Seleksi Aktif</label>
+	<label index="selection.empty">Tidak ada yang dipilih. Gunakan pencarian untuk menambahkan orang-orang baru dan kelompok.</label>
+	<label index="button.save.newgroup">Menyimpan pilihan sebagai kelompok</label>
+	<label index="newGroupLabel.prompt">Masukkan nama untuk grup baru</label>
+	<label index="newGroupLabel.saved.success">Grup telah disimpan.</label>
+	<label index="newGroupLabel.error.saveEmptyName">Masukkan nama untuk grup baru</label>
+	<label index="newGroupLabel.prompt.preset">Grup Baru</label>
+	<label index="icon.additem">Pilih</label>
+	<label index="icon.removefromselection">Hapus Dari Seleksi</label>
+	<label index="icon.deletegroup">Hapus Grup</label>
+	<label index="deletegroup.confirm">Benar-benar menghapus grup?</label>
+	<label index="deletegroup.success">Grup telah dihapus.</label>
+	<label index="deletegroup.error">Hapus Grup Gagal</label>
+</labels>

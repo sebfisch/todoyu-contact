@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labels>
+	<label index="general">Pengaturan Umum</label>
+	<label index="general.use">Gunakan Fungsi Modul</label>
+	<label index="general.profile">gunakan Profil</label>
+	<label index="general.area">Gunakan Lokasi Kontak</label>
+	<label index="person">Orang</label>
+	<label index="person.seeAllInternalPersons">Lihat Semua Orang Dalam</label>
+	<label index="person.seeAllPersons">Lihat Semua Orang</label>
+	<label index="person.add">Tambah Orang</label>
+	<label index="person.editAndDeleteAll">Ubah dan Hapus Data Orang</label>
+	<label index="person.enableLogin">Buat Account Login</label>
+	<label index="person.seeComment">Lihat Komentar Orang</label>
+	<label index="person.editComment">Ubah Komentar Orang</label>
+	<label index="company">Perusahaan</label>
+	<label index="company.seeAllCompanies">Lihat Semua Perusahaan</label>
+	<label index="company.add">Tambah Perusahaan</label>
+	<label index="company.editOwn">Ubah Data Perusahaan Anda Sendiri (Pengusaha)</label>
+	<label index="company.editAndDeleteAll">Ubah dan Hapus Semua Data Perusahaan</label>
+	<label index="company.seeComment">Lihat Komentar Perusahaan</label>
+	<label index="company.editComment">Ubah Komentar Perusahaan</label>
+	<label index="relation">Kontak Relasi</label>
+	<label index="relation.seeAllContactinfotypes">Lihat Semua Jenis Informasi Kontak</label>
+	<label index="relation.seeHomeAddress">Lihat Alamat Rumah</label>
+	<label index="relation.seeBusinessAddress">Lihat Alamat Bisnis</label>
+	<label index="relation.seeBillingAddress">Lihat Alamat Penagihan</label>
+	<label index="panelwidgets">Kotak Widgets</label>
+	<label index="panelwidgets.staffSelector">Pemilih Staf</label>
+	<label index="panelwidgets.export">Export</label>
+</labels>
