@@ -321,18 +321,7 @@ class TodoyuContactPersonManager {
 			$idPerson = self::addPerson();
 		}
 
-		if( $data['image_id'] != 0 ) {
-			TodoyuContactImageManager::renameStorageFolder('person', $data['image_id'], $idPerson);
-		}
-
-		unset($data['image_id']);
-
-			// Update/set password?
-		if( strlen($data['password']) > 0 ) {
-			$data['password'] = md5($data['password']);
-		} else {
-			unset($data['password']);
-		}
+		$data = self::processFormFields($data, $idPerson);
 
 			// Call internal save function
 		$data	= self::savePersonForeignRecords($data, $idPerson);
@@ -342,6 +331,35 @@ class TodoyuContactPersonManager {
 		self::updatePerson($idPerson, $data);
 
 		return $idPerson;
+	}
+
+
+
+	/**
+	 * @param array $data
+	 * @param       $idPerson
+	 * @return array
+	 */
+	protected static function processFormFields(array $data, $idPerson) {
+		if ( $data['image_id'] != 0 ) {
+			TodoyuContactImageManager::renameStorageFolder('person', $data['image_id'], $idPerson);
+		}
+
+		unset($data['image_id']);
+
+		if( intval($data['is_active']) === 1) {
+			// Update/set password?
+			if ( strlen($data['password']) > 0 ) {
+				$data['password'] = md5($data['password']);
+			} else {
+				unset($data['password']);
+			}
+		} else {
+			unset($data['username']);
+			unset($data['password']);
+		}
+
+		return $data;
 	}
 
 

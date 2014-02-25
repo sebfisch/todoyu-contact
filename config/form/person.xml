@@ -189,8 +189,8 @@
 									<allow>
 										<fieldEquals>
 											<field>is_active</field>
-												<value>0</value>
-											</fieldEquals>
+											<value>0</value>
+										</fieldEquals>
 									</allow>
 									<table>ext_contact_person</table>
 								</unique>
